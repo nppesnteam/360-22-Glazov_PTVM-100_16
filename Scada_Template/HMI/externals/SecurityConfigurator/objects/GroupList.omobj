@@ -1,0 +1,1103 @@
+<type access-modifier="private" name="GroupList" display-name="GroupList" uuid="86e1dbe1-fd23-49c5-b84a-ab651aaea281" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="847" ver="5"/>
+	<designed target="Height" value="400" ver="5"/>
+	<designed target="PenColor" value="4278190080" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<designed target="WindowX" value="0" ver="5"/>
+	<designed target="WindowY" value="0" ver="5"/>
+	<designed target="WindowWidth" value="847" ver="5"/>
+	<designed target="WindowHeight" value="400" ver="5"/>
+	<designed target="WindowCaption" value="MainForm" ver="5"/>
+	<designed target="ShowWindowCaption" value="true" ver="5"/>
+	<designed target="ShowWindowMinimize" value="true" ver="5"/>
+	<designed target="ShowWindowMaximize" value="true" ver="5"/>
+	<designed target="ShowWindowClose" value="true" ver="5"/>
+	<designed target="AlwaysOnTop" value="false" ver="5"/>
+	<designed target="WindowSizeMode" value="0" ver="5"/>
+	<designed target="WindowBorderStyle" value="1" ver="5"/>
+	<designed target="WindowState" value="0" ver="5"/>
+	<designed target="WindowScalingMode" value="0" ver="5"/>
+	<designed target="MonitorNumber" value="0" ver="5"/>
+	<designed target="WindowPosition" value="0" ver="5"/>
+	<designed target="WindowCloseMode" value="0" ver="5"/>
+	<object access-modifier="private" name="private" display-name="private" uuid="a36b130c-c104-40d2-8e21-8618195ac943" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+		<object access-modifier="private" name="pTheme" display-name="pTheme" uuid="38b0d578-c809-41bc-842a-e566347f1680" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
+		<object access-modifier="private" name="pScreenKeyboard" display-name="pScreenKeyboard" uuid="ae0661ee-f4f4-4812-8c93-c06445a7d825" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
+		<object access-modifier="private" name="RemoveGroup" display-name="RemoveGroup" uuid="d825aa3f-ccc0-4626-8c5f-e48467e4b250" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="javascript">
+					<![CDATA[if (value && Commands.DoRemoveSelected.CanExecute)
+{
+	Commands.DoRemoveSelected = false;
+	
+	var selectedGroupId = TreePanel.GroupTree.GetCurrentGroupId();	
+	if (selectedGroupId != Group.GroupID)
+	{
+		Group.LoadSelectedGroup(selectedGroupId);
+		HoldExecute = true;
+	}
+	else
+	{	
+		var members = getMemberNames(JSON.parse(Group.GetMembersList()).data);
+	
+		if (members.includes(SecurityContext.CurrentUser))
+		{
+			ShowForbiddenMessage.message = `Группа '${Group.GroupName}' содержит пользователя с активной сессией '${SecurityContext.CurrentUser}', удаление невозможно`;
+			ShowForbiddenMessage.Invoke();
+		}
+		else
+		{
+			ShowRemoveDialog.message = `Вы действительно хотите удалить группу '${Group.GroupName}'?`;
+			ShowRemoveDialog.Invoke();
+		}
+	}
+}
+
+function getMemberNames(membersListData)
+{
+	let members = [];
+	for (let member of membersListData)
+	{
+		members.push(member.memberName);	
+	}
+	return members;
+}]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="ShowRemoveDialog" display-name="ShowRemoveDialog" uuid="c14dc218-db6a-4070-938c-17e13816cf8b" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="dd3e9194-8ae0-4548-aa72-fcb63577c5ed" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="5">
+						<init target="OkAction" ver="5" ref="RemoveSelectedGroup"/>
+						<init target="Icon" ver="5" value="1"/>
+						<init target="Buttons" ver="5" value="1"/>
+						<designed target="WindowCaption" value="Удалить группу" ver="5"/>
+						<init target="Message" ver="5">
+							<expr>
+								<![CDATA[message]]>
+							</expr>
+						</init>
+						<init target="pTheme" ver="5" ref="here.private.pTheme"/>
+					</object>
+				</do-on>
+				<object access-modifier="private" name="message" display-name="message" uuid="1248dec5-0bca-4bb6-af3d-746140d9b571" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			</object>
+			<object access-modifier="private" name="ShowForbiddenMessage" display-name="ShowForbiddenMessage" uuid="1ad4ba6c-cbb6-4671-9e3f-f3cc57b2a69b" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<object access-modifier="private" name="message" display-name="message" uuid="dbbbff70-dc80-4607-97c1-34fb6c73baf7" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="a0d4e23a-b0c8-43f9-979e-48731be78680" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="5">
+						<designed target="WindowCaption" value="Удалить группу" ver="5"/>
+						<init target="Icon" ver="5" value="2"/>
+						<init target="Buttons" ver="5" value="0"/>
+						<init target="Message" ver="5">
+							<expr>
+								<![CDATA[message]]>
+							</expr>
+						</init>
+						<init target="pTheme" ver="5" ref="here.private.pTheme"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="RemoveSelectedGroup" display-name="RemoveSelectedGroup" uuid="963735dc-8c5d-41aa-9f47-36e26a6d8ab9" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[Manager.DeleteGroup(Group.GroupID);
+SystemCommands.GoTo.doBlockingControll();]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="HoldExecute" display-name="HoldExecute" uuid="ad1a1eae-af5f-40a7-8761-94d99258f842" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+		</object>
+		<object access-modifier="private" name="CreateGroup" display-name="CreateGroup" uuid="fffdf792-818e-4090-b6ad-3fef744afa80" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value && Commands.DoCreate.CanExecute)
+{
+	Commands.DoCreate = false;
+	
+	GroupName.InputText = "";
+	ShowCreateGroupPopup.Invoke();
+}]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="ShowCreateGroupPopup" display-name="ShowCreateGroupPopup" uuid="c7dceff1-2665-439b-b462-5796b0ef49ed" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="9eb8aaea-f45c-409c-84fe-e2471f78c678" base-type="InputDialog" base-type-id="eb80f6e6-d9d7-4ca5-a3e9-34863ab130d2" ver="5">
+						<init target="Result" ver="5" ref="GroupName"/>
+						<init target="OkAction" ver="5" ref="OnComplete"/>
+						<designed target="WindowCaption" value="Введите имя группы" ver="5"/>
+						<designed target="WindowIconPath" value="Security_Icons/GroupAdd16.png" ver="5"/>
+						<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
+						<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
+					</object>
+				</do-on>
+				<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="50e1a97d-06b0-4efe-877f-8ce93c4fbc57" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+					<designed target="Enabled" value="true" ver="5"/>
+					<designed target="InvokeTrigger" value="false" ver="5"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[if (GroupName.Error.Value == "" && Commands.DoCreate.CanExecute)
+{
+	Group.New();
+	Group.GroupName = String.Trim(GroupName.Value);
+	Group.Save();
+	Commands.DoCreate.CanExecute = false;
+	SystemCommands.GoTo.doBlockingControll();
+}]]>
+						</body>
+					</do-on>
+				</object>
+			</object>
+			<object access-modifier="private" name="GroupName" display-name="GroupName" uuid="2aa78497-e5fa-4e08-b080-006733708f78" base-type="InputDialogResult" base-type-id="cdcda119-652b-45ed-bfc4-8cc21b98730d" ver="5">
+				<object access-modifier="private" name="IsChanged" display-name="IsChanged" uuid="9dc00999-e677-4366-b025-c55ae5ea6d7c" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5">
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+						<body kind="javascript">
+							<![CDATA[var errorText = "";
+
+if (value == "")
+{
+	errorText = "Имя не может быть пустым";
+}
+else
+{
+	let groupList = JSON.parse(Manager.ActualGroupList).data;
+	for (let group of groupList)
+	{
+		if (group.displayName.toLowerCase() == value.toLowerCase())
+		{
+			errorText = "Повторяющиеся имена недопустимы";
+			break;
+		}
+	}
+}
+
+GroupName.Error.Value = errorText;]]>
+						</body>
+					</do-on>
+				</object>
+				<do-trace access-modifier="private" target="IsChanged" ver="5">
+					<body>
+						<![CDATA[String.Trim(InputText)]]>
+					</body>
+				</do-trace>
+			</object>
+		</object>
+		<do-trace access-modifier="private" target="RemoveGroup" ver="5">
+			<body>
+				<![CDATA[Commands.DoRemoveSelected]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="CreateGroup" ver="5">
+			<body>
+				<![CDATA[Commands.DoCreate]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="EditGroup" display-name="EditGroup" uuid="afb817f5-0124-4ae2-b167-a8b437391219" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value && Commands.DoEdit.CanExecute)
+{
+	Commands.DoEdit.Value = false;
+	
+	SystemCommands.GoTo.sendData = TreePanel.GroupTree.GetCurrentGroupId();
+	SystemCommands.GoTo.frameCode = SystemCommands.Forms.GroupEdit;
+	SystemCommands.GoTo = true;
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<do-trace access-modifier="private" target="EditGroup" ver="5">
+			<body>
+				<![CDATA[Commands.DoEdit]]>
+			</body>
+		</do-trace>
+		<do access-modifier="private" name="SaveViewSettings" display-name="SaveViewSettings" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[SystemCommands.ViewSettings.Update(SystemCommands.Forms.GroupList, GetViewSettings());]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="ShowError" display-name="ShowError" uuid="932947d0-7faa-4b28-96c7-e06e741be400" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="34dda28a-78f1-4476-82f8-e5bb43e4551b" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="5">
+					<init target="Message" ver="5" ref="message"/>
+					<init target="Buttons" ver="5" value="0"/>
+					<init target="Icon" ver="5" value="3"/>
+					<designed target="WindowCaption" value="Ошибка" ver="5"/>
+					<init target="pTheme" ver="5" ref="here.private.pTheme"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="message" display-name="message" uuid="96dcc5f4-4c1e-43e5-9135-444b48ef3701" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</object>
+		<init target="pTheme" ver="5" ref="init_Theme"/>
+		<init target="pScreenKeyboard" ver="5" ref="init_ScreenKeyboard"/>
+	</object>
+	<object access-modifier="private" name="TreePanel" display-name="TreePanel" uuid="75c875fd-2321-43e2-bbda-bb2ff51d13c2" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="220" ver="5"/>
+		<designed target="Height" value="400" ver="5"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="4278190080" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<object access-modifier="private" name="LinearLayout" display-name="LinearLayout" uuid="607c6fe7-c975-476e-9000-d6573ef8cfab" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5">
+			<designed target="Orientation" value="2" ver="5"/>
+			<designed target="Gap" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="SearchBar" display-name="SearchBar" uuid="a482af5f-50ba-4858-a970-4dff1541d36c" base-type="SearchBar" base-type-id="eed9303b-0032-4f78-8bfe-aff18c14190a" ver="5" description="" cardinal="1">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Width" value="220" ver="5"/>
+			<designed target="Height" value="22" ver="5"/>
+			<object access-modifier="private" name="PatternChanged" display-name="PatternChanged" uuid="4bebe8b5-0aff-4016-85bb-aaf6c21c1000" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[GroupTree.SetColumnFilter(0, "*" + SearchBar.Pattern + "*");]]>
+					</body>
+				</do-on>
+			</object>
+			<init target="pPatternChanged" ver="5" ref="PatternChanged"/>
+		</object>
+		<object access-modifier="private" name="GroupTree" display-name="GroupTree" uuid="9f41d111-9edd-49b1-839e-ff92ab5e85e0" base-type="GroupTree" base-type-id="bcc64033-73ca-444c-bcfa-84efc86a9c4a" ver="5" description="" cardinal="1">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="22" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Width" value="220" ver="5"/>
+			<designed target="Height" value="378" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ItemDoubleClicked">
+				<body kind="om">
+					<![CDATA[if (SystemCommands.GoTo.CanExecute && event.Button == 1)
+	Commands.DoEdit = true;]]>
+				</body>
+			</do-on>
+			<do access-modifier="private" name="SetItemByGroupId" display-name="SetItemByGroupId" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="javascript">
+					<![CDATA[if (groupId != "")
+{
+	let currentNode = nextNode("");
+	if (currentNode != "")
+		SetCurrentItem(currentNode);
+	
+}
+
+function nextNode(itemId)
+{
+	let childNodes = JSON.parse(EnumChildrenJSON(itemId));
+	for (let node of childNodes)
+	{
+		if (groupId == GetItemData(node, 3))
+		{
+			return node;
+		}
+		else
+		{
+			if (ChildCount(node) > 0)
+				nextNode(node);
+		}
+	}
+	return "";
+}]]>
+				</body>
+				<param access-modifier="private" name="groupId" display-name="" uuid="16cce88f-2b5d-40c1-a41c-977520423301" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			</do>
+			<object access-modifier="private" name="ShowTreeContextMenu" display-name="ShowTreeContextMenu" uuid="f4acf04d-978f-4b93-8abc-7462a1080821" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<object access-modifier="private" name="initX" display-name="initX" uuid="e51f519a-a87b-443a-b405-5b082d42a3ed" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+				<object access-modifier="private" name="initY" display-name="initY" uuid="6cd095e0-acee-4cd4-a168-4f741d06f498" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+				<object access-modifier="private" name="OnClick" display-name="OnClick" uuid="d915bbff-208e-496d-bc47-3d3a3b5bc6dc" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+					<designed target="Enabled" value="true" ver="5"/>
+					<designed target="InvokeTrigger" value="false" ver="5"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[cmd: string = MenuResult.Id;
+
+if (cmd == "add")
+	Commands.DoCreate = true;
+else if (cmd == "edit")
+	Commands.DoEdit = true;
+else if (cmd == "remove")
+	Commands.DoRemoveSelected = true;]]>
+						</body>
+					</do-on>
+				</object>
+				<object access-modifier="private" name="MenuResult" display-name="MenuResult" uuid="b2ccbdb7-fce1-4cb5-b07c-6f127b07a3e2" base-type="MenuResult" base-type-id="0fe7658c-92f4-4af7-b038-3594414ac651" ver="5" description="" cardinal="1"/>
+				<do access-modifier="private" name="GetMenuItem" display-name="GetMenuItem" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+					<body kind="javascript">
+						<![CDATA[var items = [];
+
+items.push({
+	'id': "add",
+	'title': "Добавить группу...",
+	'icon': "Security_Icons/Add16.png",
+	'active': Commands.DoCreate.CanExecute.Value
+});
+
+items.push({
+	'id': "edit",
+	'title': "Редактировать группу...",
+	'icon': "Security_Icons/Edit16.png",
+	'active': Commands.DoEdit.CanExecute.Value
+});
+
+items.push({
+	'id': "remove",
+	'title': "Удалить группу...",
+	'icon': "Security_Icons/Delete16.png",
+	'active': Commands.DoRemoveSelected.CanExecute.Value
+});
+
+return JSON.stringify(items);]]>
+					</body>
+				</do>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="8af34dc0-006a-4691-99a3-47941e763392" base-type="Menu" base-type-id="07bb4545-980a-4140-bbaa-4d1397447864" ver="5">
+						<init target="WindowX" ver="5">
+							<expr>
+								<![CDATA[initX]]>
+							</expr>
+						</init>
+						<init target="WindowY" ver="5">
+							<expr>
+								<![CDATA[initY]]>
+							</expr>
+						</init>
+						<init target="pResult" ver="5" ref="MenuResult"/>
+						<init target="Items" ver="5">
+							<expr>
+								<![CDATA[GetMenuItem()]]>
+							</expr>
+						</init>
+						<init target="pAction" ver="5" ref="OnClick"/>
+						<init target="pTheme" ver="5" ref="here.private.pTheme"/>
+					</object>
+				</do-on>
+			</object>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseRelease">
+				<body kind="om">
+					<![CDATA[//ПКМ event.Button == 2]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseRightClick">
+				<body kind="om">
+					<![CDATA[ShowTreeContextMenu.initX = TypeConvert.ToInt4(ScreenX(MouseX, MouseY));
+ShowTreeContextMenu.initY = TypeConvert.ToInt4(ScreenY(MouseX, MouseY));
+ShowTreeContextMenu.Invoke();]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="CurrentItemChanged">
+				<body kind="om">
+					<![CDATA[SetCurrentItem(CurrentItem);
+currentGroupId: string = GetCurrentGroupId();
+
+//активность команд
+isExistsId: bool = currentGroupId != "";
+Commands.DoRemoveSelected.CanExecute = isExistsId;
+Commands.DoEdit.CanExecute = isExistsId;
+
+// загрузка выбранной группы
+if (isExistsId && currentGroupId != Group.GroupID)
+	Group.LoadSelectedGroup(currentGroupId);]]>
+				</body>
+			</do-on>
+			<designed target="BackgroundColor" value="0xffffffff" ver="5"/>
+			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.EditorBrushColor]]>
+				</body>
+			</do-trace>
+			<designed target="FontColor" value="0xff000000" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="e6e9e3f0-1f3d-4cd8-b0d6-20e9f73e9312" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="220" ver="5"/>
+			<designed target="MinHeight" value="0" ver="5"/>
+			<designed target="MaxWidth" value="220" ver="5"/>
+			<designed target="MaxHeight" value="16777215" ver="5"/>
+		</object>
+	</object>
+	<object access-modifier="private" name="Slider" display-name="Slider" uuid="7691e4c4-ce0c-40cc-9d82-0bf1a0991476" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+		<designed target="X" value="220" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="4" ver="5"/>
+		<designed target="Height" value="400" ver="5"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<designed target="PenColor" value="0xff808080" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<object access-modifier="private" name="bPressed" display-name="bPressed" uuid="41bf520c-b446-4f8a-ae85-e39e44b7df03" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="MouseIsOver" display-name="MouseIsOver" uuid="15bf72bb-91eb-4541-8d93-60a2f8681008" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseMove">
+			<body kind="om">
+				<![CDATA[if (bPressed)
+{
+	distance: double = Distance + event.X;
+	
+	min: double = 30;
+	if (distance < min)
+		distance = min;
+		
+	max: double = parent.Width - 30;
+	if (distance > max)
+		distance = max;
+	
+	if (Distance != distance)
+	{
+		Distance = distance;
+		TreePanel.SizeLimits.MinWidth = Distance;
+		TreePanel.SizeLimits.MaxWidth = Distance;
+		private.SaveViewSettings();
+	}
+}]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MousePress">
+			<body kind="om">
+				<![CDATA[bPressed = true;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseRelease">
+			<body kind="om">
+				<![CDATA[bPressed = false;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="MouseEnter">
+			<body kind="om">
+				<![CDATA[MouseIsOver = true;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="MouseLeave">
+			<body kind="om">
+				<![CDATA[MouseIsOver = false;
+bPressed = false;]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="BrushColor" ver="5">
+			<body>
+				<![CDATA[MouseIsOver ? here.private.pTheme.SelectionColor : here.private.pTheme.BackgroundColor]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="7a39e608-b4ea-4b1f-8ead-db15561b15f1" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="4" ver="5"/>
+			<designed target="MinHeight" value="0" ver="5"/>
+			<designed target="MaxWidth" value="4" ver="5"/>
+			<designed target="MaxHeight" value="16777215" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Distance" display-name="Distance" uuid="252e8b76-a4e6-4037-aaa2-9f53819099db" base-type="double" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="5" description="" cardinal="1"/>
+		<init target="Distance" ver="5" value="220"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="PenColor" ver="5">
+			<body>
+				<![CDATA[here.private.pTheme.BorderColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="LoadedGroupData" display-name="LoadedGroupData" uuid="66e5096d-3482-4da8-a4c6-359f11fc4837" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+		<designed target="X" value="230" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="627" ver="5"/>
+		<designed target="Height" value="400" ver="5"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="4278190080" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="9fba6401-8e8e-4163-b65c-7a0f0bea6cf8" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5">
+			<designed target="Weight" value="1000" ver="5"/>
+		</object>
+		<object access-modifier="private" name="LinearLayout" display-name="LinearLayout" uuid="d6383aee-d0bc-4dea-9b7c-0e8b5b488929" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5">
+			<designed target="Orientation" value="2" ver="5"/>
+			<designed target="Gap" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="CurrentGroupTitle" display-name="CurrentGroupTitle" uuid="384c0312-b5a5-49ef-bd97-222a016afb72" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="620" ver="5"/>
+			<designed target="Height" value="22" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="0" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="GroupIcon" display-name="GroupIcon" uuid="95fa6488-a777-4546-82db-fd52f5764b4b" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="5">
+				<designed target="X" value="2" ver="5"/>
+				<designed target="Y" value="2" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="16" ver="5"/>
+				<designed target="Height" value="16" ver="5"/>
+				<designed target="PenColor" value="4278190080" ver="5"/>
+				<designed target="PenStyle" value="0" ver="5"/>
+				<designed target="PenWidth" value="1" ver="5"/>
+				<designed target="ImageFile" value="Security_Icons/Group16.png" ver="5"/>
+				<designed target="Active" value="true" ver="5"/>
+				<designed target="CurrentFrameNumber" value="0" ver="5"/>
+				<designed target="Speed" value="1" ver="5"/>
+				<object access-modifier="private" name="Margins" display-name="Margins" uuid="0a2a75d3-2a5f-41fa-8693-66b570f5d1be" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+					<designed target="Top" value="1" ver="5"/>
+					<designed target="Bottom" value="1" ver="5"/>
+					<designed target="Left" value="2" ver="5"/>
+					<designed target="Right" value="1" ver="5"/>
+				</object>
+				<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="389b924b-052e-433e-b63a-63076ec163a1" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+					<designed target="MinWidth" value="0" ver="5"/>
+					<designed target="MinHeight" value="0" ver="5"/>
+					<designed target="MaxWidth" value="16" ver="5"/>
+					<designed target="MaxHeight" value="16" ver="5"/>
+				</object>
+			</object>
+			<object access-modifier="private" name="Name" display-name="Name" uuid="924d94b8-32f1-4629-a800-4dc646ceaaeb" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+				<designed target="X" value="24" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="599" ver="5"/>
+				<designed target="Height" value="22" ver="5"/>
+				<designed target="Text" value="Имя группы" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="FontColor" value="0xff000000" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<object access-modifier="private" name="Margins" display-name="Margins" uuid="b545787f-d2b2-4e8e-901a-dcd543c265a0" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+					<designed target="Top" value="0" ver="5"/>
+					<designed target="Bottom" value="0" ver="5"/>
+					<designed target="Left" value="5" ver="5"/>
+					<designed target="Right" value="0" ver="5"/>
+				</object>
+				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[here.private.pTheme.ForegroundColor]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="LinearLayout" display-name="LinearLayout" uuid="d597834e-c8bc-4f9e-afef-b1430c0e7923" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5">
+				<designed target="Orientation" value="1" ver="5"/>
+				<designed target="Gap" value="0" ver="5"/>
+			</object>
+			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="65bf8ffd-41dc-4fc2-96ff-83022e2a57ca" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+				<designed target="MinWidth" value="0" ver="5"/>
+				<designed target="MinHeight" value="22" ver="5"/>
+				<designed target="MaxWidth" value="16777215" ver="5"/>
+				<designed target="MaxHeight" value="22" ver="5"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="MembersView" display-name="MembersView" uuid="e420e858-4ba0-42e4-9c13-7a7ff80d8faf" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="22" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Width" value="620" ver="5"/>
+			<designed target="Height" value="375" ver="5"/>
+			<designed target="SelectionBehavior" value="1" ver="5"/>
+			<designed target="SelectionMode" value="1" ver="5"/>
+			<object access-modifier="private" name="Column" display-name="Column" uuid="67a1dbc2-3cf9-4bd2-87f5-da77a635881f" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="5" cardinal="2">
+				<designed target="Title" value="" ver="5"/>
+				<designed target="Description" value="" ver="5"/>
+				<designed target="Id" value="" ver="5"/>
+				<designed target="BackgroundColor" value="0xffffffff" ver="5"/>
+				<designed target="ForegroundColor" value="0xff000000" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="TitleBackgroundColor" value="0xfff0f0f0" ver="5"/>
+				<designed target="TitleForegroundColor" value="4278190080" ver="5"/>
+				<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="Width" value="20" ver="5"/>
+				<designed target="WidthResizeMode" value="0" ver="5"/>
+				<designed target="Emptiable" value="true" ver="5"/>
+				<designed target="Hidden" value="false" ver="5"/>
+				<designed target="NumberFormat" value="%d" ver="5"/>
+				<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="JsonFilter" value="" ver="5"/>
+				<designed target="SortingEnabled" value="false" ver="5"/>
+				<designed target="SortOrder" value="0" ver="5"/>
+				<designed target="SortPriority" value="0" ver="5"/>
+				<designed target="WordWrap" value="false" ver="5"/>
+				<designed target="ColumnOwnId" value="" ver="5"/>
+				<designed target="TitleTextAlignment" value="132" ver="5"/>
+				<designed target="SortMode" value="0" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseTitleClick">
+					<body kind="om">
+						<![CDATA[
+// меняем направление сортировки: прямая -> обратная -> отключена и т.д.
+if (SortingEnabled)
+{
+	if (SortOrder == 0)
+		SortOrder = 1; // меняем направление сортировки
+	else SortingEnabled = false; // отключаем сортировку
+}
+else
+{
+	// включаем сортировку
+	SortOrder = 0;
+	SortingEnabled = true;
+}
+
+// сортируем таблицу
+ApplySort();
+private.SaveViewSettings();]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseDoubleClick">
+					<body kind="om">
+						<![CDATA[//переход к редактированию члена группы
+if (Column[Index].Id == "name")
+{
+	rowInModel: int4 = MapRowToModel(row);
+	
+	memberId: string = Variant.ToString(TableModel.GetCellData(rowInModel, 0), "");
+	memberType: int4 = Variant.ToInt4(TableModel.GetCellData(rowInModel , 1), -1);
+	if (memberId != "" && memberType >= 0)
+	{
+		if (memberType == 0)
+			SystemCommands.GoTo.frameCode = SystemCommands.Forms.UserEdit;
+		else if (memberType == 1)
+			SystemCommands.GoTo.frameCode = SystemCommands.Forms.GroupEdit;
+		else
+			return;
+		
+		//выполнить переход
+		SystemCommands.GoTo.sendData = memberId;
+		SystemCommands.GoTo = true;
+	}
+}]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="WidthChanged">
+					<body kind="om">
+						<![CDATA[private.SaveViewSettings();]]>
+					</body>
+				</do-on>
+				<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+					<body>
+						<![CDATA[here.private.pTheme.EditorBrushColor]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="ForegroundColor" ver="5">
+					<body>
+						<![CDATA[here.private.pTheme.EditorFontColor]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="Font" ver="5">
+					<body>
+						<![CDATA[here.private.pTheme.Font]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="TitleBackgroundColor" ver="5">
+					<body>
+						<![CDATA[here.private.pTheme.BackgroundColor]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="TitleForegroundColor" ver="5">
+					<body>
+						<![CDATA[here.private.pTheme.ForegroundColor]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="TitleFont" ver="5">
+					<body>
+						<![CDATA[here.private.pTheme.TitleFont]]>
+					</body>
+				</do-trace>
+			</object>
+			<designed target="HeaderHeight" value="25" ver="5"/>
+			<designed target="HeaderVisible" value="true" ver="5"/>
+			<designed target="RowHeight" value="25" ver="5"/>
+			<designed target="RowOrder" value="0" ver="5"/>
+			<designed target="LatestRowTracking" value="false" ver="5"/>
+			<init target="TableModel" ver="5" ref="Model"/>
+			<designed target="SelectionOverlayEnabled" value="true" ver="5"/>
+			<designed target="DelayedSortingEnabled" value="false" ver="5"/>
+			<designed target="HorizontalScrollMode" value="0" ver="5"/>
+			<designed target="VerticalScrollMode" value="0" ver="5"/>
+			<designed target="HorizontalScrollBarPolicy" value="0" ver="5"/>
+			<designed target="VerticalScrollBarPolicy" value="0" ver="5"/>
+			<designed target="BackgroundColor" value="0xffffffff" ver="5"/>
+			<designed target="FrameColor" value="0xff808080" ver="5"/>
+			<designed target="GridColor" value="0xffd8d8d8" ver="5"/>
+			<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="1b8b0ac1-54fb-4aa4-954a-4276f9dce13a" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5">
+				<designed target="Weight" value="1000" ver="5"/>
+			</object>
+			<object access-modifier="private" name="Model" display-name="Model" uuid="c7a9e61b-5cd4-48c8-ab73-c34f3be5cb05" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="5">
+				<designed target="MaxRowCount" value="100000" ver="5"/>
+				<designed target="Frozen" value="false" ver="5"/>
+				<designed target="OptOfProcessingEvents" value="0" ver="5"/>
+			</object>
+			<do access-modifier="private" name="Init" display-name="Init" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[if (Model.GetColumnCount() > 0)
+	return;
+
+Column[0].Id = "id";
+Column[0].Title = "";
+Column[0].Hidden = true;
+	
+Column[1].Id = "name";
+Column[1].Title = "Члены группы";
+Column[1].Hidden = false;
+Column[1].Width = 250;
+
+Model.Reset();
+Model.AddColumn("id","","","","string",false,true);
+Model.AddColumn("type","","","","int4",false,true);
+Model.AddColumn("name","","","","string",false,true);]]>
+				</body>
+			</do>
+			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.EditorBrushColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="FrameColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.BorderColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="GridColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.DisabledBorderColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<do access-modifier="private" name="UpdateView" display-name="UpdateView" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[const membersModel = MembersView.TableModel;
+
+var memberList = JSON.parse(Group.GetMembersList()).data;
+var membersCount = memberList.length; 
+
+MembersView.Init();
+membersModel.Clear();
+
+if ( membersCount > 0)
+{
+	membersModel.InsertRows(0, membersCount);
+	for (let [row, member] of memberList.entries())
+	{
+		membersModel.SetCellData(row, 0, member.memberID);
+		membersModel.SetCellData(row, 1, member.memberType);
+		membersModel.SetCellData(row, 2, member.memberName);
+	}
+}
+
+CurrentGroupTitle.GroupIcon.Visible = true;
+CurrentGroupTitle.Name = Group.GroupName;
+]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="ResetView" display-name="ResetView" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[MembersView.Init();
+MembersView.TableModel.Clear();
+CurrentGroupTitle.GroupIcon.Visible = false;
+CurrentGroupTitle.Name = "";]]>
+			</body>
+		</do>
+	</object>
+	<object access-modifier="private" name="LinearLayout" display-name="LinearLayout" uuid="b4dae80a-c1c0-40c7-8246-39bda8ad94de" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5">
+		<designed target="Orientation" value="1" ver="5"/>
+		<designed target="Gap" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="64cedefb-e077-4378-bf65-f57477261f90" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<object access-modifier="private" name="SecurityContext" display-name="SecurityContext" uuid="96e236ac-329d-426a-95aa-de3ac0d5d414" base-type="SecurityContext" base-type-id="d9cb0fff-b70a-4e2d-833d-3f73cf74e0dd" ver="5"/>
+	<object access-modifier="private" name="Manager" display-name="Manager" uuid="f4660732-c774-47bb-846b-9eb16c87b965" base-type="SecurityManager" base-type-id="179958e0-f45a-40f3-9668-98e4ea2987da" ver="5">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="RequestGroupListComplete">
+			<body kind="om">
+				<![CDATA[TreePanel.GroupTree.LoadDataToTree(JSONGroupList);
+ActualGroupList = JSONGroupList;
+
+if (Group.loadedGroupID == Group.GroupID)
+	TreePanel.GroupTree.SetItemByGroupId(Group.GroupID);
+
+Commands.DoCreate.CanExecute = true;
+SystemCommands.GoTo.doUnblockingControll();]]>
+			</body>
+		</do-on>
+		<init target="SecurityContext" ver="5" ref="here.SecurityContext"/>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="RequestGroupListFailed">
+			<body kind="om">
+				<![CDATA[private.ShowError.message = GetErrorDescriptionByCode(FailReason);
+private.ShowError.Invoke();
+SystemCommands.GoTo.doUnblockingControll();]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="DeleteGroupFailed">
+			<body kind="om">
+				<![CDATA[private.ShowError.message = GetErrorDescriptionByCode(FailReason);
+private.ShowError.Invoke();
+SystemCommands.GoTo.doUnblockingControll();]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="DeleteGroupComplete">
+			<body kind="om">
+				<![CDATA[Group.loadedGroupID = "";
+LoadedGroupData.ResetView();
+RequestGroupList();]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="LastActionError">
+			<body kind="om">
+				<![CDATA[private.ShowError.message = ErrorMessage;
+private.ShowError.Invoke();
+SystemCommands.GoTo.doUnblockingControll();]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="ActualGroupList" display-name="ActualGroupList" uuid="3b4401cb-6a51-454f-bf65-4b5eacd8b985" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+	</object>
+	<object access-modifier="private" name="Group" display-name="Group" uuid="2129ad3a-c67f-4665-bc9e-62b77b19eb7a" base-type="SecurityManagerGroup" base-type-id="1b3328a7-7dbe-4010-9f89-ee41fc861a69" ver="5">
+		<designed target="GroupName" value="" ver="5"/>
+		<designed target="GroupDescription" value="" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="LoadComplete">
+			<body kind="om">
+				<![CDATA[loadedGroupID = GroupID;
+LoadedGroupData.UpdateView();
+
+loadingGroupID = "";
+SystemCommands.GoTo.doUnblockingControll();
+
+if (private.RemoveGroup.HoldExecute)
+{
+	private.RemoveGroup.HoldExecute = false;
+	Commands.DoRemoveSelected = true;
+}
+
+if (loadingNextGroupID != "")
+{
+	LoadSelectedGroup(loadingNextGroupID);
+	loadingNextGroupID = "";
+}]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="LoadFailed">
+			<body kind="om">
+				<![CDATA[loadedGroupID = "";
+LoadedGroupData.ResetView();
+
+private.ShowError.message = GetErrorDescriptionByCode(FailReasonCode);
+private.ShowError.Invoke();
+
+loadingGroupID = "";
+loadingNextGroupID = "";
+SystemCommands.GoTo.doUnblockingControll();]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="SaveComplete">
+			<body kind="om">
+				<![CDATA[SystemCommands.GoTo.doUnblockingControll();
+
+if (GroupID != loadedGroupID) LoadSelectedGroup(GroupID);
+
+Manager.RequestGroupList();
+SystemCommands.GoTo.doBlockingControll();]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="SaveFailed">
+			<body kind="om">
+				<![CDATA[Commands.DoCreate.CanExecute = true;
+private.ShowError.message = GetErrorDescriptionByCode(FailReasonCode);
+private.ShowError.Invoke();
+SystemCommands.GoTo.doUnblockingControll();]]>
+			</body>
+		</do-on>
+		<init target="SecurityManager" ver="5" ref="Manager"/>
+		<object access-modifier="private" name="loadedGroupID" display-name="loadedGroupID" uuid="a8709161-4b68-4b0d-9f38-a9061f69c56a" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="loadingGroupID" display-name="loadingGroupID" uuid="1ba7062b-f9b0-4eb9-9879-19470868ca04" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="loadingNextGroupID" display-name="loadingNextGroupID" uuid="20916583-49f1-471a-8e6d-32a4cadab9c2" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+		<do access-modifier="private" name="LoadSelectedGroup" display-name="LoadSelectedGroup" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<param access-modifier="private" name="groupId" display-name="" uuid="7b208e1a-ecaf-4e5e-a63d-a9d8bdb5b7c9" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<body kind="om">
+				<![CDATA[if (groupId == "" || groupId == loadingGroupID)
+	return;
+
+if (loadingGroupID == "")
+{
+	//Debug.Log("Загружаем группу " + groupId);
+	SystemCommands.GoTo.doBlockingControll();
+	loadingGroupID = groupId;
+	Load(groupId);	
+}
+else
+{
+	//Debug.Log("Откладываем загрузку группы " + groupId);
+	loadingNextGroupID = groupId;
+}]]>
+			</body>
+		</do>
+	</object>
+	<object access-modifier="private" name="Commands" display-name="Commands" uuid="5d47b2bd-6dd5-4f05-9ce9-0281abb4c0db" base-type="ListCommands" base-type-id="d481f36c-0b94-4338-a60e-3e31bf7df8a1" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="SystemCommands" display-name="SystemCommands" uuid="aa9c148c-89b7-4035-a2cf-0a52edd01fa7" base-type="SystemCommands" base-type-id="0b754dab-38c6-43db-a050-37201965421c" base-const="true" base-ref="true" ver="5"/>
+	<designed target="WindowIconPath" value="" ver="5"/>
+	<do access-modifier="private" name="GetViewSettings" display-name="GetViewSettings" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="javascript">
+			<![CDATA[var membersTable = LoadedGroupData.MembersView;
+
+var settings = 
+	{
+		"Layout" : {
+			"TreePanel": TreePanel.SizeLimits.MinWidth,
+		},
+		"MembersTable" : {
+			"Columns":{}
+		}
+	};
+
+
+
+for (var i = 0; i < membersTable.Column.Length; i++)
+{		
+	var column = membersTable.Column[i];
+	var columnInfo = {
+		"Index": column.Index,
+		"Width": column.Width,
+		"Hidden": column.Hidden
+	};
+	if (column.SortingEnabled != false)
+	{
+		columnInfo.SortOrder = column.SortOrder;
+		columnInfo.SortPriority = column.SortPriority;
+	}
+	
+	settings.MembersTable.Columns[column.Id] = columnInfo;
+}
+
+return JSON.stringify(settings);]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="UpdateView" display-name="UpdateView" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[var content = JSON.parse(settings);
+
+var membersView = LoadedGroupData.MembersView;
+
+if (content.Layout != undefined){
+	var layout = content.Layout;
+	
+	TreePanel.SizeLimits.MinWidth = layout.TreePanel;
+}
+
+
+
+if (content.MembersTable != undefined) {
+	var membersTable = content.MembersTable;
+	
+	if (membersTable.Columns != undefined){
+		for (var i = 0; i < membersView.Column.Length; i++)
+		{
+			var column = membersView.Column[i];
+			var columnInfo = membersTable.Columns[column.Id];
+			if (columnInfo != undefined)
+			{
+				column.Width = columnInfo.Width;
+				column.Hidden = columnInfo.Hidden;
+				column.SortingEnabled = columnInfo.SortOrder != undefined;
+				if (column.SortingEnabled)
+				{
+					column.SortOrder = columnInfo.SortOrder;
+					column.SortPriority = columnInfo.SortPriority;
+					membersView.ApplySort();
+				}
+			}
+		}
+	}
+}
+]]>
+		</body>
+		<param access-modifier="private" name="settings" display-name="" uuid="a92465d7-48c2-44ac-91b0-45912bf22d8d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<designed target="Flip" value="0" ver="5"/>
+	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="WindowSizeChanged">
+		<body kind="om">
+			<![CDATA[Width = WindowWidth;
+Height = WindowHeight;]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="AboutToOpen">
+		<body kind="om">
+			<![CDATA[LoadedGroupData.ResetView();
+Manager.RequestGroupList();
+SystemCommands.GoTo.doBlockingControll();
+
+UpdateView(SystemCommands.ViewSettings.Data[SystemCommands.Forms.GroupList]);]]>
+		</body>
+	</do-on>
+	<param access-modifier="private" name="init_Theme" display-name="Тема оформления" uuid="808179b8-4aff-4b64-9ccc-eb72c3bd3308" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[here.private.pTheme.BackgroundColor]]>
+		</body>
+	</do-trace>
+	<param access-modifier="private" name="init_ScreenKeyboard" display-name="Вызов экранной клавиатуры" uuid="6fbe56b0-ada4-4fef-83f0-9b8aa31683e0" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
+</type>
+

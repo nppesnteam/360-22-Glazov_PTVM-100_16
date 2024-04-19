@@ -1,0 +1,1931 @@
+<?xml version="1.0"?>
+<Alarms>
+  <Types>
+    <Type Name="PTVM:Types.Valve.IOS_View">
+      <Conditions>
+        <Condition Type="Discrete" RelativeTag="Err">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm.wav">.Авария</Subcondition>
+          </Subconditions>
+        </Condition>
+      </Conditions>
+    </Type>
+    <Type Name="PTVM:Types.AnalogDoubleSens.IOS_View">
+      <Conditions>
+        <Condition Type="Enumeration" RelativeTag="OutiSel">
+          <Subconditions>
+            <Subcondition Type="Enumeration" Severity="2" Value="0">.Работа на двух датчиках</Subcondition>
+            <Subcondition Type="Enumeration" Severity="2" Value="1">.Работа на датчике 1</Subcondition>
+            <Subcondition Type="Enumeration" Severity="2" Value="2">.Работа на датчике 2</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="DiffAlarm">
+          <Subconditions>
+            <Subcondition Type="On" Severity="335" Sound="alarm.wav">.Большая разница показаний датчиков.</Subcondition>
+          </Subconditions>
+        </Condition>
+      </Conditions>
+    </Type>
+    <Type Name="PTVM:Types.Server.IOS_VIEW">
+      <Conditions>
+        <Condition Type="Discrete" RelativeTag="ConnectionOK_PLC1">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Установлено соединение с ПЛК 1</Subcondition>
+            <Subcondition Type="Off" Severity="668" Sound="alarm.wav">Потеряно соединение с ПЛК 1</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="ConnectionOK_PLC2">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Установлено соединение с ПЛК 2</Subcondition>
+            <Subcondition Type="Off" Severity="668" Sound="alarm.wav">Потеряно соединение с ПЛК 2</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="ConnectionOK_ARM1">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Установлено соединение с АРМ 1</Subcondition>
+            <Subcondition Type="Off" Severity="668" Sound="alarm.wav">Потеряно соединение с АРМ 1</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="ConnectionOK_ARM2">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Установлено соединение с АРМ 2</Subcondition>
+            <Subcondition Type="Off" Severity="668" Sound="alarm.wav">Потеряно соединение с АРМ 2</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="RedudancyOK">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Резервирование ПЛК работает.</Subcondition>
+            <Subcondition Type="Off" Severity="668" Sound="alarm.wav">Резервирование ПЛК не работает.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="Connection">
+          <Subconditions>
+            <Subcondition Type="Off" Severity="668" Sound="alarm.wav">Нет соединение с обоими ПЛК.</Subcondition>
+          </Subconditions>
+        </Condition>
+      </Conditions>
+    </Type>
+    <Type Name="PTVM:Types.AI.IOS_View">
+      <Conditions>
+        <Condition Type="Discrete" RelativeTag="STATUS_BITS.Discarded">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm">.Бракование канала.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="STATUS_BITS.UpperElectrical">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm">.Вход сигнала &gt; 20 мА</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="STATUS_BITS.LowerElectrical">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm">.Вход сигнала &lt; 4 мА</Subcondition>
+          </Subconditions>
+        </Condition>
+      </Conditions>
+    </Type>
+    <Type Name="PTVM:Types.ProtectsBoiler.IOS_View">
+      <Conditions>
+        <Condition Type="Discrete" RelativeTag="AlarmPGasCollL">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm.wav">Давление газа в коллекторе ниже нормы.Защита.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmPOilL">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm.wav">Давление рез.топлива ниже нормы. Защита.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmPWatOutH">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm.wav">Давление Воды на выходе выше нормы. Защита.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmTWatOutH">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm.wav">Температура Воды на выходе выше нормы. Защита.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmQWatOutL">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm.wav">Расход Воды на выходе ниже нормы. Защита.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmVentOK">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Вентиляции топки завершена.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmGermOK">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Проверка герметичности завершена.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmPWatOutL">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm.wav">Давление Воды на выходе ниже нормы. Защита.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmPGasCollH">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm.wav">Давление газа в коллекторе выше нормы.Защита.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmVacH">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm.wav">Разрежение ниже нормы.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmPWaterErr">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm.wav">Ошибка обоих датчиков давления Воды на выходе.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmTWaterErr">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm.wav">Ошибка обоих датчиков температуры Воды на выходе.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmPGasErr">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm.wav">Ошибка обоих датчиков давления газа в коллекторе.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmSharedFireL">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm.wav">Интенсивность факела ниже нормы.</Subcondition>
+          </Subconditions>
+        </Condition>
+      </Conditions>
+    </Type>
+    <Type Name="PTVM:Types.SignalBoiler.IOS_View">
+      <Conditions>
+        <Condition Type="Discrete" RelativeTag="AlarmPGasCollL">
+          <Subconditions>
+            <Subcondition Type="On" Severity="335" Sound="alarm.wav">Давление газа в коллекторе ниже нормы.Сигнализация.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmPGasCollH">
+          <Subconditions>
+            <Subcondition Type="On" Severity="335" Sound="alarm.wav">Давление газа в коллекторе выше нормы.Сигнализация.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmPOilL">
+          <Subconditions>
+            <Subcondition Type="On" Severity="335" Sound="alarm.wav">Давление рез.топлива ниже нормы. Сигнализация.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmPWatOutL">
+          <Subconditions>
+            <Subcondition Type="On" Severity="335" Sound="alarm.wav">Давление Воды на выходе ниже нормы. Сигнализация.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmPWatOutH">
+          <Subconditions>
+            <Subcondition Type="On" Severity="335" Sound="alarm.wav">Давление Воды на выходе выше нормы. Сигнализация.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmTWatOutH">
+          <Subconditions>
+            <Subcondition Type="On" Severity="335" Sound="alarm.wav">Температура Воды на выходе выше нормы. Сигнализация.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmQWatOutL">
+          <Subconditions>
+            <Subcondition Type="On" Severity="335" Sound="alarm.wav">Расход Воды на выходе ниже нормы. Сигнализация.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmVacH">
+          <Subconditions>
+            <Subcondition Type="On" Severity="335" Sound="alarm.wav">Разрежение ниже нормы. Сигнализация.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmTSmokeH">
+          <Subconditions>
+            <Subcondition Type="On" Severity="335" Sound="alarm.wav">Температура дымовых газов выше нормы. Сигнализация.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmCH4">
+          <Subconditions>
+            <Subcondition Type="On" Severity="335" Sound="alarm.wav">Превышения содержания CH4. Сигнализация.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmCO">
+          <Subconditions>
+            <Subcondition Type="On" Severity="335" Sound="alarm.wav">Превышения содержания CО. Сигнализация.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmDiffPG">
+          <Subconditions>
+            <Subcondition Type="On" Severity="335" Sound="alarm.wav">Превышение разницы значений датчиков давления газа в коллекторе. Сигнализация.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmDiffPWat">
+          <Subconditions>
+            <Subcondition Type="On" Severity="335" Sound="alarm.wav">Превышение разницы значений датчиков давления Воды на выходе. Сигнализация.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmDiffTWat">
+          <Subconditions>
+            <Subcondition Type="On" Severity="335" Sound="alarm.wav">Превышение разницы значений датчиков температуры Воды на выходе. Сигнализация.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmPWaterErr1">
+          <Subconditions>
+            <Subcondition Type="On" Severity="335" Sound="alarm.wav">Ошибка датчика 1 давления Воды на выходе</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmPWaterErr2">
+          <Subconditions>
+            <Subcondition Type="On" Severity="335" Sound="alarm.wav">Ошибка датчика 2 давления Воды на выходе.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmTWaterErr2">
+          <Subconditions>
+            <Subcondition Type="On" Severity="335" Sound="alarm.wav">Ошибка датчика 2 температуры Воды на выходе.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmTWaterErr1">
+          <Subconditions>
+            <Subcondition Type="On" Severity="335" Sound="alarm.wav">Ошибка датчика 1 температуры Воды на выходе.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmPGasErr2">
+          <Subconditions>
+            <Subcondition Type="On" Severity="335" Sound="alarm.wav">Ошибка датчика 2 давления газа в коллекторе.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmPGasErr1">
+          <Subconditions>
+            <Subcondition Type="On" Severity="335" Sound="alarm.wav">Ошибка датчика 1 давления газа в коллекторе.</Subcondition>
+          </Subconditions>
+        </Condition>
+      </Conditions>
+    </Type>
+    <Type Name="PTVM:Types.Boiler.IOS_View">
+      <Conditions>
+        <Condition Type="Discrete" RelativeTag="OutGermTestStart">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Запущена проверка герметичности</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="BoilerInWork">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Пуск котла</Subcondition>
+            <Subcondition Type="Off" Severity="1">Стоп котла</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmBoilerStop">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668">Аварийный останов котла.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="OutNoVent">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Отключена вентиляция перед розжигом.</Subcondition>
+            <Subcondition Type="Off" Severity="1">Включена вентиляция перед розжигом.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="OutNoGerm">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Отключена проверка герметичности перед розжигом.</Subcondition>
+            <Subcondition Type="Off" Severity="1">Включена проверка герметичности перед розжигом.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="OutFreeCtrlDOProg">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Включено прямое управление.</Subcondition>
+            <Subcondition Type="Off" Severity="1">Отключено прямое управление.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="OutMaskPGasColl">
+          <Subconditions>
+            <Subcondition Type="Off" Severity="1">Отключена защита по давлению газа (для проверка).</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="OutMaskPOil">
+          <Subconditions>
+            <Subcondition Type="Off" Severity="1">Отключена защита по давлению рез.топлива (для проверка).</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="OutMaskPWatOut">
+          <Subconditions>
+            <Subcondition Type="Off" Severity="1">Отключена защита по давлению Воды для проверка.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="OutMaskTWatOut">
+          <Subconditions>
+            <Subcondition Type="Off" Severity="1">Отключена защита по температуре Воды (для проверка).</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="OutMaskQWatOut">
+          <Subconditions>
+            <Subcondition Type="Off" Severity="1">Отключена защита по расходу Воды (для проверка).</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="OutTestAlarm">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm.wav">Проверка сигнализации.</Subcondition>
+          </Subconditions>
+        </Condition>
+      </Conditions>
+    </Type>
+    <Type Name="PTVM:Types.ProtectsValueBoiler.IOS_View">
+      <Conditions>
+        <Condition Type="Discrete" RelativeTag="OutProtOff">
+          <Subconditions>
+            <Subcondition Type="On" Severity="2">.Защита выведена.</Subcondition>
+            <Subcondition Type="Off" Severity="2">.Защита введена.</Subcondition>
+          </Subconditions>
+        </Condition>
+      </Conditions>
+    </Type>
+    <Type Name="PTVM:Types.BurnerIgn.IOS_View">
+      <Conditions>
+        <Condition Type="Discrete" RelativeTag="Start">
+          <Subconditions>
+            <Subcondition Type="Off" Severity="1">.Отключена.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="ArmStart">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">.Включить.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Enumeration" RelativeTag="nBurn">
+          <Subconditions>
+            <Subcondition Type="Enumeration" Severity="1" Value="1">.Начат розжиг.</Subcondition>
+            <Subcondition Type="Enumeration" Severity="1" Value="6">.Розжиг окончен.</Subcondition>
+            <Subcondition Type="Enumeration" Severity="668" Value="7" Sound="alarm.wav">.Дефект факела запальника.</Subcondition>
+            <Subcondition Type="Enumeration" Severity="668" Value="8" Sound="alarm.wav">.Дефект факела горелки.</Subcondition>
+            <Subcondition Type="Enumeration" Severity="668" Value="9" Sound="alarm.wav">.Нет факела запальника.</Subcondition>
+            <Subcondition Type="Enumeration" Severity="668" Value="10" Sound="alarm.wav">.Нет факела горелки.</Subcondition>
+            <Subcondition Type="Enumeration" Severity="668" Value="11" Sound="alarm.wav">.Давление газа ниже нормы.</Subcondition>
+            <Subcondition Type="Enumeration" Severity="668" Value="12" Sound="alarm.wav">.Давление газа выше нормы.</Subcondition>
+            <Subcondition Type="Enumeration" Severity="668" Value="13" Sound="alarm.wav">.Давление воздуха ниже нормы.</Subcondition>
+            <Subcondition Type="Enumeration" Severity="668" Value="14" Sound="alarm.wav">.Авария вентилятора.</Subcondition>
+            <Subcondition Type="Enumeration" Severity="668" Value="15" Sound="alarm.wav">.Неисправность клапана безопасности.</Subcondition>
+            <Subcondition Type="Enumeration" Severity="668" Value="16" Sound="alarm.wav">.Неисправность клапана запальника.</Subcondition>
+            <Subcondition Type="Enumeration" Severity="668" Value="17" Sound="alarm.wav">.Неисправность ПЗК-1.</Subcondition>
+            <Subcondition Type="Enumeration" Severity="668" Value="18" Sound="alarm.wav">.Неисправность ПЗК-2.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmFan">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="trevoga1.wav">.Авария вентилятора</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="ProtTestPGasL">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm.wav">.Давление газа ниже нормы.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="ProtTestPGasH">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm.wav">.Давление газа выше нормы.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="ProtTestPO2L">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm.wav">.Давление воздуха ниже нормы.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="ProtTestFan">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm.wav">.Отключение вентилятора.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="OutCheckProt">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">.Защита включена.</Subcondition>
+            <Subcondition Type="Off" Severity="1">.Защита отключена.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="ProtTestFireB">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm.wav">.Пропадание факела горелки.</Subcondition>
+          </Subconditions>
+        </Condition>
+      </Conditions>
+    </Type>
+    <Type Name="PTVM:Types.BurnerWork.IOS_View">
+      <Conditions>
+        <Condition Type="Discrete" RelativeTag="Start">
+          <Subconditions>
+            <Subcondition Type="Off" Severity="1">.Отключена.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="ArmStart">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">.Включить.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Enumeration" RelativeTag="nBurn">
+          <Subconditions>
+            <Subcondition Type="Enumeration" Severity="1" Value="1">.Начат розжиг.</Subcondition>
+            <Subcondition Type="Enumeration" Severity="1" Value="6">.Розжиг окончен.</Subcondition>
+            <Subcondition Type="Enumeration" Severity="668" Value="8" Sound="alarm.wav">.Дефект факела горелки.</Subcondition>
+            <Subcondition Type="Enumeration" Severity="668" Value="10" Sound="alarm.wav">.Нет факела горелки.</Subcondition>
+            <Subcondition Type="Enumeration" Severity="668" Value="11" Sound="alarm.wav">.Давление газа ниже нормы.</Subcondition>
+            <Subcondition Type="Enumeration" Severity="668" Value="12" Sound="alarm.wav">.Давление газа выше нормы.</Subcondition>
+            <Subcondition Type="Enumeration" Severity="668" Value="13" Sound="alarm.wav">.Давление воздуха ниже нормы.</Subcondition>
+            <Subcondition Type="Enumeration" Severity="668" Value="14" Sound="alarm.wav">.Авария вентилятора.</Subcondition>
+            <Subcondition Type="Enumeration" Severity="668" Value="15" Sound="alarm.wav">.Неисправность клапана безопасности.</Subcondition>
+            <Subcondition Type="Enumeration" Severity="668" Value="16" Sound="alarm.wav">.Неисправность клапана запальника.</Subcondition>
+            <Subcondition Type="Enumeration" Severity="668" Value="18" Sound="alarm.wav">.Неисправность ПЗК-2.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmFan">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="trevoga1.wav">.Авария вентилятора</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="ProtTestPGasL">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm.wav">.Давление газа ниже нормы.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="ProtTestPGasH">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm.wav">.Давление газа выше нормы.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="ProtTestPO2L">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm.wav">.Давление воздуха ниже нормы.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="ProtTestFan">
+          <Subconditions>
+            <Subcondition Type="On" Severity="668" Sound="alarm.wav">.Отключение вентилятора.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="OutCheckProt">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">.Защита включена.</Subcondition>
+            <Subcondition Type="Off" Severity="1">.Защита отключена.</Subcondition>
+          </Subconditions>
+        </Condition>
+      </Conditions>
+    </Type>
+    <Type Name="PTVM:Types.SignalOffBoiler.IOS_View">
+      <Conditions>
+        <Condition Type="Discrete" RelativeTag="AlarmPGasCollL">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Давление газа в коллекторе ниже нормы. Сигнализация выведена</Subcondition>
+            <Subcondition Type="Off" Severity="1">Давление газа в коллекторе ниже нормы. Сигнализация введена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmPGasCollH">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Давление газа в коллекторе выше нормы. Сигнализация выведена</Subcondition>
+            <Subcondition Type="Off" Severity="1">Давление газа в коллекторе выше нормы. Сигнализация введена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmPOilL">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Давление рез.топлива ниже нормы. Сигнализация выведена</Subcondition>
+            <Subcondition Type="Off" Severity="1">Давление рез.топлива ниже нормы. Сигнализация введена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmPWatOutL">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Давление Воды на выходе ниже нормы. Сигнализация выведена</Subcondition>
+            <Subcondition Type="Off" Severity="1">Давление Воды на выходе ниже нормы. Сигнализация введена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmPWatOutH">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Давление Воды на выходе выше нормы. Сигнализация выведена</Subcondition>
+            <Subcondition Type="Off" Severity="1">Давление Воды на выходе выше нормы. Сигнализация введена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmTWatOutH">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Температура Воды на выходе выше нормы. Сигнализация выведена</Subcondition>
+            <Subcondition Type="Off" Severity="1">Температура Воды на выходе выше нормы. Сигнализация введена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmQWatOutL">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Расход Воды на выходе ниже нормы. Сигнализация выведена</Subcondition>
+            <Subcondition Type="Off" Severity="1">Расход Воды на выходе ниже нормы. Сигнализация введена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmVacH">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Разрежение ниже нормы. Сигнализация выведена</Subcondition>
+            <Subcondition Type="Off" Severity="1">Разрежение ниже нормы. Сигнализация введена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmTSmokeH">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Температура дымовых газов выше нормы. Сигнализация выведена</Subcondition>
+            <Subcondition Type="Off" Severity="1">Температура дымовых газов выше нормы. Сигнализация введена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmCH4">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Превышения содержания CH4. Сигнализация выведена</Subcondition>
+            <Subcondition Type="Off" Severity="1">Превышения содержания CH4. Сигнализация введена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmCO">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Превышения содержания CО. Сигнализация выведена</Subcondition>
+            <Subcondition Type="Off" Severity="1">Превышения содержания CО. Сигнализация введена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmDiffPG">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Превышение разницы значений датчиков давления газа в коллекторе. Сигнализация выведена</Subcondition>
+            <Subcondition Type="Off" Severity="1">Превышение разницы значений датчиков давления газа в коллекторе. Сигнализация введена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmDiffPWat">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Превышение разницы значений датчиков давления Воды на выходе. Сигнализация выведена</Subcondition>
+            <Subcondition Type="Off" Severity="1">Превышение разницы значений датчиков давления Воды на выходе. Сигнализация введена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmDiffTWat">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Превышение разницы значений датчиков температуры Воды на выходе. Сигнализация выведена</Subcondition>
+            <Subcondition Type="Off" Severity="1">Превышение разницы значений датчиков температуры Воды на выходе. Сигнализация введена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmPWaterErr1">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Ошибка датчика 1 давления Воды на выходе. Сигнализация выведена</Subcondition>
+            <Subcondition Type="Off" Severity="1">Ошибка датчика 1 давления Воды на выходе. Сигнализация введена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmPWaterErr2">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Ошибка датчика 2 давления Воды на выходе. Сигнализация выведена</Subcondition>
+            <Subcondition Type="Off" Severity="1">Ошибка датчика 2 давления Воды на выходе. Сигнализация введена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmTWaterErr2">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Ошибка датчика 2 температуры Воды на выходе. Сигнализация выведена</Subcondition>
+            <Subcondition Type="Off" Severity="1">Ошибка датчика 2 температуры Воды на выходе. Сигнализация введена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmTWaterErr1">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Ошибка датчика 1 температуры Воды на выходе. Сигнализация выведена</Subcondition>
+            <Subcondition Type="Off" Severity="1">Ошибка датчика 1 температуры Воды на выходе. Сигнализация введена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmPGasErr2">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Ошибка датчика 2 давления газа в коллекторе. Сигнализация выведена</Subcondition>
+            <Subcondition Type="Off" Severity="1">Ошибка датчика 2 давления газа в коллекторе. Сигнализация введена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="AlarmPGasErr1">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Ошибка датчика 1 давления газа в коллекторе. Сигнализация выведена</Subcondition>
+            <Subcondition Type="Off" Severity="1">Ошибка датчика 1 давления газа в коллекторе. Сигнализация введена</Subcondition>
+          </Subconditions>
+        </Condition>
+      </Conditions>
+    </Type>
+    <Type Name="PsDiagn:BASETYPE.IOS_BaseView">
+      <Conditions>
+        <Condition Type="Discrete" RelativeTag="PWR.B_INTERNAL_BUS1">
+          <Subconditions>
+            <Subcondition Type="On" Severity="40">. Питание внутренней шины 1 в допуске</Subcondition>
+            <Subcondition Type="Off" Severity="10" Sound="Warn.wav">. Питание внутренней шины 1 не в допуске</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="PWR.B_INTERNAL_BUS2">
+          <Subconditions>
+            <Subcondition Type="On" Severity="40">. Питание внутренней шины 2 в допуске</Subcondition>
+            <Subcondition Type="Off" Severity="10" Sound="Fault.wav">. Питание внутренней шины 2 не в допуске</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH01_STATUS.B_DISCARDED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 1. Начато бракование канала по выбросу</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 1. Бракование канала по выбросу завершено</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH01_STATUS.B_UPPER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 1. Сигнал вышел за верхнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 1. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH01_STATUS.B_LOWER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 1. Сигнал вышел за нижнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 1. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH01_STATUS.B_UPPER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 1. Сигнал вышел за верхнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 1. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH01_STATUS.B_LOWER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 1. Сигнал вышел за нижнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 1. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH01_STATUS.B_UPPER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 1. Канал не достоверен по выходу за верхнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 1. Канал достоверен по выходу за верхнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH01_STATUS.B_LOWER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 1. Канал не достоверен по выходу за нижнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 1. Канал достоверен по выходу за нижнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH01_STATUS.B_HW_FAILURE">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Канал 1. Обнаружена аппаратная неисправность канала</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 1. Аппаратная неисправность канала устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH02_STATUS.B_DISCARDED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 2. Начато бракование канала по выбросу</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 2. Бракование канала по выбросу завершено</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH02_STATUS.B_UPPER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 2. Сигнал вышел за верхнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 2. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH02_STATUS.B_LOWER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 2. Сигнал вышел за нижнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 2. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH02_STATUS.B_UPPER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 2. Сигнал вышел за верхнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 2. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH02_STATUS.B_LOWER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 2. Сигнал вышел за нижнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 2. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH02_STATUS.B_UPPER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 2. Канал не достоверен по выходу за верхнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 2. Канал достоверен по выходу за верхнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH02_STATUS.B_LOWER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 2. Канал не достоверен по выходу за нижнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 2. Канал достоверен по выходу за нижнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH02_STATUS.B_HW_FAILURE">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Канал 2. Обнаружена аппаратная неисправность канала</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 2. Аппаратная неисправность канала устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH03_STATUS.B_DISCARDED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 3. Начато бракование канала по выбросу</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 3. Бракование канала по выбросу завершено</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH03_STATUS.B_UPPER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 3. Сигнал вышел за верхнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 3. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH03_STATUS.B_LOWER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 3. Сигнал вышел за нижнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 3. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH03_STATUS.B_UPPER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 3. Сигнал вышел за верхнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 3. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH03_STATUS.B_LOWER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 3. Сигнал вышел за нижнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 3. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH03_STATUS.B_UPPER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 3. Канал не достоверен по выходу за верхнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 3. Канал достоверен по выходу за верхнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH03_STATUS.B_LOWER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 3. Канал не достоверен по выходу за нижнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 3. Канал достоверен по выходу за нижнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH03_STATUS.B_HW_FAILURE">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Канал 3. Обнаружена аппаратная неисправность канала</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 3. Аппаратная неисправность канала устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH04_STATUS.B_DISCARDED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 4. Начато бракование канала по выбросу</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 4. Бракование канала по выбросу завершено</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH04_STATUS.B_UPPER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 4. Сигнал вышел за верхнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 4. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH04_STATUS.B_LOWER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 4. Сигнал вышел за нижнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 4. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH04_STATUS.B_UPPER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 4. Сигнал вышел за верхнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 4. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH04_STATUS.B_LOWER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 4. Сигнал вышел за нижнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 4. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH04_STATUS.B_UPPER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 4. Канал не достоверен по выходу за верхнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 4. Канал достоверен по выходу за верхнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH04_STATUS.B_LOWER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 4. Канал не достоверен по выходу за нижнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 4. Канал достоверен по выходу за нижнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH04_STATUS.B_HW_FAILURE">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Канал 4. Обнаружена аппаратная неисправность канала</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 4. Аппаратная неисправность канала устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH05_STATUS.B_DISCARDED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 5. Начато бракование канала по выбросу</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 5. Бракование канала по выбросу завершено</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH05_STATUS.B_UPPER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 5. Сигнал вышел за верхнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 5. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH05_STATUS.B_LOWER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 5. Сигнал вышел за нижнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 5. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH05_STATUS.B_UPPER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 5. Сигнал вышел за верхнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 5. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH05_STATUS.B_LOWER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 5. Сигнал вышел за нижнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 5. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH05_STATUS.B_UPPER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 5. Канал не достоверен по выходу за верхнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 5. Канал достоверен по выходу за верхнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH05_STATUS.B_LOWER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 5. Канал не достоверен по выходу за нижнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал достоверен по выходу за нижнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH05_STATUS.B_HW_FAILURE">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Канал 5. Обнаружена аппаратная неисправность канала</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 5. Аппаратная неисправность канала устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH06_STATUS.B_DISCARDED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 6. Начато бракование канала по выбросу</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 6. Бракование канала по выбросу завершено</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH06_STATUS.B_UPPER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 6. Сигнал вышел за верхнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 6. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH06_STATUS.B_LOWER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 6. Сигнал вышел за нижнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 6. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH06_STATUS.B_UPPER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 6. Сигнал вышел за верхнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 6. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH06_STATUS.B_LOWER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 6. Сигнал вышел за нижнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 6. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH06_STATUS.B_UPPER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 6. Канал не достоверен по выходу за верхнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 6. Канал достоверен по выходу за верхнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH06_STATUS.B_LOWER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал не достоверен по выходу за нижнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал достоверен по выходу за нижнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH06_STATUS.B_HW_FAILURE">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Канал 6. Обнаружена аппаратная неисправность канала</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 6. Аппаратная неисправность канала устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH07_STATUS.B_DISCARDED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 7. Начато бракование канала по выбросу</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 7. Бракование канала по выбросу завершено</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH07_STATUS.B_UPPER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 7. Сигнал вышел за верхнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 7. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH07_STATUS.B_LOWER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 7. Сигнал вышел за нижнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 7. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH07_STATUS.B_UPPER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 7. Сигнал вышел за верхнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 7. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH07_STATUS.B_LOWER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 7. Сигнал вышел за нижнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 7. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH07_STATUS.B_UPPER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 7. Канал не достоверен по выходу за верхнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 7. Канал достоверен по выходу за верхнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH07_STATUS.B_LOWER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 7. Канал не достоверен по выходу за нижнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 7. Канал достоверен по выходу за нижнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH07_STATUS.B_HW_FAILURE">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Канал 7. Обнаружена аппаратная неисправность канала</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 7. Аппаратная неисправность канала устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH08_STATUS.B_DISCARDED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 8. Начато бракование канала по выбросу</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 8. Бракование канала по выбросу завершено</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH08_STATUS.B_UPPER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 8. Сигнал вышел за верхнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 8. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH08_STATUS.B_LOWER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 8. Сигнал вышел за нижнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 8. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH08_STATUS.B_UPPER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 8. Сигнал вышел за верхнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 8. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH08_STATUS.B_LOWER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 8. Сигнал вышел за нижнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 8. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH08_STATUS.B_UPPER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 8. Канал не достоверен по выходу за верхнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 8. Канал достоверен по выходу за верхнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH08_STATUS.B_LOWER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 8. Канал не достоверен по выходу за нижнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 8. Канал достоверен по выходу за нижнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH08_STATUS.B_HW_FAILURE">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Канал 8. Обнаружена аппаратная неисправность канала</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 8. Аппаратная неисправность канала устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH09_STATUS.B_DISCARDED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 9. Начато бракование канала по выбросу</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 9. Бракование канала по выбросу завершено</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH09_STATUS.B_UPPER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 9. Сигнал вышел за верхнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 9. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH09_STATUS.B_LOWER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 9. Сигнал вышел за нижнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 9. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH09_STATUS.B_UPPER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 9. Сигнал вышел за верхнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 9. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH09_STATUS.B_LOWER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 9. Сигнал вышел за нижнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 9. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH09_STATUS.B_UPPER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 9. Канал не достоверен по выходу за верхнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 9. Канал достоверен по выходу за верхнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH09_STATUS.B_LOWER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 9. Канал не достоверен по выходу за нижнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 9. Канал достоверен по выходу за нижнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH09_STATUS.B_HW_FAILURE">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Канал 9. Обнаружена аппаратная неисправность канала</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 9. Аппаратная неисправность канала устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH10_STATUS.B_DISCARDED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 10. Начато бракование канала по выбросу</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 10. Бракование канала по выбросу завершено</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH10_STATUS.B_UPPER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 10. Сигнал вышел за верхнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 10. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH10_STATUS.B_LOWER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 10. Сигнал вышел за нижнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 10. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH10_STATUS.B_UPPER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 10. Сигнал вышел за верхнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 10. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH10_STATUS.B_LOWER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 10. Сигнал вышел за нижнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 10. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH10_STATUS.B_UPPER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 10. Канал не достоверен по выходу за верхнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 10. Канал достоверен по выходу за верхнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH10_STATUS.B_LOWER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 10. Канал не достоверен по выходу за нижнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 10. Канал достоверен по выходу за нижнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH10_STATUS.B_HW_FAILURE">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Канал 10. Обнаружена аппаратная неисправность канала</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 10. Аппаратная неисправность канала устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH11_STATUS.B_DISCARDED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 11. Начато бракование канала по выбросу</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 11. Бракование канала по выбросу завершено</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH11_STATUS.B_UPPER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 11. Сигнал вышел за верхнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 11. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH11_STATUS.B_LOWER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 11. Сигнал вышел за нижнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 11. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH11_STATUS.B_UPPER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 11. Сигнал вышел за верхнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 11. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH11_STATUS.B_LOWER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 11. Сигнал вышел за нижнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 11. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH11_STATUS.B_UPPER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 11. Канал не достоверен по выходу за верхнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 11. Канал достоверен по выходу за верхнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH11_STATUS.B_LOWER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 11. Канал не достоверен по выходу за нижнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 11. Канал достоверен по выходу за нижнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH11_STATUS.B_HW_FAILURE">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Канал 11. Обнаружена аппаратная неисправность канала</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 11. Аппаратная неисправность канала устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH12_STATUS.B_DISCARDED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 12. Начато бракование канала по выбросу</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 12. Бракование канала по выбросу завершено</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH12_STATUS.B_UPPER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 12. Сигнал вышел за верхнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 12. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH12_STATUS.B_LOWER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 12. Сигнал вышел за нижнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 12. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH12_STATUS.B_UPPER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 12. Сигнал вышел за верхнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 12. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH12_STATUS.B_LOWER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 12. Сигнал вышел за нижнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 12. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH12_STATUS.B_UPPER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 12. Канал не достоверен по выходу за верхнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 12. Канал достоверен по выходу за верхнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH12_STATUS.B_LOWER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 12. Канал не достоверен по выходу за нижнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 12. Канал достоверен по выходу за нижнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH12_STATUS.B_HW_FAILURE">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Канал 12. Обнаружена аппаратная неисправность канала</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 12. Аппаратная неисправность канала устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH13_STATUS.B_DISCARDED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 13. Начато бракование канала по выбросу</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 13. Бракование канала по выбросу завершено</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH13_STATUS.B_UPPER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 13. Сигнал вышел за верхнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 13. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH13_STATUS.B_LOWER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 13. Сигнал вышел за нижнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 13. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH13_STATUS.B_UPPER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 13. Сигнал вышел за верхнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 13. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH13_STATUS.B_LOWER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 13. Сигнал вышел за нижнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 13. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH13_STATUS.B_UPPER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 13. Канал не достоверен по выходу за верхнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 13. Канал достоверен по выходу за верхнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH13_STATUS.B_LOWER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 13. Канал не достоверен по выходу за нижнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 13. Канал достоверен по выходу за нижнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH13_STATUS.B_HW_FAILURE">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Канал 13. Обнаружена аппаратная неисправность канала</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 13. Аппаратная неисправность канала устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH14_STATUS.B_DISCARDED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 14. Начато бракование канала по выбросу</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 14. Бракование канала по выбросу завершено</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH14_STATUS.B_UPPER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 14. Сигнал вышел за верхнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 14. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH14_STATUS.B_LOWER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 14. Сигнал вышел за нижнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 14. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH14_STATUS.B_UPPER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 14. Сигнал вышел за верхнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 14. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH14_STATUS.B_LOWER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 14. Сигнал вышел за нижнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 14. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH14_STATUS.B_UPPER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 14. Канал не достоверен по выходу за верхнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 14. Канал достоверен по выходу за верхнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH14_STATUS.B_LOWER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 14. Канал не достоверен по выходу за нижнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 14. Канал достоверен по выходу за нижнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH14_STATUS.B_HW_FAILURE">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Канал 14. Обнаружена аппаратная неисправность канала</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 14. Аппаратная неисправность канала устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH15_STATUS.B_DISCARDED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 15. Начато бракование канала по выбросу</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 15. Бракование канала по выбросу завершено</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH15_STATUS.B_UPPER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 15. Сигнал вышел за верхнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 15. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH15_STATUS.B_LOWER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 15. Сигнал вышел за нижнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 15. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH15_STATUS.B_UPPER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 15. Сигнал вышел за верхнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 15. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH15_STATUS.B_LOWER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 15. Сигнал вышел за нижнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 15. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH15_STATUS.B_UPPER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 15. Канал не достоверен по выходу за верхнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 15. Канал достоверен по выходу за верхнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH15_STATUS.B_LOWER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 15. Канал не достоверен по выходу за нижнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 15. Канал достоверен по выходу за нижнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH15_STATUS.B_HW_FAILURE">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Канал 15. Обнаружена аппаратная неисправность канала</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 15. Аппаратная неисправность канала устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH16_STATUS.B_DISCARDED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 16. Начато бракование канала по выбросу</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 16. Бракование канала по выбросу завершено</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH16_STATUS.B_UPPER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 16. Сигнал вышел за верхнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 16. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH16_STATUS.B_LOWER_TECH_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 16. Сигнал вышел за нижнюю границу измерения инженерной величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 16. Сигнал находится в границах измерения инженерной величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH16_STATUS.B_UPPER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 16. Сигнал вышел за верхнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 16. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH16_STATUS.B_LOWER_ELECTRIC_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 16. Сигнал вышел за нижнюю границу измерения электрической величины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 16. Сигнал находится в границах измерения электрической величины</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH16_STATUS.B_UPPER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 16. Канал не достоверен по выходу за верхнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 16. Канал достоверен по выходу за верхнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH16_STATUS.B_LOWER_ADC_VALID_BOUND_EXCEED">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Канал 16. Канал не достоверен по выходу за нижнюю границу АЦП</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 16. Канал достоверен по выходу за нижнюю границу АЦП</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="CH16_STATUS.B_HW_FAILURE">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Канал 16. Обнаружена аппаратная неисправность канала</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Канал 16. Аппаратная неисправность канала устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="ERRORS.B_BUS_HW">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Обнаружена аппаратная ошибка шины</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Аппаратная ошибка шины устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="ERRORS.B_PORT3_LINK">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Порт 3. Соединение отсутвует</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Порт 3. Соединение в норме</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="ERRORS.B_PORT4_LINK">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Порт 4. Соединение отсутвует</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Порт 4. Соединение в норме</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="ERRORS.B_PORT5_LINK">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Порт 5. Соединение отсутвует</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Порт 5. Соединение в норме</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="ERRORS.B_PORT6_LINK">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Порт 6. Соединение отсутвует</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Порт 6. Соединение в норме</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="ERRORS.B_SYNC_ERR">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Ошибка синхронизации резервирования</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Ошибка синхронизации устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="ERRORS.B_HW">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Аппаратная ошибка ЦПУ</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Аппаратная ошибка устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="ERRORS.B_PF">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Программная ошибка ЦПУ</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Программная ошибка ЦПУ устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="ERRORS.B_PORT1_LINK">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Порт 1. Соединение отсутвует</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Порт 1. Соединение в норме</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="ERRORS.B_PORT2_LINK">
+          <Subconditions>
+            <Subcondition Type="On" Severity="30" Sound="Warn.wav">. Порт 2. Соединение отсутвует</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Порт 2. Соединение в норме</Subcondition>
+          </Subconditions>
+        </Condition>
+      </Conditions>
+    </Type>
+    <Type Name="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X1X.IOS_VIew" Base="PsDiagn:BASETYPE.IOS_BaseView">
+      <Conditions>
+        <Condition Type="Discrete" RelativeTag="HwError">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Обнаружена аппаратная ошибка модуля</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Аппаратная ошибка устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="LINK">
+          <Subconditions>
+            <Subcondition Type="On" Severity="40">. Есть соединение </Subcondition>
+            <Subcondition Type="Off" Severity="10" Sound="Fault.wav">. Соединение отсутсвует</Subcondition>
+          </Subconditions>
+        </Condition>
+      </Conditions>
+    </Type>
+    <Type Name="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X2X.IOS_VIew" Base="PsDiagn:BASETYPE.IOS_BaseView">
+      <Conditions>
+        <Condition Type="Discrete" RelativeTag="HwError">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Обнаружена аппаратная ошибка модуля</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Аппаратная ошибка устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="LINK">
+          <Subconditions>
+            <Subcondition Type="On" Severity="40">. Есть соединение </Subcondition>
+            <Subcondition Type="Off" Severity="10" Sound="Fault.wav">. Соединение отсутсвует</Subcondition>
+          </Subconditions>
+        </Condition>
+      </Conditions>
+    </Type>
+    <Type Name="PsDiagn:REGUL.R500.MODULES.PP.PP_00_XXX.IOS_VIew" Base="PsDiagn:BASETYPE.IOS_BaseView">
+      <Conditions>
+        <Condition Type="Discrete" RelativeTag="EXT_PWR">
+          <Subconditions>
+            <Subcondition Type="On" Severity="40">. Внешнее напряжение в норме</Subcondition>
+            <Subcondition Type="Off" Severity="10" Sound="Fault.wav">. Внешнее напряжение отсутствует</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="HwError">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Обнаружена аппаратная ошибка модуля</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Аппаратная ошибка устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+      </Conditions>
+    </Type>
+    <Type Name="PsDiagn:REGUL.R500.MODULES.DI.DI_32_011.IOS_VIew" Base="PsDiagn:BASETYPE.IOS_BaseView">
+      <Conditions>
+        <Condition Type="Discrete" RelativeTag="FW_VERSION_ERR">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Некорректная версия СПО</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Корректная версия СПО</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="HwError">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Обнаружена аппаратная ошибка модуля</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Аппаратная ошибка устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+      </Conditions>
+    </Type>
+    <Type Name="PsDiagn:REGUL.R500.MODULES.DO.DO_32_012.IOS_VIew" Base="PsDiagn:BASETYPE.IOS_BaseView">
+      <Conditions>
+        <Condition Type="Discrete" RelativeTag="FW_VERSION_ERR">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Некорректная версия СПО</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Корректная версия СПО</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="HwError">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Обнаружена аппаратная ошибка модуля</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Аппаратная ошибка устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+      </Conditions>
+    </Type>
+    <Type Name="PsDiagn:REGUL.R500.MODULES.AI.AI_16_011.IOS_VIew" Base="PsDiagn:BASETYPE.IOS_BaseView">
+      <Conditions>
+        <Condition Type="Discrete" RelativeTag="FW_VERSION_ERR">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Некорректная версия СПО</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Корректная версия СПО</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="HwError">
+          <Subconditions>
+            <Subcondition Type="On" Severity="10" Sound="Fault.wav">. Обнаружена аппаратная ошибка модуля</Subcondition>
+            <Subcondition Type="Off" Severity="40">. Аппаратная ошибка устранена</Subcondition>
+          </Subconditions>
+        </Condition>
+      </Conditions>
+    </Type>
+    <Type Name="PsDiagn:COMPUTER.IOS_View" Base="PsDiagn:BASETYPE.IOS_BaseView">
+      <Conditions>
+        <Condition Type="Level" RelativeTag="DISC1_SPACE">
+          <Subconditions>
+            <Subcondition Type="Above" Severity="40" Value="5000">. Диск 1. Места на диске достаточно</Subcondition>
+            <Subcondition Type="Below" Severity="30" Value="5000" Sound="Warn.wav">. Диск 1. Недостаточно места на диске</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Level" RelativeTag="DISC2_SPACE">
+          <Subconditions>
+            <Subcondition Type="Above" Severity="40" Value="5000">. Диск 2. Места на диске достаточно</Subcondition>
+            <Subcondition Type="Below" Severity="30" Value="5000" Sound="Warn.wav">. Диск 2. Места на диске недостаточно</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Level" RelativeTag="DISC3_SPACE">
+          <Subconditions>
+            <Subcondition Type="Above" Severity="40" Value="5000">. Диск 3. Места на диске достаточно</Subcondition>
+            <Subcondition Type="Below" Severity="30" Value="5000" Sound="Warn.wav">. Диск 3. Места на диске недостаточно</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Level" RelativeTag="DISC4_SPACE">
+          <Subconditions>
+            <Subcondition Type="Above" Severity="40" Value="5000">. Диск 4. Места на диске достаточно</Subcondition>
+            <Subcondition Type="Below" Severity="30" Value="5000" Sound="Warn.wav">. Диск 4. Места на диске недостаточно</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Enumeration" RelativeTag="PORT1_STATUS">
+          <Subconditions>
+            <Subcondition Type="Enumeration" Severity="30" Value="2" Sound="Warn.wav">. Порт 1. LINK_DN</Subcondition>
+            <Subcondition Type="Enumeration" Severity="40" Value="1">. Порт 1. LINK_UP</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Enumeration" RelativeTag="PORT2_STATUS">
+          <Subconditions>
+            <Subcondition Type="Enumeration" Severity="30" Value="2" Sound="Warn.wav">. Порт 2. LINK_DN</Subcondition>
+            <Subcondition Type="Enumeration" Severity="40" Value="1">. Порт 2. LINK_UP</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Enumeration" RelativeTag="PORT3_STATUS">
+          <Subconditions>
+            <Subcondition Type="Enumeration" Severity="30" Value="2" Sound="Warn.wav">. Порт 3. LINK_DN</Subcondition>
+            <Subcondition Type="Enumeration" Severity="40" Value="1">. Порт 3. LINK_UP</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Enumeration" RelativeTag="PORT4_STATUS">
+          <Subconditions>
+            <Subcondition Type="Enumeration" Severity="30" Value="2" Sound="Warn.wav">. Порт 4. LINK_DN</Subcondition>
+            <Subcondition Type="Enumeration" Severity="40" Value="1">. Порт 4. LINK_UP</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Enumeration" RelativeTag="PORT5_STATUS">
+          <Subconditions>
+            <Subcondition Type="Enumeration" Severity="30" Value="2" Sound="Warn.wav">. Порт 5. LINK_DN</Subcondition>
+            <Subcondition Type="Enumeration" Severity="40" Value="1">. Порт 5. LINK_UP</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Enumeration" RelativeTag="PORT6_STATUS">
+          <Subconditions>
+            <Subcondition Type="Enumeration" Severity="30" Value="2" Sound="Warn.wav">. Порт 6. LINK_DN</Subcondition>
+            <Subcondition Type="Enumeration" Severity="40" Value="1">. Порт 6. LINK_UP</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Enumeration" RelativeTag="PORT7_STATUS">
+          <Subconditions>
+            <Subcondition Type="Enumeration" Severity="30" Value="2" Sound="Warn.wav">. Порт 7. LINK_DN</Subcondition>
+            <Subcondition Type="Enumeration" Severity="40" Value="1">. Порт 7. LINK_UP</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Enumeration" RelativeTag="PORT8_STATUS">
+          <Subconditions>
+            <Subcondition Type="Enumeration" Severity="30" Value="2" Sound="Warn.wav">. Порт 8. LINK_DN</Subcondition>
+            <Subcondition Type="Enumeration" Severity="40" Value="1">. Порт 8. LINK_UP</Subcondition>
+          </Subconditions>
+        </Condition>
+      </Conditions>
+    </Type>
+  </Types>
+  <Objects>
+    <Object Tag="HMI" Name="HMI">
+      <Conditions>
+        <Condition Type="Dynamic" RelativeTag="MSG">
+          <Subconditions>
+            <Subcondition Type="Dynamic" Severity="2" />
+          </Subconditions>
+        </Condition>
+      </Conditions>
+    </Object>
+    <Object Tag="ROOT.Gas.ValveBlowBot" Name="ValveBlowBot" Description="Клапан продувки групп горелок 1, 2" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Gas.ValveAfterFlap" Name="ValveAfterFlap" Description="Отсечной клапан газа" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Gas.ValveBlowTop" Name="ValveBlowTop" Description="Клапан продувки групп горелок 3, 4" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Gas.PAfterFlap" Name="PAfterFlap" Description="Давление газа после регулирующей заслонки" Type="PTVM:Types.AnalogDoubleSens.IOS_View" />
+    <Object Tag="ROOT.Diag.Server" Name="Server" Type="PTVM:Types.Server.IOS_VIEW" />
+    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel1" Name="Channel1" Description="Перепад давления на диафрагме (газ)" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel2" Name="Channel2" Description="Давление газа после диафрагмы" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel3" Name="Channel3" Description="Температура газа после диафрагмы" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel4" Name="Channel4" Description="Давление газа после регулирующей заслонки 1" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel5" Name="Channel5" Description="Давление газа после регулирующей заслонки 2" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel6" Name="Channel6" Description="Перепад давления на диафрагме (мазут)" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel7" Name="Channel7" Description="Температура Мазута после диафрагмы" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel8" Name="Channel8" Description="Давление Мазута после диафрагмы" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel9" Name="Channel9" Description="Давление Мазута после регулирующей заслонкой" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel10" Name="Channel10" Description="Температура уходящих газов" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel11" Name="Channel11" Description="Содержание О2 в уходящих газах" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel12" Name="Channel12" Description="Разрежение в топке котла" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel13" Name="Channel13" Description="Перепад давления на диафрагме (вода)" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel14" Name="Channel14" Description="Температура Воды перед котлом" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel15" Name="Channel15" Description="Давление Воды перед котлом" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel16" Name="Channel16" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel1" Name="Channel1" Description="Температура Воды после котла 1" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel2" Name="Channel2" Description="Температура Воды после котла 2" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel3" Name="Channel3" Description="Давление Воды после котла 1" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel4" Name="Channel4" Description="Давление Воды после котла 2" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel5" Name="Channel5" Description="Интенсивность общего факела в топке" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel6" Name="Channel6" Description="Датчик положения МЭО регулирующей заслонки газа" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel7" Name="Channel7" Description="Датчик положения МЭО регулирующей заслонки Мазута" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel8" Name="Channel8" Description="Датчик положения МЭО регулирующей заслонки разрежения А" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel9" Name="Channel9" Description="Датчик положения МЭО регулирующей заслонки разрежения В" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel10" Name="Channel10" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel11" Name="Channel11" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel12" Name="Channel12" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel13" Name="Channel13" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel14" Name="Channel14" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel15" Name="Channel15" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel16" Name="Channel16" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Main.DI.Module2" Name="Module2">
+      <Conditions>
+        <Condition Type="Discrete" RelativeTag="Source1OK">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Ввод 1 АВР в норме.</Subcondition>
+            <Subcondition Type="Off" Severity="1">Ввод 1 АВР не в норме.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="Source2OK">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Ввод 2 АВР в норме.</Subcondition>
+            <Subcondition Type="Off" Severity="1">Ввод 2 АВР не в норме.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="SourceAuto">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Автоматический режим работы АВР.</Subcondition>
+            <Subcondition Type="Off" Severity="1">Ручной режим работы АВР.</Subcondition>
+          </Subconditions>
+        </Condition>
+        <Condition Type="Discrete" RelativeTag="Source2Work">
+          <Subconditions>
+            <Subcondition Type="On" Severity="1">Ввод 2 АВР в работе.</Subcondition>
+            <Subcondition Type="Off" Severity="1">Ввод 1 АВР в работе.</Subcondition>
+          </Subconditions>
+        </Condition>
+      </Conditions>
+    </Object>
+    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel1" Name="Channel1" Description="Положение заслонки газа растопочной горелки группы №1" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel2" Name="Channel2" Description="Давление газа между ПЗК группы горелок №1" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel3" Name="Channel3" Description="Давление газа перед горелкой №1" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel4" Name="Channel4" Description="Давление воздуха перед горелкой №1" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel5" Name="Channel5" Description="Давление газа перед горелкой №2" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel6" Name="Channel6" Description="Давление воздуха перед горелкой №2" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel7" Name="Channel7" Description="Давление газа перед горелкой №3" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel8" Name="Channel8" Description="Давление воздуха перед горелкой №3" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel9" Name="Channel9" Description="Давление газа перед горелкой №4" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel10" Name="Channel10" Description="Давление воздуха перед горелкой №4" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel11" Name="Channel11" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel12" Name="Channel12" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel13" Name="Channel13" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel14" Name="Channel14" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel15" Name="Channel15" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel16" Name="Channel16" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel1" Name="Channel1" Description="Положение заслонки газа растопочной горелки группы №2" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel2" Name="Channel2" Description="Давление газа между ПЗК группы горелок №2" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel3" Name="Channel3" Description="Давление газа перед горелкой №5" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel4" Name="Channel4" Description="Давление воздуха перед горелкой №5" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel5" Name="Channel5" Description="Давление газа перед горелкой №6" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel6" Name="Channel6" Description="Давление воздуха перед горелкой №6" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel7" Name="Channel7" Description="Давление газа перед горелкой №7" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel8" Name="Channel8" Description="Давление воздуха перед горелкой №7" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel9" Name="Channel9" Description="Давление газа перед горелкой №8" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel10" Name="Channel10" Description="Давление воздуха перед горелкой №8" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel11" Name="Channel11" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel12" Name="Channel12" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel13" Name="Channel13" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel14" Name="Channel14" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel15" Name="Channel15" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel16" Name="Channel16" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel1" Name="Channel1" Description="Положение заслонки газа растопочной горелки группы №3" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel2" Name="Channel2" Description="Давление газа между ПЗК группы горелок №3" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel3" Name="Channel3" Description="Давление газа перед горелкой №9" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel4" Name="Channel4" Description="Давление воздуха перед горелкой №9" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel5" Name="Channel5" Description="Давление газа перед горелкой №10" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel6" Name="Channel6" Description="Давление воздуха перед горелкой №10" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel7" Name="Channel7" Description="Давление газа перед горелкой №11" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel8" Name="Channel8" Description="Давление воздуха перед горелкой №11" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel9" Name="Channel9" Description="Давление газа перед горелкой №12" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel10" Name="Channel10" Description="Давление воздуха перед горелкой №12" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel11" Name="Channel11" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel12" Name="Channel12" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel13" Name="Channel13" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel14" Name="Channel14" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel15" Name="Channel15" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel16" Name="Channel16" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel1" Name="Channel1" Description="Положение заслонки газа растопочной горелки группы №4" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel2" Name="Channel2" Description="Давление газа между ПЗК группы горелок №4" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel3" Name="Channel3" Description="Давление газа перед горелкой №13" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel4" Name="Channel4" Description="Давление воздуха перед горелкой №13" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel5" Name="Channel5" Description="Давление газа перед горелкой №14" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel6" Name="Channel6" Description="Давление воздуха перед горелкой №14" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel7" Name="Channel7" Description="Давление газа перед горелкой №15" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel8" Name="Channel8" Description="Давление воздуха перед горелкой №15" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel9" Name="Channel9" Description="Давление газа перед горелкой №16" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel10" Name="Channel10" Description="Давление воздуха перед горелкой №16" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel11" Name="Channel11" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel12" Name="Channel12" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel13" Name="Channel13" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel14" Name="Channel14" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel15" Name="Channel15" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel16" Name="Channel16" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
+    <Object Tag="ROOT.Water.TOut" Name="TOut" Description="Температура Воды на выходе из котла" Type="PTVM:Types.AnalogDoubleSens.IOS_View" />
+    <Object Tag="ROOT.Water.POut" Name="POut" Description="Давление Воды на выходе из котла" Type="PTVM:Types.AnalogDoubleSens.IOS_View" />
+    <Object Tag="ROOT.Oil.Valve" Name="Valve" Description="ПЗК Мазута перед котлом" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Alarms.Protect" Name="Protect" Type="PTVM:Types.ProtectsBoiler.IOS_View" />
+    <Object Tag="ROOT.Alarms.Signal" Name="Signal" Type="PTVM:Types.SignalBoiler.IOS_View" />
+    <Object Tag="ROOT.Boiler" Name="Boiler" Type="PTVM:Types.Boiler.IOS_View" />
+    <Object Tag="ROOT.AlarmsValue.ValueAlarmBoiler.Prot1" Name="Prot1" Description="Давление газа в коллекторе ниже нормы" Type="PTVM:Types.ProtectsValueBoiler.IOS_View" />
+    <Object Tag="ROOT.AlarmsValue.ValueAlarmBoiler.Prot2" Name="Prot2" Description="Давление газа в коллекторе выше нормы" Type="PTVM:Types.ProtectsValueBoiler.IOS_View" />
+    <Object Tag="ROOT.AlarmsValue.ValueAlarmBoiler.Prot3" Name="Prot3" Description="Давление рез.топлива в коллекторе ниже нормы" Type="PTVM:Types.ProtectsValueBoiler.IOS_View" />
+    <Object Tag="ROOT.AlarmsValue.ValueAlarmBoiler.Prot4" Name="Prot4" Description="Давление воды на выходе ниже нормы" Type="PTVM:Types.ProtectsValueBoiler.IOS_View" />
+    <Object Tag="ROOT.AlarmsValue.ValueAlarmBoiler.Prot5" Name="Prot5" Description="Давление воды на выходе выше нормы" Type="PTVM:Types.ProtectsValueBoiler.IOS_View" />
+    <Object Tag="ROOT.AlarmsValue.ValueAlarmBoiler.Prot6" Name="Prot6" Description="Расход воды ниже нормы" Type="PTVM:Types.ProtectsValueBoiler.IOS_View" />
+    <Object Tag="ROOT.AlarmsValue.ValueAlarmBoiler.Prot7" Name="Prot7" Description="Температура воды на выходе выше нормы" Type="PTVM:Types.ProtectsValueBoiler.IOS_View" />
+    <Object Tag="ROOT.AlarmsValue.ValueAlarmBoiler.Prot8" Name="Prot8" Description="Разрежение ниже нормы" Type="PTVM:Types.ProtectsValueBoiler.IOS_View" />
+    <Object Tag="ROOT.AlarmsValue.ValueAlarmBoiler.Prot9" Name="Prot9" Description="Температура дымовых газов выше нормы" Type="PTVM:Types.ProtectsValueBoiler.IOS_View" />
+    <Object Tag="ROOT.AlarmsValue.ValueAlarmBoiler.Prot10" Name="Prot10" Description="Интенсивность общего факела ниже нормы" Type="PTVM:Types.ProtectsValueBoiler.IOS_View" />
+    <Object Tag="ROOT.Group1.Burn3.ValveII" Name="ValveII" Description="Клапан ПЗК-2 горелки 3" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group1.Burn3.ValveIgn" Name="ValveIgn" Description="Клапан запальника горелки 3" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group1.Burn3.Burn" Name="Burn" Description="Горелка 5" Type="PTVM:Types.BurnerIgn.IOS_View" />
+    <Object Tag="ROOT.Group1.Valve1" Name="Valve1" Description="ПЗК-1 группы горелок 1" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group1.ValveDensity" Name="ValveDensity" Description="Клапан опрессовки группы горелок 1" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group1.ValveSecurity" Name="ValveSecurity" Description="Клапан безопасности группы горелок 1" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group1.Burn1.ValveII" Name="ValveII" Description="Клапан ПЗК-2 горелки 1" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group1.Burn1.Burn" Name="Burn" Description="Горелка 1" Type="PTVM:Types.BurnerWork.IOS_View" />
+    <Object Tag="ROOT.Group1.Burn2.ValveII" Name="ValveII" Description="Клапан ПЗК-2 горелки 2" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group1.Burn2.Burn" Name="Burn" Description="Горелка 3" Type="PTVM:Types.BurnerWork.IOS_View" />
+    <Object Tag="ROOT.Group1.Burn4.ValveII" Name="ValveII" Description="Клапан ПЗК-2 горелки 4" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group1.Burn4.Burn" Name="Burn" Description="Горелка 7" Type="PTVM:Types.BurnerWork.IOS_View" />
+    <Object Tag="ROOT.Group2.Valve1" Name="Valve1" Description="ПЗК-1 группы горелок 2" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group2.ValveDensity" Name="ValveDensity" Description="Клапан опрессовки группы горелок 2" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group2.ValveSecurity" Name="ValveSecurity" Description="Клапан безопасности группы горелок 2" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group2.Burn2.ValveII" Name="ValveII" Description="Клапан ПЗК-2 горелки 6" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group2.Burn2.ValveIgn" Name="ValveIgn" Description="Клапан запальника горелки 6" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group2.Burn2.Burn" Name="Burn" Description="Горелка 11" Type="PTVM:Types.BurnerIgn.IOS_View" />
+    <Object Tag="ROOT.Group2.Burn3.ValveII" Name="ValveII" Description="Клапан ПЗК-2 горелки 7" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group2.Burn3.Burn" Name="Burn" Description="Горелка 13" Type="PTVM:Types.BurnerWork.IOS_View" />
+    <Object Tag="ROOT.Group2.Burn4.ValveII" Name="ValveII" Description="Клапан ПЗК-2 горелки 8" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group2.Burn4.Burn" Name="Burn" Description="Горелка 15" Type="PTVM:Types.BurnerWork.IOS_View" />
+    <Object Tag="ROOT.Group2.Burn1.ValveII" Name="ValveII" Description="Клапан ПЗК-2 горелки 5" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group2.Burn1.Burn" Name="Burn" Description="Горелка 9" Type="PTVM:Types.BurnerWork.IOS_View" />
+    <Object Tag="ROOT.Group3.Valve1" Name="Valve1" Description="ПЗК-1 группы горелок 3" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group3.ValveDensity" Name="ValveDensity" Description="Клапан опрессовки группы горелок 3" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group3.ValveSecurity" Name="ValveSecurity" Description="Клапан безопасности группы горелок 3" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group3.Burn3.ValveII" Name="ValveII" Description="Клапан ПЗК-2 горелки 11" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group3.Burn3.ValveIgn" Name="ValveIgn" Description="Клапан запальника горелки 11" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group3.Burn3.Burn" Name="Burn" Description="Горелка 6" Type="PTVM:Types.BurnerIgn.IOS_View" />
+    <Object Tag="ROOT.Group3.Burn2.ValveII" Name="ValveII" Description="Клапан ПЗК-2 горелки 10" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group3.Burn2.Burn" Name="Burn" Description="Горелка 4" Type="PTVM:Types.BurnerWork.IOS_View" />
+    <Object Tag="ROOT.Group3.Burn4.ValveII" Name="ValveII" Description="Клапан ПЗК-2 горелки 12" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group3.Burn4.Burn" Name="Burn" Description="Горелка 8" Type="PTVM:Types.BurnerWork.IOS_View" />
+    <Object Tag="ROOT.Group3.Burn1.ValveII" Name="ValveII" Description="Клапан ПЗК-2 горелки 9" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group3.Burn1.Burn" Name="Burn" Description="Горелка 2" Type="PTVM:Types.BurnerWork.IOS_View" />
+    <Object Tag="ROOT.Group4.Valve1" Name="Valve1" Description="ПЗК-1 группы горелок 4" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group4.ValveDensity" Name="ValveDensity" Description="Клапан опрессовки группы горелок 4" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group4.ValveSecurity" Name="ValveSecurity" Description="Клапан безопасности группы горелок 4" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group4.Burn2.ValveII" Name="ValveII" Description="Клапан ПЗК-2 горелки 14" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group4.Burn2.ValveIgn" Name="ValveIgn" Description="Клапан запальника горелки 14" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group4.Burn2.Burn" Name="Burn" Description="Горелка 12" Type="PTVM:Types.BurnerIgn.IOS_View" />
+    <Object Tag="ROOT.Group4.Burn3.ValveII" Name="ValveII" Description="Клапан ПЗК-2 горелки 15" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group4.Burn3.Burn" Name="Burn" Description="Горелка 14" Type="PTVM:Types.BurnerWork.IOS_View" />
+    <Object Tag="ROOT.Group4.Burn4.ValveII" Name="ValveII" Description="Клапан ПЗК-2 горелки 16" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group4.Burn4.Burn" Name="Burn" Description="Горелка 16" Type="PTVM:Types.BurnerWork.IOS_View" />
+    <Object Tag="ROOT.Group4.Burn1.ValveII" Name="ValveII" Description="Клапан ПЗК-2 горелки 13" Type="PTVM:Types.Valve.IOS_View" />
+    <Object Tag="ROOT.Group4.Burn1.Burn" Name="Burn" Description="Горелка 10" Type="PTVM:Types.BurnerWork.IOS_View" />
+    <Object Tag="ROOT.SignalOff" Name="SignalOff" Type="PTVM:Types.SignalOffBoiler.IOS_View" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate.ST_02_012" Name="ST_02_012" Description="ST_XX_X1X" Type="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X1X.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate.ST_02_022" Name="ST_02_022" Description="ST_02_022" Type="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X2X.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate.PP_00_011_1" Name="PP_00_011_1" Description="PP_00_011" Type="PsDiagn:REGUL.R500.MODULES.PP.PP_00_XXX.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate.PP_00_011_2" Name="PP_00_011_2" Description="PP_00_011" Type="PsDiagn:REGUL.R500.MODULES.PP.PP_00_XXX.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate.DI_32_011_1" Name="DI_32_011_1" Description="DI_32_011" Type="PsDiagn:REGUL.R500.MODULES.DI.DI_32_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate.DI_32_011_2" Name="DI_32_011_2" Description="DI_32_011" Type="PsDiagn:REGUL.R500.MODULES.DI.DI_32_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate.DI_32_011_3" Name="DI_32_011_3" Description="DI_32_011" Type="PsDiagn:REGUL.R500.MODULES.DI.DI_32_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate.DO_32_012_1" Name="DO_32_012_1" Description="DO_32_012" Type="PsDiagn:REGUL.R500.MODULES.DO.DO_32_012.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate.DO_32_012_2" Name="DO_32_012_2" Description="DO_32_012" Type="PsDiagn:REGUL.R500.MODULES.DO.DO_32_012.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_1.ST_02_012" Name="ST_02_012" Description="ST_02_012" Type="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X1X.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_1.ST_02_022" Name="ST_02_022" Description="ST_02_022" Type="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X2X.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_1.PP_00_011_1" Name="PP_00_011_1" Description="PP_00_011" Type="PsDiagn:REGUL.R500.MODULES.PP.PP_00_XXX.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_1.PP_00_011_2" Name="PP_00_011_2" Description="PP_00_011" Type="PsDiagn:REGUL.R500.MODULES.PP.PP_00_XXX.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_1.AI_16_011_1" Name="AI_16_011_1" Description="AI_16_011" Type="PsDiagn:REGUL.R500.MODULES.AI.AI_16_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_1.AI_16_011_2" Name="AI_16_011_2" Description="AI_16_011" Type="PsDiagn:REGUL.R500.MODULES.AI.AI_16_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_1.DI_32_011_1" Name="DI_32_011_1" Description="DI_32_011" Type="PsDiagn:REGUL.R500.MODULES.DI.DI_32_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_1.DI_32_011_2" Name="DI_32_011_2" Description="DI_32_011" Type="PsDiagn:REGUL.R500.MODULES.DI.DI_32_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_1.DO_32_012_1" Name="DO_32_012_1" Description="DO_32_012" Type="PsDiagn:REGUL.R500.MODULES.DO.DO_32_012.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_1.DO_32_012_2" Name="DO_32_012_2" Description="DO_32_012" Type="PsDiagn:REGUL.R500.MODULES.DO.DO_32_012.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_2.ST_02_012" Name="ST_02_012" Description="ST_02_012" Type="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X1X.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_2.ST_02_022" Name="ST_02_022" Description="ST_02_022" Type="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X2X.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_2.PP_00_011_1" Name="PP_00_011_1" Description="PP_00_011" Type="PsDiagn:REGUL.R500.MODULES.PP.PP_00_XXX.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_2.PP_00_011_2" Name="PP_00_011_2" Description="PP_00_011" Type="PsDiagn:REGUL.R500.MODULES.PP.PP_00_XXX.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_2.AI_16_011_1" Name="AI_16_011_1" Description="AI_16_011" Type="PsDiagn:REGUL.R500.MODULES.AI.AI_16_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_2.AI_16_011_2" Name="AI_16_011_2" Description="AI_16_011" Type="PsDiagn:REGUL.R500.MODULES.AI.AI_16_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_2.DI_32_011_1" Name="DI_32_011_1" Description="DI_32_011" Type="PsDiagn:REGUL.R500.MODULES.DI.DI_32_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_2.DI_32_011_2" Name="DI_32_011_2" Description="DI_32_011" Type="PsDiagn:REGUL.R500.MODULES.DI.DI_32_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_2.DO_32_012_1" Name="DO_32_012_1" Description="DO_32_012" Type="PsDiagn:REGUL.R500.MODULES.DO.DO_32_012.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_2.DO_32_012_2" Name="DO_32_012_2" Description="DO_32_012" Type="PsDiagn:REGUL.R500.MODULES.DO.DO_32_012.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_3.ST_02_012" Name="ST_02_012" Description="ST_02_012" Type="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X1X.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_3.ST_02_022" Name="ST_02_022" Description="ST_02_022" Type="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X2X.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_3.PP_00_011_1" Name="PP_00_011_1" Description="PP_00_011" Type="PsDiagn:REGUL.R500.MODULES.PP.PP_00_XXX.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_3.PP_00_011_2" Name="PP_00_011_2" Description="PP_00_011" Type="PsDiagn:REGUL.R500.MODULES.PP.PP_00_XXX.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_3.AI_16_011_1" Name="AI_16_011_1" Description="AI_16_011" Type="PsDiagn:REGUL.R500.MODULES.AI.AI_16_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_3.AI_16_011_2" Name="AI_16_011_2" Description="AI_16_011" Type="PsDiagn:REGUL.R500.MODULES.AI.AI_16_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_3.DI_32_011_1" Name="DI_32_011_1" Description="DI_32_011" Type="PsDiagn:REGUL.R500.MODULES.DI.DI_32_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_3.DI_32_011_2" Name="DI_32_011_2" Description="DI_32_011" Type="PsDiagn:REGUL.R500.MODULES.DI.DI_32_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_3.DO_32_012_1" Name="DO_32_012_1" Description="DO_32_012" Type="PsDiagn:REGUL.R500.MODULES.DO.DO_32_012.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_3.DO_32_012_2" Name="DO_32_012_2" Description="DO_32_012" Type="PsDiagn:REGUL.R500.MODULES.DO.DO_32_012.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_4.ST_02_012" Name="ST_02_012" Description="ST_02_012" Type="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X1X.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_4.ST_02_022" Name="ST_02_022" Description="ST_02_022" Type="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X2X.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_4.PP_00_011_1" Name="PP_00_011_1" Description="PP_00_011" Type="PsDiagn:REGUL.R500.MODULES.PP.PP_00_XXX.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_4.PP_00_011_2" Name="PP_00_011_2" Description="PP_00_011" Type="PsDiagn:REGUL.R500.MODULES.PP.PP_00_XXX.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_4.AI_16_011_1" Name="AI_16_011_1" Description="AI_16_011" Type="PsDiagn:REGUL.R500.MODULES.AI.AI_16_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_4.AI_16_011_2" Name="AI_16_011_2" Description="AI_16_011" Type="PsDiagn:REGUL.R500.MODULES.AI.AI_16_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_4.DI_32_011_1" Name="DI_32_011_1" Description="DI_32_011" Type="PsDiagn:REGUL.R500.MODULES.DI.DI_32_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_4.DI_32_011_2" Name="DI_32_011_2" Description="DI_32_011" Type="PsDiagn:REGUL.R500.MODULES.DI.DI_32_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_4.DO_32_012_1" Name="DO_32_012_1" Description="DO_32_012" Type="PsDiagn:REGUL.R500.MODULES.DO.DO_32_012.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.Crate_4.DO_32_012_2" Name="DO_32_012_2" Description="DO_32_012" Type="PsDiagn:REGUL.R500.MODULES.DO.DO_32_012.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.CU_00_071" Name="CU_00_071" Description="REGUL_R500_A" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.R500_.ST_02_012" Name="ST_02_012" Description="ST_02_012" Type="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X1X.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.R500_.ST_02_022" Name="ST_02_022" Description="ST_02_022" Type="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X2X.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.R500_.PP_00_011_1" Name="PP_00_011_1" Description="PP_00_011" Type="PsDiagn:REGUL.R500.MODULES.PP.PP_00_XXX.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.R500_.PP_00_011_2" Name="PP_00_011_2" Description="PP_00_011" Type="PsDiagn:REGUL.R500.MODULES.PP.PP_00_XXX.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.R500_.AI_16_011_1" Name="AI_16_011_1" Description="AI_16_011" Type="PsDiagn:REGUL.R500.MODULES.AI.AI_16_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.R500_.AI_16_011_2" Name="AI_16_011_2" Description="AI_16_011" Type="PsDiagn:REGUL.R500.MODULES.AI.AI_16_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate.ST_02_012" Name="ST_02_012" Description="ST_XX_X1X" Type="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X1X.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate.ST_02_022" Name="ST_02_022" Description="ST_02_022" Type="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X2X.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate.PP_00_011_1" Name="PP_00_011_1" Description="PP_00_011" Type="PsDiagn:REGUL.R500.MODULES.PP.PP_00_XXX.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate.PP_00_011_2" Name="PP_00_011_2" Description="PP_00_011" Type="PsDiagn:REGUL.R500.MODULES.PP.PP_00_XXX.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate.DI_32_011_1" Name="DI_32_011_1" Description="DI_32_011" Type="PsDiagn:REGUL.R500.MODULES.DI.DI_32_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate.DI_32_011_2" Name="DI_32_011_2" Description="DI_32_011" Type="PsDiagn:REGUL.R500.MODULES.DI.DI_32_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate.DI_32_011_3" Name="DI_32_011_3" Description="DI_32_011" Type="PsDiagn:REGUL.R500.MODULES.DI.DI_32_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate.DO_32_012_1" Name="DO_32_012_1" Description="DO_32_012" Type="PsDiagn:REGUL.R500.MODULES.DO.DO_32_012.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate.DO_32_012_2" Name="DO_32_012_2" Description="DO_32_012" Type="PsDiagn:REGUL.R500.MODULES.DO.DO_32_012.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_1.ST_02_012" Name="ST_02_012" Description="ST_02_012" Type="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X1X.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_1.ST_02_022" Name="ST_02_022" Description="ST_02_022" Type="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X2X.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_1.PP_00_011_1" Name="PP_00_011_1" Description="PP_00_011" Type="PsDiagn:REGUL.R500.MODULES.PP.PP_00_XXX.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_1.PP_00_011_2" Name="PP_00_011_2" Description="PP_00_011" Type="PsDiagn:REGUL.R500.MODULES.PP.PP_00_XXX.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_1.AI_16_011_1" Name="AI_16_011_1" Description="AI_16_011" Type="PsDiagn:REGUL.R500.MODULES.AI.AI_16_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_1.AI_16_011_2" Name="AI_16_011_2" Description="AI_16_011" Type="PsDiagn:REGUL.R500.MODULES.AI.AI_16_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_1.DI_32_011_1" Name="DI_32_011_1" Description="DI_32_011" Type="PsDiagn:REGUL.R500.MODULES.DI.DI_32_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_1.DI_32_011_2" Name="DI_32_011_2" Description="DI_32_011" Type="PsDiagn:REGUL.R500.MODULES.DI.DI_32_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_1.DO_32_012_1" Name="DO_32_012_1" Description="DO_32_012" Type="PsDiagn:REGUL.R500.MODULES.DO.DO_32_012.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_1.DO_32_012_2" Name="DO_32_012_2" Description="DO_32_012" Type="PsDiagn:REGUL.R500.MODULES.DO.DO_32_012.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_2.ST_02_012" Name="ST_02_012" Description="ST_02_012" Type="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X1X.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_2.ST_02_022" Name="ST_02_022" Description="ST_02_022" Type="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X2X.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_2.PP_00_011_1" Name="PP_00_011_1" Description="PP_00_011" Type="PsDiagn:REGUL.R500.MODULES.PP.PP_00_XXX.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_2.PP_00_011_2" Name="PP_00_011_2" Description="PP_00_011" Type="PsDiagn:REGUL.R500.MODULES.PP.PP_00_XXX.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_2.AI_16_011_1" Name="AI_16_011_1" Description="AI_16_011" Type="PsDiagn:REGUL.R500.MODULES.AI.AI_16_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_2.AI_16_011_2" Name="AI_16_011_2" Description="AI_16_011" Type="PsDiagn:REGUL.R500.MODULES.AI.AI_16_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_2.DI_32_011_1" Name="DI_32_011_1" Description="DI_32_011" Type="PsDiagn:REGUL.R500.MODULES.DI.DI_32_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_2.DI_32_011_2" Name="DI_32_011_2" Description="DI_32_011" Type="PsDiagn:REGUL.R500.MODULES.DI.DI_32_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_2.DO_32_012_1" Name="DO_32_012_1" Description="DO_32_012" Type="PsDiagn:REGUL.R500.MODULES.DO.DO_32_012.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_2.DO_32_012_2" Name="DO_32_012_2" Description="DO_32_012" Type="PsDiagn:REGUL.R500.MODULES.DO.DO_32_012.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_3.ST_02_012" Name="ST_02_012" Description="ST_02_012" Type="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X1X.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_3.ST_02_022" Name="ST_02_022" Description="ST_02_022" Type="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X2X.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_3.PP_00_011_1" Name="PP_00_011_1" Description="PP_00_011" Type="PsDiagn:REGUL.R500.MODULES.PP.PP_00_XXX.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_3.PP_00_011_2" Name="PP_00_011_2" Description="PP_00_011" Type="PsDiagn:REGUL.R500.MODULES.PP.PP_00_XXX.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_3.AI_16_011_1" Name="AI_16_011_1" Description="AI_16_011" Type="PsDiagn:REGUL.R500.MODULES.AI.AI_16_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_3.AI_16_011_2" Name="AI_16_011_2" Description="AI_16_011" Type="PsDiagn:REGUL.R500.MODULES.AI.AI_16_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_3.DI_32_011_1" Name="DI_32_011_1" Description="DI_32_011" Type="PsDiagn:REGUL.R500.MODULES.DI.DI_32_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_3.DI_32_011_2" Name="DI_32_011_2" Description="DI_32_011" Type="PsDiagn:REGUL.R500.MODULES.DI.DI_32_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_3.DO_32_012_1" Name="DO_32_012_1" Description="DO_32_012" Type="PsDiagn:REGUL.R500.MODULES.DO.DO_32_012.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_3.DO_32_012_2" Name="DO_32_012_2" Description="DO_32_012" Type="PsDiagn:REGUL.R500.MODULES.DO.DO_32_012.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_4.ST_02_012" Name="ST_02_012" Description="ST_02_012" Type="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X1X.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_4.ST_02_022" Name="ST_02_022" Description="ST_02_022" Type="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X2X.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_4.PP_00_011_1" Name="PP_00_011_1" Description="PP_00_011" Type="PsDiagn:REGUL.R500.MODULES.PP.PP_00_XXX.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_4.PP_00_011_2" Name="PP_00_011_2" Description="PP_00_011" Type="PsDiagn:REGUL.R500.MODULES.PP.PP_00_XXX.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_4.AI_16_011_1" Name="AI_16_011_1" Description="AI_16_011" Type="PsDiagn:REGUL.R500.MODULES.AI.AI_16_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_4.AI_16_011_2" Name="AI_16_011_2" Description="AI_16_011" Type="PsDiagn:REGUL.R500.MODULES.AI.AI_16_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_4.DI_32_011_1" Name="DI_32_011_1" Description="DI_32_011" Type="PsDiagn:REGUL.R500.MODULES.DI.DI_32_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_4.DI_32_011_2" Name="DI_32_011_2" Description="DI_32_011" Type="PsDiagn:REGUL.R500.MODULES.DI.DI_32_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_4.DO_32_012_1" Name="DO_32_012_1" Description="DO_32_012" Type="PsDiagn:REGUL.R500.MODULES.DO.DO_32_012.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.Crate_4.DO_32_012_2" Name="DO_32_012_2" Description="DO_32_012" Type="PsDiagn:REGUL.R500.MODULES.DO.DO_32_012.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.R500_.ST_02_012" Name="ST_02_012" Description="ST_02_012" Type="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X1X.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.R500_.ST_02_022" Name="ST_02_022" Description="ST_02_022" Type="PsDiagn:REGUL.R500.MODULES.ST.ST_XX_X2X.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.R500_.PP_00_011_1" Name="PP_00_011_1" Description="PP_00_011" Type="PsDiagn:REGUL.R500.MODULES.PP.PP_00_XXX.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.R500_.PP_00_011_2" Name="PP_00_011_2" Description="PP_00_011" Type="PsDiagn:REGUL.R500.MODULES.PP.PP_00_XXX.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.R500_.AI_16_011_1" Name="AI_16_011_1" Description="AI_16_011" Type="PsDiagn:REGUL.R500.MODULES.AI.AI_16_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.R500_.AI_16_011_2" Name="AI_16_011_2" Description="AI_16_011" Type="PsDiagn:REGUL.R500.MODULES.AI.AI_16_011.IOS_VIew" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.REGUL_R500_71_W_B" Name="REGUL_R500_71_W_B" Description="REGUL_R500_71_W_B" />
+    <Object Tag="DIAGNOSTICS.SERVER2" Name="SERVER2" Description="COMPUTER - Компьютер" Type="PsDiagn:COMPUTER.IOS_View" />
+    <Object Tag="DIAGNOSTICS.SERVER1" Name="SERVER1" Description="COMPUTER - Компьютер" Type="PsDiagn:COMPUTER.IOS_View" />
+  </Objects>
+</Alarms>

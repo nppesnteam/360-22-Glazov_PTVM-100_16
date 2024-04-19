@@ -1,0 +1,35 @@
+<type access-modifier="public" name="SecurityConfigurator_Settings" display-name="SecurityConfigurator_Settings" uuid="a7c582fd-25fb-4cc3-8522-3166d1a63de6" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+	<object access-modifier="private" name="UserInAtLeastOneGroup" display-name="Пользователь должен быть в группе" uuid="b6fcc3f0-2b4e-4a53-ae97-b3a879ed62ce" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+	<object access-modifier="private" name="UserInOnlyOneGroup" display-name="Пользователь может быть только в одной группе" uuid="47997033-9adb-482e-98b3-c675dd223641" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+	<object access-modifier="private" name="AppTemplatesPath" display-name="Путь к шаблонам приложений" uuid="4b53db64-c747-417c-8ad3-a0d708fb2ebf" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	<object access-modifier="private" name="BackupsPath" display-name="Путь к резервным копиям базы" uuid="b079f8fc-535e-4a44-a8fa-ea16edcc2ac8" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	<init target="UserInAtLeastOneGroup" ver="5" value="true"/>
+	<init target="UserInOnlyOneGroup" ver="5" value="false"/>
+	<do access-modifier="private" name="ToJSON" display-name="ToJSON" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="javascript">
+			<![CDATA[var settings = {
+	'UserInAtLeastOneGroup': UserInAtLeastOneGroup,
+	'UserInOnlyOneGroup': UserInOnlyOneGroup,
+	'AppTemplatesPath': AppTemplatesPath,
+	'BackupsPath': BackupsPath,
+	'DomainNodes': DomainNodes
+};
+
+return JSON.stringify(settings);]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="FromJSON" display-name="FromJSON" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[var settings = JSON.parse(json);
+
+UserInAtLeastOneGroup = settings.UserInAtLeastOneGroup;
+UserInOnlyOneGroup = settings.UserInOnlyOneGroup;
+AppTemplatesPath = settings.AppTemplatesPath;
+BackupsPath = settings.BackupsPath;
+DomainNodes = settings.DomainNodes;]]>
+		</body>
+		<param access-modifier="private" name="json" display-name="" uuid="857a4aba-a4dc-4a13-9449-2cd9f3e6796c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<object access-modifier="private" name="DomainNodes" display-name="Список узлов домена" uuid="3473461a-30fe-43ab-b7cc-885f062d9f95" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+</type>
+

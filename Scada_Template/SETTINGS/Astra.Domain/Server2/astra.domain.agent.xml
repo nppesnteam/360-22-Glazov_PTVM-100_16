@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Astra.Domain.Agent Name="NDA">
+  <EntryPointAstraNetAgent Name="Server2" Port="1010" />
+  <InstalledComponents>
+    <Astra.Server Name="InstalledServer" ServiceName="astra.server.service" />
+  </InstalledComponents>
+  <Server>
+    <Components StoragePath="/usr/local/DomainStorage/cache/server">
+      <Component InstalledName="InstalledServer" Name="AstraServer" />
+    </Components>
+  </Server>
+</Astra.Domain.Agent>

@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Symbolconfiguration xmlns="http://www.3s-software.com/schemas/Symbolconfiguration.xsd">
+  <Header>
+    <Version>3.5.14.0</Version>
+    <SymbolConfigObject version="4.0.0.0" runtimeid="11.7.1.10" libversion="3.5.17.0" compiler="3.5.17.30" lmm="3.5.17.0" profile="Astra.IDE_V1.7+" settings="SupportOPCUA, LayoutCalculator=CompatibilityClientSideLayoutCalculator" />
+    <ProjectInfo name="Безымянный2" devicename="REGUL_R500_71_W" appname="Application" />
+  </Header>
+  <TypeList>
+    <TypeSimple name="T_BOOL" size="1" swapsize="0" typeclass="Bool" iecname="BOOL" />
+    <TypeSimple name="T_BYTE" size="1" swapsize="1" typeclass="Byte" iecname="BYTE" />
+    <TypeSimple name="T_DINT" size="4" swapsize="4" typeclass="DInt" iecname="DINT" />
+    <TypeSimple name="T_DWORD" size="4" swapsize="4" typeclass="DWord" iecname="DWORD" />
+    <TypeSimple name="T_LREAL" size="8" swapsize="8" typeclass="LReal" iecname="LREAL" />
+    <TypeSimple name="T_REAL" size="4" swapsize="4" typeclass="Real" iecname="REAL" />
+    <TypeSimple name="T_SINT" size="1" swapsize="1" typeclass="SInt" iecname="SINT" />
+    <TypeSimple name="T_STRING" size="81" swapsize="0" typeclass="String" iecname="STRING" />
+    <TypeSimple name="T_UDINT" size="4" swapsize="4" typeclass="UDInt" iecname="UDINT" />
+    <TypeSimple name="T_UINT" size="2" swapsize="2" typeclass="UInt" iecname="UINT" />
+    <TypeSimple name="T_ULINT" size="8" swapsize="8" typeclass="ULInt" iecname="ULINT" />
+    <TypeSimple name="T_WORD" size="2" swapsize="2" typeclass="Word" iecname="WORD" />
+    <TypeUserDef name="T_CHANNEL_AI" size="8" nativesize="8" typeclass="Userdef" pouclass="STRUCTURE" iecname="CHANNEL_AI">
+      <UserDefElement iecname="VALUE" type="T_REAL" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="STATUS" type="T_BYTE" byteoffset="4" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_MODULE" size="12" nativesize="12" typeclass="Userdef" pouclass="STRUCTURE" iecname="MODULE">
+      <UserDefElement iecname="FW_VERSION" type="T_DWORD" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="FW_VERSION_MIN" type="T_DWORD" byteoffset="4" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="HwError" type="T_BOOL" byteoffset="8" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_MODULE_EU" size="4" nativesize="4" typeclass="Userdef" pouclass="STRUCTURE" iecname="MODULE_EU">
+      <UserDefElement iecname="PORT1_LINK" type="T_BOOL" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PORT2_LINK" type="T_BOOL" byteoffset="1" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PORT3_LINK" type="T_BOOL" byteoffset="2" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PORT4_LINK" type="T_BOOL" byteoffset="3" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_MODULE_PP_00_XXX" size="2" nativesize="2" typeclass="Userdef" pouclass="STRUCTURE" iecname="MODULE_PP_00_XXX">
+      <UserDefElement iecname="EXT_PWR" type="T_BOOL" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="HwError" type="T_BOOL" byteoffset="1" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_MODULE_ST_XX_X1X" size="2" nativesize="2" typeclass="Userdef" pouclass="STRUCTURE" iecname="MODULE_ST_XX_X1X">
+      <UserDefElement iecname="LINK" type="T_BOOL" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="HwError" type="T_BOOL" byteoffset="1" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_MODULE_ST_XX_X2X" size="2" nativesize="2" typeclass="Userdef" pouclass="STRUCTURE" iecname="MODULE_ST_XX_X2X">
+      <UserDefElement iecname="LINK" type="T_BOOL" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="HwError" type="T_BOOL" byteoffset="1" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_RedMode" size="1" nativesize="1" typeclass="Enum" iecname="RedMode" basetype="T_SINT">
+      <UserDefElement type="T_RedMode" iecname="CONN_ERROR" enumvalue="-3" />
+      <UserDefElement type="T_RedMode" iecname="CR_ERROR" enumvalue="-2" />
+      <UserDefElement type="T_RedMode" iecname="ERROR" enumvalue="-1" />
+      <UserDefElement type="T_RedMode" iecname="DISABLED" enumvalue="0" />
+      <UserDefElement type="T_RedMode" iecname="BOOTUP" enumvalue="1" />
+      <UserDefElement type="T_RedMode" iecname="SYNC" enumvalue="2" />
+      <UserDefElement type="T_RedMode" iecname="STANDBY" enumvalue="3" />
+      <UserDefElement type="T_RedMode" iecname="ACTIVE_STANDALONE" enumvalue="4" />
+      <UserDefElement type="T_RedMode" iecname="ACTIVE" enumvalue="5" />
+    </TypeUserDef>
+    <TypeUserDef name="T_TSyncStat" size="48" nativesize="48" typeclass="Userdef" pouclass="STRUCTURE" iecname="TSyncStat">
+      <UserDefElement iecname="ConfigIntervalCurrentUs" type="T_UDINT" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="OffsetUs" type="T_DINT" byteoffset="4" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="StepCorrectionCnt" type="T_ULINT" byteoffset="8" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="SoftCorrectionCnt" type="T_ULINT" byteoffset="16" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="SyncOkCount" type="T_ULINT" byteoffset="24" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="SyncErrCount" type="T_ULINT" byteoffset="32" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="SyncOk" type="T_BOOL" byteoffset="40" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_TTaskStat" size="136" nativesize="136" typeclass="Userdef" pouclass="STRUCTURE" iecname="TTaskStat">
+      <UserDefElement iecname="TaskName" type="T_STRING" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="TaskDataSize" type="T_UDINT" byteoffset="84" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CallCount" type="T_ULINT" byteoffset="88" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CallIntervalUs" type="T_UDINT" byteoffset="96" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="MaxCallIntervalUs" type="T_UDINT" byteoffset="100" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="ConfigIntervalDefaultUs" type="T_UDINT" byteoffset="104" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="JitterUs" type="T_DINT" byteoffset="108" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="MaxJitterUs" type="T_DINT" byteoffset="112" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="DoSyncTimeUs" type="T_UDINT" byteoffset="116" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="MaxDoSyncTimeUs" type="T_UDINT" byteoffset="120" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="SendVarTimeUs" type="T_UDINT" byteoffset="124" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="MaxSendVarTimeUs" type="T_UDINT" byteoffset="128" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="IsSyncTask" type="T_BOOL" byteoffset="132" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_MODULE_AI_16_011" size="140" nativesize="140" typeclass="Userdef" pouclass="STRUCTURE" iecname="MODULE_AI_16_011" basetype="T_MODULE">
+      <UserDefElement iecname="FW_VERSION" type="T_DWORD" byteoffset="0" vartype="VAR" inherited_from="T_MODULE" access="ReadWrite" />
+      <UserDefElement iecname="FW_VERSION_MIN" type="T_DWORD" byteoffset="4" vartype="VAR" inherited_from="T_MODULE" access="ReadWrite" />
+      <UserDefElement iecname="HwError" type="T_BOOL" byteoffset="8" vartype="VAR" inherited_from="T_MODULE" access="ReadWrite" />
+      <UserDefElement iecname="CH01" type="T_CHANNEL_AI" byteoffset="12" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CH02" type="T_CHANNEL_AI" byteoffset="20" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CH03" type="T_CHANNEL_AI" byteoffset="28" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CH04" type="T_CHANNEL_AI" byteoffset="36" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CH05" type="T_CHANNEL_AI" byteoffset="44" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CH06" type="T_CHANNEL_AI" byteoffset="52" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CH07" type="T_CHANNEL_AI" byteoffset="60" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CH08" type="T_CHANNEL_AI" byteoffset="68" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CH09" type="T_CHANNEL_AI" byteoffset="76" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CH10" type="T_CHANNEL_AI" byteoffset="84" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CH11" type="T_CHANNEL_AI" byteoffset="92" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CH12" type="T_CHANNEL_AI" byteoffset="100" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CH13" type="T_CHANNEL_AI" byteoffset="108" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CH14" type="T_CHANNEL_AI" byteoffset="116" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CH15" type="T_CHANNEL_AI" byteoffset="124" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CH16" type="T_CHANNEL_AI" byteoffset="132" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_MODULE_CU_XX_XXX" size="720" nativesize="720" typeclass="Userdef" pouclass="STRUCTURE" iecname="MODULE_CU_XX_XXX">
+      <UserDefElement iecname="VERSION" type="T_STRING" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CPU_CNT" type="T_UDINT" byteoffset="84" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CPU1_LOAD" type="T_REAL" byteoffset="88" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CPU2_LOAD" type="T_REAL" byteoffset="92" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CPU3_LOAD" type="T_REAL" byteoffset="96" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CPU4_LOAD" type="T_REAL" byteoffset="100" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="NET_CNT" type="T_UDINT" byteoffset="104" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PORT1_LINK" type="T_BOOL" byteoffset="108" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PORT2_LINK" type="T_BOOL" byteoffset="109" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PORT3_LINK" type="T_BOOL" byteoffset="110" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PORT4_LINK" type="T_BOOL" byteoffset="111" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PORT5_LINK" type="T_BOOL" byteoffset="112" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PORT6_LINK" type="T_BOOL" byteoffset="113" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="EU1" type="T_MODULE_EU" byteoffset="114" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="EU2" type="T_MODULE_EU" byteoffset="118" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="HDD_CNT" type="T_UDINT" byteoffset="124" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="HDD1_NAME" type="T_STRING" byteoffset="128" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="HDD1_RAM" type="T_LREAL" byteoffset="216" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="HDD1_USED_RAM" type="T_LREAL" byteoffset="224" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="HDD2_NAME" type="T_STRING" byteoffset="232" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="HDD2_RAM" type="T_LREAL" byteoffset="320" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="HDD2_USED_RAM" type="T_LREAL" byteoffset="328" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="HDD3_NAME" type="T_STRING" byteoffset="336" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="HDD3_RAM" type="T_LREAL" byteoffset="424" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="HDD3_USED_RAM" type="T_LREAL" byteoffset="432" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="RAM" type="T_LREAL" byteoffset="440" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="USED_RAM" type="T_LREAL" byteoffset="448" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="IS_CPU_A" type="T_BOOL" byteoffset="456" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="IS_CPU_B" type="T_BOOL" byteoffset="457" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="IS_ACTIVE" type="T_BOOL" byteoffset="458" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="RED_MODE" type="T_SINT" byteoffset="459" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="ERRORS" type="T_WORD" byteoffset="460" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="TEMP_MAX" type="T_STRING" byteoffset="462" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="TEMP_MIN" type="T_STRING" byteoffset="543" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="TEMP_CUR" type="T_STRING" byteoffset="624" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="YEAR" type="T_UINT" byteoffset="706" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="MONTH" type="T_UINT" byteoffset="708" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="DAY" type="T_UINT" byteoffset="710" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="HOUR" type="T_UINT" byteoffset="712" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="MINUTE" type="T_UINT" byteoffset="714" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="SECOND" type="T_UINT" byteoffset="716" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="MILLISECOND" type="T_UINT" byteoffset="718" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_MODULE_DI_32_011" size="16" nativesize="16" typeclass="Userdef" pouclass="STRUCTURE" iecname="MODULE_DI_32_011" basetype="T_MODULE">
+      <UserDefElement iecname="FW_VERSION" type="T_DWORD" byteoffset="0" vartype="VAR" inherited_from="T_MODULE" access="ReadWrite" />
+      <UserDefElement iecname="FW_VERSION_MIN" type="T_DWORD" byteoffset="4" vartype="VAR" inherited_from="T_MODULE" access="ReadWrite" />
+      <UserDefElement iecname="HwError" type="T_BOOL" byteoffset="8" vartype="VAR" inherited_from="T_MODULE" access="ReadWrite" />
+      <UserDefElement iecname="VALUE" type="T_DWORD" byteoffset="12" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_MODULE_DO_32_012" size="20" nativesize="20" typeclass="Userdef" pouclass="STRUCTURE" iecname="MODULE_DO_32_012" basetype="T_MODULE">
+      <UserDefElement iecname="FW_VERSION" type="T_DWORD" byteoffset="0" vartype="VAR" inherited_from="T_MODULE" access="ReadWrite" />
+      <UserDefElement iecname="FW_VERSION_MIN" type="T_DWORD" byteoffset="4" vartype="VAR" inherited_from="T_MODULE" access="ReadWrite" />
+      <UserDefElement iecname="HwError" type="T_BOOL" byteoffset="8" vartype="VAR" inherited_from="T_MODULE" access="ReadWrite" />
+      <UserDefElement iecname="PWR" type="T_BYTE" byteoffset="12" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="VALUE" type="T_DWORD" byteoffset="16" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_TSyncTaskStat" size="184" nativesize="184" typeclass="Userdef" pouclass="STRUCTURE" iecname="TSyncTaskStat">
+      <UserDefElement iecname="TaskStat" type="T_TTaskStat" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="SyncStat" type="T_TSyncStat" byteoffset="136" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+  </TypeList>
+  <NodeList>
+    <Node name="Application">
+      <Node name="GVL_DIAGN">
+        <Node name="IS_ACTIVE" type="T_BOOL" access="ReadWrite" />
+        <Node name="IS_CPU_A" type="T_BOOL" access="ReadWrite" />
+        <Node name="IS_CPU_B" type="T_BOOL" access="ReadWrite" />
+        <Node name="MODULE_A0_23" type="T_MODULE_DI_32_011" access="ReadWrite" />
+        <Node name="MODULE_A0_24" type="T_MODULE_DI_32_011" access="ReadWrite" />
+        <Node name="MODULE_A0_25" type="T_MODULE_DI_32_011" access="ReadWrite" />
+        <Node name="MODULE_A0_26" type="T_MODULE_DO_32_012" access="ReadWrite" />
+        <Node name="MODULE_A0_27" type="T_MODULE_DO_32_012" access="ReadWrite" />
+        <Node name="MODULE_A0_33" type="T_MODULE_ST_XX_X1X" access="ReadWrite" />
+        <Node name="MODULE_A0_34" type="T_MODULE_ST_XX_X2X" access="ReadWrite" />
+        <Node name="MODULE_A1_21" type="T_MODULE_AI_16_011" access="ReadWrite" />
+        <Node name="MODULE_A1_22" type="T_MODULE_AI_16_011" access="ReadWrite" />
+        <Node name="MODULE_A1_23" type="T_MODULE_DI_32_011" access="ReadWrite" />
+        <Node name="MODULE_A1_24" type="T_MODULE_DI_32_011" access="ReadWrite" />
+        <Node name="MODULE_A1_25" type="T_MODULE_DO_32_012" access="ReadWrite" />
+        <Node name="MODULE_A1_26" type="T_MODULE_DO_32_012" access="ReadWrite" />
+        <Node name="MODULE_A1_31" type="T_MODULE_ST_XX_X1X" access="ReadWrite" />
+        <Node name="MODULE_A1_32" type="T_MODULE_ST_XX_X2X" access="ReadWrite" />
+        <Node name="MODULE_A2_21" type="T_MODULE_AI_16_011" access="ReadWrite" />
+        <Node name="MODULE_A2_22" type="T_MODULE_AI_16_011" access="ReadWrite" />
+        <Node name="MODULE_A2_23" type="T_MODULE_DI_32_011" access="ReadWrite" />
+        <Node name="MODULE_A2_24" type="T_MODULE_DI_32_011" access="ReadWrite" />
+        <Node name="MODULE_A2_25" type="T_MODULE_DO_32_012" access="ReadWrite" />
+        <Node name="MODULE_A2_26" type="T_MODULE_DO_32_012" access="ReadWrite" />
+        <Node name="MODULE_A2_31" type="T_MODULE_ST_XX_X1X" access="ReadWrite" />
+        <Node name="MODULE_A2_32" type="T_MODULE_ST_XX_X2X" access="ReadWrite" />
+        <Node name="MODULE_A3_21" type="T_MODULE_AI_16_011" access="ReadWrite" />
+        <Node name="MODULE_A3_22" type="T_MODULE_AI_16_011" access="ReadWrite" />
+        <Node name="MODULE_A3_23" type="T_MODULE_DI_32_011" access="ReadWrite" />
+        <Node name="MODULE_A3_24" type="T_MODULE_DI_32_011" access="ReadWrite" />
+        <Node name="MODULE_A3_25" type="T_MODULE_DO_32_012" access="ReadWrite" />
+        <Node name="MODULE_A3_26" type="T_MODULE_DO_32_012" access="ReadWrite" />
+        <Node name="MODULE_A3_31" type="T_MODULE_ST_XX_X1X" access="ReadWrite" />
+        <Node name="MODULE_A3_32" type="T_MODULE_ST_XX_X2X" access="ReadWrite" />
+        <Node name="MODULE_A4_21" type="T_MODULE_AI_16_011" access="ReadWrite" />
+        <Node name="MODULE_A4_22" type="T_MODULE_AI_16_011" access="ReadWrite" />
+        <Node name="MODULE_A4_23" type="T_MODULE_DI_32_011" access="ReadWrite" />
+        <Node name="MODULE_A4_24" type="T_MODULE_DI_32_011" access="ReadWrite" />
+        <Node name="MODULE_A4_25" type="T_MODULE_DO_32_012" access="ReadWrite" />
+        <Node name="MODULE_A4_26" type="T_MODULE_DO_32_012" access="ReadWrite" />
+        <Node name="MODULE_A4_31" type="T_MODULE_ST_XX_X1X" access="ReadWrite" />
+        <Node name="MODULE_A4_32" type="T_MODULE_ST_XX_X2X" access="ReadWrite" />
+        <Node name="MODULE_AI_16_011_1" type="T_MODULE_AI_16_011" access="ReadWrite" />
+        <Node name="MODULE_AI_16_011_2" type="T_MODULE_AI_16_011" access="ReadWrite" />
+        <Node name="MODULE_CU_00_071_A" type="T_MODULE_CU_XX_XXX" access="ReadWrite" />
+        <Node name="MODULE_CU_00_071_B" type="T_MODULE_CU_XX_XXX" access="ReadWrite" />
+        <Node name="MODULE_G0_13" type="T_MODULE_PP_00_XXX" access="ReadWrite" />
+        <Node name="MODULE_G0_14" type="T_MODULE_PP_00_XXX" access="ReadWrite" />
+        <Node name="MODULE_G1_11" type="T_MODULE_PP_00_XXX" access="ReadWrite" />
+        <Node name="MODULE_G1_12" type="T_MODULE_PP_00_XXX" access="ReadWrite" />
+        <Node name="MODULE_G2_11" type="T_MODULE_PP_00_XXX" access="ReadWrite" />
+        <Node name="MODULE_G2_12" type="T_MODULE_PP_00_XXX" access="ReadWrite" />
+        <Node name="MODULE_G3_11" type="T_MODULE_PP_00_XXX" access="ReadWrite" />
+        <Node name="MODULE_G3_12" type="T_MODULE_PP_00_XXX" access="ReadWrite" />
+        <Node name="MODULE_G4_11" type="T_MODULE_PP_00_XXX" access="ReadWrite" />
+        <Node name="MODULE_G4_12" type="T_MODULE_PP_00_XXX" access="ReadWrite" />
+        <Node name="MODULE_PP_00_011_1" type="T_MODULE_PP_00_XXX" access="ReadWrite" />
+        <Node name="MODULE_PP_00_011_2" type="T_MODULE_PP_00_XXX" access="ReadWrite" />
+        <Node name="MODULE_ST_02_022" type="T_MODULE_ST_XX_X2X" access="ReadWrite" />
+        <Node name="MODULE_ST_02_12" type="T_MODULE_ST_XX_X1X" access="ReadWrite" />
+        <Node name="RED_MODE" type="T_RedMode" access="ReadWrite" />
+        <Node name="SYNC_STATE" type="T_TSyncTaskStat" access="ReadWrite" />
+      </Node>
+    </Node>
+  </NodeList>
+</Symbolconfiguration>

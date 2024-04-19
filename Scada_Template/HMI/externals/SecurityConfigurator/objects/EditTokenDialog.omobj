@@ -1,0 +1,368 @@
+<type access-modifier="private" name="EditTokenDialog" display-name="EditTokenDialog" uuid="27d54caf-8c1a-4c8b-a768-b1a5005c1b78" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="260" ver="5"/>
+	<designed target="Height" value="150" ver="5"/>
+	<designed target="PenColor" value="0xff000000" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<designed target="WindowX" value="0" ver="5"/>
+	<designed target="WindowY" value="0" ver="5"/>
+	<designed target="WindowWidth" value="260" ver="5"/>
+	<designed target="WindowHeight" value="150" ver="5"/>
+	<designed target="WindowCaption" value="" ver="5"/>
+	<designed target="ShowWindowCaption" value="true" ver="5"/>
+	<designed target="ShowWindowMinimize" value="false" ver="5"/>
+	<designed target="ShowWindowMaximize" value="false" ver="5"/>
+	<designed target="ShowWindowClose" value="true" ver="5"/>
+	<designed target="AlwaysOnTop" value="false" ver="5"/>
+	<designed target="WindowSizeMode" value="0" ver="5"/>
+	<designed target="WindowBorderStyle" value="2" ver="5"/>
+	<designed target="WindowState" value="0" ver="5"/>
+	<designed target="WindowScalingMode" value="0" ver="5"/>
+	<designed target="MonitorNumber" value="0" ver="5"/>
+	<designed target="WindowPosition" value="3" ver="5"/>
+	<designed target="WindowCloseMode" value="0" ver="5"/>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="5656a9cc-d2b3-4f3c-9c85-8dbba6fb5a5a" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<object access-modifier="private" name="NameText" display-name="NameText" uuid="edaaa3b3-9ebf-4c7e-b0f7-fbf11184e903" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+		<designed target="X" value="10" ver="5"/>
+		<designed target="Y" value="10" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="70" ver="5"/>
+		<designed target="Height" value="20" ver="5"/>
+		<designed target="Text" value="Название:" ver="5"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+		<designed target="FontColor" value="0xff000000" ver="5"/>
+		<designed target="TextAlignment" value="129" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[here.private.pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="RecBorder_Alarm" display-name="RecBorder_Alarm" uuid="79b0909b-7394-44a8-8ed1-6abb02cb6bde" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+		<designed target="X" value="80" ver="5"/>
+		<designed target="Y" value="10" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="false" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="170" ver="5"/>
+		<designed target="Height" value="25" ver="5"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<designed target="PenColor" value="0xffff0000" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="2" ver="5"/>
+		<designed target="BrushColor" value="0xff000000" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[NameResult.Error != ""]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Tooltip" ver="5">
+			<body>
+				<![CDATA[NameResult.Error]]>
+			</body>
+		</do-trace>
+		<designed target="Flip" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="NameEdit" display-name="NameEdit" uuid="8a1bd9e8-92d0-4da0-8460-3be7c28582a4" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5">
+		<designed target="X" value="80" ver="5"/>
+		<designed target="Y" value="10" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="170" ver="5"/>
+		<designed target="Height" value="25" ver="5"/>
+		<designed target="Text" value="" ver="5"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+		<designed target="FontColor" value="4278190080" ver="5"/>
+		<designed target="TextAlignment" value="129" ver="5"/>
+		<designed target="HideInput" value="false" ver="5"/>
+		<designed target="PlaceholderText" value="" ver="5"/>
+		<designed target="ReadOnly" value="false" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="TextChanged">
+			<body kind="om">
+				<![CDATA[if (Focus)
+	NameResult.InputText = text;]]>
+			</body>
+		</do-on>
+		<designed target="Flip" value="0" ver="5"/>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="FocusChanged">
+			<body kind="om">
+				<![CDATA[if (hasFocus)
+{
+	SelectAll();
+	here.private.lastFocusedEditor = 0;
+}]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="DescriptionText" display-name="DescriptionText" uuid="1da21395-4380-418c-b319-021209b313aa" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+		<designed target="X" value="10" ver="5"/>
+		<designed target="Y" value="40" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="70" ver="5"/>
+		<designed target="Height" value="20" ver="5"/>
+		<designed target="Text" value="Описание:" ver="5"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+		<designed target="FontColor" value="0xff000000" ver="5"/>
+		<designed target="TextAlignment" value="129" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[here.private.pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="DescriptionEdit" display-name="DescriptionEdit" uuid="9dc5b11b-f715-426a-ae1e-b75a17eb8831" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5">
+		<designed target="X" value="80" ver="5"/>
+		<designed target="Y" value="40" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="170" ver="5"/>
+		<designed target="Height" value="60" ver="5"/>
+		<designed target="Text" value="" ver="5"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+		<designed target="FontColor" value="4278190080" ver="5"/>
+		<designed target="TextAlignment" value="33" ver="5"/>
+		<designed target="HideInput" value="false" ver="5"/>
+		<designed target="PlaceholderText" value="" ver="5"/>
+		<designed target="ReadOnly" value="false" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<do-trace access-modifier="private" target="Tooltip" ver="5">
+			<body>
+				<![CDATA[DescriptionResult.Error]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="TextChanged">
+			<body kind="om">
+				<![CDATA[if (Focus)
+	DescriptionResult.InputText = text;]]>
+			</body>
+		</do-on>
+		<designed target="Flip" value="0" ver="5"/>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="FocusChanged">
+			<body kind="om">
+				<![CDATA[if (hasFocus)
+{
+	SelectAll();
+	here.private.lastFocusedEditor = 1;
+}]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="OkButton" display-name="OkButton" uuid="95d2dd84-d731-4cf4-ba1a-e608362d44fa" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
+		<designed target="X" value="80" ver="5"/>
+		<designed target="Y" value="115" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="80" ver="5"/>
+		<designed target="Height" value="25" ver="5"/>
+		<designed target="Text" value="OK" ver="5"/>
+		<designed target="TextAlignment" value="132" ver="5"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+		<designed target="FontColor" value="4278190080" ver="5"/>
+		<designed target="OnClickFontColor" value="4278190080" ver="5"/>
+		<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
+		<designed target="BrushColor" value="4293980400" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<designed target="OnClickBrushColor" value="4288716960" ver="5"/>
+		<designed target="OnClickBrushStyle" value="1" ver="5"/>
+		<designed target="OnHoverBrushColor" value="4294967295" ver="5"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="OnClickPenColor" value="4278190080" ver="5"/>
+		<designed target="OnClickPenStyle" value="1" ver="5"/>
+		<designed target="OnClickPenWidth" value="1" ver="5"/>
+		<designed target="OnHoverPenColor" value="4278190080" ver="5"/>
+		<designed target="OnHoverPenStyle" value="1" ver="5"/>
+		<designed target="OnHoverPenWidth" value="1" ver="5"/>
+		<designed target="Checkable" value="false" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="DisabledFontColor" value="4278190080" ver="5"/>
+		<designed target="DisabledBrushColor" value="4290295218" ver="5"/>
+		<designed target="DisabledBrushStyle" value="1" ver="5"/>
+		<designed target="DisabledPenColor" value="4290295218" ver="5"/>
+		<designed target="DisabledPenStyle" value="1" ver="5"/>
+		<designed target="DisabledPenWidth" value="1" ver="5"/>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[NameResult.Error == ""]]>
+			</body>
+		</do-trace>
+		<designed target="Checked" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseRelease">
+			<body kind="om">
+				<![CDATA[NameResult.Value = NameEdit.Text;
+DescriptionResult.Value = DescriptionEdit.Text;
+OkAction.Invoke();
+Close();]]>
+			</body>
+		</do-on>
+		<designed target="Flip" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="CancelButton" display-name="CancelButton" uuid="6adca823-b21f-455d-8a35-d1a706f6e20a" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
+		<designed target="X" value="170" ver="5"/>
+		<designed target="Y" value="115" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="80" ver="5"/>
+		<designed target="Height" value="25" ver="5"/>
+		<designed target="Text" value="Отмена" ver="5"/>
+		<designed target="TextAlignment" value="132" ver="5"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+		<designed target="FontColor" value="4278190080" ver="5"/>
+		<designed target="OnClickFontColor" value="4278190080" ver="5"/>
+		<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
+		<designed target="BrushColor" value="4293980400" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<designed target="OnClickBrushColor" value="4288716960" ver="5"/>
+		<designed target="OnClickBrushStyle" value="1" ver="5"/>
+		<designed target="OnHoverBrushColor" value="4294967295" ver="5"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="OnClickPenColor" value="4278190080" ver="5"/>
+		<designed target="OnClickPenStyle" value="1" ver="5"/>
+		<designed target="OnClickPenWidth" value="1" ver="5"/>
+		<designed target="OnHoverPenColor" value="4278190080" ver="5"/>
+		<designed target="OnHoverPenStyle" value="1" ver="5"/>
+		<designed target="OnHoverPenWidth" value="1" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Checkable" value="false" ver="5"/>
+		<designed target="DisabledFontColor" value="4278190080" ver="5"/>
+		<designed target="DisabledBrushColor" value="4288716960" ver="5"/>
+		<designed target="DisabledBrushStyle" value="1" ver="5"/>
+		<designed target="DisabledPenColor" value="4288716960" ver="5"/>
+		<designed target="DisabledPenStyle" value="1" ver="5"/>
+		<designed target="DisabledPenWidth" value="1" ver="5"/>
+		<designed target="Checked" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseRelease" form-action="close"/>
+		<designed target="Flip" value="0" ver="5"/>
+	</object>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[UpdateLayout();
+
+NameEdit.Text = NameResult.InputText;
+DescriptionEdit.Text = DescriptionResult.InputText;]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="NameResult" display-name="NameResult" uuid="9a8a2e68-b106-4a4c-ba3b-9906b0318e51" base-type="InputDialogResult" base-type-id="cdcda119-652b-45ed-bfc4-8cc21b98730d" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="DescriptionResult" display-name="DescriptionResult" uuid="666585b1-2622-48af-8982-86eaacda75ba" base-type="InputDialogResult" base-type-id="cdcda119-652b-45ed-bfc4-8cc21b98730d" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="OkAction" display-name="OkAction" uuid="ec878f5c-779f-42f4-ad8e-8bd3123f0fc6" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
+	<do access-modifier="private" name="UpdateLayout" display-name="UpdateLayout" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[right: double = Width - 10;
+
+CancelButton.Y = Height - CancelButton.Height - 10;
+CancelButton.X = right - CancelButton.Width;
+right = CancelButton.X - 10;
+
+OkButton.Y = Height - OkButton.Height - 10;
+OkButton.X = right - OkButton.Width;]]>
+		</body>
+	</do>
+	<designed target="WindowIconPath" value="Security_Icons/RightEdit16.png" ver="5"/>
+	<designed target="Flip" value="0" ver="5"/>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[here.private.pTheme.BackgroundColor]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="PenColor" ver="5">
+		<body>
+			<![CDATA[here.private.pTheme.ForegroundColor]]>
+		</body>
+	</do-trace>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="KeyPress">
+		<body kind="om">
+			<![CDATA[if (event.KeyCode == 82) // Enter
+	OkButton.Click();
+else if (event.KeyCode == 75) // Escape
+	Close();]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="ScreenKeyboardButton" display-name="ScreenKeyboardButton" uuid="338d8874-7a1d-4b50-8ada-a3734e782a48" base-type="ScreenKeyboardButton" base-type-id="e7774fc7-d5aa-4318-b97c-99203dbd1671" ver="5" description="" cardinal="1">
+		<designed target="X" value="5" ver="5"/>
+		<designed target="Y" value="120" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="25" ver="5"/>
+		<designed target="Height" value="25" ver="5"/>
+		<init target="init_Options" ver="5" ref="here.init_ScreenKeyboard"/>
+		<init target="pTheme" ver="5" ref="here.init_Theme"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+			<body kind="om">
+				<![CDATA[here.private.FocusEditor();]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="private" display-name="private" uuid="c05734b9-61ed-4727-8fb8-6626e171a761" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+		<object access-modifier="private" name="pTheme" display-name="pTheme" uuid="03cc0666-cfb5-475d-8456-8bb63816fde3" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
+		<init target="pTheme" ver="5" ref="init_Theme"/>
+		<object access-modifier="private" name="lastFocusedEditor" display-name="lastFocusedEditor" uuid="526f00ba-6162-47c1-88ea-8bc9374ab5d1" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+		<do access-modifier="private" name="FocusEditor" display-name="FocusEditor" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (lastFocusedEditor == 1)
+	DescriptionEdit.Focus = true;
+else
+	NameEdit.Focus = true;]]>
+			</body>
+		</do>
+	</object>
+	<param access-modifier="private" name="init_Theme" display-name="Тема оформления" uuid="b8f210bc-7f04-4622-a072-ee1bbd06e776" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
+	<param access-modifier="private" name="init_ScreenKeyboard" display-name="Вызов экранной клавиатуры" uuid="41f869e8-bd8d-489a-a6e3-701cd9d028e3" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
+	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="WindowActivationChanged">
+		<body kind="om">
+			<![CDATA[if (active)
+	here.private.FocusEditor();]]>
+		</body>
+	</do-on>
+</type>
+

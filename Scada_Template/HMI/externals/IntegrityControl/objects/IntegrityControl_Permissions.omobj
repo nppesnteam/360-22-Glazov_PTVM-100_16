@@ -1,0 +1,90 @@
+<type access-modifier="public" name="IntegrityControl_Permissions" display-name="Разрешения" uuid="eb3be49d-bd73-4656-be47-fb69e31fffb1" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="">
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="859387c5-8cbc-417c-9db7-90d3779c0968" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="Security" display-name="Security" uuid="cbb2bbc1-fe5b-4344-8557-6aae5adb533c" base-type="SecurityContext" base-type-id="d9cb0fff-b70a-4e2d-833d-3f73cf74e0dd" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="CheckFiles" display-name="CheckFiles" uuid="1ef90087-6364-4e91-91f9-2c5cb6e44a18" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" ver="5" description="" cardinal="1">
+			<init target="SecurityContext" ver="5" ref="Security"/>
+			<init target="Application" ver="5" ref="SecurityApplication"/>
+			<init target="Right" ver="5" value="CheckFiles"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[here.CheckFiles.Update();]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="CreateEtalon" display-name="CreateEtalon" uuid="1b786e0d-b503-477e-8bc7-12e6346ddb4d" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" ver="5" description="" cardinal="1">
+			<init target="SecurityContext" ver="5" ref="Security"/>
+			<init target="Application" ver="5" ref="SecurityApplication"/>
+			<init target="Right" ver="5" value="CreateEtalon"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[here.CreateEtalon.Update();]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="FileSystemAccess" display-name="FileSystemAccess" uuid="a9958bbc-5381-4c6a-9dba-b908108dbfc6" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" ver="5" description="" cardinal="1">
+			<init target="SecurityContext" ver="5" ref="Security"/>
+			<init target="Application" ver="5" ref="SecurityApplication"/>
+			<init target="Right" ver="5" value="FileSystemAccess"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[here.FileSystemAccess.Update();]]>
+				</body>
+			</do-on>
+		</object>
+	</object>
+	<object access-modifier="private" name="UseSecurity" display-name="Использовать сервер безопасности для определения прав" uuid="f5f4273a-a28b-45c4-8151-7c8117097d0c" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="oldValue" display-name="oldValue" uuid="613cb5e7-6222-4dcc-91b7-d89e21f889a4" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+		<init target="oldValue" ver="5" value="false"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (oldValue != value)
+{
+	oldValue = value;
+	CheckFiles.Update();
+	CreateEtalon.Update();
+	FileSystemAccess.Update();
+}]]>
+			</body>
+		</do-on>
+	</object>
+	<param access-modifier="private" name="SecurityApplication" display-name="Имя приложения с правами безопасности" uuid="750eec53-8a0b-4d54-a80b-0106508e7396" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description=""/>
+	<init target="UseSecurity" ver="5" value="false"/>
+	<object access-modifier="private" name="CheckFiles" display-name="Проверка файлов" uuid="fb9dddad-8985-4d79-b08c-2b3ccdcbff4c" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+		<do access-modifier="private" name="Update" display-name="Update" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (UseSecurity && Value != Security.CheckFiles.Value)
+{	
+	//Debug.Log("Security.CheckFiles: " + String.ToString(Security.CheckFiles.Value));
+	Value = Security.CheckFiles.Value;
+}]]>
+			</body>
+		</do>
+	</object>
+	<object access-modifier="private" name="CreateEtalon" display-name="Создание эталонных значений" uuid="4bcd425b-c423-4ed4-a80e-8af974207716" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+		<do access-modifier="private" name="Update" display-name="Update" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (UseSecurity && Value != Security.CreateEtalon.Value)
+{	
+	//Debug.Log("Security.CreateEtalon: " + String.ToString(Security.CreateEtalon.Value));
+	Value = Security.CreateEtalon.Value;
+}]]>
+			</body>
+		</do>
+	</object>
+	<init target="SecurityApplication" ver="5" value="IntegrityControl"/>
+	<init target="CheckFiles" ver="5" value="true"/>
+	<init target="CreateEtalon" ver="5" value="true"/>
+	<object access-modifier="private" name="FileSystemAccess" display-name="Доступность файловой системы" uuid="f66563f5-bacb-428b-9683-9fb2035e8dce" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+		<do access-modifier="private" name="Update" display-name="Update" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (UseSecurity && Value != Security.FileSystemAccess.Value)
+{	
+	//Debug.Log("Security.FileSystemAccess: " + String.ToString(Security.FileSystemAccess.Value));
+	Value = Security.FileSystemAccess.Value;
+}]]>
+			</body>
+		</do>
+	</object>
+	<init target="FileSystemAccess" ver="5" value="true"/>
+</type>
+

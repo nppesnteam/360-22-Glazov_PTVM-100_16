@@ -1,0 +1,40 @@
+﻿<type ver="5" uuid="9ca552e5-f496-48ff-b850-84b40e4385b8" name="MainForm" base-type="MainForm" base-type-id="663d20ff-0041-4627-b0b9-e86b3cdc2dad" access-modifier="private" display-name="Среда исполнения">
+  <object ver="5" uuid="8ac25aa8-9de5-42b3-906e-f50f65f2b922" name="OpenMainMenuForm" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" access-modifier="private" display-name="OpenMainMenuForm" description="" cardinal="1">
+    <designed ver="5" target="Enabled" value="true" />
+    <designed ver="5" target="InvokeTrigger" value="false" />
+  </object>
+  <object ver="5" uuid="245d3125-6318-4e0e-ab39-57c27f6ecc7f" name="OpenDiagnForm" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" access-modifier="private" display-name="OpenDiagnForm" description="" cardinal="1">
+    <designed ver="5" target="Enabled" value="true" />
+    <designed ver="5" target="InvokeTrigger" value="false" />
+  </object>
+  <object ver="5" uuid="b8f36645-6d2d-4365-8289-9fe8271ba874" name="OpenDefaultForm" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" access-modifier="private" display-name="OpenDefaultForm" description="" cardinal="1">
+    <designed ver="5" target="Enabled" value="true" />
+    <designed ver="5" target="InvokeTrigger" value="false" />
+  </object>
+  <designed ver="5" target="Scale" value="1" />
+  <designed ver="5" target="Visible" value="true" />
+  <designed ver="5" target="Opacity" value="1" />
+  <designed ver="5" target="Enabled" value="true" />
+  <designed ver="5" target="Width" value="1920" />
+  <designed ver="5" target="Height" value="1080" />
+  <designed ver="5" target="PenColor" value="4278190080" />
+  <designed ver="5" target="PenWidth" value="1" />
+  <designed ver="5" target="BrushStyle" value="1" />
+  <designed ver="5" target="WindowWidth" value="1920" />
+  <designed ver="5" target="WindowHeight" value="1080" />
+  <designed ver="5" target="AlwaysOnTop" value="false" />
+  <designed ver="5" target="WindowSizeMode" value="2" />
+  <designed ver="5" target="BrushColor" value="0xffbfbfbf" />
+  <designed ver="5" target="WindowCaption" value="MainForm" />
+  <designed ver="5" target="ShowWindowCaption" value="false" />
+  <designed ver="5" target="ShowWindowMinimize" value="false" />
+  <designed ver="5" target="ShowWindowMaximize" value="false" />
+  <designed ver="5" target="ShowWindowClose" value="false" />
+  <designed ver="5" target="WindowPosition" value="4" />
+  <init ver="5" target="RefOpenDiagnForm" ref="here.OpenDiagnForm" />
+  <init ver="5" target="RefOpenMenuForm" ref="here.OpenMainMenuForm" />
+  <init ver="5" target="RefOpenDefaultForm" ref="here.OpenDefaultForm" />
+  <do-on ver="5" access-modifier="private" name="HandlerOpenDefaultForm" display-name="HandlerOpenDefaultForm" event="Opened">
+    <body Kind="om"><![CDATA[OpenDefaultForm.Invoke();]]></body>
+  </do-on>
+</type>
