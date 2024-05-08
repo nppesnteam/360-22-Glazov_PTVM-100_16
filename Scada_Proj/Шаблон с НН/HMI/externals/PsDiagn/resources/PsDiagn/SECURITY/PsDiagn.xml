@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<Application xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="PsDiagn" IsSystem="false">
+  <Tokens>
+    <Token Type="Boolean" Name="sOpenExplorer" Description="Открытие HMI.Explorer">
+      <Rights>
+        <Right xsi:type="RightOfBoolean" Id="9ebdfc7f-be48-4c2d-8884-646ba4a58fd3" Allow="false" Deny="false">
+          <Subjects>
+            <Subject>alpha:467b852b-048b-4ff3-bbb0-e8f44bcacd1d</Subject>
+          </Subjects>
+        </Right>
+        <Right xsi:type="RightOfBoolean" Id="ad03b94f-e0d4-45b7-aec8-21b7017eca37" Allow="true" Deny="false">
+          <Subjects>
+            <Subject>alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097</Subject>
+            <Subject>alpha:82b1cb6b-023d-4a4e-8631-eb5c9e629c5e</Subject>
+            <Subject>alpha:de2a8a95-89c8-4289-bd90-b8150d46c0b8</Subject>
+            <Subject>alpha:89fc8986-ee61-45f2-961b-49940409057f</Subject>
+          </Subjects>
+        </Right>
+        <Right xsi:type="RightOfBoolean" Id="df9465ed-6f7e-4a7f-9d78-123e67f6f134" Allow="false" Deny="true">
+          <Subjects>
+            <Subject>alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d</Subject>
+          </Subjects>
+        </Right>
+      </Rights>
+    </Token>
+    <Token Type="Boolean" Name="sOpenIntegrityControl" Description="Открытие HMI.IntegrityControl">
+      <Rights>
+        <Right xsi:type="RightOfBoolean" Id="906c32b1-5f4b-4987-9486-47e5a92e0810" Allow="false" Deny="true">
+          <Subjects>
+            <Subject>alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d</Subject>
+          </Subjects>
+        </Right>
+        <Right xsi:type="RightOfBoolean" Id="b7862c6f-2a73-4db9-bf5c-78937207b8e9" Allow="true" Deny="false">
+          <Subjects>
+            <Subject>alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097</Subject>
+            <Subject>alpha:82b1cb6b-023d-4a4e-8631-eb5c9e629c5e</Subject>
+            <Subject>alpha:de2a8a95-89c8-4289-bd90-b8150d46c0b8</Subject>
+            <Subject>alpha:89fc8986-ee61-45f2-961b-49940409057f</Subject>
+          </Subjects>
+        </Right>
+        <Right xsi:type="RightOfBoolean" Id="e413397e-fcb3-473e-992c-5d269e28065a" Allow="false" Deny="false">
+          <Subjects>
+            <Subject>alpha:467b852b-048b-4ff3-bbb0-e8f44bcacd1d</Subject>
+          </Subjects>
+        </Right>
+      </Rights>
+    </Token>
+    <Token Type="Boolean" Name="sOpenPACTware" Description="Открытие PACTware">
+      <Rights>
+        <Right xsi:type="RightOfBoolean" Id="7844b912-f35c-4c4f-90a3-2182ceb8061f" Allow="true" Deny="false">
+          <Subjects>
+            <Subject>alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097</Subject>
+            <Subject>alpha:de2a8a95-89c8-4289-bd90-b8150d46c0b8</Subject>
+            <Subject>alpha:89fc8986-ee61-45f2-961b-49940409057f</Subject>
+          </Subjects>
+        </Right>
+      </Rights>
+    </Token>
+    <Token Type="Boolean" Name="sOpenSecurity" Description="Открытие HMI.Security">
+      <Rights>
+        <Right xsi:type="RightOfBoolean" Id="67f1cd37-a2bb-414d-9f48-74718b8b8cee" Allow="false" Deny="true">
+          <Subjects>
+            <Subject>alpha:82b1cb6b-023d-4a4e-8631-eb5c9e629c5e</Subject>
+            <Subject>alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d</Subject>
+          </Subjects>
+        </Right>
+        <Right xsi:type="RightOfBoolean" Id="9be3e882-0d58-4e25-a1c5-57a9a1f8eaed" Allow="false" Deny="false">
+          <Subjects>
+            <Subject>alpha:467b852b-048b-4ff3-bbb0-e8f44bcacd1d</Subject>
+          </Subjects>
+        </Right>
+        <Right xsi:type="RightOfBoolean" Id="a2cec9e5-025b-44ef-a6de-a7f44bee4ff2" Allow="true" Deny="false">
+          <Subjects>
+            <Subject>alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097</Subject>
+            <Subject>alpha:de2a8a95-89c8-4289-bd90-b8150d46c0b8</Subject>
+            <Subject>alpha:89fc8986-ee61-45f2-961b-49940409057f</Subject>
+          </Subjects>
+        </Right>
+      </Rights>
+    </Token>
+    <Token Type="Boolean" Name="sOpenStatistics" Description="Открытие Astra.HMI.Statistics">
+      <Rights />
+    </Token>
+    <Token Type="Boolean" Name="sSwitchServer" Description="Переключение резервированной пары серверов">
+      <Rights>
+        <Right xsi:type="RightOfBoolean" Id="d9e0caac-ef3c-4362-8b12-b0537eeede3f" Allow="true" Deny="false">
+          <Subjects>
+            <Subject>alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097</Subject>
+          </Subjects>
+        </Right>
+      </Rights>
+    </Token>
+  </Tokens>
+  <Roles />
+</Application>

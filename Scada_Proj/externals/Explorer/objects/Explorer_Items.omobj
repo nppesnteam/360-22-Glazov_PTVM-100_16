@@ -1,0 +1,135 @@
+<type access-modifier="private" name="Explorer_Items" display-name="Explorer_Items" uuid="6fefb4b5-e6d7-4aa4-bf45-6d6d7e209bc0" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="">
+	<param access-modifier="private" name="init_Source" display-name="init_Source" uuid="09dba77a-28ca-4c79-a768-5079768041be" base-type="Explorer_Source" base-type-id="70c3a093-11e4-4fd6-b778-1230c63eef67" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="10750ee4-fcb5-439a-be0d-515cf9ae9769" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="Item" display-name="Item" uuid="8764c5b7-f754-4a00-b97a-5536efe78873" base-type="ApItem" base-type-id="9bc9fdb8-ccbc-45af-b711-95945c17a630" ver="5" description="" cardinal="5000">
+		<init target="Source" ver="5" ref="init_Source"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnQualityChanged">
+			<body kind="om">
+				<![CDATA[if (Path != "")
+{
+	args: string = GetChangesString(String.ToString(value), "quality");
+	OnChangedArgs.Push(args);
+	//pOnQualityChanged.Invoke();
+	pOnChanges.Invoke();
+}]]>
+			</body>
+		</do-on>
+		<do access-modifier="private" name="GetChangesString" display-name="GetChangesString" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[var args = {
+	'index': Index,
+	'value': value,
+	'dataType': Converter.CanonicalTypeToDataType(CanonicalType),
+	'changeType':  changeType
+};
+
+return JSON.stringify(args);
+
+]]>
+			</body>
+			<param access-modifier="private" name="value" display-name="" uuid="b7bb4a61-4650-4a28-b7ee-3bef5fb30cbf" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<param access-modifier="private" name="changeType" display-name="" uuid="b58db44d-afdd-4123-9e6c-37a9963ec623" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnAdviseStateChanged">
+			<body kind="om">
+				<![CDATA[if (adviseState == 2)
+{
+	args: string = GetChangesString(String.ToString(adviseState), "adviseState");
+	OnChangedArgs.Push(args);
+	//pOnAdviseStateChanged.Invoke();
+	pOnChanges.Invoke();
+}]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="OnTimeStampChanged">
+			<body kind="om">
+				<![CDATA[if (Path != "")
+{
+	args: string = GetChangesString(DateTime.ToString(TimeStamp), "timeStamp");
+	OnChangedArgs.Push(args);
+	//pOnTimeStampChanged.Invoke();
+	pOnChanges.Invoke();
+}]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="OnValueChanged">
+			<body kind="om">
+				<![CDATA[if (Path != "")
+{
+	dataType: string = Converter.CanonicalTypeToDataType(CanonicalType);
+	args: string = GetChangesString(Converter.VariantToString(value, dataType), "value");
+	OnChangedArgs.Push(args);
+	//pOnValueChanged.Invoke();
+	pOnChanges.Invoke();
+}]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="OnDescriptionChanged">
+			<body kind="om">
+				<![CDATA[if (Path != "")
+{
+	args: string = GetChangesString(description, "description");
+	OnChangedArgs.Push(args);
+	//pOnDescriptionChanged.Invoke();
+	pOnChanges.Invoke();
+}]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="OnUnitsChanged">
+			<body kind="om">
+				<![CDATA[if (Path != "")
+{
+	args: string = GetChangesString(units, "units");
+	OnChangedArgs.Push(args);
+	pOnChanges.Invoke();
+}]]>
+			</body>
+		</do-on>
+	</object>
+	<do access-modifier="private" name="Subscribe" display-name="Subscribe" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+		<body kind="om">
+			<![CDATA[for (itemIndex: int4 = 0; itemIndex < Item.Length; itemIndex += 1)
+{
+	if (Item[itemIndex].Path == "")
+	{
+		Item[itemIndex].Path = path;
+		return itemIndex;
+	}
+}
+return -1;]]>
+		</body>
+		<param access-modifier="private" name="path" display-name="" uuid="8e4190f1-2baa-442c-b6c2-50be2f2bb6c4" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="Unsubscribe" display-name="Unsubscribe" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[Item[itemIndex].Path = "";
+]]>
+		</body>
+		<param access-modifier="private" name="itemIndex" display-name="" uuid="e46ad718-927d-4fac-9194-2eb3d1a2e92a" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+	</do>
+	<object access-modifier="private" name="Converter" display-name="Converter" uuid="d3fb92dc-6b18-42d0-8ce0-dc8f099d6402" base-type="Converter" base-type-id="9846118d-6c33-44f8-8ff4-f502280dd5c0" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="OnChangedArgs" display-name="OnChangedArgs" uuid="00dcc435-1fd3-47b5-865c-d3497afba9e7" base-type="EventArgs" base-type-id="98c51173-1835-4905-98f5-c4ffadbbf157" ver="5" description="" cardinal="1">
+		<init target="BufferSize" ver="5" value="5000"/>
+	</object>
+	<object access-modifier="private" name="pOnChanges" display-name="pOnChanges" uuid="d7b0a9c3-11dc-4548-9609-eb9a66ddae63" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1" base-ref="true">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+	</object>
+	<do access-modifier="private" name="SetValue" display-name="SetValue" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<body kind="om">
+			<![CDATA[return Item[itemIndex].TrySetValue(value);]]>
+		</body>
+		<param access-modifier="private" name="itemIndex" display-name="" uuid="10e45ea3-c726-4a40-ac80-38a2cd329ddd" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<param access-modifier="private" name="value" display-name="" uuid="fe04f96e-dc2f-42b9-a3ba-d208ff2329ef" base-type="variant" base-type-id="7d3322c1-a2cf-4732-a957-abd69e3e4b7a" ver="5"/>
+	</do>
+	<do access-modifier="private" name="Clear" display-name="Clear" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[for (i: int4 = 0; i < Item.Length; i += 1)
+{
+	if (Item[i].Path != "")
+		Item[i].Path = "";
+}]]>
+		</body>
+	</do>
+</type>
+

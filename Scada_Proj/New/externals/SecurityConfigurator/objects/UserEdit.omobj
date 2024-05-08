@@ -1,0 +1,2660 @@
+<type access-modifier="private" name="UserEdit" display-name="UserEdit" uuid="8a05ed29-54f1-4d67-aa5a-6085548cc89b" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="850" ver="5"/>
+	<designed target="Height" value="450" ver="5"/>
+	<designed target="PenColor" value="4278190080" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<designed target="WindowX" value="0" ver="5"/>
+	<designed target="WindowY" value="0" ver="5"/>
+	<designed target="WindowWidth" value="850" ver="5"/>
+	<designed target="WindowHeight" value="450" ver="5"/>
+	<designed target="WindowCaption" value="MainForm" ver="5"/>
+	<designed target="ShowWindowCaption" value="true" ver="5"/>
+	<designed target="ShowWindowMinimize" value="true" ver="5"/>
+	<designed target="ShowWindowMaximize" value="true" ver="5"/>
+	<designed target="ShowWindowClose" value="true" ver="5"/>
+	<designed target="AlwaysOnTop" value="false" ver="5"/>
+	<designed target="WindowSizeMode" value="0" ver="5"/>
+	<designed target="WindowBorderStyle" value="1" ver="5"/>
+	<designed target="WindowState" value="0" ver="5"/>
+	<designed target="WindowScalingMode" value="0" ver="5"/>
+	<designed target="MonitorNumber" value="0" ver="5"/>
+	<designed target="WindowPosition" value="0" ver="5"/>
+	<designed target="WindowCloseMode" value="0" ver="5"/>
+	<object access-modifier="private" name="private" display-name="private" uuid="09f5386a-dc17-4880-9e82-678ccd4b46a9" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+		<object access-modifier="private" name="pTheme" display-name="pTheme" uuid="a95223f1-2a15-462d-966f-2b439ff4bd45" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
+		<object access-modifier="private" name="pScreenKeyboard" display-name="pScreenKeyboard" uuid="8f35c77c-052b-44eb-9b3d-a8619ba20a0d" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
+		<object access-modifier="private" name="DialogResult" display-name="DialogResult" uuid="292fd96f-3d11-4428-b7ca-d3bbecabe29a" base-type="DialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" ver="5"/>
+		<object access-modifier="private" name="CreateUser" display-name="CreateUser" uuid="33a12a3b-dd98-48e1-9bdc-b34048e19d34" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value)
+{
+	Commands.DoCreate = false;
+
+	SystemCommands.GoTo.frameCode = SystemCommands.Forms.UserCreate;
+	SystemCommands.GoTo = true;
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="SaveUser" display-name="SaveUser" uuid="65c6bfc0-c272-4434-bc20-d3605cbf45b2" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+			<object access-modifier="private" name="StateNeedSave" display-name="StateNeedSave" uuid="7da7a0ba-a8d5-43ea-ab01-292d9342f8fd" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+					<body kind="om">
+						<![CDATA[SystemCommands.DoSave.CanExecute = value;]]>
+					</body>
+				</do-on>
+			</object>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value) {
+	SystemCommands.DoSave = false;
+	
+	EditableUser.SaveUserData();
+	User.Save();
+	SystemCommands.GoTo.doBlockingControll();
+}]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="StateNeedSave" ver="5">
+				<body>
+					<![CDATA[(EditableUser.modeCreateUser)?(EditableUser.Password.ErrorRect.Error == "" && 
+	EditableUser.PasswordVerify.ErrorRect.Error == "" && 
+	EditableUser.ViewName.ErrorRect.Error == "" &&
+	EditableUser.Login.ErrorRect.Error == "" &&
+	EditableUser.Phone.ErrorRect.Error == "" &&
+	EditableUser.Mail.ErrorRect.Error == "" &&
+	EditableUser.Famil.ErrorRect.Error == "" &&
+	EditableUser.Group.ErrorRect.Error == ""
+):(EditableUser.ViewName.ErrorRect.Error == "" &&
+	EditableUser.Login.ErrorRect.Error == "" &&
+	EditableUser.Phone.ErrorRect.Error == "" &&
+	EditableUser.Mail.ErrorRect.Error == "" &&
+	EditableUser.Famil.ErrorRect.Error == "" &&
+	EditableUser.Group.ErrorRect.Error == "" && 
+	EditableUser.UserIsChanged
+)]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="ChangeUserPassword" display-name="ChangeUserPassword" uuid="9d7d534f-687c-45bd-9e00-6803445d58f8" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+			<object access-modifier="private" name="ShowSetPasswordDialog" display-name="ShowSetPasswordDialog" uuid="95aabe46-cc8f-456e-accd-e1a04c24179a" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="674b4138-8f0d-4024-9b53-705d0d57dad3" base-type="SetPasswordDialog" base-type-id="19cbc0bb-d81b-4a02-b38a-602e70d189f0" ver="5">
+						<init target="ApplyNewPassord" ver="5" ref="OnComplete"/>
+						<init target="pResult" ver="5" ref="ChangePasswordResult"/>
+						<init target="UserDisplayName" ver="5">
+							<expr>
+								<![CDATA[User.DisplayName]]>
+							</expr>
+						</init>
+						<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
+						<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
+					</object>
+				</do-on>
+				<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="08c95296-c6bc-4950-9f63-4c7f45b2f1e5" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+					<designed target="Enabled" value="true" ver="5"/>
+					<designed target="InvokeTrigger" value="false" ver="5"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[if (ChangePasswordResult.Error == "")
+{
+	User.SetPassword(ChangePasswordResult.InputText);
+	UserDataIsChanged = true;
+}]]>
+						</body>
+					</do-on>
+				</object>
+			</object>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value)
+{
+	Commands.DoChangePassword = false;
+	
+	ChangePasswordResult.InputText = "";
+	ShowSetPasswordDialog.Invoke();	
+}]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="ShowComplexityIsModify" display-name="ShowComplexityIsModify" uuid="d87f0efe-a8b0-4e16-b19a-1c70506d12f9" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="51e2ac30-b018-4eff-a218-781657cb7e4a" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="5">
+						<designed target="WindowCaption" value="Задать пароль пользователя" ver="5"/>
+						<init target="Icon" ver="5" value="2"/>
+						<init target="Buttons" ver="5" value="0"/>
+						<init target="Message" ver="5" value="Обнаружено изменение парольной политики пользователя. Для задания пароля сохраните внесённые изменения"/>
+						<init target="OkAction" ver="5" ref="ShowSetPasswordDialog"/>
+						<init target="pTheme" ver="5" ref="here.private.pTheme"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ChangePasswordResult" display-name="ChangePasswordResult" uuid="8c4304dc-92be-42d5-a107-501928d14c96" base-type="InputDialogResult" base-type-id="cdcda119-652b-45ed-bfc4-8cc21b98730d" ver="5" description="" cardinal="1">
+				<do-trace access-modifier="private" target="Error" ver="5">
+					<body>
+						<![CDATA[CheckPassword(InputText)]]>
+					</body>
+				</do-trace>
+			</object>
+		</object>
+		<object access-modifier="private" name="AddUserToGroup" display-name="AddUserToGroup" uuid="3b52b77f-c1cb-42f4-8c33-89d2546f6104" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value) {
+	Commands.DoAddToGroup = false;
+	ShowChangeUserGroupPopup.Invoke();
+}]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="ShowChangeUserGroupPopup" display-name="ShowChangeUserGroupPopup" uuid="4f09d81d-233f-4e60-84f1-fd1d3d78f67f" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-dialog">
+					<object access-modifier="private" uuid="0cddc31e-4a0b-4c49-b94d-adfd9e85f224" base-type="ChangeUserGroup" base-type-id="af7a739b-e65e-4aa0-a684-9d43e247e7b4" ver="5">
+						<init target="NeedDeleteGroup" ver="5" value="false"/>
+						<init target="Result" ver="5" ref="DialogResult"/>
+						<init target="doAction" ver="5" ref="OnComplete"/>
+						<init target="currentUserGroup" ver="5">
+							<expr>
+								<![CDATA[User.GetGroupsList()]]>
+							</expr>
+						</init>
+						<init target="pTheme" ver="5" ref="here.private.pTheme"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="eaea812f-b352-4578-bef3-e38e0e8c9748" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[if (DialogResult.Value !="") {
+	User.AddGroup(DialogResult.Value);
+	
+	EditableUser.CurrentUser_Group = User.GetGroupsList();				//обновить список групп
+	EditableUser.UpdateRightsInTable();											//обновить права
+	UserDataIsChanged = true;
+}
+]]>
+					</body>
+				</do-on>
+			</object>
+		</object>
+		<object access-modifier="private" name="RemoveUserFromGroup" display-name="RemoveUserFromGroup" uuid="4af41cef-79b6-4435-9975-4055961132dd" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value) {
+	Commands.DoRemoveFromGroup = false;
+	ShowChangeUserGroupPopup.Invoke();
+}]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="ShowChangeUserGroupPopup" display-name="ShowChangeUserGroupPopup" uuid="7c0cde46-8338-4779-addb-2052e6e59e68" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-dialog">
+					<object access-modifier="private" uuid="548cf93c-d1f6-4e01-a038-c86a3ff34f4f" base-type="ChangeUserGroup" base-type-id="af7a739b-e65e-4aa0-a684-9d43e247e7b4" ver="5">
+						<init target="NeedDeleteGroup" ver="5" value="true"/>
+						<init target="Result" ver="5" ref="DialogResult"/>
+						<init target="doAction" ver="5" ref="OnComplete"/>
+						<init target="currentUserGroup" ver="5">
+							<expr>
+								<![CDATA[User.GetGroupsList()]]>
+							</expr>
+						</init>
+						<init target="pTheme" ver="5" ref="here.private.pTheme"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="f54fc1a9-ef71-402b-9f20-da52720dc5b5" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[if (DialogResult.Value != ""){
+	User.DeleteGroup(DialogResult.Value);
+	
+	EditableUser.CurrentUser_Group = User.GetGroupsList();				//обновить список групп
+	EditableUser.UpdateRightsInTable();											//обновить права
+	UserDataIsChanged = true;
+}
+]]>
+					</body>
+				</do-on>
+			</object>
+		</object>
+		<do-trace access-modifier="private" target="AddUserToGroup" ver="5">
+			<body>
+				<![CDATA[Commands.DoAddToGroup]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="RemoveUserFromGroup" ver="5">
+			<body>
+				<![CDATA[Commands.DoRemoveFromGroup]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="AddUserRights" display-name="AddUserRights" uuid="dc794578-ad53-4eb1-af4a-38d4f037259f" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+			<object access-modifier="private" name="ShowChangeRightsPopup" display-name="ShowChangeRightsPopup" uuid="15aedc96-ed84-4da4-a414-54b4b9962f04" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-dialog">
+					<object access-modifier="private" uuid="64f4dc7e-f76a-4d96-86bc-59ee429f23db" base-type="ChangeRights" base-type-id="24f489ad-7aec-41a5-b0f7-8ed917e6f052" ver="5">
+						<init target="pSelectedSetRights" ver="5" ref="DialogResult"/>
+						<init target="pApplyChanges" ver="5" ref="OnComplete"/>
+						<init target="Init_Theme" ver="5" ref="here.private.pTheme"/>
+					</object>
+				</do-on>
+			</object>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value) {
+	Commands.DoAddRights = false;
+	ShowChangeRightsPopup.Invoke();
+}]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="f0acdd09-f4b0-4c97-9e31-a82d61a4dc1e" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="javascript">
+						<![CDATA[if (private.DialogResult.Value != "")
+{
+	try
+	{
+		var newUserRight = JSON.parse(private.DialogResult.Value);
+	}
+	catch (error)
+	{
+		var newUserRight= [];
+	}
+	
+	if (newUserRight != "")
+	{
+		for (let i =0; i < newUserRight.length; i++)
+		{
+			User.AddRight(
+			newUserRight[i].AppName,
+			newUserRight[i].TokenName,
+			newUserRight[i].Type,
+			newUserRight[i].TokenValueAllow,
+			newUserRight[i].TokenValueDeny);
+		}
+		UserDataIsChanged = true;
+		EditableUser.UpdateRightsInTable();
+	}
+	private.DialogResult.Value = "";
+}]]>
+					</body>
+				</do-on>
+			</object>
+		</object>
+		<object access-modifier="private" name="RemoveUserRights" display-name="RemoveUserRights" uuid="6b3a735e-30ee-4498-accd-93c54b83dea2" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+			<object access-modifier="private" name="ShowChangeRightsPopup" display-name="ShowChangeRightsPopup" uuid="15556741-d955-4eca-9b98-15bd51c98c53" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-dialog">
+					<object access-modifier="private" uuid="698493f2-0e08-49ed-8879-7b1e130ca239" base-type="ChangeRights" base-type-id="24f489ad-7aec-41a5-b0f7-8ed917e6f052" ver="5">
+						<init target="pSelectedSetRights" ver="5" ref="DialogResult"/>
+						<init target="pApplyChanges" ver="5" ref="OnComplete"/>
+						<init target="CurrentRights" ver="5">
+							<expr>
+								<![CDATA[EditableUser.CurrentRights]]>
+							</expr>
+						</init>
+						<init target="Init_Theme" ver="5" ref="here.private.pTheme"/>
+					</object>
+				</do-on>
+			</object>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[
+if (value) {
+	Commands.DoDeleteRights = false;
+	ShowChangeRightsPopup.Invoke();
+}]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="3b65e980-b31c-4fd1-8266-2e1a5e12a2ac" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="javascript">
+						<![CDATA[if (private.DialogResult.Value !="")
+{
+	try
+	{
+		var deleteUserRight = JSON.parse(private.DialogResult.Value);
+	}
+	catch (error)
+	{
+		var deleteUserRight = [];
+	}
+	if (deleteUserRight !="")
+	{
+		for (let i =0; i < deleteUserRight.length; i++)
+		{
+			User.DeleteRight(
+				deleteUserRight[i].AppName,
+				deleteUserRight[i].TokenName);
+		}
+		UserDataIsChanged = true;
+		EditableUser.UpdateRightsInTable();
+	}
+	private.DialogResult.Value = "";
+}]]>
+					</body>
+				</do-on>
+			</object>
+		</object>
+		<do-trace access-modifier="private" target="AddUserRights" ver="5">
+			<body>
+				<![CDATA[Commands.DoAddRights]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="RemoveUserRights" ver="5">
+			<body>
+				<![CDATA[Commands.DoDeleteRights]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="SaveUser" ver="5">
+			<body>
+				<![CDATA[SystemCommands.DoSave]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="CurrentUserLockState" display-name="CurrentUserLockState" uuid="c1b87e9a-8911-4720-bd8f-3191d62b2afa" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[Commands.DoLock.CanExecute = (LoadAuthorizedUser)?(false):(!value);
+Commands.DoUnlock.CanExecute = (LoadAuthorizedUser)?(false):(value);]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="LoadAuthorizedUser" display-name="LoadAuthorizedUser" uuid="463fb26b-e928-4c72-9c45-d1edcb32b3fd" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+		</object>
+		<object access-modifier="private" name="LockUser" display-name="LockUser" uuid="3b0280f8-62f7-4fe1-9eed-51b0c0df071b" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value)
+{
+	Commands.DoLock = false;
+	if (User.UserID != SecurityContext.CurrentUserId)
+		private.CurrentUserLockState = true;
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="UnlockUser" display-name="UnlockUser" uuid="66864d43-b195-434a-b305-daff4bd51228" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value) {
+	Commands.DoUnlock = false;
+	private.CurrentUserLockState = false;
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="LogoutUser" display-name="LogoutUser" uuid="5dc10ef4-218c-4a02-bb75-47494f2e06bb" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="javascript">
+					<![CDATA[if (value)
+{
+	Commands.DoLogout = false;
+		
+	if (pSettings.DomainNodes == "")
+	{
+		// По умолчанию используем локальный узел
+		SecurityContext.ForceStopUserSession(User.Login, "");
+	}
+	else
+	{
+		for (let currentNode of pSettings.DomainNodes.split(","))
+			SecurityContext.ForceStopUserSession(User.Login, currentNode.trim());
+	}
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="AddRole" display-name="AddRole" uuid="f18f306d-3864-4743-8088-1da1af4b5d0a" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+			<object access-modifier="private" name="ShowChangeRolePopup" display-name="ShowChangeRolePopup" uuid="7c61013a-07f6-423e-9b02-d12fd03fb20c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-dialog">
+					<object access-modifier="private" uuid="7d809147-70a6-4c49-a443-e5fa99ac81ea" base-type="ChangeRoles" base-type-id="53ccfd85-6699-444b-b41f-b5b2c4558248" ver="5">
+						<init target="pSelectedRoles" ver="5" ref="DialogResult"/>
+						<init target="pApplyChanges" ver="5" ref="OnComplete"/>
+						<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="e66ef268-2750-4259-93eb-b7581b088be7" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="javascript">
+						<![CDATA[if (DialogResult.Value !="")
+{
+	User.AddRole(DialogResult.Value);
+	EditableUser.CurrentUser_Roles = User.GetUserRoles();
+	UserDataIsChanged = true;
+	EditableUser.UpdateRightsInTable();	//обновить права
+	DialogResult.Value = "";
+}
+]]>
+					</body>
+				</do-on>
+			</object>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value) {
+	Commands.DoAddRole = false;
+	ShowChangeRolePopup.Invoke();
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="DeleteRole" display-name="DeleteRole" uuid="f77ca85e-515b-4dee-993c-221f95962afe" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+			<object access-modifier="private" name="ShowChangeRolePopup" display-name="ShowChangeRolePopup" uuid="58b73d0c-c378-473f-9488-49067e15b2a3" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-dialog">
+					<object access-modifier="private" uuid="5e285b95-7a5d-43ec-9a2e-d8c3e2042891" base-type="ChangeRoles" base-type-id="53ccfd85-6699-444b-b41f-b5b2c4558248" ver="5">
+						<init target="pSelectedRoles" ver="5" ref="DialogResult"/>
+						<init target="pApplyChanges" ver="5" ref="OnComplete"/>
+						<init target="CurrentRoles" ver="5">
+							<expr>
+								<![CDATA[EditableUser.CurrentUser_Roles]]>
+							</expr>
+						</init>
+						<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="bffd0672-60ba-4047-9cfd-57d2406ae88a" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="javascript">
+						<![CDATA[if (DialogResult.Value !="")
+{
+	User.DeleteRole(DialogResult.Value);
+	EditableUser.CurrentUser_Roles = User.GetUserRoles();
+	UserDataIsChanged = true;
+	EditableUser.UpdateRightsInTable();	//обновить права
+	DialogResult.Value = "";
+}]]>
+					</body>
+				</do-on>
+			</object>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value) {
+	Commands.DoDeleteRole = false;
+	ShowChangeRolePopup.Invoke();
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<do-trace access-modifier="private" target="UnlockUser" ver="5">
+			<body>
+				<![CDATA[Commands.DoUnlock]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="LogoutUser" ver="5">
+			<body>
+				<![CDATA[Commands.DoLogout]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="ChangeUserPassword" ver="5">
+			<body>
+				<![CDATA[Commands.DoChangePassword]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="LockUser" ver="5">
+			<body>
+				<![CDATA[Commands.DoLock]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="AddRole" ver="5">
+			<body>
+				<![CDATA[Commands.DoAddRole]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="DeleteRole" ver="5">
+			<body>
+				<![CDATA[Commands.DoDeleteRole]]>
+			</body>
+		</do-trace>
+		<do access-modifier="private" name="CheckPassword" display-name="CheckPassword" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[code: uint2 = User.ValidatePassword(checkedPassword);
+if (checkedPassword == "" )
+	code |= 1 << 9;
+return GetPasswordErrorDescription(code);]]>
+			</body>
+			<param access-modifier="private" name="checkedPassword" display-name="" uuid="83354f42-dc33-407c-92aa-08452b61b56b" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+		<do access-modifier="private" name="GetPasswordErrorDescription" display-name="GetPasswordErrorDescription" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" form-by-id="true">
+			<body kind="om">
+				<![CDATA[error: string = "";
+
+	if (Math.TestBit(ErrorCode, 1))
+	{
+		if (error != "") error += "\n";
+		error += "Длина пароля не соответствует требуемой";
+	}
+	if (Math.TestBit(ErrorCode, 2))
+	{
+		if (error != "") error += "\n";
+		error += "В пароле не присутствуют цифры";
+	}
+	if (Math.TestBit(ErrorCode, 3))
+	{
+		if (error != "") error += "\n";
+		error += "В пароле не присутствуют символы верхнего регистра";
+	}
+	if (Math.TestBit(ErrorCode, 4))
+	{
+		if (error != "") error += "\n";
+		error += "В пароле не присутствуют символы нижнего регистра";
+	}
+	if (Math.TestBit(ErrorCode, 5))
+	{
+		if (error != "") error += "\n";
+		error += "В пароле не присутствуют специальные символы";
+	}
+	if (Math.TestBit(ErrorCode, 6))
+	{
+		if (error != "") error += "\n";
+		error += "Ошибка при получении прав на сложность пароля для пользователя";
+	}
+	if (Math.TestBit(ErrorCode, 7))
+	{
+		if (error != "") error += "\n";
+		error += "Пароль должен отличаться от предыдущих паролей";
+	}
+	
+	if (Math.TestBit(ErrorCode, 8))
+	{
+		if (error != "") error += "\n";
+		error += "Пароль должен содержать пробелы";
+	}
+	
+		if (Math.TestBit(ErrorCode, 9))
+	{
+		if (error != "") error += "\n";
+		error += "Пароль не может быть пустым";
+	}
+	
+	if (ErrorCode > 0 && error == "") {
+		error = "Не удалось установить пароль (код ошибки: " + String.ToString(ErrorCode) + ")";
+	}
+	
+return error;
+]]>
+			</body>
+			<param access-modifier="private" name="ErrorCode" display-name="" uuid="b3ef5349-9741-4ebf-a256-8fe0ec9742ad" base-type="uint2" base-type-id="ae923ad8-8b75-4813-8121-36efe3cc8c12" ver="5"/>
+		</do>
+		<do access-modifier="private" name="SaveViewSettings" display-name="SaveViewSettings" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[SystemCommands.ViewSettings.Update(SystemCommands.Forms.UserEdit, GetViewSettings());]]>
+			</body>
+		</do>
+		<do-trace access-modifier="private" target="CreateUser" ver="5">
+			<body>
+				<![CDATA[Commands.DoCreate]]>
+			</body>
+		</do-trace>
+		<init target="pTheme" ver="5" ref="init_Theme"/>
+		<init target="pScreenKeyboard" ver="5" ref="init_ScreenKeyboard"/>
+		<object access-modifier="private" name="UserDataIsChanged" display-name="UserDataIsChanged" uuid="9d4b6b29-8d2f-4559-b9a8-ba8d48b86f20" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="Files" display-name="Files" uuid="17f626a6-ec2c-4324-8501-f210f784b4a5" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5" description="" cardinal="1">
+			<designed target="RootPath" value="/" ver="5"/>
+		</object>
+		<do access-modifier="private" name="TryUserRightsExport" display-name="TryUserRightsExport" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+			<body kind="javascript">
+				<![CDATA[try
+{
+	UserRightsTable.Save(filePath, format);
+	return true;
+}
+catch (error)
+{
+	ShowError.message = `Не удалось сохранить права пользователя в файл \n${filePath}\n${error.message}`;
+	ShowError.Invoke();
+	return false;
+}]]>
+			</body>
+			<param access-modifier="private" name="filePath" display-name="" uuid="5d0f94f6-5859-4d09-9949-793bd0dc5fec" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<param access-modifier="private" name="format" display-name="" uuid="b380d3b5-e79c-4782-aa76-14b091a1f7b8" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+	</object>
+	<object access-modifier="private" name="EditableUser" display-name="EditableUser" uuid="3299ab49-35bc-4adc-ae95-7f6e8b7b2b00" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+		<designed target="X" value="2" ver="5"/>
+		<designed target="Y" value="2" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="240" ver="5"/>
+		<designed target="Height" value="446" ver="5"/>
+		<designed target="PenColor" value="0xff000000" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="4278190080" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<object access-modifier="private" name="Login" display-name="Login" uuid="350de018-dd60-489d-b525-4b6181182706" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="247.47928994082841" ver="5"/>
+			<designed target="Height" value="27.005012531328322" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="0" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="Caption" display-name="Caption" uuid="dd0a5a9f-915b-441e-b604-1b3d377fb534" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="100" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="Логин" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="FontColor" value="0xff000000" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[private.pTheme.ForegroundColor]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="ErrorRect" display-name="ErrorRect" uuid="bbf5af91-495e-4d78-8b4b-8cacaea8ebfa" base-type="ErrorFrame" base-type-id="360a528b-50b0-4a9d-a198-5e2f73fe204c" ver="5" description="" cardinal="1">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<do-trace access-modifier="private" target="Error" ver="5">
+					<body>
+						<![CDATA[modeCreateUser || User.loaded ? Validate(Editor.Text) : ""]]>
+					</body>
+				</do-trace>
+			</object>
+			<designed target="Flip" value="0" ver="5"/>
+			<object access-modifier="private" name="Editor" display-name="Editor" uuid="84e9c348-8391-4c31-8e0b-f360a617da21" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="HideInput" value="false" ver="5"/>
+				<designed target="PlaceholderText" value="" ver="5"/>
+				<designed target="ReadOnly" value="false" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<init target="ReadOnly" ver="5" value="false"/>
+				<do-trace access-modifier="private" target="ReadOnly" ver="5">
+					<body>
+						<![CDATA[!pConfigurationAccessValue.Value]]>
+					</body>
+				</do-trace>
+				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="Tooltip" ver="5">
+					<body>
+						<![CDATA[ErrorRect.Error]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="7b5577c6-ddb5-4585-b673-b62b1b7dea24" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+				<designed target="MinWidth" value="0" ver="5"/>
+				<designed target="MinHeight" value="25" ver="5"/>
+				<designed target="MaxWidth" value="16777215" ver="5"/>
+				<designed target="MaxHeight" value="25" ver="5"/>
+			</object>
+			<do access-modifier="private" name="Validate" display-name="Validate" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+				<body kind="om">
+					<![CDATA[trimed: string = String.Trim(login);
+if (trimed == "")
+	return "Логин не может иметь пустое значение";
+
+if (!String.Equals(trimed, User.SourceUserLogin, false))
+{
+	i: int4 = 0;
+	while (i < UserList.Count)
+	{
+		if (String.Equals(trimed, UserList.GetLoginName(TypeConvert.ToUint8(i)), false))
+			return "Совпадение с логином другого пользователя";
+
+		i += 1;
+	}
+}
+
+return "";]]>
+				</body>
+				<param access-modifier="private" name="login" display-name="" uuid="57fba4e5-676f-4f73-bff5-127000f3af04" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			</do>
+		</object>
+		<object access-modifier="private" name="Password" display-name="Password" uuid="e32d597b-a8ad-46ac-a62a-748c73cde74a" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="25" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="250" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="0" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="Caption" display-name="Caption" uuid="b58664c3-6173-42b4-abe9-0eadaee5f9a3" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="100" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="Пароль" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="FontColor" value="0xff000000" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[private.pTheme.ForegroundColor]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="ErrorRect" display-name="ErrorRect" uuid="236bec2f-21a2-4010-97be-833df857fcc9" base-type="ErrorFrame" base-type-id="360a528b-50b0-4a9d-a198-5e2f73fe204c" ver="5" description="" cardinal="1">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+			</object>
+			<object access-modifier="private" name="Editor" display-name="Editor" uuid="96450326-e56a-4b70-af74-12da4875757e" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="" ver="5"/>
+				<designed target="Font" value="Tahoma,6,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="HideInput" value="true" ver="5"/>
+				<designed target="PlaceholderText" value="" ver="5"/>
+				<designed target="ReadOnly" value="false" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<do-trace access-modifier="private" target="Tooltip" ver="5">
+					<body>
+						<![CDATA[ErrorRect.Error]]>
+					</body>
+				</do-trace>
+				<designed target="Flip" value="0" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="TextChanged">
+					<body kind="om">
+						<![CDATA[Check();
+PasswordVerify.Check();]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="FocusChanged">
+					<body kind="om">
+						<![CDATA[Check();]]>
+					</body>
+				</do-on>
+			</object>
+			<designed target="Flip" value="0" ver="5"/>
+			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="5335e01b-ac72-4cbe-acd0-b22a4e985a46" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+				<designed target="MinWidth" value="0" ver="5"/>
+				<designed target="MinHeight" value="25" ver="5"/>
+				<designed target="MaxWidth" value="16777215" ver="5"/>
+				<designed target="MaxHeight" value="25" ver="5"/>
+			</object>
+			<do access-modifier="private" name="Check" display-name="Check" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[// показывать всплывающую подсказку будем только если она изменилась
+error: string = modeCreateUser ? private.CheckPassword(Editor.Text) : "";
+if (ErrorRect.Error != error)
+	ErrorRect.Error = error;]]>
+				</body>
+			</do>
+		</object>
+		<object access-modifier="private" name="PasswordVerify" display-name="PasswordVerify" uuid="511675f9-6486-4902-8293-305fa9bfc016" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="56" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="240" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="0" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="Caption" display-name="Caption" uuid="f1f0b5cc-228c-4f82-a272-4604a0309f05" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="100" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="Подтверждение" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="FontColor" value="0xff000000" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[private.pTheme.ForegroundColor]]>
+					</body>
+				</do-trace>
+			</object>
+			<designed target="Flip" value="0" ver="5"/>
+			<object access-modifier="private" name="ErrorRect" display-name="ErrorRect" uuid="2f5e58fe-2b1f-4659-a49c-fe308ab2dded" base-type="ErrorFrame" base-type-id="360a528b-50b0-4a9d-a198-5e2f73fe204c" ver="5" description="" cardinal="1">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+			</object>
+			<object access-modifier="private" name="Editor" display-name="Editor" uuid="bf4903ed-03a7-48fb-8a20-eca458b16871" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="" ver="5"/>
+				<designed target="Font" value="Tahoma,6,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="HideInput" value="true" ver="5"/>
+				<designed target="PlaceholderText" value="" ver="5"/>
+				<designed target="ReadOnly" value="false" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<do-trace access-modifier="private" target="Tooltip" ver="5">
+					<body>
+						<![CDATA[ErrorRect.Error]]>
+					</body>
+				</do-trace>
+				<designed target="Flip" value="0" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="TextChanged">
+					<body kind="om">
+						<![CDATA[Check();]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="FocusChanged">
+					<body kind="om">
+						<![CDATA[Check();]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="67a0c25f-7b40-4d4a-9200-c8f81e091b58" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+				<designed target="MinWidth" value="0" ver="5"/>
+				<designed target="MinHeight" value="25" ver="5"/>
+				<designed target="MaxWidth" value="16777215" ver="5"/>
+				<designed target="MaxHeight" value="25" ver="5"/>
+			</object>
+			<do access-modifier="private" name="Check" display-name="Check" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[// показывать всплывающую подсказку будем только если она изменилась или пользователь вводит текст
+error: string = modeCreateUser && Password.Editor.Text != Editor.Text ? "Новый пароль и подтверждение пароля не совпадают" : "";
+if (ErrorRect.Error != error || Editor.Focus)
+	ErrorRect.Error = error;]]>
+				</body>
+			</do>
+		</object>
+		<object access-modifier="private" name="Famil" display-name="Famil" uuid="94536a2b-fa23-464a-a927-c32e5c361305" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="75" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="250" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="0" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="Caption" display-name="Caption" uuid="0da382b7-9ab3-49db-884e-ed4320d7776d" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="100" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="Фамилия" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="FontColor" value="0xff000000" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[private.pTheme.ForegroundColor]]>
+					</body>
+				</do-trace>
+			</object>
+			<designed target="Flip" value="0" ver="5"/>
+			<object access-modifier="private" name="ErrorRect" display-name="ErrorRect" uuid="632a1626-b0bd-43b2-b182-d58a6ba1f7db" base-type="ErrorFrame" base-type-id="360a528b-50b0-4a9d-a198-5e2f73fe204c" ver="5" description="" cardinal="1">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<do-trace access-modifier="private" target="Error" ver="5">
+					<body>
+						<![CDATA[(modeCreateUser || User.loaded) && Editor.Text == "" ? "Фамилия не может иметь пустое значение" : ""]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="Editor" display-name="Editor" uuid="764b110c-c4cf-4ab0-b40a-063a59208815" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="HideInput" value="false" ver="5"/>
+				<designed target="PlaceholderText" value="" ver="5"/>
+				<designed target="ReadOnly" value="false" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<do-trace access-modifier="private" target="ReadOnly" ver="5">
+					<body>
+						<![CDATA[!pConfigurationAccessValue.Value]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="Tooltip" ver="5">
+					<body>
+						<![CDATA[ErrorRect.Error]]>
+					</body>
+				</do-trace>
+				<designed target="Flip" value="0" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="TextChanged">
+					<body kind="om">
+						<![CDATA[if (Focus)
+	ChangeFullName();]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="be417f42-b3b2-4d06-8ef2-94f875af62a7" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+				<designed target="MinWidth" value="0" ver="5"/>
+				<designed target="MinHeight" value="25" ver="5"/>
+				<designed target="MaxWidth" value="16777215" ver="5"/>
+				<designed target="MaxHeight" value="25" ver="5"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="Name" display-name="Name" uuid="d312a06a-ff3f-4999-b8da-5a75a530b8b5" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="100" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="250" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="0" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="Caption" display-name="Caption" uuid="87cffe71-6a73-4ca9-b139-9b832a193b67" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="100" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="Имя" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="FontColor" value="0xff000000" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[private.pTheme.ForegroundColor]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="ErrorRect" display-name="ErrorRect" uuid="f50929db-5807-4ba4-a42d-aa3a1bb8b294" base-type="ErrorFrame" base-type-id="360a528b-50b0-4a9d-a198-5e2f73fe204c" ver="5" description="" cardinal="1">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+			</object>
+			<object access-modifier="private" name="Editor" display-name="Editor" uuid="8ed4a5e9-d132-472f-ac45-dfb8acbf395d" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="HideInput" value="false" ver="5"/>
+				<designed target="PlaceholderText" value="" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="TextChanged">
+					<body kind="om">
+						<![CDATA[if (Focus)
+	ChangeFullName();]]>
+					</body>
+				</do-on>
+				<designed target="ReadOnly" value="false" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<do-trace access-modifier="private" target="ReadOnly" ver="5">
+					<body>
+						<![CDATA[!pConfigurationAccessValue.Value]]>
+					</body>
+				</do-trace>
+				<designed target="Flip" value="0" ver="5"/>
+			</object>
+			<designed target="Flip" value="0" ver="5"/>
+			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="48e97f7a-2789-4215-8225-e915d982bb3e" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+				<designed target="MinWidth" value="0" ver="5"/>
+				<designed target="MinHeight" value="25" ver="5"/>
+				<designed target="MaxWidth" value="16777215" ver="5"/>
+				<designed target="MaxHeight" value="25" ver="5"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="Midname" display-name="Midname" uuid="4037828d-d715-4530-864a-aeec139f8093" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="125" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="250" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="0" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="Caption" display-name="Caption" uuid="b2bea14c-6fdc-4263-b984-32203a5ffa99" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="100" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="Отчество" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="FontColor" value="0xff000000" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[private.pTheme.ForegroundColor]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="ErrorRect" display-name="ErrorRect" uuid="2abce053-5289-46ba-88bc-44478038c81c" base-type="ErrorFrame" base-type-id="360a528b-50b0-4a9d-a198-5e2f73fe204c" ver="5" description="" cardinal="1">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+			</object>
+			<object access-modifier="private" name="Editor" display-name="Editor" uuid="7daea228-82e3-46e7-aab5-941ad16376a2" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="HideInput" value="false" ver="5"/>
+				<designed target="PlaceholderText" value="" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="TextChanged">
+					<body kind="om">
+						<![CDATA[if (Focus)
+	ChangeFullName();]]>
+					</body>
+				</do-on>
+				<designed target="ReadOnly" value="false" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<do-trace access-modifier="private" target="ReadOnly" ver="5">
+					<body>
+						<![CDATA[!pConfigurationAccessValue.Value]]>
+					</body>
+				</do-trace>
+				<designed target="Flip" value="0" ver="5"/>
+			</object>
+			<designed target="Flip" value="0" ver="5"/>
+			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="29cf9f1b-3aa6-47f4-9767-bfc7bbc11635" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+				<designed target="MinWidth" value="0" ver="5"/>
+				<designed target="MinHeight" value="25" ver="5"/>
+				<designed target="MaxWidth" value="16777215" ver="5"/>
+				<designed target="MaxHeight" value="25" ver="5"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="ViewName" display-name="ViewName" uuid="de6090c0-b0a1-41bf-8d08-9e93bcd72fe9" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="150" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="250" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="0" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="Caption" display-name="Caption" uuid="f504a452-7dcc-4a43-8380-770e0b56560e" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="100" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="Отображаемое имя" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="FontColor" value="0xff000000" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[private.pTheme.ForegroundColor]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="ErrorRect" display-name="ErrorRect" uuid="5beadbbe-ae4b-4567-b8dd-b89fd64c05d9" base-type="ErrorFrame" base-type-id="360a528b-50b0-4a9d-a198-5e2f73fe204c" ver="5" description="" cardinal="1">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<do-trace access-modifier="private" target="Error" ver="5">
+					<body>
+						<![CDATA[modeCreateUser || User.loaded ? Validate(Editor.Text) : ""]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="Editor" display-name="Editor" uuid="281bf8b9-7a5a-4c7e-ab40-f74ea0498c64" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="HideInput" value="false" ver="5"/>
+				<designed target="PlaceholderText" value="" ver="5"/>
+				<designed target="ReadOnly" value="false" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<do-trace access-modifier="private" target="ReadOnly" ver="5">
+					<body>
+						<![CDATA[!pConfigurationAccessValue.Value]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="Tooltip" ver="5">
+					<body>
+						<![CDATA[ErrorRect.Error]]>
+					</body>
+				</do-trace>
+				<designed target="Flip" value="0" ver="5"/>
+			</object>
+			<designed target="Flip" value="0" ver="5"/>
+			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="b7575ebc-f545-454c-9617-ec05961d7869" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+				<designed target="MinWidth" value="0" ver="5"/>
+				<designed target="MinHeight" value="25" ver="5"/>
+				<designed target="MaxWidth" value="16777215" ver="5"/>
+				<designed target="MaxHeight" value="25" ver="5"/>
+			</object>
+			<do access-modifier="private" name="Validate" display-name="Validate" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+				<body kind="om">
+					<![CDATA[trimed: string = String.Trim(name);
+if (trimed == "")
+	return "Отображаемое имя не может иметь пустое значение";
+
+if (!String.Equals(trimed, User.SourceUserDispalyName, false))
+{
+	i: int4 = 0;
+	while (i < UserList.Count)
+	{
+		if (String.Equals(trimed, UserList.GetDisplayName(TypeConvert.ToUint8(i)), false))
+			return "Повторяющиеся отображаемые имена недопустимы";
+
+		i += 1;
+	}
+}
+
+return "";]]>
+				</body>
+				<param access-modifier="private" name="name" display-name="" uuid="e0edfda5-3062-475e-ab52-3779c0204a4e" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			</do>
+		</object>
+		<object access-modifier="private" name="Position" display-name="Position" uuid="d9d57ca6-fdab-4395-9010-654445376977" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="175" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="250" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="0" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="Caption" display-name="Caption" uuid="8a5d8497-d232-48f8-8566-7dfd4b5c36b0" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="100" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="Должность" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="FontColor" value="0xff000000" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[private.pTheme.ForegroundColor]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="ErrorRect" display-name="ErrorRect" uuid="48dd543e-6a0c-4abf-a5c2-5e7ab127e60b" base-type="ErrorFrame" base-type-id="360a528b-50b0-4a9d-a198-5e2f73fe204c" ver="5" description="" cardinal="1">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+			</object>
+			<object access-modifier="private" name="Editor" display-name="Editor" uuid="e8ab3711-7ab0-4ca7-8e3d-dbf9e9dc7fd4" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="HideInput" value="false" ver="5"/>
+				<designed target="PlaceholderText" value="" ver="5"/>
+				<designed target="ReadOnly" value="false" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<do-trace access-modifier="private" target="ReadOnly" ver="5">
+					<body>
+						<![CDATA[!pConfigurationAccessValue.Value]]>
+					</body>
+				</do-trace>
+				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="Tooltip" ver="5">
+					<body>
+						<![CDATA[ErrorRect.Error]]>
+					</body>
+				</do-trace>
+			</object>
+			<designed target="Flip" value="0" ver="5"/>
+			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="2d89bb36-499f-477a-9804-6b90d88d3d03" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+				<designed target="MinWidth" value="0" ver="5"/>
+				<designed target="MinHeight" value="25" ver="5"/>
+				<designed target="MaxWidth" value="16777215" ver="5"/>
+				<designed target="MaxHeight" value="25" ver="5"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="Department" display-name="Department" uuid="75afdb12-5c16-4bf7-b26c-8ce5c2093885" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="200" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="250" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="0" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="Caption" display-name="Caption" uuid="1641ead7-5780-4097-a199-fe3180b8df0a" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="100" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="Подразделение" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="FontColor" value="0xff000000" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[private.pTheme.ForegroundColor]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="ErrorRect" display-name="ErrorRect" uuid="4e9cf1af-b882-468c-9129-77eebf9d0937" base-type="ErrorFrame" base-type-id="360a528b-50b0-4a9d-a198-5e2f73fe204c" ver="5" description="" cardinal="1">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+			</object>
+			<object access-modifier="private" name="Editor" display-name="Editor" uuid="8f2f8d5b-f78b-4845-912a-67825e93a2c7" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="HideInput" value="false" ver="5"/>
+				<designed target="PlaceholderText" value="" ver="5"/>
+				<designed target="ReadOnly" value="false" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<do-trace access-modifier="private" target="ReadOnly" ver="5">
+					<body>
+						<![CDATA[!pConfigurationAccessValue.Value]]>
+					</body>
+				</do-trace>
+				<designed target="Flip" value="0" ver="5"/>
+			</object>
+			<designed target="Flip" value="0" ver="5"/>
+			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="aeca05a3-45fc-4eef-a9f4-46e125b4139c" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+				<designed target="MinWidth" value="0" ver="5"/>
+				<designed target="MinHeight" value="25" ver="5"/>
+				<designed target="MaxWidth" value="16777215" ver="5"/>
+				<designed target="MaxHeight" value="25" ver="5"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="Mail" display-name="Mail" uuid="69c5ab13-1b79-43aa-a934-274d68722011" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="225" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="250" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="0" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="Caption" display-name="Caption" uuid="c306d3d8-1a5d-48fb-9203-30d1ed6958be" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="100" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="Адрес почты" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="FontColor" value="0xff000000" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[private.pTheme.ForegroundColor]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="ErrorRect" display-name="ErrorRect" uuid="ef1869b5-729f-45e3-9e13-419a71859b7d" base-type="ErrorFrame" base-type-id="360a528b-50b0-4a9d-a198-5e2f73fe204c" ver="5" description="" cardinal="1">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+			</object>
+			<object access-modifier="private" name="Editor" display-name="Editor" uuid="111980e5-a4e1-438b-ae2b-d3df2ed39fed" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="HideInput" value="false" ver="5"/>
+				<designed target="PlaceholderText" value="" ver="5"/>
+				<designed target="ReadOnly" value="false" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<do-trace access-modifier="private" target="ReadOnly" ver="5">
+					<body>
+						<![CDATA[!pConfigurationAccessValue.Value]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="Tooltip" ver="5">
+					<body>
+						<![CDATA[ErrorRect.Error]]>
+					</body>
+				</do-trace>
+				<designed target="Flip" value="0" ver="5"/>
+				<object access-modifier="private" name="InputValidation" display-name="InputValidation" uuid="ca27857b-51f4-4650-be4f-1f08c52c3f20" base-type="RegexValidation" base-type-id="aa199343-4d4b-4a86-ba57-076fd145fe99" ver="5" description="" cardinal="1">
+					<designed target="Input" value="" ver="5"/>
+					<designed target="PartialValidPattern" value="" ver="5"/>
+					<designed target="ValidPattern" value="" ver="5"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ResultChanged">
+						<body kind="om">
+							<![CDATA[ErrorRect.Error = (result == 2 || Text == "")?(""):("Некорректный адрес электронной почты");]]>
+						</body>
+					</do-on>
+					<do-trace access-modifier="private" target="Input" ver="5">
+						<body>
+							<![CDATA[Text]]>
+						</body>
+					</do-trace>
+					<init target="ValidPattern" ver="5" value="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"/>
+				</object>
+			</object>
+			<designed target="Flip" value="0" ver="5"/>
+			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="25f9d1d5-2f80-45b8-b8ab-37e95b2f6f3b" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+				<designed target="MinWidth" value="0" ver="5"/>
+				<designed target="MinHeight" value="25" ver="5"/>
+				<designed target="MaxWidth" value="16777215" ver="5"/>
+				<designed target="MaxHeight" value="25" ver="5"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="Phone" display-name="Phone" uuid="060d8715-04d2-481e-bc3d-318d83768ab1" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="250" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="250" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="0" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="Caption" display-name="Caption" uuid="05ffd108-743c-4bb5-bcda-cb0267bff54d" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="100" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="Телефон" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="FontColor" value="0xff000000" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[private.pTheme.ForegroundColor]]>
+					</body>
+				</do-trace>
+			</object>
+			<designed target="Flip" value="0" ver="5"/>
+			<object access-modifier="private" name="ErrorRect" display-name="ErrorRect" uuid="7457beee-bfe0-425b-a86d-e461127eddc8" base-type="ErrorFrame" base-type-id="360a528b-50b0-4a9d-a198-5e2f73fe204c" ver="5" description="" cardinal="1">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+			</object>
+			<object access-modifier="private" name="Editor" display-name="Editor" uuid="61b31179-ef51-474c-bece-2a7931b004b6" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="HideInput" value="false" ver="5"/>
+				<designed target="PlaceholderText" value="" ver="5"/>
+				<designed target="ReadOnly" value="false" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<do-trace access-modifier="private" target="ReadOnly" ver="5">
+					<body>
+						<![CDATA[!pConfigurationAccessValue.Value]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="Tooltip" ver="5">
+					<body>
+						<![CDATA[ErrorRect.Error]]>
+					</body>
+				</do-trace>
+				<designed target="Flip" value="0" ver="5"/>
+				<object access-modifier="private" name="InputValidation" display-name="InputValidation" uuid="3d74082c-4f11-40b1-bd64-b5e18d1965d7" base-type="RegexValidation" base-type-id="aa199343-4d4b-4a86-ba57-076fd145fe99" ver="5" description="" cardinal="1">
+					<designed target="Input" value="" ver="5"/>
+					<designed target="PartialValidPattern" value="" ver="5"/>
+					<designed target="ValidPattern" value="" ver="5"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ResultChanged">
+						<body kind="om">
+							<![CDATA[ErrorRect.Error = (result == 2 || Text == "")?(""):("Некорректный телефонный номер");]]>
+						</body>
+					</do-on>
+					<do-trace access-modifier="private" target="Input" ver="5">
+						<body>
+							<![CDATA[Text]]>
+						</body>
+					</do-trace>
+					<init target="ValidPattern" ver="5" value="^(\+[0-9][\- ]?)?(\(?\d{3,4}\)?[\- ]?)?[\d\- ]{3,10}$"/>
+				</object>
+			</object>
+			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="85c93dcd-1537-4b6c-8017-dfd44c44685a" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+				<designed target="MinWidth" value="0" ver="5"/>
+				<designed target="MinHeight" value="25" ver="5"/>
+				<designed target="MaxWidth" value="16777215" ver="5"/>
+				<designed target="MaxHeight" value="25" ver="5"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="Comment" display-name="Comment" uuid="e0b35c53-fba8-49b4-8eb9-b771b5fecb1d" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" cardinal="1">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="275" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="250" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="0" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="Caption" display-name="Caption" uuid="8ef3266b-dd1a-4a0f-996d-356bb1fed9b6" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="100" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="Доп. сведения" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="FontColor" value="0xff000000" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[private.pTheme.ForegroundColor]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="ErrorRect" display-name="ErrorRect" uuid="99b787b2-7bfd-4139-b339-490b8212c4b6" base-type="ErrorFrame" base-type-id="360a528b-50b0-4a9d-a198-5e2f73fe204c" ver="5" description="" cardinal="1">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+			</object>
+			<object access-modifier="private" name="Editor" display-name="Editor" uuid="a5468eb7-1bbb-4413-8a48-8242a7c135a9" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="HideInput" value="false" ver="5"/>
+				<designed target="PlaceholderText" value="" ver="5"/>
+				<designed target="ReadOnly" value="false" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<do-trace access-modifier="private" target="ReadOnly" ver="5">
+					<body>
+						<![CDATA[!pConfigurationAccessValue.Value]]>
+					</body>
+				</do-trace>
+				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="Tooltip" ver="5">
+					<body>
+						<![CDATA[ErrorRect.Error]]>
+					</body>
+				</do-trace>
+			</object>
+			<designed target="Flip" value="0" ver="5"/>
+			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="0667127e-d62b-4cf2-9a23-39c7bf806076" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+				<designed target="MinWidth" value="0" ver="5"/>
+				<designed target="MinHeight" value="25" ver="5"/>
+				<designed target="MaxWidth" value="16777215" ver="5"/>
+				<designed target="MaxHeight" value="25" ver="5"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="Group" display-name="Group" uuid="7bd9f68b-31e1-4e20-b3ff-3af3fb2e2048" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="336" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="240" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="0" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="Caption" display-name="Caption" uuid="0344b41e-53fc-4907-b625-89905dc53119" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="96.711023052826036" ver="5"/>
+				<designed target="Height" value="27.005012531328322" ver="5"/>
+				<designed target="Text" value="Группы" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="FontColor" value="0xff000000" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[private.pTheme.ForegroundColor]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="ErrorRect" display-name="ErrorRect" uuid="57be4fa6-45a9-4d04-ae86-767809355169" base-type="ErrorFrame" base-type-id="360a528b-50b0-4a9d-a198-5e2f73fe204c" ver="5" description="" cardinal="1">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<do-trace access-modifier="private" target="Error" ver="5">
+					<body>
+						<![CDATA[pSettings.UserInAtLeastOneGroup && SecurityManager.SystemGroupList != "" && Editor.Text == "" ? "Необходимо добавить группу" : ""]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="Editor" display-name="Editor" uuid="4ed4c635-7b05-4f99-84ff-b2b19c8ae03d" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="HideInput" value="false" ver="5"/>
+				<designed target="PlaceholderText" value="" ver="5"/>
+				<designed target="ReadOnly" value="true" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<do-trace access-modifier="private" target="Tooltip" ver="5">
+					<body>
+						<![CDATA[ErrorRect.Error]]>
+					</body>
+				</do-trace>
+				<designed target="Flip" value="0" ver="5"/>
+			</object>
+			<designed target="Flip" value="0" ver="5"/>
+			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="5aec58b1-27dc-41c2-bbd3-2e3e0e65f1dc" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+				<designed target="MinWidth" value="0" ver="5"/>
+				<designed target="MinHeight" value="25" ver="5"/>
+				<designed target="MaxWidth" value="16777215" ver="5"/>
+				<designed target="MaxHeight" value="25" ver="5"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="Roles" display-name="Roles" uuid="2d3dc7e1-afd7-4c20-bcfc-7b01bfbbabe2" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="325" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="250" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="0" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="Caption" display-name="Caption" uuid="d095c795-ad91-4dba-8a88-ef7e6f85004d" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="100" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="Роли" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="FontColor" value="0xff000000" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[private.pTheme.ForegroundColor]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="ErrorRect" display-name="ErrorRect" uuid="b8782b7c-10e2-47e9-af1a-a420b1065f7f" base-type="ErrorFrame" base-type-id="360a528b-50b0-4a9d-a198-5e2f73fe204c" ver="5" description="" cardinal="1">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+			</object>
+			<object access-modifier="private" name="Editor" display-name="Editor" uuid="de0c5a22-ceb2-4163-98bc-348dc79f902c" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5">
+				<designed target="X" value="100" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Text" value="" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="HideInput" value="false" ver="5"/>
+				<designed target="PlaceholderText" value="" ver="5"/>
+				<designed target="ReadOnly" value="true" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="Tooltip" ver="5">
+					<body>
+						<![CDATA[ErrorRect.Error]]>
+					</body>
+				</do-trace>
+			</object>
+			<designed target="Flip" value="0" ver="5"/>
+			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="bd43ce55-efd6-4132-83db-d7e10a07995f" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+				<designed target="MinWidth" value="0" ver="5"/>
+				<designed target="MinHeight" value="25" ver="5"/>
+				<designed target="MaxWidth" value="16777215" ver="5"/>
+				<designed target="MaxHeight" value="25" ver="5"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="ForceChangePass" display-name="ForceChangePass" uuid="a23443ca-6b74-467a-acb5-765285efcef8" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="350" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="250" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="0" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<do-trace access-modifier="private" target="Enabled" ver="5">
+				<body>
+					<![CDATA[pConfigurationAccessValue.Value]]>
+				</body>
+			</do-trace>
+			<object access-modifier="private" name="Checkbox_1" display-name="Checkbox_1" uuid="da6162ee-d3d3-4d53-ad5e-069836a3eaa9" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="5">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="250" ver="5"/>
+				<designed target="Height" value="30" ver="5"/>
+				<designed target="Text" value="Требовать смены пароля
+при следующем входе в систему" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="0xff000000" ver="5"/>
+				<designed target="State" value="false" ver="5"/>
+				<do-trace access-modifier="private" target="Enabled" ver="5">
+					<body>
+						<![CDATA[pConfigurationAccessValue.Value]]>
+					</body>
+				</do-trace>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<init target="State" ver="5" value="false"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[private.pTheme.ForegroundColor]]>
+					</body>
+				</do-trace>
+				<designed target="Flip" value="0" ver="5"/>
+			</object>
+			<designed target="Flip" value="0" ver="5"/>
+			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="fb7c900d-d2fc-477b-9379-fcbf99764329" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+				<designed target="MinWidth" value="0" ver="5"/>
+				<designed target="MinHeight" value="30" ver="5"/>
+				<designed target="MaxWidth" value="16777215" ver="5"/>
+				<designed target="MaxHeight" value="30" ver="5"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="modeCreateUser" display-name="modeCreateUser" uuid="6e758838-01e9-48ef-b1da-08a6d4f14c88" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+		<object access-modifier="private" name="CurrentUser_Group" display-name="CurrentUser_Group" uuid="567f8ce1-e686-4180-9b8b-24548f3250ee" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="javascript">
+					<![CDATA[//формирование строки с именами назначенных групп
+const separatorChar = ",";
+var groupNameListAsString = "";
+var groupList;
+var userGroupsCount, allGroupsCount;
+
+//разобрать массив групп
+try
+{
+	groupList = JSON.parse(value).data;
+}
+catch (error)
+{
+	groupList = [];
+}
+
+//сформировать строку имен групп, где элементы отсортированы
+userGroupsCount = groupList.length;
+if (userGroupsCount > 0)
+{
+	groupNameListAsString = groupList.map((group) => group.groupName).sort((a, b) => a.toString().toLowerCase() > b.toString().toLowerCase() ? 1 : -1).join(separatorChar);
+}
+
+try
+{
+	allGroupsCount = JSON.parse(SecurityManager.SystemGroupList).data.length;
+}
+catch
+{
+	allGroupsCount = 0;
+}
+
+//вывод имен назначенных групп в текстовое поле
+EditableUser.Group.Editor.Text = groupNameListAsString;
+
+if (!ExportMode)
+{
+	//удалять можно если назначенно более 1 группы
+	Commands.DoRemoveFromGroup.CanExecute = userGroupsCount > 0;
+
+	//добавлять в группу можно если есть еще не назначенные группы и не стоит ограничение UserInOnlyOneGroup
+	Commands.DoAddToGroup.CanExecute = userGroupsCount < allGroupsCount && (userGroupsCount == 0 || !pSettings.UserInOnlyOneGroup);
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<do access-modifier="private" name="ChangeFullName" display-name="ChangeFullName" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[famil: string = Famil.Editor.Text;
+name: string = Name.Editor.Text;
+midname: string = Midname.Editor.Text;
+
+resultName: string = famil;
+if (name != "")
+	resultName = resultName + " " + name;
+	
+if (midname != "")
+	resultName = resultName + " " + midname;
+
+ViewName.Editor.Text = resultName;]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="SaveUserData" display-name="SaveUserData" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[User.Login = String.Trim(Login.Editor.Text);
+User.Surname = String.Trim(Famil.Editor.Text);
+User.Name = String.Trim(Name.Editor.Text);
+User.MidName = String.Trim(Midname.Editor.Text);
+User.DispalyName = String.Trim(ViewName.Editor.Text);
+User.Unit = String.Trim(Department.Editor.Text);
+User.Position = String.Trim(Position.Editor.Text);
+User.Email = String.Trim(Mail.Editor.Text);
+User.Phone = String.Trim(Phone.Editor.Text);
+User.Comment = String.Trim(Comment.Editor);
+User.ForcePassChange = ForceChangePass.Checkbox_1.State;
+User.Disabled = private.CurrentUserLockState;
+if (modeCreateUser) User.SetPassword(Password.Editor.Text);
+]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="SupportDown" display-name="SupportDown" uuid="98db39bf-06d5-4aef-a6ad-08d74e16384f" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="380" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="250" ver="5"/>
+			<designed target="Height" value="1" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="0" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="0fe2dbbf-3b71-4371-aa3c-3e4dcda20e66" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5">
+				<designed target="Weight" value="100" ver="5"/>
+			</object>
+			<object access-modifier="private" name="UserDisable" display-name="UserDisable" uuid="068a0bba-f2c5-4d67-9611-fed85cf85ee7" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="5" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="220" ver="5"/>
+				<designed target="Height" value="20" ver="5"/>
+				<designed target="Text" value="Пользователь заблокирован" ver="5"/>
+				<designed target="Font" value="Tahoma,9,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="FontColor" value="0xffff0000" ver="5"/>
+				<designed target="TextAlignment" value="33" ver="5"/>
+				<do-trace access-modifier="private" target="Visible" ver="5">
+					<body>
+						<![CDATA[Commands.DoUnlock.CanExecute]]>
+					</body>
+				</do-trace>
+				<init target="Visible" ver="5" value="false"/>
+				<designed target="Flip" value="0" ver="5"/>
+			</object>
+			<designed target="Flip" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="CurrentUser_Roles" display-name="CurrentUser_Roles" uuid="eb3925c4-6b55-4acc-93e9-99fb12eb076e" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="javascript">
+					<![CDATA[//обновляем строку назначенных ролей и вычисляем возможность удаление ролей
+const separatorChar = ",";
+var rolesListAsString = "";
+var roles;
+
+//разобрать массив групп
+try
+{
+	roles = JSON.parse(value);
+}
+catch (error)
+{
+	roles = [];
+}
+
+if (roles.length > 0)
+	rolesListAsString = roles.map((role) => role.roleName).sort((a, b) => a.toString().toLowerCase() > b.toString().toLowerCase() ? 1 : -1).join(separatorChar);
+
+EditableUser.Roles.Editor.Text = rolesListAsString;
+
+if (!ExportMode)
+	Commands.DoDeleteRole.CanExecute = (rolesListAsString != "");]]>
+				</body>
+			</do-on>
+		</object>
+		<do access-modifier="private" name="UpdateRightsInTable" display-name="UpdateRightsInTable" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[//группировка прав с доступных приложений
+var appList = JSON.parse(User.GetApplicationsList()).data;
+var rightsArray = [];
+var effectiveRightsArray = [];
+
+if (appList.length > 0)
+{
+	let currentAppRights, currentAppEffRights;
+	for (let app of appList)
+	 {
+	 	let appId = app.appID;
+		currentAppRights = JSON.parse(User.GetRights(appId)).data;
+		if (currentAppRights.length > 0)
+			rightsArray = rightsArray.concat(currentAppRights);
+			
+		currentAppEffRights = JSON.parse(User.GetEffectiveRights(appId)).data;
+		if (currentAppEffRights.length > 0)
+			effectiveRightsArray = effectiveRightsArray.concat(currentAppEffRights);
+	}
+}
+var rightsEntry = {"Rights": rightsArray, "EffectiveRights": effectiveRightsArray};
+
+if (!ExportMode)
+{
+	Commands.DoDeleteRights.CanExecute = (rightsArray.length > 0);
+	
+	if (modeCreateUser.Value)
+		EditableUser.Password.Check();
+
+	CurrentRights = JSON.stringify(rightsArray);
+}
+UserRightsTable.ShowRights(JSON.stringify(rightsEntry));]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="CurrentRights" display-name="CurrentRights" uuid="84ec1edf-1224-4724-82ee-375687ee46ea" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="Margins" display-name="Margins" uuid="da8787ae-cfbb-40c3-91bb-aff3b1832852" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+			<designed target="Top" value="2" ver="5"/>
+			<designed target="Bottom" value="2" ver="5"/>
+			<designed target="Left" value="2" ver="5"/>
+			<designed target="Right" value="3" ver="5"/>
+		</object>
+		<designed target="Flip" value="0" ver="5"/>
+		<object access-modifier="private" name="LinearLayout" display-name="LinearLayout" uuid="87a796eb-7d5c-44a0-aa00-0d38fb45276a" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
+			<designed target="Orientation" value="2" ver="5"/>
+			<designed target="Gap" value="3" ver="5"/>
+		</object>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="1a4954fd-d2d5-4626-9488-4d168c2a5981" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="240" ver="5"/>
+			<designed target="MinHeight" value="0" ver="5"/>
+			<designed target="MaxWidth" value="240" ver="5"/>
+			<designed target="MaxHeight" value="16777215" ver="5"/>
+		</object>
+		<object access-modifier="private" name="UserIsChanged" display-name="UserIsChanged" uuid="8c614720-adc1-453c-bbf4-176c1d8e078f" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+		<do-trace access-modifier="private" target="UserIsChanged" ver="5">
+			<body>
+				<![CDATA[User.Login != String.Trim(Login.Editor.Text) || 
+User.Surname != String.Trim(Famil.Editor.Text) ||
+User.Name != String.Trim(Name.Editor.Text) ||
+User.MidName != String.Trim(Midname.Editor.Text) ||
+User.DispalyName != String.Trim(ViewName.Editor.Text) ||
+User.Position != String.Trim(Position.Editor.Text) ||
+User.Email != String.Trim(Mail.Editor.Text) ||
+User.Unit != String.Trim(Department.Editor.Text) ||
+User.Phone != String.Trim(Phone.Editor.Text) ||
+User.Comment != String.Trim(Comment.Editor.Text) ||
+User.ForcePassChange != ForceChangePass.Checkbox_1.State ||
+User.Disabled != private.CurrentUserLockState ||
+(User.IsChanged && private.UserDataIsChanged)]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="UserRightsTable" display-name="UserRightsTable" uuid="fd36aefc-e58a-4511-9d40-37e01783b4cb" base-type="RightsTable" base-type-id="e141c390-8852-4e53-874f-a5fe9c888efa" ver="5">
+		<designed target="X" value="245" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="605" ver="5"/>
+		<designed target="Height" value="450" ver="5"/>
+		<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="5b8325dc-1e4b-4633-8803-d0b3972de939" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5">
+			<designed target="Weight" value="1000" ver="5"/>
+		</object>
+		<object access-modifier="private" name="ExchangeDialogData" display-name="ExchangeDialogData" uuid="1c9880d6-ab4a-46c6-be4f-69608fa40712" base-type="ChangedRightsResult" base-type-id="3efb0823-a348-4b39-a762-64290867ccb6" ver="5"/>
+		<object access-modifier="private" name="OnViewSettingsChanged" display-name="OnViewSettingsChanged" uuid="6213dc3a-602d-4b83-a199-a19b2a493e90" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[here.private.SaveViewSettings();]]>
+				</body>
+			</do-on>
+		</object>
+		<init target="pViewSettingsChanged" ver="5" ref="OnViewSettingsChanged"/>
+		<object access-modifier="private" name="ChangeRightComplete" display-name="ChangeRightComplete" uuid="f732c5d6-d1f5-4980-b4d6-674d171c97b7" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[if (ExchangeDialogData.GetDataValidation())
+{
+	User.ChangeRight(ExchangeDialogData.App, ExchangeDialogData.Name, ExchangeDialogData.AllowValue, ExchangeDialogData.DenyValue);
+	ExchangeDialogData.ResetParamsValues();
+	here.private.UserDataIsChanged = true;
+	EditableUser.UpdateRightsInTable();
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<init target="pRightValueChanged" ver="5" ref="ChangeRightComplete"/>
+		<init target="init_Theme" ver="5" ref="here.init_Theme"/>
+		<init target="init_ChangedRightsResult" ver="5" ref="ExchangeDialogData"/>
+		<init target="init_ScreenKeyboard" ver="5" ref="here.init_ScreenKeyboard"/>
+		<do-trace access-modifier="private" target="EditingAllowed" ver="5">
+			<body>
+				<![CDATA[pConfigurationAccessValue.Value]]>
+			</body>
+		</do-trace>
+		<init target="ShowEffectiveRigthsColumn" ver="5" value="true"/>
+	</object>
+	<object access-modifier="private" name="LinearLayout" display-name="LinearLayout" uuid="62cf85eb-9967-48c9-bc14-c08e570d6a11" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5">
+		<designed target="Orientation" value="1" ver="5"/>
+		<designed target="Gap" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="34528847-93c9-46e2-8401-3b69ec8154fd" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<object access-modifier="private" name="SecurityContext" display-name="SecurityContext" uuid="b7eeccfa-c95a-46df-bccd-dea40745b457" base-type="SecurityContext" base-type-id="d9cb0fff-b70a-4e2d-833d-3f73cf74e0dd" ver="5"/>
+	<object access-modifier="private" name="SecurityManager" display-name="SecurityManager" uuid="ddd2d426-9c55-415f-adfe-e866eb0d18a2" base-type="SecurityManager" base-type-id="179958e0-f45a-40f3-9668-98e4ea2987da" ver="5">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="RequestGroupListComplete">
+			<body kind="javascript">
+				<![CDATA[SystemGroupList = JSONGroupList;]]>
+			</body>
+		</do-on>
+		<init target="SecurityContext" ver="5" ref="here.SecurityContext"/>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="LastActionError">
+			<body kind="om">
+				<![CDATA[SystemCommands.GoTo.doUnblockingControll();
+ShowError.message = ErrorMessage;
+ShowError.Invoke();]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="SystemGroupList" display-name="SystemGroupList" uuid="91062313-ace8-4d41-bb3e-69ce774c2351" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="RequestGroupListFailed">
+			<body kind="om">
+				<![CDATA[SystemGroupList = "";]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="User" display-name="User" uuid="0a9e853a-5234-4ef4-9b44-a1b1270aa4ee" base-type="SecurityManagerUser" base-type-id="896178de-ae2c-4ff7-918c-3a0035e435ab" ver="5">
+		<designed target="Login" value="" ver="5"/>
+		<designed target="Name" value="" ver="5"/>
+		<designed target="Surname" value="" ver="5"/>
+		<designed target="MidName" value="" ver="5"/>
+		<designed target="DispalyName" value="" ver="5"/>
+		<designed target="Position" value="" ver="5"/>
+		<designed target="Unit" value="" ver="5"/>
+		<designed target="Email" value="" ver="5"/>
+		<designed target="Phone" value="" ver="5"/>
+		<designed target="Comment" value="" ver="5"/>
+		<designed target="ForcePassChange" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="LoadComplete">
+			<body kind="om">
+				<![CDATA[//экспорт таблицы с правами пользователя
+if (ExportMode)
+{
+	format: string = SystemCommands.DoExportToFile.GetFileExtensionAsString(SystemCommands.DoExportToFile.FileType);
+	fileName: string = String.Concat(String.Concat(DisplayName, "."), format);
+	filePath: string = private.Files.ToNative(private.Files.AbsolutePath(private.Files.CombinePath(SystemCommands.DoExportToFile.ExportPath, fileName)));
+	EditableUser.UpdateRightsInTable();
+	
+	//пробуем сохранить таблицу прав
+	if (private.TryUserRightsExport(filePath, format))
+		pExportComplete.Invoke();
+	else
+		pExportError.Invoke();
+	return;
+}
+
+//Debug.Log("Пользователь " + Login + " загружен");
+loaded = true;
+
+//Обновляем зачения в полях
+ShowData();
+
+/* для того, что бы не выполнять обновление UserList, необходимое для проверки уникальности Login и DispalyName изменяемого пользователя со списокои существующих,
+сохраним Login и DispalyName, при загрузке пользователя в отдельные переменные
+используется в обработчиках элементов EditableUser.Login.Editor.InputValidator_1 и EditableUser.ViewName.Editor 
+такая манипуляция выполняется для того, что бы после сохранения (событие SaveComplete) у User, не выполнять асинхронный процесс обновления списка пользователей
+*/
+SourceUserLogin = Login;
+SourceUserDispalyName = DispalyName;
+
+here.private.CurrentUserLockState = Disabled;
+here.private.CurrentUserLockState.LoadAuthorizedUser = (UserID == SecurityContext.CurrentUserId);
+
+Commands.DoLogout.CanExecute = (UserID != SecurityContext.CurrentUserId);
+SystemCommands.GoTo.doUnblockingControll();]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="SaveComplete">
+			<body kind="om">
+				<![CDATA[//Debug.Log("Пользователь " + Login + " сохранен");
+
+SystemCommands.GoTo.doUnblockingControll();
+private.SaveUser.StateNeedSave = false;
+
+if (SystemCommands.GoTo.frameCode == SystemCommands.Forms.UserCreate)
+{
+	SystemCommands.GoTo.sendData = UserID;
+	SystemCommands.GoTo.frameCode = SystemCommands.Forms.UserEdit;
+	SystemCommands.GoTo = true;
+	
+}
+else if (SystemCommands.GoTo.frameCode == SystemCommands.Forms.UserEdit)
+{
+	ShowData();
+}
+else
+{
+	SystemCommands.GoTo = true;
+}]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="SaveFailed">
+			<body kind="om">
+				<![CDATA[ShowError.message = GetErrorDescriptionByCode(FailReasonCode);
+ShowError.Invoke();
+
+SystemCommands.GoTo.doUnblockingControll();]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="LoadFailed">
+			<body kind="om">
+				<![CDATA[SystemCommands.GoTo.doUnblockingControll();
+
+if (ExportMode)
+	pExportError.Invoke();
+
+ShowError.message = GetErrorDescriptionByCode(FailReasonCode);
+ShowError.Invoke();]]>
+			</body>
+		</do-on>
+		<designed target="Disabled" value="false" ver="5"/>
+		<object access-modifier="private" name="loaded" display-name="loaded" uuid="2d588cd1-73a3-4e07-b1a7-2dd92518ef59" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="SourceUserLogin" display-name="SourceUserLogin" uuid="6d3dc6bd-cabe-4ae8-9b1a-a0d8df518fb6" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<object access-modifier="private" name="SourceUserDispalyName" display-name="SourceUserDispalyName" uuid="8a063f16-5997-4104-893d-e38b1fffbc2e" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<init target="SecurityManager" ver="5" ref="here.SecurityManager"/>
+		<do access-modifier="private" name="ShowData" display-name="ShowData" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[EditableUser.Login.Editor.Text = Login;
+EditableUser.Famil.Editor.Text = Surname;
+EditableUser.Name.Editor.Text = Name;
+EditableUser.Midname.Editor.Text = MidName;
+EditableUser.ViewName.Editor.Text = DispalyName;
+EditableUser.Department.Editor.Text = Unit;
+EditableUser.Mail.Editor.Text = Email;
+EditableUser.Phone.Editor.Text = Phone;
+EditableUser.Comment.Editor.Text = Comment;
+EditableUser.Position.Editor.Text = Position;
+EditableUser.ForceChangePass.Checkbox_1.State = ForcePassChange;
+
+/* для того, что бы не выполнять обновление UserList, необходимое для проверки уникальности Login и DispalyName изменяемого пользователя со списокои существующих,
+сохраним Login и DispalyName, при загрузке пользователя в отдельные переменные
+используется в обработчиках элементов EditableUser.Login.Editor.InputValidator_1 и EditableUser.ViewName.Editor 
+такая манипуляция выполняется для того, что бы после сохранения (событие SaveComplete) у User, не выполнять асинхронный процесс обновления списка пользователей
+*/
+//SourceUserLogin = Login;
+//SourceUserDispalyName = DispalyName;
+								
+EditableUser.CurrentUser_Group = GetGroupsList();				//обновить группы
+EditableUser.CurrentUser_Roles = GetUserRoles();				//обновить роли
+EditableUser.UpdateRightsInTable();									//обновить права]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="GetUserRoles" display-name="GetUserRoles" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[//формируем массив назначенных ролей
+try
+{
+	var appList = JSON.parse(GetApplicationsList()).data;
+	
+	if (appList == 0)
+		return "";
+}
+catch
+{
+	return "";
+}
+
+var rolesData = [];
+
+for (let app of appList.map((app) => app.appID))
+{
+	let roleList = JSON.parse(GetRoles(app)).data;
+	if (roleList.length > 0)
+	{
+		//к каждой роле добавляем поле с именем приложения
+		roleList.forEach((role) => 
+		{
+			role.appId = app;
+			rolesData.push(role);
+		});
+	}
+}
+
+return (rolesData.length > 0)?(JSON.stringify(rolesData)):("");]]>
+			</body>
+		</do>
+	</object>
+	<object access-modifier="private" name="UserList" display-name="UserList" uuid="6d8e47f6-096b-4bf7-ac45-32a739c7e9e9" base-type="UserList" base-type-id="7d9c142e-8718-4caa-82be-60ea2ec65981" ver="5">
+		<init target="SecurityContext" ver="5" ref="here.SecurityContext"/>
+	</object>
+	<object access-modifier="private" name="ShowError" display-name="ShowError" uuid="9758ba43-c385-42f3-b998-d1a67e7e419a" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+			<object access-modifier="private" uuid="f8b46ff5-6e41-499e-8271-3de5d5b738c6" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="5">
+				<init target="Message" ver="5" ref="message"/>
+				<init target="Buttons" ver="5" value="0"/>
+				<init target="Icon" ver="5" value="3"/>
+				<designed target="WindowCaption" value="Ошибка" ver="5"/>
+				<init target="pTheme" ver="5" ref="here.private.pTheme"/>
+			</object>
+		</do-on>
+		<object access-modifier="private" name="title" display-name="title" uuid="01752bac-3c7c-4a7d-b50f-8c47217a1fbe" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="message" display-name="message" uuid="2c71dca7-59f0-4e29-94c0-09d88cf1e42c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</object>
+	<object access-modifier="private" name="UserId" display-name="UserId" uuid="f3b58c33-6aa5-4c2d-84af-b595f0e59286" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	<object access-modifier="private" name="ExportMode" display-name="Выполнить экспорт прав пользователя" uuid="fb9535a3-075a-458c-80fb-f093987d157b" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="pExportComplete" display-name="pExportComplete" uuid="c8b8e8cb-eeec-4122-a3d2-8a934c421d60" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="pExportError" display-name="pExportError" uuid="154407fb-ed1b-4c66-9b75-ac3150a767e5" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="pSettings" display-name="pSettings" uuid="1226d79e-4906-4069-a134-3209d1d4adc6" base-type="SecurityConfigurator_Settings" base-type-id="a7c582fd-25fb-4cc3-8522-3166d1a63de6" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="Commands" display-name="Commands" uuid="e437459e-6091-4753-bba4-83b7bf9273a3" base-type="UserCommands" base-type-id="91ff024c-1b48-4ec4-852f-40d7e1879ef3" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="SystemCommands" display-name="SystemCommands" uuid="cae0697f-ca04-4ece-b660-9366ed612868" base-type="SystemCommands" base-type-id="0b754dab-38c6-43db-a050-37201965421c" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="pConfigurationAccessValue" display-name="pConfigurationAccessValue" uuid="d034f808-20a2-4615-bd82-3b6f06cb983b" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="pViewConfigurationValue" display-name="pViewConfigurationValue" uuid="82b31921-b078-488b-953b-27478e585da0" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" base-const="true" base-ref="true" ver="5" description=""/>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Closed">
+		<body kind="om">
+			<![CDATA[SystemCommands.DoSave.CanExecute = false;
+
+]]>
+		</body>
+	</do-on>
+	<designed target="WindowIconPath" value="" ver="5"/>
+	<do access-modifier="private" name="UpdateView" display-name="UpdateView" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[
+var content = JSON.parse(settings);
+
+if (content.Layout != undefined){
+	var layout = content.Layout;
+	UserRightsTable.LayoutWeight.Weight = layout.RightsTable;
+}
+
+if (content.RightsTable != undefined)
+	UserRightsTable.UpdateView(JSON.stringify(content.RightsTable));
+]]>
+		</body>
+		<param access-modifier="private" name="settings" display-name="" uuid="37bcd564-36af-45a9-8681-cc7807815d17" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="GetViewSettings" display-name="GetViewSettings" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="javascript">
+			<![CDATA[
+var settings = 
+	{
+		"Layout" : {
+			"EditableUser": EditableUser.Width,						//сохряняем для обратной совместимости
+			"RightsTable": UserRightsTable.LayoutWeight.Weight
+		},
+		"RightsTable" : JSON.parse(UserRightsTable.GetViewSettings())
+		
+	};
+
+
+
+return JSON.stringify(settings);]]>
+		</body>
+	</do>
+	<designed target="Flip" value="0" ver="5"/>
+	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="WindowSizeChanged">
+		<body kind="om">
+			<![CDATA[Width = WindowWidth;
+Height = WindowHeight;]]>
+		</body>
+	</do-on>
+	<param access-modifier="private" name="init_Theme" display-name="Тема оформления" uuid="f7bb9468-4b28-4e03-a1ba-14250f60d3fa" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[private.pTheme.BackgroundColor]]>
+		</body>
+	</do-trace>
+	<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="AboutToOpen">
+		<body kind="om">
+			<![CDATA[UserList.BeginUpdate();
+SecurityManager.RequestGroupList();
+UpdateView(SystemCommands.ViewSettings.Data[SystemCommands.Forms.UserEdit]);
+
+if (UserId == "")
+{
+	//создание 
+	EditableUser.modeCreateUser = true;
+	User.New();
+	UserId = User.UserID;
+	EditableUser.Password.Check();
+	
+	Commands.DoAddRights.CanExecute = true;
+	Commands.DoDeleteRights.CanExecute = true;
+	Commands.DoAddToGroup.CanExecute = true;
+	Commands.DoRemoveFromGroup.CanExecute = false;
+	Commands.DoLock.CanExecute = false;
+	Commands.DoUnlock.CanExecute = false;
+	Commands.DoLogout.CanExecute = false;
+	Commands.DoChangePassword.CanExecute = false;
+	Commands.DoAddRole.CanExecute = true;
+	Commands.DoDeleteRole.CanExecute = false;
+} 
+else
+{	
+	//редактирование
+	EditableUser.modeCreateUser = false;
+	User.Load(UserId);
+	SystemCommands.GoTo.doBlockingControll();
+	
+	//в режиме экспортирования
+	if (ExportMode)
+		return;
+	
+	Commands.DoAddRights.CanExecute = true;
+	Commands.DoDeleteRights.CanExecute = true;
+	Commands.DoChangePassword.CanExecute = true;
+	Commands.DoLogout.CanExecute = false;
+	Commands.DoAddRole.CanExecute = true;
+	Commands.DoDeleteRole.CanExecute = false;
+	Commands.DoCreate.CanExecute = true;
+}
+
+EditableUser.Password.Visible = EditableUser.modeCreateUser;
+EditableUser.PasswordVerify.Visible = EditableUser.modeCreateUser;]]>
+		</body>
+	</do-on>
+	<param access-modifier="private" name="init_ScreenKeyboard" display-name="Вызов экранной клавиатуры" uuid="e0254a7c-b598-4ab2-8021-72ba56da88a6" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
+</type>
+

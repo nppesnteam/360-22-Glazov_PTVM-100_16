@@ -1,0 +1,55 @@
+<type access-modifier="private" name="MainForm" display-name="MainForm" uuid="c9031275-781f-4d3e-89ac-5b818bd03b61" base-type="MainForm" base-type-id="663d20ff-0041-4627-b0b9-e86b3cdc2dad" ver="5" description="">
+	<designed target="WindowCaption" value="Главная форма" ver="5"/>
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Width" value="1920" ver="5"/>
+	<designed target="Height" value="1080" ver="5"/>
+	<init target="CommentAckEn" ver="5" value="false"/>
+	<designed target="WindowCloseMode" value="1" ver="5"/>
+	<do-on access-modifier="private" name="HandlerOpenDefaultForm" display-name="HandlerOpenDefaultForm" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[OpenDefaultForm.Invoke();]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="OpenMainMenuForm" display-name="OpenMainMenuForm" uuid="e52145f1-158a-4136-b995-508a08397353" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+	</object>
+	<object access-modifier="private" name="OpenDiagnForm" display-name="OpenDiagnForm" uuid="99ad4be0-4351-45a5-8e2d-a0d779cab059" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+	</object>
+	<object access-modifier="private" name="OpenDefaultForm" display-name="OpenDefaultForm" uuid="7f378268-f48e-4fd6-b0bc-8c13e307774a" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" frame-link="here.MainFrame" form-action="open-in-frame" form-by-id="false">
+			<object access-modifier="private" uuid="89e64170-02a6-4606-948b-befa927eb871" base-type="Общая мнемосхема" base-type-id="2ac2b026-7ae7-4527-bd73-4c80be0db497" ver="5">
+				<designed target="WindowCaption" value="Общая мнемосхема" ver="5"/>
+				<init target="refMainForm" ver="5" ref="here"/>
+				<init target="refMain" ver="5" ref="here"/>
+			</object>
+		</do-on>
+	</object>
+	<init target="RefOpenDiagnForm" ver="5" ref="OpenDiagnForm"/>
+	<init target="RefOpenMenuForm" ver="5" ref="OpenMenuForm"/>
+	<init target="RefOpenDefaultForm" ver="5" ref="OpenDefaultForm"/>
+	<object access-modifier="private" name="OpenGroup" display-name="OpenGroup" uuid="9a10a6a4-7a59-46fc-92ef-1324fd46cc18" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" frame-link="MainFrame" form-action="open-in-frame" form-by-id="false">
+			<object access-modifier="private" uuid="88978cb1-7e9c-4112-9c2d-619b15165f63" base-type="Растопочная группа" base-type-id="d3f1f963-b301-412f-98d0-b5913d770cf5" ver="5"/>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="CloseApp" display-name="CloseApp" uuid="8324ca15-dac4-4a7f-8bd9-3c9afbe24c01" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-dialog">
+			<object access-modifier="private" uuid="c776a8b1-63fc-4e69-8486-2ade90265ebc" base-type="Диалог закрытия" base-type-id="c1ad94bc-6700-4cc2-a3fa-56946e080ae0" ver="5">
+				<designed target="Flip" value="0" ver="5"/>
+				<designed target="WindowIconPath" value="" ver="5"/>
+			</object>
+		</do-on>
+	</object>
+</type>
+

@@ -1,0 +1,1146 @@
+<type access-modifier="public" name="IntegrityControl" display-name="IntegrityControl" uuid="5e8b4ced-3361-4255-ad0a-541497b0ad11" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<object access-modifier="private" name="private" display-name="private" uuid="77459b8e-6157-4f51-8b72-67aa1752a247" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+		<do access-modifier="private" name="Close" display-name="Close" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[View.RemoveChildren("");
+
+Information.EtalonDateCreated = "";
+Information.EtalonNameCreator = "";
+Information.LastCheckData = "";
+
+Statistic.all = -1;
+Statistic.violations = 0;
+Statistic.warnings = 0;
+Statistic.errors = 0;
+
+Status = "";
+Error = "";]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="GetLayoutFilePath" display-name="GetLayoutFilePath" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[folderPath: string = unit.ProductInfo.GetUserDataFolder();
+return Files.CombinePath(folderPath, "layout.json");]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="ExportView" display-name="ExportView" uuid="84c5a9a3-c104-4e38-807e-0f173e5b6bb4" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="5" description="" cardinal="1">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Width" value="800" ver="5"/>
+			<designed target="Height" value="250" ver="5"/>
+			<designed target="BackgroundColor" value="0xffffffff" ver="5"/>
+			<designed target="FrameColor" value="0xff808080" ver="5"/>
+			<designed target="GridColor" value="0xffc0c0c0" ver="5"/>
+			<designed target="HeaderHeight" value="25" ver="5"/>
+			<designed target="HeaderVisible" value="true" ver="5"/>
+			<designed target="RowHeight" value="25" ver="5"/>
+			<designed target="RowOrder" value="0" ver="5"/>
+			<designed target="SelectionBehavior" value="0" ver="5"/>
+			<designed target="SelectionMode" value="3" ver="5"/>
+			<designed target="SelectionOverlayEnabled" value="true" ver="5"/>
+			<designed target="LatestRowTracking" value="false" ver="5"/>
+			<designed target="DelayedSortingEnabled" value="false" ver="5"/>
+			<designed target="HorizontalScrollMode" value="0" ver="5"/>
+			<designed target="VerticalScrollMode" value="0" ver="5"/>
+			<designed target="HorizontalScrollBarPolicy" value="0" ver="5"/>
+			<designed target="VerticalScrollBarPolicy" value="0" ver="5"/>
+			<object access-modifier="private" name="serialNumber" display-name="serialNumber" uuid="b8db2889-4464-4fe3-b3a3-6e56c3b4f8dd" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="5" description="" cardinal="1">
+				<designed target="Title" value="Номер" ver="5"/>
+				<designed target="Description" value="" ver="5"/>
+				<designed target="Id" value="serialNumber" ver="5"/>
+				<designed target="ColumnOwnId" value="" ver="5"/>
+				<designed target="BackgroundColor" value="0xffffffff" ver="5"/>
+				<designed target="ForegroundColor" value="0xff000000" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="TextAlignment" value="132" ver="5"/>
+				<designed target="TitleBackgroundColor" value="0xfff0f0f0" ver="5"/>
+				<designed target="TitleForegroundColor" value="0xff000000" ver="5"/>
+				<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="TitleTextAlignment" value="132" ver="5"/>
+				<designed target="Width" value="50" ver="5"/>
+				<designed target="WidthResizeMode" value="0" ver="5"/>
+				<designed target="Emptiable" value="true" ver="5"/>
+				<designed target="Hidden" value="false" ver="5"/>
+				<designed target="NumberFormat" value="%d" ver="5"/>
+				<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="5"/>
+				<designed target="JsonFilter" value="" ver="5"/>
+				<designed target="SortingEnabled" value="false" ver="5"/>
+				<designed target="SortOrder" value="0" ver="5"/>
+				<designed target="SortPriority" value="0" ver="5"/>
+				<designed target="SortMode" value="0" ver="5"/>
+				<designed target="WordWrap" value="false" ver="5"/>
+			</object>
+			<object access-modifier="private" name="catalog" display-name="catalog" uuid="5e8344b7-ac20-46be-a443-86b2821160b0" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="5" description="" cardinal="1">
+				<designed target="Title" value="Каталог" ver="5"/>
+				<designed target="Description" value="" ver="5"/>
+				<designed target="Id" value="catalog" ver="5"/>
+				<designed target="ColumnOwnId" value="" ver="5"/>
+				<designed target="BackgroundColor" value="0xffffffff" ver="5"/>
+				<designed target="ForegroundColor" value="0xff000000" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="TitleBackgroundColor" value="0xfff0f0f0" ver="5"/>
+				<designed target="TitleForegroundColor" value="0xff000000" ver="5"/>
+				<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="TitleTextAlignment" value="132" ver="5"/>
+				<designed target="Width" value="150" ver="5"/>
+				<designed target="WidthResizeMode" value="0" ver="5"/>
+				<designed target="Emptiable" value="true" ver="5"/>
+				<designed target="Hidden" value="false" ver="5"/>
+				<designed target="NumberFormat" value="%g" ver="5"/>
+				<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="5"/>
+				<designed target="JsonFilter" value="" ver="5"/>
+				<designed target="SortingEnabled" value="false" ver="5"/>
+				<designed target="SortOrder" value="0" ver="5"/>
+				<designed target="SortPriority" value="0" ver="5"/>
+				<designed target="SortMode" value="0" ver="5"/>
+				<designed target="WordWrap" value="false" ver="5"/>
+			</object>
+			<object access-modifier="private" name="file" display-name="file" uuid="ebf18e1a-ee63-40ad-a382-262272521973" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="5" description="" cardinal="1">
+				<designed target="Title" value="Файл и расширение" ver="5"/>
+				<designed target="Description" value="" ver="5"/>
+				<designed target="Id" value="file" ver="5"/>
+				<designed target="ColumnOwnId" value="" ver="5"/>
+				<designed target="BackgroundColor" value="0xffffffff" ver="5"/>
+				<designed target="ForegroundColor" value="0xff000000" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="TitleBackgroundColor" value="0xfff0f0f0" ver="5"/>
+				<designed target="TitleForegroundColor" value="0xff000000" ver="5"/>
+				<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="TitleTextAlignment" value="132" ver="5"/>
+				<designed target="Width" value="150" ver="5"/>
+				<designed target="WidthResizeMode" value="0" ver="5"/>
+				<designed target="Emptiable" value="true" ver="5"/>
+				<designed target="Hidden" value="false" ver="5"/>
+				<designed target="NumberFormat" value="%g" ver="5"/>
+				<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="5"/>
+				<designed target="JsonFilter" value="" ver="5"/>
+				<designed target="SortingEnabled" value="false" ver="5"/>
+				<designed target="SortOrder" value="0" ver="5"/>
+				<designed target="SortPriority" value="0" ver="5"/>
+				<designed target="SortMode" value="0" ver="5"/>
+				<designed target="WordWrap" value="false" ver="5"/>
+			</object>
+			<object access-modifier="private" name="checksumEtalon" display-name="checksumEtalon" uuid="f5bf7aef-920c-4ba3-8f0d-b7542bb90fc2" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="5" description="" cardinal="1">
+				<designed target="Title" value="Эталонная контрольная сумма" ver="5"/>
+				<designed target="Description" value="" ver="5"/>
+				<designed target="Id" value="checksumEtalon" ver="5"/>
+				<designed target="ColumnOwnId" value="" ver="5"/>
+				<designed target="BackgroundColor" value="0xffffffff" ver="5"/>
+				<designed target="ForegroundColor" value="0xff000000" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="TitleBackgroundColor" value="0xfff0f0f0" ver="5"/>
+				<designed target="TitleForegroundColor" value="0xff000000" ver="5"/>
+				<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="TitleTextAlignment" value="132" ver="5"/>
+				<designed target="Width" value="200" ver="5"/>
+				<designed target="WidthResizeMode" value="0" ver="5"/>
+				<designed target="Emptiable" value="true" ver="5"/>
+				<designed target="Hidden" value="false" ver="5"/>
+				<designed target="NumberFormat" value="%g" ver="5"/>
+				<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="5"/>
+				<designed target="JsonFilter" value="" ver="5"/>
+				<designed target="SortingEnabled" value="false" ver="5"/>
+				<designed target="SortOrder" value="0" ver="5"/>
+				<designed target="SortPriority" value="0" ver="5"/>
+				<designed target="SortMode" value="0" ver="5"/>
+				<designed target="WordWrap" value="false" ver="5"/>
+			</object>
+			<object access-modifier="private" name="checksumCurrent" display-name="checksumCurrent" uuid="a86194b8-79b9-4baa-821b-454d994e92b3" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="5" description="" cardinal="1">
+				<designed target="Title" value="Текущая контрольная сумма" ver="5"/>
+				<designed target="Description" value="" ver="5"/>
+				<designed target="Id" value="checksumCurrent" ver="5"/>
+				<designed target="ColumnOwnId" value="" ver="5"/>
+				<designed target="BackgroundColor" value="0xffffffff" ver="5"/>
+				<designed target="ForegroundColor" value="0xff000000" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="TitleBackgroundColor" value="0xfff0f0f0" ver="5"/>
+				<designed target="TitleForegroundColor" value="0xff000000" ver="5"/>
+				<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="TitleTextAlignment" value="132" ver="5"/>
+				<designed target="Width" value="200" ver="5"/>
+				<designed target="WidthResizeMode" value="0" ver="5"/>
+				<designed target="Emptiable" value="true" ver="5"/>
+				<designed target="Hidden" value="false" ver="5"/>
+				<designed target="NumberFormat" value="%g" ver="5"/>
+				<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="5"/>
+				<designed target="JsonFilter" value="" ver="5"/>
+				<designed target="SortingEnabled" value="false" ver="5"/>
+				<designed target="SortOrder" value="0" ver="5"/>
+				<designed target="SortPriority" value="0" ver="5"/>
+				<designed target="SortMode" value="0" ver="5"/>
+				<designed target="WordWrap" value="false" ver="5"/>
+			</object>
+			<object access-modifier="private" name="dataTimeEtalon" display-name="dataTimeEtalon" uuid="771137ad-986f-4291-8f02-6fe636ea93fa" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="5" description="" cardinal="1">
+				<designed target="Title" value="Эталонная дата и время" ver="5"/>
+				<designed target="Description" value="" ver="5"/>
+				<designed target="Id" value="dataTimeEtalon" ver="5"/>
+				<designed target="ColumnOwnId" value="" ver="5"/>
+				<designed target="BackgroundColor" value="0xffffffff" ver="5"/>
+				<designed target="ForegroundColor" value="0xff000000" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="TitleBackgroundColor" value="0xfff0f0f0" ver="5"/>
+				<designed target="TitleForegroundColor" value="0xff000000" ver="5"/>
+				<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="TitleTextAlignment" value="132" ver="5"/>
+				<designed target="Width" value="150" ver="5"/>
+				<designed target="WidthResizeMode" value="0" ver="5"/>
+				<designed target="Emptiable" value="true" ver="5"/>
+				<designed target="Hidden" value="false" ver="5"/>
+				<designed target="NumberFormat" value="%g" ver="5"/>
+				<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="5"/>
+				<designed target="JsonFilter" value="" ver="5"/>
+				<designed target="SortingEnabled" value="false" ver="5"/>
+				<designed target="SortOrder" value="0" ver="5"/>
+				<designed target="SortPriority" value="0" ver="5"/>
+				<designed target="SortMode" value="0" ver="5"/>
+				<designed target="WordWrap" value="false" ver="5"/>
+			</object>
+			<object access-modifier="private" name="dataTimeCurrent" display-name="dataTimeCurrent" uuid="a6c21178-a0dd-42f8-92ae-e7ea42c54fbe" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="5" description="" cardinal="1">
+				<designed target="Title" value="Текущая дата и время" ver="5"/>
+				<designed target="Description" value="" ver="5"/>
+				<designed target="Id" value="dataTimeCurrent" ver="5"/>
+				<designed target="ColumnOwnId" value="" ver="5"/>
+				<designed target="BackgroundColor" value="0xffffffff" ver="5"/>
+				<designed target="ForegroundColor" value="0xff000000" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="TitleBackgroundColor" value="0xfff0f0f0" ver="5"/>
+				<designed target="TitleForegroundColor" value="0xff000000" ver="5"/>
+				<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="TitleTextAlignment" value="132" ver="5"/>
+				<designed target="Width" value="150" ver="5"/>
+				<designed target="WidthResizeMode" value="0" ver="5"/>
+				<designed target="Emptiable" value="true" ver="5"/>
+				<designed target="Hidden" value="false" ver="5"/>
+				<designed target="NumberFormat" value="%g" ver="5"/>
+				<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="5"/>
+				<designed target="JsonFilter" value="" ver="5"/>
+				<designed target="SortingEnabled" value="false" ver="5"/>
+				<designed target="SortOrder" value="0" ver="5"/>
+				<designed target="SortPriority" value="0" ver="5"/>
+				<designed target="SortMode" value="0" ver="5"/>
+				<designed target="WordWrap" value="false" ver="5"/>
+			</object>
+			<object access-modifier="private" name="additionalInformation" display-name="additionalInformation" uuid="456c7a1a-a64c-4f37-88d8-19fbac176a57" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="5" description="" cardinal="1">
+				<designed target="Title" value="Состояние" ver="5"/>
+				<designed target="Description" value="" ver="5"/>
+				<designed target="Id" value="additionalInformation" ver="5"/>
+				<designed target="ColumnOwnId" value="" ver="5"/>
+				<designed target="BackgroundColor" value="0xffffffff" ver="5"/>
+				<designed target="ForegroundColor" value="0xff000000" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="TitleBackgroundColor" value="0xfff0f0f0" ver="5"/>
+				<designed target="TitleForegroundColor" value="0xff000000" ver="5"/>
+				<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="TitleTextAlignment" value="132" ver="5"/>
+				<designed target="Width" value="100" ver="5"/>
+				<designed target="WidthResizeMode" value="0" ver="5"/>
+				<designed target="Emptiable" value="true" ver="5"/>
+				<designed target="Hidden" value="false" ver="5"/>
+				<designed target="NumberFormat" value="%g" ver="5"/>
+				<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="5"/>
+				<designed target="JsonFilter" value="" ver="5"/>
+				<designed target="SortingEnabled" value="false" ver="5"/>
+				<designed target="SortOrder" value="0" ver="5"/>
+				<designed target="SortPriority" value="0" ver="5"/>
+				<designed target="SortMode" value="0" ver="5"/>
+				<designed target="WordWrap" value="false" ver="5"/>
+			</object>
+			<do access-modifier="private" name="Initialize" display-name="Initialize" ver="5" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da" type="void">
+				<body kind="om">
+					<![CDATA[if (TableModel.GetColumnCount() > 0)
+	return;
+
+/*
+0 - serialNumber
+1 - catalog
+2 - file
+3 - checksumEtalon
+4 - dataTimeEtalon
+5 - checksumCurrent
+6 - dataTimeCurrent
+7 - additionalInformation
+*/	
+
+TableModel.AddColumn("serialNumber","","","","string",false,true);
+TableModel.AddColumn("catalog","","","","string",false,true);
+TableModel.AddColumn("file","","","","string",false,true);
+TableModel.AddColumn("checksumEtalon","","","","string",false,true);
+TableModel.AddColumn("dataTimeEtalon","","","","string",false,true);
+TableModel.AddColumn("checksumCurrent","","","","string",false,true);
+TableModel.AddColumn("dataTimeCurrent","","","","string",false,true);
+TableModel.AddColumn("additionalInformation","","","","string",false,true);]]>
+				</body>
+			</do>
+			<do access-modifier="private" name="ExportToFile" display-name="ExportToFile" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[//start: uint8 = DateTime.Now();
+Initialize();
+
+AddChildrenToTable(0, "", "", "");
+Save(filePath, format);
+
+TableModel.Clear();
+//Debug.Log("Экспорт в файл выполнен за " + String.ToString((DateTime.Now() - start) / 10000) + " мс");]]>
+				</body>
+				<param access-modifier="private" name="filePath" display-name="" uuid="6e4664db-0eb4-4976-b9f0-003d9d717c0d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+				<param access-modifier="private" name="format" display-name="" uuid="0cd39f92-1ced-4ccf-b0db-1b6c9b4df8c1" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			</do>
+			<object access-modifier="private" name="Model" display-name="Model" uuid="f6cc26c5-8319-47ee-ab90-cb4fa089703a" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="5" description="" cardinal="1">
+				<designed target="Frozen" value="false" ver="5"/>
+				<designed target="MaxRowCount" value="1000000" ver="5"/>
+				<designed target="OptOfProcessingEvents" value="0" ver="5"/>
+			</object>
+			<init target="TableModel" ver="5" ref="Model"/>
+			<do access-modifier="private" name="AddChildrenToTable" display-name="AddChildrenToTable" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+				<body kind="javascript">
+					<![CDATA[var children = JSON.parse(View.EnumChildrenJSON(parentId));
+if (children.length > 0)
+{
+	TableModel.InsertRows(row, children.length);
+
+	for (let i = 0; i < children.length; i++)
+	{
+		var itemId = children[i];
+
+		var sn = (i + 1).toString();
+		if (parentNumAsString != "") sn = parentNumAsString + "." + sn;
+		var fullPath = parentPath + View.GetItemText(itemId, 0);
+
+		var rowData = [];
+		rowData.push(sn);
+		
+		if (View.ChildCount(itemId) > 0)
+		{
+			// добавляем данные каталога
+			rowData.push(fullPath);
+			rowData.push(null);
+			rowData.push(null);
+			rowData.push(null);
+			rowData.push(null);
+			rowData.push(null);
+			rowData.push(null);
+			TableModel.SetRowDataAsJson(row, JSON.stringify(rowData));
+			row++;
+
+			row = AddChildrenToTable(row, itemId, fullPath + Files.PreferredSeparator(), sn);
+		}
+		else
+		{
+			// добавляем данные файла
+			rowData.push(null);
+			rowData.push(fullPath);
+			rowData.push(View.GetItemText(itemId, 1));
+			rowData.push(View.GetItemText(itemId, 2));
+			rowData.push(View.GetItemText(itemId, 3));
+			rowData.push(View.GetItemText(itemId, 4));
+			rowData.push(View.GetItemText(itemId, 6));
+			TableModel.SetRowDataAsJson(row, JSON.stringify(rowData));		
+			row++;
+		}
+	}
+}
+return row;]]>
+				</body>
+				<param access-modifier="private" name="row" display-name="" uuid="1b41ff3e-cd82-42cd-80f7-ee5e10d95aca" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+				<param access-modifier="private" name="parentId" display-name="" uuid="513c1ed1-d5e1-464c-aa94-b5c02978526c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+				<param access-modifier="private" name="parentPath" display-name="" uuid="62ad7bd4-fd2d-418a-8b4a-4853b7a6bb13" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+				<param access-modifier="private" name="parentNumAsString" display-name="" uuid="c9ce243c-b594-4b2b-9420-d2a6a98071e5" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			</do>
+		</object>
+		<object access-modifier="private" name="Initializer" display-name="Initializer" uuid="87970668-fe71-4783-b1eb-a8884d327995" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Initialized">
+				<body kind="om">
+					<![CDATA[LoadSettings();]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="pTheme" display-name="pTheme" uuid="60f7cbc2-7b88-4e41-967e-18947d42f7cb" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
+		<object access-modifier="private" name="pSettings" display-name="pSettings" uuid="e9c3d18c-0ed3-4784-9c06-c8e0043ca055" base-type="IntegrityControl_Settings" base-type-id="fc14c85b-e35d-4d4e-9ce0-d35a4b57a1cc" base-const="true" base-ref="true" ver="5" description=""/>
+		<object access-modifier="private" name="pPermissions" display-name="pPermissions" uuid="01058c8f-ac1b-46fe-a57a-c037b745b338" base-type="IntegrityControl_Permissions" base-type-id="eb3be49d-bd73-4656-be47-fb69e31fffb1" base-const="true" base-ref="true" ver="5" description=""/>
+		<object access-modifier="private" name="pScreenKeyboard" display-name="pScreenKeyboard" uuid="ba5933ae-2a5b-4c4b-9409-7b45dc7a311f" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
+		<object access-modifier="private" name="ShowComplete" display-name="ShowComplete" uuid="fe2f0ee9-f6d2-47de-8aef-8500918f135c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<object access-modifier="private" name="message" display-name="message" uuid="d429356f-e268-42f4-8db3-ef99b4abc16e" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="5519bdfb-0c83-48b6-b8ea-ffb88540a06d" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="5">
+					<init target="Message" ver="5" ref="message"/>
+					<init target="Icon" ver="5" value="0"/>
+					<init target="Buttons" ver="5" value="0"/>
+				</object>
+			</do-on>
+		</object>
+		<do access-modifier="private" name="GetSettingsFilePath" display-name="GetSettingsFilePath" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[folderPath: string = unit.ProductInfo.GetProgramDataFolder();
+return Files.CombinePath(folderPath, "settings.json");]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="SaveSettings" display-name="SaveSettings" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[var filePath = GetSettingsFilePath();
+try
+{
+	var settings = {
+		"Export" : {
+			"Folder": ExportToFile.Folder,
+			"FileType": ExportToFile.FileType
+		}
+	};
+
+	var folderPath = Files.ParentPath(filePath);
+	if (!Files.Exists(folderPath))
+		Files.CreateRecursiveFolder(folderPath);
+
+	Files.WriteTextFile(filePath, JSON.stringify(settings, null, 2));
+}
+catch(error)
+{
+	log("Не удалось сохранить настройки в "  + filePath + ":\n" + error);
+}]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="LoadSettings" display-name="LoadSettings" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[var filePath = GetSettingsFilePath();
+if (Files.Exists(filePath))
+{
+	//log("Загрузка настроек из файла "  + filePath);
+	try
+	{
+		var json = Files.ReadTextFile(filePath);
+		var settings = JSON.parse(json);
+
+		if (settings.Export != undefined)
+		{
+			ExportToFile.Folder = settings.Export.Folder;
+			ExportToFile.FileType = settings.Export.FileType;
+		}
+	}
+	catch(error)
+	{
+		log("Не удалось загрузить настройки из "  + filePath + ":\n" + error);
+	}
+}]]>
+			</body>
+		</do>
+		<init target="pPermissions" ver="5" ref="init_Permissions"/>
+		<init target="pTheme" ver="5" ref="init_Theme"/>
+		<init target="pScreenKeyboard" ver="5" ref="init_ScreenKeyboard"/>
+		<init target="pSettings" ver="5" ref="init_Settings"/>
+	</object>
+	<object access-modifier="private" name="View" display-name="View" uuid="48403155-b8d2-4cba-98df-1d2060c5d560" base-type="Tree" base-type-id="bebad81f-83c4-4dc1-8ac4-e7fe7b6ee966" ver="5">
+		<designed target="X" value="1" ver="5"/>
+		<designed target="Y" value="1" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="799" ver="5"/>
+		<designed target="Height" value="499" ver="5"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+		<designed target="FontColor" value="0xff000000" ver="5"/>
+		<designed target="BackgroundColor" value="0xffffffff" ver="5"/>
+		<designed target="FrameVisible" value="false" ver="5"/>
+		<designed target="ColumnCount" value="7" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<do access-modifier="private" name="Initialize" display-name="Initialize" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (initialized)
+	return;
+initialized = true;
+
+SetColumnName("Файл", 0);
+SetColumnName("Эталон", 1);
+SetColumnName("Дата изменения", 2);
+SetColumnName("Факт", 3);
+SetColumnName("Дата изменения", 4);
+SetColumnName("Соответствие", 5);
+SetColumnName("Дополнительная информация", 6);
+
+SetColumnWidth(0, 320);
+SetColumnWidth(1, 200);
+SetColumnWidth(2, 130);
+SetColumnWidth(3, 200);
+SetColumnWidth(4, 130);
+SetColumnWidth(5, 0);
+SetColumnWidth(6, 160);
+
+// по этой колонке фильтруются измененные файлы, поэтому она скрывается
+SetColumnHidden(5, true);]]>
+			</body>
+		</do>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ItemExpanded">
+			<body kind="om">
+				<![CDATA[if (ChildCount(itemId)>0)
+	SetItemIconPath(itemId,"IntegrityControl_Icons/FolderOpened.png",0);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="ItemCollapsed">
+			<body kind="om">
+				<![CDATA[if (ChildCount(itemId)>0)
+	SetItemIconPath(itemId,"IntegrityControl_Icons/FolderClosed.png",0);]]>
+			</body>
+		</do-on>
+		<do access-modifier="private" name="Update" display-name="Update" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[Initialize();
+RemoveChildren("");
+
+const WorkStateBackgroundColor = 0xff00ff00;			//зеленый
+const WorkStateFontColor = 0xff000000;					//черный
+const WarningStateBackgroundColor = 0xffffff00;		//желтый
+const WarningStateFontColor = 0xff000000;				//черный
+const AlarmStateBackgroundColor = 0xffff0000;		//красный
+const AlarmStateFontColor = 0xffffffff;					//белый
+
+const noneStatusValue = 0;
+const warningStatusValue = 1;
+const errorStatusValue = 2;
+
+// словарь для построения дерева
+var dataMap = new Map();
+
+// счетчики событий 
+var warningCounter = 0;
+var errorCounter = 0;
+
+//log(jsonList.substring(0, 10000));
+try
+{
+	var icDataList = JSON.parse(jsonList);
+	var icData = icDataList.data;
+}
+catch(err)
+{
+	Error = "Ошибка чтения списка файлов: " + err.message;
+	return;
+}
+
+Information.EtalonDateCreated = icDataList.date_etalon_created;
+Information.EtalonNameCreator = icDataList.creator.replace('(', ' (').replace(';', '; ');
+Information.LastCheckData = icDataList.date_last_check;
+var icDataViolations = icDataList.violations;
+var icDataWarnings = icDataList.warnings;
+var icDataErrors = icDataList.errors;
+icDataList = null;
+
+//построение иерархии каталогов
+for (let element of icData.filter(a => a.Dir == 1))
+{
+	AddElementToTree(element);
+}
+
+//построение иерархии файлов
+for (let element of icData.filter(a => a.Dir != 1))
+{
+	AddElementToTree(element);
+}
+
+// раскраска в соответствии со статусом
+for (let node of dataMap.values())
+{
+
+	if (node.severity == noneStatusValue)
+	{
+		// нет ошибок
+		PaintElement(node.treeId, WorkStateBackgroundColor, WorkStateFontColor);
+	}
+	else if (node.severity == warningStatusValue)
+	{
+		// есть предупреждения
+		PaintElement(node.treeId, WarningStateBackgroundColor, WarningStateFontColor);
+	}
+	else if (node.severity == errorStatusValue)
+	{
+		// есть нарушения
+		PaintElement(node.treeId, AlarmStateBackgroundColor, AlarmStateFontColor);
+	}
+}
+
+// Обновление статистики
+Statistic.all = icData.length;
+Statistic.violations = (icDataViolations != undefined) ? icDataViolations : errorCounter + warningCounter;
+Statistic.warnings = (icDataWarnings != undefined) ? icDataWarnings : warningCounter;
+Statistic.errors = (icDataErrors != undefined) ? icDataErrors : errorCounter;
+
+//log("Counted All: " + icData.length + ", CountedWarnings: " + warningCounter + ", CountedAlarms: " + errorCounter);
+//log("JSON All: " + icData.length + ", icDataViolations: " + icDataViolations+ ", icDataWarnings: " + icDataWarnings + ", icDataErrors: " + icDataErrors);
+//log("Result All: " + Statistic.all + ", Statistic.violations: " + Statistic.violations+ ", Statistic.warnings: " + Statistic.warnings + ", Statistic.errors: " + Statistic.errors);
+
+if (NodeName.Value != "")
+	Status = "Получен список файлов узла " + NodeName.Value + ".";
+else Status = "Получен список файлов локального узла.";
+
+//---------------------------------------------------------
+// Раскраска узла дерева
+function PaintElement(_treeId, backgroundColor, textColor)
+{
+	// Установка цвета фона
+	SetItemBackgroundColor(_treeId, backgroundColor, 0);
+	SetItemBackgroundColor(_treeId, backgroundColor, 1);
+	SetItemBackgroundColor(_treeId, backgroundColor, 2);
+	SetItemBackgroundColor(_treeId, backgroundColor, 3);
+	SetItemBackgroundColor(_treeId, backgroundColor, 4);
+	SetItemBackgroundColor(_treeId, backgroundColor, 6);
+	
+	// Установка цвета текста
+	SetItemTextColor(_treeId, textColor, 0);
+	SetItemTextColor(_treeId, textColor, 1);
+	SetItemTextColor(_treeId, textColor, 2);
+	SetItemTextColor(_treeId, textColor, 3);
+	SetItemTextColor(_treeId, textColor, 4);
+	SetItemTextColor(_treeId, textColor, 6);
+}
+
+//Добавление элемента в дерево
+function AddElementToTree(element)
+{
+	// определяем родительский узел
+	let parentNode;
+	if (element.ParentID != -1)
+		parentNode = dataMap.get(element.ParentID);
+		
+	// добавляем узел в дерево
+	let treeParentId = parentNode == undefined ? "" : parentNode.treeId;
+	let treeId = AddItem(treeParentId, element.name);
+	let iconPath = (element.Dir == 1) ? "IntegrityControl_Icons/FolderClosed.png" : "IntegrityControl_Icons/File.png";
+	SetItemIconPath(treeId, iconPath, 0);
+
+	//формируем важность события
+	var severity = noneStatusValue;
+	if (element.severity != undefined)
+	{
+		if (element.severity == "warning")
+			severity = warningStatusValue;
+		else if (element.severity == "error")
+			severity = errorStatusValue;
+	}
+	else
+	{
+		if (element.status == 6)
+			severity = warningStatusValue;
+		else if (element.status > 0)
+			severity = errorStatusValue;
+	}
+	
+	// подсчитываем количество ошибок и предупреждений на случай если агент не посчитал
+	if (severity == warningStatusValue)
+		warningCounter += 1;
+	else if (severity == errorStatusValue)
+		errorCounter += 1;
+	
+	//log("element.status: " + element.status + ", element.severity: " + element.severity + ", severity: " + severity)
+	// запоминаем добавленный узел в словаре
+	var node = {
+		'treeId': treeId,
+		'element': element,
+		'severity': severity
+	}
+
+	dataMap.set(element.ID, node);
+
+	// корректируем важность события родительских узлов
+	while (parentNode != undefined)
+	{
+		if (severity > parentNode.severity)
+			parentNode.severity = severity;
+		//log("parentNode.severity - " + parentNode.severity + ", element.severity - " + element.severity);
+		parentNode = dataMap.get(parentNode.element.ParentID);
+	}
+	
+	if (element.status == 0)				//нет ошибок
+	{
+		SetItemText(treeId, element.MD5_etalon, 1);
+		SetItemText(treeId, element.date_etalon, 2);
+		SetItemText(treeId, element.MD5_current, 3);
+		SetItemText(treeId, element.date_current, 4);
+		SetItemText(treeId, "",5);
+		SetItemText(treeId, "Целостность не нарушена", 6);
+	}
+	else if (element.status == 4)		//контролируемый файл не существует/недостаточно прав для чтения файла/
+	{
+		SetItemText(treeId, element.MD5_etalon, 1 );
+		SetItemText(treeId, element.date_etalon, 2 );
+		SetItemText(treeId, "-", 3 );
+		SetItemText(treeId, "-", 4 );
+		SetItemText(treeId, "notValid",5);
+		SetItemText(treeId, "Файл не существует", 6);
+	}
+	else if (element.status == 6)		//изменилась дата модификации файла, контрольная сумма файла совпадает с эталонной
+	{
+		SetItemText(treeId, element.MD5_etalon, 1 );
+		SetItemText(treeId, element.date_etalon, 2 );
+		SetItemText(treeId, element.MD5_current, 3 );
+		SetItemText(treeId, element.date_current, 4 );
+		SetItemText(treeId, "notValid",5);
+		SetItemText(treeId, "Обновлена дата изменения", 6);
+	}
+	else if (element.status == 8)		//контрольная сумма файла не совпадает с эталонной контрольной суммой
+	{
+		SetItemText(treeId, element.MD5_etalon, 1 );
+		SetItemText(treeId, element.date_etalon, 2 );
+		SetItemText(treeId, element.MD5_current, 3 );
+		SetItemText(treeId, element.date_current, 4 );
+		SetItemText(treeId, "notValid",5);
+		SetItemText(treeId, "Нарушение целостности", 6);
+	}
+	else if (element.status == 16)		//обнаружен новый файл (нет эталонного значения)
+	{
+		SetItemText(treeId, "-", 1 );
+		SetItemText(treeId, "-", 2 );
+		SetItemText(treeId, "-", 3 );
+		SetItemText(treeId, "-", 4 );
+		SetItemText(treeId, "notValid",5);
+		SetItemText(treeId, "Новый файл", 6);
+	}
+}]]>
+			</body>
+			<param access-modifier="private" name="jsonList" display-name="" uuid="16d3b262-34a4-4e44-9e85-576345f1d4ea" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[private.pTheme.EditorFontColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+			<body>
+				<![CDATA[private.pTheme.EditorBrushColor]]>
+			</body>
+		</do-trace>
+		<designed target="HeaderVisible" value="true" ver="5"/>
+		<designed target="CurrentItem" value="" ver="5"/>
+		<do-trace access-modifier="private" target="Font" ver="5">
+			<body>
+				<![CDATA[private.pTheme.Font]]>
+			</body>
+		</do-trace>
+		<designed target="Flip" value="0" ver="5"/>
+		<object access-modifier="private" name="Margins" display-name="Margins" uuid="c16cfccb-cc0f-4d72-a6a8-9feda59be90e" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+			<designed target="Top" value="1" ver="5"/>
+			<designed target="Bottom" value="0" ver="5"/>
+			<designed target="Left" value="1" ver="5"/>
+			<designed target="Right" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="initialized" display-name="initialized" uuid="1f0da93a-3bb8-469f-a743-606ba89ef63b" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+	</object>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="2f603b74-c7f9-4d8e-952d-3dfe62043322" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<object access-modifier="private" name="Files" display-name="Files" uuid="9567b19a-e87a-48fe-a4f9-a1acd8457423" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5">
+		<designed target="RootPath" value="/" ver="5"/>
+	</object>
+	<object access-modifier="private" name="SecurityContext" display-name="SecurityContext" uuid="15f258b0-3fbc-407c-86f3-3564de234bc3" base-type="SecurityContext" base-type-id="d9cb0fff-b70a-4e2d-833d-3f73cf74e0dd" ver="5">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ConnectedChanged">
+			<body kind="om">
+				<![CDATA[if (connected)
+	IntegrityControl.GetList();]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="IntegrityControl" display-name="IntegrityControl" uuid="db16f43f-2f69-4f53-93d4-61453cf65a9c" base-type="SecurityIntegrityControl" base-type-id="d161eb3f-c62b-4259-9413-1104c342a77a" ver="5">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="UpdateFinished">
+			<body kind="om">
+				<![CDATA[Error = "";
+Status = "Контрольные значения на локальном узле обновлены.";
+Get_IC_List();]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="ListIsReady">
+			<body kind="om">
+				<![CDATA[ListReceived(IC_List_JSON);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="GetListFailed">
+			<body kind="om">
+				<![CDATA[//Debug.Log("Не удалось получитьн список файлов с локального узла: " + errorMessage);
+Error = errorMessage;
+inProgress = false;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="CreateFailed">
+			<body kind="om">
+				<![CDATA[Error = errorMessage;
+inProgress = false;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="UpdateFailed">
+			<body kind="om">
+				<![CDATA[Error = errorMessage;
+inProgress = false;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="CreateFinished">
+			<body kind="om">
+				<![CDATA[Error = "";
+Status = "Эталонные значения на локальном узле созданы.";
+Get_IC_List();]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_8" display-name="Handler_8" ver="5" event="RemoteUpdateFinished">
+			<body kind="om">
+				<![CDATA[Error = "";
+Status = "Контрольные значения на узле " + NodeName + " обновлены.";
+GetRemote_IC_List(NodeName);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_9" display-name="Handler_9" ver="5" event="RemoteUpdateFailed">
+			<body kind="om">
+				<![CDATA[Error = errorMessage;
+inProgress = false;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_10" display-name="Handler_10" ver="5" event="RemoteCreateFinished">
+			<body kind="om">
+				<![CDATA[Error = "";
+Status = "Эталонные значения на узле " + NodeName + " созданы.";
+GetRemote_IC_List(NodeName);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_11" display-name="Handler_11" ver="5" event="RemoteCreateFailed">
+			<body kind="om">
+				<![CDATA[Error = errorMessage;
+inProgress = false;]]>
+			</body>
+		</do-on>
+		<init target="SecurityContext" ver="5" ref="here.SecurityContext"/>
+		<do-on access-modifier="private" name="Handler_12" display-name="Handler_12" ver="5" event="RemoteGetListFailed">
+			<body kind="om">
+				<![CDATA[//Debug.Log("Не удалось получитьн список файлов с узла " + NodeName + ": " + errorMessage);
+Error = errorMessage;
+inProgress = false;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_13" display-name="Handler_13" ver="5" event="RemoteListIsReady">
+			<body kind="om">
+				<![CDATA[ListReceived(IC_List_JSON);]]>
+			</body>
+		</do-on>
+		<do access-modifier="private" name="GetList" display-name="GetList" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[inProgress = true;
+if (NodeName == "")
+{
+	Status = "Запрос списка файлов с локального узла...";
+	Get_IC_List();
+}
+else
+{
+	Status = "Запрос списка файлов с узла " + NodeName + "...";
+	GetRemote_IC_List(NodeName);
+}
+//Debug.Log(DateTime.ToString(DateTime.Now()) + " " + Status);]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="Update" display-name="Update" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[inProgress = true;
+if (NodeName == "")
+{
+	Status = "Обновление контрольных значений на локальном узле...";
+	Update_IC();
+}
+else
+{
+	Status = "Обновление контрольных значений на узле " + NodeName + "...";
+	UpdateRemote_IC(NodeName);
+}
+//Debug.Log(DateTime.ToString(DateTime.Now()) + " " + Status);]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="inProgress" display-name="inProgress" uuid="2f713ff1-f27c-469a-8613-ae2c00096952" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+		<do access-modifier="private" name="CreateEtalon" display-name="CreateEtalon" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[inProgress = true;
+if (NodeName == "")
+{
+	Status = "Создание эталонных значений на локальном узле...";
+	Create_IC_Etalon();
+}
+else
+{
+	Status = "Создание эталонных значений на узле " + NodeName + "...";
+	CreateRemote_IC_Etalon(NodeName);
+}
+//Debug.Log(DateTime.ToString(DateTime.Now()) + " " + Status);]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="ListReceived" display-name="ListReceived" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[//Debug.Log(DateTime.ToString(DateTime.Now()) + " Получен список файлов с " + (NodeName == "" ? "локального узла" : "узла " + NodeName));
+Error = "";
+Status = "";
+inProgress = false;
+
+// перед обновлением сбрасываем фильтр (из-за ошибки #32918)
+View.SetColumnFilter(5, "");
+
+start: uint8 = DateTime.Now();
+
+View.Update(jsonList);
+
+//Debug.Log(DateTime.ToString(DateTime.Now()) + " Дерево файлов обновлено за " + DateTime.ToString(DateTime.Now() - start, "%H:%M:%S.%f"));
+
+// после обновления устанавливаем фильтр
+if (ShowOnlyChanged)
+	View.SetColumnFilter(5, "notValid");]]>
+			</body>
+			<param access-modifier="private" name="jsonList" display-name="" uuid="01723aac-1f03-419d-ac4c-9395c200edd1" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+	</object>
+	<designed target="Width" value="800" ver="5"/>
+	<designed target="Height" value="500" ver="5"/>
+	<designed target="RoundingRadius" value="0" ver="5"/>
+	<designed target="PenColor" value="0xff808080" ver="5"/>
+	<designed target="PenStyle" value="1" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="0xff000000" ver="5"/>
+	<designed target="BrushStyle" value="0" ver="5"/>
+	<object access-modifier="private" name="LinearLayout" display-name="LinearLayout" uuid="5900413f-ffc5-4c34-9f0f-c035863523c0" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5">
+		<designed target="Orientation" value="2" ver="5"/>
+		<designed target="Gap" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="NodeName" display-name="Имя узла сети" uuid="a2a36763-a093-49f3-aa2b-dfd6d3251ac2" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (oldValue != Value)
+{
+	oldValue = Value;
+	//Debug.Log("Новое имя узла: " + Value);
+	
+	// очищаем все поля
+	private.Close();
+	
+	// запрашиваем список файлов
+	if (SecurityContext.Connected)
+		IntegrityControl.GetList();
+}]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="oldValue" display-name="oldValue" uuid="320b9b89-1ba7-4ea6-97c9-48fd416961ee" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+	</object>
+	<object access-modifier="private" name="Check" display-name="Выполнить проверку" uuid="bc6e6d54-4735-4cf1-bcae-78656ced4205" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[IntegrityControl.Update();]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[private.pPermissions.CheckFiles && !IntegrityControl.inProgress]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="CreateEtalon" display-name="Создать эталон" uuid="91ae0ad2-cd47-4538-854e-c8fd85f7520d" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[IntegrityControl.CreateEtalon();]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[private.pPermissions.CreateEtalon && !IntegrityControl.inProgress]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="ExportToFile" display-name="ExportToFile" uuid="d4e4be59-ec17-4dbe-a1a1-01dbd39b0b55" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+			<object access-modifier="private" uuid="8828e1a3-19a7-490a-b472-cd8d47dc3018" base-type="SaveFileDialog" base-type-id="d69a91c3-89e9-4e7b-994e-9242dbc5e095" ver="5">
+				<init target="Result" ver="5" ref="DialogResult"/>
+				<init target="OnComplete" ver="5" ref="SaveFile"/>
+				<init target="FileTypeFilter" ver="5" value="Книга Excel (*.xlsx)|*.xlsx|Текстовый файл (*.csv)|*.csv"/>
+				<init target="DefaultFileType" ver="5" ref="FileType"/>
+				<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
+				<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
+				<init target="CreateFolderAllowed" ver="5">
+					<expr>
+						<![CDATA[here.private.pPermissions.FileSystemAccess]]>
+					</expr>
+				</init>
+				<init target="DefaultPath" ver="5">
+					<expr>
+						<![CDATA[GetExportFolderPath()]]>
+					</expr>
+				</init>
+				<init target="RootPath" ver="5">
+					<expr>
+						<![CDATA[here.private.pPermissions.FileSystemAccess ? "" : GetExportFolderPath()]]>
+					</expr>
+				</init>
+				<init target="ChangeFolderAllowed" ver="5">
+					<expr>
+						<![CDATA[here.private.pPermissions.FileSystemAccess]]>
+					</expr>
+				</init>
+			</object>
+		</do-on>
+		<object access-modifier="private" name="Folder" display-name="Folder" uuid="2a984533-0d52-4789-b79d-a0b37e4b38a7" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="FileType" display-name="FileType" uuid="7de004d3-1fbb-4773-80c6-d66ae6bf9a5c" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="DialogResult" display-name="DialogResult" uuid="dedcfb02-75cf-42a5-82dd-85dfd98de809" base-type="FileDialogResult" base-type-id="602926f1-7d01-4d50-a5c0-d8fd35eadc74" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="SaveFile" display-name="SaveFile" uuid="956219c8-8009-49e2-b028-fa9a09731aa5" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[format: string;
+if (DialogResult.FileType == 0)
+	format = "xlsx";
+else if (DialogResult.FileType == 1)
+	format = "csv";
+
+private.ExportView.ExportToFile(DialogResult.FilePath, format);
+
+// запоминаем папку экспорта и формат файла
+private.pSettings.ExportFolder = DialogResult.FolderPath;
+Folder = DialogResult.FolderPath;
+FileType = DialogResult.FileType;
+private.SaveSettings();
+
+// уведомляем о том, что сохранение выполнено
+private.ShowComplete.message = "Список контролируемых файлов сохранен в файл\n" + DialogResult.FilePath;
+private.ShowComplete.Invoke();]]>
+				</body>
+			</do-on>
+		</object>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[folder: string = GetExportFolderPath();
+Files.CreateRecursiveFolder(folder);]]>
+			</body>
+		</do-on>
+		<do access-modifier="private" name="GetExportFolderPath" display-name="GetExportFolderPath" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[// Если есть доступ к файловой системе, то используем последнюю использованную, иначе разрешенную папку
+folder: string = private.pPermissions.FileSystemAccess ? Folder : private.pSettings.ExportFolder;
+
+// Если путь не указан, то используем Export в папке с данными программы
+if (folder == "")
+	folder = Files.CombinePath(unit.ProductInfo.GetProgramDataFolder(), "Export");
+
+return folder;]]>
+			</body>
+		</do>
+	</object>
+	<object access-modifier="private" name="ShowOnlyChanged" display-name="Показывать только файлы с нарушением целостности" uuid="6bf7e4a0-ac76-4b3a-b22e-4a80d89241d9" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[View.Initialize();
+if (Value)
+	View.SetColumnFilter(5, "notValid");
+else	View.SetColumnFilter(5, "");]]>
+			</body>
+		</do-on>
+	</object>
+	<designed target="Flip" value="0" ver="5"/>
+	<object access-modifier="private" name="Information" display-name="Информация" uuid="d826996a-a9a4-4a01-9ed4-7b8f1a487863" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+		<object access-modifier="private" name="EtalonDateCreated" display-name="EtalonDateCreated" uuid="81963cf7-b937-4166-be9f-b5bd1e56fd15" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+		<object access-modifier="private" name="EtalonNameCreator" display-name="EtalonNameCreator" uuid="442079b0-fb7c-46a8-a719-abcdbc30b738" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+		<object access-modifier="private" name="LastCheckData" display-name="LastCheckData" uuid="50edf4aa-1d70-4de9-bbeb-560c160f4282" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	</object>
+	<object access-modifier="private" name="Statistic" display-name="Статистика" uuid="e55fb602-1921-4f77-84a0-c05df1c67f19" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+		<object access-modifier="private" name="all" display-name="all" uuid="2c7b12cd-d356-45ea-ad0b-3a427fec769f" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5"/>
+		<object access-modifier="private" name="violations" display-name="violations" uuid="e39b31e6-8f28-4586-9590-4975b38982b0" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5"/>
+		<object access-modifier="private" name="warnings" display-name="warnings" uuid="1e908db6-1bb7-4856-a1eb-7d1b5f20b6f4" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5"/>
+		<object access-modifier="private" name="errors" display-name="errors" uuid="0ad30d29-245f-457e-92e6-6851f15a6878" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5"/>
+	</object>
+	<object access-modifier="private" name="Status" display-name="Состояние" uuid="a5f14a0a-5ab2-4041-aea3-7ee9febcb11c" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<object access-modifier="private" name="Error" display-name="Ошибка" uuid="c8b53f83-4c81-498d-8c03-0f69856b1ab9" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<do-trace access-modifier="private" target="PenColor" ver="5">
+		<body>
+			<![CDATA[private.pTheme.BorderColor]]>
+		</body>
+	</do-trace>
+	<do access-modifier="private" name="SaveLayout" display-name="SaveLayout" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[View.Initialize();
+
+var filePath = private.GetLayoutFilePath();
+try
+{
+	var settings = {
+		"Columns" : {
+			"File": View.GetColumnWidth(0),
+			"Etalon": View.GetColumnWidth(1),
+			"EtalonDate": View.GetColumnWidth(2),
+			"Current": View.GetColumnWidth(3),
+			"CurrentDate": View.GetColumnWidth(4),
+			"NotValid": View.GetColumnWidth(5),
+			"Description": View.GetColumnWidth(6)
+		}
+	};
+
+	var folderPath = Files.ParentPath(filePath);
+	if (!Files.Exists(folderPath))
+		Files.CreateRecursiveFolder(folderPath);
+
+	Files.WriteTextFile(filePath, JSON.stringify(settings, null, 2));
+}
+catch(error)
+{
+	log("Не удалось сохранить расположение элементов в "  + filePath + ":\n" + error);
+}]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="LoadLayout" display-name="LoadLayout" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[var filePath = private.GetLayoutFilePath();
+if (Files.Exists(filePath))
+{
+	//log("Загрузка расположения элементов из файла "  + filePath);
+	try
+	{
+		var json = Files.ReadTextFile(filePath);
+		var settings = JSON.parse(json);
+
+		if (settings.Columns != undefined)
+		{
+			View.Initialize();
+		
+			View.SetColumnWidth(0, settings.Columns.File);
+			View.SetColumnWidth(1, settings.Columns.Etalon);
+			View.SetColumnWidth(2, settings.Columns.EtalonDate);
+			View.SetColumnWidth(3, settings.Columns.Current);
+			View.SetColumnWidth(4, settings.Columns.CurrentDate);
+			View.SetColumnWidth(5, settings.Columns.NotValid);
+			View.SetColumnWidth(6, settings.Columns.Description);
+		}
+	}
+	catch(error)
+	{
+		log("Не удалось загрузить расположение элементов из "  + filePath + ":\n" + error);
+	}
+}]]>
+		</body>
+	</do>
+	<param access-modifier="private" name="init_Theme" display-name="Тема оформления" uuid="9f3fa9ae-bbad-4373-8f8d-acf77e4daf24" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
+	<param access-modifier="private" name="init_Settings" display-name="Настройки" uuid="9d590feb-ed3a-4dcb-beb5-9a38e76d9e16" base-type="IntegrityControl_Settings" base-type-id="fc14c85b-e35d-4d4e-9ce0-d35a4b57a1cc" base-const="true" base-ref="true" ver="5" description=""/>
+	<param access-modifier="private" name="init_Permissions" display-name="Разрешения" uuid="6fe3069d-74db-40cd-a2f7-3dcbd096a2c9" base-type="IntegrityControl_Permissions" base-type-id="eb3be49d-bd73-4656-be47-fb69e31fffb1" base-const="true" base-ref="true" ver="5" description=""/>
+	<param access-modifier="private" name="init_ScreenKeyboard" display-name="Вызов экранной клавиатуры" uuid="9ebc5858-aa67-40bd-aad9-87d1e617dede" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
+</type>
+

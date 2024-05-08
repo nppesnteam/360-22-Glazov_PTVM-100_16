@@ -1,155 +1,6 @@
 <?xml version="1.0"?>
 <History>
   <Types>
-    <Type Name="PTVM:Types.AnalogSens.IOS_View">
-      <Parameters>
-        <Parameter RelativeTag="VALUE" MinTime="1000" ServerTime="true" />
-      </Parameters>
-    </Type>
-    <Type Name="PTVM:Types.Regulator.IOS_View">
-      <Parameters>
-        <Parameter RelativeTag="OutfSetTask" ServerTime="true" />
-      </Parameters>
-    </Type>
-    <Type Name="PTVM:Types.AnalogDoubleSens.IOS_View">
-      <Parameters>
-        <Parameter RelativeTag="VALUE1" MinTime="1000" ServerTime="true" />
-        <Parameter RelativeTag="VALUE2" MinTime="1000" ServerTime="true" />
-        <Parameter RelativeTag="OutiSel" ServerTime="true" />
-      </Parameters>
-    </Type>
-    <Type Name="PTVM:Types.AI.IOS_View">
-      <Parameters>
-        <Parameter RelativeTag="VALUE" MinTime="1000" ServerTime="true" />
-        <Parameter RelativeTag="ELECTROVALUE" MinTime="1000" ServerTime="true" />
-      </Parameters>
-    </Type>
-    <Type Name="PTVM:Types.DI.IOS_View">
-      <Parameters>
-        <Parameter RelativeTag="HProg" ServerTime="true" />
-      </Parameters>
-    </Type>
-    <Type Name="PTVM:Types.DO.IOS_View">
-      <Parameters>
-        <Parameter RelativeTag="H" ServerTime="true" />
-      </Parameters>
-    </Type>
-    <Type Name="PTVM:Types.Boiler.IOS_View">
-      <Parameters>
-        <Parameter RelativeTag="PowerBoiler" MinTime="1000" ServerTime="true" />
-      </Parameters>
-    </Type>
-    <Type Name="PTVM:Types.DelAlarmsBoiler.IOS_View">
-      <Parameters>
-        <Parameter RelativeTag="OutPGasCollL" ServerTime="true" />
-        <Parameter RelativeTag="OutPGasCollH" ServerTime="true" />
-        <Parameter RelativeTag="OutVacH" ServerTime="true" />
-        <Parameter RelativeTag="OutTWatOutH" ServerTime="true" />
-        <Parameter RelativeTag="OutQWatOutL" ServerTime="true" />
-        <Parameter RelativeTag="OutPWatOutL" ServerTime="true" />
-        <Parameter RelativeTag="OutPWatOutH" ServerTime="true" />
-        <Parameter RelativeTag="OutTSmokeH" ServerTime="true" />
-        <Parameter RelativeTag="OutPOilL" ServerTime="true" />
-        <Parameter RelativeTag="OutSharedFireL" ServerTime="true" />
-      </Parameters>
-    </Type>
-    <Type Name="PTVM:Types.ProtectsValueBurn.IOS_View">
-      <Parameters>
-        <Parameter RelativeTag="OutPGasBurnL" ServerTime="true" />
-        <Parameter RelativeTag="OutPGasBurnH" ServerTime="true" />
-        <Parameter RelativeTag="OutPO2BurnL" ServerTime="true" />
-        <Parameter RelativeTag="OutImpDelO2" ServerTime="true" />
-        <Parameter RelativeTag="OutPMin" ServerTime="true" />
-        <Parameter RelativeTag="OutPMax" ServerTime="true" />
-        <Parameter RelativeTag="OutImpGas" ServerTime="true" />
-        <Parameter RelativeTag="OutImpO2" ServerTime="true" />
-      </Parameters>
-    </Type>
-    <Type Name="PTVM:Types.DelAlarmsBurn.IOS_View">
-      <Parameters>
-        <Parameter RelativeTag="OuttDelFire" ServerTime="true" />
-        <Parameter RelativeTag="OuttDelPGas" ServerTime="true" />
-        <Parameter RelativeTag="OuttDelPO2" ServerTime="true" />
-        <Parameter RelativeTag="OuttDelVent" ServerTime="true" />
-        <Parameter RelativeTag="OuttDelValve" ServerTime="true" />
-      </Parameters>
-    </Type>
-    <Type Name="PTVM:Types.TimeProcesses.IOS_View">
-      <Parameters>
-        <Parameter RelativeTag="OuttFix" ServerTime="true" />
-        <Parameter RelativeTag="OuttPump" ServerTime="true" />
-        <Parameter RelativeTag="OuttCtrl" ServerTime="true" />
-        <Parameter RelativeTag="OuttVent" ServerTime="true" />
-        <Parameter RelativeTag="OuttSpark" ServerTime="true" />
-        <Parameter RelativeTag="OuttIgnGas" ServerTime="true" />
-        <Parameter RelativeTag="OuttBurn" ServerTime="true" />
-        <Parameter RelativeTag="OuttFinal" ServerTime="true" />
-        <Parameter RelativeTag="OuttIgnOil" ServerTime="true" />
-        <Parameter RelativeTag="OuttHome" ServerTime="true" />
-        <Parameter RelativeTag="OuttStab" ServerTime="true" />
-        <Parameter RelativeTag="OuttFullOpenGateG" ServerTime="true" />
-        <Parameter RelativeTag="OuttCheckDensity" ServerTime="true" />
-        <Parameter RelativeTag="OuttBlow" ServerTime="true" />
-        <Parameter RelativeTag="OuttOpenGateG" ServerTime="true" />
-        <Parameter RelativeTag="OuttReclosure" ServerTime="true" />
-        <Parameter RelativeTag="OuttOpenAIgn1" ServerTime="true" />
-        <Parameter RelativeTag="OuttOpenGIgn1" ServerTime="true" />
-        <Parameter RelativeTag="OuttOpenAIgn2" ServerTime="true" />
-        <Parameter RelativeTag="OuttOpenGIgn2" ServerTime="true" />
-        <Parameter RelativeTag="OuttOpenAIgn3" ServerTime="true" />
-        <Parameter RelativeTag="OuttOpenGIgn3" ServerTime="true" />
-        <Parameter RelativeTag="OuttOpenAIgn4" ServerTime="true" />
-        <Parameter RelativeTag="OuttOpenGIgn4" ServerTime="true" />
-      </Parameters>
-    </Type>
-    <Type Name="PTVM:Types.ProtectsValueBoiler.IOS_View">
-      <Parameters>
-        <Parameter RelativeTag="OutProtect" ServerTime="true" />
-        <Parameter RelativeTag="OutSignal" ServerTime="true" />
-      </Parameters>
-    </Type>
-    <Type Name="PTVM:Types.BurnerIgn.IOS_View">
-      <Parameters>
-        <Parameter RelativeTag="Start" ServerTime="true" />
-      </Parameters>
-    </Type>
-    <Type Name="PTVM:Types.BurnerWork.IOS_View">
-      <Parameters>
-        <Parameter RelativeTag="Start" ServerTime="true" />
-      </Parameters>
-    </Type>
-    <Type Name="PTVM:Types.Germ.IOS_View">
-      <Parameters>
-        <Parameter RelativeTag="Final" ServerTime="true" />
-      </Parameters>
-    </Type>
-    <Type Name="PTVM:Types.Value.IOS_View">
-      <Parameters>
-        <Parameter RelativeTag="VALUE" MinTime="1000" ServerTime="true" />
-      </Parameters>
-    </Type>
-    <Type Name="PTVM:Types.AverageParams.IOS_View">
-      <Parameters>
-        <Parameter RelativeTag="FGas" />
-        <Parameter RelativeTag="FWat" />
-        <Parameter RelativeTag="PGasCol" />
-        <Parameter RelativeTag="PVac" />
-        <Parameter RelativeTag="PWatIn" />
-        <Parameter RelativeTag="PWatOut" />
-        <Parameter RelativeTag="TFlueGas" />
-        <Parameter RelativeTag="TWatIn" />
-        <Parameter RelativeTag="TWatOut" />
-      </Parameters>
-    </Type>
-    <Type Name="PsDiagn:REGUL.R500.MODULES.CU.CU_XX_XXX.IOS_View" Base="PsDiagn:BASETYPE.IOS_BaseView">
-      <Parameters>
-        <Parameter RelativeTag="CPU1_LOAD" />
-        <Parameter RelativeTag="CPU2_LOAD" />
-        <Parameter RelativeTag="CPU3_LOAD" />
-        <Parameter RelativeTag="CPU4_LOAD" />
-        <Parameter RelativeTag="TEMP_CUR" />
-      </Parameters>
-    </Type>
     <Type Name="PsDiagn:COMPUTER.IOS_View" Base="PsDiagn:BASETYPE.IOS_BaseView">
       <Parameters>
         <Parameter RelativeTag="CPU1_LOAD" />
@@ -162,748 +13,91 @@
         <Parameter RelativeTag="CPU4_TEMP" />
       </Parameters>
     </Type>
+    <Type Name="PsDiagn:REGUL.R500.MODULES.CU.CU_XX_XXX.IOS_View" Base="PsDiagn:BASETYPE.IOS_BaseView">
+      <Parameters>
+        <Parameter RelativeTag="CPU1_LOAD" />
+        <Parameter RelativeTag="CPU2_LOAD" />
+        <Parameter RelativeTag="CPU3_LOAD" />
+        <Parameter RelativeTag="CPU4_LOAD" />
+        <Parameter RelativeTag="TEMP_CUR" />
+      </Parameters>
+    </Type>
+    <Type Name="PTVM:Types.AI1.IOS_View">
+      <Parameters>
+        <Parameter RelativeTag="fNormValue" MinTime="1000" ServerTime="true" />
+      </Parameters>
+    </Type>
+    <Type Name="PTVM:Types.AI2.IOS_View">
+      <Parameters>
+        <Parameter RelativeTag="fNormValue1" MinTime="1000" ServerTime="true" />
+        <Parameter RelativeTag="fNormValue2" MinTime="1000" ServerTime="true" />
+      </Parameters>
+    </Type>
   </Types>
   <Objects>
-    <Object Tag="ROOT.Gas.PBeforeFlap" Description="Давление газа после задвижек" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Gas.T" Description="Температура газа после задвижек" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Gas.F" Description="Расход газа" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Gas.Flap" Description="Регулирующая заслонка газа перед котлом" Type="PTVM:Types.Regulator.IOS_View" />
-    <Object Tag="ROOT.Gas.PAfterFlap" Description="Давление газа после регулирующей заслонки" Type="PTVM:Types.AnalogDoubleSens.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel1" Description="Перепад давления на диафрагме (газ)" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel2" Description="Давление газа после диафрагмы" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel3" Description="Температура газа после диафрагмы" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel4" Description="Давление газа после регулирующей заслонки 1" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel5" Description="Давление газа после регулирующей заслонки 2" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel6" Description="Перепад давления на диафрагме (мазут)" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel7" Description="Температура Мазута после диафрагмы" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel8" Description="Давление Мазута после диафрагмы" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel9" Description="Давление Мазута после регулирующей заслонкой" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel10" Description="Температура уходящих газов" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel11" Description="Содержание О2 в уходящих газах" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel12" Description="Разрежение в топке котла" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel13" Description="Перепад давления на диафрагме (вода)" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel14" Description="Температура Воды перед котлом" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel15" Description="Давление Воды перед котлом" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module1.Channel16" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel1" Description="Температура Воды после котла 1" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel2" Description="Температура Воды после котла 2" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel3" Description="Давление Воды после котла 1" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel4" Description="Давление Воды после котла 2" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel5" Description="Интенсивность общего факела в топке" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel6" Description="Датчик положения МЭО регулирующей заслонки газа" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel7" Description="Датчик положения МЭО регулирующей заслонки Мазута" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel8" Description="Датчик положения МЭО регулирующей заслонки разрежения А" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel9" Description="Датчик положения МЭО регулирующей заслонки разрежения В" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel10" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel11" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel12" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel13" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel14" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel15" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.AI.Module2.Channel16" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel1" Description="Задвижка 1 газа перед котлом (не откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel2" Description="Задвижка 1 газа перед котлом (не закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel3" Description="Задвижка 1 газа перед котлом (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel4" Description="Задвижка 1 газа перед котлом (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel5" Description="Задвижка 2 газа перед котлом (не откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel6" Description="Задвижка 2 газа перед котлом (не закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel7" Description="Задвижка 2 газа перед котлом (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel8" Description="Задвижка 2 газа перед котлом (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel9" Description="Задвижка Мазута перед котлом (не откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel10" Description="Задвижка Мазута перед котлом (не закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel11" Description="Задвижка Мазута перед котлом (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel12" Description="Задвижка Мазута перед котлом (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel13" Description="Задвижка Воды перед котлом (не откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel14" Description="Задвижка Воды перед котлом (не закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel15" Description="Задвижка Воды перед котлом (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel16" Description="Задвижка Воды перед котлом (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel17" Description="Задвижка Воды в обход котла (не откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel18" Description="Задвижка Воды в обход котла (не закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel19" Description="Задвижка Воды в обход котла (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel20" Description="Задвижка Воды в обход котла (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel21" Description="Задвижка Воды после котла (не откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel22" Description="Задвижка Воды после котла (не закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel23" Description="Задвижка Воды после котла (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel24" Description="Задвижка Воды после котла (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel25" Description="Регулятор газа перед котлом (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel26" Description="Регулятор газа перед котлом (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel27" Description="Регулятор Мазута перед котлом (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel28" Description="Регулятор Мазута перед котлом (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel29" Description="Регулятор разрежения А (не откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel30" Description="Регулятор разрежения А (не закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel31" Description="Регулятор разрежения В (не откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module1.Channel32" Description="Регулятор разрежения В (не закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel1" Description="Отсечной клапан газа" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel2" Description="Клапан продувки линии групп горелок 1, 2" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel3" Description="Клапан продувки линии групп горелок 3, 4" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel4" Description="ПЗК Мазута (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel5" Description="ПЗК Мазута (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel6" Description="Общий факел в котле (фак. 1)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel7" Description="Общий факел в котле (фак. 2)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel8" Description="Общий факел в котле (потуск.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel9" Description="Общий факел в котле (отказ)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel10" Description="Загазованность CH4" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel11" Description="Загазованность CO" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel12" Description="Ввод 1 в норме" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel13" Description="Ввод 2 в норме" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel14" Description="Режим вводов автомат" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel15" Description="Включен ввод 2" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel16" Description="Наличие 220В в цепях защиты" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel17" Description="Режим работы &quot;Автомат&quot; задвижки рез.топлива" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel18" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel19" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel20" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel21" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel22" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel23" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel24" Description="Кнопка &quot;Пуск котла&quot;" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel25" Description="Кнопка &quot;Стоп котла&quot;" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel26" Description="Кнопка &quot;Сброс аварийного сигнала&quot;" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel27" Description="Кнопка &quot;Ручн/Авт&quot; регулятора газа" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel28" Description="Кнопка &quot;Ручн/Авт&quot; регулятора Мазута" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel29" Description="Кнопка &quot;Ручн/Авт&quot; регулятора разрежения А" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel30" Description="Кнопка &quot;Ручн/Авт&quot; регулятора разрежения В" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel31" Description="Кнопка &quot;Больше&quot; регулятора газа" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module2.Channel32" Description="Кнопка &quot;Меньше&quot; регулятора газа" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel1" Description="Кнопка &quot;Больше&quot; регулятора Мазута" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel2" Description="Кнопка &quot;Меньше&quot; регулятора Мазута" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel3" Description="Кнопка &quot;Больше&quot; регулятора разрежения А" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel4" Description="Кнопка &quot;Меньше&quot; регулятора разрежения А" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel5" Description="Кнопка &quot;Больше&quot; регулятора разрежения В" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel6" Description="Кнопка &quot;Меньше&quot; регулятора разрежения В" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel7" Description="Кнопка &quot;Открыть&quot; задвижки газа 1" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel8" Description="Кнопка &quot;Стоп&quot; задвижки газа 1" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel9" Description="Кнопка &quot;Закрыть&quot; задвижки газа 1" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel10" Description="Кнопка &quot;Открыть&quot; задвижки газа 2" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel11" Description="Кнопка &quot;Стоп&quot; задвижки газа 2" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel12" Description="Кнопка &quot;Закрыть&quot; задвижки газа 2" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel13" Description="Кнопка &quot;Открыть&quot; задвижки Мазута" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel14" Description="Кнопка &quot;Стоп&quot; задвижки Мазута" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel15" Description="Кнопка &quot;Закрыть&quot; задвижки Мазута" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel16" Description="Кнопка &quot;Открыть&quot; задвижки Воды перед котлом" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel17" Description="Кнопка &quot;Стоп&quot; задвижки Воды перед котлом" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel18" Description="Кнопка &quot;Закрыть&quot; задвижки Воды перед котлом" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel19" Description="Кнопка &quot;Открыть&quot; задвижки Воды перед котлом" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel20" Description="Кнопка &quot;Стоп&quot; задвижки Воды в обход котла" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel21" Description="Кнопка &quot;Закрыть&quot; задвижки Воды в обход котла" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel22" Description="Кнопка &quot;Открыть&quot; задвижки Воды после котла" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel23" Description="Кнопка &quot;Стоп&quot; задвижки Воды после котла" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel24" Description="Кнопка &quot;Закрыть&quot; задвижки Воды после котла" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel25" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel26" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel27" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel28" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel29" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel30" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel31" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DI.Module3.Channel32" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel1" Description="Задвижка 1 газа перед котлом (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel2" Description="Задвижка 1 газа перед котлом (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel3" Description="Задвижка 2 газа перед котлом (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel4" Description="Задвижка 2 газа перед котлом (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel5" Description="Задвижка Мазута перед котлом (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel6" Description="Задвижка Мазута перед котлом (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel7" Description="Задвижка Воды перед котлом (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel8" Description="Задвижка Воды перед котлом (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel9" Description="Задвижка Воды в обход котла (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel10" Description="Задвижка Воды в обход котла (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel11" Description="Задвижка Воды после котла (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel12" Description="Задвижка Воды после котла (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel13" Description="Регулятор газа перед котлом (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel14" Description="Регулятор газа перед котлом (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel15" Description="Регулятор Мазута перед котлом (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel16" Description="Регулятор Мазута перед котлом (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel17" Description="Регулятор разрежения А (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel18" Description="Регулятор разрежения А (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel19" Description="Регулятор разрежения В (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel20" Description="Регулятор разрежения В (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel21" Description="Отсечной клапан газа (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel22" Description="Клапан продувки линии групп горелок 1, 2 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel23" Description="Клапан продувки линии групп горелок 3, 4 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel24" Description="Клапан ПЗК Мазута (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel25" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel26" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel27" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel28" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel29" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel30" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel31" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module1.Channel32" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel1" Description="Пускатель вентилятора горелки №1" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel2" Description="Пускатель вентилятора горелки №2" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel3" Description="Пускатель вентилятора горелки №3" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel4" Description="Пускатель вентилятора горелки №4" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel5" Description="Пускатель вентилятора горелки №5" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel6" Description="Пускатель вентилятора горелки №6" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel7" Description="Пускатель вентилятора горелки №7" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel8" Description="Пускатель вентилятора горелки №8" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel9" Description="Пускатель вентилятора горелки №9" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel10" Description="Пускатель вентилятора горелки №10" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel11" Description="Пускатель вентилятора горелки №11" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel12" Description="Пускатель вентилятора горелки №12" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel13" Description="Пускатель вентилятора горелки №13" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel14" Description="Пускатель вентилятора горелки №14" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel15" Description="Пускатель вентилятора горелки №15" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel16" Description="Пускатель вентилятора горелки №16" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel17" Description="Световая сигнализация &quot;Котел в работе&quot;" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel18" Description="Световая сигнализация &quot;Предупреждение&quot;" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel19" Description="Световая сигнализация &quot;Авария&quot;" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel20" Description="Звуковая сигнализация &quot;Авария&quot;" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel21" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel22" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel23" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel24" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel25" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel26" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel27" Description="Подсветка кнопки &quot;Автомат&quot; регулятора разрежения В" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel28" Description="Подсветка кнопки &quot;Пуск/Стоп&quot; котла" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel29" Description="Подсветка кнопки &quot;Автомат&quot; регулятора газа" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel30" Description="Подсветка кнопки &quot;Автомат&quot; регулятора Мазута" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel31" Description="Подсветка кнопки &quot;Автомат&quot; регулятора разрежения А" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Main.DO.Module2.Channel32" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel1" Description="Положение заслонки газа растопочной горелки группы №1" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel2" Description="Давление газа между ПЗК группы горелок №1" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel3" Description="Давление газа перед горелкой №1" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel4" Description="Давление воздуха перед горелкой №1" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel5" Description="Давление газа перед горелкой №2" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel6" Description="Давление воздуха перед горелкой №2" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel7" Description="Давление газа перед горелкой №3" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel8" Description="Давление воздуха перед горелкой №3" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel9" Description="Давление газа перед горелкой №4" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel10" Description="Давление воздуха перед горелкой №4" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel11" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel12" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel13" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel14" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel15" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.AI.Module1.Channel16" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel1" Description="Клапан ПЗК-1 группы горелок №1 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel2" Description="Клапан безопасности группы горелок №1 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel3" Description="Клапан опрессовки группы горелок №1 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel4" Description="Клапан запальника растопочной горелки №1 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel5" Description="Клапан ПЗК-2 горелки №1 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel6" Description="Клапан ПЗК-2 горелки №2 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel7" Description="Клапан ПЗК-2 горелки №3 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel8" Description="Клапан ПЗК-2 горелки №4 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel9" Description="Заслонка газа перед растопочной горелкой группы №1 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel10" Description="Заслонка газа перед растопочной горелкой группы №1 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel11" Description="Заслонка воздуха перед горелкой №1 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel12" Description="Заслонка воздуха перед горелкой №1 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel13" Description="Заслонка воздуха перед горелкой №2 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel14" Description="Заслонка воздуха перед горелкой №2 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel15" Description="Заслонка воздуха перед горелкой №3 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel16" Description="Заслонка воздуха перед горелкой №3 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel17" Description="Заслонка воздуха перед горелкой №4 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel18" Description="Заслонка воздуха перед горелкой №4 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel19" Description="Кран Мазута перед горелкой №1 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel20" Description="Кран Мазута перед горелкой №1 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel21" Description="Кран Мазута перед горелкой №2 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel22" Description="Кран Мазута перед горелкой №2 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel23" Description="Кран Мазута перед горелкой №3 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel24" Description="Кран Мазута перед горелкой №3 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel25" Description="Кран Мазута перед горелкой №4 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel26" Description="Кран Мазута перед горелкой №4 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel27" Description="Вентилятор горелки №1 (вкл.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel28" Description="Вентилятор горелки №2 (вкл.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel29" Description="Вентилятор горелки №3 (вкл.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel30" Description="Вентилятор горелки №4 (вкл.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel31" Description="Факел запальника группы №1 (вкл.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module1.Channel32" Description="Факел запальной горелки группы №1 (вкл.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel1" Description="Кран Мазута перед горелкой №1 (авт.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel2" Description="Кран Мазута перед горелкой №2 (авт.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel3" Description="Кран Мазута перед горелкой №3 (авт.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel4" Description="Кран Мазута перед горелкой №4 (авт.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel5" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel6" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel7" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel8" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel9" Description="Кнопка &quot;Пуск&quot; горелки №1" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel10" Description="Кнопка &quot;Стоп&quot; горелки №1" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel11" Description="Кнопка &quot;Пуск&quot; горелки №2" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel12" Description="Кнопка &quot;Стоп&quot; горелки №2" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel13" Description="Кнопка &quot;Пуск&quot; горелки №3" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel14" Description="Кнопка &quot;Стоп&quot; горелки №3" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel15" Description="Кнопка &quot;Пуск&quot; горелки №4" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel16" Description="Кнопка &quot;Стоп&quot; горелки №4" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel17" Description="Кнопка &quot;Пуск&quot; вентилятора горелки №1" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel18" Description="Кнопка &quot;Стоп&quot; вентилятора горелки №1" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel19" Description="Кнопка &quot;Пуск&quot; вентилятора горелки №2" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel20" Description="Кнопка &quot;Стоп&quot; вентилятора горелки №2" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel21" Description="Кнопка &quot;Пуск&quot; вентилятора горелки №3" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel22" Description="Кнопка &quot;Стоп&quot; вентилятора горелки №3" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel23" Description="Кнопка &quot;Пуск&quot; вентилятора горелки №4" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel24" Description="Кнопка &quot;Стоп&quot; вентилятора горелки №4" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel25" Description="Кнопка &quot;Сброс аварийного сигнала&quot; группы №1" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel26" Description="Кнопка &quot;Аварийное отключение группы горелок&quot; группы №1" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel27" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel28" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel29" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel30" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel31" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DI.Module2.Channel32" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel1" Description="Клапан ПЗК-1 группы горелок №1 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel2" Description="Клапан безопасности группы горелок №1 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel3" Description="Клапан опрессовки группы горелок №1 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel4" Description="Клапан запальника растопочной горелки №1 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel5" Description="Клапан ПЗК-2 горелки №1 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel6" Description="Клапан ПЗК-2 горелки №2 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel7" Description="Клапан ПЗК-2 горелки №3 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel8" Description="Клапан ПЗК-2 горелки №4 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel9" Description="Заслонка газа перед растопочной горелкой группы №1 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel10" Description="Заслонка газа перед растопочной горелкой группы №1 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel11" Description="Заслонка воздуха перед горелкой №1 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel12" Description="Заслонка воздуха перед горелкой №1 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel13" Description="Заслонка воздуха перед горелкой №2 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel14" Description="Заслонка воздуха перед горелкой №2 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel15" Description="Заслонка воздуха перед горелкой №3 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel16" Description="Заслонка воздуха перед горелкой №3 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel17" Description="Заслонка воздуха перед горелкой №4 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel18" Description="Заслонка воздуха перед горелкой №4 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel19" Description="Кран Мазута перед горелкой №1 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel20" Description="Кран Мазута перед горелкой №1 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel21" Description="Кран Мазута перед горелкой №2 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel22" Description="Кран Мазута перед горелкой №2 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel23" Description="Кран Мазута перед горелкой №3 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel24" Description="Кран Мазута перед горелкой №3 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel25" Description="Кран Мазута перед горелкой №4 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel26" Description="Кран Мазута перед горелкой №4 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel27" Description="Запальный трансформатор растопочной горелки группы №1" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel28" Description="Световая сигнализация &quot;Авария&quot; группы №1" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel29" Description="Звуковая сигнализация &quot;Авария&quot; группы №1" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel30" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel31" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group1.DO.Module1.Channel32" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel1" Description="Положение заслонки газа растопочной горелки группы №2" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel2" Description="Давление газа между ПЗК группы горелок №2" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel3" Description="Давление газа перед горелкой №5" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel4" Description="Давление воздуха перед горелкой №5" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel5" Description="Давление газа перед горелкой №6" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel6" Description="Давление воздуха перед горелкой №6" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel7" Description="Давление газа перед горелкой №7" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel8" Description="Давление воздуха перед горелкой №7" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel9" Description="Давление газа перед горелкой №8" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel10" Description="Давление воздуха перед горелкой №8" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel11" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel12" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel13" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel14" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel15" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.AI.Module1.Channel16" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel1" Description="Клапан ПЗК-1 группы горелок №2 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel2" Description="Клапан безопасности группы горелок №2 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel3" Description="Клапан опрессовки группы горелок №2 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel4" Description="Клапан запальника растопочной горелки №2 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel5" Description="Клапан ПЗК-2 горелки №5 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel6" Description="Клапан ПЗК-2 горелки №6 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel7" Description="Клапан ПЗК-2 горелки №7 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel8" Description="Клапан ПЗК-2 горелки №8 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel9" Description="Заслонка газа перед растопочной горелкой группы №2 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel10" Description="Заслонка газа перед растопочной горелкой группы №2 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel11" Description="Заслонка воздуха перед горелкой №5 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel12" Description="Заслонка воздуха перед горелкой №5 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel13" Description="Заслонка воздуха перед горелкой №6 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel14" Description="Заслонка воздуха перед горелкой №6 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel15" Description="Заслонка воздуха перед горелкой №7 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel16" Description="Заслонка воздуха перед горелкой №7 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel17" Description="Заслонка воздуха перед горелкой №8 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel18" Description="Заслонка воздуха перед горелкой №8 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel19" Description="Кран Мазута перед горелкой №5 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel20" Description="Кран Мазута перед горелкой №5 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel21" Description="Кран Мазута перед горелкой №6 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel22" Description="Кран Мазута перед горелкой №6 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel23" Description="Кран Мазута перед горелкой №7 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel24" Description="Кран Мазута перед горелкой №7 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel25" Description="Кран Мазута перед горелкой №8 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel26" Description="Кран Мазута перед горелкой №8 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel27" Description="Вентилятор горелки №5 (вкл.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel28" Description="Вентилятор горелки №6 (вкл.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel29" Description="Вентилятор горелки №7 (вкл.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel30" Description="Вентилятор горелки №8 (вкл.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel31" Description="Факел запальника группы №2 (вкл.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module1.Channel32" Description="Факел запальной горелки группы №2 (вкл.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel1" Description="Кран Мазута перед горелкой №5 (авт.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel2" Description="Кран Мазута перед горелкой №6 (авт.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel3" Description="Кран Мазута перед горелкой №7 (авт.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel4" Description="Кран Мазута перед горелкой №8 (авт.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel5" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel6" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel7" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel8" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel9" Description="Кнопка &quot;Пуск&quot; горелки №5" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel10" Description="Кнопка &quot;Стоп&quot; горелки №5" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel11" Description="Кнопка &quot;Пуск&quot; горелки №6" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel12" Description="Кнопка &quot;Стоп&quot; горелки №6" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel13" Description="Кнопка &quot;Пуск&quot; горелки №7" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel14" Description="Кнопка &quot;Стоп&quot; горелки №7" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel15" Description="Кнопка &quot;Пуск&quot; горелки №8" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel16" Description="Кнопка &quot;Стоп&quot; горелки №8" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel17" Description="Кнопка &quot;Пуск&quot; вентилятора горелки №5" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel18" Description="Кнопка &quot;Стоп&quot; вентилятора горелки №5" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel19" Description="Кнопка &quot;Пуск&quot; вентилятора горелки №6" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel20" Description="Кнопка &quot;Стоп&quot; вентилятора горелки №6" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel21" Description="Кнопка &quot;Пуск&quot; вентилятора горелки №7" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel22" Description="Кнопка &quot;Стоп&quot; вентилятора горелки №7" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel23" Description="Кнопка &quot;Пуск&quot; вентилятора горелки №8" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel24" Description="Кнопка &quot;Стоп&quot; вентилятора горелки №8" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel25" Description="Кнопка &quot;Сброс аварийного сигнала&quot; группы №2" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel26" Description="Кнопка &quot;Аварийное отключение группы горелок&quot; группы №2" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel27" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel28" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel29" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel30" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel31" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DI.Module2.Channel32" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel1" Description="Клапан ПЗК-1 группы горелок №2 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel2" Description="Клапан безопасности группы горелок №2 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel3" Description="Клапан опрессовки группы горелок №2 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel4" Description="Клапан запальника растопочной горелки №2 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel5" Description="Клапан ПЗК-2 горелки №5 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel6" Description="Клапан ПЗК-2 горелки №6 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel7" Description="Клапан ПЗК-2 горелки №7 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel8" Description="Клапан ПЗК-2 горелки №8 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel9" Description="Заслонка газа перед растопочной горелкой группы №2 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel10" Description="Заслонка газа перед растопочной горелкой группы №2 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel11" Description="Заслонка воздуха перед горелкой №5 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel12" Description="Заслонка воздуха перед горелкой №5 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel13" Description="Заслонка воздуха перед горелкой №6 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel14" Description="Заслонка воздуха перед горелкой №6 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel15" Description="Заслонка воздуха перед горелкой №7 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel16" Description="Заслонка воздуха перед горелкой №7 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel17" Description="Заслонка воздуха перед горелкой №8 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel18" Description="Заслонка воздуха перед горелкой №8 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel19" Description="Кран Мазута перед горелкой №5 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel20" Description="Кран Мазута перед горелкой №5 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel21" Description="Кран Мазута перед горелкой №6 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel22" Description="Кран Мазута перед горелкой №6 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel23" Description="Кран Мазута перед горелкой №7 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel24" Description="Кран Мазута перед горелкой №7 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel25" Description="Кран Мазута перед горелкой №8 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel26" Description="Кран Мазута перед горелкой №8 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel27" Description="Запальный трансформатор растопочной горелки группы №2" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel28" Description="Световая сигнализация &quot;Авария&quot; группы №2" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel29" Description="Звуковая сигнализация &quot;Авария&quot; группы №2" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel30" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel31" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group2.DO.Module1.Channel32" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel1" Description="Положение заслонки газа растопочной горелки группы №3" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel2" Description="Давление газа между ПЗК группы горелок №3" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel3" Description="Давление газа перед горелкой №9" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel4" Description="Давление воздуха перед горелкой №9" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel5" Description="Давление газа перед горелкой №10" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel6" Description="Давление воздуха перед горелкой №10" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel7" Description="Давление газа перед горелкой №11" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel8" Description="Давление воздуха перед горелкой №11" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel9" Description="Давление газа перед горелкой №12" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel10" Description="Давление воздуха перед горелкой №12" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel11" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel12" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel13" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel14" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel15" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.AI.Module1.Channel16" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel1" Description="Клапан ПЗК-1 группы горелок №3 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel2" Description="Клапан безопасности группы горелок №3 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel3" Description="Клапан опрессовки группы горелок №3 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel4" Description="Клапан запальника растопочной горелки №3 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel5" Description="Клапан ПЗК-2 горелки №9 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel6" Description="Клапан ПЗК-2 горелки №10 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel7" Description="Клапан ПЗК-2 горелки №11 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel8" Description="Клапан ПЗК-2 горелки №12 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel9" Description="Заслонка газа перед растопочной горелкой группы №3 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel10" Description="Заслонка газа перед растопочной горелкой группы №3 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel11" Description="Заслонка воздуха перед горелкой №9 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel12" Description="Заслонка воздуха перед горелкой №9 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel13" Description="Заслонка воздуха перед горелкой №10 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel14" Description="Заслонка воздуха перед горелкой №10 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel15" Description="Заслонка воздуха перед горелкой №11 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel16" Description="Заслонка воздуха перед горелкой №11 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel17" Description="Заслонка воздуха перед горелкой №12 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel18" Description="Заслонка воздуха перед горелкой №12 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel19" Description="Кран Мазута перед горелкой №9 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel20" Description="Кран Мазута перед горелкой №9 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel21" Description="Кран Мазута перед горелкой №10 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel22" Description="Кран Мазута перед горелкой №10 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel23" Description="Кран Мазута перед горелкой №11 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel24" Description="Кран Мазута перед горелкой №11 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel25" Description="Кран Мазута перед горелкой №12 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel26" Description="Кран Мазута перед горелкой №12 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel27" Description="Вентилятор горелки №9 (вкл.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel28" Description="Вентилятор горелки №10 (вкл.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel29" Description="Вентилятор горелки №11 (вкл.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel30" Description="Вентилятор горелки №12 (вкл.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel31" Description="Факел запальника группы №3 (вкл.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module1.Channel32" Description="Факел запальной горелки группы №3 (вкл.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel1" Description="Кран Мазута перед горелкой №9 (авт.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel2" Description="Кран Мазута перед горелкой №10 (авт.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel3" Description="Кран Мазута перед горелкой №11 (авт.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel4" Description="Кран Мазута перед горелкой №12 (авт.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel5" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel6" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel7" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel8" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel9" Description="Кнопка &quot;Пуск&quot; горелки №9" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel10" Description="Кнопка &quot;Стоп&quot; горелки №9" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel11" Description="Кнопка &quot;Пуск&quot; горелки №10" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel12" Description="Кнопка &quot;Стоп&quot; горелки №10" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel13" Description="Кнопка &quot;Пуск&quot; горелки №11" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel14" Description="Кнопка &quot;Стоп&quot; горелки №11" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel15" Description="Кнопка &quot;Пуск&quot; горелки №12" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel16" Description="Кнопка &quot;Стоп&quot; горелки №12" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel17" Description="Кнопка &quot;Пуск&quot; вентилятора горелки №9" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel18" Description="Кнопка &quot;Стоп&quot; вентилятора горелки №9" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel19" Description="Кнопка &quot;Пуск&quot; вентилятора горелки №10" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel20" Description="Кнопка &quot;Стоп&quot; вентилятора горелки №10" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel21" Description="Кнопка &quot;Пуск&quot; вентилятора горелки №11" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel22" Description="Кнопка &quot;Стоп&quot; вентилятора горелки №11" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel23" Description="Кнопка &quot;Пуск&quot; вентилятора горелки №12" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel24" Description="Кнопка &quot;Стоп&quot; вентилятора горелки №12" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel25" Description="Кнопка &quot;Сброс аварийного сигнала&quot; группы №3" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel26" Description="Кнопка &quot;Аварийное отключение группы горелок&quot; группы №3" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel27" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel28" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel29" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel30" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel31" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DI.Module2.Channel32" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel1" Description="Клапан ПЗК-1 группы горелок №3 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel2" Description="Клапан безопасности группы горелок №3 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel3" Description="Клапан опрессовки группы горелок №3 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel4" Description="Клапан запальника растопочной горелки №3 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel5" Description="Клапан ПЗК-2 горелки №9 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel6" Description="Клапан ПЗК-2 горелки №10 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel7" Description="Клапан ПЗК-2 горелки №11 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel8" Description="Клапан ПЗК-2 горелки №12 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel9" Description="Заслонка газа перед растопочной горелкой группы №3 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel10" Description="Заслонка газа перед растопочной горелкой группы №3 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel11" Description="Заслонка воздуха перед горелкой №9 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel12" Description="Заслонка воздуха перед горелкой №9 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel13" Description="Заслонка воздуха перед горелкой №10 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel14" Description="Заслонка воздуха перед горелкой №10 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel15" Description="Заслонка воздуха перед горелкой №11 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel16" Description="Заслонка воздуха перед горелкой №11 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel17" Description="Заслонка воздуха перед горелкой №12 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel18" Description="Заслонка воздуха перед горелкой №12 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel19" Description="Кран Мазута перед горелкой №9 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel20" Description="Кран Мазута перед горелкой №9 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel21" Description="Кран Мазута перед горелкой №10 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel22" Description="Кран Мазута перед горелкой №10 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel23" Description="Кран Мазута перед горелкой №11 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel24" Description="Кран Мазута перед горелкой №11 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel25" Description="Кран Мазута перед горелкой №12 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel26" Description="Кран Мазута перед горелкой №12 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel27" Description="Запальный трансформатор растопочной горелки группы №3" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel28" Description="Световая сигнализация &quot;Авария&quot; группы №3" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel29" Description="Звуковая сигнализация &quot;Авария&quot; группы №3" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel30" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel31" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group3.DO.Module1.Channel32" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel1" Description="Положение заслонки газа растопочной горелки группы №4" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel2" Description="Давление газа между ПЗК группы горелок №4" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel3" Description="Давление газа перед горелкой №13" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel4" Description="Давление воздуха перед горелкой №13" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel5" Description="Давление газа перед горелкой №14" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel6" Description="Давление воздуха перед горелкой №14" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel7" Description="Давление газа перед горелкой №15" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel8" Description="Давление воздуха перед горелкой №15" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel9" Description="Давление газа перед горелкой №16" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel10" Description="Давление воздуха перед горелкой №16" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel11" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel12" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel13" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel14" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel15" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.AI.Module1.Channel16" Description="Резерв" Type="PTVM:Types.AI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel1" Description="Клапан ПЗК-1 группы горелок №4 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel2" Description="Клапан безопасности группы горелок №4 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel3" Description="Клапан опрессовки группы горелок №4 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel4" Description="Клапан запальника растопочной горелки №4 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel5" Description="Клапан ПЗК-2 горелки №13 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel6" Description="Клапан ПЗК-2 горелки №14 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel7" Description="Клапан ПЗК-2 горелки №15 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel8" Description="Клапан ПЗК-2 горелки №16 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel9" Description="Заслонка газа перед растопочной горелкой группы №4 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel10" Description="Заслонка газа перед растопочной горелкой группы №4 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel11" Description="Заслонка воздуха перед горелкой №13 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel12" Description="Заслонка воздуха перед горелкой №13 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel13" Description="Заслонка воздуха перед горелкой №14 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel14" Description="Заслонка воздуха перед горелкой №14 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel15" Description="Заслонка воздуха перед горелкой №15 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel16" Description="Заслонка воздуха перед горелкой №15 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel17" Description="Заслонка воздуха перед горелкой №16 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel18" Description="Заслонка воздуха перед горелкой №16 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel19" Description="Кран Мазута перед горелкой №13 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel20" Description="Кран Мазута перед горелкой №13 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel21" Description="Кран Мазута перед горелкой №14 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel22" Description="Кран Мазута перед горелкой №14 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel23" Description="Кран Мазута перед горелкой №15 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel24" Description="Кран Мазута перед горелкой №15 (закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel25" Description="Кран Мазута перед горелкой №16 (откр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel26" Description="Кран Мазута перед горелкой №16 (не закр.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel27" Description="Вентилятор горелки №13 (вкл.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel28" Description="Вентилятор горелки №14 (вкл.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel29" Description="Вентилятор горелки №15 (вкл.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel30" Description="Вентилятор горелки №16 (вкл.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel31" Description="Факел запальника группы №4 (вкл.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module1.Channel32" Description="Факел запальной горелки группы №4 (вкл.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel1" Description="Кран Мазута перед горелкой №13 (авт.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel2" Description="Кран Мазута перед горелкой №14 (авт.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel3" Description="Кран Мазута перед горелкой №15 (авт.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel4" Description="Кран Мазута перед горелкой №16 (авт.)" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel5" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel6" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel7" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel8" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel9" Description="Кнопка &quot;Пуск&quot; горелки №13" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel10" Description="Кнопка &quot;Стоп&quot; горелки №13" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel11" Description="Кнопка &quot;Пуск&quot; горелки №14" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel12" Description="Кнопка &quot;Стоп&quot; горелки №14" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel13" Description="Кнопка &quot;Пуск&quot; горелки №15" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel14" Description="Кнопка &quot;Стоп&quot; горелки №15" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel15" Description="Кнопка &quot;Пуск&quot; горелки №16" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel16" Description="Кнопка &quot;Стоп&quot; горелки №16" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel17" Description="Кнопка &quot;Пуск&quot; вентилятора горелки №13" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel18" Description="Кнопка &quot;Стоп&quot; вентилятора горелки №13" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel19" Description="Кнопка &quot;Пуск&quot; вентилятора горелки №14" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel20" Description="Кнопка &quot;Стоп&quot; вентилятора горелки №14" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel21" Description="Кнопка &quot;Пуск&quot; вентилятора горелки №15" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel22" Description="Кнопка &quot;Стоп&quot; вентилятора горелки №15" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel23" Description="Кнопка &quot;Пуск&quot; вентилятора горелки №16" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel24" Description="Кнопка &quot;Стоп&quot; вентилятора горелки №16" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel25" Description="Кнопка &quot;Сброс аварийного сигнала&quot; группы №4" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel26" Description="Кнопка &quot;Аварийное отключение группы горелок&quot; группы №4" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel27" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel28" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel29" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel30" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel31" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DI.Module2.Channel32" Description="Резерв" Type="PTVM:Types.DI.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel1" Description="Клапан ПЗК-1 группы горелок №4 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel2" Description="Клапан безопасности группы горелок №4 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel3" Description="Клапан опрессовки группы горелок №4 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel4" Description="Клапан запальника растопочной горелки №4 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel5" Description="Клапан ПЗК-2 горелки №13 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel6" Description="Клапан ПЗК-2 горелки №14 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel7" Description="Клапан ПЗК-2 горелки №15 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel8" Description="Клапан ПЗК-2 горелки №16 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel9" Description="Заслонка газа перед растопочной горелкой группы №4 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel10" Description="Заслонка газа перед растопочной горелкой группы №4 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel11" Description="Заслонка воздуха перед горелкой №13 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel12" Description="Заслонка воздуха перед горелкой №13 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel13" Description="Заслонка воздуха перед горелкой №14 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel14" Description="Заслонка воздуха перед горелкой №14 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel15" Description="Заслонка воздуха перед горелкой №15 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel16" Description="Заслонка воздуха перед горелкой №15 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel17" Description="Заслонка воздуха перед горелкой №16 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel18" Description="Заслонка воздуха перед горелкой №16 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel19" Description="Кран Мазута перед горелкой №13 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel20" Description="Кран Мазута перед горелкой №13 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel21" Description="Кран Мазута перед горелкой №14 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel22" Description="Кран Мазута перед горелкой №14 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel23" Description="Кран Мазута перед горелкой №15 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel24" Description="Кран Мазута перед горелкой №15 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel25" Description="Кран Мазута перед горелкой №16 (откр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel26" Description="Кран Мазута перед горелкой №16 (закр.)" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel27" Description="Запальный трансформатор растопочной горелки группы №4" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel28" Description="Световая сигнализация &quot;Авария&quot; группы №4" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel29" Description="Звуковая сигнализация &quot;Авария&quot; группы №4" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel30" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel31" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Diag.Group4.DO.Module1.Channel32" Description="Резерв" Type="PTVM:Types.DO.IOS_View" />
-    <Object Tag="ROOT.Water.PIn" Description="Давление Воды на входе в котёл" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Water.TIn" Description="Температура Воды на входе в котёл" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Water.F" Description="Расход Воды через котёл" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Water.TOut" Description="Температура Воды на выходе из котла" Type="PTVM:Types.AnalogDoubleSens.IOS_View" />
-    <Object Tag="ROOT.Water.POut" Description="Давление Воды на выходе из котла" Type="PTVM:Types.AnalogDoubleSens.IOS_View" />
-    <Object Tag="ROOT.Oil.PBeforeFlap" Description="Давление Мазута после задвижки" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Oil.T" Description="Температура Мазута после задвижки" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Oil.F" Description="Расход Мазута после задвижки" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Oil.PAfterFlap" Description="Давление Мазута после регулятора" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Oil.Flap" Description="Регулирующая заслонка Мазута перед котлом" Type="PTVM:Types.Regulator.IOS_View" />
-    <Object Tag="ROOT.Boiler" Type="PTVM:Types.Boiler.IOS_View" />
-    <Object Tag="ROOT.AlarmsValue.DelAlarmsBoiler" Type="PTVM:Types.DelAlarmsBoiler.IOS_View" />
-    <Object Tag="ROOT.AlarmsValue.ProtectsValueBurn" Type="PTVM:Types.ProtectsValueBurn.IOS_View" />
-    <Object Tag="ROOT.AlarmsValue.DelAlarmsBurn" Type="PTVM:Types.DelAlarmsBurn.IOS_View" />
-    <Object Tag="ROOT.AlarmsValue.TimeProcesses" Type="PTVM:Types.TimeProcesses.IOS_View" />
-    <Object Tag="ROOT.AlarmsValue.ValueAlarmBoiler.Prot1" Description="Давление газа в коллекторе ниже нормы" Type="PTVM:Types.ProtectsValueBoiler.IOS_View" />
-    <Object Tag="ROOT.AlarmsValue.ValueAlarmBoiler.Prot2" Description="Давление газа в коллекторе выше нормы" Type="PTVM:Types.ProtectsValueBoiler.IOS_View" />
-    <Object Tag="ROOT.AlarmsValue.ValueAlarmBoiler.Prot3" Description="Давление рез.топлива в коллекторе ниже нормы" Type="PTVM:Types.ProtectsValueBoiler.IOS_View" />
-    <Object Tag="ROOT.AlarmsValue.ValueAlarmBoiler.Prot4" Description="Давление воды на выходе ниже нормы" Type="PTVM:Types.ProtectsValueBoiler.IOS_View" />
-    <Object Tag="ROOT.AlarmsValue.ValueAlarmBoiler.Prot5" Description="Давление воды на выходе выше нормы" Type="PTVM:Types.ProtectsValueBoiler.IOS_View" />
-    <Object Tag="ROOT.AlarmsValue.ValueAlarmBoiler.Prot6" Description="Расход воды ниже нормы" Type="PTVM:Types.ProtectsValueBoiler.IOS_View" />
-    <Object Tag="ROOT.AlarmsValue.ValueAlarmBoiler.Prot7" Description="Температура воды на выходе выше нормы" Type="PTVM:Types.ProtectsValueBoiler.IOS_View" />
-    <Object Tag="ROOT.AlarmsValue.ValueAlarmBoiler.Prot8" Description="Разрежение ниже нормы" Type="PTVM:Types.ProtectsValueBoiler.IOS_View" />
-    <Object Tag="ROOT.AlarmsValue.ValueAlarmBoiler.Prot9" Description="Температура дымовых газов выше нормы" Type="PTVM:Types.ProtectsValueBoiler.IOS_View" />
-    <Object Tag="ROOT.AlarmsValue.ValueAlarmBoiler.Prot10" Description="Интенсивность общего факела ниже нормы" Type="PTVM:Types.ProtectsValueBoiler.IOS_View" />
-    <Object Tag="ROOT.Group1.Burn3.PGas" Description="Давление газа перед горелкой 3" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group1.Burn3.PO2" Description="Давление воздуха перед горелкой 3" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group1.Burn3.Burn" Description="Горелка 5" Type="PTVM:Types.BurnerIgn.IOS_View" />
-    <Object Tag="ROOT.Group1.PBetween" Description="Давление между ПЗК группы горелок 1" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group1.Burn1.PGas" Description="Давление газа перед горелкой 1" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group1.Burn1.PO2" Description="Давление воздуха перед горелкой 1" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group1.Burn1.Burn" Description="Горелка 1" Type="PTVM:Types.BurnerWork.IOS_View" />
-    <Object Tag="ROOT.Group1.Burn2.PGas" Description="Давление газа перед горелкой 2" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group1.Burn2.PO2" Description="Давление воздуха перед горелкой 2" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group1.Burn2.Burn" Description="Горелка 3" Type="PTVM:Types.BurnerWork.IOS_View" />
-    <Object Tag="ROOT.Group1.Burn4.PGas" Description="Давление газа перед горелкой 4" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group1.Burn4.PO2" Description="Давление воздуха перед горелкой 4" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group1.Burn4.Burn" Description="Горелка 7" Type="PTVM:Types.BurnerWork.IOS_View" />
-    <Object Tag="ROOT.Group1.Germ" Description="KKS" Type="PTVM:Types.Germ.IOS_View" />
-    <Object Tag="ROOT.Group1.PGasFix" Description="Давление фиксированное между ПЗК группы горелок 1" Type="PTVM:Types.Value.IOS_View" />
-    <Object Tag="ROOT.Smoke.S" Description="Разрежение в топке" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Smoke.T" Description="Температура дымовых газов" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Smoke.O2" Description="Содержание воздуха" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Smoke.FlapA" Description="Регулирующий шибер разрежения А" Type="PTVM:Types.Regulator.IOS_View" />
-    <Object Tag="ROOT.Smoke.FlapB" Description="Регулирующий шибер разрежения В" Type="PTVM:Types.Regulator.IOS_View" />
-    <Object Tag="ROOT.Group2.PBetween" Description="Давление между ПЗК группы горелок 2" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group2.Germ" Description="KKS" Type="PTVM:Types.Germ.IOS_View" />
-    <Object Tag="ROOT.Group2.Burn2.PGas" Description="Давление газа перед горелкой 6" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group2.Burn2.PO2" Description="Давление воздуха перед горелкой 6" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group2.Burn2.Burn" Description="Горелка 11" Type="PTVM:Types.BurnerIgn.IOS_View" />
-    <Object Tag="ROOT.Group2.Burn3.PGas" Description="Давление газа перед горелкой 7" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group2.Burn3.PO2" Description="Давление воздуха перед горелкой 7" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group2.Burn3.Burn" Description="Горелка 13" Type="PTVM:Types.BurnerWork.IOS_View" />
-    <Object Tag="ROOT.Group2.Burn4.PGas" Description="Давление газа перед горелкой 8" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group2.Burn4.PO2" Description="Давление воздуха перед горелкой 8" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group2.Burn4.Burn" Description="Горелка 15" Type="PTVM:Types.BurnerWork.IOS_View" />
-    <Object Tag="ROOT.Group2.Burn1.PGas" Description="Давление газа перед горелкой 5" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group2.Burn1.PO2" Description="Давление воздуха перед горелкой 5" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group2.Burn1.Burn" Description="Горелка 9" Type="PTVM:Types.BurnerWork.IOS_View" />
-    <Object Tag="ROOT.Group2.PGasFix" Description="Давление фиксированное между ПЗК группы горелок 2" Type="PTVM:Types.Value.IOS_View" />
-    <Object Tag="ROOT.Group3.PBetween" Description="Давление между ПЗК группы горелок 3" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group3.Germ" Description="KKS" Type="PTVM:Types.Germ.IOS_View" />
-    <Object Tag="ROOT.Group3.Burn3.PGas" Description="Давление газа перед горелкой 11" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group3.Burn3.PO2" Description="Давление воздуха перед горелкой 11" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group3.Burn3.Burn" Description="Горелка 6" Type="PTVM:Types.BurnerIgn.IOS_View" />
-    <Object Tag="ROOT.Group3.Burn2.PGas" Description="Давление газа перед горелкой 10" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group3.Burn2.PO2" Description="Давление воздуха перед горелкой 10" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group3.Burn2.Burn" Description="Горелка 4" Type="PTVM:Types.BurnerWork.IOS_View" />
-    <Object Tag="ROOT.Group3.Burn4.PGas" Description="Давление газа перед горелкой 12" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group3.Burn4.PO2" Description="Давление воздуха перед горелкой 12" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group3.Burn4.Burn" Description="Горелка 8" Type="PTVM:Types.BurnerWork.IOS_View" />
-    <Object Tag="ROOT.Group3.Burn1.PGas" Description="Давление газа перед горелкой 9" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group3.Burn1.PO2" Description="Давление воздуха перед горелкой 9" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group3.Burn1.Burn" Description="Горелка 2" Type="PTVM:Types.BurnerWork.IOS_View" />
-    <Object Tag="ROOT.Group3.PGasFix" Description="Давление фиксированное между ПЗК группы горелок 3" Type="PTVM:Types.Value.IOS_View" />
-    <Object Tag="ROOT.Group4.PBetween" Description="Давление между ПЗК группы горелок 4" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group4.Germ" Description="KKS" Type="PTVM:Types.Germ.IOS_View" />
-    <Object Tag="ROOT.Group4.Burn2.PGas" Description="Давление газа перед горелкой 14" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group4.Burn2.PO2" Description="Давление воздуха перед горелкой 14" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group4.Burn2.Burn" Description="Горелка 12" Type="PTVM:Types.BurnerIgn.IOS_View" />
-    <Object Tag="ROOT.Group4.Burn3.PGas" Description="Давление газа перед горелкой 15" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group4.Burn3.PO2" Description="Давление воздуха перед горелкой 15" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group4.Burn3.Burn" Description="Горелка 14" Type="PTVM:Types.BurnerWork.IOS_View" />
-    <Object Tag="ROOT.Group4.Burn4.PGas" Description="Давление газа перед горелкой 16" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group4.Burn4.PO2" Description="Давление воздуха перед горелкой 16" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group4.Burn4.Burn" Description="Горелка 16" Type="PTVM:Types.BurnerWork.IOS_View" />
-    <Object Tag="ROOT.Group4.Burn1.PGas" Description="Давление газа перед горелкой 13" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group4.Burn1.PO2" Description="Давление воздуха перед горелкой 13" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.Group4.Burn1.Burn" Description="Горелка 10" Type="PTVM:Types.BurnerWork.IOS_View" />
-    <Object Tag="ROOT.Group4.PGasFix" Description="Давление фиксированное между ПЗК группы горелок 4" Type="PTVM:Types.Value.IOS_View" />
-    <Object Tag="ROOT.FireIntensity" Description="Интенсивность общего факела" Type="PTVM:Types.AnalogSens.IOS_View" />
-    <Object Tag="ROOT.AverageParams" Description="Интенсивность общего факела" Type="PTVM:Types.AverageParams.IOS_View" />
-    <Object Tag="DIAGNOSTICS.REGUL_R500_A.CU_00_071" Description="REGUL_R500_A" Type="PsDiagn:REGUL.R500.MODULES.CU.CU_XX_XXX.IOS_View" />
-    <Object Tag="DIAGNOSTICS.REGUL_R500_B.REGUL_R500_71_W_B" Description="REGUL_R500_71_W_B" Type="PsDiagn:REGUL.R500.MODULES.CU.CU_XX_XXX.IOS_View" />
-    <Object Tag="DIAGNOSTICS.SERVER2" Description="COMPUTER - Компьютер" Type="PsDiagn:COMPUTER.IOS_View" />
     <Object Tag="DIAGNOSTICS.SERVER1" Description="COMPUTER - Компьютер" Type="PsDiagn:COMPUTER.IOS_View" />
+    <Object Tag="DIAGNOSTICS.SERVER2" Description="COMPUTER - Компьютер" Type="PsDiagn:COMPUTER.IOS_View" />
+    <Object Tag="DIAGNOSTICS.STATION" Description="COMPUTER - Компьютер" Type="PsDiagn:COMPUTER.IOS_View" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_A.CU_00_071" Description="REGUL_R500_A" Type="PsDiagn:REGUL.R500.MODULES.CU.CU_XX_XXX.IOS_View" />
+    <Object Tag="DIAGNOSTICS.REGUL_R500_B.CU_00_071" Description="REGUL_R500_B" Type="PsDiagn:REGUL.R500.MODULES.CU.CU_XX_XXX.IOS_View" />
+    <Object Tag="Application.Gas.PD" Description="PDг на котёл" Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Gas.T" Description="Тг за диафрагмой" Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Gas.P" Description="Pг за диафрагмой" Type="PTVM:Types.AI2.IOS_View" />
+    <Object Tag="Application.Group1.BurnMain.PAir" Description="Рв перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group1.BurnMain.PGas" Description="Рг перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group1.BurnMain.PGasBetween" Description="Рг между ПЗК гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group1.BurnWork1.PAir" Description="Рв перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group1.BurnWork1.PGas" Description="Рг перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group1.BurnWork1.PGasBetween" Description="Рг между ПЗК гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group1.BurnWork2.PAir" Description="Рв перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group1.BurnWork2.PGas" Description="Рг перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group1.BurnWork2.PGasBetween" Description="Рг между ПЗК гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group1.BurnWork3.PAir" Description="Рв перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group1.BurnWork3.PGas" Description="Рг перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group1.BurnWork3.PGasBetween" Description="Рг между ПЗК гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Smoke.O2" Description="Содержание О²" Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Smoke.T" Description="Т уходящих газов" Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Smoke.PVac" Description="Разрежение" Type="PTVM:Types.AI2.IOS_View" />
+    <Object Tag="Application.Water.PD" Description="PDсв на входе" Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Water.PIn" Description="Рсв на входе" Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Water.TIn" Description="Тсв на входе" Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Water.POut" Description="Рсв1 на выходе" Type="PTVM:Types.AI2.IOS_View" />
+    <Object Tag="Application.Water.TOut" Description="Тсв на выходе" Type="PTVM:Types.AI2.IOS_View" />
+    <Object Tag="Application.Group2.BurnMain.PAir" Description="Рв перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group2.BurnMain.PGas" Description="Рг перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group2.BurnMain.PGasBetween" Description="Рг между ПЗК гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group2.BurnWork1.PAir" Description="Рв перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group2.BurnWork1.PGas" Description="Рг перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group2.BurnWork1.PGasBetween" Description="Рг между ПЗК гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group2.BurnWork2.PAir" Description="Рв перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group2.BurnWork2.PGas" Description="Рг перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group2.BurnWork2.PGasBetween" Description="Рг между ПЗК гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group2.BurnWork3.PAir" Description="Рв перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group2.BurnWork3.PGas" Description="Рг перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group2.BurnWork3.PGasBetween" Description="Рг между ПЗК гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group3.BurnMain.PAir" Description="Рв перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group3.BurnMain.PGas" Description="Рг перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group3.BurnMain.PGasBetween" Description="Рг между ПЗК гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group3.BurnWork1.PAir" Description="Рв перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group3.BurnWork1.PGas" Description="Рг перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group3.BurnWork1.PGasBetween" Description="Рг между ПЗК гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group3.BurnWork2.PAir" Description="Рв перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group3.BurnWork2.PGas" Description="Рг перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group3.BurnWork2.PGasBetween" Description="Рг между ПЗК гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group3.BurnWork3.PAir" Description="Рв перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group3.BurnWork3.PGas" Description="Рг перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group3.BurnWork3.PGasBetween" Description="Рг между ПЗК гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group4.BurnMain.PAir" Description="Рв перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group4.BurnMain.PGas" Description="Рг перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group4.BurnMain.PGasBetween" Description="Рг между ПЗК гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group4.BurnWork1.PAir" Description="Рв перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group4.BurnWork1.PGas" Description="Рг перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group4.BurnWork1.PGasBetween" Description="Рг между ПЗК гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group4.BurnWork2.PAir" Description="Рв перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group4.BurnWork2.PGas" Description="Рг перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group4.BurnWork2.PGasBetween" Description="Рг между ПЗК гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group4.BurnWork3.PAir" Description="Рв перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group4.BurnWork3.PGas" Description="Рг перед гор." Type="PTVM:Types.AI1.IOS_View" />
+    <Object Tag="Application.Group4.BurnWork3.PGasBetween" Description="Рг между ПЗК гор." Type="PTVM:Types.AI1.IOS_View" />
   </Objects>
 </History>

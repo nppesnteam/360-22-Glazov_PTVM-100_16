@@ -1,0 +1,218 @@
+<type access-modifier="private" name="Explorer_Source" display-name="Explorer_Source" uuid="70c3a093-11e4-4fd6-b778-1230c63eef67" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="">
+	<designed target="Location" value="" ver="5"/>
+	<designed target="Port" value="4388" ver="5"/>
+	<designed target="HistoryPort" value="4950" ver="5"/>
+	<designed target="Path" value="" ver="5"/>
+	<designed target="Active" value="false" ver="5"/>
+	<designed target="ReAdvise" value="0" ver="5"/>
+	<designed target="ClientDisplayName" value="HMI" ver="5"/>
+	<designed target="ClientId" value="HMI" ver="5"/>
+	<object access-modifier="private" name="private" display-name="private" uuid="6dfd0798-88c6-4c3a-9dd3-8d590c530985" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+		<object access-modifier="private" name="Credentials" display-name="Credentials" uuid="e9b8b2d0-2cee-4cc6-8970-d615a889c951" base-type="ApCredentials" base-type-id="fef70643-767d-4533-98e9-412948317273" ver="5" description="" cardinal="1">
+			<designed target="FilePath" value="" ver="5"/>
+			<object access-modifier="private" name="current" display-name="current" uuid="52b3359e-696d-485c-aedc-512815268f51" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+			<do access-modifier="private" name="FromJSON" display-name="FromJSON" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[if (credentials != "")
+{
+	folder: string = ProductInfo.GetUserDataFolder();
+	Files.CreateRecursiveFolder(folder);
+		
+	FilePath = Files.CombinePath(folder, String.ToString(DateTime.UtcNow()));
+	Files.WriteTextFile(FilePath, credentials);
+	if (!Load())
+		Debug.Log(GetLastError());
+	Files.RemoveRecursive(FilePath);
+}
+else
+{
+	FilePath = "";
+	SetPassword("");
+}]]>
+				</body>
+				<param access-modifier="private" name="credentials" display-name="" uuid="0bc4ea7b-105a-4c3d-a5f6-69a602a0d729" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			</do>
+		</object>
+		<do access-modifier="private" name="Update" display-name="Update" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[icon: string;
+description: string;
+importance: string = "debug";
+
+// при подключении к серверу обновляем его адрес
+if (connectionState == 1 || connectionState == 2)
+	if (SourceTitle == "")
+		SourceTitle = GetSourceTitle();
+if (Active)
+{
+	if (connectionState == 0)
+	{
+		if (connecting)
+		{
+			icon = "Disconnected16.png";
+			description = "Не удалось подключиться к серверу "+ SourceTitle;
+			importance = "error";
+
+			if (errorString != "")
+			{
+				// добавляем описание ошибки
+				description = description + "\n" + errorString;
+				// сбрасываем описание ошибки (источник сам этого не делает)
+				errorString = "";
+			}
+		}
+		else if (disconnecting)
+		{
+			disconnecting = false;
+			icon = "Disconnected16.png";
+			description = "Выполнено отключение от сервера "+ SourceTitle;
+			importance = "info";
+		}
+		else
+		{
+			icon = "Disconnected16.png";
+			description = "Прервано соединение с сервером "+ SourceTitle;
+			importance = "error";
+		}
+	}
+	else if (connectionState == 1)
+	{
+		if (!connecting)
+		{
+			connecting = true;
+			icon = "Connecting16.png";
+			description = "Выполняется подключение к серверу "+ SourceTitle;
+		}
+	}
+	else if (connectionState == 2)
+	{
+		// процесс подключения завершился
+		connecting = false;
+		icon = "Connected16.png";
+		description = "Установлено соединение с сервером "+ SourceTitle;
+		importance = "info";
+	}
+}
+else
+{
+	if (connectionState == 3)
+	{
+		connecting = false;
+		disconnecting = true;
+		icon = "Connecting16.png";
+		description = "Выполняется отключение от сервера "+ SourceTitle;
+	}
+	else
+	{
+		connecting = false;
+		disconnecting = false;
+		errorString = "";
+		icon = "Disconnected16.png";
+		description = "Выполнено отключение от сервера "+ SourceTitle;
+		importance = "info";
+	}
+}
+
+
+if (description != "")
+{
+	StateInfo.Update(importance, description);
+}]]>
+			</body>
+			<param access-modifier="private" name="connectionState" display-name="" uuid="91e49c96-6783-4bcd-a262-82176f6c4218" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+		</do>
+		<object access-modifier="private" name="SourceTitle" display-name="SourceTitle" uuid="c4b14202-c9fc-40fd-8ad7-81b789999f0a" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="connecting" display-name="connecting" uuid="ca337a47-0d0b-41d0-bbec-609d38c53f52" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="disconnecting" display-name="disconnecting" uuid="7071b17c-9cc7-4742-a736-6b3151809432" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="errorString" display-name="errorString" uuid="2dbd0889-005f-4e12-8a66-0f9b4ea13b9b" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+	</object>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="c8bcbc87-dc10-4346-b35a-057f990dc608" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="Title" display-name="Title" uuid="5a07ed4a-749c-4324-8cad-1e47ce94850b" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="ConnectionState" display-name="ConnectionState" uuid="00251abf-c6ce-4fbe-ae57-b1fd863ebb05" base-type="notifying_uint1" base-type-id="fed14c54-414c-56bd-549a-8d761c4d6200" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="ErrorState" display-name="ErrorState" uuid="3a7a4b41-a0ea-4ead-88b8-0fbecabbe0c0" base-type="notifying_uint1" base-type-id="fed14c54-414c-56bd-549a-8d761c4d6200" ver="5" description="" cardinal="1"/>
+	<do access-modifier="private" name="Connect" display-name="Connect" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[Active = true;
+if (IsActive != Active)
+	IsActive = Active;]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="Disconnect" display-name="Disconnect" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[Active = false;
+if (IsActive != Active)
+{
+	IsActive = Active;
+	Title = "";
+	Location = "";
+}]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="IsActive" display-name="IsActive" uuid="3d5d042a-79ea-4074-96bf-921488dfe7d6" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnConnectionStateChanged">
+		<body kind="om">
+			<![CDATA[if (ConnectionState != connectionState)
+{
+	ConnectionState = connectionState;
+	private.Update(connectionState);
+}]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnErrorStateChanged">
+		<body kind="om">
+			<![CDATA[if (ErrorState != errorState)
+	ErrorState = errorState;]]>
+		</body>
+	</do-on>
+	<do access-modifier="private" name="GetSourceTitle" display-name="GetSourceTitle" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[sourceTitle: string = Location + ":" + String.ToString(Port);
+if (Title != "")
+	sourceTitle = Title + " - " + sourceTitle;
+
+return sourceTitle;]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetCredentials" display-name="SetCredentials" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[if (private.Credentials.current != credentials)
+{
+	//Debug.Log("Set credentials for " + GetSourceTitle());
+	private.Credentials.FromJSON(credentials);
+	private.Credentials.current = credentials;
+	// активируем источник, если ранее было подключение
+	if (IsActive)
+	{
+		//Debug.Log("Reconnect to source after set credentials");
+		if (Active)
+			Active = false;
+		Active = true;
+	}
+}]]>
+		</body>
+		<param access-modifier="private" name="credentials" display-name="" uuid="c5b59d54-14e5-424f-a39b-071ab70a4af7" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="GetCredentials" display-name="GetCredentials" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[return private.Credentials.current;]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="Files" display-name="Files" uuid="2514c337-6223-453b-a483-03182091326b" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5" description="" cardinal="1">
+		<designed target="RootPath" value="/" ver="5"/>
+	</object>
+	<object access-modifier="private" name="StateInfo" display-name="StateInfo" uuid="e11384b8-b7b2-4175-8854-9fc332cbf571" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1">
+		<do access-modifier="private" name="Update" display-name="Update" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[var info = {
+	'importance': importance,
+	'description': description
+};
+Value = JSON.stringify(info);]]>
+			</body>
+			<param access-modifier="private" name="importance" display-name="" uuid="f1520a79-a7df-4290-8e3c-c5b3467cf643" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<param access-modifier="private" name="description" display-name="" uuid="56e39e0b-3853-4ad5-9d56-d169b5671ad7" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+	</object>
+	<init target="Credentials" ver="5" ref="private.Credentials"/>
+</type>
+

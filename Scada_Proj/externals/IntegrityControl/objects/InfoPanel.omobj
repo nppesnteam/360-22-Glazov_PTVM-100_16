@@ -1,0 +1,485 @@
+<type access-modifier="private" name="InfoPanel" display-name="InfoPanel" uuid="f83cd7ea-8d09-48ce-9c07-5941768811c3" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Flip" value="0" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="200" ver="5"/>
+	<designed target="Height" value="400" ver="5"/>
+	<designed target="RoundingRadius" value="0" ver="5"/>
+	<designed target="PenColor" value="0xff808080" ver="5"/>
+	<designed target="PenStyle" value="1" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="0xffffffff" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<object access-modifier="private" name="pIntegrityControl" display-name="pIntegrityControl" uuid="a7e448c1-1b96-4dba-b717-d2dd2f1e875d" base-type="IntegrityControl" base-type-id="5e8b4ced-3361-4255-ad0a-541497b0ad11" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="private" display-name="private" uuid="c5b180ac-d4ae-4027-949a-553adcb13906" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="pTheme" display-name="pTheme" uuid="41640bff-5e58-4f5c-a67e-64f5a8b3a543" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5" base-ref="true"/>
+		<init target="pTheme" ver="5" ref="init_Theme"/>
+	</object>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[private.pTheme.EditorBrushColor]]>
+		</body>
+	</do-trace>
+	<param access-modifier="private" name="init_Theme" display-name="Тема оформления" uuid="e841fcf3-846e-4447-95af-ed6a0f207c66" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="Etalon" display-name="Etalon" uuid="3b8d5a4c-406f-4b5a-a1e6-890e2c8152ef" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="200" ver="5"/>
+		<designed target="Height" value="135" ver="5"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="4278190080" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<object access-modifier="private" name="EtalonTitle" display-name="EtalonTitle" uuid="40d62cf4-cece-43b2-93d5-be9af69cb171" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+			<designed target="X" value="10" ver="5"/>
+			<designed target="Y" value="5" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="180" ver="5"/>
+			<designed target="Height" value="20" ver="5"/>
+			<designed target="Text" value="Эталон" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
+			<designed target="FontColor" value="0xff000000" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="DateCreationEtalonCaption" display-name="DateCreationEtalonCaption" uuid="bbe95a49-b93c-4641-9b98-12b69044c0a2" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+			<designed target="X" value="15" ver="5"/>
+			<designed target="Y" value="25" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="180" ver="5"/>
+			<designed target="Height" value="20" ver="5"/>
+			<designed target="Text" value="Дата создания:" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="0xff000000" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="CreateDateValue" display-name="CreateDateValue" uuid="9a900915-804b-495d-b7a6-f2277a3dca29" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+			<designed target="X" value="25" ver="5"/>
+			<designed target="Y" value="45" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="170" ver="5"/>
+			<designed target="Height" value="20" ver="5"/>
+			<designed target="Text" value="Дата/Время" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="0xff000000" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
+			<do-trace access-modifier="private" target="Text" ver="5">
+				<body>
+					<![CDATA[pIntegrityControl.Information.EtalonDateCreated]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="BenchmarkCreatorCaption" display-name="BenchmarkCreatorCaption" uuid="73b3065d-4e15-4504-99b0-49a00cc4a110" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+			<designed target="X" value="15" ver="5"/>
+			<designed target="Y" value="70" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="180" ver="5"/>
+			<designed target="Height" value="20" ver="5"/>
+			<designed target="Text" value="Имя пользователя:" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="0xff000000" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="CreatorValue" display-name="CreatorValue" uuid="30f59890-ef6c-46eb-970a-592964b8325e" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" cardinal="1">
+			<designed target="X" value="25" ver="5"/>
+			<designed target="Y" value="90" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="170" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+			<designed target="Text" value="Пользователь" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="0xff000000" ver="5"/>
+			<designed target="TextAlignment" value="33" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
+			<do-trace access-modifier="private" target="Text" ver="5">
+				<body>
+					<![CDATA[pIntegrityControl.Information.EtalonNameCreator]]>
+				</body>
+			</do-trace>
+		</object>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[pIntegrityControl.Information.EtalonDateCreated != ""]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="CheckResult" display-name="CheckResult" uuid="91c26171-4460-47a7-a14a-1c65501f9a4e" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="135" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="200" ver="5"/>
+		<designed target="Height" value="200" ver="5"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<designed target="PenColor" value="0xff000000" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="0xff000000" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<object access-modifier="private" name="CheckTitle" display-name="CheckTitle" uuid="4dacf948-9da3-4fc0-9a1c-6cd330634912" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+			<designed target="X" value="10" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="170" ver="5"/>
+			<designed target="Height" value="20" ver="5"/>
+			<designed target="Text" value="Проверка" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
+			<designed target="FontColor" value="0xff000000" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="DateLastCheckCaption" display-name="DateLastCheckCaption" uuid="fd755947-7ea8-4973-b58c-9714f8cd49a3" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+			<designed target="X" value="15" ver="5"/>
+			<designed target="Y" value="20" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="180" ver="5"/>
+			<designed target="Height" value="20" ver="5"/>
+			<designed target="Text" value="Дата последней проверки:" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="0xff000000" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="LastCheckValue" display-name="LastCheckValue" uuid="4b4bf654-bead-4469-9666-df426f57a70a" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+			<designed target="X" value="25" ver="5"/>
+			<designed target="Y" value="40" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="170" ver="5"/>
+			<designed target="Height" value="20" ver="5"/>
+			<designed target="Text" value="Дата/Время" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="0xff000000" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
+			<do-trace access-modifier="private" target="Text" ver="5">
+				<body>
+					<![CDATA[pIntegrityControl.Information.LastCheckData]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="AllFilesCountCaption" display-name="AllFilesCountCaption" uuid="5b6802a2-f2ce-4b3e-90ab-03c88495e2f6" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+			<designed target="X" value="15" ver="5"/>
+			<designed target="Y" value="65" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="100" ver="5"/>
+			<designed target="Height" value="20" ver="5"/>
+			<designed target="Text" value="Всего проверено:" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="0xff000000" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="AllFilesCountValue" display-name="AllFilesCountValue" uuid="227d75cb-1de0-4089-b672-a6603bba2e26" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+			<designed target="X" value="110" ver="5"/>
+			<designed target="Y" value="65" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="65" ver="5"/>
+			<designed target="Height" value="20" ver="5"/>
+			<designed target="Text" value="0" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="0xff000000" ver="5"/>
+			<designed target="TextAlignment" value="130" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
+			<do-trace access-modifier="private" target="Text" ver="5">
+				<body>
+					<![CDATA[String.ToString(pIntegrityControl.Statistic.all)]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="AllViolationsCaption" display-name="AllViolationsCaption" uuid="40c08e79-9bc5-4244-a4f7-911bc0c4ff3e" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+			<designed target="X" value="15" ver="5"/>
+			<designed target="Y" value="90" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="110" ver="5"/>
+			<designed target="Height" value="20" ver="5"/>
+			<designed target="Text" value="Нарушений:" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="0xff000000" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="AllViolationsValue" display-name="AllViolationsValue" uuid="12b64f3f-9457-4951-bfae-208d6cbb7dd1" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+			<designed target="X" value="110" ver="5"/>
+			<designed target="Y" value="90" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="65" ver="5"/>
+			<designed target="Height" value="20" ver="5"/>
+			<designed target="Text" value="0" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="0xff000000" ver="5"/>
+			<designed target="TextAlignment" value="130" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
+			<do-trace access-modifier="private" target="Text" ver="5">
+				<body>
+					<![CDATA[String.ToString(pIntegrityControl.Statistic.violations)]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="WarningStateCountCaption" display-name="WarningStateCountCaption" uuid="ea76d083-ab96-48bf-a3c5-454240f86f0b" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+			<designed target="X" value="30" ver="5"/>
+			<designed target="Y" value="110" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="110" ver="5"/>
+			<designed target="Height" value="20" ver="5"/>
+			<designed target="Text" value="Предупреждений:" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="0xff000000" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="WarningStateCountValue" display-name="WarningStateCountValue" uuid="69475d86-e9ae-4262-8ef0-e639e5ad329f" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+			<designed target="X" value="125" ver="5"/>
+			<designed target="Y" value="110" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="50" ver="5"/>
+			<designed target="Height" value="20" ver="5"/>
+			<designed target="Text" value="0" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="0xff000000" ver="5"/>
+			<designed target="TextAlignment" value="130" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
+			<do-trace access-modifier="private" target="Text" ver="5">
+				<body>
+					<![CDATA[String.ToString(pIntegrityControl.Statistic.warnings)]]>
+				</body>
+			</do-trace>
+		</object>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[pIntegrityControl.Information.LastCheckData != ""]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="ErrorStateCountCaption" display-name="ErrorStateCountCaption" uuid="302ac1f9-717f-46a7-89e7-d88596c89691" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+			<designed target="X" value="30" ver="5"/>
+			<designed target="Y" value="130" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="110" ver="5"/>
+			<designed target="Height" value="20" ver="5"/>
+			<designed target="Text" value="Ошибок:" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="0xff000000" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="ErrorStateCountValue" display-name="ErrorStateCountValue" uuid="8c444015-a3e9-47e3-810b-fb236c503a08" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+			<designed target="X" value="125" ver="5"/>
+			<designed target="Y" value="130" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="50" ver="5"/>
+			<designed target="Height" value="20" ver="5"/>
+			<designed target="Text" value="0" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="0xff000000" ver="5"/>
+			<designed target="TextAlignment" value="130" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
+			<do-trace access-modifier="private" target="Text" ver="5">
+				<body>
+					<![CDATA[String.ToString(pIntegrityControl.Statistic.errors)]]>
+				</body>
+			</do-trace>
+		</object>
+	</object>
+</type>
+

@@ -1,0 +1,844 @@
+<type access-modifier="public" name="ConnectDialog" display-name="ConnectDialog" uuid="7ef11704-9e99-4515-a010-013b1fe1012f" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="285" ver="5"/>
+	<designed target="Height" value="180" ver="5"/>
+	<designed target="PenColor" value="4278190080" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="4293980400" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<designed target="WindowX" value="0" ver="5"/>
+	<designed target="WindowY" value="0" ver="5"/>
+	<designed target="WindowWidth" value="285" ver="5"/>
+	<designed target="WindowHeight" value="180" ver="5"/>
+	<designed target="WindowCaption" value="Подключение к серверу" ver="5"/>
+	<designed target="ShowWindowCaption" value="true" ver="5"/>
+	<designed target="ShowWindowMinimize" value="false" ver="5"/>
+	<designed target="ShowWindowMaximize" value="false" ver="5"/>
+	<designed target="ShowWindowClose" value="true" ver="5"/>
+	<designed target="AlwaysOnTop" value="false" ver="5"/>
+	<designed target="WindowSizeMode" value="0" ver="5"/>
+	<designed target="WindowBorderStyle" value="2" ver="5"/>
+	<designed target="WindowState" value="0" ver="5"/>
+	<designed target="WindowScalingMode" value="0" ver="5"/>
+	<designed target="MonitorNumber" value="0" ver="5"/>
+	<designed target="WindowPosition" value="2" ver="5"/>
+	<designed target="WindowCloseMode" value="0" ver="5"/>
+	<object access-modifier="private" name="private" display-name="private" uuid="847e7fe4-bbe2-4b3b-a037-91a48613b1b7" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+		<object access-modifier="private" name="Files" display-name="Files" uuid="53f6c476-b559-4a5d-81b1-9b275bdabe36" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5" description="" cardinal="1">
+			<designed target="RootPath" value="/" ver="5"/>
+		</object>
+		<object access-modifier="private" name="pTheme" display-name="pTheme" uuid="e80e3100-ca68-4021-8e00-b0d2105f5b11" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5" base-ref="true">
+			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BackgroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="DisabledFontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.DisabledFontColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="EditorBrushColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorBrushColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="EditorFontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="SelectionColor" ver="5">
+				<body>
+					<![CDATA[pTheme.SelectionColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="BorderColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BorderColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="DisabledBorderColor" ver="5">
+				<body>
+					<![CDATA[pTheme.DisabledBorderColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="Font" ver="5">
+				<body>
+					<![CDATA[pTheme.Font]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="TitleFont" ver="5">
+				<body>
+					<![CDATA[pTheme.TitleFont]]>
+				</body>
+			</do-trace>
+		</object>
+		<do access-modifier="private" name="OnKeyPress" display-name="OnKeyPress" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (keyCode == 82) // Enter
+	Buttons.OkButton.Click();
+else if (keyCode == 75) // Escape
+	Close();]]>
+			</body>
+			<param access-modifier="private" name="keyCode" display-name="" uuid="6b8df4bd-ecdb-4dd5-a3a0-76491494c554" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
+		</do>
+		<object access-modifier="private" name="pScreenKeyboard" display-name="pScreenKeyboard" uuid="23d4c2ad-fc30-4655-b410-aab7558bc477" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
+		<object access-modifier="private" name="Credentials" display-name="Credentials" uuid="79638258-dbc1-4fe0-bf1d-5b50ca052218" base-type="ApCredentials" base-type-id="fef70643-767d-4533-98e9-412948317273" ver="5" description="" cardinal="1">
+			<designed target="FilePath" value="" ver="5"/>
+			<do access-modifier="private" name="ToJSON" display-name="ToJSON" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+				<body kind="om">
+					<![CDATA[if (Assigned)
+{
+	folder: string = ProductInfo.GetUserDataFolder();
+	Files.CreateRecursiveFolder(folder);
+	
+	FilePath = Files.CombinePath(folder, String.ToString(DateTime.UtcNow()));
+	if (Save())
+	{
+		credentials: string = Files.ReadTextFile(FilePath);
+		//Debug.Log("Credentials: " + credentials);
+		Files.RemoveRecursive(FilePath);
+		return credentials;
+	}
+	else
+		Debug.Log(GetLastError());
+}
+
+return "";]]>
+				</body>
+			</do>
+		</object>
+		<init target="pTheme" ver="5" ref="init_Theme"/>
+		<init target="pScreenKeyboard" ver="5" ref="init_ScreenKeyboard"/>
+		<object access-modifier="private" name="lastFocusedEditor" display-name="lastFocusedEditor" uuid="6cf7a349-8299-4d9e-9c97-0119acc4a81e" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+		<do access-modifier="private" name="FocusEditor" display-name="FocusEditor" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (lastFocusedEditor == 1)
+	Address.HostEdit.Focus = true;
+else if (lastFocusedEditor == 2)
+	Address.PortEdit.Editor.Focus = true;
+else if (lastFocusedEditor == 3)
+	Address.HistoryPortEdit.Editor.Focus = true;
+else Title.Edit.Focus = true;]]>
+			</body>
+		</do>
+	</object>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="f1734b71-f863-4e59-8df9-18bf3fe15a9d" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5" description="" cardinal="1"/>
+	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="KeyPress">
+		<body kind="om">
+			<![CDATA[if (Focus)
+	private.OnKeyPress(event.KeyCode);]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="SpecifyTitle" display-name="Указать название" uuid="d741abb8-a9e2-42c6-a6bb-d75c76a85b1b" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="SpecifyHistoryPort" display-name="Указать порт истории" uuid="d9937aee-106b-42c4-ba90-341077b52248" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="pResult" display-name="pResult" uuid="46f79146-750b-4583-af56-0856961a15c3" base-type="ConnectDialogResult" base-type-id="d594d8ef-50a0-48fe-8a09-acb33eda25ec" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="OkAction" display-name="OkAction" uuid="32d39a47-dc97-4bc7-b072-addccf3820ca" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[private.pTheme.BackgroundColor]]>
+		</body>
+	</do-trace>
+	<designed target="WindowIconPath" value="CommonLib_Icons/Connect16.png" ver="5"/>
+	<object access-modifier="private" name="Header" display-name="Header" uuid="fdde0815-6b36-402a-8447-87155f248a23" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="285" ver="5"/>
+		<designed target="Height" value="45" ver="5"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<designed target="PenColor" value="0xff000000" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="0xff000000" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<object access-modifier="private" name="Icon" display-name="Icon" uuid="8bd9cfb2-78b6-443d-8659-8b7aeeb437d5" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="5" description="" cardinal="1">
+			<designed target="X" value="10" ver="5"/>
+			<designed target="Y" value="10" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="32" ver="5"/>
+			<designed target="Height" value="32" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="ImageFile" value="CommonLib_Icons/Connect32.png" ver="5"/>
+			<designed target="Active" value="true" ver="5"/>
+			<designed target="CurrentFrameNumber" value="0" ver="5"/>
+			<designed target="Speed" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Instruction" display-name="Instruction" uuid="dc44a464-dd2a-4b60-84f2-beff436f6abf" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
+			<designed target="X" value="50" ver="5"/>
+			<designed target="Y" value="10" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="220" ver="5"/>
+			<designed target="Height" value="35" ver="5"/>
+			<designed target="Text" value="Введите имя компьютера или IP адрес
+и порт сервера в сети" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="4278190080" ver="5"/>
+			<designed target="TextAlignment" value="33" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[private.pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
+		</object>
+	</object>
+	<object access-modifier="private" name="Title" display-name="Title" uuid="1e774492-4e27-411c-8118-820e072ee060" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="45" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="285" ver="5"/>
+		<designed target="Height" value="30" ver="5"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<designed target="PenColor" value="0xff000000" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="0xff000000" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<object access-modifier="private" name="Label" display-name="Label" uuid="e188a8ca-6cbf-46d8-aeb5-90514ad1d48d" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
+			<designed target="X" value="20" ver="5"/>
+			<designed target="Y" value="5" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="60" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Text" value="Название" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="4278190080" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[private.pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Edit" display-name="Edit" uuid="d1cdc5c6-2bae-493e-a8cb-b4d0c1451844" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5" description="" cardinal="1">
+			<designed target="X" value="80" ver="5"/>
+			<designed target="Y" value="5" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="190" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Text" value="" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="FontColor" value="4278190080" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<designed target="HideInput" value="false" ver="5"/>
+			<designed target="PlaceholderText" value="" ver="5"/>
+			<designed target="ReadOnly" value="false" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="FocusChanged">
+				<body kind="om">
+					<![CDATA[if (hasFocus)
+{
+	SelectAll();
+	private.lastFocusedEditor = 0;
+}]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="KeyPress">
+				<body kind="om">
+					<![CDATA[if (Focus)
+	private.OnKeyPress(event.KeyCode);]]>
+				</body>
+			</do-on>
+		</object>
+	</object>
+	<object access-modifier="private" name="Address" display-name="Address" uuid="a128f065-f223-4a00-8ddb-0585e916e40c" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="75" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="285" ver="5"/>
+		<designed target="Height" value="60" ver="5"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<designed target="PenColor" value="0xff000000" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="0xff000000" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<object access-modifier="private" name="HostLabel" display-name="HostLabel" uuid="d2e01115-2b41-40cd-8efa-6e638c41ebd2" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
+			<designed target="X" value="20" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="45" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Text" value="Адрес" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="4278190080" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[private.pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="HostErrRec" display-name="HostErrRec" uuid="da55b897-d7ee-4f79-bae9-3e71d9140ccc" base-type="ErrorFrame" base-type-id="360a528b-50b0-4a9d-a198-5e2f73fe204c" ver="5" description="" cardinal="1">
+			<designed target="X" value="20" ver="5"/>
+			<designed target="Y" value="25" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Width" value="185" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<do-trace access-modifier="private" target="Error" ver="5">
+				<body>
+					<![CDATA[Validate(HostEdit.Text)]]>
+				</body>
+			</do-trace>
+			<do access-modifier="private" name="Validate" display-name="Validate" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+				<body kind="javascript">
+					<![CDATA[const ValidIpAddressRegex = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/;
+const ValidHostnameRegex = /^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/;
+
+if (address != "")
+{
+	if (ValidIpAddressRegex.test(address) || ValidHostnameRegex.test(address))
+		return "";
+	else
+		return "Введите корректный адрес";
+} 
+else
+	return "Адрес не может быть пустым";]]>
+				</body>
+				<param access-modifier="private" name="address" display-name="" uuid="b74273bc-2164-4667-95aa-8f13f7304ef5" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			</do>
+		</object>
+		<object access-modifier="private" name="HostEdit" display-name="HostEdit" uuid="6b3c01db-c7a9-45ed-b830-380bdede07de" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5" description="" cardinal="1">
+			<designed target="X" value="20" ver="5"/>
+			<designed target="Y" value="25" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="185" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Text" value="" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="FontColor" value="4278190080" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<designed target="HideInput" value="false" ver="5"/>
+			<designed target="PlaceholderText" value="" ver="5"/>
+			<designed target="ReadOnly" value="false" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="FocusChanged">
+				<body kind="om">
+					<![CDATA[if (hasFocus)
+{
+	SelectAll();
+	private.lastFocusedEditor = 1;
+}]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="KeyPress">
+				<body kind="om">
+					<![CDATA[if (Focus)
+	private.OnKeyPress(event.KeyCode);]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Tooltip" ver="5">
+				<body>
+					<![CDATA[HostErrRec.Error]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="PortLabel" display-name="PortLabel" uuid="23084e2c-847d-4e2a-a898-00ecaaf68941" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
+			<designed target="X" value="215" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="45" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Text" value="Порт" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="4278190080" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[private.pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="PortEdit" display-name="PortEdit" uuid="f1e0bcaf-6b43-4dca-b0b7-9adc242cf291" base-type="IntegerUpDown" base-type-id="604b557e-d136-4579-8201-c6ca23cbffa7" ver="5" description="" cardinal="1">
+			<designed target="X" value="215" ver="5"/>
+			<designed target="Y" value="25" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Width" value="55" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<init target="Maximum" ver="5" value="65535"/>
+			<init target="Minimum" ver="5" value="1"/>
+			<init target="Localized" ver="5" value="false"/>
+			<object access-modifier="private" name="OnFocusChanged" display-name="OnFocusChanged" uuid="ef58ef66-cd4f-4541-aa04-899ebdb2fade" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[if (Editor.Focus)
+	here.private.lastFocusedEditor = 2;]]>
+					</body>
+				</do-on>
+			</object>
+			<init target="FocusChanged" ver="5" ref="OnFocusChanged"/>
+		</object>
+		<object access-modifier="private" name="HistoryPortLabel" display-name="HistoryPortLabel" uuid="cd9ecd03-2bd8-4ef7-a675-3024b5feef11" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
+			<designed target="X" value="20" ver="5"/>
+			<designed target="Y" value="35" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="85" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Text" value="Порт истории" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="4278190080" ver="5"/>
+			<designed target="TextAlignment" value="130" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[private.pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="HistoryPortEdit" display-name="HistoryPortEdit" uuid="a6baab02-de59-4652-88ce-2d9dbbe684d3" base-type="IntegerUpDown" base-type-id="604b557e-d136-4579-8201-c6ca23cbffa7" ver="5" description="" cardinal="1">
+			<designed target="X" value="110" ver="5"/>
+			<designed target="Y" value="35" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Width" value="55" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<init target="Maximum" ver="5" value="65535"/>
+			<init target="Minimum" ver="5" value="1"/>
+			<init target="Localized" ver="5" value="false"/>
+			<object access-modifier="private" name="OnFocusChanged" display-name="OnFocusChanged" uuid="ed224e5c-a877-4ec7-8778-0682d00d70ca" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[if (Editor.Focus)
+	here.private.lastFocusedEditor = 3;]]>
+					</body>
+				</do-on>
+			</object>
+			<init target="FocusChanged" ver="5" ref="OnFocusChanged"/>
+		</object>
+		<do access-modifier="private" name="UpdateLayout" display-name="UpdateLayout" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[// показываем порт истории, если это требуется
+HistoryPortLabel.Visible = SpecifyHistoryPort;
+HistoryPortEdit.Visible = SpecifyHistoryPort;
+
+/* Оптимально расположить элементы, чтобы одинаково красиво выглядело с портом истории
+и без него, не получилось. Поэтому располагаем элементы в двух вариантах указывая их координаты
+в этом обработчике. */
+
+// располагаем элементы в зависимости от наличия порта истории
+if (SpecifyHistoryPort)
+{
+	HostLabel.X = 5;
+	HostLabel.Y = 5;
+	HostLabel.TextAlignment = 130;
+
+	HostEdit.X = 80;
+	HostEdit.Y = 5;
+	HostEdit.Width = 190;
+	
+	HostErrRec.X = 80;
+	HostErrRec.Y = 5;
+	HostErrRec.Width = 190;
+	
+	PortLabel.X = 165;
+	PortLabel.Y = 35;
+	PortLabel.TextAlignment = 130;
+	
+	PortEdit.X = 215;
+	PortEdit.Y = 35;
+}
+else
+{
+	HostLabel.X = 20;
+	HostLabel.Y = 0;
+	HostLabel.TextAlignment = 129;
+
+	HostEdit.X = 20;
+	HostEdit.Y = 25;
+	HostEdit.Width = 185;
+	
+	HostErrRec.X = 20;
+	HostErrRec.Y = 25;
+	HostErrRec.Width = 185;
+	
+	PortLabel.X = 215;
+	PortLabel.Y = 0;
+	PortLabel.TextAlignment = 129;
+	
+	PortEdit.X = 215;
+	PortEdit.Y = 25;
+}]]>
+			</body>
+		</do>
+	</object>
+	<designed target="Flip" value="0" ver="5"/>
+	<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="WindowActivationChanged">
+		<body kind="om">
+			<![CDATA[if (active)
+	Address.HostEdit.Focus = true;]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="Buttons" display-name="Buttons" uuid="d6a5f419-3094-4bcf-a2f1-cab110630d80" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="135" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="285" ver="5"/>
+		<designed target="Height" value="45" ver="5"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<designed target="PenColor" value="0xff000000" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="0xff000000" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<object access-modifier="private" name="Service" display-name="Service" uuid="8da49d16-d3a8-4014-8cf4-0533859924c4" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+			<designed target="X" value="10" ver="5"/>
+			<designed target="Y" value="10" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="50" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="0xff808080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="ScreenKeyboardButton" display-name="ScreenKeyboardButton" uuid="58d69a08-ec6b-4b54-bdec-6a24f3f53ea9" base-type="ScreenKeyboardButton" base-type-id="e7774fc7-d5aa-4318-b97c-99203dbd1671" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Width" value="25" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<init target="pTheme" ver="5" ref="here.init_Theme"/>
+				<init target="init_Options" ver="5" ref="here.init_ScreenKeyboard"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+					<body kind="om">
+						<![CDATA[here.private.FocusEditor();]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="SetCredentialsButton" display-name="SetCredentialsButton" uuid="b27d5e8c-4b36-44b2-a52a-97c4b4a03fe4" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
+				<designed target="X" value="25" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="Указать учетные данные" ver="5"/>
+				<designed target="Width" value="25" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Checkable" value="false" ver="5"/>
+				<designed target="Text" value="" ver="5"/>
+				<designed target="TextAlignment" value="132" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="FontColor" value="0xff000000" ver="5"/>
+				<designed target="OnClickFontColor" value="0xff000000" ver="5"/>
+				<designed target="OnHoverFontColor" value="0xff000000" ver="5"/>
+				<designed target="DisabledFontColor" value="0xff000000" ver="5"/>
+				<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+				<designed target="BrushStyle" value="0" ver="5"/>
+				<designed target="OnClickBrushColor" value="0xffa0a0a0" ver="5"/>
+				<designed target="OnClickBrushStyle" value="0" ver="5"/>
+				<designed target="OnHoverBrushColor" value="0xffffffff" ver="5"/>
+				<designed target="OnHoverBrushStyle" value="0" ver="5"/>
+				<designed target="DisabledBrushColor" value="0xffa0a0a0" ver="5"/>
+				<designed target="DisabledBrushStyle" value="0" ver="5"/>
+				<designed target="PenColor" value="0xff000000" ver="5"/>
+				<designed target="PenStyle" value="0" ver="5"/>
+				<designed target="PenWidth" value="1" ver="5"/>
+				<designed target="OnClickPenColor" value="0xff000000" ver="5"/>
+				<designed target="OnClickPenStyle" value="1" ver="5"/>
+				<designed target="OnClickPenWidth" value="1" ver="5"/>
+				<designed target="OnHoverPenColor" value="0xff000000" ver="5"/>
+				<designed target="OnHoverPenStyle" value="1" ver="5"/>
+				<designed target="OnHoverPenWidth" value="1" ver="5"/>
+				<designed target="DisabledPenColor" value="0xffa0a0a0" ver="5"/>
+				<designed target="DisabledPenStyle" value="0" ver="5"/>
+				<designed target="DisabledPenWidth" value="1" ver="5"/>
+				<object access-modifier="private" name="Icon" display-name="Icon" uuid="ea795f5e-2cfe-4cea-b9ce-ede47a4d526d" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="5">
+					<designed target="X" value="5" ver="5"/>
+					<designed target="Y" value="5" ver="5"/>
+					<designed target="ZValue" value="0" ver="5"/>
+					<designed target="Rotation" value="0" ver="5"/>
+					<designed target="Scale" value="1" ver="5"/>
+					<designed target="Visible" value="true" ver="5"/>
+					<designed target="Opacity" value="1" ver="5"/>
+					<designed target="Enabled" value="true" ver="5"/>
+					<designed target="Tooltip" value="" ver="5"/>
+					<designed target="Width" value="16" ver="5"/>
+					<designed target="Height" value="16" ver="5"/>
+					<designed target="PenColor" value="4278190080" ver="5"/>
+					<designed target="PenStyle" value="0" ver="5"/>
+					<designed target="PenWidth" value="1" ver="5"/>
+					<designed target="ImageFile" value="CommonLib_Icons/Password16.png" ver="5"/>
+					<designed target="Active" value="true" ver="5"/>
+					<designed target="CurrentFrameNumber" value="0" ver="5"/>
+					<designed target="Speed" value="1" ver="5"/>
+					<designed target="Flip" value="0" ver="5"/>
+				</object>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="1ffe01e5-4dc3-4ac8-9156-be90580da68c" base-type="CredentialsDialog" base-type-id="312561c8-0874-4534-9316-938390e51d05" ver="5">
+						<init target="pCredentials" ver="5" ref="here.private.Credentials"/>
+						<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
+						<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
+					</object>
+				</do-on>
+				<designed target="Checked" value="false" ver="5"/>
+				<do-trace access-modifier="private" target="OnClickPenColor" ver="5">
+					<body>
+						<![CDATA[private.pTheme.BorderColor]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="OnHoverPenColor" ver="5">
+					<body>
+						<![CDATA[private.pTheme.BorderColor]]>
+					</body>
+				</do-trace>
+				<designed target="Flip" value="0" ver="5"/>
+				<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="8cdee11b-eb3b-4fed-bd94-25ee5768c79f" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+					<designed target="MinWidth" value="0" ver="5"/>
+					<designed target="MinHeight" value="0" ver="5"/>
+					<designed target="MaxWidth" value="25" ver="5"/>
+					<designed target="MaxHeight" value="25" ver="5"/>
+				</object>
+			</object>
+			<object access-modifier="private" name="Layout" display-name="Layout" uuid="ac43ae46-fe12-4275-9946-1fa125ab9bd3" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
+				<designed target="Orientation" value="1" ver="5"/>
+				<designed target="Gap" value="0" ver="5"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="OkButton" display-name="OkButton" uuid="70ec526e-e427-45ab-8985-f448fc5b53c4" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
+			<designed target="X" value="85" ver="5"/>
+			<designed target="Y" value="10" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="100" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Checkable" value="false" ver="5"/>
+			<designed target="Text" value="Подключение" ver="5"/>
+			<designed target="TextAlignment" value="132" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="0xff000000" ver="5"/>
+			<designed target="OnClickFontColor" value="0xff000000" ver="5"/>
+			<designed target="OnHoverFontColor" value="0xff000000" ver="5"/>
+			<designed target="DisabledFontColor" value="0xffa0a0a0" ver="5"/>
+			<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+			<designed target="BrushStyle" value="1" ver="5"/>
+			<designed target="OnClickBrushColor" value="0xffa0a0a0" ver="5"/>
+			<designed target="OnClickBrushStyle" value="1" ver="5"/>
+			<designed target="OnHoverBrushColor" value="0xffffffff" ver="5"/>
+			<designed target="OnHoverBrushStyle" value="1" ver="5"/>
+			<designed target="DisabledBrushColor" value="0xfff0f0f0" ver="5"/>
+			<designed target="DisabledBrushStyle" value="1" ver="5"/>
+			<designed target="PenColor" value="0xff000000" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="OnClickPenColor" value="0xff000000" ver="5"/>
+			<designed target="OnClickPenStyle" value="1" ver="5"/>
+			<designed target="OnClickPenWidth" value="1" ver="5"/>
+			<designed target="OnHoverPenColor" value="0xff000000" ver="5"/>
+			<designed target="OnHoverPenStyle" value="1" ver="5"/>
+			<designed target="OnHoverPenWidth" value="1" ver="5"/>
+			<designed target="DisabledPenColor" value="0xffa0a0a0" ver="5"/>
+			<designed target="DisabledPenStyle" value="1" ver="5"/>
+			<designed target="DisabledPenWidth" value="1" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+				<body kind="om">
+					<![CDATA[// формируем результат и закрываем диалог
+pResult.Title = Title.Edit.Text;
+pResult.Location = Address.HostEdit.Text;
+pResult.Port = TypeConvert.ToUint2(Address.PortEdit.Value);
+pResult.HistoryPort = TypeConvert.ToUint2(Address.HistoryPortEdit.Value);
+pResult.Credentials = private.Credentials.ToJSON();
+OkAction.Invoke();
+Close();]]>
+				</body>
+			</do-on>
+			<designed target="Checked" value="false" ver="5"/>
+			<do-trace access-modifier="private" target="Enabled" ver="5">
+				<body>
+					<![CDATA[Address.HostErrRec.Error == ""]]>
+				</body>
+			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="CancelButton" display-name="CancelButton" uuid="c669abba-520b-4878-8beb-705a7d716222" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
+			<designed target="X" value="195" ver="5"/>
+			<designed target="Y" value="10" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="80" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Checkable" value="false" ver="5"/>
+			<designed target="Text" value="Отмена" ver="5"/>
+			<designed target="TextAlignment" value="132" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="4278190080" ver="5"/>
+			<designed target="OnClickFontColor" value="4278190080" ver="5"/>
+			<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
+			<designed target="DisabledFontColor" value="4278190080" ver="5"/>
+			<designed target="BrushColor" value="4293980400" ver="5"/>
+			<designed target="BrushStyle" value="1" ver="5"/>
+			<designed target="OnClickBrushColor" value="4288716960" ver="5"/>
+			<designed target="OnClickBrushStyle" value="1" ver="5"/>
+			<designed target="OnHoverBrushColor" value="4294967295" ver="5"/>
+			<designed target="OnHoverBrushStyle" value="1" ver="5"/>
+			<designed target="DisabledBrushColor" value="4288716960" ver="5"/>
+			<designed target="DisabledBrushStyle" value="1" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="OnClickPenColor" value="4278190080" ver="5"/>
+			<designed target="OnClickPenStyle" value="1" ver="5"/>
+			<designed target="OnClickPenWidth" value="1" ver="5"/>
+			<designed target="OnHoverPenColor" value="4278190080" ver="5"/>
+			<designed target="OnHoverPenStyle" value="1" ver="5"/>
+			<designed target="OnHoverPenWidth" value="1" ver="5"/>
+			<designed target="DisabledPenColor" value="4288716960" ver="5"/>
+			<designed target="DisabledPenStyle" value="1" ver="5"/>
+			<designed target="DisabledPenWidth" value="1" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="close"/>
+			<designed target="Checked" value="false" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+		</object>
+	</object>
+	<do access-modifier="private" name="UpdateLayout" display-name="UpdateLayout" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[Title.Visible = SpecifyTitle;
+
+Address.Y = SpecifyTitle ? Title.Y + Title.Height : Title.Y;
+Address.UpdateLayout();
+
+Buttons.Y = Address.Y + Address.Height;
+
+Height = Header.Height + Address.Height + Buttons.Height + (SpecifyTitle ? Title.Height : 0);
+WindowHeight = TypeConvert.ToInt4(Height);]]>
+		</body>
+	</do>
+	<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="AboutToOpen">
+		<body kind="om">
+			<![CDATA[// начальные значение берем из результата
+Title.Edit.Text = pResult.Title;
+Address.HostEdit.Text = pResult.Location;
+Address.PortEdit.Value = pResult.Port;
+Address.HistoryPortEdit.Value = pResult.HistoryPort;
+
+UpdateLayout();]]>
+		</body>
+	</do-on>
+	<param access-modifier="private" name="init_Theme" display-name="Тема оформления" uuid="e8602e24-b49e-42a1-b818-e34f61526445" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
+	<param access-modifier="private" name="init_ScreenKeyboard" display-name="Вызов экранной клавиатуры" uuid="9dd5053f-fb68-47c8-b8fe-c824fb7dd60f" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
+	<init target="init_ScreenKeyboard" ver="5">
+		<object access-modifier="private" uuid="6fa53025-3521-4a99-a88b-fb46b2a407b3" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" ver="5"/>
+	</init>
+</type>
+

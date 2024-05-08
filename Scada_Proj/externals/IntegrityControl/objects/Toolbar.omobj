@@ -1,0 +1,171 @@
+<type access-modifier="private" name="Toolbar" display-name="Toolbar" uuid="5635ccab-cc02-401b-99fa-4b2de84c29dd" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="724" ver="5"/>
+	<designed target="Height" value="35" ver="5"/>
+	<designed target="RoundingRadius" value="0" ver="5"/>
+	<designed target="PenColor" value="0xff808080" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<object access-modifier="private" name="btnCreateEtalon" display-name="btnCreateEtalon" uuid="1d7c4c48-9828-4de9-b8e9-e4afd1d37f9b" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="1" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<init target="Active" ver="5" value="true"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pIntegrityControl.CreateEtalon.Invoke();]]>
+			</body>
+		</do-on>
+		<init target="ButtonWidth" ver="5" value="120"/>
+		<init target="TitleText" ver="5" value="Создать эталон"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[pIntegrityControl.CreateEtalon.Enabled]]>
+			</body>
+		</do-trace>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<designed target="Tooltip" value="Создать эталон" ver="5"/>
+		<init target="IconFile" ver="5" value="IntegrityControl_Icons/CheckFiles24.png"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[pIntegrityControl.private.pPermissions.CreateEtalon]]>
+			</body>
+		</do-trace>
+		<init target="pTheme" ver="5" ref="here.init_Theme"/>
+	</object>
+	<object access-modifier="private" name="btnUpdateIC" display-name="btnUpdateIC" uuid="714be934-1e6c-4484-96f5-73614787e42a" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="21" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<init target="Checked" ver="5" value="false"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pIntegrityControl.Check.Invoke();]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[pIntegrityControl.Check.Enabled]]>
+			</body>
+		</do-trace>
+		<init target="ButtonWidth" ver="5" value="140"/>
+		<init target="TitleText" ver="5" value="Выполнить проверку"/>
+		<init target="IconFile" ver="5" value="IntegrityControl_Icons/Request24.png"/>
+		<designed target="Tooltip" value="Выполнить проверку" ver="5"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[pIntegrityControl.private.pPermissions.CheckFiles]]>
+			</body>
+		</do-trace>
+		<init target="pTheme" ver="5" ref="here.init_Theme"/>
+	</object>
+	<object access-modifier="private" name="Separator_1" display-name="Separator_1" uuid="a2a30583-c9b6-4853-8647-a5277f440245" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5">
+		<designed target="X" value="40" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<designed target="Width" value="8" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[btnCreateEtalon.IsVisible || btnUpdateIC.IsVisible]]>
+			</body>
+		</do-trace>
+		<init target="pTheme" ver="5" ref="here.init_Theme"/>
+	</object>
+	<object access-modifier="private" name="btnShowOnlyChanged" display-name="btnShowOnlyChanged" uuid="e218a4d2-21fe-4555-b660-a4d9937add64" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="49" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="IntegrityControl_Icons/Filter24.png"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pIntegrityControl.ShowOnlyChanged = !pIntegrityControl.ShowOnlyChanged;]]>
+			</body>
+		</do-on>
+		<designed target="Tooltip" value="Показать все элементы" ver="5"/>
+		<do-trace access-modifier="private" target="Tooltip" ver="5">
+			<body>
+				<![CDATA[pIntegrityControl.ShowOnlyChanged ? "Показать все файлы" :
+"Показать только файлы с нарушением целостности"]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Checked" ver="5">
+			<body>
+				<![CDATA[pIntegrityControl.ShowOnlyChanged]]>
+			</body>
+		</do-trace>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="pTheme" ver="5" ref="here.init_Theme"/>
+	</object>
+	<object access-modifier="private" name="Layout" display-name="Layout" uuid="17c5de0f-417c-442a-82a8-a5af3fae0038" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5">
+		<designed target="Orientation" value="1" ver="5"/>
+		<designed target="Gap" value="0" ver="5"/>
+	</object>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[private.pTheme.BackgroundColor]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="private" display-name="private" uuid="74ef1862-94a9-4ab6-b1bb-db28bd9f7976" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="pTheme" display-name="pTheme" uuid="f6ddbde9-d88a-4251-a325-b78c64c60bd2" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5" base-ref="true"/>
+		<init target="pTheme" ver="5" ref="init_Theme"/>
+	</object>
+	<object access-modifier="private" name="Separator_2" display-name="Separator_2" uuid="85d41e70-7b91-49bc-a5d9-e5afad6338fd" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5">
+		<designed target="X" value="68" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<designed target="Width" value="8" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[btnCreateEtalon.IsVisible || btnUpdateIC.IsVisible]]>
+			</body>
+		</do-trace>
+		<init target="pTheme" ver="5" ref="here.init_Theme"/>
+	</object>
+	<object access-modifier="private" name="btnExport" display-name="btnExport" uuid="12025b02-37dc-470c-9e04-8843178214ec" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="77" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="IntegrityControl_Icons/ExportToFile24.png"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<designed target="Tooltip" value="Экспорт в файл..." ver="5"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pIntegrityControl.ExportToFile.Invoke();]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[pIntegrityControl.ExportToFile.Enabled]]>
+			</body>
+		</do-trace>
+		<init target="pTheme" ver="5" ref="here.init_Theme"/>
+	</object>
+	<object access-modifier="private" name="pIntegrityControl" display-name="pIntegrityControl" uuid="e47b3f88-db49-4d08-a966-a8d6a14e7e7a" base-type="IntegrityControl" base-type-id="5e8b4ced-3361-4255-ad0a-541497b0ad11" base-const="true" base-ref="true" ver="5"/>
+	<designed target="Flip" value="0" ver="5"/>
+	<param access-modifier="private" name="init_Theme" display-name="init_Theme" uuid="9bcb710f-ff7d-493f-99a6-b123418f1682" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
+</type>
+

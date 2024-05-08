@@ -1,0 +1,386 @@
+<type access-modifier="private" name="TokensDefinition" display-name="TokensDefinition" uuid="2d057de8-3722-4426-b142-42fa7ada0520" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="7f249332-9faa-4361-a2ec-fcf75bbcf37c" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<object access-modifier="private" name="CONST" display-name="CONST" uuid="210e1f0d-f8ea-474d-a60c-32748699043c" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="SECONDS_IN_DAY" display-name="SECONDS_IN_DAY" uuid="15e61bc0-1073-4db3-b99d-057bbbc60ad3" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5" description="" cardinal="1"/>
+		<init target="SECONDS_IN_DAY" ver="5" value="86400"/>
+		<object access-modifier="private" name="SECONDS_IN_MINUTE" display-name="SECONDS_IN_MINUTE" uuid="4167aedd-5d0d-49a8-89ea-a11555bb9a14" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5" description="" cardinal="1"/>
+		<init target="SECONDS_IN_MINUTE" ver="5" value="60"/>
+	</object>
+	<object access-modifier="private" name="private" display-name="private" uuid="92d6ed27-4578-4d85-b392-6e8a8dae7a37" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="bInit" display-name="bInit" uuid="106d476a-31ff-4c28-870e-46f6c2241f09" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+		<do access-modifier="private" name="Initialization" display-name="Initialization" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (bInit)
+	return;
+
+//константы
+minValue: int8 = 0;
+maxValue: int8 = 1000;
+passwordLength: int8 = 50;
+
+//типы данных
+basePath: string = "Security_Icons/";
+Types[0].systemType = "bool";
+Types[0].title = "bool";
+Types[0].iconPath = basePath+"Boolean.png";	
+
+Types[1].systemType = "string";
+Types[1].title = "string";
+Types[1].iconPath = basePath+"String.png";
+
+Types[2].systemType = "string";
+Types[2].title = "boolArray";
+Types[2].iconPath = basePath+"BooleanArray.png";
+
+Types[3].systemType = "string";
+Types[3].title = "int32Array";
+Types[3].iconPath = basePath+"Int32Array.png";
+
+Types[4].systemType = "string";
+Types[4].title = "int32";
+Types[4].iconPath = basePath+"Int32.png";
+
+//права
+//прочие логические
+Rights[0].typeIndex = 0;
+Rights[0].name = "";
+Rights[0].defaultValue = "FALSE";
+Rights[0].range = "";
+
+//прочие строковые
+Rights[1].typeIndex = 1;
+Rights[1].name = "";
+Rights[1].defaultValue = "";
+Rights[1].range = "";
+
+Rights[2].typeIndex = 4;
+Rights[2].name = "PasswordMinLength";
+Rights[2].defaultValue = "7";
+Rights[2].range = private.GetRangeAsString(minValue, passwordLength);
+
+Rights[3].typeIndex = 4;
+Rights[3].name = "PasswordsInHistory";
+Rights[3].defaultValue = "3";
+Rights[3].range = private.GetRangeAsString(1, maxValue);
+
+Rights[4].typeIndex = 4;
+Rights[4].name = "LowerCount";
+Rights[4].defaultValue = "1";
+Rights[4].range = private.GetRangeAsString(minValue, passwordLength);
+
+Rights[5].typeIndex = 4;
+Rights[5].name = "NumbersCount";
+Rights[5].defaultValue = "1";
+Rights[5].range = private.GetRangeAsString(minValue, passwordLength);
+
+Rights[6].typeIndex = 4;
+Rights[6].name = "SpecialCount";
+Rights[6].defaultValue = "1";
+Rights[6].range = private.GetRangeAsString(minValue, passwordLength);
+
+Rights[7].typeIndex = 4;
+Rights[7].name = "UpperCount";
+Rights[7].defaultValue = "1";
+Rights[7].range = private.GetRangeAsString(minValue, passwordLength);
+
+Rights[8].typeIndex = 4;
+Rights[8].name = "AttempsTimeOut";
+Rights[8].defaultValue = "60";
+Rights[8].range = private.GetRangeAsString(minValue, maxValue);
+
+Rights[9].typeIndex = 4;
+Rights[9].name = "MaxAttempsCount";
+Rights[9].defaultValue = "5";
+Rights[9].range = private.GetRangeAsString(minValue, maxValue);
+
+Rights[10].typeIndex = 4;
+Rights[10].name = "SessionDurationLimit";
+Rights[10].defaultValue = "1440";
+Rights[10].range = private.GetRangeAsString(minValue, maxValue);
+
+Rights[11].typeIndex = 4;
+Rights[11].name = "MaxIdleTime";
+Rights[11].defaultValue = "1440";
+Rights[11].range = private.GetRangeAsString(minValue, maxValue);
+
+Rights[12].typeIndex = 4;
+Rights[12].name = "PasswordNotifyForChange";
+Rights[12].defaultValue = "432000";
+Rights[12].range = private.GetRangeAsString(0, 1825);
+
+Rights[13].typeIndex = 2;
+Rights[13].name = "PasswordComplexity";
+Rights[13].defaultValue = "1";
+Rights[13].range = "";
+
+Rights[14].typeIndex = 3;
+Rights[14].name = "PasswordAge";
+Rights[14].defaultValue = "172800;7776000";
+Rights[14].range = private.GetRangeAsString(2, 180);
+
+Rights[15].typeIndex = 0;
+Rights[15].name = "ConfigurationAccess";
+Rights[15].defaultValue = "FALSE";
+Rights[15].range = "";
+
+Rights[16].typeIndex = 0;
+Rights[16].name = "EditSettings";
+Rights[16].defaultValue = "FALSE";
+Rights[16].range = "";
+
+Rights[17].typeIndex = 0;
+Rights[17].name = "InteractiveLogon";
+Rights[17].defaultValue = "FALSE";
+Rights[17].range = "";
+
+Rights[18].typeIndex = 0;
+Rights[18].name = "ViewConfiguration";
+Rights[18].defaultValue = "FALSE";
+Rights[18].range = "";
+
+Rights[19].typeIndex = 0;
+Rights[19].name = "WinKeysShortcutAccess";
+Rights[19].defaultValue = "FALSE";
+Rights[19].range = "";
+
+bInit = true;]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="Types" display-name="Types" uuid="0ad75263-e4e5-41df-96e3-c6ece81b2723" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="5">
+			<object access-modifier="private" name="systemType" display-name="systemType" uuid="7da8770c-0314-4c51-9f51-b7fdc06796cd" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="title" display-name="title" uuid="f46713bf-4338-468b-a64e-fffa2beb2565" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="iconPath" display-name="iconPath" uuid="46edb3ae-e047-4d44-ac91-9bc95631d0b9" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+		</object>
+		<object access-modifier="private" name="Rights" display-name="Rights" uuid="2157cf82-53e6-4a7b-91e4-f3a09cd984f1" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="20">
+			<object access-modifier="private" name="typeIndex" display-name="typeIndex" uuid="626c44d9-1f03-4870-bff6-01f345c9d138" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="name" display-name="name" uuid="5b639c70-441b-4b1f-bfc4-916a96056ef8" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="defaultValue" display-name="defaultValue" uuid="5ddae407-c371-4896-8d05-e9bb60a53c03" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="range" display-name="range" uuid="25e1b12e-1ed1-42f2-8642-fe8abe207baa" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+		</object>
+		<do access-modifier="private" name="GetCode" display-name="GetCode" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+			<body kind="om">
+				<![CDATA[//вернуть индекс из массива с описанием прав private.Rights 
+Initialization();
+securityAppName: string = unit.ProductInfo.PlatformTag+".Security";
+systemType: string;
+
+for (code: int4 = 0; code < Rights.Length; code += 1)
+{
+	systemType = Types[Rights[code].typeIndex].systemType;
+	if (app == securityAppName)
+	{
+		if (type == systemType && Rights[code].name == name)
+			return code;
+	}
+	else
+	{
+		if (type == systemType)
+			return code;
+	}
+}
+return 0;]]>
+			</body>
+			<param access-modifier="private" name="app" display-name="" uuid="bee00e06-e6fe-4fdd-a10d-ee49ad5238b1" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<param access-modifier="private" name="type" display-name="" uuid="68515b96-9a7e-4f7e-8f80-7dd4bc51d094" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<param access-modifier="private" name="name" display-name="" uuid="ab071130-33ec-4f8d-80ec-abeb0e79e113" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+		<do access-modifier="private" name="GetTypeIndex" display-name="GetTypeIndex" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+			<body kind="om">
+				<![CDATA[code: int4 = private.GetCode(app, type, name);
+return private.Rights[code].typeIndex;]]>
+			</body>
+			<param access-modifier="private" name="app" display-name="" uuid="eabf375c-9dd8-4296-9a7a-32dbb66ebefc" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<param access-modifier="private" name="type" display-name="" uuid="7f5f8d3c-6f0c-4ec7-ab7d-91a73908cd5c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<param access-modifier="private" name="name" display-name="" uuid="4e5f5a31-0585-4330-9fb4-2646688c6a10" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+		<do access-modifier="private" name="GetFormatedStringValue" display-name="GetFormatedStringValue" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[let allowValueAsString = getValuesAsString(allowValue);
+let denyValueAsString = getValuesAsString(denyValue);
+
+if (allowValueAsString != "" && denyValueAsString == "")
+	return allowValue;
+else if (allowValueAsString != "" && denyValueAsString != "")
+	return `${allowValueAsString}\nкроме:\n${denyValueAsString}`;
+else if (allowValueAsString == "" && denyValueAsString != "")
+	return `кроме:\n${denyValueAsString}`;
+else
+	return allowValueAsString;
+	
+
+function getValuesAsString(values)
+{
+	let valueList = values.split(";").map((value) => value.trim()).filter((value) => value != "");
+	if (valueList.length > 0)
+		return valueList.join(","); 
+	else
+		return "";
+}]]>
+			</body>
+			<param access-modifier="private" name="allowValue" display-name="" uuid="f3b93a02-b96c-42c5-89da-e54706c1cda2" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<param access-modifier="private" name="denyValue" display-name="" uuid="46059374-fb0d-41af-b1e9-3bd98ea16d04" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+		<do access-modifier="private" name="GetPasswordComplexityAsString" display-name="GetPasswordComplexityAsString" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[var states = [];
+
+if (value & 1)
+	states.push("Цифры");
+if (value & 2)
+	states.push("Буквы нижнего регистра");
+if (value & 4)
+	states.push("Буквы верхнего регистра");
+if (value & 8)
+	states.push("Cпец.символы");
+
+return states.join("\n");]]>
+			</body>
+			<param access-modifier="private" name="value" display-name="" uuid="6d812ac1-208a-43ae-9714-f3d1bb181fea" base-type="uint2" base-type-id="ae923ad8-8b75-4813-8121-36efe3cc8c12" ver="5"/>
+		</do>
+		<do access-modifier="private" name="GetRangeAsString" display-name="GetRangeAsString" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[separator: string = ";";
+return String.Concat(String.ToString(min), String.Concat(separator, String.ToString(max)));
+
+]]>
+			</body>
+			<param access-modifier="private" name="min" display-name="" uuid="573b59f4-39ad-4951-bd10-00d72e195d64" base-type="int8" base-type-id="1f8f5a02-c52c-4260-90d1-e3b1b93b3949" ver="5"/>
+			<param access-modifier="private" name="max" display-name="" uuid="69818f5f-bdc6-490c-b5b2-8982b8f6c2eb" base-type="int8" base-type-id="1f8f5a02-c52c-4260-90d1-e3b1b93b3949" ver="5"/>
+		</do>
+	</object>
+	<do access-modifier="private" name="GetTypeTitle" display-name="GetTypeTitle" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[index: int4 = private.GetTypeIndex(app, type, name);
+return private.Types[index].title;]]>
+		</body>
+		<param access-modifier="private" name="app" display-name="" uuid="b8e5b193-9cfd-457b-b8e5-270acc7c3dea" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="type" display-name="" uuid="5874c187-214b-48ac-8dd4-19ca84b2e0fc" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="name" display-name="" uuid="5bd96f28-b73b-49ef-bbfb-d85275398057" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="GetIconPath" display-name="GetIconPath" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[index: int4 = private.GetTypeIndex(app, type, name);
+return private.Types[index].iconPath;]]>
+		</body>
+		<param access-modifier="private" name="app" display-name="" uuid="545103be-d308-42f3-ad67-415ca69f5db8" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="type" display-name="" uuid="e8dd6d6a-9c7d-4138-9f7c-436bae062222" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="name" display-name="" uuid="c0c41504-6f41-4790-90d7-894d99258e0e" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="GetDefaultValue" display-name="GetDefaultValue" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[code: int4 = private.GetCode(app, type, name);
+return private.Rights[code].defaultValue;]]>
+		</body>
+		<param access-modifier="private" name="app" display-name="" uuid="2e90beaa-4aae-4b18-bb3b-c308658cf6c7" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="type" display-name="" uuid="f8fc7f6f-e843-435c-bdd1-fffebd59aa95" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="name" display-name="" uuid="99e3e1a5-db06-4081-8b4a-e1cba1298c6d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="GetRangeOfValues" display-name="GetRangeOfValues" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[code: int4 = private.GetCode(app, type, name);
+return private.Rights[code].range;]]>
+		</body>
+		<param access-modifier="private" name="app" display-name="" uuid="4c695dd5-9648-470a-9eaf-6d36472351e6" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="type" display-name="" uuid="739d12ca-6345-4a1a-a5ca-a61a2d14c98c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="name" display-name="" uuid="bab7b8da-9211-4e00-8578-26138a2d49ec" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="GetDisplayValue" display-name="GetDisplayValue" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[if (type == "bool")
+{
+	//обработка логических значений
+	if (allowValue == "TRUE" && denyValue == "FALSE")
+		return "TRUE";
+	else if (allowValue == "FALSE" && denyValue == "TRUE")
+		return "FALSE";
+	else if (allowValue == "FALSE" && denyValue == "FALSE")
+		return "";	
+}
+else if (type == "string")
+{
+	//обработка строковых значений
+	code:int4 = private.GetCode(app, type, name);
+	
+	//SessionDurationLimit
+	if (code == 10)
+		return 	String.ToString(TypeConvert.ToInt4(String.ToDouble(allowValue , 0) / CONST.SECONDS_IN_MINUTE));
+		
+	//MaxIdleTime
+	else if (code == 11)
+		return 	String.ToString(TypeConvert.ToInt4(String.ToDouble(allowValue , 0) / CONST.SECONDS_IN_MINUTE));
+		
+	//PasswordNotifyForChange
+	else if (code == 12)
+		return 	String.ToString(TypeConvert.ToInt4(String.ToDouble(allowValue , 0) / CONST.SECONDS_IN_DAY));
+		
+	//PasswordComplexity
+	else if (code == 13)
+		return private.GetPasswordComplexityAsString(String.ToUint2(allowValue, 0));
+		
+	//PasswordAge
+	else if (code == 14)
+	{
+		separatorIndex: int4 = String.IndexOf(allowValue, ";");
+		min: string = String.ToString(TypeConvert.ToInt4(String.ToDouble(String.SubString(allowValue, 0, separatorIndex) , 0) / CONST.SECONDS_IN_DAY));
+		max: string = String.ToString(TypeConvert.ToInt4(String.ToDouble(String.SubString(allowValue, separatorIndex + 1) , 0) / CONST.SECONDS_IN_DAY));
+		return "От: "+min+", "+"до: "+max;
+	}	
+	else
+	//значения прочих прав строкового типа
+		return private.GetFormatedStringValue(allowValue, denyValue);
+}
+else
+	return allowValue;]]>
+		</body>
+		<param access-modifier="private" name="app" display-name="" uuid="88d8640f-0e03-44ea-a6d8-81d2d9dc393b" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="type" display-name="" uuid="69f56917-b629-4e5f-8260-53046d9c1233" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="name" display-name="" uuid="dfcd18ca-8298-4e03-a9b9-e3466eddf85e" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="allowValue" display-name="" uuid="4e96484b-6462-4204-8edc-8f8431164085" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="denyValue" display-name="" uuid="9b739859-5b2c-49d7-857c-25ddf339c652" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="GetConvertedValues" display-name="GetConvertedValues" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[code: int4 = private.GetCode(app, type, name);
+
+if (code == 10 || code == 11)
+	return String.ToString((String.ToUint4(displayValue, 0) * CONST.SECONDS_IN_MINUTE));
+else if (code == 12 || code == 14)
+	return String.ToString((String.ToUint4(displayValue, 0) * CONST.SECONDS_IN_DAY));
+else
+	return displayValue;]]>
+		</body>
+		<param access-modifier="private" name="app" display-name="" uuid="43373dd9-dce4-40ed-929c-4d7f549ec6b3" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="type" display-name="" uuid="e4778a70-4fe2-4091-8d4d-144d96ca0872" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="name" display-name="" uuid="2dfdaabd-46a6-4b64-a4d4-ce3c509de2f5" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="displayValue" display-name="" uuid="5c35f988-6fdf-473c-9c49-0525304b328d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="IsSecurityIntegerRight" display-name="IsSecurityIntegerRight" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<body kind="om">
+			<![CDATA[//функция проверки токена на принаджность к системному приложению и "числовому" типу данных
+code: int4 = private.GetCode(app, type, name);
+return code >= 2 && code <= 12;]]>
+		</body>
+		<param access-modifier="private" name="app" display-name="" uuid="07c13457-e9aa-44cd-aad0-d527e2d2499e" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="type" display-name="" uuid="a181d502-bcd7-4e1a-bb8e-49d9d1e13ffe" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="name" display-name="" uuid="2c9abb22-bb77-4b38-9e63-3ba5d9564726" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="IsPasswordComplexity" display-name="IsPasswordComplexity" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<body kind="om">
+			<![CDATA[code: int4 = private.GetCode(app, type, name);
+return code == 13;]]>
+		</body>
+		<param access-modifier="private" name="app" display-name="" uuid="e94ba643-f538-4463-8c6e-ca8a160023eb" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="type" display-name="" uuid="48125b51-3c4d-44d6-a0ec-32f2ceebefd9" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="name" display-name="" uuid="676a5375-bb11-4fba-9469-bef96e39e37d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="IsPasswordAge" display-name="IsPasswordAge" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<body kind="om">
+			<![CDATA[code: int4 = private.GetCode(app, type, name);
+return code == 14;]]>
+		</body>
+		<param access-modifier="private" name="app" display-name="" uuid="a3241287-b78e-4dbf-a252-20d8a4da5f50" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="type" display-name="" uuid="d8342937-f0be-4613-881f-472782f02db6" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="name" display-name="" uuid="c7305cd4-3dd1-4092-b79d-140389582496" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+</type>
+

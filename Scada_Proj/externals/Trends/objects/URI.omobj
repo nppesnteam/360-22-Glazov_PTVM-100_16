@@ -1,0 +1,154 @@
+<type access-modifier="private" name="URI" display-name="URI" uuid="b678518d-6385-4055-af2b-8169664005c1" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="">
+	<do access-modifier="private" name="Parse" display-name="Parse" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<body kind="javascript">
+			<![CDATA[Schema = "";
+Host = "";
+Port = 0;
+HistoryPort = 0;
+FilePath = "";
+Tag = "";
+TimeMode = 0;
+
+const regexp = /^(([^:/?#]+):)?(\/\/([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/;
+
+let groups = value.match(regexp);
+if (groups == null)
+	return false;
+
+Schema = groups[2];
+if (Schema == "")
+	Schema = "tcp";
+
+if (Schema == "tcp")
+{
+	parseTcp(groups);
+}
+else if (Schema == "file")
+{
+	Host = groups[4];
+	FilePath = groups[5];
+	
+	// в Windows корневой слэш необязателен
+	if (/^\/[a-zA-Z]:/.test(FilePath))
+		FilePath = FilePath.substring(1);
+
+	var fragment = groups[9];
+	if (fragment != null)
+	{		
+		// в файле может быть сохранен сигнал
+		let fragmentGroups = fragment.match(regexp);
+		if (fragmentGroups != null)
+			parseTcp(fragmentGroups);
+	}
+}
+
+return true;
+
+function parseTcp(tcpGroups)
+{
+	// разбираем источник
+	if (tcpGroups[4] != null)
+	{
+		let source = tcpGroups[4].split(":");
+		Host = source[0];
+		if (source[1] != null)
+			Port = source[1];
+		if (source[2] != null)
+			HistoryPort = source[2];
+	}
+
+	let path = tcpGroups[5];
+	if (Host != "")
+		Tag = path.substring(1);
+	else Tag = path;
+
+	let request = tcpGroups[7];
+	if (request != null)
+	{
+		let options = request.split("&");
+		for (const opt of options)
+		{
+			// определяем режим метки времени
+			if (opt.startsWith("TimeMode="))
+			{	
+				let timeMode = opt.split("=");
+				if (timeMode[1] == "Source")
+					TimeMode = unit.Const.tmSOURCE;
+				else if (timeMode[1] == "Server")
+					TimeMode = unit.Const.tmSERVER;
+			}
+		}
+	}
+}]]>
+		</body>
+		<param access-modifier="private" name="value" display-name="" uuid="a3e989fc-0163-482d-b4f9-66d826d82e41" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<object access-modifier="private" name="Schema" display-name="Schema" uuid="405f3f7b-95c9-4ee2-8013-c4fe8648dc9c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="Host" display-name="Host" uuid="5d9a34df-7ccc-4092-beca-6ed81070c5cb" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="Port" display-name="Port" uuid="afd3aecc-809a-4d8d-920a-d5ae0ad62c2a" base-type="uint2" base-type-id="ae923ad8-8b75-4813-8121-36efe3cc8c12" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="HistoryPort" display-name="HistoryPort" uuid="afba7e8d-b8e9-4b82-a800-4aac38b3f11c" base-type="uint2" base-type-id="ae923ad8-8b75-4813-8121-36efe3cc8c12" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="FilePath" display-name="FilePath" uuid="5a54ad2b-7281-4eb6-9a7d-ead67731d5fa" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="Tag" display-name="Tag" uuid="440c7cd0-543b-430d-8008-bd600ead373a" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="TimeMode" display-name="TimeMode" uuid="aee7de3c-20ce-49b8-b799-8937ad0b4b38" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+	<do access-modifier="private" name="ToString" display-name="ToString" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="javascript">
+			<![CDATA[var result = Schema + "://";
+
+if (Schema == "tcp")
+{
+	AddTcpParts();
+}
+else if (Schema == "file")
+{
+	if (FilePath != "")
+	{
+		// для тома Windows добавляем корневой слэш
+		if (/^[a-zA-Z]:/.test(FilePath))
+			result += "/";
+		
+		result += FilePath;
+	}
+		
+	if (Tag != "")
+	{
+		result += "#tcp://";
+		AddTcpParts();
+	}
+}
+
+return result;
+
+function AddTcpParts()
+{
+	if (Host != "")
+	{
+		result += Host;
+
+		if (Port > 0)
+			result += ":" + Port;
+			
+		if (HistoryPort > 0)
+			result += ":" + HistoryPort;
+	}
+		
+	if (Tag != "")
+	{
+		if (Host != "")
+			result += "/" + Tag;
+		else result += Tag;
+	}
+
+	if (TimeMode > 0)
+	{
+		result += "?TimeMode=";
+		if (TimeMode == unit.Const.tmSOURCE)
+			result += "Source";
+		else if (TimeMode == unit.Const.tmSERVER)
+			result += "Server";
+		else result += TimeMode;
+	}
+}]]>
+		</body>
+	</do>
+</type>
+

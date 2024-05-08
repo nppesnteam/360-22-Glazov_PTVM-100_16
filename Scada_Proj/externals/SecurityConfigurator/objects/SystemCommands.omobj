@@ -1,0 +1,183 @@
+<type access-modifier="private" name="SystemCommands" display-name="SystemCommands" uuid="0b754dab-38c6-43db-a050-37201965421c" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+	<object access-modifier="private" name="GoTo" display-name="GoTo" uuid="81bf4ba4-daef-4d3d-9d83-acf9104abc8a" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+		<object access-modifier="private" name="sendData" display-name="sendData" uuid="939d2e2a-8429-42e0-abdd-2e275bed81ba" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<object access-modifier="private" name="frameCode" display-name="frameCode" uuid="7d5ff12c-f5a8-4d72-a09a-384ec4994bea" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+		<object access-modifier="private" name="CanExecute" display-name="CanExecute" uuid="da0c737e-be08-4e9b-b280-448964cf5ea8" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+		<init target="CanExecute" ver="5" value="true"/>
+		<do access-modifier="private" name="doBlockingControll" display-name="doBlockingControll" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[CanExecute = false;]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="doUnblockingControll" display-name="doUnblockingControll" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[CanExecute = true;]]>
+			</body>
+		</do>
+	</object>
+	<object access-modifier="private" name="DoSave" display-name="DoSave" uuid="f373f736-88e5-44a2-825d-7e4ece96d613" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+		<object access-modifier="private" name="CanExecute" display-name="CanExecute" uuid="38741fdf-52d0-4c80-98ca-a5a97ac20e74" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+	</object>
+	<object access-modifier="private" name="DoExportToFile" display-name="DoExportToFile" uuid="b2395a1c-3de7-470b-abd3-c3fbaede5660" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+		<object access-modifier="private" name="CanExecute" display-name="CanExecute" uuid="251af868-3749-4edd-b0dc-59b94370c4b4" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+		<object access-modifier="private" name="ExportPath" display-name="ExportPath" uuid="1cb56e9f-35dd-4de6-bc07-524e82682bb4" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<object access-modifier="private" name="FileType" display-name="FileType" uuid="55cf2961-6f80-4a69-8dd6-e80198aafa37" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="Runtime" display-name="Runtime" uuid="4d068c5c-9773-4ca8-94ad-55fe11d74431" base-type="Runtime" base-type-id="9031e0ca-e75e-47d6-98eb-cf0e5779cb68" ver="5" description="" cardinal="1"/>
+		<do access-modifier="private" name="GetExportFileFilter" display-name="GetExportFileFilter" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[filter: string = "Текстовый файл (*.csv)|*.csv|Книга Excel (*.xlsx)|*.xlsx";
+if (Runtime.WorkMode != 1) // в WebViewer формат pdf не поддерживается
+	filter += "|Файл Adobe PDF (*.pdf)|*.pdf";
+return filter;
+
+]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="GetExportFileExtendedFilter" display-name="GetExportFileExtendedFilter" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[return "Шаблон приложения (*.json)|*.json|" + GetExportFileFilter();;
+
+]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="GetFileExtensionAsString" display-name="GetFileExtensionAsString" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[//вернуть расширение по индексу FileType
+if (fileType < 0)
+	return "";
+	
+//получение и разбор массива расширений
+var types = GetExportFileFilter();
+let typeList = types.split("|");
+let currentExt = typeList[fileType*2 + 1];
+return currentExt.substring(currentExt.indexOf(".") + 1);]]>
+			</body>
+			<param access-modifier="private" name="fileType" display-name="" uuid="45304437-5cd0-4918-8aff-23ade8ee46dd" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		</do>
+	</object>
+	<object access-modifier="private" name="DoImport" display-name="DoImport" uuid="335da61b-5461-458a-9330-bd284a717283" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+		<object access-modifier="private" name="CanExecute" display-name="CanExecute" uuid="2e603dc5-5b3b-4b94-ae2c-ae175118dd03" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+		<object access-modifier="private" name="ImportPath" display-name="ImportPath" uuid="cbcbad2a-aee9-46ac-b3e8-5f79513ac5ee" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="FileType" display-name="FileType" uuid="a988622d-2a3b-4539-af40-c5268f602ad5" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+	</object>
+	<object access-modifier="private" name="Forms" display-name="Forms" uuid="f99670fe-3eaa-4bc2-907c-d3a93c26b83f" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="AppList" display-name="AppList" uuid="dc1f8079-e55c-48b5-bca2-3ee430e44239" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+		<init target="AppList" ver="5" value="1"/>
+		<object access-modifier="private" name="AppEdit" display-name="AppEdit" uuid="83ca8085-96e6-46e2-89d4-8fbbb1a84a3c" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+		<init target="AppEdit" ver="5" value="2"/>
+		<object access-modifier="private" name="GroupList" display-name="GroupList" uuid="a053b6c2-bea0-4906-8872-4c616083390a" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+		<init target="GroupList" ver="5" value="3"/>
+		<object access-modifier="private" name="GroupEdit" display-name="GroupEdit" uuid="aacb2167-4e4e-4179-ad83-2fd014cee1e6" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+		<init target="GroupEdit" ver="5" value="4"/>
+		<object access-modifier="private" name="UserList" display-name="UserList" uuid="3759f041-717f-42ca-a151-fea8ee65f90b" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+		<init target="UserList" ver="5" value="5"/>
+		<object access-modifier="private" name="UserEdit" display-name="UserEdit" uuid="0d8fc8ef-0796-487c-bbf8-2895eb6aa716" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+		<init target="UserEdit" ver="5" value="6"/>
+		<object access-modifier="private" name="UserCreate" display-name="UserCreate" uuid="b0a91c95-1e6e-4c11-894c-8572fb14e9bb" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+		<init target="UserCreate" ver="5" value="7"/>
+		<object access-modifier="private" name="RoleEditor" display-name="RoleEditor" uuid="24a43ece-d29c-46d5-bb01-ef25aee46844" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+		<init target="RoleEditor" ver="5" value="8"/>
+	</object>
+	<object access-modifier="private" name="ViewSettings" display-name="ViewSettings" uuid="6fd88255-9e35-420c-953e-5d2592e3f61b" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="Data" display-name="Data" uuid="a52dfaf2-2026-4ec2-a7b0-dce076a5a407" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="9"/>
+		<do access-modifier="private" name="Set" display-name="Set" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<param access-modifier="private" name="settings" display-name="" uuid="5efc2263-9485-4171-811b-7e3e87f56903" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<body kind="javascript">
+				<![CDATA[var content = JSON.parse(settings);
+
+MapSettingsToForm(Forms.AppList, "AppList");
+MapSettingsToForm(Forms.AppEdit, "AppEdit");
+MapSettingsToForm(Forms.RoleEditor, "RoleEditor");
+
+MapSettingsToForm(Forms.GroupList, "GroupList");
+MapSettingsToForm(Forms.GroupEdit, "GroupEdit");
+
+MapSettingsToForm(Forms.UserList, "UserList");
+MapSettingsToForm(Forms.UserEdit, "UserEdit");
+MapSettingsToForm(Forms.UserCreate, "UserCreate");
+
+function MapSettingsToForm(formCode, fieldName) {
+	if (content.hasOwnProperty(fieldName))
+		Data[formCode] = JSON.stringify(content[fieldName]);
+}
+
+pSaveSettings.Invoke();]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="Get" display-name="Get" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[var settings = {};
+var currentFormSettings = {};
+
+for (let index = 1; index < Data.Length; index++){
+	currentFormSettings = (Data[index] != "")?(JSON.parse(Data[index])):({});
+	if (index == Forms.AppList) {
+			settings.AppList = currentFormSettings;
+	} else if (index == Forms.AppEdit) {
+		settings.AppEdit = currentFormSettings;
+	} else if (index == Forms.AppEdit) {
+		settings.AppEdit = currentFormSettings;
+	} else if (index == Forms.GroupList) {
+		settings.GroupList = currentFormSettings;
+	} else if (index == Forms.GroupEdit) {
+		settings.GroupEdit = currentFormSettings;
+	} else if (index == Forms.UserList) {
+		settings.UserList = currentFormSettings;
+	} else if (index == Forms.UserEdit) {
+		settings.UserEdit = currentFormSettings;
+	} else if (index == Forms.UserCreate) {
+		settings.UserCreate = currentFormSettings;
+	} else if (index == Forms.RoleEditor) {
+		settings.RoleEditor = currentFormSettings;
+	}
+}
+return JSON.stringify(settings);]]>
+			</body>
+		</do>
+		<init target="Data" ver="5" value="{}"/>
+		<do access-modifier="private" name="Update" display-name="Update" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[Data[formCode] = value;
+pSaveSettings.Invoke();]]>
+			</body>
+			<param access-modifier="private" name="formCode" display-name="" uuid="728a29d7-2b2f-4ad3-b3b2-9bc9ac6252cf" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+			<param access-modifier="private" name="value" display-name="" uuid="7814a8ca-ba5a-434b-b1aa-f888d8a1d2f1" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+	</object>
+	<object access-modifier="private" name="Statusbar" display-name="Statusbar" uuid="94b010dd-5817-4d41-9961-b557290267ff" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="operationProgress" display-name="operationProgress" uuid="3482d855-d245-4cc5-a52c-5fa5c229531e" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="operationStatus" display-name="operationStatus" uuid="1fafee9b-0114-421d-ab15-e5bf1ec896a0" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="operationCount" display-name="operationCount" uuid="7eda0656-052e-4060-abfe-96fd4a654ddc" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="counter" display-name="counter" uuid="244488f0-3d5a-4a45-ab7a-3cd61fd00bca" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5" description="" cardinal="1"/>
+		<do access-modifier="private" name="Update" display-name="Update" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (status != "")
+{
+	//увеличиваем текущее значение
+	counter += 1;
+	
+	min: int4 = 0;
+	max: int4 = operationCount;
+	
+	//приведение к диапазону 0 - 100
+	newMin: int4 = 0;
+	newMax: int4 = 100;
+	
+	operationProgress = TypeConvert.ToInt4(Math.Round((TypeConvert.ToDouble((counter - min)) / (max - min)) * (newMax - newMin) + newMin));
+}
+operationStatus = status;]]>
+			</body>
+			<param access-modifier="private" name="status" display-name="" uuid="e290c382-c0f5-47de-b8e5-de0f127b79f4" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+		<do access-modifier="private" name="Init" display-name="Init" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[operationProgress = 0;
+counter = 0;
+operationCount = count;]]>
+			</body>
+			<param access-modifier="private" name="count" display-name="" uuid="2d86c6d1-03aa-476f-a61b-24747eaa2d5f" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		</do>
+	</object>
+	<object access-modifier="private" name="pSaveSettings" display-name="pSaveSettings" uuid="cadeab01-e991-4381-a885-efd967113ec9" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description=""/>
+</type>
+

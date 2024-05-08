@@ -1,0 +1,271 @@
+<type access-modifier="private" name="Trends_OpenFileSettings" display-name="Trends_OpenFileSettings" uuid="e5694de9-ff21-400b-aede-1c9fde7450ea" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="290" ver="5"/>
+	<designed target="Height" value="115" ver="5"/>
+	<designed target="PenColor" value="0xff000000" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<designed target="WindowX" value="0" ver="5"/>
+	<designed target="WindowY" value="0" ver="5"/>
+	<designed target="WindowWidth" value="290" ver="5"/>
+	<designed target="WindowHeight" value="375" ver="5"/>
+	<designed target="WindowCaption" value="Параметры открытия файла" ver="5"/>
+	<designed target="ShowWindowCaption" value="true" ver="5"/>
+	<designed target="ShowWindowMinimize" value="false" ver="5"/>
+	<designed target="ShowWindowMaximize" value="false" ver="5"/>
+	<designed target="ShowWindowClose" value="true" ver="5"/>
+	<designed target="AlwaysOnTop" value="false" ver="5"/>
+	<designed target="WindowSizeMode" value="1" ver="5"/>
+	<designed target="WindowBorderStyle" value="2" ver="5"/>
+	<designed target="WindowState" value="0" ver="5"/>
+	<designed target="WindowScalingMode" value="0" ver="5"/>
+	<designed target="MonitorNumber" value="0" ver="5"/>
+	<designed target="WindowPosition" value="2" ver="5"/>
+	<designed target="WindowCloseMode" value="0" ver="5"/>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="AboutToOpen">
+		<body kind="om">
+			<![CDATA[// По умолчанию российский формат
+if (pChart.private.FileOpenFormatDT[0] == "")
+	pChart.private.FileOpenFormatDT[0] = "DD.MM.YYYY hh:mm:ss";
+// На втором месте по умолчанию Американский формат
+if (pChart.private.FileOpenFormatDT[1] == "")	
+	pChart.private.FileOpenFormatDT[1] = "MM/DD/YYYY hh:mm:ss";
+i:int4 = 0;
+while (i < pChart.private.FileOpenFormatDT.Length)
+{
+	if (pChart.private.FileOpenFormatDT[i] != "")
+		cmbFormatDT.AddItem(pChart.private.FileOpenFormatDT[i]);
+	i += 1;
+}
+cmbFormatDT.Text = pChart.private.FileOpenFormatDT[0];]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="WindowActivationChanged">
+		<body kind="om">
+			<![CDATA[if (active)
+	here.Focus = true;]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="private" display-name="private" uuid="66920dfe-9157-4600-aaf8-1afe453f3577" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+		<object access-modifier="private" name="changes" display-name="changes" uuid="db8ddcdf-8f9e-4a92-93f0-10fafdf55fb4" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+		<object access-modifier="private" name="bInit" display-name="bInit" uuid="f22428fc-418a-4671-9182-80ee56e56004" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+		<init target="bInit" ver="5" value="false"/>
+		<do access-modifier="private" name="GetAxisMin" display-name="GetAxisMin" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<param access-modifier="private" name="index" display-name="" uuid="fdbb6b84-7c74-45ec-ab9a-850a8fd1340b" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<body kind="javascript">
+				<![CDATA[var indexAxis = pChart.Params.Lines[index].numAxis;
+var axis;
+axis = pChart.GlobalRanges.Value ? pChart.Chart.Axis_Y[0] : pChart.Chart.Axis_Y[indexAxis]
+
+return pChart.private.ValueRound(axis.Min, pChart.YAxisPrecision);
+]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="GetAxisMax" display-name="GetAxisMax" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<param access-modifier="private" name="index" display-name="" uuid="349bd47d-bd51-40a3-9022-a15f54f9ad22" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<body kind="javascript">
+				<![CDATA[var indexAxis = pChart.Params.Lines[index].numAxis;
+var axis;
+axis = pChart.GlobalRanges.Value ? pChart.Chart.Axis_Y[0] : pChart.Chart.Axis_Y[indexAxis]
+
+return pChart.private.ValueRound(axis.Max, pChart.YAxisPrecision);
+]]>
+			</body>
+		</do>
+	</object>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="6c4a03e6-cb13-4560-8696-a17a88342ade" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="534433b2-ec3d-4dcd-87d0-c46db1277557" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="pChart" display-name="pChart" uuid="cddb47ed-4aaa-40d9-b968-dfd4949c521d" base-type="Trends_Chart" base-type-id="659f73ba-7fa5-4aa4-ac4d-623541275829" base-const="true" base-ref="true" ver="5" description=""/>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="KeyPress">
+		<body kind="om">
+			<![CDATA[if (event.KeyCode == 75)
+	btnCancel.Click();
+else if (event.KeyCode == 82)
+//	if (btnOK.Enabled)	
+	btnOK.Click();]]>
+		</body>
+	</do-on>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[pTheme.BackgroundColor]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="btnOK" display-name="btnOK" uuid="4de1fd3f-3120-4a44-84d0-50290c6e8b3c" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
+		<designed target="X" value="110" ver="5"/>
+		<designed target="Y" value="80" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="80" ver="5"/>
+		<designed target="Height" value="25" ver="5"/>
+		<designed target="Checkable" value="false" ver="5"/>
+		<designed target="Text" value="OK" ver="5"/>
+		<designed target="TextAlignment" value="132" ver="5"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+		<designed target="FontColor" value="4278190080" ver="5"/>
+		<designed target="OnClickFontColor" value="4278190080" ver="5"/>
+		<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
+		<designed target="BrushColor" value="0xffe8e8e8" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<designed target="OnClickBrushColor" value="0xffe8e8e8" ver="5"/>
+		<designed target="OnClickBrushStyle" value="1" ver="5"/>
+		<designed target="OnHoverBrushColor" value="0xffe8e8e8" ver="5"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="5"/>
+		<designed target="PenColor" value="0xff808080" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="OnClickPenColor" value="0xff000000" ver="5"/>
+		<designed target="OnClickPenStyle" value="1" ver="5"/>
+		<designed target="OnClickPenWidth" value="1" ver="5"/>
+		<designed target="OnHoverPenColor" value="0xff00aaff" ver="5"/>
+		<designed target="OnHoverPenStyle" value="1" ver="5"/>
+		<designed target="OnHoverPenWidth" value="1" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+			<body kind="om">
+				<![CDATA[// обновление списка пользовательских форматов
+// Новый формат ставим на первое место
+index:int4 = 0;
+if (cmbFormatDT.Text != "")
+{
+	pChart.private.FileOpenFormatDT[index] = cmbFormatDT.Text;
+	index += 1;	
+}
+// Остальные элементы копируем из комбо бокса  в новый список 
+i:int4 = 0;
+while (i < cmbFormatDT.ItemCount)
+{
+	j:int4 = index - 1;
+	bneed:bool = true;
+	sitem:string = cmbFormatDT.GetItem(i);
+	// Проверяем на повторяемость в списке
+	while (j >= 0)
+	{
+		if (sitem == pChart.private.FileOpenFormatDT[j])
+			bneed = false;
+		j -= 1;
+	}
+	if (bneed)
+	{
+		pChart.private.FileOpenFormatDT[index] = sitem;
+		index += 1;
+	}
+	i += 1;
+}
+while (index < pChart.private.FileOpenFormatDT.Length)
+{
+	pChart.private.FileOpenFormatDT[index] = "";
+	index += 1;
+}
+
+Close();]]>
+			</body>
+		</do-on>
+		<designed target="DisabledFontColor" value="4278190080" ver="5"/>
+		<designed target="DisabledBrushColor" value="4288716960" ver="5"/>
+		<designed target="DisabledBrushStyle" value="1" ver="5"/>
+		<designed target="DisabledPenColor" value="4288716960" ver="5"/>
+		<designed target="DisabledPenStyle" value="1" ver="5"/>
+		<designed target="DisabledPenWidth" value="1" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Checked" value="false" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="btnCancel" display-name="btnCancel" uuid="e9b9b39e-4664-4524-bb96-846c8fceba4b" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
+		<designed target="X" value="200" ver="5"/>
+		<designed target="Y" value="80" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="80" ver="5"/>
+		<designed target="Height" value="25" ver="5"/>
+		<designed target="Checkable" value="false" ver="5"/>
+		<designed target="Text" value="Отмена" ver="5"/>
+		<designed target="TextAlignment" value="132" ver="5"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+		<designed target="FontColor" value="4278190080" ver="5"/>
+		<designed target="OnClickFontColor" value="4278190080" ver="5"/>
+		<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
+		<designed target="BrushColor" value="0xffe8e8e8" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<designed target="OnClickBrushColor" value="0xffe8e8e8" ver="5"/>
+		<designed target="OnClickBrushStyle" value="1" ver="5"/>
+		<designed target="OnHoverBrushColor" value="0xffe8e8e8" ver="5"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="5"/>
+		<designed target="PenColor" value="0xff808080" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="OnClickPenColor" value="0xff000000" ver="5"/>
+		<designed target="OnClickPenStyle" value="1" ver="5"/>
+		<designed target="OnClickPenWidth" value="1" ver="5"/>
+		<designed target="OnHoverPenColor" value="0xff00aaff" ver="5"/>
+		<designed target="OnHoverPenStyle" value="1" ver="5"/>
+		<designed target="OnHoverPenWidth" value="1" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="close"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="DisabledFontColor" value="4278190080" ver="5"/>
+		<designed target="DisabledBrushColor" value="4288716960" ver="5"/>
+		<designed target="DisabledBrushStyle" value="1" ver="5"/>
+		<designed target="DisabledPenColor" value="4288716960" ver="5"/>
+		<designed target="DisabledPenStyle" value="1" ver="5"/>
+		<designed target="DisabledPenWidth" value="1" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Checked" value="false" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+	</object>
+	<designed target="WindowIconPath" value="Trends_Icons/Trends.ico" ver="5"/>
+	<designed target="Flip" value="0" ver="5"/>
+	<object access-modifier="private" name="cmbFormatDT" display-name="cmbFormatDT" uuid="0d01ce3e-e640-45de-aabf-dd511923c7e2" base-type="ComboBox" base-type-id="3495bcd2-01f2-4709-b7f4-e9cf6f3a00bc" ver="5" description="" cardinal="1">
+		<designed target="X" value="105" ver="5"/>
+		<designed target="Y" value="40" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="175" ver="5"/>
+		<designed target="Height" value="25" ver="5"/>
+		<designed target="Editable" value="true" ver="5"/>
+		<designed target="Text" value="YYYY.MM.DD hh:mm:ss" ver="5"/>
+		<designed target="SelectedIndex" value="-1" ver="5"/>
+		<designed target="Font" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="5"/>
+		<designed target="FontColor" value="4278190080" ver="5"/>
+		<designed target="MaxVisibleItems" value="10" ver="5"/>
+		<object access-modifier="private" name="Label" display-name="Label" uuid="27ce2d8e-ee17-448f-9c9f-501a3cf5a6b9" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+			<designed target="X" value="-95" ver="5"/>
+			<designed target="Y" value="-30" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="180" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Text" value="Текстовый формат метки времени" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="0xff000000" ver="5"/>
+			<designed target="TextAlignment" value="130" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+		</object>
+	</object>
+</type>
+
