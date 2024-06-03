@@ -1,4 +1,4 @@
-<type access-modifier="public" name="Calendar" display-name="Calendar" uuid="5edbd6ad-2bda-47b2-b1b0-7cb577333b8c" base-type="Popup" base-type-id="346ea4f8-f80d-44c4-904b-258f28be2b43" ver="5" description="">
+<type access-modifier="public" name="Calendar" display-name="Календарь" uuid="5edbd6ad-2bda-47b2-b1b0-7cb577333b8c" base-type="Popup" base-type-id="346ea4f8-f80d-44c4-904b-258f28be2b43" ver="5" description="">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="Rotation" value="0" ver="5"/>
@@ -79,14 +79,15 @@
 				</object>
 				<do-trace access-modifier="private" target="PenColor" ver="5">
 					<body>
-						<![CDATA[pTheme.ForegroundColor]]>
+						<![CDATA[protected.pTheme.ForegroundColor]]>
 					</body>
 				</do-trace>
 				<do-trace access-modifier="private" target="BrushColor" ver="5">
 					<body>
-						<![CDATA[pTheme.ForegroundColor]]>
+						<![CDATA[protected.pTheme.ForegroundColor]]>
 					</body>
 				</do-trace>
+				<designed target="Flip" value="0" ver="5"/>
 			</object>
 			<object access-modifier="private" name="MouseIsOver" display-name="MouseIsOver" uuid="140a1683-300e-4ad8-b9da-653bfde0faf9" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseEnter">
@@ -103,7 +104,7 @@
 			</do-on>
 			<do-trace access-modifier="private" target="BrushColor" ver="5">
 				<body>
-					<![CDATA[MouseIsOver ? theme.SelectionColor : 0]]>
+					<![CDATA[MouseIsOver ? protected.pTheme.SelectionColor : 0]]>
 				</body>
 			</do-trace>
 			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
@@ -149,9 +150,10 @@
 			</do-trace>
 			<do-trace access-modifier="private" target="FontColor" ver="5">
 				<body>
-					<![CDATA[theme.ForegroundColor]]>
+					<![CDATA[protected.pTheme.ForegroundColor]]>
 				</body>
 			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
 		</object>
 		<object access-modifier="private" name="Next" display-name="Next" uuid="417b5c76-9f16-442a-87bc-bf09fbc3d8bc" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
 			<designed target="X" value="150" ver="5"/>
@@ -206,14 +208,15 @@
 				</object>
 				<do-trace access-modifier="private" target="PenColor" ver="5">
 					<body>
-						<![CDATA[pTheme.ForegroundColor]]>
+						<![CDATA[protected.pTheme.ForegroundColor]]>
 					</body>
 				</do-trace>
 				<do-trace access-modifier="private" target="BrushColor" ver="5">
 					<body>
-						<![CDATA[pTheme.ForegroundColor]]>
+						<![CDATA[protected.pTheme.ForegroundColor]]>
 					</body>
 				</do-trace>
+				<designed target="Flip" value="0" ver="5"/>
 			</object>
 			<object access-modifier="private" name="MouseIsOver" display-name="MouseIsOver" uuid="d3818f80-9228-46a4-8360-9abba5a5025e" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseEnter">
@@ -230,7 +233,7 @@
 			</do-on>
 			<do-trace access-modifier="private" target="BrushColor" ver="5">
 				<body>
-					<![CDATA[MouseIsOver ? theme.SelectionColor : 0]]>
+					<![CDATA[MouseIsOver ? protected.pTheme.SelectionColor : 0]]>
 				</body>
 			</do-trace>
 			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
@@ -277,7 +280,7 @@
 			<designed target="TextAlignment" value="132" ver="5"/>
 			<do-trace access-modifier="private" target="FontColor" ver="5">
 				<body>
-					<![CDATA[theme.ForegroundColor]]>
+					<![CDATA[protected.pTheme.ForegroundColor]]>
 				</body>
 			</do-trace>
 		</object>
@@ -299,7 +302,7 @@
 			<designed target="TextAlignment" value="132" ver="5"/>
 			<do-trace access-modifier="private" target="FontColor" ver="5">
 				<body>
-					<![CDATA[theme.ForegroundColor]]>
+					<![CDATA[protected.pTheme.ForegroundColor]]>
 				</body>
 			</do-trace>
 		</object>
@@ -321,7 +324,7 @@
 			<designed target="TextAlignment" value="132" ver="5"/>
 			<do-trace access-modifier="private" target="FontColor" ver="5">
 				<body>
-					<![CDATA[theme.ForegroundColor]]>
+					<![CDATA[protected.pTheme.ForegroundColor]]>
 				</body>
 			</do-trace>
 		</object>
@@ -343,7 +346,7 @@
 			<designed target="TextAlignment" value="132" ver="5"/>
 			<do-trace access-modifier="private" target="FontColor" ver="5">
 				<body>
-					<![CDATA[theme.ForegroundColor]]>
+					<![CDATA[protected.pTheme.ForegroundColor]]>
 				</body>
 			</do-trace>
 		</object>
@@ -365,7 +368,7 @@
 			<designed target="TextAlignment" value="132" ver="5"/>
 			<do-trace access-modifier="private" target="FontColor" ver="5">
 				<body>
-					<![CDATA[theme.ForegroundColor]]>
+					<![CDATA[protected.pTheme.ForegroundColor]]>
 				</body>
 			</do-trace>
 		</object>
@@ -387,7 +390,7 @@
 			<designed target="TextAlignment" value="132" ver="5"/>
 			<do-trace access-modifier="private" target="FontColor" ver="5">
 				<body>
-					<![CDATA[theme.ForegroundColor]]>
+					<![CDATA[protected.pTheme.ForegroundColor]]>
 				</body>
 			</do-trace>
 		</object>
@@ -409,7 +412,7 @@
 			<designed target="TextAlignment" value="132" ver="5"/>
 			<do-trace access-modifier="private" target="FontColor" ver="5">
 				<body>
-					<![CDATA[theme.ForegroundColor]]>
+					<![CDATA[protected.pTheme.ForegroundColor]]>
 				</body>
 			</do-trace>
 		</object>
@@ -473,7 +476,7 @@
 			</object>
 			<do-trace access-modifier="private" target="PenColor" ver="5">
 				<body>
-					<![CDATA[theme.DisabledBorderColor]]>
+					<![CDATA[protected.pTheme.DisabledBorderColor]]>
 				</body>
 			</do-trace>
 			<do-trace access-modifier="private" target="PenStyle" ver="5">
@@ -496,7 +499,7 @@
 			</do-on>
 			<do-trace access-modifier="private" target="BrushColor" ver="5">
 				<body>
-					<![CDATA[(MouseIsOver || Selected) ? theme.SelectionColor : 0]]>
+					<![CDATA[(MouseIsOver || Selected) ? protected.pTheme.SelectionColor : 0]]>
 				</body>
 			</do-trace>
 			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
@@ -566,7 +569,7 @@ while(i < Days.Length)
 	Days[i].Label.Text = String.ToString(DateTime.Day(date));
 	
 	// если это день текущего месяца, то выделяем его цветом шрифта
-	Days[i].Label.FontColor = (DateTime.Month(date) == month) ? theme.ForegroundColor : theme.DisabledFontColor;
+	Days[i].Label.FontColor = (DateTime.Month(date) == month) ? protected.pTheme.ForegroundColor : protected.pTheme.DisabledFontColor;
 
 	// переходим к следующему дню	
 	date = DateTime.AddDays(date, 1);
@@ -614,7 +617,7 @@ while(i < Days.Length)
 			<designed target="BrushStyle" value="0" ver="5"/>
 			<do-trace access-modifier="private" target="PenColor" ver="5">
 				<body>
-					<![CDATA[theme.BorderColor]]>
+					<![CDATA[protected.pTheme.BorderColor]]>
 				</body>
 			</do-trace>
 		</object>
@@ -636,7 +639,7 @@ while(i < Days.Length)
 			<designed target="TextAlignment" value="129" ver="5"/>
 			<do-trace access-modifier="private" target="FontColor" ver="5">
 				<body>
-					<![CDATA[MouseIsOver ? theme.EditorFontColor : theme.ForegroundColor]]>
+					<![CDATA[MouseIsOver ? protected.pTheme.EditorFontColor : protected.pTheme.ForegroundColor]]>
 				</body>
 			</do-trace>
 		</object>
@@ -661,7 +664,7 @@ while(i < Days.Length)
 		</do-on>
 		<do-trace access-modifier="private" target="BrushColor" ver="5">
 			<body>
-				<![CDATA[MouseIsOver ? theme.SelectionColor : 0]]>
+				<![CDATA[MouseIsOver ? protected.pTheme.SelectionColor : 0]]>
 			</body>
 		</do-trace>
 		<designed target="Flip" value="0" ver="5"/>
@@ -764,7 +767,7 @@ private.initialized = true;]]>
 	<object access-modifier="private" name="pSelected" display-name="pSelected" uuid="a0e4b0f5-9279-4a4a-bb84-1989a9b03052" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description=""/>
 	<do-trace access-modifier="private" target="BrushColor" ver="5">
 		<body kind="om">
-			<![CDATA[theme.EditorBrushColor]]>
+			<![CDATA[protected.pTheme.EditorBrushColor]]>
 		</body>
 	</do-trace>
 	<designed target="BrushColor" value="0xffffffff" ver="5"/>
@@ -797,5 +800,8 @@ if (event.KeyCode == 75) // Escape
 	<designed target="ShowWindowClose" value="false" ver="5"/>
 	<designed target="ShowWindowMaximize" value="false" ver="5"/>
 	<designed target="ShowWindowMinimize" value="false" ver="5"/>
+	<init target="init_Theme" ver="5">
+		<object access-modifier="private" uuid="242f8019-a56a-4fa7-b814-1febeaa97c6f" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5"/>
+	</init>
 </type>
 

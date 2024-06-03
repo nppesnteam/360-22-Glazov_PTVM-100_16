@@ -115,6 +115,7 @@
 						</object>
 					</init>
 					<init target="init_ScreenKeyboard" ver="5" ref="here.ScreenKeyboard"/>
+					<init target="init_Permissions" ver="5" ref="here.Permissions"/>
 				</object>
 			</do-on>
 			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="b6550a8c-5e90-435d-bf24-e38c38a854e8" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
@@ -182,6 +183,7 @@
 					</init>
 					<init target="init_ScreenKeyboard" ver="5" ref="here.ScreenKeyboard"/>
 					<init target="init_Theme" ver="5" ref="here.Theme"/>
+					<init target="init_Permissions" ver="5" ref="here.Permissions"/>
 				</object>
 			</do-on>
 			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="d81cf2df-d36e-4811-9ef6-a25c521bf55f" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
@@ -258,8 +260,8 @@
 			<designed target="Orientation" value="1" ver="5"/>
 			<designed target="Gap" value="0" ver="5"/>
 		</object>
-		<object access-modifier="private" name="Space" display-name="Space" uuid="2dae37f6-7978-434e-ad0e-916b92ede445" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
-			<designed target="X" value="675" ver="5"/>
+		<object access-modifier="private" name="space" display-name="space" uuid="43dfc748-2589-4ca5-bb1f-44da53d06e21" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+			<designed target="X" value="545" ver="5"/>
 			<designed target="Y" value="0" ver="5"/>
 			<designed target="ZValue" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
@@ -269,8 +271,8 @@
 			<designed target="Opacity" value="1" ver="5"/>
 			<designed target="Enabled" value="true" ver="5"/>
 			<designed target="Tooltip" value="" ver="5"/>
-			<designed target="Width" value="225" ver="5"/>
-			<designed target="Height" value="30" ver="5"/>
+			<designed target="Width" value="260" ver="5"/>
+			<designed target="Height" value="35" ver="5"/>
 			<designed target="RoundingRadius" value="0" ver="5"/>
 			<designed target="PenColor" value="4278190080" ver="5"/>
 			<designed target="PenStyle" value="0" ver="5"/>
@@ -502,7 +504,9 @@ Height = WindowHeight;]]>
 			"Height": WindowHeight,
 			"State": WindowState
 		},
-		'Theme': JSON.parse(Theme.GetViewSettings())
+		'Theme': JSON.parse(Theme.GetViewSettings()),
+		'UseSecurity': Options.cbUseSecurity.State,
+		'FileSystemAccess': Options.cbFileSystemAccess.State
 	};
 
 	var folder = Files.ParentPath(filePath);	
@@ -540,6 +544,9 @@ catch(error)
 		var theme = session.Theme;
 		if (theme != undefined)
 			Theme.UpdateView(JSON.stringify(theme));
+				
+		Options.cbFileSystemAccess.State = session.FileSystemAccess != false;
+		Options.cbUseSecurity.State = session.UseSecurity != false;
 	}
 	catch(error)
 	{
@@ -557,6 +564,19 @@ catch(error)
 	<object access-modifier="private" name="Theme" display-name="Theme" uuid="65d5cdaa-fa32-4580-ae05-14488c0b0e57" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5" description="" cardinal="1"/>
 	<object access-modifier="private" name="WindowUtils" display-name="WindowUtils" uuid="e01213c4-b985-4aed-ab0f-ff6ee7e48c27" base-type="WindowUtils" base-type-id="4a818ada-44b1-4070-9b9d-c28dc3447ece" ver="5" description="" cardinal="1">
 		<init target="pForm" ver="5" ref="here"/>
+	</object>
+	<object access-modifier="private" name="Permissions" display-name="Permissions" uuid="c33ae4d4-b3fd-487c-b4d9-184a9da5d48a" base-type="SecurityConfigurator_Permissions" base-type-id="a6a67dc7-2872-46c8-a397-13aa48ddb4e7" ver="5" description="" cardinal="1">
+		<do-trace access-modifier="private" target="FileSystemAccess" ver="5">
+			<body>
+				<![CDATA[Options.cbFileSystemAccess.State]]>
+			</body>
+		</do-trace>
+		<init target="SecurityApplication" ver="5" value="SecurityConfigurator"/>
+		<do-trace access-modifier="private" target="UseSecurity" ver="5">
+			<body>
+				<![CDATA[Options.cbUseSecurity.State]]>
+			</body>
+		</do-trace>
 	</object>
 	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="AboutToOpen">
 		<body kind="om">
@@ -583,6 +603,99 @@ private.SaveSession(Files.CombinePath(folder, "tests.json"));]]>
 	<object access-modifier="private" name="ScreenKeyboard" display-name="ScreenKeyboard" uuid="60ddd743-b5ba-4402-8767-394bc51cfcde" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" ver="5" description="" cardinal="1">
 		<init target="Arguments" ver="5" value="--use-security"/>
 		<init target="Enabled" ver="5" value="true"/>
+	</object>
+	<object access-modifier="private" name="Options" display-name="Options" uuid="9f8db15f-8b0c-4d5c-a095-24a303adb4cc" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="535" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="900" ver="5"/>
+		<designed target="Height" value="65" ver="5"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<designed target="PenColor" value="0xff808080" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="328007ef-745b-4fd9-ba3b-ec2fe1993acb" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="0" ver="5"/>
+			<designed target="MinHeight" value="65" ver="5"/>
+			<designed target="MaxWidth" value="16777215" ver="5"/>
+			<designed target="MaxHeight" value="65" ver="5"/>
+		</object>
+		<object access-modifier="private" name="PermissionsLabel" display-name="PermissionsLabel" uuid="1d7d003a-16d8-4423-820f-9f2aeac48ea0" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
+			<designed target="X" value="10" ver="5"/>
+			<designed target="Y" value="5" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="90" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Text" value="Разрешения" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
+			<designed target="FontColor" value="4278190080" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+		</object>
+		<object access-modifier="private" name="cbUseSecurity" display-name="cbUseSecurity" uuid="f8592669-73e3-4b1b-993c-41aded6262f3" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="5" description="" cardinal="1">
+			<designed target="X" value="100" ver="5"/>
+			<designed target="Y" value="5" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="220" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Text" value="Использовать сервер безопасности" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="FontColor" value="4278190080" ver="5"/>
+			<designed target="State" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="StateChanged">
+				<body kind="om">
+					<![CDATA[if (!state)
+{
+	Permissions.FileSystemAccess = cbFileSystemAccess.State;
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="cbFileSystemAccess" display-name="cbFileSystemAccess" uuid="18002d13-89b7-49ae-9cbb-b099aa840565" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="5" description="" cardinal="1">
+			<designed target="X" value="20" ver="5"/>
+			<designed target="Y" value="30" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="175" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Text" value="Доступ к файловой системе" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="FontColor" value="4278190080" ver="5"/>
+			<designed target="State" value="false" ver="5"/>
+			<do-trace access-modifier="private" target="Enabled" ver="5">
+				<body>
+					<![CDATA[!cbUseSecurity.State]]>
+				</body>
+			</do-trace>
+		</object>
 	</object>
 </type>
 

@@ -41,10 +41,10 @@ pStoped.Invoke();]]>
 			<![CDATA[private.Index += 1;
 pActionComplete.Invoke();
 
-if (IsEnd())
-	pFinished.Invoke();
-else if (private.isStoped)
+if (private.isStoped)
 	pStoped.Invoke();
+else if (IsEnd())
+	pFinished.Invoke();
 else
 	private.Next();]]>
 		</body>

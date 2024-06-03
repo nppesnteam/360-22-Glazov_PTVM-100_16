@@ -199,6 +199,9 @@ return Files.CombinePath(folder, "app_settings.json");]]>
 		</object>
 		<init target="init_Settings" ver="5" ref="here.Settings"/>
 		<init target="init_ScreenKeyboard" ver="5" ref="here.ScreenKeyboard"/>
+		<init target="init_Permissions" ver="5">
+			<object access-modifier="private" uuid="e455c3ed-dd08-4a14-952d-29486ae14e96" base-type="SecurityConfigurator_Permissions" base-type-id="a6a67dc7-2872-46c8-a397-13aa48ddb4e7" ver="5"/>
+		</init>
 	</object>
 	<designed target="ZValue" value="0" ver="5"/>
 	<designed target="Opacity" value="1" ver="5"/>

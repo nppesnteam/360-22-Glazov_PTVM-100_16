@@ -1,4 +1,4 @@
-<type access-modifier="public" name="SelectFolderDialog" display-name="SelectFolderDialog" uuid="5b99010a-629a-4d7b-b1cf-a388ef2395c3" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+<type access-modifier="public" name="SelectFolderDialog" display-name="Диалог выбра папки" uuid="5b99010a-629a-4d7b-b1cf-a388ef2395c3" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="ZValue" value="0" ver="5"/>
@@ -38,11 +38,6 @@
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Width" value="296" ver="5"/>
 		<designed target="Height" value="340" ver="5"/>
-		<do-trace access-modifier="private" target="RootPath" ver="5">
-			<body>
-				<![CDATA[here.RootPath]]>
-			</body>
-		</do-trace>
 		<init target="ShowFiles" ver="5" value="false"/>
 		<object access-modifier="private" name="PathChoosen" display-name="PathChoosen" uuid="25eefe9a-580c-4ab1-9efc-e2c95b96fc1f" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
 			<designed target="Enabled" value="true" ver="5"/>
@@ -55,6 +50,7 @@
 		</object>
 		<init target="OnPathChosen" ver="5" ref="PathChoosen"/>
 		<init target="pTheme" ver="5" ref="private.theme"/>
+		<init target="RootPath" ver="5" ref="here.RootPath"/>
 	</object>
 	<object access-modifier="private" name="NewFolderButton" display-name="NewFolderButton" uuid="273f9342-de00-4fb9-85c7-c2369a3f29f0" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
 		<designed target="X" value="10" ver="5"/>
@@ -221,7 +217,7 @@ if (Files.IsDirectory(folderPath))
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
 			<body kind="om">
 				<![CDATA[// формируем результат и закрываем диалог
-Result.Value = Files.ToNative(Files.AbsolutePath(FileTree.SelectedPath));
+Result.FolderPath = Files.ToNative(Files.AbsolutePath(FileTree.SelectedPath));
 OnComplete.Invoke();
 Close();]]>
 			</body>
@@ -348,16 +344,11 @@ if (DefaultPath != "")
 	<object access-modifier="private" name="Debug" display-name="Debug" uuid="bb6e2e1e-d0b3-461c-93db-4543960ad814" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
 	<object access-modifier="private" name="Files" display-name="Files" uuid="14e46e05-4d1e-4727-8355-562805b17d42" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5">
 		<designed target="RootPath" value="/" ver="5"/>
-		<do-trace access-modifier="private" target="RootPath" ver="5">
-			<body>
-				<![CDATA[here.RootPath]]>
-			</body>
-		</do-trace>
 		<object access-modifier="private" name="lastError" display-name="lastError" uuid="9628cd8b-f614-497e-be01-db00c89a3c0d" base-type="FileSystemError" base-type-id="38147fa1-a364-43d4-bd0b-07ee8556c2f2" ver="5"/>
 		<init target="Error" ver="5" ref="lastError"/>
+		<init target="RootPath" ver="5" ref="here.RootPath"/>
 	</object>
 	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="423e6724-2b35-4df7-bfa5-779d1ac7b016" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
-	<object access-modifier="private" name="RootPath" display-name="Корневой путь" uuid="005cc047-25d3-4c12-a32b-2f9dd50b88fb" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
 	<object access-modifier="private" name="DefaultPath" display-name="Путь по умолчанию" uuid="a038a11c-73fd-4bf6-909f-edaa1726fef2" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 	<do access-modifier="private" name="UpdateLayout" display-name="UpdateLayout" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 		<body kind="om">
@@ -401,7 +392,7 @@ else if (event.KeyCode == 75) // Escape
 			<![CDATA[pTheme.BackgroundColor]]>
 		</body>
 	</do-trace>
-	<object access-modifier="private" name="Result" display-name="Result" uuid="352a5a94-cb83-4bd6-86ea-316eba585af8" base-type="DialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="Result" display-name="Result" uuid="352a5a94-cb83-4bd6-86ea-316eba585af8" base-type="FolderDialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" base-const="true" base-ref="true" ver="5"/>
 	<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="4a9a338c-8197-45a2-ad65-fa1f9b2081d4" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
 	<designed target="WindowIconPath" value="CommonLib_Icons/OpenFile16.png" ver="5"/>
 	<designed target="Flip" value="0" ver="5"/>
@@ -414,5 +405,6 @@ else if (event.KeyCode == 75) // Escape
 }]]>
 		</body>
 	</do-on>
+	<param access-modifier="private" name="RootPath" display-name="Корневой путь" uuid="005cc047-25d3-4c12-a32b-2f9dd50b88fb" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 </type>
 

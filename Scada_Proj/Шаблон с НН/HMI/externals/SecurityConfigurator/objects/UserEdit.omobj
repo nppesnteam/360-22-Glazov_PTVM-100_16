@@ -35,7 +35,7 @@
 	<object access-modifier="private" name="private" display-name="private" uuid="09f5386a-dc17-4880-9e82-678ccd4b46a9" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
 		<object access-modifier="private" name="pTheme" display-name="pTheme" uuid="a95223f1-2a15-462d-966f-2b439ff4bd45" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
 		<object access-modifier="private" name="pScreenKeyboard" display-name="pScreenKeyboard" uuid="8f35c77c-052b-44eb-9b3d-a8619ba20a0d" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
-		<object access-modifier="private" name="DialogResult" display-name="DialogResult" uuid="292fd96f-3d11-4428-b7ca-d3bbecabe29a" base-type="DialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" ver="5"/>
+		<object access-modifier="private" name="DialogResult" display-name="DialogResult" uuid="292fd96f-3d11-4428-b7ca-d3bbecabe29a" base-type="EditDialogResult" base-type-id="ce8af278-7358-4aa7-897d-e37d5d49460e" ver="5"/>
 		<object access-modifier="private" name="CreateUser" display-name="CreateUser" uuid="33a12a3b-dd98-48e1-9bdc-b34048e19d34" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
 				<body kind="om">
@@ -168,7 +168,6 @@
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-dialog">
 					<object access-modifier="private" uuid="0cddc31e-4a0b-4c49-b94d-adfd9e85f224" base-type="ChangeUserGroup" base-type-id="af7a739b-e65e-4aa0-a684-9d43e247e7b4" ver="5">
 						<init target="NeedDeleteGroup" ver="5" value="false"/>
-						<init target="Result" ver="5" ref="DialogResult"/>
 						<init target="doAction" ver="5" ref="OnComplete"/>
 						<init target="currentUserGroup" ver="5">
 							<expr>
@@ -176,6 +175,7 @@
 							</expr>
 						</init>
 						<init target="pTheme" ver="5" ref="here.private.pTheme"/>
+						<init target="pResult" ver="5" ref="DialogResult"/>
 					</object>
 				</do-on>
 			</object>
@@ -184,14 +184,14 @@
 				<designed target="InvokeTrigger" value="false" ver="5"/>
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
 					<body kind="om">
-						<![CDATA[if (DialogResult.Value !="") {
+						<![CDATA[if (DialogResult.Value !="")
+{
 	User.AddGroup(DialogResult.Value);
 	
 	EditableUser.CurrentUser_Group = User.GetGroupsList();				//обновить список групп
 	EditableUser.UpdateRightsInTable();											//обновить права
 	UserDataIsChanged = true;
-}
-]]>
+}]]>
 					</body>
 				</do-on>
 			</object>
@@ -211,7 +211,6 @@
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-dialog">
 					<object access-modifier="private" uuid="548cf93c-d1f6-4e01-a038-c86a3ff34f4f" base-type="ChangeUserGroup" base-type-id="af7a739b-e65e-4aa0-a684-9d43e247e7b4" ver="5">
 						<init target="NeedDeleteGroup" ver="5" value="true"/>
-						<init target="Result" ver="5" ref="DialogResult"/>
 						<init target="doAction" ver="5" ref="OnComplete"/>
 						<init target="currentUserGroup" ver="5">
 							<expr>
@@ -219,23 +218,8 @@
 							</expr>
 						</init>
 						<init target="pTheme" ver="5" ref="here.private.pTheme"/>
+						<init target="pResult" ver="5" ref="DialogResult"/>
 					</object>
-				</do-on>
-			</object>
-			<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="f54fc1a9-ef71-402b-9f20-da52720dc5b5" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
-				<designed target="Enabled" value="true" ver="5"/>
-				<designed target="InvokeTrigger" value="false" ver="5"/>
-				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
-					<body kind="om">
-						<![CDATA[if (DialogResult.Value != ""){
-	User.DeleteGroup(DialogResult.Value);
-	
-	EditableUser.CurrentUser_Group = User.GetGroupsList();				//обновить список групп
-	EditableUser.UpdateRightsInTable();											//обновить права
-	UserDataIsChanged = true;
-}
-]]>
-					</body>
 				</do-on>
 			</object>
 		</object>
@@ -249,15 +233,37 @@
 				<![CDATA[Commands.DoRemoveFromGroup]]>
 			</body>
 		</do-trace>
+		<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="f54fc1a9-ef71-402b-9f20-da52720dc5b5" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[if (DialogResult.Value != "")
+{
+	User.DeleteGroup(DialogResult.Value);
+	
+	EditableUser.CurrentUser_Group = User.GetGroupsList();				//обновить список групп
+	EditableUser.UpdateRightsInTable();											//обновить права
+	UserDataIsChanged = true;
+}]]>
+				</body>
+			</do-on>
+		</object>
 		<object access-modifier="private" name="AddUserRights" display-name="AddUserRights" uuid="dc794578-ad53-4eb1-af4a-38d4f037259f" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
 			<object access-modifier="private" name="ShowChangeRightsPopup" display-name="ShowChangeRightsPopup" uuid="15aedc96-ed84-4da4-a414-54b4b9962f04" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="InvokeTrigger" value="false" ver="5"/>
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-dialog">
 					<object access-modifier="private" uuid="64f4dc7e-f76a-4d96-86bc-59ee429f23db" base-type="ChangeRights" base-type-id="24f489ad-7aec-41a5-b0f7-8ed917e6f052" ver="5">
-						<init target="pSelectedSetRights" ver="5" ref="DialogResult"/>
 						<init target="pApplyChanges" ver="5" ref="OnComplete"/>
 						<init target="Init_Theme" ver="5" ref="here.private.pTheme"/>
+						<init target="CurrentRights" ver="5">
+							<expr>
+								<![CDATA[EditableUser.CurrentRights]]>
+							</expr>
+						</init>
+						<init target="DeleteMode" ver="5" value="false"/>
+						<init target="pResult" ver="5" ref="DialogResult"/>
 					</object>
 				</do-on>
 			</object>
@@ -311,7 +317,6 @@
 				<designed target="InvokeTrigger" value="false" ver="5"/>
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-dialog">
 					<object access-modifier="private" uuid="698493f2-0e08-49ed-8879-7b1e130ca239" base-type="ChangeRights" base-type-id="24f489ad-7aec-41a5-b0f7-8ed917e6f052" ver="5">
-						<init target="pSelectedSetRights" ver="5" ref="DialogResult"/>
 						<init target="pApplyChanges" ver="5" ref="OnComplete"/>
 						<init target="CurrentRights" ver="5">
 							<expr>
@@ -319,6 +324,8 @@
 							</expr>
 						</init>
 						<init target="Init_Theme" ver="5" ref="here.private.pTheme"/>
+						<init target="DeleteMode" ver="5" value="true"/>
+						<init target="pResult" ver="5" ref="DialogResult"/>
 					</object>
 				</do-on>
 			</object>
@@ -436,9 +443,9 @@ Commands.DoUnlock.CanExecute = (LoadAuthorizedUser)?(false):(value);]]>
 				<designed target="InvokeTrigger" value="false" ver="5"/>
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-dialog">
 					<object access-modifier="private" uuid="7d809147-70a6-4c49-a443-e5fa99ac81ea" base-type="ChangeRoles" base-type-id="53ccfd85-6699-444b-b41f-b5b2c4558248" ver="5">
-						<init target="pSelectedRoles" ver="5" ref="DialogResult"/>
 						<init target="pApplyChanges" ver="5" ref="OnComplete"/>
 						<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
+						<init target="pResult" ver="5" ref="DialogResult"/>
 					</object>
 				</do-on>
 			</object>
@@ -454,8 +461,7 @@ Commands.DoUnlock.CanExecute = (LoadAuthorizedUser)?(false):(value);]]>
 	UserDataIsChanged = true;
 	EditableUser.UpdateRightsInTable();	//обновить права
 	DialogResult.Value = "";
-}
-]]>
+}]]>
 					</body>
 				</do-on>
 			</object>
@@ -474,7 +480,6 @@ Commands.DoUnlock.CanExecute = (LoadAuthorizedUser)?(false):(value);]]>
 				<designed target="InvokeTrigger" value="false" ver="5"/>
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-dialog">
 					<object access-modifier="private" uuid="5e285b95-7a5d-43ec-9a2e-d8c3e2042891" base-type="ChangeRoles" base-type-id="53ccfd85-6699-444b-b41f-b5b2c4558248" ver="5">
-						<init target="pSelectedRoles" ver="5" ref="DialogResult"/>
 						<init target="pApplyChanges" ver="5" ref="OnComplete"/>
 						<init target="CurrentRoles" ver="5">
 							<expr>
@@ -482,6 +487,7 @@ Commands.DoUnlock.CanExecute = (LoadAuthorizedUser)?(false):(value);]]>
 							</expr>
 						</init>
 						<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
+						<init target="pResult" ver="5" ref="DialogResult"/>
 					</object>
 				</do-on>
 			</object>
@@ -543,8 +549,6 @@ Commands.DoUnlock.CanExecute = (LoadAuthorizedUser)?(false):(value);]]>
 		<do access-modifier="private" name="CheckPassword" display-name="CheckPassword" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
 			<body kind="om">
 				<![CDATA[code: uint2 = User.ValidatePassword(checkedPassword);
-if (checkedPassword == "" )
-	code |= 1 << 9;
 return GetPasswordErrorDescription(code);]]>
 			</body>
 			<param access-modifier="private" name="checkedPassword" display-name="" uuid="83354f42-dc33-407c-92aa-08452b61b56b" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
@@ -592,16 +596,23 @@ return GetPasswordErrorDescription(code);]]>
 	if (Math.TestBit(ErrorCode, 8))
 	{
 		if (error != "") error += "\n";
-		error += "Пароль должен содержать пробелы";
+		error += "Пароль не должен содержать пробелы";
 	}
 	
-		if (Math.TestBit(ErrorCode, 9))
+	if (Math.TestBit(ErrorCode, 9))
+	{
+		if (error != "") error += "\n";
+		error += "Ошибка при получении права минимальной длины пароля";
+	}
+	
+		if (Math.TestBit(ErrorCode, 10))
 	{
 		if (error != "") error += "\n";
 		error += "Пароль не может быть пустым";
 	}
 	
-	if (ErrorCode > 0 && error == "") {
+	if (ErrorCode > 0 && error == "")
+	{
 		error = "Не удалось установить пароль (код ошибки: " + String.ToString(ErrorCode) + ")";
 	}
 	
@@ -738,7 +749,7 @@ catch (error)
 				<init target="ReadOnly" ver="5" value="false"/>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!pConfigurationAccessValue.Value]]>
+						<![CDATA[!pConfigurationAccess.Value]]>
 					</body>
 				</do-trace>
 				<designed target="Flip" value="0" ver="5"/>
@@ -1053,7 +1064,7 @@ if (ErrorRect.Error != error || Editor.Focus)
 				<designed target="Opacity" value="1" ver="5"/>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!pConfigurationAccessValue.Value]]>
+						<![CDATA[!pConfigurationAccess.Value]]>
 					</body>
 				</do-trace>
 				<do-trace access-modifier="private" target="Tooltip" ver="5">
@@ -1151,7 +1162,7 @@ if (ErrorRect.Error != error || Editor.Focus)
 				<designed target="Opacity" value="1" ver="5"/>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!pConfigurationAccessValue.Value]]>
+						<![CDATA[!pConfigurationAccess.Value]]>
 					</body>
 				</do-trace>
 				<designed target="Flip" value="0" ver="5"/>
@@ -1239,7 +1250,7 @@ if (ErrorRect.Error != error || Editor.Focus)
 				<designed target="Opacity" value="1" ver="5"/>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!pConfigurationAccessValue.Value]]>
+						<![CDATA[!pConfigurationAccess.Value]]>
 					</body>
 				</do-trace>
 				<designed target="Flip" value="0" ver="5"/>
@@ -1326,7 +1337,7 @@ if (ErrorRect.Error != error || Editor.Focus)
 				<designed target="Opacity" value="1" ver="5"/>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!pConfigurationAccessValue.Value]]>
+						<![CDATA[!pConfigurationAccess.Value]]>
 					</body>
 				</do-trace>
 				<do-trace access-modifier="private" target="Tooltip" ver="5">
@@ -1435,7 +1446,7 @@ return "";]]>
 				<designed target="Opacity" value="1" ver="5"/>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!pConfigurationAccessValue.Value]]>
+						<![CDATA[!pConfigurationAccess.Value]]>
 					</body>
 				</do-trace>
 				<designed target="Flip" value="0" ver="5"/>
@@ -1522,7 +1533,7 @@ return "";]]>
 				<designed target="Opacity" value="1" ver="5"/>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!pConfigurationAccessValue.Value]]>
+						<![CDATA[!pConfigurationAccess.Value]]>
 					</body>
 				</do-trace>
 				<designed target="Flip" value="0" ver="5"/>
@@ -1604,7 +1615,7 @@ return "";]]>
 				<designed target="Opacity" value="1" ver="5"/>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!pConfigurationAccessValue.Value]]>
+						<![CDATA[!pConfigurationAccess.Value]]>
 					</body>
 				</do-trace>
 				<do-trace access-modifier="private" target="Tooltip" ver="5">
@@ -1708,7 +1719,7 @@ return "";]]>
 				<designed target="Opacity" value="1" ver="5"/>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!pConfigurationAccessValue.Value]]>
+						<![CDATA[!pConfigurationAccess.Value]]>
 					</body>
 				</do-trace>
 				<do-trace access-modifier="private" target="Tooltip" ver="5">
@@ -1810,7 +1821,7 @@ return "";]]>
 				<designed target="Opacity" value="1" ver="5"/>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!pConfigurationAccessValue.Value]]>
+						<![CDATA[!pConfigurationAccess.Value]]>
 					</body>
 				</do-trace>
 				<designed target="Flip" value="0" ver="5"/>
@@ -1999,7 +2010,7 @@ return "";]]>
 		</object>
 		<object access-modifier="private" name="ForceChangePass" display-name="ForceChangePass" uuid="a23443ca-6b74-467a-acb5-765285efcef8" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 			<designed target="X" value="0" ver="5"/>
-			<designed target="Y" value="350" ver="5"/>
+			<designed target="Y" value="392" ver="5"/>
 			<designed target="ZValue" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Scale" value="1" ver="5"/>
@@ -2007,7 +2018,7 @@ return "";]]>
 			<designed target="Opacity" value="1" ver="5"/>
 			<designed target="Enabled" value="true" ver="5"/>
 			<designed target="Tooltip" value="" ver="5"/>
-			<designed target="Width" value="250" ver="5"/>
+			<designed target="Width" value="240" ver="5"/>
 			<designed target="Height" value="30" ver="5"/>
 			<designed target="RoundingRadius" value="0" ver="5"/>
 			<designed target="PenColor" value="4278190080" ver="5"/>
@@ -2017,7 +2028,7 @@ return "";]]>
 			<designed target="BrushStyle" value="0" ver="5"/>
 			<do-trace access-modifier="private" target="Enabled" ver="5">
 				<body>
-					<![CDATA[pConfigurationAccessValue.Value]]>
+					<![CDATA[pConfigurationAccess.Value]]>
 				</body>
 			</do-trace>
 			<object access-modifier="private" name="Checkbox_1" display-name="Checkbox_1" uuid="da6162ee-d3d3-4d53-ad5e-069836a3eaa9" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="5">
@@ -2037,7 +2048,7 @@ return "";]]>
 				<designed target="State" value="false" ver="5"/>
 				<do-trace access-modifier="private" target="Enabled" ver="5">
 					<body>
-						<![CDATA[pConfigurationAccessValue.Value]]>
+						<![CDATA[pConfigurationAccess.Value]]>
 					</body>
 				</do-trace>
 				<designed target="ZValue" value="0" ver="5"/>
@@ -2299,7 +2310,7 @@ User.Disabled != private.CurrentUserLockState ||
 		<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="5b8325dc-1e4b-4633-8803-d0b3972de939" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5">
 			<designed target="Weight" value="1000" ver="5"/>
 		</object>
-		<object access-modifier="private" name="ExchangeDialogData" display-name="ExchangeDialogData" uuid="1c9880d6-ab4a-46c6-be4f-69608fa40712" base-type="ChangedRightsResult" base-type-id="3efb0823-a348-4b39-a762-64290867ccb6" ver="5"/>
+		<object access-modifier="private" name="ExchangeDialogData" display-name="ExchangeDialogData" uuid="1c9880d6-ab4a-46c6-be4f-69608fa40712" base-type="ChangeRightResult" base-type-id="3efb0823-a348-4b39-a762-64290867ccb6" ver="5"/>
 		<object access-modifier="private" name="OnViewSettingsChanged" display-name="OnViewSettingsChanged" uuid="6213dc3a-602d-4b83-a199-a19b2a493e90" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
 			<designed target="Enabled" value="true" ver="5"/>
 			<designed target="InvokeTrigger" value="false" ver="5"/>
@@ -2331,7 +2342,7 @@ User.Disabled != private.CurrentUserLockState ||
 		<init target="init_ScreenKeyboard" ver="5" ref="here.init_ScreenKeyboard"/>
 		<do-trace access-modifier="private" target="EditingAllowed" ver="5">
 			<body>
-				<![CDATA[pConfigurationAccessValue.Value]]>
+				<![CDATA[pConfigurationAccess.Value]]>
 			</body>
 		</do-trace>
 		<init target="ShowEffectiveRigthsColumn" ver="5" value="true"/>
@@ -2377,41 +2388,42 @@ ShowError.Invoke();]]>
 		<designed target="ForcePassChange" value="false" ver="5"/>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="LoadComplete">
 			<body kind="om">
-				<![CDATA[//экспорт таблицы с правами пользователя
-if (ExportMode)
+				<![CDATA[if (ExportMode)
 {
-	format: string = SystemCommands.DoExportToFile.GetFileExtensionAsString(SystemCommands.DoExportToFile.FileType);
-	fileName: string = String.Concat(String.Concat(DisplayName, "."), format);
-	filePath: string = private.Files.ToNative(private.Files.AbsolutePath(private.Files.CombinePath(SystemCommands.DoExportToFile.ExportPath, fileName)));
+	// экспорт таблицы с правами пользователя
 	EditableUser.UpdateRightsInTable();
+
+	fileName: string = DisplayName + "." + ExportFileFormat;
+	filePath: string = private.Files.CombinePath(pSettings.ExportFolder, fileName);
 	
-	//пробуем сохранить таблицу прав
-	if (private.TryUserRightsExport(filePath, format))
+	// пробуем сохранить таблицу прав
+	if (private.TryUserRightsExport(filePath, ExportFileFormat))
 		pExportComplete.Invoke();
 	else
 		pExportError.Invoke();
-	return;
 }
-
-//Debug.Log("Пользователь " + Login + " загружен");
-loaded = true;
-
-//Обновляем зачения в полях
-ShowData();
-
-/* для того, что бы не выполнять обновление UserList, необходимое для проверки уникальности Login и DispalyName изменяемого пользователя со списокои существующих,
-сохраним Login и DispalyName, при загрузке пользователя в отдельные переменные
-используется в обработчиках элементов EditableUser.Login.Editor.InputValidator_1 и EditableUser.ViewName.Editor 
-такая манипуляция выполняется для того, что бы после сохранения (событие SaveComplete) у User, не выполнять асинхронный процесс обновления списка пользователей
-*/
-SourceUserLogin = Login;
-SourceUserDispalyName = DispalyName;
-
-here.private.CurrentUserLockState = Disabled;
-here.private.CurrentUserLockState.LoadAuthorizedUser = (UserID == SecurityContext.CurrentUserId);
-
-Commands.DoLogout.CanExecute = (UserID != SecurityContext.CurrentUserId);
-SystemCommands.GoTo.doUnblockingControll();]]>
+else
+{
+	//Debug.Log("Пользователь " + Login + " загружен");
+	loaded = true;
+	
+	//Обновляем зачения в полях
+	ShowData();
+	
+	/* для того, что бы не выполнять обновление UserList, необходимое для проверки уникальности Login и DispalyName изменяемого пользователя со списокои существующих,
+	сохраним Login и DispalyName, при загрузке пользователя в отдельные переменные
+	используется в обработчиках элементов EditableUser.Login.Editor.InputValidator_1 и EditableUser.ViewName.Editor 
+	такая манипуляция выполняется для того, что бы после сохранения (событие SaveComplete) у User, не выполнять асинхронный процесс обновления списка пользователей
+	*/
+	SourceUserLogin = Login;
+	SourceUserDispalyName = DispalyName;
+	
+	here.private.CurrentUserLockState = Disabled;
+	here.private.CurrentUserLockState.LoadAuthorizedUser = (UserID == SecurityContext.CurrentUserId);
+	
+	Commands.DoLogout.CanExecute = (UserID != SecurityContext.CurrentUserId);
+	SystemCommands.GoTo.doUnblockingControll();
+}]]>
 			</body>
 		</do-on>
 		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="SaveComplete">
@@ -2544,13 +2556,13 @@ return (rolesData.length > 0)?(JSON.stringify(rolesData)):("");]]>
 	</object>
 	<object access-modifier="private" name="UserId" display-name="UserId" uuid="f3b58c33-6aa5-4c2d-84af-b595f0e59286" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 	<object access-modifier="private" name="ExportMode" display-name="Выполнить экспорт прав пользователя" uuid="fb9535a3-075a-458c-80fb-f093987d157b" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="ExportFileFormat" display-name="ExportFileFormat" uuid="02248933-8857-43ad-9c0c-cfe9b410bb51" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
 	<object access-modifier="private" name="pExportComplete" display-name="pExportComplete" uuid="c8b8e8cb-eeec-4122-a3d2-8a934c421d60" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description=""/>
 	<object access-modifier="private" name="pExportError" display-name="pExportError" uuid="154407fb-ed1b-4c66-9b75-ac3150a767e5" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description=""/>
 	<object access-modifier="private" name="pSettings" display-name="pSettings" uuid="1226d79e-4906-4069-a134-3209d1d4adc6" base-type="SecurityConfigurator_Settings" base-type-id="a7c582fd-25fb-4cc3-8522-3166d1a63de6" base-const="true" base-ref="true" ver="5" description=""/>
 	<object access-modifier="private" name="Commands" display-name="Commands" uuid="e437459e-6091-4753-bba4-83b7bf9273a3" base-type="UserCommands" base-type-id="91ff024c-1b48-4ec4-852f-40d7e1879ef3" base-const="true" base-ref="true" ver="5"/>
 	<object access-modifier="private" name="SystemCommands" display-name="SystemCommands" uuid="cae0697f-ca04-4ece-b660-9366ed612868" base-type="SystemCommands" base-type-id="0b754dab-38c6-43db-a050-37201965421c" base-const="true" base-ref="true" ver="5"/>
-	<object access-modifier="private" name="pConfigurationAccessValue" display-name="pConfigurationAccessValue" uuid="d034f808-20a2-4615-bd82-3b6f06cb983b" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" base-const="true" base-ref="true" ver="5" description=""/>
-	<object access-modifier="private" name="pViewConfigurationValue" display-name="pViewConfigurationValue" uuid="82b31921-b078-488b-953b-27478e585da0" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="pConfigurationAccess" display-name="Разрешить редактирование" uuid="d034f808-20a2-4615-bd82-3b6f06cb983b" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" base-const="true" base-ref="true" ver="5" description=""/>
 	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Closed">
 		<body kind="om">
 			<![CDATA[SystemCommands.DoSave.CanExecute = false;
@@ -2638,17 +2650,17 @@ else
 	User.Load(UserId);
 	SystemCommands.GoTo.doBlockingControll();
 	
-	//в режиме экспортирования
-	if (ExportMode)
-		return;
-	
-	Commands.DoAddRights.CanExecute = true;
-	Commands.DoDeleteRights.CanExecute = true;
-	Commands.DoChangePassword.CanExecute = true;
-	Commands.DoLogout.CanExecute = false;
-	Commands.DoAddRole.CanExecute = true;
-	Commands.DoDeleteRole.CanExecute = false;
-	Commands.DoCreate.CanExecute = true;
+	//не в режиме экспортирования
+	if (!ExportMode)
+	{	
+		Commands.DoAddRights.CanExecute = true;
+		Commands.DoDeleteRights.CanExecute = true;
+		Commands.DoChangePassword.CanExecute = true;
+		Commands.DoLogout.CanExecute = false;
+		Commands.DoAddRole.CanExecute = true;
+		Commands.DoDeleteRole.CanExecute = false;
+		Commands.DoCreate.CanExecute = true;
+	}
 }
 
 EditableUser.Password.Visible = EditableUser.modeCreateUser;

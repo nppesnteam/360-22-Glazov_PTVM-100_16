@@ -1,4 +1,4 @@
-<type access-modifier="public" name="ColorDialog" display-name="ColorDialog" uuid="f27fa66f-9637-4bf1-99ca-ec5ee3097a1c" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+<type access-modifier="public" name="ColorDialog" display-name="Диалог выбора цвета" uuid="f27fa66f-9637-4bf1-99ca-ec5ee3097a1c" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="ZValue" value="0" ver="5"/>
@@ -1981,7 +1981,8 @@ Close();]]>
 		</do-trace>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
 			<body kind="om">
-				<![CDATA[IsExpanded = true;]]>
+				<![CDATA[IsExpanded = true;
+here.Focus = true;]]>
 			</body>
 		</do-on>
 		<designed target="Checked" value="false" ver="5"/>
@@ -2015,6 +2016,7 @@ Close();]]>
 				<![CDATA[pTheme.BorderColor]]>
 			</body>
 		</do-trace>
+		<designed target="Flip" value="0" ver="5"/>
 	</object>
 	<object access-modifier="private" name="AddCustomButton" display-name="AddCustomButton" uuid="36a1a343-f453-4346-98aa-7457fcdb238b" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
 		<designed target="X" value="200" ver="5"/>

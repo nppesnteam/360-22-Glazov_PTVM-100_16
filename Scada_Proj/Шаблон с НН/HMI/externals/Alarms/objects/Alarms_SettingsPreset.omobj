@@ -55,13 +55,11 @@ UpdateButtons();
 ]]>
 		</body>
 	</do-on>
-	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="4b2f0e29-4ae3-49da-b3e3-1ec46276eae9" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
 	<do-trace access-modifier="private" target="BrushColor" ver="5">
 		<body>
-			<![CDATA[pTheme.BackgroundColor]]>
+			<![CDATA[private.pTheme.BackgroundColor]]>
 		</body>
 	</do-trace>
-	<param access-modifier="private" name="iAlarms" display-name="iAlarms" uuid="626bcfd6-729a-4017-bcc2-513fa9560407" base-type="Alarms_Table" base-type-id="521d4d69-1b32-4210-ae17-099df1125e3c" base-const="true" base-ref="true" ver="4"/>
 	<param access-modifier="private" name="iTheme" display-name="iTheme" uuid="a7f87a2c-b7d6-46f8-9fc1-8b0963ee8c48" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
 	<object access-modifier="private" name="AddButton" display-name="AddButton" uuid="11e51c20-1e5d-432c-9f8e-b8c4ada672fe" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="3">
 		<designed target="X" value="720" ver="3"/>
@@ -123,7 +121,7 @@ do
 var index = PresetFilters.GetRowCount();
 pSettingsForm.Settings.PresetFilters.c_name[index] = name;
 pSettingsForm.Settings.PresetFilters.c_used[index] = true;
-pSettingsForm.Settings.PresetFilters.c_json[index] = "{\""+pSettingsForm.pAlarms.Main_panel.private.TableView.Static.Column_Ack.Id+"\":\"Все\"}";
+pSettingsForm.Settings.PresetFilters.c_json[index] = "{\""+pSettingsForm.pConfig.TableView.Static.Ack.Id+"\":\"Все\"}";
 
 PresetFilters.Rebuild();
 UpdateButtons();
@@ -257,7 +255,7 @@ pSettingsForm.Settings.PresetFilters.OnEdited();
 				<designed target="Opacity" value="1" ver="3"/>
 				<do-trace access-modifier="private" target="FontColor" ver="5">
 					<body>
-						<![CDATA[pTheme.ForegroundColor]]>
+						<![CDATA[private.pTheme.ForegroundColor]]>
 					</body>
 				</do-trace>
 			</object>
@@ -265,7 +263,7 @@ pSettingsForm.Settings.PresetFilters.OnEdited();
 			<designed target="Opacity" value="1" ver="3"/>
 			<do-trace access-modifier="private" target="BrushColor" ver="5">
 				<body>
-					<![CDATA[pTheme.BackgroundColor]]>
+					<![CDATA[private.pTheme.BackgroundColor]]>
 				</body>
 			</do-trace>
 		</object>
@@ -273,7 +271,7 @@ pSettingsForm.Settings.PresetFilters.OnEdited();
 		<designed target="Opacity" value="1" ver="3"/>
 		<do-trace access-modifier="private" target="PenColor" ver="5">
 			<body>
-				<![CDATA[pTheme.BorderColor]]>
+				<![CDATA[private.pTheme.BorderColor]]>
 			</body>
 		</do-trace>
 	</object>
@@ -419,7 +417,7 @@ if (error == "")
 				<designed target="Opacity" value="1" ver="3"/>
 				<do-trace access-modifier="private" target="FontColor" ver="5">
 					<body>
-						<![CDATA[pTheme.ForegroundColor]]>
+						<![CDATA[private.pTheme.ForegroundColor]]>
 					</body>
 				</do-trace>
 			</object>
@@ -427,7 +425,7 @@ if (error == "")
 			<designed target="Opacity" value="1" ver="3"/>
 			<do-trace access-modifier="private" target="BrushColor" ver="5">
 				<body>
-					<![CDATA[pTheme.BackgroundColor]]>
+					<![CDATA[private.pTheme.BackgroundColor]]>
 				</body>
 			</do-trace>
 		</object>
@@ -435,7 +433,7 @@ if (error == "")
 		<designed target="Opacity" value="1" ver="3"/>
 		<do-trace access-modifier="private" target="PenColor" ver="5">
 			<body>
-				<![CDATA[pTheme.BorderColor]]>
+				<![CDATA[private.pTheme.BorderColor]]>
 			</body>
 		</do-trace>
 	</object>
@@ -445,10 +443,9 @@ if (error == "")
 		<designed target="Rotation" value="0" ver="4"/>
 		<designed target="Width" value="420" ver="4"/>
 		<designed target="Height" value="370" ver="4"/>
-		<init target="pAlarms" ver="5" ref="here.iAlarms"/>
-		<init target="pTheme" ver="5" ref="here.iTheme"/>
 		<init target="iTheme" ver="5" ref="here.iTheme"/>
 		<init target="DataChanged" ver="5" ref="here.changed"/>
+		<init target="pConfig" ver="5" ref="here.pConfig"/>
 	</object>
 	<object access-modifier="private" name="PresetFilters" display-name="PresetFilters" uuid="179edaee-e333-414e-8557-e35ec41c0f91" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="4">
 		<designed target="X" value="5" ver="4"/>
@@ -508,22 +505,22 @@ if (error == "")
 			<designed target="WordWrap" value="false" ver="4"/>
 			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
 				<body>
-					<![CDATA[pTheme.EditorBrushColor]]>
+					<![CDATA[private.pTheme.EditorBrushColor]]>
 				</body>
 			</do-trace>
 			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
 				<body>
-					<![CDATA[pTheme.EditorFontColor]]>
+					<![CDATA[private.pTheme.EditorFontColor]]>
 				</body>
 			</do-trace>
 			<do-trace access-modifier="private" target="TitleBackgroundColor" ver="5">
 				<body>
-					<![CDATA[pTheme.BackgroundColor]]>
+					<![CDATA[private.pTheme.BackgroundColor]]>
 				</body>
 			</do-trace>
 			<do-trace access-modifier="private" target="TitleForegroundColor" ver="5">
 				<body>
-					<![CDATA[pTheme.ForegroundColor]]>
+					<![CDATA[private.pTheme.ForegroundColor]]>
 				</body>
 			</do-trace>
 		</object>
@@ -556,12 +553,12 @@ if (SelectedRow>PresetFilters.GetRowCount()-1)
 		<object access-modifier="private" name="SelectedRow" display-name="SelectedRow" uuid="71897713-7298-4261-8bde-37cb98ef6641" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
 		<do-trace access-modifier="private" target="BackgroundColor" ver="5">
 			<body>
-				<![CDATA[pTheme.EditorBrushColor]]>
+				<![CDATA[private.pTheme.EditorBrushColor]]>
 			</body>
 		</do-trace>
 		<do-trace access-modifier="private" target="FrameColor" ver="5">
 			<body>
-				<![CDATA[pTheme.BorderColor]]>
+				<![CDATA[private.pTheme.BorderColor]]>
 			</body>
 		</do-trace>
 	</object>
@@ -634,7 +631,7 @@ pSettingsForm.Settings.PresetFilters.Error = Error;]]>
 		<designed target="TextAlignment" value="129" ver="5"/>
 		<do-trace access-modifier="private" target="FontColor" ver="5">
 			<body>
-				<![CDATA[pTheme.ForegroundColor]]>
+				<![CDATA[private.pTheme.ForegroundColor]]>
 			</body>
 		</do-trace>
 	</object>
@@ -666,5 +663,10 @@ pSettingsForm.Settings.PresetFilters.OnEdited();]]>
 		</do-on>
 	</object>
 	<designed target="Flip" value="0" ver="5"/>
+	<param access-modifier="private" name="pConfig" display-name="pConfig" uuid="a882b202-bd3a-4039-9ce2-3c2dc75ef05a" base-type="Alarms_Config" base-type-id="cac958c3-d08c-4b7b-8345-d70ccc130514" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="private" display-name="private" uuid="0e04e5f0-d9f7-4e98-815b-72be86c7079f" base-type="" base-type-id="" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="4b2f0e29-4ae3-49da-b3e3-1ec46276eae9" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+		<init target="pTheme" ver="5" ref="iTheme"/>
+	</object>
 </type>
 

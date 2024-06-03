@@ -9,7 +9,6 @@
 {
 	args: string = GetChangesString(String.ToString(value), "quality");
 	OnChangedArgs.Push(args);
-	//pOnQualityChanged.Invoke();
 	pOnChanges.Invoke();
 }]]>
 			</body>
@@ -45,9 +44,8 @@ return JSON.stringify(args);
 			<body kind="om">
 				<![CDATA[if (Path != "")
 {
-	args: string = GetChangesString(DateTime.ToString(TimeStamp), "timeStamp");
+	args: string = GetChangesString(DateTime.ToString(time, "%d.%m.%Y %H:%M:%S.%f"), "timeStamp");
 	OnChangedArgs.Push(args);
-	//pOnTimeStampChanged.Invoke();
 	pOnChanges.Invoke();
 }]]>
 			</body>
@@ -59,7 +57,6 @@ return JSON.stringify(args);
 	dataType: string = Converter.CanonicalTypeToDataType(CanonicalType);
 	args: string = GetChangesString(Converter.VariantToString(value, dataType), "value");
 	OnChangedArgs.Push(args);
-	//pOnValueChanged.Invoke();
 	pOnChanges.Invoke();
 }]]>
 			</body>

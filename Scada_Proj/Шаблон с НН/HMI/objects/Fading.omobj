@@ -1,0 +1,40 @@
+<type access-modifier="private" name="Fading" display-name="Fading" uuid="a1786c57-8cdb-4470-ac0a-6e549ed6370a" base-type="Object" base-type-id="fd8e30b0-0814-4e73-96f9-8d08bd303ed8" ver="5" description="">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<object access-modifier="private" name="Timer" display-name="Timer" uuid="8907cdcb-32a8-4eee-9e6c-34a307c91052" base-type="Timer" base-type-id="72ba7cd4-549e-41f2-923c-2431b91f349a" base-const="true" ver="5" description="">
+		<designed target="Period" value="10" ver="5"/>
+		<designed target="Active" value="false" ver="5"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[TurnOn]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnTimer">
+			<body kind="javascript">
+				<![CDATA[fStep = 255/((here.Period/2)/(me.Period/1000));
+if (fCurrentFade<=0) fSign = 1;
+if (fCurrentFade>=255) fSign = -1;
+fCurrentFade += fStep*fSign;
+OutColor = InColor - (fCurrentFade << 24);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="OutColor" display-name="OutColor" uuid="e7d73245-8919-44e1-846b-a3d5f13ed476" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="Period" display-name="Period" uuid="d54e24b7-2eb3-4b0c-a013-4467f03d7e7a" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5" description=""/>
+	<object access-modifier="private" name="TurnOn" display-name="TurnOn" uuid="fe35c361-a27e-43cc-a8d6-19762675b1d9" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (!me) OutColor = InColor;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="fCurrentFade" display-name="fCurrentFade" uuid="a8392140-785f-4c38-8010-5a0061b18d3d" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="InColor" display-name="InColor" uuid="a50cee3e-24e1-4bf4-ab8a-8da51516a51f" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="fStep" display-name="fStep" uuid="4500b0d6-bb9c-4390-8bfb-c589fcba9cc6" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="fSign" display-name="fSign" uuid="e7168ff7-522e-4e72-b205-ed4f15267432" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5" description="" cardinal="1"/>
+	<init target="TurnOn" ver="5" value="false"/>
+	<init target="Period" ver="5" value="2"/>
+	<init target="InColor" ver="5" value="0xff00ff00"/>
+</type>
+

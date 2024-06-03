@@ -26,7 +26,7 @@ try
 	{
 		"Tree": {
 			"Visible": TreeVisible.Value,
-			"Width": Splitter.Distance
+			"Width": Splitter.Position.Value
 		}
 	};
 
@@ -56,29 +56,15 @@ if (Files.Exists(filePath))
 		var tree = settings.Tree;
 		if (tree != undefined)
 		{
-			Splitter.Distance = tree.Width;
+			Splitter.Position = tree.Width;
 			TreeVisible = tree.Visible == true;
 		}
-		
-		if (Tree.SizeLimits.MinWidth != Splitter.Distance)
-			UpdateLayout();
 	}
 	catch(error)
 	{
 		log("Не удалось загрузить расположение элементов из "  + filePath + ":\n" + error);
 	}
 }]]>
-			</body>
-		</do>
-		<do access-modifier="private" name="UpdateLayout" display-name="UpdateLayout" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
-			<body kind="om">
-				<![CDATA[Splitter.Visible = TreeVisible;
-Splitter.SizeLimits.MinWidth = TreeVisible ? 4 : 0;
-Splitter.SizeLimits.MaxWidth = Splitter.SizeLimits.MinWidth;
-
-Tree.Visible = TreeVisible;
-Tree.SizeLimits.MinWidth = TreeVisible ? Splitter.Distance : 0;
-Tree.SizeLimits.MaxWidth = Tree.SizeLimits.MinWidth;]]>
 			</body>
 		</do>
 		<do access-modifier="private" name="GetLayoutFilePath" display-name="GetLayoutFilePath" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
@@ -305,6 +291,16 @@ for(let sourceIndex of activeSources)
 			<designed target="MinHeight" value="0" ver="5"/>
 			<designed target="MaxWidth" value="250" ver="5"/>
 			<designed target="MaxHeight" value="16777215" ver="5"/>
+			<do-trace access-modifier="private" target="MinWidth" ver="5">
+				<body>
+					<![CDATA[Splitter.Position]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="MaxWidth" ver="5">
+				<body>
+					<![CDATA[Splitter.Position]]>
+				</body>
+			</do-trace>
 		</object>
 		<init target="init_ApSources" ver="5" ref="Sources"/>
 		<object access-modifier="private" name="DoubleClicked" display-name="DoubleClicked" uuid="a3361c27-08e8-4269-9582-88edbb8dd92e" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
@@ -421,90 +417,26 @@ else if (MenuResult.Id == "addNodeToTable")
 			</body>
 		</do-trace>
 		<init target="init_Theme" ver="5" ref="here.init_Theme"/>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[TreeVisible]]>
+			</body>
+		</do-trace>
 	</object>
-	<object access-modifier="private" name="Splitter" display-name="Splitter" uuid="066e13c6-3423-440f-9167-6f7f57bc8886" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
-		<designed target="X" value="250" ver="5"/>
+	<object access-modifier="private" name="Splitter" display-name="Splitter" uuid="ba6731f0-bddf-438f-b874-a08923e5cbb5" base-type="HorizontalSplitter" base-type-id="9f2e11a5-219a-4c9b-bceb-928724b2f965" ver="5" description="" cardinal="1">
+		<designed target="X" value="996" ver="5"/>
 		<designed target="Y" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
-		<designed target="Scale" value="1" ver="5"/>
-		<designed target="Visible" value="true" ver="5"/>
-		<designed target="Enabled" value="true" ver="5"/>
-		<designed target="Tooltip" value="" ver="5"/>
 		<designed target="Width" value="4" ver="5"/>
 		<designed target="Height" value="400" ver="5"/>
-		<designed target="RoundingRadius" value="0" ver="5"/>
-		<designed target="PenColor" value="0xff808080" ver="5"/>
-		<designed target="PenStyle" value="1" ver="5"/>
-		<designed target="PenWidth" value="1" ver="5"/>
-		<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
-		<designed target="BrushStyle" value="1" ver="5"/>
-		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseEnter">
-			<body kind="om">
-				<![CDATA[MouseIsOver = true;]]>
-			</body>
-		</do-on>
-		<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="MouseLeave">
-			<body kind="om">
-				<![CDATA[MouseIsOver = false;
-bPressed = false;]]>
-			</body>
-		</do-on>
-		<object access-modifier="private" name="bPressed" display-name="bPressed" uuid="cfd3fd85-b68c-49a3-b101-cb4cfbaa8888" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
-		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MousePress">
-			<body kind="om">
-				<![CDATA[bPressed = true;]]>
-			</body>
-		</do-on>
-		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseRelease">
-			<body kind="om">
-				<![CDATA[bPressed = false;]]>
-			</body>
-		</do-on>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseMove">
-			<body kind="om">
-				<![CDATA[if (bPressed)
-{
-	distance: double = Distance + event.X;
-	
-	min: double = 30;
-	if (distance < min)
-		distance = min;
-		
-	max: double = parent.Width - 30;
-	if (distance > max)
-		distance = max;
-	
-	if (Distance != distance)
-	{
-		Distance = distance;
-		Tree.SizeLimits.MinWidth = Distance;
-		Tree.SizeLimits.MaxWidth = Distance;
-	}
-}]]>
-			</body>
-		</do-on>
-		<designed target="ZValue" value="0" ver="5"/>
-		<designed target="Opacity" value="1" ver="5"/>
-		<do-trace access-modifier="private" target="PenColor" ver="5">
+		<init target="Position" ver="5" value="250"/>
+		<init target="Minimum" ver="5" value="30"/>
+		<init target="init_Theme" ver="5" ref="here.init_Theme"/>
+		<do-trace access-modifier="private" target="Visible" ver="5">
 			<body>
-				<![CDATA[private.pTheme.BorderColor]]>
+				<![CDATA[TreeVisible]]>
 			</body>
 		</do-trace>
-		<do-trace access-modifier="private" target="BrushColor" ver="5">
-			<body>
-				<![CDATA[MouseIsOver ? private.pTheme.SelectionColor : private.pTheme.BackgroundColor]]>
-			</body>
-		</do-trace>
-		<object access-modifier="private" name="MouseIsOver" display-name="MouseIsOver" uuid="c69183b0-6c1e-4f50-ad75-41eb77d5215f" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
-		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="68bdc455-9a7b-428b-aca2-a91de02303fe" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
-			<designed target="MinWidth" value="4" ver="5"/>
-			<designed target="MinHeight" value="0" ver="5"/>
-			<designed target="MaxWidth" value="4" ver="5"/>
-			<designed target="MaxHeight" value="16777215" ver="5"/>
-		</object>
-		<object access-modifier="private" name="Distance" display-name="Distance" uuid="39c07614-cf89-47b8-8f66-3f8e4b02ccb5" base-type="double" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="5" description="" cardinal="1"/>
-		<designed target="Flip" value="0" ver="5"/>
-		<init target="Distance" ver="5" value="250"/>
 	</object>
 	<object access-modifier="private" name="Table" display-name="Table" uuid="9e4cc256-ebe2-47cd-9b4e-4b33afb3c637" base-type="Explorer_Table" base-type-id="d1d2812d-53dc-43ce-a92a-c3167d8e9e0f" ver="5" cardinal="1">
 		<designed target="X" value="254" ver="5"/>
@@ -523,19 +455,7 @@ bPressed = false;]]>
 	</object>
 	<param access-modifier="private" name="init_LogView" display-name="init_LogView" uuid="5f5a1485-a4e7-43b6-ac12-bfecac47c804" base-type="LogView" base-type-id="493c7166-bdbb-4717-8f49-2906ed88e930" base-const="true" base-ref="true" ver="5" description=""/>
 	<designed target="Flip" value="0" ver="5"/>
-	<object access-modifier="private" name="TreeVisible" display-name="Отображать дерево" uuid="8c2f1068-19ad-4679-80a5-ea63462dc26e" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
-		<object access-modifier="private" name="oldValue" display-name="oldValue" uuid="922a48fc-9cca-47db-8cc0-e4042415d00d" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
-		<init target="oldValue" ver="5" value="true"/>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
-			<body kind="om">
-				<![CDATA[if (oldValue != value)
-{
-	oldValue = value;	
-	private.UpdateLayout();
-}]]>
-			</body>
-		</do-on>
-	</object>
+	<object access-modifier="private" name="TreeVisible" display-name="Отображать дерево" uuid="8c2f1068-19ad-4679-80a5-ea63462dc26e" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
 	<init target="TreeVisible" ver="5" value="true"/>
 	<object access-modifier="private" name="Sources" display-name="Sources" uuid="250bda59-e3f0-40bd-a802-f6bbe3624efd" base-type="Explorer_Sources" base-type-id="f8a32faa-5b1f-449d-afb5-af7f01e4caf9" ver="5" description="" cardinal="1">
 		<init target="pLog" ver="5" ref="init_LogView"/>

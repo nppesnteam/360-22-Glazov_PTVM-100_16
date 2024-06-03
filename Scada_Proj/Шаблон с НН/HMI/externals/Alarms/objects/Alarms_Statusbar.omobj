@@ -80,7 +80,7 @@
 		<designed target="Rotation" value="0" ver="4"/>
 		<do-trace access-modifier="private" target="Visible" ver="5">
 			<body>
-				<![CDATA[pAlarmsTable.UseSecurity]]>
+				<![CDATA[pPermissions.Context.UsingSecurity]]>
 			</body>
 		</do-trace>
 		<do-trace access-modifier="private" target="ShowDialogOnTop" ver="5">
@@ -141,7 +141,7 @@ here.Width = here.Width;]]>
 			<designed target="MaxHeight" value="22" ver="5"/>
 			<do-trace access-modifier="private" target="MaxWidth" ver="5">
 				<body>
-					<![CDATA[pAlarmsTable.UseSecurity ? 22 : 0]]>
+					<![CDATA[pPermissions.Context.UsingSecurity ? 22 : 0]]>
 				</body>
 			</do-trace>
 		</object>
@@ -248,7 +248,7 @@ here.Width = here.Width;]]>
 		</object>
 		<do-trace access-modifier="private" target="HideFlag" ver="5">
 			<body>
-				<![CDATA[pAlarmsTable.ActiveMode!=1]]>
+				<![CDATA[pAlarmsTable.ActiveMode != 1]]>
 			</body>
 		</do-trace>
 		<do-trace access-modifier="private" target="Tooltip" ver="5">
@@ -277,7 +277,7 @@ here.Width = here.Width;]]>
 		<designed target="ZValue" value="0" ver="3"/>
 		<do-trace access-modifier="private" target="ImageFile" ver="5">
 			<body>
-				<![CDATA[(pAlarmsTable.Mute)?("Alarms_Icons/SoundMute16.png"):("Alarms_Icons/SoundPlay16.png")]]>
+				<![CDATA[Mute?("Alarms_Icons/SoundMute16.png"):("Alarms_Icons/SoundPlay16.png")]]>
 			</body>
 		</do-trace>
 		<designed target="Opacity" value="1" ver="4"/>
@@ -358,6 +358,8 @@ else adviseError = "";]]>
 		<init target="ParentSource" ver="5" ref="here.init_ApSource"/>
 	</object>
 	<designed target="Flip" value="0" ver="5"/>
+	<object access-modifier="private" name="pPermissions" display-name="pPermissions" uuid="2ed98dca-c65a-431e-93de-bdb972504c24" base-type="Alarms_Permissions" base-type-id="eaa1f2f7-6334-4d05-a44d-ca72425d2f9f" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="Mute" display-name="Mute" uuid="b0632cd0-132c-4543-a8d4-3a592e4a4250" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
 	<param access-modifier="private" name="init_ScreenKeyboard" display-name="init_ScreenKeyboard" uuid="95e4b525-f693-4202-a6cb-d02e8e28cb50" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
 </type>
 

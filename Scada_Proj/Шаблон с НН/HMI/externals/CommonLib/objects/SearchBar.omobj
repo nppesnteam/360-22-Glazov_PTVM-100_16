@@ -1,4 +1,4 @@
-<type access-modifier="public" name="SearchBar" display-name="SearchBar" uuid="eed9303b-0032-4f78-8bfe-aff18c14190a" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="">
+<type access-modifier="public" name="SearchBar" display-name="Панель поиска" uuid="eed9303b-0032-4f78-8bfe-aff18c14190a" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="ZValue" value="0" ver="5"/>
@@ -14,7 +14,7 @@
 	<designed target="PenColor" value="0xff808080" ver="5"/>
 	<designed target="PenStyle" value="1" ver="5"/>
 	<designed target="PenWidth" value="1" ver="5"/>
-	<designed target="BrushColor" value="0xffffffff" ver="5"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
 	<designed target="BrushStyle" value="1" ver="5"/>
 	<object access-modifier="private" name="PatternEdit" display-name="PatternEdit" uuid="2e388e51-3b53-439d-9a5c-eac11410bb75" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5" description="" cardinal="1">
 		<designed target="X" value="0" ver="5"/>
@@ -64,6 +64,10 @@ else if (event.KeyCode == 75) // Escape
 	<object access-modifier="private" name="Layout" display-name="Layout" uuid="bec6de15-f5de-4946-b50d-8220e93b22f0" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
 		<designed target="Orientation" value="1" ver="5"/>
 		<designed target="Gap" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="private" display-name="private" uuid="ac6d612b-4ea1-48dc-b94e-8161e1a6e610" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="788f2484-d5b8-4747-8a71-40762a34df84" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
+		<init target="pTheme" ver="5" ref="init_Theme"/>
 	</object>
 	<object access-modifier="private" name="PlaceholderText" display-name="Текст заполнителя" uuid="4304f612-c8dd-4c27-9d43-25647d97353f" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
 	<object access-modifier="private" name="IsVisible" display-name="IsVisible" uuid="16ff8e90-70c2-41f9-b0af-155a615ef61f" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
@@ -123,11 +127,7 @@ else Pattern = "";]]>
 				<![CDATA[Pattern != PatternEdit.Text]]>
 			</body>
 		</do-trace>
-		<do-trace access-modifier="private" target="IsVisible" ver="5">
-			<body>
-				<![CDATA[here.IsVisible]]>
-			</body>
-		</do-trace>
+		<init target="init_Theme" ver="5" ref="here.init_Theme"/>
 	</object>
 	<designed target="Flip" value="0" ver="5"/>
 	<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="329f787b-ed3b-47b6-aa3b-bffe09609a77" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
@@ -136,5 +136,16 @@ else Pattern = "";]]>
 		<designed target="MaxWidth" value="16777215" ver="5"/>
 		<designed target="MaxHeight" value="23" ver="5"/>
 	</object>
+	<param access-modifier="private" name="init_Theme" display-name="Тема оформления" uuid="be9b263b-1496-425d-88f0-7444a9fabda2" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
+	<do-trace access-modifier="private" target="PenColor" ver="5">
+		<body>
+			<![CDATA[private.pTheme.BorderColor]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[private.pTheme.EditorBrushColor]]>
+		</body>
+	</do-trace>
 </type>
 

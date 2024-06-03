@@ -1483,43 +1483,30 @@ pSettingsForm.Settings.Events.OnEdited();]]>
 						<![CDATA[GetColumns()]]>
 					</expr>
 				</init>
-				<init target="Result" ver="5" ref="BlinkColumns"/>
 				<init target="OnComplete" ver="5" ref="SetColumns"/>
 				<init target="pTheme" ver="5" ref="here.pTheme"/>
 			</object>
 		</do-on>
-		<object access-modifier="private" name="BlinkColumns" display-name="BlinkColumns" uuid="a0960b11-6ab7-4a05-8cfd-00afa9e87f43" base-type="DialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" ver="4"/>
-		<object access-modifier="private" name="SetColumns" display-name="SetColumns" uuid="7ae6eac6-eb8d-4220-920c-d116f6df0762" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
-			<designed target="Enabled" value="true" ver="4"/>
-			<designed target="InvokeTrigger" value="false" ver="4"/>
+		<object access-modifier="private" name="SetColumns" display-name="SetColumns" uuid="7ae6eac6-eb8d-4220-920c-d116f6df0762" base-type="EventHandler" base-type-id="c01b71c2-42e8-4333-b70e-cc35fdf96f7e" ver="4">
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
 				<body kind="javascript">
-					<![CDATA[var tableColumns=[];
-for (let i = 0; i < pSettingsForm.pAlarms.Main_tables_Operative.Table_Operative_mode.Columns.Length; i++)
-	if (pSettingsForm.pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i].Title != "-")//cheat1
-		tableColumns.push(pSettingsForm.pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i]);
-
+					<![CDATA[
 var blinkingColumns = [];
 
-var columns = JSON.parse(BlinkColumns.Value);
-for(let j = 0; j < tableColumns.length; j++)
-{
-	var tableColumn = tableColumns[j];
-	if (tableColumn != null)
+var columns = JSON.parse(Args.Get());
+for (let j = 0; j < pSettingsForm.pConfig.TableView.Columns.Length; j++)
+if (pSettingsForm.pConfig.TableView.Columns[j].guiFlag)
+	for(let i = 0; i < columns.length; i++)
 	{
-		for(let i = 0; i < columns.length; i++)
+		// в диалог выбора столбцы поступают отсортированные, поэтому идентифицируем их по заголовку
+		//cheat3 использование заголовка для передачи данных нестабильно
+		if (columns[i].Title == pSettingsForm.pConfig.TableView.Columns[j].Title)
 		{
-			// в диалог выбора столбцы поступают отсортированные, поэтому идентифицируем их по заголовку
-			//cheat3 использование заголовка для передачи данных нестабильно
-			if (columns[i].Title == tableColumn.Title)
-			{
-				if (columns[i].State)
-					blinkingColumns.push(tableColumn.Id);
-				break;
-			}
+			if (columns[i].State)
+				blinkingColumns.push(pSettingsForm.pConfig.TableView.Columns[j].Id);
+			break;
 		}
 	}
-}
 
 pSettingsForm.Settings.Events.BlinkingColumnsSet(JSON.stringify(blinkingColumns));]]>
 				</body>
@@ -1527,25 +1514,19 @@ pSettingsForm.Settings.Events.BlinkingColumnsSet(JSON.stringify(blinkingColumns)
 		</object>
 		<do access-modifier="private" name="GetColumns" display-name="GetColumns" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
 			<body kind="javascript">
-				<![CDATA[var tableColumns=[];
-for (let i = 0; i < pSettingsForm.pAlarms.Main_tables_Operative.Table_Operative_mode.Columns.Length; i++)
-	if (pSettingsForm.pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i].Title != "-")//cheat1
-		tableColumns.push(pSettingsForm.pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i]);
-
+				<![CDATA[
 var blinkingColumns = JSON.parse(pSettingsForm.Settings.Events.BlinkingColumns == "" ? "[]": pSettingsForm.Settings.Events.BlinkingColumns);
 
 var columns = [];
-for(let i = 0; i < tableColumns.length; i++)
+
+for (let i = 0; i < pSettingsForm.pConfig.TableView.Columns.Length; i++)
+if (pSettingsForm.pConfig.TableView.Columns[i].guiFlag)
 {
-	var tableColumn = tableColumns[i];
-	if (tableColumn != null)
-	{
-		var column = {};
-		column.Index = tableColumn.GetIndex();
-		column.Title = tableColumn.Title;
-		column.State = blinkingColumns.includes(tableColumn.Id);
-		columns.push(column);
-	}
+	var column = {};
+	column.Index = pSettingsForm.pConfig.TableView.Columns[i].GetIndex();
+	column.Title = pSettingsForm.pConfig.TableView.Columns[i].Title;
+	column.State = blinkingColumns.includes(pSettingsForm.pConfig.TableView.Columns[i].Id);
+	columns.push(column);
 }
 
 columns.sort(function (a, b)

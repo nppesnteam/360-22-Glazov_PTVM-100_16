@@ -1,11 +1,11 @@
-<type access-modifier="public" name="Menu" display-name="Menu" uuid="07bb4545-980a-4140-bbaa-4d1397447864" base-type="Popup" base-type-id="346ea4f8-f80d-44c4-904b-258f28be2b43" ver="5">
+<type access-modifier="public" name="Menu" display-name="Меню" uuid="07bb4545-980a-4140-bbaa-4d1397447864" base-type="Popup" base-type-id="346ea4f8-f80d-44c4-904b-258f28be2b43" ver="5">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="Rotation" value="0" ver="5"/>
 	<designed target="Width" value="50" ver="5"/>
-	<designed target="Height" value="50" ver="5"/>
+	<designed target="Height" value="25" ver="5"/>
 	<designed target="WindowWidth" value="51" ver="5"/>
-	<designed target="WindowHeight" value="51" ver="5"/>
+	<designed target="WindowHeight" value="26" ver="5"/>
 	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="WindowActivationChanged">
 		<body kind="om">
 			<![CDATA[if (active)
@@ -81,7 +81,6 @@ Selected = MouseX > 0 && MouseX < Width && MouseY > 0 && MouseY < Height;
 private.OpenSubmenuTimer.Active = false;]]>
 			</body>
 		</do-on>
-		<init target="pTheme" ver="5" ref="theme"/>
 		<do access-modifier="private" name="DoAction" display-name="DoAction" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 			<body kind="om">
 				<![CDATA[if (checkable)
@@ -134,6 +133,7 @@ else
 				<![CDATA[Selected]]>
 			</body>
 		</do-trace>
+		<init target="pTheme" ver="5" ref="here.init_Theme"/>
 	</object>
 	<object access-modifier="private" name="Separators" display-name="Separators" uuid="87a6be34-db78-45d0-8b8b-83ab04146889" base-type="MenuSeparator" base-type-id="0534e401-a222-4f5a-b162-477d316aa696" ver="5" cardinal="10">
 		<designed target="X" value="0" ver="5"/>
@@ -142,7 +142,6 @@ else
 		<designed target="Width" value="50" ver="5"/>
 		<designed target="Height" value="5" ver="5"/>
 		<designed target="Visible" value="false" ver="5"/>
-		<init target="pTheme" ver="5" ref="theme"/>
 		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
 			<body kind="om">
 				<![CDATA[here.Focus = true;]]>
@@ -204,7 +203,7 @@ Submenu.Open();]]>
 					<init target="PointHeight" ver="5" value="-25"/>
 					<init target="IsSubmenu" ver="5" value="true"/>
 					<init target="pOnDoClose" ver="5" ref="parent.OnDoClosed"/>
-					<init target="pTheme" ver="5" ref="here.theme"/>
+					<init target="init_Theme" ver="5" ref="here.protected.pTheme"/>
 				</object>
 			</do-on>
 			<object access-modifier="private" name="itemIndex" display-name="itemIndex" uuid="4de1104f-89a6-488c-9a8e-9fffe44d52e7" base-type="int8" base-type-id="1f8f5a02-c52c-4260-90d1-e3b1b93b3949" ver="5"/>
@@ -484,7 +483,7 @@ while (i < items.length)
 }
 
 // из-за различия шрифтов в разных системах подбираем примерную ширину символа
-var charWidth = System.Family == "windows" ? 5.9 : 6.4;
+var charWidth = Runtime.WorkMode == 0 ? (System.Family == "windows" ? 5.9 : 6.4) : 6.2;
 
 // к ширине заголовка нужно добавить на иконку слева, горячие клавиши и стрелочку вправо
 return Math.trunc(45 + (maxTitleLength + maxKeyGestureLength) * charWidth + (hasSubitems ? 20 : 0));]]>
@@ -622,5 +621,13 @@ else if (event.KeyCode == 75) // Escape
 	<designed target="ShowWindowMinimize" value="false" ver="5"/>
 	<designed target="ShowWindowMaximize" value="false" ver="5"/>
 	<designed target="ShowWindowClose" value="false" ver="5"/>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body kind="om">
+			<![CDATA[protected.pTheme.MenuBrushColor]]>
+		</body>
+	</do-trace>
+	<init target="init_Theme" ver="5">
+		<object access-modifier="private" uuid="d88aeab5-2299-4514-a25f-f84b672f7d8d" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5"/>
+	</init>
 </type>
 

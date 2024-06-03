@@ -1,4 +1,4 @@
-<type access-modifier="public" name="FileList" display-name="FileList" uuid="a9ce36e2-4d7b-4f98-9635-145865b1e336" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+<type access-modifier="public" name="FileList" display-name="Список файлов" uuid="a9ce36e2-4d7b-4f98-9635-145865b1e336" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="ZValue" value="0" ver="5"/>
@@ -11,11 +11,7 @@
 	<object access-modifier="private" name="Debug" display-name="Debug" uuid="28959d7e-d4a3-452d-9209-bd1ccde2c3fb" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
 	<object access-modifier="private" name="Files" display-name="Files" uuid="a4f9a635-89e8-447f-99ab-bed25820781f" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5">
 		<designed target="RootPath" value="/" ver="5"/>
-		<do-trace access-modifier="private" target="RootPath" ver="5">
-			<body>
-				<![CDATA[here.RootPath]]>
-			</body>
-		</do-trace>
+		<init target="RootPath" ver="5" ref="here.RootPath"/>
 	</object>
 	<object access-modifier="private" name="Table" display-name="Table" uuid="364644b3-afca-4242-bae9-8554f5fb8e0c" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="5">
 		<designed target="X" value="0" ver="5"/>
@@ -309,7 +305,6 @@ Model.BeginReadAsync();]]>
 		</do-on>
 	</object>
 	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="3949d912-4b61-42d2-aecc-b78bb8c647c1" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
-	<object access-modifier="private" name="RootPath" display-name="Корневой путь" uuid="4f9ce3b7-131b-4240-8a0f-b4c9286e8c63" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
 	<object access-modifier="private" name="BrowsedPath" display-name="Отображаемая папка" uuid="146dcfdc-8af2-46cd-bdb5-2fce98790d87" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5">
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
 			<body kind="om">
@@ -352,5 +347,6 @@ else
 	<object access-modifier="private" name="OnPathChosen" display-name="OnPathChosen" uuid="8b9761b3-5934-4990-b5bd-f8c5d15d7adc" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
 	<init target="ChangeFolderAllowed" ver="5" value="true"/>
 	<designed target="Flip" value="0" ver="5"/>
+	<param access-modifier="private" name="RootPath" display-name="Корневой путь" uuid="4f9ce3b7-131b-4240-8a0f-b4c9286e8c63" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 </type>
 

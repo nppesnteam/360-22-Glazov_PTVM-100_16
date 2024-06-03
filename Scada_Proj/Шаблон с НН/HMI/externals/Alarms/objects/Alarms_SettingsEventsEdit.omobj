@@ -234,6 +234,18 @@ else if (event.KeyCode == 75) // Escape
 			</do-trace>
 			<designed target="Flip" value="0" ver="5"/>
 		</object>
+		<object access-modifier="private" name="ErrorRect" display-name="ErrorRect" uuid="25f6d55a-bf64-4b25-a832-cf2ca91bbfe1" base-type="ErrorFrame" base-type-id="360a528b-50b0-4a9d-a198-5e2f73fe204c" ver="5" description="" cardinal="1">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="20" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Width" value="190" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<do-trace access-modifier="private" target="Error" ver="5">
+				<body>
+					<![CDATA[Severity.Error]]>
+				</body>
+			</do-trace>
+		</object>
 		<object access-modifier="private" name="Editor" display-name="Editor" uuid="5e04eb21-78bd-4127-be2b-450fb0a5ce1e" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="2">
 			<designed target="X" value="0" ver="2"/>
 			<designed target="Y" value="20" ver="2"/>
@@ -253,15 +265,10 @@ else if (event.KeyCode == 75) // Escape
 			<designed target="ReadOnly" value="false" ver="2"/>
 			<designed target="ZValue" value="0" ver="3"/>
 			<designed target="Opacity" value="1" ver="3"/>
-			<do-trace access-modifier="private" target="Tooltip" ver="5">
-				<body>
-					<![CDATA[Error]]>
-				</body>
-			</do-trace>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="TextChanged">
 				<body kind="om">
 					<![CDATA[// Проверяем поле на наличие ошибки
-parsedSeverity:string = pSettingsEvents.pSettingsForm.Settings.TryParseSeverityString(text);
+parsedSeverity:string = pSettingsEvents.pSettingsForm.Settings.TryParseSeverityString(text, false);
 if (parsedSeverity == "errorSyntax")
 	Error = "Ошибка ввода. Допустим ввод только чисел от 1 до 1000, дефиса, пробела и запятой";
 else if (parsedSeverity == "errorValues")

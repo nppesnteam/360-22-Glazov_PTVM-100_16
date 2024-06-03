@@ -34,78 +34,30 @@
 	<designed target="WindowCloseMode" value="0" ver="5"/>
 	<designed target="WindowIconPath" value="" ver="5"/>
 	<object access-modifier="private" name="Debug" display-name="Debug" uuid="5131c1c4-9a65-4404-b33e-ca81acf1691e" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
-	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="2810f562-af80-4d3d-bf9c-5c50832811c5" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="protected" display-name="protected" uuid="435c4d82-23e6-46c6-92f1-1ccaa14620ff" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="ddb6d0c3-b3ff-4da8-a570-1d406d4a0dfe" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
+		<init target="pTheme" ver="5" ref="init_Theme"/>
+	</object>
 	<do-trace access-modifier="private" target="PenColor" ver="5">
 		<body>
-			<![CDATA[theme.BorderColor]]>
+			<![CDATA[protected.pTheme.BorderColor]]>
 		</body>
 	</do-trace>
 	<do-trace access-modifier="private" target="BrushColor" ver="5">
 		<body>
-			<![CDATA[theme.BackgroundColor]]>
+			<![CDATA[protected.pTheme.BackgroundColor]]>
 		</body>
 	</do-trace>
-	<object access-modifier="private" name="theme" display-name="theme" uuid="5609aff8-d705-4849-bcdc-494bc2587978" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5">
-		<do-trace access-modifier="private" target="BackgroundColor" ver="5">
-			<body>
-				<![CDATA[pTheme.BackgroundColor]]>
-			</body>
-		</do-trace>
-		<do-trace access-modifier="private" target="ForegroundColor" ver="5">
-			<body>
-				<![CDATA[pTheme.ForegroundColor]]>
-			</body>
-		</do-trace>
-		<do-trace access-modifier="private" target="DisabledFontColor" ver="5">
-			<body>
-				<![CDATA[pTheme.DisabledFontColor]]>
-			</body>
-		</do-trace>
-		<do-trace access-modifier="private" target="EditorBrushColor" ver="5">
-			<body>
-				<![CDATA[pTheme.EditorBrushColor]]>
-			</body>
-		</do-trace>
-		<do-trace access-modifier="private" target="EditorFontColor" ver="5">
-			<body>
-				<![CDATA[pTheme.EditorFontColor]]>
-			</body>
-		</do-trace>
-		<do-trace access-modifier="private" target="SelectionColor" ver="5">
-			<body>
-				<![CDATA[pTheme.SelectionColor]]>
-			</body>
-		</do-trace>
-		<do-trace access-modifier="private" target="BorderColor" ver="5">
-			<body>
-				<![CDATA[pTheme.BorderColor]]>
-			</body>
-		</do-trace>
-		<do-trace access-modifier="private" target="DisabledBorderColor" ver="5">
-			<body>
-				<![CDATA[pTheme.DisabledBorderColor]]>
-			</body>
-		</do-trace>
-		<do-trace access-modifier="private" target="Font" ver="5">
-			<body>
-				<![CDATA[pTheme.Font]]>
-			</body>
-		</do-trace>
-		<do-trace access-modifier="private" target="TitleFont" ver="5">
-			<body>
-				<![CDATA[pTheme.TitleFont]]>
-			</body>
-		</do-trace>
-	</object>
 	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Opened">
 		<body kind="om">
 			<![CDATA[WindowUtilities.CorrectPositionAboutPoint(WindowX, WindowY, PointHeight);]]>
 		</body>
 	</do-on>
-	<object access-modifier="private" name="PointHeight" display-name="PointHeight" uuid="131e2cde-4948-4833-ae69-514f5b06a1ad" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
 	<object access-modifier="private" name="WindowUtilities" display-name="WindowUtilities" uuid="ccab2a47-52da-4907-8f60-1c517458f3a4" base-type="WindowUtils" base-type-id="4a818ada-44b1-4070-9b9d-c28dc3447ece" ver="5" description="" cardinal="1">
 		<init target="pForm" ver="5" ref="here"/>
 	</object>
+	<object access-modifier="private" name="PointHeight" display-name="PointHeight" uuid="131e2cde-4948-4833-ae69-514f5b06a1ad" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
 	<designed target="Flip" value="0" ver="5"/>
+	<param access-modifier="private" name="init_Theme" display-name="Тема оформления" uuid="2810f562-af80-4d3d-bf9c-5c50832811c5" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
 </type>
 

@@ -52,14 +52,14 @@
 		<designed target="MaxVisibleItems" value="16" ver="5"/>
 		<do-trace access-modifier="private" target="SelectedIndex" ver="5">
 			<body>
-				<![CDATA[OutSelSequence]]>
+				<![CDATA[OutSelSequence-1]]>
 			</body>
 		</do-trace>
 		<designed target="Flip" value="0" ver="5"/>
 		<designed target="InsertPolicy" value="3" ver="5"/>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Activated">
 			<body kind="om">
-				<![CDATA[InSelSequence = Variant.ToInt2(SelectedIndex, 0);]]>
+				<![CDATA[InSelSequence = TypeConvert.ToInt2(SelectedIndex+1);]]>
 			</body>
 		</do-on>
 	</object>
@@ -110,10 +110,11 @@
 		</do-trace>
 		<designed target="Checked" value="false" ver="5"/>
 		<designed target="Flip" value="0" ver="5"/>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
-			<body kind="om">
-				<![CDATA[InbStarBoiler = checked;]]>
-			</body>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="ButtonPressed" form-action="open-dialog" form-by-id="false">
+			<object access-modifier="private" uuid="ad516d4f-021b-422c-9432-af48769a2318" base-type="Диалог подтверждения" base-type-id="20f34c44-a409-4bb4-919f-c857fa34e757" ver="5">
+				<init target="txtTitle" ver="5" value="Подготовить котёл?"/>
+				<init target="refCommand" ver="5" ref="BoilerStart"/>
+			</object>
 		</do-on>
 	</object>
 	<object access-modifier="private" name="txtIgnSequence" display-name="txtIgnSequence" uuid="8c20af31-f440-495e-be86-86ad57e85409" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
@@ -181,30 +182,31 @@
 			</body>
 		</do-trace>
 		<designed target="Flip" value="0" ver="5"/>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
-			<body kind="om">
-				<![CDATA[InbStopBoiler = checked;]]>
-			</body>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="open-dialog" form-by-id="false">
+			<object access-modifier="private" uuid="c351a800-0cee-4836-af89-45f8e35ae807" base-type="Диалог подтверждения" base-type-id="20f34c44-a409-4bb4-919f-c857fa34e757" ver="5">
+				<init target="txtTitle" ver="5" value="Остановить котёл?"/>
+				<init target="refCommand" ver="5" ref="BoilerStop"/>
+			</object>
 		</do-on>
 	</object>
 	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Opened">
 		<body kind="om">
-			<![CDATA[IgnSequence.SetItem(0,"3,11,14,6");
-IgnSequence.SetItem(1,"3,14,11,6");
-IgnSequence.SetItem(2,"3,14,6,11");
-IgnSequence.SetItem(3,"3,11,6,14");
-IgnSequence.SetItem(4,"6,14,11,3");
-IgnSequence.SetItem(5,"6,11,14,3");
-IgnSequence.SetItem(6,"6,11,3,14");
-IgnSequence.SetItem(7,"6,14,3,11");
-IgnSequence.SetItem(8,"11,3,6,14");
-IgnSequence.SetItem(9,"11,6,3,14");
-IgnSequence.SetItem(10,"11,6,14,3");
-IgnSequence.SetItem(11,"11,3,14,6");
-IgnSequence.SetItem(12,"14,3,6,11");
-IgnSequence.SetItem(13,"14,6,3,11");
-IgnSequence.SetItem(14,"14,6,11,3");
-IgnSequence.SetItem(15,"14,3,11,6");
+			<![CDATA[IgnSequence.SetItem(0,"5,12,6,11");
+IgnSequence.SetItem(1,"5,11,12,6");
+IgnSequence.SetItem(2,"5,12,11,6");
+IgnSequence.SetItem(3,"5,11,6,12");
+IgnSequence.SetItem(4,"6,12,11,5");
+IgnSequence.SetItem(5,"6,11,12,5");
+IgnSequence.SetItem(6,"6,11,5,12");
+IgnSequence.SetItem(7,"6,12,5,11");
+IgnSequence.SetItem(8,"11,5,6,12");
+IgnSequence.SetItem(9,"11,6,5,12");
+IgnSequence.SetItem(10,"11,6,12,5");
+IgnSequence.SetItem(11,"11,5,12,6");
+IgnSequence.SetItem(12,"12,5,6,11");
+IgnSequence.SetItem(13,"12,6,5,11");
+IgnSequence.SetItem(14,"12,6,11,5");
+IgnSequence.SetItem(15,"12,5,11,6");
 IgnSequence.SelectedIndex=OutSelSequence;
 unit.Global.isFGUOpened=true;]]>
 		</body>
@@ -305,24 +307,20 @@ unit.Global.isFGUOpened=true;]]>
 		<designed target="Checked" value="false" ver="5"/>
 		<do-trace access-modifier="private" target="Enabled" ver="5">
 			<body>
-				<![CDATA[bBoilerOk]]>
+				<![CDATA[unit.Global.bBoilerOk && !unit.Global.bBurnersStarted]]>
 			</body>
 		</do-trace>
 		<designed target="Flip" value="0" ver="5"/>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
 			<body kind="om">
-				<![CDATA[InbStartIgnBurns = checked;]]>
+				<![CDATA[BurnsStart.Invoke();]]>
 			</body>
 		</do-on>
 	</object>
 	<designed target="Flip" value="0" ver="5"/>
 	<designed target="WindowIconPath" value="" ver="5"/>
-	<object access-modifier="private" name="bBoilerOk" display-name="bBoilerOk" uuid="85601828-cac4-4d65-a28b-6821fb37ac9c" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
-		<init target="Path" ver="5" value="GVL.bBoilerOk"/>
-		<init target="Source" ver="5" ref="unit.Connections.ApSource"/>
-	</object>
-	<object access-modifier="private" name="InbStarBoiler" display-name="InbStarBoiler" uuid="2228b15a-e33c-4a07-b5a9-19c7bd627ae9" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
-		<init target="Path" ver="5" value="GVL.InbStarBoiler"/>
+	<object access-modifier="private" name="InbStartBoiler" display-name="InbStartBoiler" uuid="2228b15a-e33c-4a07-b5a9-19c7bd627ae9" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Path" ver="5" value="GVL.InbStartBoiler"/>
 		<init target="Source" ver="5" ref="unit.Connections.ApSource"/>
 	</object>
 	<object access-modifier="private" name="InbStopBoiler" display-name="InbStopBoiler" uuid="f304364a-79a6-4bea-bb2f-befde875d532" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
@@ -343,30 +341,6 @@ unit.Global.isFGUOpened=true;]]>
 	</object>
 	<object access-modifier="private" name="iVentRemainingTime" display-name="iVentRemainingTime" uuid="c5599cdd-b80a-4bf3-84eb-26132a0050d3" base-type="ApItemInt2" base-type-id="46c29e2c-cf0c-4e96-ad30-6d7ae4e2ae8c" ver="5">
 		<init target="Path" ver="5" value="GVL.iVentRemainingTime"/>
-		<init target="Source" ver="5" ref="unit.Connections.ApSource"/>
-	</object>
-	<object access-modifier="private" name="eBlowValue" display-name="eBlowValue" uuid="91bc25fd-f522-4b85-99f1-97b95f75a498" base-type="ApItemInt4" base-type-id="5b29f957-961e-4313-bde4-d20611af1b9a" ver="5">
-		<init target="Path" ver="5" value="GVL.eBlow1.VALUE"/>
-		<init target="Source" ver="5" ref="unit.Connections.ApSource"/>
-	</object>
-	<object access-modifier="private" name="eVentValue" display-name="eVentValue" uuid="b86b89ea-5e8b-428a-a137-1b88a1cc612f" base-type="ApItemInt4" base-type-id="5b29f957-961e-4313-bde4-d20611af1b9a" ver="5">
-		<init target="Path" ver="5" value="GVL.eVent1.VALUE"/>
-		<init target="Source" ver="5" ref="unit.Connections.ApSource"/>
-	</object>
-	<object access-modifier="private" name="eBoilerValue" display-name="eBoilerValue" uuid="5c58b1d1-5283-4afb-896b-86b9f1fbe9a8" base-type="ApItemInt4" base-type-id="5b29f957-961e-4313-bde4-d20611af1b9a" ver="5">
-		<init target="Path" ver="5" value="GVL.eBoiler1.VALUE"/>
-		<init target="Source" ver="5" ref="unit.Connections.ApSource"/>
-	</object>
-	<object access-modifier="private" name="eBlowDescription" display-name="eBlowDescription" uuid="ccbbd41f-0709-48a7-93ec-6bd015556abe" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5">
-		<init target="Path" ver="5" value="GVL.eBlow1.DESCRIPTION"/>
-		<init target="Source" ver="5" ref="unit.Connections.ApSource"/>
-	</object>
-	<object access-modifier="private" name="eVentDescription" display-name="eVentDescription" uuid="6a9fe520-2060-40ea-b1d5-eda0dbd37d98" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5">
-		<init target="Path" ver="5" value="GVL.eVent1.DESCRIPTION"/>
-		<init target="Source" ver="5" ref="unit.Connections.ApSource"/>
-	</object>
-	<object access-modifier="private" name="eBoilerDescription" display-name="eBoilerDescription" uuid="bc6a5504-6c55-4455-8406-f872f73f50ae" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5">
-		<init target="Path" ver="5" value="GVL.eBoiler1.DESCRIPTION"/>
 		<init target="Source" ver="5" ref="unit.Connections.ApSource"/>
 	</object>
 	<object access-modifier="private" name="InfBlow" display-name="InfBlow" uuid="939db9fa-52eb-4cb5-8a11-6d2d7b54b695" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
@@ -428,9 +402,34 @@ unit.Global.isFGUOpened=true;]]>
 		</do-trace>
 		<do-trace access-modifier="private" target="Value" ver="5">
 			<body>
-				<![CDATA[Variant.ToInt4(OutfBoilerCheck - fBoilerCheckRemainingTime, 0)]]>
+				<![CDATA[TypeConvert.ToInt4(OutfBoilerCheck - fBoilerCheckRemainingTime)]]>
 			</body>
 		</do-trace>
+		<object access-modifier="private" name="Rectangle_1" display-name="Rectangle_1" uuid="cc980447-1f34-43c2-809b-e1b1fb44a860" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="280" ver="5"/>
+			<designed target="Height" value="20" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="0xff11b52e" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<do-trace access-modifier="private" target="BrushStyle" ver="5">
+				<body>
+					<![CDATA[unit.Global.bBoilerOk]]>
+				</body>
+			</do-trace>
+		</object>
 		<object access-modifier="private" name="Description" display-name="Description" uuid="358922aa-8534-47ff-9666-079941d88fd8" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
 			<designed target="X" value="0" ver="5"/>
 			<designed target="Y" value="0" ver="5"/>
@@ -459,7 +458,7 @@ unit.Global.isFGUOpened=true;]]>
 				</conditional-expr>
 				<default-expr>
 					<expr>
-						<![CDATA[eBoilerDescription]]>
+						<![CDATA[unit.Global.eBoiler.DESCRIPTION]]>
 					</expr>
 				</default-expr>
 			</do-trace>
@@ -471,7 +470,7 @@ unit.Global.isFGUOpened=true;]]>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Scale" value="1" ver="5"/>
 			<designed target="Flip" value="0" ver="5"/>
-			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Visible" value="false" ver="5"/>
 			<designed target="Opacity" value="1" ver="5"/>
 			<designed target="Enabled" value="true" ver="5"/>
 			<designed target="Tooltip" value="" ver="5"/>
@@ -484,6 +483,11 @@ unit.Global.isFGUOpened=true;]]>
 			<do-trace access-modifier="private" target="Text" ver="5">
 				<body>
 					<![CDATA[String.ToString(Variant.ToInt2(fBoilerCheckRemainingTime, 0))]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[unit.Global.eBoiler.bBoilerCheck || unit.Global.eBoiler.bDoNothing]]>
 				</body>
 			</do-trace>
 		</object>
@@ -519,7 +523,7 @@ unit.Global.isFGUOpened=true;]]>
 		<do-trace access-modifier="private" target="Value" ver="5">
 			<conditional-expr>
 				<condition>
-					<![CDATA[bVentAfterAlarm]]>
+					<![CDATA[unit.Global.eVent.bVentAfterAlarm]]>
 				</condition>
 				<expr>
 					<![CDATA[Variant.ToInt4(OutfVentAfterAlarm - iVentRemainingTime, 0)]]>
@@ -531,6 +535,31 @@ unit.Global.isFGUOpened=true;]]>
 				</expr>
 			</default-expr>
 		</do-trace>
+		<object access-modifier="private" name="Rectangle_1" display-name="Rectangle_1" uuid="6afd8713-6df1-4bb4-a444-8591feb28be6" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="230" ver="5"/>
+			<designed target="Height" value="20" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="0xff11b52e" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<do-trace access-modifier="private" target="BrushStyle" ver="5">
+				<body>
+					<![CDATA[unit.Global.bVentOk]]>
+				</body>
+			</do-trace>
+		</object>
 		<object access-modifier="private" name="Description" display-name="Description" uuid="e22995d3-6ada-4651-b7aa-ce44d380c665" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
 			<designed target="X" value="0" ver="5"/>
 			<designed target="Y" value="0" ver="5"/>
@@ -542,7 +571,7 @@ unit.Global.isFGUOpened=true;]]>
 			<designed target="Opacity" value="1" ver="5"/>
 			<designed target="Enabled" value="true" ver="5"/>
 			<designed target="Tooltip" value="" ver="5"/>
-			<designed target="Width" value="195" ver="5"/>
+			<designed target="Width" value="230" ver="5"/>
 			<designed target="Height" value="20" ver="5"/>
 			<designed target="Text" value="???" ver="5"/>
 			<designed target="Font" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="5"/>
@@ -559,7 +588,7 @@ unit.Global.isFGUOpened=true;]]>
 				</conditional-expr>
 				<default-expr>
 					<expr>
-						<![CDATA[eVentDescription]]>
+						<![CDATA[unit.Global.eVent.DESCRIPTION]]>
 					</expr>
 				</default-expr>
 			</do-trace>
@@ -571,7 +600,7 @@ unit.Global.isFGUOpened=true;]]>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Scale" value="1" ver="5"/>
 			<designed target="Flip" value="0" ver="5"/>
-			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Visible" value="false" ver="5"/>
 			<designed target="Opacity" value="1" ver="5"/>
 			<designed target="Enabled" value="true" ver="5"/>
 			<designed target="Tooltip" value="" ver="5"/>
@@ -586,11 +615,16 @@ unit.Global.isFGUOpened=true;]]>
 					<![CDATA[iVentRemainingTime]]>
 				</body>
 			</do-trace>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[!unit.Global.bVentOk]]>
+				</body>
+			</do-trace>
 		</object>
 		<do-trace access-modifier="private" target="MaxLimit" ver="5">
 			<conditional-expr>
 				<condition>
-					<![CDATA[bVentAfterAlarm]]>
+					<![CDATA[unit.Global.eVent.bVentAfterAlarm]]>
 				</condition>
 				<expr>
 					<![CDATA[Variant.ToInt4(OutfVentAfterAlarm, 0)]]>
@@ -602,10 +636,6 @@ unit.Global.isFGUOpened=true;]]>
 				</expr>
 			</default-expr>
 		</do-trace>
-	</object>
-	<object access-modifier="private" name="bVentAfterAlarm" display-name="bVentAfterAlarm" uuid="ffc14023-4c27-4687-8cd0-331b760e4b17" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
-		<init target="Path" ver="5" value="GVL.eVent1.bVentAfterAlarm"/>
-		<init target="Source" ver="5" ref="unit.Connections.ApSource"/>
 	</object>
 	<object access-modifier="private" name="InbSkipVent" display-name="InbSkipVent" uuid="9cd017b4-8887-468f-8136-ae177f5ec619" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
 		<init target="Path" ver="5" value="GVL.InbSkipVent"/>
@@ -659,12 +689,12 @@ unit.Global.isFGUOpened=true;]]>
 		<designed target="Flip" value="0" ver="5"/>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
 			<body kind="om">
-				<![CDATA[InbSkipVent = true;]]>
+				<![CDATA[InbSkipVent = !OutbSkipVent;]]>
 			</body>
 		</do-on>
 		<do-trace access-modifier="private" target="Enabled" ver="5">
 			<body>
-				<![CDATA[unit.Security.AllowSettingsChange.Value]]>
+				<![CDATA[!unit.Global.bVentOk]]>
 			</body>
 		</do-trace>
 		<do-trace access-modifier="private" target="BrushColor" ver="5">
@@ -711,6 +741,31 @@ unit.Global.isFGUOpened=true;]]>
 		<designed target="ShowText" value="false" ver="5"/>
 		<designed target="Font" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="5"/>
 		<designed target="FontColor" value="4278190080" ver="5"/>
+		<object access-modifier="private" name="Rectangle_1" display-name="Rectangle_1" uuid="337044bc-4811-4d92-bd86-f85b55bbeea3" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="230" ver="5"/>
+			<designed target="Height" value="20" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="0xff11b52e" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<do-trace access-modifier="private" target="BrushStyle" ver="5">
+				<body>
+					<![CDATA[unit.Global.bBlowOk]]>
+				</body>
+			</do-trace>
+		</object>
 		<object access-modifier="private" name="Description" display-name="Description" uuid="6d50a4b4-f069-46d0-b97d-e004430fac0f" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
 			<designed target="X" value="0" ver="5"/>
 			<designed target="Y" value="0" ver="5"/>
@@ -722,7 +777,7 @@ unit.Global.isFGUOpened=true;]]>
 			<designed target="Opacity" value="1" ver="5"/>
 			<designed target="Enabled" value="true" ver="5"/>
 			<designed target="Tooltip" value="" ver="5"/>
-			<designed target="Width" value="195" ver="5"/>
+			<designed target="Width" value="230" ver="5"/>
 			<designed target="Height" value="20" ver="5"/>
 			<designed target="Text" value="???" ver="5"/>
 			<designed target="Font" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="5"/>
@@ -730,7 +785,7 @@ unit.Global.isFGUOpened=true;]]>
 			<designed target="TextAlignment" value="132" ver="5"/>
 			<do-trace access-modifier="private" target="Text" ver="5">
 				<body>
-					<![CDATA[eBlowDescription]]>
+					<![CDATA[unit.Global.eBlow.DESCRIPTION]]>
 				</body>
 			</do-trace>
 		</object>
@@ -741,7 +796,7 @@ unit.Global.isFGUOpened=true;]]>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Scale" value="1" ver="5"/>
 			<designed target="Flip" value="0" ver="5"/>
-			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Visible" value="false" ver="5"/>
 			<designed target="Opacity" value="1" ver="5"/>
 			<designed target="Enabled" value="true" ver="5"/>
 			<designed target="Tooltip" value="" ver="5"/>
@@ -756,6 +811,11 @@ unit.Global.isFGUOpened=true;]]>
 					<![CDATA[iBlowRemainingTime]]>
 				</body>
 			</do-trace>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[!unit.Global.bBlowOk]]>
+				</body>
+			</do-trace>
 		</object>
 		<do-trace access-modifier="private" target="MaxLimit" ver="5">
 			<body>
@@ -764,7 +824,7 @@ unit.Global.isFGUOpened=true;]]>
 		</do-trace>
 		<do-trace access-modifier="private" target="Value" ver="5">
 			<body>
-				<![CDATA[iBlowRemainingTime]]>
+				<![CDATA[Variant.ToInt4(OutfBlow - iBlowRemainingTime, 0)]]>
 			</body>
 		</do-trace>
 	</object>
@@ -812,17 +872,12 @@ unit.Global.isFGUOpened=true;]]>
 		<designed target="Flip" value="0" ver="5"/>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
 			<body kind="om">
-				<![CDATA[if (bAnalys)
+				<![CDATA[if (unit.Global.eBlow.bAnalys)
 	InbAnalysOk = true;
 else
-	InbSkipVent = true;]]>
+	InbSkipBlow = !OutbSkipBlow;]]>
 			</body>
 		</do-on>
-		<do-trace access-modifier="private" target="Enabled" ver="5">
-			<body>
-				<![CDATA[unit.Security.AllowSettingsChange.Value]]>
-			</body>
-		</do-trace>
 		<do-trace access-modifier="private" target="BrushColor" ver="5">
 			<conditional-expr>
 				<condition>
@@ -841,7 +896,7 @@ else
 		<do-trace access-modifier="private" target="Text" ver="5">
 			<conditional-expr>
 				<condition>
-					<![CDATA[bAnalys]]>
+					<![CDATA[unit.Global.eBlow.bAnalys]]>
 				</condition>
 				<expr>
 					<![CDATA["Подтв."]]>
@@ -854,21 +909,22 @@ else
 			</default-expr>
 		</do-trace>
 		<object access-modifier="private" name="Blinker_1" display-name="Blinker_1" uuid="4b6e2af6-c614-4e84-842c-089584ada97c" base-type="Blinker" base-type-id="de67e797-c7fd-4703-9e0a-c04ac4022006" ver="5" description="" cardinal="1">
-			<designed target="Period" value="2000" ver="5"/>
+			<designed target="Period" value="1000" ver="5"/>
 			<designed target="Active" value="false" ver="5"/>
 			<designed target="PenColor" value="4278190080" ver="5"/>
 			<designed target="BrushColor" value="0xff00ff00" ver="5"/>
 			<designed target="FontColor" value="4278190080" ver="5"/>
 			<do-trace access-modifier="private" target="Active" ver="5">
 				<body>
-					<![CDATA[bAnalys]]>
+					<![CDATA[unit.Global.eBlow.bAnalys]]>
 				</body>
 			</do-trace>
 		</object>
-	</object>
-	<object access-modifier="private" name="bAnalys" display-name="bAnalys" uuid="41e0324a-2bdc-4a66-8c31-e15269c99db5" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
-		<init target="Path" ver="5" value="GVL.eBlow1.bAnalys"/>
-		<init target="Source" ver="5" ref="unit.Connections.ApSource"/>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[!unit.Global.bBlowOk]]>
+			</body>
+		</do-trace>
 	</object>
 	<object access-modifier="private" name="InbAnalysOk" display-name="InbAnalysOk" uuid="bc8719f4-10b4-42b0-804d-8910b3712374" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
 		<init target="Path" ver="5" value="GVL.InbAnalysOk"/>
@@ -877,6 +933,41 @@ else
 	<object access-modifier="private" name="OutbAnalysOk" display-name="OutbAnalysOk" uuid="b6146f68-1333-4e33-984e-2f1ad89e2a9c" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
 		<init target="Path" ver="5" value="GVL.OutbAnalysOk"/>
 		<init target="Source" ver="5" ref="unit.Connections.ApSource"/>
+	</object>
+	<object access-modifier="private" name="BoilerStart" display-name="BoilerStart" uuid="365e5a96-da9c-4160-9f96-c280bffbebbb" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[InbStartBoiler = true;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="BoilerStop" display-name="BoilerStop" uuid="b1c4e2a6-e42e-4612-b92b-bc240a3dd1fd" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[InbStopBoiler = true;]]>
+			</body>
+		</do-on>
+	</object>
+	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="AboutToOpen">
+		<body kind="om">
+			<![CDATA[while (IgnSequence.ItemCount<16)
+{
+	IgnSequence.AddItem("");
+}]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="BurnsStart" display-name="BurnsStart" uuid="3819c7dc-0e4d-46c1-a6b7-ffb34c7e2c6a" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[InbStartIgnBurns = true;]]>
+			</body>
+		</do-on>
 	</object>
 </type>
 

@@ -202,8 +202,8 @@ if (Group.SelectedIndex < 0 || Group.SelectedIndex > 2)
 var range = [pSettingsForm.Settings.Severity.Range1, pSettingsForm.Settings.Severity.Range2, pSettingsForm.Settings.Severity.Range3];
 
 // Проверяем поле на наличие синтаксической ошибки
-var parsedSeverityString = pSettingsForm.Settings.TryParseSeverityString(range[Group.SelectedIndex].JSON);
-range[Group.SelectedIndex].JSON_temp = pSettingsForm.pAlarms.Main_panel.private.GapToArray(parsedSeverityString);
+var parsedSeverityString = pSettingsForm.Settings.TryParseSeverityString(range[Group.SelectedIndex].JSON, true);
+range[Group.SelectedIndex].JSON_temp = pSettingsForm.pConfig.SeverityGroups.GapToArray(parsedSeverityString);
 
 if (parsedSeverityString == "errorSyntax")
 	Values.Error = "Допустим ввод только чисел от 1 до 1000, дефиса, пробела и запятой";
@@ -283,71 +283,14 @@ return matchGroupNumber;]]>
 			<param access-modifier="private" name="str3" display-name="" uuid="f69ea44d-e0eb-4703-a5f7-de1c27463bbc" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
 		</do>
 		<do access-modifier="private" name="GetOtherEventsSeverity" display-name="GetOtherEventsSeverity" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
-			<body kind="javascript">
+			<body kind="om">
 				<![CDATA[//Функция формирования массив важностей для прочих событий
-var str = "";
+str:string = "";
 if (pSettingsForm.Settings.Severity.Range1.JSON != "") str+=","+pSettingsForm.Settings.Severity.Range1.JSON;
 if (pSettingsForm.Settings.Severity.Range2.JSON != "") str+=","+pSettingsForm.Settings.Severity.Range2.JSON;
 if (pSettingsForm.Settings.Severity.Range3.JSON != "") str+=","+pSettingsForm.Settings.Severity.Range3.JSON;
 
-var numberArray = [];
-var tempArray = [];
-var informArray = [];
-var commonArray = [];
-var count = 1;
-
-//Инициализируем шаблоны
-//Элемент как диапазон
-var gapPattern = /\d+\s?[-]\s?\d+/;
-
-//Переопределяем, если проверка прошла, образуем массив элементов и проверяем дальше
-commonArray = str.split(",");
-
-//Проверка на верную запись диапазона чисел, запись его чисел в виде элемента массива
-for (let i = 0; i < commonArray.length; i++)
-{
-	if (gapPattern.test(commonArray[i])) //Если элемент - диапазон чисел, то проверяем его и формируем массив
-	{
-		tempArray = commonArray[i].match(/\d+/g);
-		while (parseInt(tempArray[0]) <= parseInt(tempArray[1]))
-		{
-			numberArray.push(parseInt(tempArray[0]));
-			tempArray[0] = parseInt(tempArray[0])+1;
-		}
-	}
-	else numberArray.push(parseInt(commonArray[i]));
-	tempArray = [];
-}
-
-//Дальше идет генерация важностей информационных сообщений
-//Заполняем значения важности информационных сообщения
-for (let i = 1; i < 1001; i++)
-{
-	informArray.push(i);
-}
-
-//Оставляем в массие все, что не входит в входной массив
-informArray = informArray.filter(x=>!numberArray.includes(x));
-
-//Запись элементов в виде диапазона, если они образуют арифметическую прогрессию(сокращение записи)
-if (informArray != null)
-{
-	for (let i = 0; i < informArray.length; i++)
-	{
-		while (parseInt(informArray[i])+count == parseInt(informArray[i+count]))
-		{
-			count++;
-		}
-		if (count > 2)
-		{
-			informArray[i] = informArray[i] + "-" + informArray[i+count-1];
-			informArray.splice(i+1,count-1);
-		}
-		count = 1;
-	}
-}
-
-pSettingsForm.Settings.Severity.Range4.JSON = informArray.toString();
+pSettingsForm.Settings.Severity.Range4.JSON = Alarms_Tools.GapInversion(str);
 ]]>
 			</body>
 		</do>
@@ -406,7 +349,7 @@ pSettingsForm.Settings.Severity.OnEdited();]]>
 		<designed target="Opacity" value="1" ver="3"/>
 		<do-trace access-modifier="private" target="FontColor" ver="5">
 			<body>
-				<![CDATA[PlaySounds.State ? EnabledFontColor : DisabledFontColor]]>
+				<![CDATA[PlaySounds.State ? pTheme.ForegroundColor : pTheme.DisabledFontColor]]>
 			</body>
 		</do-trace>
 	</object>
@@ -461,7 +404,7 @@ pSettingsForm.Settings.Severity.OnEdited();]]>
 		<designed target="Opacity" value="1" ver="3"/>
 		<do-trace access-modifier="private" target="FontColor" ver="5">
 			<body>
-				<![CDATA[PlaySounds.State && Repeat.Value > 0 ? EnabledFontColor : DisabledFontColor]]>
+				<![CDATA[PlaySounds.State && Repeat.Value > 0 ? pTheme.ForegroundColor : pTheme.DisabledFontColor]]>
 			</body>
 		</do-trace>
 	</object>
@@ -552,21 +495,7 @@ Values.CheckRange();]]>
 		</body>
 		<param access-modifier="private" name="index" display-name="" uuid="4be22c4d-fbb7-46b0-8f1d-ee70c62d7aed" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
 	</do>
-	<object access-modifier="private" name="EnabledFontColor" display-name="EnabledFontColor" uuid="47378aae-607f-4c27-b6ed-1fba62a9fab5" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="4"/>
-	<object access-modifier="private" name="DisabledFontColor" display-name="DisabledFontColor" uuid="7816da4f-1c28-484e-8614-40473fb9445e" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="4"/>
 	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="db2d2402-bf1b-43c1-81e4-21af860985c2" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
-	<init target="EnabledFontColor" ver="5" value="0xff000000"/>
-	<init target="DisabledFontColor" ver="5" value="0xff808080"/>
-	<do-trace access-modifier="private" target="EnabledFontColor" ver="5">
-		<body>
-			<![CDATA[pTheme.ForegroundColor]]>
-		</body>
-	</do-trace>
-	<do-trace access-modifier="private" target="DisabledFontColor" ver="5">
-		<body>
-			<![CDATA[pTheme.DisabledFontColor]]>
-		</body>
-	</do-trace>
 	<do-trace access-modifier="private" target="BrushColor" ver="5">
 		<body>
 			<![CDATA[pTheme.BackgroundColor]]>

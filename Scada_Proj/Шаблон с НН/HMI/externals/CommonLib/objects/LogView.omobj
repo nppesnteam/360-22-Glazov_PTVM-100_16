@@ -1,4 +1,4 @@
-<type access-modifier="public" name="LogView" display-name="LogView" uuid="493c7166-bdbb-4717-8f49-2906ed88e930" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="">
+<type access-modifier="public" name="LogView" display-name="Журнал сообщений" uuid="493c7166-bdbb-4717-8f49-2906ed88e930" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="ZValue" value="0" ver="5"/>
@@ -43,6 +43,7 @@
 }]]>
 			</body>
 		</do>
+		<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="21b322be-4e97-40b3-91a6-2940ce97558f" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
 		<object access-modifier="private" name="bInit" display-name="bInit" uuid="ae115906-8a37-45a6-80a2-15e56ee97ea4" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
 		<do access-modifier="private" name="AddStandardColumns" display-name="AddStandardColumns" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 			<body kind="om">
@@ -123,59 +124,6 @@ decorator.Decorating = [
 return JSON.stringify(decorator);]]>
 			</body>
 		</do>
-		<object access-modifier="private" name="theme" display-name="theme" uuid="b2eb97f6-53f5-4ec8-b61b-b24b3313e5cb" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5" description="" cardinal="1">
-			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
-				<body>
-					<![CDATA[pTheme.BackgroundColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
-				<body>
-					<![CDATA[pTheme.ForegroundColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="DisabledFontColor" ver="5">
-				<body>
-					<![CDATA[pTheme.DisabledFontColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="EditorBrushColor" ver="5">
-				<body>
-					<![CDATA[pTheme.EditorBrushColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="EditorFontColor" ver="5">
-				<body>
-					<![CDATA[pTheme.EditorFontColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="SelectionColor" ver="5">
-				<body>
-					<![CDATA[pTheme.SelectionColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="BorderColor" ver="5">
-				<body>
-					<![CDATA[pTheme.BorderColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="DisabledBorderColor" ver="5">
-				<body>
-					<![CDATA[pTheme.DisabledBorderColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="Font" ver="5">
-				<body>
-					<![CDATA[pTheme.Font]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="TitleFont" ver="5">
-				<body>
-					<![CDATA[pTheme.TitleFont]]>
-				</body>
-			</do-trace>
-			<init target="TitleFont" ver="5" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный"/>
-		</object>
 		<do access-modifier="private" name="UpdateImportanceFilter" display-name="UpdateImportanceFilter" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 			<body kind="om">
 				<![CDATA[filter: string;
@@ -283,11 +231,11 @@ catch(error)
 			</body>
 		</do-trace>
 		<object access-modifier="private" name="StringUtils" display-name="StringUtils" uuid="c0cf09b3-3f3d-45cb-86cf-eacb9734a9a2" base-type="StringUtils" base-type-id="3ded1ef2-be27-4246-8c9e-8c68b24f1041" ver="5" description="" cardinal="1"/>
+		<init target="pTheme" ver="5" ref="init_Theme"/>
 	</object>
 	<object access-modifier="private" name="Debug" display-name="Debug" uuid="db8dda4a-6ea1-450f-8228-319c980ea2aa" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
-	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="cd8d2131-69c6-4271-93c6-cafdcbae012b" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
 	<object access-modifier="private" name="Toolbar" display-name="Toolbar" uuid="6f61835c-2b27-4efe-bef3-f64d17fa6cb4" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
-		<designed target="X" value="0" ver="5"/>
+		<designed target="X" value="2" ver="5"/>
 		<designed target="Y" value="0" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
@@ -296,14 +244,14 @@ catch(error)
 		<designed target="Opacity" value="1" ver="5"/>
 		<designed target="Enabled" value="true" ver="5"/>
 		<designed target="Tooltip" value="" ver="5"/>
-		<designed target="Width" value="800" ver="5"/>
+		<designed target="Width" value="796" ver="5"/>
 		<designed target="Height" value="28" ver="5"/>
 		<designed target="RoundingRadius" value="0" ver="5"/>
 		<designed target="PenColor" value="0xff808080" ver="5"/>
 		<designed target="PenStyle" value="0" ver="5"/>
 		<designed target="PenWidth" value="1" ver="5"/>
 		<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
-		<designed target="BrushStyle" value="0" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
 		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="462f886a-ac13-44b2-99e8-252224499ef7" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
 			<designed target="MinWidth" value="0" ver="5"/>
 			<designed target="MinHeight" value="28" ver="5"/>
@@ -311,11 +259,11 @@ catch(error)
 			<designed target="MaxHeight" value="28" ver="5"/>
 		</object>
 		<object access-modifier="private" name="btnErrors" display-name="btnErrors" uuid="18f913ab-7fb6-401f-9c0b-9b0b3a1004cf" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5" description="" cardinal="1">
-			<designed target="X" value="0" ver="5"/>
-			<designed target="Y" value="0" ver="5"/>
+			<designed target="X" value="1" ver="5"/>
+			<designed target="Y" value="5" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
-			<designed target="Width" value="90" ver="5"/>
-			<designed target="Height" value="24" ver="5"/>
+			<designed target="Width" value="18" ver="5"/>
+			<designed target="Height" value="18" ver="5"/>
 			<init target="IconSize" ver="5" value="16"/>
 			<init target="ButtonWidth" ver="5" value="80"/>
 			<init target="ButtonHeight" ver="5" value="24"/>
@@ -327,20 +275,20 @@ here.private.UpdateImportanceFilter();]]>
 				</body>
 			</do-on>
 			<init target="Checked" ver="5" value="true"/>
-			<init target="pTheme" ver="5" ref="here.private.theme"/>
 			<do-trace access-modifier="private" target="Tooltip" ver="5">
 				<body>
 					<![CDATA["Ошибки: " + String.ToString(ErrorCount)]]>
 				</body>
 			</do-trace>
 			<init target="TitleText" ver="5" value="Ошибки"/>
+			<init target="init_Theme" ver="5" ref="toolbarTheme"/>
 		</object>
 		<object access-modifier="private" name="btnWarnings" display-name="btnWarnings" uuid="71b2c103-e80d-4751-b20a-dea9531d9493" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5" description="" cardinal="1">
-			<designed target="X" value="90" ver="5"/>
-			<designed target="Y" value="0" ver="5"/>
+			<designed target="X" value="21" ver="5"/>
+			<designed target="Y" value="5" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
-			<designed target="Width" value="140" ver="5"/>
-			<designed target="Height" value="24" ver="5"/>
+			<designed target="Width" value="18" ver="5"/>
+			<designed target="Height" value="18" ver="5"/>
 			<init target="IconSize" ver="5" value="16"/>
 			<init target="ButtonWidth" ver="5" value="130"/>
 			<init target="ButtonHeight" ver="5" value="24"/>
@@ -352,20 +300,20 @@ here.private.UpdateImportanceFilter();]]>
 				</body>
 			</do-on>
 			<init target="Checked" ver="5" value="true"/>
-			<init target="pTheme" ver="5" ref="here.private.theme"/>
 			<do-trace access-modifier="private" target="Tooltip" ver="5">
 				<body>
 					<![CDATA["Предупреждения: " + String.ToString(WarningCount)]]>
 				</body>
 			</do-trace>
 			<init target="TitleText" ver="5" value="Предупреждения"/>
+			<init target="init_Theme" ver="5" ref="toolbarTheme"/>
 		</object>
 		<object access-modifier="private" name="btnInformations" display-name="btnInformations" uuid="4802dcf0-8ac8-4e97-9805-b14a4125b86c" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5" description="" cardinal="1">
-			<designed target="X" value="230" ver="5"/>
-			<designed target="Y" value="0" ver="5"/>
+			<designed target="X" value="41" ver="5"/>
+			<designed target="Y" value="5" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
-			<designed target="Width" value="120" ver="5"/>
-			<designed target="Height" value="24" ver="5"/>
+			<designed target="Width" value="18" ver="5"/>
+			<designed target="Height" value="18" ver="5"/>
 			<init target="IconSize" ver="5" value="16"/>
 			<init target="ButtonWidth" ver="5" value="105"/>
 			<init target="ButtonHeight" ver="5" value="24"/>
@@ -377,22 +325,22 @@ here.private.UpdateImportanceFilter();]]>
 				</body>
 			</do-on>
 			<init target="Checked" ver="5" value="true"/>
-			<init target="pTheme" ver="5" ref="here.private.theme"/>
 			<do-trace access-modifier="private" target="Tooltip" ver="5">
 				<body>
 					<![CDATA["Информация: " + String.ToString(InformationCount)]]>
 				</body>
 			</do-trace>
 			<init target="TitleText" ver="5" value="Информация"/>
+			<init target="init_Theme" ver="5" ref="toolbarTheme"/>
 		</object>
 		<object access-modifier="private" name="separator_1" display-name="separator_1" uuid="6acdc69a-b8cf-4fac-b98f-044d5ca9a689" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5" description="" cardinal="1">
-			<designed target="X" value="350" ver="5"/>
-			<designed target="Y" value="0" ver="5"/>
+			<designed target="X" value="60" ver="5"/>
+			<designed target="Y" value="5" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
-			<designed target="Width" value="6" ver="5"/>
-			<designed target="Height" value="24" ver="5"/>
+			<designed target="Width" value="8" ver="5"/>
+			<designed target="Height" value="18" ver="5"/>
 			<init target="ButtonHeight" ver="5" value="24"/>
-			<init target="pTheme" ver="5" ref="here.private.theme"/>
+			<init target="init_Theme" ver="5" ref="toolbarTheme"/>
 		</object>
 		<object access-modifier="private" name="btnGoBottom" display-name="btnGoBottom" uuid="9a692719-9f4a-4cd6-a4d1-bd8316f780c5" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5" description="" cardinal="1">
 			<designed target="X" value="69" ver="5"/>
@@ -403,7 +351,6 @@ here.private.UpdateImportanceFilter();]]>
 			<init target="ButtonHeight" ver="5" value="24"/>
 			<init target="ButtonWidth" ver="5" value="24"/>
 			<init target="IconSize" ver="5" value="16"/>
-			<init target="pTheme" ver="5" ref="here.private.theme"/>
 			<init target="IconFile" ver="5" value="CommonLib_Icons/GoBottom.png"/>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
 				<body kind="om">
@@ -412,15 +359,16 @@ View.LatestRowTracking = Checked;]]>
 				</body>
 			</do-on>
 			<designed target="Tooltip" value="Автоматическое прокручивание списка" ver="5"/>
+			<init target="init_Theme" ver="5" ref="toolbarTheme"/>
 		</object>
 		<object access-modifier="private" name="separator_2" display-name="separator_2" uuid="f2536746-20a3-456d-9a52-ad2bd066fc6b" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5" description="" cardinal="1">
-			<designed target="X" value="370" ver="5"/>
-			<designed target="Y" value="0" ver="5"/>
+			<designed target="X" value="88" ver="5"/>
+			<designed target="Y" value="5" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
-			<designed target="Width" value="6" ver="5"/>
-			<designed target="Height" value="24" ver="5"/>
+			<designed target="Width" value="8" ver="5"/>
+			<designed target="Height" value="18" ver="5"/>
 			<init target="ButtonHeight" ver="5" value="24"/>
-			<init target="pTheme" ver="5" ref="here.private.theme"/>
+			<init target="init_Theme" ver="5" ref="toolbarTheme"/>
 		</object>
 		<object access-modifier="private" name="btnClear" display-name="btnClear" uuid="966f3bb7-9ec6-4c0a-b575-63dce3e8b561" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5" description="" cardinal="1">
 			<designed target="X" value="97" ver="5"/>
@@ -431,7 +379,6 @@ View.LatestRowTracking = Checked;]]>
 			<init target="ButtonHeight" ver="5" value="24"/>
 			<init target="ButtonWidth" ver="5" value="24"/>
 			<init target="IconSize" ver="5" value="16"/>
-			<init target="pTheme" ver="5" ref="here.private.theme"/>
 			<init target="IconFile" ver="5" value="CommonLib_Icons/Clear16.png"/>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
 				<body kind="om">
@@ -439,6 +386,7 @@ View.LatestRowTracking = Checked;]]>
 				</body>
 			</do-on>
 			<designed target="Tooltip" value="Очистить список" ver="5"/>
+			<init target="init_Theme" ver="5" ref="toolbarTheme"/>
 		</object>
 		<object access-modifier="private" name="space" display-name="space" uuid="911d42f3-4754-463b-97d4-ecba82c28df8" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
 			<designed target="X" value="455" ver="5"/>
@@ -461,19 +409,20 @@ View.LatestRowTracking = Checked;]]>
 		</object>
 		<object access-modifier="private" name="SearchBar" display-name="SearchBar" uuid="966a0651-01f5-43b7-8c9e-b0afff454807" base-type="SearchBar" base-type-id="eed9303b-0032-4f78-8bfe-aff18c14190a" ver="5" description="" cardinal="1">
 			<designed target="X" value="456" ver="5"/>
-			<designed target="Y" value="3" ver="5"/>
+			<designed target="Y" value="2.5" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Width" value="340" ver="5"/>
 			<object access-modifier="private" name="PatternChanged" display-name="PatternChanged" uuid="1a454ccd-95b1-482e-aecd-2a79d8493ece" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
 					<body kind="om">
-						<![CDATA[private.UpdateTextFilter(Pattern);]]>
+						<![CDATA[here.private.UpdateTextFilter(Pattern);]]>
 					</body>
 				</do-on>
 			</object>
 			<init target="pPatternChanged" ver="5" ref="PatternChanged"/>
 			<init target="PlaceholderText" ver="5" value="Поиск в описании"/>
-			<designed target="Height" value="22" ver="5"/>
+			<designed target="Height" value="23" ver="5"/>
+			<init target="init_Theme" ver="5" ref="toolbarTheme"/>
 		</object>
 		<object access-modifier="private" name="Layout" display-name="Layout" uuid="cda4f423-a7d8-4ab1-9990-66c07b973202" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
 			<designed target="Orientation" value="1" ver="5"/>
@@ -485,10 +434,19 @@ View.LatestRowTracking = Checked;]]>
 			<designed target="Left" value="2" ver="5"/>
 			<designed target="Right" value="2" ver="5"/>
 		</object>
+		<object access-modifier="private" name="toolbarTheme" display-name="toolbarTheme" uuid="5877dded-3fe0-4222-af39-b848e3e3eb8e" base-type="ToolbarTheme" base-type-id="a7287382-701b-4e63-a794-2f3ce4c48f31" ver="5" description="" cardinal="1">
+			<init target="init_Theme" ver="5" ref="here.init_Theme"/>
+		</object>
+		<designed target="Flip" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="BrushColor" ver="5">
+			<body>
+				<![CDATA[private.pTheme.ToolbarBrushColor]]>
+			</body>
+		</do-trace>
 	</object>
 	<object access-modifier="private" name="View" display-name="View" uuid="37d7a355-9af5-4f7a-b396-7792b89b4c3e" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="5" description="" cardinal="1">
-		<designed target="X" value="0" ver="5"/>
-		<designed target="Y" value="30" ver="5"/>
+		<designed target="X" value="1" ver="5"/>
+		<designed target="Y" value="28" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
 		<designed target="Visible" value="true" ver="5"/>
@@ -513,12 +471,12 @@ View.LatestRowTracking = Checked;]]>
 		<designed target="VerticalScrollBarPolicy" value="0" ver="5"/>
 		<do-trace access-modifier="private" target="BackgroundColor" ver="5">
 			<body>
-				<![CDATA[private.theme.EditorBrushColor]]>
+				<![CDATA[private.pTheme.EditorBrushColor]]>
 			</body>
 		</do-trace>
 		<do-trace access-modifier="private" target="GridColor" ver="5">
 			<body>
-				<![CDATA[private.theme.DisabledBorderColor]]>
+				<![CDATA[private.pTheme.DisabledBorderColor]]>
 			</body>
 		</do-trace>
 		<init target="TableModel" ver="5" ref="here.Model"/>
@@ -555,22 +513,22 @@ View.LatestRowTracking = Checked;]]>
 			<designed target="WordWrap" value="true" ver="5"/>
 			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
 				<body>
-					<![CDATA[private.theme.EditorBrushColor]]>
+					<![CDATA[private.pTheme.EditorBrushColor]]>
 				</body>
 			</do-trace>
 			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
 				<body>
-					<![CDATA[private.theme.EditorFontColor]]>
+					<![CDATA[private.pTheme.EditorFontColor]]>
 				</body>
 			</do-trace>
 			<do-trace access-modifier="private" target="TitleBackgroundColor" ver="5">
 				<body>
-					<![CDATA[private.theme.BackgroundColor]]>
+					<![CDATA[private.pTheme.BackgroundColor]]>
 				</body>
 			</do-trace>
 			<do-trace access-modifier="private" target="TitleForegroundColor" ver="5">
 				<body>
-					<![CDATA[private.theme.ForegroundColor]]>
+					<![CDATA[private.pTheme.ForegroundColor]]>
 				</body>
 			</do-trace>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseTitleClick">
@@ -602,12 +560,12 @@ ApplySort();]]>
 			</do-on>
 			<do-trace access-modifier="private" target="Font" ver="5">
 				<body>
-					<![CDATA[private.theme.Font]]>
+					<![CDATA[private.pTheme.Font]]>
 				</body>
 			</do-trace>
 			<do-trace access-modifier="private" target="TitleFont" ver="5">
 				<body>
-					<![CDATA[private.theme.TitleFont]]>
+					<![CDATA[private.pTheme.TitleFont]]>
 				</body>
 			</do-trace>
 		</object>
@@ -626,12 +584,12 @@ ApplySort();]]>
 	</object>
 	<do-trace access-modifier="private" target="BrushColor" ver="5">
 		<body>
-			<![CDATA[pTheme.BackgroundColor]]>
+			<![CDATA[private.pTheme.BackgroundColor]]>
 		</body>
 	</do-trace>
 	<do-trace access-modifier="private" target="PenColor" ver="5">
 		<body>
-			<![CDATA[pTheme.BorderColor]]>
+			<![CDATA[private.pTheme.BorderColor]]>
 		</body>
 	</do-trace>
 	<object access-modifier="private" name="Initializer" display-name="Initializer" uuid="bf1bf4f7-35db-400f-a913-7eef8e1032ce" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="5" description="" cardinal="1">
@@ -775,5 +733,6 @@ if (logView.Columns != undefined)
 	<param access-modifier="private" name="AdditionalColumns" display-name="Дополнительные столбцы" uuid="24eb3f1a-763d-4a7a-a958-45075cbf5097" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description=""/>
 	<init target="AdditionalColumns" ver="5" value=""/>
 	<designed target="Flip" value="0" ver="5"/>
+	<param access-modifier="private" name="init_Theme" display-name="Тема оформления" uuid="cd8d2131-69c6-4271-93c6-cafdcbae012b" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
 </type>
 

@@ -15,7 +15,7 @@
 
 //константы
 minValue: int8 = 0;
-maxValue: int8 = 1000;
+maxValue: int8 = 10000;
 passwordLength: int8 = 50;
 
 //типы данных
@@ -56,57 +56,57 @@ Rights[1].range = "";
 Rights[2].typeIndex = 4;
 Rights[2].name = "PasswordMinLength";
 Rights[2].defaultValue = "7";
-Rights[2].range = private.GetRangeAsString(minValue, passwordLength);
+Rights[2].range = private.GetRangeAsString(1, passwordLength);
 
 Rights[3].typeIndex = 4;
 Rights[3].name = "PasswordsInHistory";
 Rights[3].defaultValue = "3";
-Rights[3].range = private.GetRangeAsString(1, maxValue);
+Rights[3].range = private.GetRangeAsString(1, 100);
 
 Rights[4].typeIndex = 4;
 Rights[4].name = "LowerCount";
 Rights[4].defaultValue = "1";
-Rights[4].range = private.GetRangeAsString(minValue, passwordLength);
+Rights[4].range = private.GetRangeAsString(1, passwordLength);
 
 Rights[5].typeIndex = 4;
 Rights[5].name = "NumbersCount";
 Rights[5].defaultValue = "1";
-Rights[5].range = private.GetRangeAsString(minValue, passwordLength);
+Rights[5].range = private.GetRangeAsString(1, passwordLength);
 
 Rights[6].typeIndex = 4;
 Rights[6].name = "SpecialCount";
 Rights[6].defaultValue = "1";
-Rights[6].range = private.GetRangeAsString(minValue, passwordLength);
+Rights[6].range = private.GetRangeAsString(1, passwordLength);
 
 Rights[7].typeIndex = 4;
 Rights[7].name = "UpperCount";
 Rights[7].defaultValue = "1";
-Rights[7].range = private.GetRangeAsString(minValue, passwordLength);
+Rights[7].range = private.GetRangeAsString(1, passwordLength);
 
 Rights[8].typeIndex = 4;
 Rights[8].name = "AttempsTimeOut";
 Rights[8].defaultValue = "60";
-Rights[8].range = private.GetRangeAsString(minValue, maxValue);
+Rights[8].range = private.GetRangeAsString(1, maxValue);
 
 Rights[9].typeIndex = 4;
 Rights[9].name = "MaxAttempsCount";
 Rights[9].defaultValue = "5";
-Rights[9].range = private.GetRangeAsString(minValue, maxValue);
+Rights[9].range = private.GetRangeAsString(0, maxValue);
 
 Rights[10].typeIndex = 4;
 Rights[10].name = "SessionDurationLimit";
-Rights[10].defaultValue = "1440";
-Rights[10].range = private.GetRangeAsString(minValue, maxValue);
+Rights[10].defaultValue = "86400";
+Rights[10].range = private.GetRangeAsString(0, maxValue);
 
 Rights[11].typeIndex = 4;
 Rights[11].name = "MaxIdleTime";
-Rights[11].defaultValue = "1440";
-Rights[11].range = private.GetRangeAsString(minValue, maxValue);
+Rights[11].defaultValue = "86400";
+Rights[11].range = private.GetRangeAsString(0, maxValue);
 
 Rights[12].typeIndex = 4;
 Rights[12].name = "PasswordNotifyForChange";
 Rights[12].defaultValue = "432000";
-Rights[12].range = private.GetRangeAsString(0, 1825);
+Rights[12].range = private.GetRangeAsString(0, 3650);
 
 Rights[13].typeIndex = 2;
 Rights[13].name = "PasswordComplexity";

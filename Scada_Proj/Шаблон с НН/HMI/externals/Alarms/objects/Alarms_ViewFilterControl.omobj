@@ -18,7 +18,7 @@
 	<designed target="BrushStyle" value="1" ver="4"/>
 	<do-trace access-modifier="private" target="BrushColor" ver="5">
 		<body>
-			<![CDATA[pTheme.BackgroundColor]]>
+			<![CDATA[TablePanel.pTheme.BackgroundColor]]>
 		</body>
 	</do-trace>
 	<object access-modifier="private" name="TablePanel" display-name="TablePanel" uuid="de0f1095-5331-461a-a8cc-ab909097bc5a" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="5" description="" cardinal="1">
@@ -109,129 +109,56 @@ TableModel.AddColumn("field-id","","","","string",false,true);]]>
 				<![CDATA[pTheme.BackgroundColor]]>
 			</body>
 		</do-trace>
+		<object access-modifier="private" name="pTheme" display-name="pTheme" uuid="7133ab84-ac11-445a-85ad-fcef90e2fd6c" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" ver="5" description="" base-ref="true"/>
+		<init target="pTheme" ver="5" ref="here.iTheme"/>
 	</object>
 	<object access-modifier="private" name="Items" display-name="Items" uuid="b5af10a4-c3c9-49c2-ae2c-05b00c354233" base-type="Alarms_ViewFilterItem" base-type-id="04671730-1304-4817-9ba6-884fd76da06c" ver="5" description="" cardinal="21">
 		<designed target="X" value="0" ver="5"/>
 		<designed target="Y" value="10" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
-		<init target="ppTheme" ver="5" ref="iTheme"/>
+		<init target="pTheme" ver="5" ref="iTheme"/>
 		<init target="pVFControl" ver="5" ref="here"/>
 	</object>
 	<object access-modifier="private" name="labelWidth" display-name="labelWidth" uuid="11712ae6-dc80-4556-b7a8-8966d157cdb5" base-type="notifying_double" base-type-id="3f905fb7-7738-4619-b402-5a91f136d4bd" ver="4"/>
 	<object access-modifier="private" name="editorWidth" display-name="editorWidth" uuid="b0d0d484-79e1-4614-bb30-373f74d32561" base-type="notifying_double" base-type-id="3f905fb7-7738-4619-b402-5a91f136d4bd" ver="4"/>
-	<object access-modifier="private" name="TestTable" display-name="TestTable" uuid="d5d59bb4-c36e-4ce4-b8c4-f89c98d8f59b" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="3">
-		<designed target="X" value="0" ver="3"/>
-		<designed target="Y" value="0" ver="3"/>
-		<designed target="Rotation" value="0" ver="3"/>
-		<designed target="Scale" value="1" ver="3"/>
-		<designed target="Visible" value="false" ver="3"/>
-		<designed target="Enabled" value="true" ver="3"/>
-		<designed target="Width" value="10" ver="3"/>
-		<designed target="Height" value="10" ver="3"/>
-		<designed target="HeaderHeight" value="21" ver="3"/>
-		<designed target="HeaderVisible" value="false" ver="3"/>
-		<designed target="RowHeight" value="30" ver="3"/>
-		<designed target="RowOrder" value="0" ver="3"/>
-		<designed target="SelectionBehavior" value="0" ver="3"/>
-		<designed target="SelectionMode" value="3" ver="3"/>
-		<designed target="SelectionOverlayEnabled" value="true" ver="3"/>
-		<designed target="LatestRowTracking" value="false" ver="3"/>
-		<init target="TableModel" ver="5">
-			<object access-modifier="private" uuid="cd7dce83-c702-4c4d-8185-1f5a16b3f20c" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="3">
-				<designed target="Frozen" value="false" ver="3"/>
-				<designed target="MaxRowCount" value="2147483647" ver="3"/>
-			</object>
-		</init>
-		<object access-modifier="private" name="TestColumn" display-name="TestColumn" uuid="044f6152-25ea-4389-898c-8aa903b033af" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="3">
-			<designed target="Title" value="" ver="3"/>
-			<designed target="Description" value="" ver="3"/>
-			<designed target="Id" value="" ver="3"/>
-			<designed target="BackgroundColor" value="4281545523" ver="3"/>
-			<designed target="ForegroundColor" value="4293388263" ver="3"/>
-			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="3"/>
-			<designed target="TextAlignment" value="129" ver="3"/>
-			<designed target="TitleBackgroundColor" value="4281545523" ver="3"/>
-			<designed target="TitleForegroundColor" value="4293388263" ver="3"/>
-			<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="3"/>
-			<designed target="TitleTextAlignment" value="132" ver="3"/>
-			<designed target="Width" value="100" ver="3"/>
-			<designed target="WidthResizeMode" value="0" ver="3"/>
-			<designed target="Emptiable" value="true" ver="3"/>
-			<designed target="Hidden" value="false" ver="3"/>
-			<designed target="NumberFormat" value="%g" ver="3"/>
-			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="3"/>
-			<designed target="JsonFilter" value="" ver="3"/>
-			<designed target="SortingEnabled" value="false" ver="3"/>
-			<designed target="SortOrder" value="0" ver="3"/>
-			<designed target="SortPriority" value="0" ver="3"/>
-			<designed target="WordWrap" value="false" ver="3"/>
-			<designed target="ColumnOwnId" value="" ver="4"/>
-			<designed target="SortMode" value="0" ver="4"/>
-		</object>
-		<designed target="HorizontalScrollMode" value="0" ver="4"/>
-		<designed target="VerticalScrollMode" value="0" ver="4"/>
-		<designed target="HorizontalScrollBarPolicy" value="0" ver="4"/>
-		<designed target="VerticalScrollBarPolicy" value="0" ver="4"/>
-		<designed target="DelayedSortingEnabled" value="false" ver="4"/>
-		<do access-modifier="private" name="CheckJSON" display-name="CheckJSON" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
-			<body kind="javascript">
-				<![CDATA[try
-{
-	// Попытка установить json-фильтр
-	TestTable.TestColumn.JsonFilter = jsonStr;
-	return "";
-}
-catch (err)
-{
-	return err.toString();
-}]]>
-			</body>
-			<param access-modifier="private" name="jsonStr" display-name="" uuid="4b5f87ac-c90e-4f38-b571-a44f56015e83" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
-		</do>
-		<designed target="BackgroundColor" value="4294967295" ver="4"/>
-		<designed target="FrameColor" value="4278190080" ver="4"/>
-		<designed target="GridColor" value="4292401368" ver="4"/>
-	</object>
-	<object access-modifier="private" name="pAlarms" display-name="pAlarms" uuid="d94458cc-d1d6-40a4-a181-f9467a4a5df7" base-type="Alarms_Table" base-type-id="521d4d69-1b32-4210-ae17-099df1125e3c" base-const="true" base-ref="true" ver="2"/>
-	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="b8cc76e7-8eeb-47dc-b9ef-5220e57a2db9" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
 	<do access-modifier="private" name="Opened" display-name="Opened" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 		<body kind="javascript">
 			<![CDATA[TablePanel.Initialize();
 var n = 0;
-var ids = JSON.parse(pAlarms.Main_panel.private.ViewFilter.GetColumns());
+var ids = JSON.parse(pConfig.TableView.GetSelectableColumns());
 for (let i = 0; i<ids.length && n<Items.Length; i++)
 {
 	var id = ids[i];
-	var pos = pAlarms.Main_panel.private.TableView.GetColPos(id);
-	var title = pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[pos].Title;
+	var pos = pConfig.TableView.GetColPos(id);
+	var title = pConfig.TableView.Columns[pos].Title;
 	{
-		if (id==pAlarms.Main_panel.private.TableView.Static.Column_Time.Id ||
-			id==pAlarms.Main_panel.private.TableView.Static.Column_ActiveTime.Id ||
-			id==pAlarms.Main_panel.private.TableView.Static.Column_DeactiveTime.Id ||
-			id==pAlarms.Main_panel.private.TableView.Static.Column_AckTime.Id)
+		if (id==pConfig.TableView.Static.Time.Id ||
+			id==pConfig.TableView.Static.ActiveTime.Id ||
+			id==pConfig.TableView.Static.DeactiveTime.Id ||
+			id==pConfig.TableView.Static.AckTime.Id)
 			Items[n].Setup(id, title, "time",false, true, "");
-		else if (id==pAlarms.Main_panel.private.TableView.Static.Column_Severity.Id)
+		else if (id==pConfig.TableView.Static.Severity.Id)
 			Items[n].Setup(id, title, "severity",false, true, "");
-		else if (id==pAlarms.Main_panel.private.TableView.Static.Column_Group.Id)
+		else if (id==pConfig.TableView.Static.Group.Id)
 			Items[n].Setup(id, title, "message",true, true, "");
-		else if (id==pAlarms.Main_panel.private.TableView.Static.Column_Message.Id ||
-			id==pAlarms.Main_panel.private.TableView.Static.Column_Actor.Id ||
-			id==pAlarms.Main_panel.private.TableView.Static.Column_Comment.Id)
+		else if (id==pConfig.TableView.Static.Message.Id ||
+			id==pConfig.TableView.Static.Actor.Id ||
+			id==pConfig.TableView.Static.Comment.Id)
 			Items[n].Setup(id, title, "message",false, true, "");
-		else if (id==pAlarms.Main_panel.private.TableView.Static.Column_Source.Id)
+		else if (id==pConfig.TableView.Static.Source.Id)
 			Items[n].Setup(id, title, "source",false, true, "");
-		else if (id==pAlarms.Main_panel.private.TableView.Static.Column_Ack.Id)
+		else if (id==pConfig.TableView.Static.Ack.Id)
 			Items[n].Setup(id, title, "",false, false, "[\"Все\",\"Неквитированные\",\"Квитированные\"]");
-		else if (id==pAlarms.Main_panel.private.TableView.Static.Column_Active.Id ||
-			id==pAlarms.Main_panel.private.TableView.Static.Column_AckRequired.Id ||
-			id==pAlarms.Main_panel.private.TableView.Static.Column_Quality.Id ||
-			id==pAlarms.Main_panel.private.TableView.Static.Column_Value.Id)
+		else if (id==pConfig.TableView.Static.Active.Id ||
+			id==pConfig.TableView.Static.AckRequired.Id ||
+			id==pConfig.TableView.Static.Quality.Id ||
+			id==pConfig.TableView.Static.Value.Id)
 			n -=1;//пропускаем некоторые столбцы, как и раньше
 		else if (id=="kind")
 			Items[n].Setup(id, title, "message",true, true, "");
 		else
 		{
-			var data_type = pAlarms.Main_panel.private.TableView.modelType[pos];
+			var data_type = pConfig.TableView.Columns[pos].modelType;
 			var filter_type = "severity";
 			if (data_type == "timestamp") filter_type = "time";
 			else if (data_type == "string" || data_type == "variant") filter_type = "message";
@@ -373,5 +300,6 @@ for (let i = 0; i < Items.Length; i++)
 		</body>
 	</do>
 	<designed target="Flip" value="0" ver="5"/>
+	<object access-modifier="private" name="pConfig" display-name="pConfig" uuid="6fa3c5fb-9028-4629-8809-adc963d97ba5" base-type="Alarms_Config" base-type-id="cac958c3-d08c-4b7b-8345-d70ccc130514" base-const="true" base-ref="true" ver="5" description=""/>
 </type>
 

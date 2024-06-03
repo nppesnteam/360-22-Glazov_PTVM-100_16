@@ -36,7 +36,7 @@
 		<designed target="X" value="0" ver="5"/>
 		<designed target="Y" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
-		<designed target="Width" value="500" ver="5"/>
+		<designed target="Width" value="800" ver="5"/>
 		<designed target="Height" value="30" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
@@ -48,15 +48,15 @@
 		<designed target="PenColor" value="0xffc0c0c0" ver="5"/>
 		<designed target="PenStyle" value="1" ver="5"/>
 		<designed target="PenWidth" value="1" ver="5"/>
-		<designed target="BrushColor" value="0xff000000" ver="5"/>
-		<designed target="BrushStyle" value="0" ver="5"/>
+		<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
 		<object access-modifier="private" name="Layout" display-name="Layout" uuid="d51599e9-6f7d-4f31-91bd-28498fbf58bc" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5">
 			<designed target="Orientation" value="1" ver="5"/>
 			<designed target="Gap" value="0" ver="5"/>
 		</object>
 		<object access-modifier="private" name="btnConnect" display-name="btnConnect" uuid="25bb6129-b4ab-400f-abbe-e26009567ad6" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
 			<designed target="X" value="1" ver="5"/>
-			<designed target="Y" value="2" ver="5"/>
+			<designed target="Y" value="6" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<init target="IsVisible" ver="5" value="false"/>
 			<do-trace access-modifier="private" target="IsVisible" ver="5">
@@ -68,7 +68,6 @@
 			<designed target="Width" value="18" ver="5"/>
 			<designed target="Height" value="18" ver="5"/>
 			<designed target="PenStyle" value="1" ver="5"/>
-			<init target="pTheme" ver="5" ref="Theme_1"/>
 			<object access-modifier="private" name="DialogResult" display-name="DialogResult" uuid="59f42ac2-6dff-482d-8a95-3315bf6eb670" base-type="ConnectDialogResult" base-type-id="d594d8ef-50a0-48fe-8a09-acb33eda25ec" ver="5" description="" cardinal="1">
 				<init target="Location" ver="5" value="localhost"/>
 				<init target="Port" ver="5" value="4388"/>
@@ -110,10 +109,11 @@ ApSource_1.Active = true;]]>
 					</body>
 				</do-on>
 			</object>
+			<init target="init_Theme" ver="5" ref="Theme_1"/>
 		</object>
 		<object access-modifier="private" name="btnOpen" display-name="btnOpen" uuid="0fe06944-220e-4052-95fc-492be9fb65ce" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
 			<designed target="X" value="21" ver="5"/>
-			<designed target="Y" value="2" ver="5"/>
+			<designed target="Y" value="6" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<init target="IconFile" ver="5" value="CommonLib_Icons/OpenFile16.png"/>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick" form-action="open-dialog" form-by-id="false">
@@ -128,11 +128,11 @@ ApSource_1.Active = true;]]>
 			<designed target="Width" value="18" ver="5"/>
 			<designed target="Height" value="18" ver="5"/>
 			<designed target="PenStyle" value="1" ver="5"/>
-			<init target="pTheme" ver="5" ref="Theme_1"/>
+			<init target="init_Theme" ver="5" ref="Theme_1"/>
 		</object>
 		<object access-modifier="private" name="btnOpenExt" display-name="btnOpenExt" uuid="3e96c3f2-4bbc-4362-9a3b-e6e91f811299" base-type="ToolbarDropDown" base-type-id="0e258e56-d922-4a8f-b8c3-7d577d177609" ver="5">
 			<designed target="X" value="39" ver="5"/>
-			<designed target="Y" value="2" ver="5"/>
+			<designed target="Y" value="6" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<do access-modifier="private" name="GetMenuItems" display-name="GetMenuItems" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
 				<body kind="javascript">
@@ -156,7 +156,7 @@ return JSON.stringify(items);]]>
 						</init>
 						<init target="pAction" ver="5" ref="OnMenuClick"/>
 						<init target="pResult" ver="5" ref="MenuResult"/>
-						<init target="pTheme" ver="5" ref="Theme_1"/>
+						<init target="init_Theme" ver="5" ref="Theme_1"/>
 						<init target="PointHeight" ver="5" value="30"/>
 						<init target="WindowX" ver="5">
 							<expr>
@@ -169,6 +169,7 @@ return JSON.stringify(items);]]>
 								<![CDATA[btnOpenExt.ScreenY(0, 30)]]>
 							</expr>
 						</init>
+						<init target="pOnClosed" ver="5" ref="MenuClosed"/>
 					</object>
 				</do-on>
 			</object>
@@ -195,11 +196,6 @@ else if (cmd == "xlsx")
 			<init target="pButton" ver="5" ref="btnOpen"/>
 			<designed target="Width" value="11" ver="5"/>
 			<designed target="Height" value="18" ver="5"/>
-			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
-				<body kind="om">
-					<![CDATA[OpenMenu.Invoke();]]>
-				</body>
-			</do-on>
 			<object access-modifier="private" name="OnNextMenu" display-name="OnNextMenu" uuid="a383b929-6bfa-4f7a-aef3-975a4c5261e7" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="InvokeTrigger" value="false" ver="5"/>
@@ -209,11 +205,26 @@ else if (cmd == "xlsx")
 					</body>
 				</do-on>
 			</object>
-			<init target="pTheme" ver="5" ref="Theme_1"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MousePress">
+				<body kind="om">
+					<![CDATA[Checked = true;
+OpenMenu.Invoke();]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="MenuClosed" display-name="MenuClosed" uuid="96020727-7d65-41c9-a2db-0e155c18be4b" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[Checked = false;]]>
+					</body>
+				</do-on>
+			</object>
+			<init target="init_Theme" ver="5" ref="Theme_1"/>
 		</object>
 		<object access-modifier="private" name="btnSave" display-name="btnSave" uuid="bde9f61d-16d6-4478-9bb4-a85ec1bbf779" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
 			<designed target="X" value="52" ver="5"/>
-			<designed target="Y" value="2" ver="5"/>
+			<designed target="Y" value="6" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<init target="IconFile" ver="5" value="CommonLib_Icons/SaveFile16.png"/>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick" form-action="open-dialog" form-by-id="false">
@@ -236,10 +247,11 @@ else if (cmd == "xlsx")
 					<![CDATA[!btnCheck.Checked]]>
 				</body>
 			</do-trace>
+			<init target="init_Theme" ver="5" ref="Theme_1"/>
 		</object>
 		<object access-modifier="private" name="btnSaveExt" display-name="btnSaveExt" uuid="3e9cc432-ed98-4491-bde1-3ce558a550bc" base-type="ToolbarDropDown" base-type-id="0e258e56-d922-4a8f-b8c3-7d577d177609" ver="5">
 			<designed target="X" value="70" ver="5"/>
-			<designed target="Y" value="2" ver="5"/>
+			<designed target="Y" value="6" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<init target="pButton" ver="5" ref="btnSave"/>
 			<do access-modifier="private" name="GetMenuItems" display-name="GetMenuItems" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
@@ -321,7 +333,7 @@ return JSON.stringify(items);]]>
 						</init>
 						<init target="pAction" ver="5" ref="OnMenuClick"/>
 						<init target="pResult" ver="5" ref="MenuResult"/>
-						<init target="pTheme" ver="5" ref="Theme_1"/>
+						<init target="init_Theme" ver="5" ref="Theme_1"/>
 						<init target="PointHeight" ver="5" value="30"/>
 						<init target="pOnClosed" ver="5" ref="MenuClosed"/>
 						<init target="pPrevMenu" ver="5" ref="OnPrevMenu"/>
@@ -383,12 +395,6 @@ else if (String.StartsWith(cmd, "temp_file"))
 					</body>
 				</do-on>
 			</object>
-			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
-				<body kind="om">
-					<![CDATA[Checked = true;
-OpenMenu.Invoke();]]>
-				</body>
-			</do-on>
 			<object access-modifier="private" name="OnPrevMenu" display-name="OnPrevMenu" uuid="5a4d9931-8f2a-4b36-9b08-729da30dff47" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="InvokeTrigger" value="false" ver="5"/>
@@ -398,10 +404,17 @@ OpenMenu.Invoke();]]>
 					</body>
 				</do-on>
 			</object>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MousePress">
+				<body kind="om">
+					<![CDATA[Checked = true;
+OpenMenu.Invoke();]]>
+				</body>
+			</do-on>
+			<init target="init_Theme" ver="5" ref="Theme_1"/>
 		</object>
 		<object access-modifier="private" name="separator_0" display-name="separator_0" uuid="72209747-cfe1-44e7-bf60-94583db41d8a" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5">
 			<designed target="X" value="82" ver="5"/>
-			<designed target="Y" value="2" ver="5"/>
+			<designed target="Y" value="6" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<do-trace access-modifier="private" target="IsVisible" ver="5">
 				<body>
@@ -410,13 +423,14 @@ OpenMenu.Invoke();]]>
 			</do-trace>
 			<designed target="Width" value="8" ver="5"/>
 			<designed target="Height" value="18" ver="5"/>
+			<init target="init_Theme" ver="5" ref="Theme_1"/>
 		</object>
 		<object access-modifier="private" name="IntervalEditor" display-name="IntervalEditor" uuid="820279f6-8524-40bb-b39f-8029583f837d" base-type="IntervalEditor" base-type-id="ef4b0474-0376-4b1d-844c-682e26880a1e" ver="5" description="" cardinal="1">
-			<designed target="X" value="242" ver="5"/>
+			<designed target="X" value="90" ver="5"/>
 			<designed target="Y" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
-			<designed target="Width" value="380" ver="5"/>
-			<designed target="Height" value="22" ver="5"/>
+			<designed target="Width" value="410" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
 			<object access-modifier="private" name="IntervalChanged" display-name="IntervalChanged" uuid="8f3fabfc-cbde-464c-8308-f1f98d6b9bb2" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
 					<body kind="om">
@@ -424,30 +438,42 @@ OpenMenu.Invoke();]]>
 					</body>
 				</do-on>
 			</object>
-			<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<init target="pIntervalChanged" ver="5" ref="IntervalChanged"/>
+			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="7c3fde4e-4d56-426b-abff-cdb47d485efe" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+				<designed target="MinWidth" value="0" ver="5"/>
+				<designed target="MinHeight" value="0" ver="5"/>
+				<designed target="MaxWidth" value="410" ver="5"/>
+				<designed target="MaxHeight" value="16777215" ver="5"/>
+			</object>
+			<do-trace access-modifier="private" target="Visible" ver="5">
 				<body>
 					<![CDATA[!btnCheck.Checked]]>
 				</body>
 			</do-trace>
-			<init target="pIntervalChanged" ver="5" ref="IntervalChanged"/>
-			<init target="pTheme" ver="5" ref="Theme_1"/>
+			<init target="init_Theme" ver="5" ref="Theme_1"/>
+			<object access-modifier="private" name="Margins" display-name="Margins" uuid="08dfadee-7ecc-45b5-8f51-c9631025d608" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+				<designed target="Top" value="2" ver="5"/>
+				<designed target="Bottom" value="2" ver="5"/>
+				<designed target="Left" value="0" ver="5"/>
+				<designed target="Right" value="0" ver="5"/>
+			</object>
 		</object>
 		<object access-modifier="private" name="separator_1" display-name="separator_1" uuid="bdd50012-96a2-454d-938e-dbd407034037" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5">
-			<designed target="X" value="240" ver="5"/>
-			<designed target="Y" value="0" ver="5"/>
+			<designed target="X" value="500" ver="5"/>
+			<designed target="Y" value="6" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
-			<init target="pTheme" ver="5" ref="Theme_1"/>
 			<do-trace access-modifier="private" target="IsVisible" ver="5">
 				<body>
 					<![CDATA[!btnCheck.Checked]]>
 				</body>
 			</do-trace>
-			<designed target="Width" value="6" ver="5"/>
-			<designed target="Height" value="28" ver="5"/>
+			<designed target="Width" value="8" ver="5"/>
+			<designed target="Height" value="18" ver="5"/>
+			<init target="init_Theme" ver="5" ref="Theme_1"/>
 		</object>
 		<object access-modifier="private" name="btnCheck" display-name="btnCheck" uuid="3138c24d-1197-480f-9801-1213382fba67" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
-			<designed target="X" value="330" ver="5"/>
-			<designed target="Y" value="0" ver="5"/>
+			<designed target="X" value="509" ver="5"/>
+			<designed target="Y" value="6" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
 				<body kind="om">
@@ -456,25 +482,20 @@ OpenMenu.Invoke();]]>
 			</do-on>
 			<init target="IconFile" ver="5" value="CommonLib_Icons/Warning.png"/>
 			<designed target="Tooltip" value="Скрыть/показать кнопку" ver="5"/>
-			<init target="pTheme" ver="5" ref="Theme_1"/>
-			<designed target="Width" value="28" ver="5"/>
-			<designed target="Height" value="28" ver="5"/>
+			<designed target="Width" value="18" ver="5"/>
+			<designed target="Height" value="18" ver="5"/>
+			<init target="init_Theme" ver="5" ref="Theme_1"/>
 		</object>
 		<object access-modifier="private" name="MenuResult" display-name="MenuResult" uuid="5150e200-6dfe-4d5c-90fe-f68f6ba4b86f" base-type="MenuResult" base-type-id="0fe7658c-92f4-4af7-b038-3594414ac651" ver="5"/>
 		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="922a60da-453f-4496-9578-59519801b6f2" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
 			<designed target="MinWidth" value="0" ver="5"/>
-			<designed target="MinHeight" value="0" ver="5"/>
+			<designed target="MinHeight" value="35" ver="5"/>
 			<designed target="MaxWidth" value="16777215" ver="5"/>
-			<designed target="MaxHeight" value="30" ver="5"/>
-			<do-trace access-modifier="private" target="MaxHeight" ver="5">
-				<body>
-					<![CDATA[Workspace.RightPanel.cbToolbarVisible.State ? 30 : 0]]>
-				</body>
-			</do-trace>
+			<designed target="MaxHeight" value="35" ver="5"/>
 		</object>
 		<do-trace access-modifier="private" target="PenColor" ver="5">
 			<body>
-				<![CDATA[Theme_1.DisabledBorderColor]]>
+				<![CDATA[Theme_1.BorderColor]]>
 			</body>
 		</do-trace>
 		<do-trace access-modifier="private" target="Visible" ver="5">
@@ -504,6 +525,15 @@ OpenMenu.Invoke();]]>
 				<designed target="Weight" value="0" ver="5"/>
 			</object>
 		</object>
+		<designed target="Flip" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="BrushColor" ver="5">
+			<body>
+				<![CDATA[Theme_1.ToolbarBrushColor]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="Theme_1" display-name="Theme_1" uuid="5e4e1201-a49b-4bb3-889d-3a58b85a621b" base-type="ToolbarTheme" base-type-id="a7287382-701b-4e63-a794-2f3ce4c48f31" ver="5" description="" cardinal="1">
+			<init target="init_Theme" ver="5" ref="here.Theme_1"/>
+		</object>
 	</object>
 	<object access-modifier="private" name="Debug" display-name="Debug" uuid="18334017-8115-41b0-8069-b3d7eb0caab7" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5" description="" cardinal="1"/>
 	<object access-modifier="private" name="Initializer" display-name="Initializer" uuid="89aa5850-8dc2-498a-9308-bc7084dfa11a" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="5">
@@ -529,20 +559,104 @@ while(cdt < 15)
 Workspace.RightPanel.Button_8.ComboBox_1.AddItem("градиент яркости");
 Workspace.RightPanel.Button_8.ComboBox_1.AddItem("web-цвета");
 
-//ApSource_1.Credentials.SetPassword("123");
-//Debug.Log("ApSource_1.Credentials.Assigned: " + String.ToString(ApSource_1.Credentials.Assigned));
-//ApSource_1.Active = true;]]>
+if (Templates_1.Data.GetRowCount() == 0)
+{
+	Templates_1.Set("Company", unit.ProductInfo.CompanyName);
+	Templates_1.Set("Version", unit.ProductInfo.Version);
+}]]>
 			</body>
 		</do-on>
 	</object>
 	<object access-modifier="private" name="Files" display-name="Files" uuid="541fb95b-46d6-4ab0-beb9-8987c6924bfe" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5">
 		<designed target="RootPath" value="/" ver="5"/>
 	</object>
+	<object access-modifier="private" name="Timer_1" display-name="Timer_1" uuid="243c3cd3-6a7f-42c6-ae3c-f2f21ae69be4" base-type="Timer" base-type-id="72ba7cd4-549e-41f2-923c-2431b91f349a" ver="5" description="" cardinal="1">
+		<designed target="Period" value="1000" ver="5"/>
+		<designed target="Active" value="true" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnTimer">
+			<body kind="om">
+				<![CDATA[Templates_1.Set("Now", DateTime.ToString(DateTime.Now()));]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="219fe4b1-3e7c-4209-808d-fea548720ea7" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+		<designed target="Location" value="127.0.0.1" ver="5"/>
+		<designed target="Port" value="4388" ver="5"/>
+		<designed target="HistoryPort" value="4950" ver="5"/>
+		<designed target="Path" value="" ver="5"/>
+		<designed target="Active" value="false" ver="5"/>
+		<designed target="ReAdvise" value="0" ver="5"/>
+		<designed target="ClientDisplayName" value="" ver="5"/>
+		<designed target="ClientId" value="" ver="5"/>
+		<init target="Credentials" ver="5">
+			<object access-modifier="private" uuid="ae50ab89-c954-4f35-b7b2-e50f90ec8d85" base-type="ApCredentials" base-type-id="fef70643-767d-4533-98e9-412948317273" ver="5">
+				<designed target="FilePath" value="" ver="5"/>
+			</object>
+		</init>
+		<object access-modifier="private" name="SetPassword" display-name="SetPassword" uuid="b304f16d-7bde-4f5f-a64a-0e659510c4f0" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="7128d1bd-f480-47ee-9318-beb3eef83c48" base-type="CredentialsDialog" base-type-id="312561c8-0874-4534-9316-938390e51d05" ver="5">
+					<init target="init_Theme" ver="5" ref="Theme_1"/>
+					<init target="pCredentials" ver="5" ref="Credentials"/>
+					<init target="OkAction" ver="5" ref="Reconnect"/>
+					<init target="init_ScreenKeyboard" ver="5" ref="here.ScreenKeyboardOptions_1"/>
+				</object>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="Reconnect" display-name="Reconnect" uuid="170129f1-1ad6-4827-9314-2594e2f7be66" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[if (Active)
+{
+	Active = false;
+	Active = true;
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<do access-modifier="private" name="SetCredentials" display-name="SetCredentials" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (json != "")
+{
+	folder: string = ProductInfo.GetUserDataFolder();
+	Files.CreateRecursiveFolder(folder);
+		
+	Credentials.FilePath = Files.CombinePath(folder, String.ToString(DateTime.UtcNow()));
+	Files.WriteTextFile(Credentials.FilePath, json);
+	if (!Credentials.Load())
+		Debug.Log(Credentials.GetLastError());
+	Files.RemoveRecursive(Credentials.FilePath);
+}
+else
+	Credentials.SetPassword("");]]>
+			</body>
+			<param access-modifier="private" name="json" display-name="" uuid="483c5d9b-baf8-4fb0-a7ab-9773b602756c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+		<init target="ClientDisplayName" ver="5" ref="unit.ProductInfo.ProductName"/>
+		<init target="ClientId" ver="5" ref="unit.ProductInfo.ProductTag"/>
+	</object>
+	<object access-modifier="private" name="SecurityContext_1" display-name="SecurityContext_1" uuid="227db806-07a6-4ddb-8fcd-2ab3cab36093" base-type="SecurityContext" base-type-id="d9cb0fff-b70a-4e2d-833d-3f73cf74e0dd" ver="5" description="" cardinal="1">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="CurrentUserChanged">
+			<body kind="om">
+				<![CDATA[SecurityTemplates.Set("CurrentUser", CurrentUserDisplayName);]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="SecurityTemplates" display-name="SecurityTemplates" uuid="d3449270-828b-4362-8921-18f6ec5715e6" base-type="Templates" base-type-id="020ae0f1-0abb-4c52-9c0e-0152917830ed" ver="5" description="" cardinal="1">
+			<init target="pValueChanged" ver="5" ref="Statusbar.Status.Update"/>
+		</object>
+	</object>
 	<object access-modifier="private" name="ExportPath" display-name="ExportPath" uuid="2408757d-069f-4699-ad52-e9f0983ba72e" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
 	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="WindowSizeChanged">
 		<body kind="om">
 			<![CDATA[Width = WindowWidth;
-Height = WindowHeight;]]>
+Height = WindowHeight;
+
+Workspace.Splitter.Maximum = Width - 30;
+Splitter.Maximum = Height - 30;]]>
 		</body>
 	</do-on>
 	<object access-modifier="private" name="Workspace" display-name="Workspace" uuid="75a578b2-3481-470d-9670-5dc4d0966a5c" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
@@ -586,7 +700,7 @@ Height = WindowHeight;]]>
 				<designed target="Y" value="0" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
 				<designed target="Width" value="250" ver="5"/>
-				<designed target="Height" value="25" ver="5"/>
+				<designed target="Height" value="23" ver="5"/>
 				<object access-modifier="private" name="PatternChanged" display-name="PatternChanged" uuid="b17bb74b-6e70-4183-b65e-65b1d099f3c1" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
 					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
 						<body kind="om">
@@ -606,6 +720,7 @@ ItemTree.Tree.SetColumnFilter(0, SearchBar.Pattern);]]>
 						<![CDATA[Theme_1.BorderColor]]>
 					</body>
 				</do-trace>
+				<init target="init_Theme" ver="5" ref="ToolBar.Theme_1"/>
 			</object>
 			<object access-modifier="private" name="ItemTree" display-name="ItemTree" uuid="09af59bd-b252-4091-9249-839addb24653" base-type="ItemTree" base-type-id="c334bfb4-cb34-44c9-8ba1-4961a2834b3b" ver="5" description="" cardinal="1">
 				<designed target="X" value="0" ver="5"/>
@@ -626,10 +741,10 @@ ItemTree.Tree.SetColumnFilter(0, SearchBar.Pattern);]]>
 						<![CDATA[RightPanel.cbTreeVisible.State]]>
 					</body>
 				</do-trace>
-				<object access-modifier="private" name="DragStarted" display-name="DragStarted" uuid="d21cf38b-c533-481f-b20d-eac9ad5a4e7c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<object access-modifier="private" name="DragStarted" display-name="DragStarted" uuid="d21cf38b-c533-481f-b20d-eac9ad5a4e7c" base-type="EventHandler" base-type-id="c01b71c2-42e8-4333-b70e-cc35fdf96f7e" ver="5" description="" cardinal="1">
 					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
 						<body kind="javascript">
-							<![CDATA[var json = GetCurrentItemInfo();
+							<![CDATA[var json = Args.Get();
 if (json != "")
 {
 	var info = JSON.parse(json);
@@ -643,10 +758,10 @@ if (json != "")
 					</do-on>
 				</object>
 				<init target="pDragStarted" ver="5" ref="DragStarted"/>
-				<object access-modifier="private" name="DoubleClicked" display-name="DoubleClicked" uuid="807c9557-7fbe-44a2-a23c-10faae93a467" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<object access-modifier="private" name="DoubleClicked" display-name="DoubleClicked" uuid="807c9557-7fbe-44a2-a23c-10faae93a467" base-type="EventHandler" base-type-id="c01b71c2-42e8-4333-b70e-cc35fdf96f7e" ver="5" description="" cardinal="1">
 					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
 						<body kind="javascript">
-							<![CDATA[var json = GetCurrentItemInfo();
+							<![CDATA[var json = Args.Get();
 if (json != "")
 {
 	var info = JSON.parse(json);
@@ -708,7 +823,7 @@ OpenMenu.Invoke();]]>
 							</init>
 							<init target="pAction" ver="5" ref="OnMenuClick"/>
 							<init target="pResult" ver="5" ref="MenuResult"/>
-							<init target="pTheme" ver="5" ref="Theme_1"/>
+							<init target="init_Theme" ver="5" ref="Theme_1"/>
 							<init target="WindowX" ver="5">
 								<expr>
 									<![CDATA[mouseX]]>
@@ -770,14 +885,32 @@ else if (MenuResult.Id == "set_credentials")
 				<designed target="Orientation" value="2" ver="5"/>
 				<designed target="Gap" value="0" ver="5"/>
 			</object>
-			<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="fc4966a3-961a-4368-bbcc-109b7938cdab" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5" description="" cardinal="1">
-				<designed target="Weight" value="250" ver="5"/>
-				<do-trace access-modifier="private" target="Weight" ver="5">
+			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="2312bcd8-0b09-4d55-ba6e-1293b6bd3492" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+				<designed target="MinWidth" value="250" ver="5"/>
+				<designed target="MinHeight" value="0" ver="5"/>
+				<designed target="MaxWidth" value="250" ver="5"/>
+				<designed target="MaxHeight" value="16777215" ver="5"/>
+				<do-trace access-modifier="private" target="MinWidth" ver="5">
 					<body>
-						<![CDATA[RightPanel.cbTreeVisible.State ? 250 : 0]]>
+						<![CDATA[Splitter.Position]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="MaxWidth" ver="5">
+					<body>
+						<![CDATA[Splitter.Position]]>
 					</body>
 				</do-trace>
 			</object>
+		</object>
+		<object access-modifier="private" name="Splitter" display-name="Splitter" uuid="d4dfacad-8bc6-4496-bde6-178a7e22b931" base-type="HorizontalSplitter" base-type-id="9f2e11a5-219a-4c9b-bceb-928724b2f965" ver="5" description="" cardinal="1">
+			<designed target="X" value="250" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Width" value="4" ver="5"/>
+			<designed target="Height" value="411" ver="5"/>
+			<init target="init_Theme" ver="5" ref="Theme_1"/>
+			<init target="Minimum" ver="5" value="30"/>
+			<init target="Position" ver="5" value="250"/>
 		</object>
 		<object access-modifier="private" name="RightPanel" display-name="RightPanel" uuid="23acdd28-1c91-4ed6-b620-65e034fc2473" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
 			<designed target="X" value="250" ver="5"/>
@@ -933,6 +1066,34 @@ else if (MenuResult.Id == "set_credentials")
 				<do-trace access-modifier="private" target="State" ver="5">
 					<body>
 						<![CDATA[Log.IsVisible]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="Font" ver="5">
+					<body>
+						<![CDATA[Theme_1.Font]]>
+					</body>
+				</do-trace>
+				<designed target="Flip" value="0" ver="5"/>
+			</object>
+			<object access-modifier="private" name="cbStatusbarVisible" display-name="cbStatusbarVisible" uuid="771510a0-49dd-4cdc-96cc-b6131741f0fc" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="5" description="" cardinal="1">
+				<designed target="X" value="375" ver="5"/>
+				<designed target="Y" value="30" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="135" ver="5"/>
+				<designed target="Height" value="20" ver="5"/>
+				<designed target="Text" value="Статусная строка" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="State" value="true" ver="5"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[Theme_1.ForegroundColor]]>
 					</body>
 				</do-trace>
 				<do-trace access-modifier="private" target="Font" ver="5">
@@ -1736,7 +1897,7 @@ if (ProgressBar_1.Value >= 100)
 					<designed target="TextAlignment" value="129" ver="5"/>
 					<do-trace access-modifier="private" target="Text" ver="5">
 						<body>
-							<![CDATA[SelectFolderResult.Value]]>
+							<![CDATA[SelectFolderResult.FolderPath]]>
 						</body>
 					</do-trace>
 					<do-trace access-modifier="private" target="FontColor" ver="5">
@@ -1751,13 +1912,13 @@ if (ProgressBar_1.Value >= 100)
 					</do-trace>
 					<designed target="Flip" value="0" ver="5"/>
 				</object>
-				<object access-modifier="private" name="SelectFolderResult" display-name="SelectFolderResult" uuid="d308a9ce-1007-488f-b84b-c47ab308a62e" base-type="InputDialogResult" base-type-id="cdcda119-652b-45ed-bfc4-8cc21b98730d" ver="5"/>
+				<object access-modifier="private" name="SelectFolderResult" display-name="SelectFolderResult" uuid="d308a9ce-1007-488f-b84b-c47ab308a62e" base-type="FolderDialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" ver="5"/>
 				<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="559ee63f-0b04-421b-ad62-c3c18783392c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
 					<designed target="Enabled" value="true" ver="5"/>
 					<designed target="InvokeTrigger" value="false" ver="5"/>
 					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
 						<body kind="om">
-							<![CDATA[SelectedFolderOnComplete.Text = SelectFolderResult.Value;]]>
+							<![CDATA[SelectedFolderOnComplete.Text = SelectFolderResult.FolderPath;]]>
 						</body>
 					</do-on>
 				</object>
@@ -2315,12 +2476,9 @@ ColorDialogResult_1.CustomColors = Files.ReadTextFile(filePath);]]>
 				</do-trace>
 				<designed target="Flip" value="0" ver="5"/>
 			</object>
-			<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="24062276-4035-478b-bd54-0d34b9b4347e" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5" description="" cardinal="1">
-				<designed target="Weight" value="550" ver="5"/>
-			</object>
 			<object access-modifier="private" name="Button_10" display-name="Button_10" uuid="2cdbfddd-e1e5-40c5-b3bc-d58501c248d1" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5" description="" cardinal="1">
 				<designed target="X" value="465" ver="5"/>
-				<designed target="Y" value="8" ver="5"/>
+				<designed target="Y" value="10" ver="5"/>
 				<designed target="ZValue" value="0" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
 				<designed target="Scale" value="1" ver="5"/>
@@ -2330,7 +2488,7 @@ ColorDialogResult_1.CustomColors = Files.ReadTextFile(filePath);]]>
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="Tooltip" value="" ver="5"/>
 				<designed target="Width" value="75" ver="5"/>
-				<designed target="Height" value="25" ver="5"/>
+				<designed target="Height" value="20" ver="5"/>
 				<designed target="Checkable" value="false" ver="5"/>
 				<designed target="Checked" value="false" ver="5"/>
 				<designed target="Text" value="Заполнить" ver="5"/>
@@ -2382,7 +2540,7 @@ Log.AddMessage(2, "Длительность заполнения журнала:
 			</object>
 			<object access-modifier="private" name="Button_11" display-name="Button_11" uuid="843d6159-7285-473a-a56d-0821b8032826" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
 				<designed target="X" value="10" ver="5"/>
-				<designed target="Y" value="368" ver="5"/>
+				<designed target="Y" value="365" ver="5"/>
 				<designed target="ZValue" value="0" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
 				<designed target="Scale" value="1" ver="5"/>
@@ -2518,14 +2676,93 @@ Log.AddMessage(1, "Конвертация " + fromDataType + " в " + toDataType
 				</do-trace>
 				<designed target="Flip" value="0" ver="5"/>
 			</object>
+			<object access-modifier="private" name="Button_12" display-name="Button_12" uuid="776df563-da16-4bee-ab73-d0e7421c5c9c" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
+				<designed target="X" value="245" ver="5"/>
+				<designed target="Y" value="365" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="155" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<designed target="Checkable" value="false" ver="5"/>
+				<designed target="Text" value="Редактор колонтитула" ver="5"/>
+				<designed target="TextAlignment" value="132" ver="5"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="OnClickFontColor" value="4278190080" ver="5"/>
+				<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
+				<designed target="DisabledFontColor" value="4278190080" ver="5"/>
+				<designed target="BrushColor" value="4293980400" ver="5"/>
+				<designed target="BrushStyle" value="1" ver="5"/>
+				<designed target="OnClickBrushColor" value="4288716960" ver="5"/>
+				<designed target="OnClickBrushStyle" value="1" ver="5"/>
+				<designed target="OnHoverBrushColor" value="4294967295" ver="5"/>
+				<designed target="OnHoverBrushStyle" value="1" ver="5"/>
+				<designed target="DisabledBrushColor" value="4288716960" ver="5"/>
+				<designed target="DisabledBrushStyle" value="1" ver="5"/>
+				<designed target="PenColor" value="4278190080" ver="5"/>
+				<designed target="PenStyle" value="1" ver="5"/>
+				<designed target="PenWidth" value="1" ver="5"/>
+				<designed target="OnClickPenColor" value="4278190080" ver="5"/>
+				<designed target="OnClickPenStyle" value="1" ver="5"/>
+				<designed target="OnClickPenWidth" value="1" ver="5"/>
+				<designed target="OnHoverPenColor" value="4278190080" ver="5"/>
+				<designed target="OnHoverPenStyle" value="1" ver="5"/>
+				<designed target="OnHoverPenWidth" value="1" ver="5"/>
+				<designed target="DisabledPenColor" value="4288716960" ver="5"/>
+				<designed target="DisabledPenStyle" value="1" ver="5"/>
+				<designed target="DisabledPenWidth" value="1" ver="5"/>
+				<designed target="Checked" value="false" ver="5"/>
+				<do-trace access-modifier="private" target="Font" ver="5">
+					<body>
+						<![CDATA[Theme_1.Font]]>
+					</body>
+				</do-trace>
+				<designed target="Flip" value="0" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-by-id="false" form-action="open-dialog">
+					<object access-modifier="private" uuid="22ee6016-a87d-4900-99f0-c7efdd781ce3" base-type="HeaderFooterEditor" base-type-id="6c0c31c3-3b59-49b4-8e98-884b049215b2" ver="5">
+						<init target="init_Theme" ver="5" ref="Theme_1"/>
+						<init target="init_ScreenKeyboard" ver="5" ref="ScreenKeyboardOptions_1"/>
+						<init target="pTemplates" ver="5" ref="Templates_1"/>
+						<init target="pResult" ver="5" ref="HeaderFooterResult_1"/>
+						<init target="OkAction" ver="5" ref="OnComplete"/>
+					</object>
+				</do-on>
+				<object access-modifier="private" name="HeaderFooterResult_1" display-name="HeaderFooterResult_1" uuid="3b2e421a-0679-4f54-8b78-efce3fc6560c" base-type="HeaderFooterResult" base-type-id="9b30aecf-4a44-497b-94df-268e79b29ed1" ver="5" description="" cardinal="1">
+					<init target="Text" ver="5" value="${CurrentUser}, текущее время: ${Now}"/>
+				</object>
+				<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="5613ba56-4318-4c5e-8786-ccce8d2f66d1" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+					<designed target="Enabled" value="true" ver="5"/>
+					<designed target="InvokeTrigger" value="false" ver="5"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[Statusbar.Status.Update.Invoke();
+alignment: string = String.ToString(HeaderFooterResult_1.TextAlignment);
+Log.AddMessage(0, "Колонтитул '" + HeaderFooterResult_1.Text + "' с выравниванием " + alignment);]]>
+						</body>
+					</do-on>
+				</object>
+			</object>
 		</object>
 		<object access-modifier="private" name="Layout" display-name="Layout" uuid="48f00e9b-e48b-48ac-8ad3-6dcce9d956d6" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
 			<designed target="Orientation" value="1" ver="5"/>
 			<designed target="Gap" value="0" ver="5"/>
 		</object>
-		<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="1926843a-48e8-4a3f-845c-c2e13b42a53b" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5" description="" cardinal="1">
-			<designed target="Weight" value="370" ver="5"/>
-		</object>
+	</object>
+	<object access-modifier="private" name="Splitter" display-name="Splitter" uuid="4f87dd0e-996e-4e81-b919-2435bc92c904" base-type="VerticalSplitter" base-type-id="f7b3175e-374e-46fc-bdf9-e8330c5fa171" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="446" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="800" ver="5"/>
+		<designed target="Height" value="4" ver="5"/>
+		<init target="init_Theme" ver="5" ref="Theme_1"/>
+		<init target="Position" ver="5" value="120"/>
+		<init target="Minimum" ver="5" value="30"/>
+		<init target="Thickness" ver="5" value="6"/>
 	</object>
 	<object access-modifier="private" name="Log" display-name="Log" uuid="31420a22-5b9a-4ee1-9f34-013f1bfd4a77" base-type="LogView" base-type-id="493c7166-bdbb-4717-8f49-2906ed88e930" ver="5" description="" cardinal="1">
 		<designed target="X" value="0" ver="5"/>
@@ -2540,19 +2777,27 @@ Log.AddMessage(1, "Конвертация " + fromDataType + " в " + toDataType
 		</do-trace>
 		<init target="AdditionalColumns" ver="5" value='[{"id":"address", "title":"Адрес сервера"},
 {"id":"port", "title":"Номер порта"}]'/>
-		<init target="pTheme" ver="5" ref="Theme_1"/>
-		<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="3b77a53d-e0c8-4354-af75-350efee0e500" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5" description="" cardinal="1">
-			<designed target="Weight" value="120" ver="5"/>
-			<do-trace access-modifier="private" target="Weight" ver="5">
+		<init target="init_Theme" ver="5" ref="Theme_1"/>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="268a4cd4-cd90-45f9-9596-90f06779fd79" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="0" ver="5"/>
+			<designed target="MinHeight" value="120" ver="5"/>
+			<designed target="MaxWidth" value="16777215" ver="5"/>
+			<designed target="MaxHeight" value="120" ver="5"/>
+			<do-trace access-modifier="private" target="MinHeight" ver="5">
 				<body>
-					<![CDATA[IsVisible ? 120 : 0]]>
+					<![CDATA[Splitter.Position]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="MaxHeight" ver="5">
+				<body>
+					<![CDATA[Splitter.Position]]>
 				</body>
 			</do-trace>
 		</object>
 	</object>
 	<object access-modifier="private" name="Statusbar" display-name="Statusbar" uuid="d9e38701-05ee-4d3b-9b1a-c3369177a5fd" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
 		<designed target="X" value="0" ver="5"/>
-		<designed target="Y" value="520" ver="5"/>
+		<designed target="Y" value="570" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
@@ -2650,9 +2895,9 @@ Log.AddMessage(1, "Конвертация " + fromDataType + " в " + toDataType
 			<init target="pTheme" ver="5" ref="Theme_1"/>
 			<init target="ButtonHeight" ver="5" value="22"/>
 		</object>
-		<object access-modifier="private" name="space" display-name="space" uuid="83929e13-923c-4620-9780-59a86a59737a" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
-			<designed target="X" value="90" ver="5"/>
-			<designed target="Y" value="0" ver="5"/>
+		<object access-modifier="private" name="Status" display-name="Status" uuid="83929e13-923c-4620-9780-59a86a59737a" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
+			<designed target="X" value="142" ver="5"/>
+			<designed target="Y" value="2" ver="5"/>
 			<designed target="ZValue" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Scale" value="1" ver="5"/>
@@ -2660,14 +2905,44 @@ Log.AddMessage(1, "Конвертация " + fromDataType + " в " + toDataType
 			<designed target="Opacity" value="1" ver="5"/>
 			<designed target="Enabled" value="true" ver="5"/>
 			<designed target="Tooltip" value="" ver="5"/>
-			<designed target="Width" value="10" ver="5"/>
-			<designed target="Height" value="30" ver="5"/>
-			<designed target="RoundingRadius" value="0" ver="5"/>
-			<designed target="PenColor" value="4278190080" ver="5"/>
-			<designed target="PenStyle" value="0" ver="5"/>
-			<designed target="PenWidth" value="1" ver="5"/>
-			<designed target="BrushColor" value="4278190080" ver="5"/>
-			<designed target="BrushStyle" value="0" ver="5"/>
+			<designed target="Width" value="530" ver="5"/>
+			<designed target="Height" value="26" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Text" value="" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="0xff000000" ver="5"/>
+			<designed target="TextAlignment" value="33" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[Theme_1.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="Font" ver="5">
+				<body>
+					<![CDATA[Theme_1.Font]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="TextAlignment" ver="5">
+				<body>
+					<![CDATA[Workspace.RightPanel.Button_12.HeaderFooterResult_1.TextAlignment]]>
+				</body>
+			</do-trace>
+			<object access-modifier="private" name="Margins" display-name="Margins" uuid="52968033-81cc-4676-80a5-ebad910ef146" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+				<designed target="Top" value="2" ver="5"/>
+				<designed target="Bottom" value="2" ver="5"/>
+				<designed target="Left" value="2" ver="5"/>
+				<designed target="Right" value="2" ver="5"/>
+			</object>
+			<object access-modifier="private" name="Update" display-name="Update" uuid="a63c79fc-f438-4f26-8aa0-da15515d5fbc" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[Text = Templates_1.Expand(Workspace.RightPanel.Button_12.HeaderFooterResult_1.Text);
+TextAlignment = Workspace.RightPanel.Button_12.HeaderFooterResult_1.TextAlignment;]]>
+					</body>
+				</do-on>
+			</object>
 		</object>
 		<object access-modifier="private" name="KeyboardLayoutButton_1" display-name="KeyboardLayoutButton_1" uuid="213646d2-1085-4d2c-b68a-5aa572094e4d" base-type="KeyboardLayoutButton" base-type-id="658542d3-e1f2-4bcc-a4e3-52ea4ca129e9" ver="5" description="" cardinal="1">
 			<designed target="X" value="775" ver="5"/>
@@ -2744,7 +3019,10 @@ Log.AddMessage(1, "Конвертация " + fromDataType + " в " + toDataType
 				<designed target="DisabledPenWidth" value="1" ver="5"/>
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
 					<body kind="om">
-						<![CDATA[Theme_1.Font = Font;
+						<![CDATA[ToolBar.SizeLimits.MinHeight = 30;
+ToolBar.IntervalEditor.SizeLimits.MaxWidth = 400;
+
+Theme_1.Font = Font;
 Theme_1.TitleFont = Font;
 Theme_1.Presets.Light();]]>
 					</body>
@@ -2767,7 +3045,7 @@ Theme_1.Presets.Light();]]>
 				<designed target="Checked" value="false" ver="5"/>
 				<designed target="Text" value="" ver="5"/>
 				<designed target="TextAlignment" value="132" ver="5"/>
-				<designed target="Font" value="Arial,10,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="Font" value="Arial,10,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
 				<designed target="FontColor" value="0xff000000" ver="5"/>
 				<designed target="OnClickFontColor" value="0xff000000" ver="5"/>
 				<designed target="OnHoverFontColor" value="0xff000000" ver="5"/>
@@ -2794,7 +3072,10 @@ Theme_1.Presets.Light();]]>
 				<designed target="DisabledPenWidth" value="1" ver="5"/>
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
 					<body kind="om">
-						<![CDATA[Theme_1.Font = Font;
+						<![CDATA[ToolBar.SizeLimits.MinHeight = 30;
+ToolBar.IntervalEditor.SizeLimits.MaxWidth = 400;
+
+Theme_1.Font = Font;
 Theme_1.TitleFont = String.Replace(Font, "50,0,0,0,0,0,Обычный", "75,0,0,0,0,0,Полужирный");
 Theme_1.Presets.Gray();]]>
 					</body>
@@ -2844,7 +3125,10 @@ Theme_1.Presets.Gray();]]>
 				<designed target="DisabledPenWidth" value="1" ver="5"/>
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
 					<body kind="om">
-						<![CDATA[Theme_1.Font = Font;
+						<![CDATA[ToolBar.SizeLimits.MinHeight = 35;
+ToolBar.IntervalEditor.SizeLimits.MaxWidth = 425;
+
+Theme_1.Font = Font;
 Theme_1.TitleFont = Font;
 Theme_1.Presets.Dark();]]>
 					</body>
@@ -2862,6 +3146,12 @@ Theme_1.Presets.Dark();]]>
 			<designed target="Orientation" value="1" ver="5"/>
 			<designed target="Gap" value="0" ver="5"/>
 		</object>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[Workspace.RightPanel.cbStatusbarVisible.State]]>
+			</body>
+		</do-trace>
+		<designed target="Flip" value="0" ver="5"/>
 	</object>
 	<object access-modifier="private" name="Theme_1" display-name="Theme_1" uuid="19423adc-06aa-4a3a-846c-ca9d00eda520" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5"/>
 	<do-trace access-modifier="private" target="BrushColor" ver="5">
@@ -2873,66 +3163,6 @@ Theme_1.Presets.Dark();]]>
 	<object access-modifier="private" name="Layout" display-name="Layout" uuid="f9a82078-b641-4187-a69f-eded8541eb04" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
 		<designed target="Orientation" value="2" ver="5"/>
 		<designed target="Gap" value="0" ver="5"/>
-	</object>
-	<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="219fe4b1-3e7c-4209-808d-fea548720ea7" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
-		<designed target="Location" value="127.0.0.1" ver="5"/>
-		<designed target="Port" value="4388" ver="5"/>
-		<designed target="HistoryPort" value="4950" ver="5"/>
-		<designed target="Path" value="" ver="5"/>
-		<designed target="Active" value="false" ver="5"/>
-		<designed target="ReAdvise" value="0" ver="5"/>
-		<designed target="ClientDisplayName" value="" ver="5"/>
-		<designed target="ClientId" value="" ver="5"/>
-		<init target="Credentials" ver="5">
-			<object access-modifier="private" uuid="ae50ab89-c954-4f35-b7b2-e50f90ec8d85" base-type="ApCredentials" base-type-id="fef70643-767d-4533-98e9-412948317273" ver="5">
-				<designed target="FilePath" value="" ver="5"/>
-			</object>
-		</init>
-		<object access-modifier="private" name="SetPassword" display-name="SetPassword" uuid="b304f16d-7bde-4f5f-a64a-0e659510c4f0" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
-			<designed target="Enabled" value="true" ver="5"/>
-			<designed target="InvokeTrigger" value="false" ver="5"/>
-			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
-				<object access-modifier="private" uuid="7128d1bd-f480-47ee-9318-beb3eef83c48" base-type="CredentialsDialog" base-type-id="312561c8-0874-4534-9316-938390e51d05" ver="5">
-					<init target="init_Theme" ver="5" ref="Theme_1"/>
-					<init target="pCredentials" ver="5" ref="Credentials"/>
-					<init target="OkAction" ver="5" ref="Reconnect"/>
-					<init target="init_ScreenKeyboard" ver="5" ref="here.ScreenKeyboardOptions_1"/>
-				</object>
-			</do-on>
-		</object>
-		<object access-modifier="private" name="Reconnect" display-name="Reconnect" uuid="170129f1-1ad6-4827-9314-2594e2f7be66" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
-			<designed target="Enabled" value="true" ver="5"/>
-			<designed target="InvokeTrigger" value="false" ver="5"/>
-			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
-				<body kind="om">
-					<![CDATA[if (Active)
-{
-	Active = false;
-	Active = true;
-}]]>
-				</body>
-			</do-on>
-		</object>
-		<do access-modifier="private" name="SetCredentials" display-name="SetCredentials" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
-			<body kind="om">
-				<![CDATA[if (json != "")
-{
-	folder: string = ProductInfo.GetUserDataFolder();
-	Files.CreateRecursiveFolder(folder);
-		
-	Credentials.FilePath = Files.CombinePath(folder, String.ToString(DateTime.UtcNow()));
-	Files.WriteTextFile(Credentials.FilePath, json);
-	if (!Credentials.Load())
-		Debug.Log(Credentials.GetLastError());
-	Files.RemoveRecursive(Credentials.FilePath);
-}
-else
-	Credentials.SetPassword("");]]>
-			</body>
-			<param access-modifier="private" name="json" display-name="" uuid="483c5d9b-baf8-4fb0-a7ab-9773b602756c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
-		</do>
-		<init target="ClientDisplayName" ver="5" ref="unit.ProductInfo.ProductName"/>
-		<init target="ClientId" ver="5" ref="unit.ProductInfo.ProductTag"/>
 	</object>
 	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Opened">
 		<body kind="om">
@@ -2952,9 +3182,18 @@ else
 			"Height": WindowHeight,
 			"State": WindowState
 		},
+		"Layout": {
+			"TreeWidth": Workspace.Splitter.Position.Value,
+			"LogHeight": Splitter.Position.Value
+		},
 		"Theme": JSON.parse(Theme_1.GetViewSettings()),
 		"LogView": JSON.parse(Log.GetViewSettings()),
-		"ScreenKeyboard": JSON.parse(ScreenKeyboardOptions_1.ToJSON())
+		"ScreenKeyboard": JSON.parse(ScreenKeyboardOptions_1.ToJSON()),
+		"Footer": {
+			"Text": Workspace.RightPanel.Button_12.HeaderFooterResult_1.Text.Value,
+			"Alignment": Workspace.RightPanel.Button_12.HeaderFooterResult_1.TextAlignment.Value
+		},
+		"Templates": JSON.parse(Templates_1.ToJSON())
 	};
 	Files.WriteTextFile(filePath, JSON.stringify(settings, null, 2));
 }
@@ -2983,6 +3222,13 @@ catch(error)
 			WindowHeight = window.Height;
 			WindowState = window.State;
 		}
+		
+		var layout = settings.Layout;
+		if (layout != undefined)
+		{
+			Workspace.Splitter.Position = layout.TreeWidth;
+			Splitter.Position = layout.LogHeight;
+		}
 
 		var theme = settings.Theme;
 		if (theme != undefined)
@@ -2995,6 +3241,17 @@ catch(error)
 		var screenKeyboard = settings.ScreenKeyboard;
 		if (screenKeyboard != undefined)
 			ScreenKeyboardOptions_1.FromJSON(JSON.stringify(screenKeyboard));
+			
+		var footer = settings.Footer;
+		if (footer != undefined)
+		{
+			Workspace.RightPanel.Button_12.HeaderFooterResult_1.Text = footer.Text;
+			Workspace.RightPanel.Button_12.HeaderFooterResult_1.TextAlignment = footer.Alignment;
+		}
+		
+		var templates = settings.Templates;
+		if (templates != undefined)
+			Templates_1.FromJSON(JSON.stringify(templates));
 	}
 	catch(error)
 	{
@@ -3005,6 +3262,10 @@ catch(error)
 		<param access-modifier="private" name="filePath" display-name="" uuid="ef69f9db-74e4-4946-a4b5-83e813307d0d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 	</do>
 	<object access-modifier="private" name="Converter_1" display-name="Converter_1" uuid="adff2d57-0ff2-4bce-8448-8a512cd5824a" base-type="Converter" base-type-id="9846118d-6c33-44f8-8ff4-f502280dd5c0" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="Templates_1" display-name="Templates_1" uuid="47dd284f-285f-46cd-8ccf-f89e707f0373" base-type="Templates" base-type-id="020ae0f1-0abb-4c52-9c0e-0152917830ed" ver="5" description="" cardinal="1">
+		<init target="pAdditionData" ver="5" ref="SecurityContext_1.SecurityTemplates.Data"/>
+		<init target="pValueChanged" ver="5" ref="Statusbar.Status.Update"/>
+	</object>
 	<object access-modifier="private" name="WindowUtilities_1" display-name="WindowUtilities_1" uuid="1c51b834-0443-48df-adf7-69af2566f56d" base-type="WindowUtils" base-type-id="4a818ada-44b1-4070-9b9d-c28dc3447ece" ver="5" description="" cardinal="1">
 		<init target="pForm" ver="5" ref="here"/>
 	</object>

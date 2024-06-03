@@ -1,0 +1,764 @@
+<type access-modifier="private" name="BurnWork" display-name="BurnWork" uuid="fd973e8a-d8c8-4b96-8763-069ba372be39" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<param access-modifier="private" name="initApSource" display-name="initApSource" uuid="1817609d-e24c-4fb5-909e-54a155e03c44" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" base-const="true" base-ref="true" ver="5"/>
+	<designed target="Flip" value="0" ver="5"/>
+	<object access-modifier="private" name="hereApSource" display-name="hereApSource" uuid="fdc8abab-e231-4866-8ada-8a67ad9a4164" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
+		<designed target="Active" value="false" ver="5"/>
+		<designed target="ReAdvise" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="Path" ver="5">
+			<body>
+				<![CDATA[InitPath]]>
+			</body>
+		</do-trace>
+		<designed target="Location" value="" ver="5"/>
+		<designed target="Port" value="4388" ver="5"/>
+		<designed target="HistoryPort" value="4950" ver="5"/>
+		<designed target="Path" value="" ver="5"/>
+		<designed target="ClientDisplayName" value="HMI" ver="5"/>
+		<designed target="ClientId" value="HMI" ver="5"/>
+		<init target="ParentSource" ver="5" ref="initApSource"/>
+	</object>
+	<object access-modifier="private" name="InitPath" display-name="InitPath" uuid="47ef7a7f-59d5-44c4-8ba3-864f7bca9b19" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<object access-modifier="private" name="BurnNumber" display-name="BurnNumber" uuid="53ad990e-b3c4-486b-a2f3-d249d72446fb" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<do-trace access-modifier="private" target="BurnNumber" ver="5">
+		<body>
+			<![CDATA[burner.BurnNumber.ValueAsString]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="bAir" display-name="bAir" uuid="e9ba8478-bf76-45b6-9078-d84bef7bd147" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" base-const="true" ver="5" description="">
+		<init target="Source" ver="5" ref="hereApSource"/>
+		<init target="Path" ver="5" value="TubeFilling.bAir"/>
+	</object>
+	<object access-modifier="private" name="bGasAfterValve2" display-name="bGasAfterValve2" uuid="6f2f92a6-567a-4543-9877-b3418467f631" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" base-const="true" ver="5" description="">
+		<init target="Source" ver="5" ref="hereApSource"/>
+		<init target="Path" ver="5" value="TubeFilling.bGasAfterValve2"/>
+	</object>
+	<object access-modifier="private" name="bGasBeforeBurn" display-name="bGasBeforeBurn" uuid="7b2ba1da-42ec-40e0-a4e5-eca69f6318c2" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" base-const="true" ver="5" description="">
+		<init target="Source" ver="5" ref="hereApSource"/>
+		<init target="Path" ver="5" value="TubeFilling.bGasBeforeBurn"/>
+	</object>
+	<object access-modifier="private" name="bGasBetween" display-name="bGasBetween" uuid="c18c9952-c8bf-4186-8147-ccc9c0ea52c7" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" base-const="true" ver="5" description="">
+		<init target="Source" ver="5" ref="hereApSource"/>
+		<init target="Path" ver="5" value="TubeFilling.bGasBetween"/>
+	</object>
+	<object access-modifier="private" name="bGasIn" display-name="bGasIn" uuid="dc1879ff-293f-46a8-b01b-67edc196f37b" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" base-const="true" ver="5" description="">
+		<init target="Source" ver="5" ref="hereApSource"/>
+		<init target="Path" ver="5" value="TubeFilling.bGasIn"/>
+	</object>
+	<object access-modifier="private" name="bGasOut" display-name="bGasOut" uuid="c52d0842-7a48-493b-9a07-b222e456d764" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" base-const="true" ver="5" description="">
+		<init target="Source" ver="5" ref="hereApSource"/>
+		<init target="Path" ver="5" value="TubeFilling.bGasOut"/>
+	</object>
+	<object access-modifier="private" name="TubeGasBetween" display-name="TubeGasBetween" uuid="ea4c51f0-c1d5-474d-a1b2-26b7f482b0a4" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
+		<designed target="X" value="90" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="130" ver="5"/>
+		<designed target="Height" value="60" ver="5"/>
+		<designed target="PenColor" value="0xffffff00" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="2" ver="5"/>
+		<designed target="BrushColor" value="0xff000000" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<object access-modifier="private" name="Point_1" display-name="Point_1" uuid="1482c5f4-364b-4751-b6bc-79e9aa57b474" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="85" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_2" display-name="Point_2" uuid="e5b750cd-9a98-4fcc-9a1a-978c3002c5be" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="-5" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_3" display-name="Point_3" uuid="639bc23d-474f-4af5-85a6-6dc5f4f936e0" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="-5" ver="5"/>
+			<designed target="Y" value="-50" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_4" display-name="Point_4" uuid="168a4fc7-d05f-4fe6-8fc8-246a828dbca8" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="-45" ver="5"/>
+			<designed target="Y" value="-50" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_5" display-name="Point_5" uuid="21d32c95-ae00-4cd8-9c34-69c70ac62ff9" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="-45" ver="5"/>
+			<designed target="Y" value="-44" ver="5"/>
+		</object>
+		<designed target="Flip" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="PenColor" ver="5">
+			<body>
+				<![CDATA[unit.Global.Colors.GasPen]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="BrushColor" ver="5">
+			<conditional-expr>
+				<condition>
+					<![CDATA[bGasBetween]]>
+				</condition>
+				<expr>
+					<![CDATA[unit.Global.Colors.Gas]]>
+				</expr>
+			</conditional-expr>
+			<default-expr>
+				<expr>
+					<![CDATA[0xff000000]]>
+				</expr>
+			</default-expr>
+		</do-trace>
+		<object access-modifier="private" name="Point_6" display-name="Point_6" uuid="fc3261a3-cdf0-495c-b0ea-d20da99cfd33" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="-10" ver="5"/>
+			<designed target="Y" value="-44" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_7" display-name="Point_7" uuid="7ca97034-5408-4700-8370-ed612aeacee3" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="-10" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_8" display-name="Point_8" uuid="773c795d-df4d-4209-b71f-e95ec0aeed99" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="-45" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_9" display-name="Point_9" uuid="1a0eb391-3356-4cb1-a38f-45082342d450" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="-45" ver="5"/>
+			<designed target="Y" value="10" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_10" display-name="Point_10" uuid="6be38b5e-37ca-4bff-b47d-a7bb947985a8" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="85" ver="5"/>
+			<designed target="Y" value="10" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_11" display-name="Point_11" uuid="00908f53-46bf-4e0e-b3b7-4f51409ee0dd" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="85" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+		</object>
+	</object>
+	<object access-modifier="private" name="TubeAir" display-name="TubeAir" uuid="be8ef189-e3d2-43f5-981d-40048bf82877" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
+		<designed target="X" value="323" ver="5"/>
+		<designed target="Y" value="-27" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="90" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="60" ver="5"/>
+		<designed target="Height" value="36" ver="5"/>
+		<designed target="PenColor" value="0xff55ffff" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="2" ver="5"/>
+		<designed target="BrushColor" value="0xff000000" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<object access-modifier="private" name="Point_1" display-name="Point_1" uuid="05ab2e10-71be-45d2-a11d-233996e946dd" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="-10" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_2" display-name="Point_2" uuid="cd90e98f-9ce1-4239-a656-dd7ae67cc0ab" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="-55" ver="5"/>
+			<designed target="Y" value="-10" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_3" display-name="Point_3" uuid="69bfb8b0-1d28-4d47-9cc7-3ec0af94ec3a" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="-55" ver="5"/>
+			<designed target="Y" value="16" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_4" display-name="Point_4" uuid="294efe2e-97b6-4760-a654-441010fa7275" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="-60" ver="5"/>
+			<designed target="Y" value="26" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_5" display-name="Point_5" uuid="8e765d79-a420-47c2-b619-4b06e85b4b49" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="-40" ver="5"/>
+			<designed target="Y" value="26" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_6" display-name="Point_6" uuid="d8a9042c-a383-4afb-9d76-c4aa3470a60b" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="-45" ver="5"/>
+			<designed target="Y" value="16" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_7" display-name="Point_7" uuid="86ad5d38-cabd-4941-bf1f-f816e898587e" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="-45" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+		</object>
+		<designed target="Flip" value="0" ver="5"/>
+		<object access-modifier="private" name="Point_8" display-name="Point_8" uuid="2b5cefb3-7dd8-4002-9dc3-e1a2c2660f81" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_9" display-name="Point_9" uuid="92b6964b-1cd5-4ad2-9a25-a48be322b43d" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="-10" ver="5"/>
+		</object>
+		<do-trace access-modifier="private" target="PenColor" ver="5">
+			<body>
+				<![CDATA[unit.Global.Colors.AirPen]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="BrushColor" ver="5">
+			<conditional-expr>
+				<condition>
+					<![CDATA[bAir]]>
+				</condition>
+				<expr>
+					<![CDATA[unit.Global.Colors.Air]]>
+				</expr>
+			</conditional-expr>
+			<default-expr>
+				<expr>
+					<![CDATA[0xff000000]]>
+				</expr>
+			</default-expr>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="TubeGasBeforeBurn" display-name="TubeGasBeforeBurn" uuid="ab2ecc53-a7ca-496e-a9a0-183c6b99f451" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
+		<designed target="X" value="259" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="20" ver="5"/>
+		<designed target="Height" value="10" ver="5"/>
+		<designed target="PenColor" value="0xffffff00" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="2" ver="5"/>
+		<designed target="BrushColor" value="0xff000000" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<object access-modifier="private" name="Point_1" display-name="Point_1" uuid="14abc66e-8827-4f49-9d0b-71718e9d9801" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_2" display-name="Point_2" uuid="032226d6-fa3d-4b42-a68c-9750618a9eb9" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="10" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_3" display-name="Point_3" uuid="1e047c87-4e03-4f36-8873-89c108f8a138" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="20" ver="5"/>
+			<designed target="Y" value="10" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_4" display-name="Point_4" uuid="b1b4058a-6bb2-40d8-a9b9-01bbc494a37c" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="20" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_5" display-name="Point_5" uuid="50ff6695-511f-4d40-b338-37e51c529b0c" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+		</object>
+		<designed target="Flip" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="PenColor" ver="5">
+			<body>
+				<![CDATA[unit.Global.Colors.GasPen]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="BrushColor" ver="5">
+			<conditional-expr>
+				<condition>
+					<![CDATA[bGasBeforeBurn]]>
+				</condition>
+				<expr>
+					<![CDATA[unit.Global.Colors.Gas]]>
+				</expr>
+			</conditional-expr>
+			<default-expr>
+				<expr>
+					<![CDATA[0xff000000]]>
+				</expr>
+			</default-expr>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="TubeGasAfterValve2" display-name="TubeGasAfterValve2" uuid="68a76c6b-92e0-4563-90cc-80533868614d" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
+		<designed target="X" value="205" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="20" ver="5"/>
+		<designed target="Height" value="10" ver="5"/>
+		<designed target="PenColor" value="0xffffff00" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="2" ver="5"/>
+		<designed target="BrushColor" value="0xff000000" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<object access-modifier="private" name="Point_1" display-name="Point_1" uuid="68956d10-5b79-4581-9748-4011b2437225" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_2" display-name="Point_2" uuid="13f094f0-6964-421a-96a6-9dbc9544732f" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="10" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_3" display-name="Point_3" uuid="da04b892-46b6-4a5e-94b1-1a42b7994db4" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="20" ver="5"/>
+			<designed target="Y" value="10" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_4" display-name="Point_4" uuid="71869077-6afd-4359-a746-a38faee432db" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="20" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_5" display-name="Point_5" uuid="8a85db4c-5d6c-4c27-a643-3f8d76370c6c" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+		</object>
+		<designed target="Flip" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="PenColor" ver="5">
+			<body>
+				<![CDATA[unit.Global.Colors.GasPen]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="BrushColor" ver="5">
+			<conditional-expr>
+				<condition>
+					<![CDATA[bGasAfterValve2]]>
+				</condition>
+				<expr>
+					<![CDATA[unit.Global.Colors.Gas]]>
+				</expr>
+			</conditional-expr>
+			<default-expr>
+				<expr>
+					<![CDATA[0xff000000]]>
+				</expr>
+			</default-expr>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="TubeIn" display-name="TubeIn" uuid="e5457919-ba05-430b-8d5f-c3ba4f4cce94" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="20" ver="5"/>
+		<designed target="Height" value="10" ver="5"/>
+		<designed target="PenColor" value="0xffffff00" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="2" ver="5"/>
+		<designed target="BrushColor" value="0xff000000" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<object access-modifier="private" name="Point_1" display-name="Point_1" uuid="b9fe1bc6-9d22-497b-b9bd-974121692461" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="20" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_2" display-name="Point_2" uuid="9b922bf9-2fbb-4efd-a601-cb358e3d26a2" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_3" display-name="Point_3" uuid="4b931add-ee39-4db2-ae1b-d1f1a6f19416" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="10" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_4" display-name="Point_4" uuid="427b8c60-2618-4055-b738-9cc5dc432c04" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="20" ver="5"/>
+			<designed target="Y" value="10" ver="5"/>
+		</object>
+		<designed target="Flip" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="PenColor" ver="5">
+			<body>
+				<![CDATA[unit.Global.Colors.GasPen]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="Connector" display-name="Connector" uuid="6d7bb32c-bb0c-43ed-8b43-a00ede7ca28b" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+			<designed target="X" value="-4" ver="5"/>
+			<designed target="Y" value="0.5" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="5" ver="5"/>
+			<designed target="Height" value="9" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="0x00000000" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="0" ver="5"/>
+			<designed target="BrushColor" value="0xff000000" ver="5"/>
+			<designed target="BrushStyle" value="1" ver="5"/>
+			<do-trace access-modifier="private" target="BrushColor" ver="5">
+				<conditional-expr>
+					<condition>
+						<![CDATA[bGasIn]]>
+					</condition>
+					<expr>
+						<![CDATA[unit.Global.Colors.Gas]]>
+					</expr>
+				</conditional-expr>
+				<default-expr>
+					<expr>
+						<![CDATA[0xff000000]]>
+					</expr>
+				</default-expr>
+			</do-trace>
+		</object>
+		<do-trace access-modifier="private" target="BrushColor" ver="5">
+			<conditional-expr>
+				<condition>
+					<![CDATA[bGasIn]]>
+				</condition>
+				<expr>
+					<![CDATA[unit.Global.Colors.Gas]]>
+				</expr>
+			</conditional-expr>
+			<default-expr>
+				<expr>
+					<![CDATA[0xff000000]]>
+				</expr>
+			</default-expr>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="TubeOut" display-name="TubeOut" uuid="46015836-6a0d-427d-9472-722b979d154f" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
+		<designed target="X" value="-29" ver="5"/>
+		<designed target="Y" value="-50" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="50" ver="5"/>
+		<designed target="Height" value="6" ver="5"/>
+		<designed target="PenColor" value="0xffffff00" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="2" ver="5"/>
+		<designed target="BrushColor" value="0xff000000" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<object access-modifier="private" name="Point_1" display-name="Point_1" uuid="2c4b4710-b98b-4ad8-b2a6-54598bea9821" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="50" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_2" display-name="Point_2" uuid="56d13f6c-d65f-40a9-a483-126129b76f8a" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_3" display-name="Point_3" uuid="10cc57e8-1e3e-4122-9ba7-c973e782e7c7" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="6" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_4" display-name="Point_4" uuid="63db3c9d-cc9a-4f66-8f1c-3bdefaba4638" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="50" ver="5"/>
+			<designed target="Y" value="6" ver="5"/>
+		</object>
+		<designed target="Flip" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="PenColor" ver="5">
+			<body>
+				<![CDATA[unit.Global.Colors.GasPen]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="BrushColor" ver="5">
+			<conditional-expr>
+				<condition>
+					<![CDATA[bGasOut]]>
+				</condition>
+				<expr>
+					<![CDATA[unit.Global.Colors.Gas]]>
+				</expr>
+			</conditional-expr>
+			<default-expr>
+				<expr>
+					<![CDATA[0xff000000]]>
+				</expr>
+			</default-expr>
+		</do-trace>
+		<object access-modifier="private" name="Connector" display-name="Connector" uuid="c223fe8e-af2f-4b99-8ce1-85146b6afa7f" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+			<designed target="X" value="-4" ver="5"/>
+			<designed target="Y" value="0.5" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="5" ver="5"/>
+			<designed target="Height" value="5" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="0xff000000" ver="5"/>
+			<designed target="BrushStyle" value="1" ver="5"/>
+			<do-trace access-modifier="private" target="BrushColor" ver="5">
+				<conditional-expr>
+					<condition>
+						<![CDATA[bGasOut]]>
+					</condition>
+					<expr>
+						<![CDATA[unit.Global.Colors.Gas]]>
+					</expr>
+				</conditional-expr>
+				<default-expr>
+					<expr>
+						<![CDATA[0xff000000]]>
+					</expr>
+				</default-expr>
+			</do-trace>
+		</object>
+	</object>
+	<object access-modifier="private" name="burner" display-name="burner" uuid="3e1ea114-92f8-4991-aaa5-a431c27fd859" base-type="Burner" base-type-id="f51dcd8c-5858-405d-a8d6-c95eca82779c" ver="5">
+		<designed target="X" value="274" ver="5"/>
+		<designed target="Y" value="-30" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="initApSource" ver="5" ref="here.hereApSource"/>
+		<do-trace access-modifier="private" target="Tooltip" ver="5">
+			<body kind="om">
+				<![CDATA[NAME]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Valve2" display-name="Valve2" uuid="65d16728-e005-4d7a-9e1c-d5a5b3bd6fbd" base-type="Valve" base-type-id="98113973-9854-4dd1-9221-2cfccad5aaa0" ver="5">
+		<designed target="X" value="187" ver="5"/>
+		<designed target="Y" value="-5" ver="5"/>
+		<designed target="Rotation" value="90" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<init target="initPath" ver="5" value="Valve2"/>
+		<do-trace access-modifier="private" target="Color" ver="5">
+			<body>
+				<![CDATA[unit.Global.Colors.Gas]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="BurnNumber" ver="5">
+			<body>
+				<![CDATA[burner.BurnNumber]]>
+			</body>
+		</do-trace>
+		<init target="initApSource" ver="5" ref="here.hereApSource"/>
+		<do-trace access-modifier="private" target="ColorPen" ver="5">
+			<body>
+				<![CDATA[unit.Global.Colors.GasPen]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Fan" display-name="Fan" uuid="3fbe95cb-3b52-4c91-9b67-1fddd8b541b7" base-type="FreqBot" base-type-id="617585bc-6aad-452e-a9ea-2bfe4fb17ead" ver="5">
+		<designed target="X" value="193" ver="5"/>
+		<designed target="Y" value="-55" ver="5"/>
+		<designed target="Rotation" value="90" ver="5"/>
+		<designed target="Scale" value="1.5" ver="5"/>
+		<init target="initPath" ver="5" value="Fan"/>
+		<do-trace access-modifier="private" target="Color" ver="5">
+			<body>
+				<![CDATA[unit.Global.Colors.Air]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="BurnNumber" ver="5">
+			<body>
+				<![CDATA[burner.BurnNumber]]>
+			</body>
+		</do-trace>
+		<init target="initApSource" ver="5" ref="here.hereApSource"/>
+		<init target="bHorizontal" ver="5" value="true"/>
+	</object>
+	<object access-modifier="private" name="DamperAir" display-name="DamperAir" uuid="018334af-af74-46d3-82ef-2703b997667f" base-type="Damper" base-type-id="a3e73327-f733-446d-ac01-918439e55f3f" ver="5">
+		<designed target="X" value="255" ver="5"/>
+		<designed target="Y" value="-52" ver="5"/>
+		<designed target="Rotation" value="90" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<init target="initPath" ver="5" value="DamperAir"/>
+		<do-trace access-modifier="private" target="Color" ver="5">
+			<body>
+				<![CDATA[unit.Global.Colors.Air]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="BurnNumber" ver="5">
+			<body>
+				<![CDATA[burner.BurnNumber]]>
+			</body>
+		</do-trace>
+		<init target="initApSource" ver="5" ref="here.hereApSource"/>
+		<init target="bHorizontal" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="ColorPen" ver="5">
+			<body>
+				<![CDATA[unit.Global.Colors.AirPen]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="DamperGas" display-name="DamperGas" uuid="79ed26bd-882c-455b-9161-4147c275be29" base-type="Damper" base-type-id="a3e73327-f733-446d-ac01-918439e55f3f" ver="5">
+		<designed target="X" value="240" ver="5"/>
+		<designed target="Y" value="-8" ver="5"/>
+		<designed target="Rotation" value="90" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<do-trace access-modifier="private" target="Color" ver="5">
+			<body>
+				<![CDATA[unit.Global.Colors.Gas]]>
+			</body>
+		</do-trace>
+		<init target="initPath" ver="5" value="DamperGas"/>
+		<do-trace access-modifier="private" target="BurnNumber" ver="5">
+			<body>
+				<![CDATA[burner.BurnNumber]]>
+			</body>
+		</do-trace>
+		<init target="initApSource" ver="5" ref="here.hereApSource"/>
+		<init target="bHorizontal" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="ColorPen" ver="5">
+			<body>
+				<![CDATA[unit.Global.Colors.GasPen]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="PGas" display-name="PGas" uuid="4776dbf1-681b-4484-8602-3cd4f9cecb3c" base-type="Sens" base-type-id="bda7de48-3eeb-48b5-8968-c64cf04eb418" ver="5">
+		<designed target="X" value="382" ver="5"/>
+		<designed target="Y" value="37" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="2" ver="5"/>
+		<init target="initPath" ver="5" value="PGas"/>
+		<do-trace access-modifier="private" target="BurnNumber" ver="5">
+			<body>
+				<![CDATA[burner.BurnNumber]]>
+			</body>
+		</do-trace>
+		<init target="initApSource" ver="5" ref="here.hereApSource"/>
+		<do-trace access-modifier="private" target="Color" ver="5">
+			<body>
+				<![CDATA[unit.Global.Colors.Gas]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="PAir" display-name="PAir" uuid="9cdb22c1-7eaa-4d34-b6a2-0d1e7d146725" base-type="Sens" base-type-id="bda7de48-3eeb-48b5-8968-c64cf04eb418" ver="5">
+		<designed target="X" value="382" ver="5"/>
+		<designed target="Y" value="-40" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="2" ver="5"/>
+		<init target="initPath" ver="5" value="PAir"/>
+		<do-trace access-modifier="private" target="BurnNumber" ver="5">
+			<body>
+				<![CDATA[burner.BurnNumber]]>
+			</body>
+		</do-trace>
+		<init target="initApSource" ver="5" ref="here.hereApSource"/>
+		<do-trace access-modifier="private" target="Color" ver="5">
+			<body>
+				<![CDATA[unit.Global.Colors.Air]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Valve1" display-name="Valve1" uuid="6abd6e6e-524d-4602-908b-9bb936d40ced" base-type="Valve" base-type-id="98113973-9854-4dd1-9221-2cfccad5aaa0" ver="5">
+		<designed target="X" value="31" ver="5"/>
+		<designed target="Y" value="-5" ver="5"/>
+		<designed target="Rotation" value="90" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<do-trace access-modifier="private" target="Color" ver="5">
+			<body>
+				<![CDATA[unit.Global.Colors.Gas]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="BurnNumber" ver="5">
+			<body>
+				<![CDATA[burner.BurnNumber]]>
+			</body>
+		</do-trace>
+		<init target="initPath" ver="5" value="Valve1"/>
+		<init target="initApSource" ver="5" ref="here.hereApSource"/>
+		<do-trace access-modifier="private" target="ColorPen" ver="5">
+			<body>
+				<![CDATA[unit.Global.Colors.GasPen]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="ValveSafety" display-name="ValveSafety" uuid="26977e4b-b1db-456d-9c85-780f0f9a26d5" base-type="Valve" base-type-id="98113973-9854-4dd1-9221-2cfccad5aaa0" ver="5">
+		<designed target="X" value="31" ver="5"/>
+		<designed target="Y" value="-57" ver="5"/>
+		<designed target="Rotation" value="90" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<do-trace access-modifier="private" target="Color" ver="5">
+			<body>
+				<![CDATA[unit.Global.Colors.Gas]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="BurnNumber" ver="5">
+			<body>
+				<![CDATA[burner.BurnNumber]]>
+			</body>
+		</do-trace>
+		<init target="initPath" ver="5" value="ValveSafety"/>
+		<init target="initApSource" ver="5" ref="here.hereApSource"/>
+		<do-trace access-modifier="private" target="ColorPen" ver="5">
+			<body>
+				<![CDATA[unit.Global.Colors.GasPen]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="PGasBetween" display-name="PGasBetween" uuid="101bb3b5-0798-4f20-b262-bfb09f0c3678" base-type="Sens" base-type-id="bda7de48-3eeb-48b5-8968-c64cf04eb418" ver="5">
+		<designed target="X" value="82" ver="5"/>
+		<designed target="Y" value="-22" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1.5" ver="5"/>
+		<init target="initPath" ver="5" value="PGasBetween"/>
+		<do-trace access-modifier="private" target="BurnNumber" ver="5">
+			<body>
+				<![CDATA[burner.BurnNumber]]>
+			</body>
+		</do-trace>
+		<init target="initApSource" ver="5" ref="here.hereApSource"/>
+		<do-trace access-modifier="private" target="Color" ver="5">
+			<body>
+				<![CDATA[unit.Global.Colors.Gas]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="BurnStart" display-name="BurnStart" uuid="2708fd8d-f543-44b2-83f6-8ecee5d7735c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[burner.bStartBurn = true;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="BurnStop" display-name="BurnStop" uuid="7e5d0e3a-34bc-4254-9072-b766febdc965" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[burner.bStopBurn = true;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="PressStart" display-name="PressStart" uuid="cef8debf-1be9-446c-83be-dab813873eca" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[burner.bStartPress = true;]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[!burner.bBurnStarted]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="PressStop" display-name="PressStop" uuid="9238585f-79c3-43cd-8d86-2cfb8178bfb1" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[burner.bStopPress = true;]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[!burner.bBurnStarted]]>
+			</body>
+		</do-trace>
+	</object>
+</type>
+

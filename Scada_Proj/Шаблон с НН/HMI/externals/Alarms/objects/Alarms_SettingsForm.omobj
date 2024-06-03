@@ -467,9 +467,8 @@
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" frame-link="Frame" form-action="open-in-frame" form-by-id="false">
 					<object access-modifier="private" uuid="4059ebb3-144c-4585-9c73-820644f6664e" base-type="Alarms_SettingsPreset" base-type-id="c82d9998-49a7-46a3-8fb9-e064e5f840cc" ver="4">
 						<init target="pSettingsForm" ver="5" ref="here"/>
-						<init target="pTheme" ver="5" ref="here.pTheme"/>
-						<init target="iAlarms" ver="5" ref="here.pAlarms"/>
 						<init target="iTheme" ver="5" ref="here.pTheme"/>
+						<init target="pConfig" ver="5" ref="here.pConfig"/>
 					</object>
 				</do-on>
 			</object>
@@ -546,7 +545,7 @@
 			<designed target="ZValue" value="0" ver="3"/>
 			<do-trace access-modifier="private" target="Visible" ver="5">
 				<body>
-					<![CDATA[pAlarms.Main_panel.private.Permission.ExportData.Value]]>
+					<![CDATA[pPermissions.Permission.ExportData.Value]]>
 				</body>
 			</do-trace>
 			<designed target="Opacity" value="1" ver="3"/>
@@ -781,8 +780,6 @@ else if (value == 10)
 				<designed target="InvokeTrigger" value="false" ver="5"/>
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" frame-link="Frame" form-action="open-in-frame" form-by-id="false">
 					<object access-modifier="private" uuid="142dec0c-0041-457a-8c4b-52cd40d6c1b2" base-type="Alarms_SettingsQueryProcessing" base-type-id="de176bc0-81c9-497c-b046-38623e102530" ver="5">
-						<designed target="Flip" value="0" ver="5"/>
-						<designed target="WindowIconPath" value="" ver="5"/>
 						<init target="pSettingsForm" ver="5" ref="here"/>
 						<init target="pTheme" ver="5" ref="here.pTheme"/>
 					</object>
@@ -795,7 +792,7 @@ else if (value == 10)
 			</do-on>
 			<do-trace access-modifier="private" target="Y" ver="5">
 				<body>
-					<![CDATA[pAlarms.Main_panel.private.Permission.ExportData.Value?215:185]]>
+					<![CDATA[pPermissions.Permission.ExportData.Value?215:185]]>
 				</body>
 			</do-trace>
 		</object>
@@ -863,7 +860,7 @@ else if (value == 10)
 			<designed target="Flip" value="0" ver="5"/>
 			<do-trace access-modifier="private" target="Y" ver="5">
 				<body>
-					<![CDATA[pAlarms.Main_panel.private.Permission.ExportData.Value?245:215]]>
+					<![CDATA[pPermissions.Permission.ExportData.Value?245:215]]>
 				</body>
 			</do-trace>
 		</object>
@@ -931,7 +928,7 @@ else if (value == 10)
 			<designed target="Flip" value="0" ver="5"/>
 			<do-trace access-modifier="private" target="Y" ver="5">
 				<body>
-					<![CDATA[pAlarms.Main_panel.private.Permission.ExportData.Value?275:245]]>
+					<![CDATA[pPermissions.Permission.ExportData.Value?275:245]]>
 				</body>
 			</do-trace>
 			<do-trace access-modifier="private" target="PenColor" ver="5">
@@ -961,10 +958,11 @@ else if (value == 10)
 			</do-trace>
 			<do-trace access-modifier="private" target="Visible" ver="5">
 				<body>
-					<![CDATA[pAlarms.SuppressAndBlock]]>
+					<![CDATA[pPermissions.Permission.Suppressions]]>
 				</body>
 			</do-trace>
 		</object>
+		<designed target="Flip" value="0" ver="5"/>
 		<object access-modifier="private" name="Printing" display-name="Printing" uuid="1c9609cf-59fd-4a70-842e-a7e670c1da34" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="2">
 			<designed target="X" value="5" ver="2"/>
 			<designed target="Y" value="305" ver="2"/>
@@ -1029,7 +1027,7 @@ else if (value == 10)
 			<designed target="Flip" value="0" ver="5"/>
 			<do-trace access-modifier="private" target="Y" ver="5">
 				<body>
-					<![CDATA[305-(pAlarms.Main_panel.private.Permission.ExportData.Value?0:30)-(pAlarms.SuppressAndBlock.Value?0:30)]]>
+					<![CDATA[305-(pPermissions.Permission.ExportData.Value?0:30)-(pPermissions.Permission.Suppressions?0:30)]]>
 				</body>
 			</do-trace>
 			<do-trace access-modifier="private" target="PenColor" ver="5">
@@ -1169,6 +1167,7 @@ else if (value == 10)
 						<![CDATA[IsActive ? 1 : 0.3]]>
 					</body>
 				</do-trace>
+				<designed target="Flip" value="0" ver="5"/>
 			</object>
 			<object access-modifier="private" name="IsActive" display-name="IsActive" uuid="f396c9f1-f384-4569-86e6-5c9cf3456315" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2"/>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
@@ -1227,9 +1226,11 @@ else if (Topics.Selected == 10)
 {
 	Settings.Printing.SetCurrent();
 	Topics.Printing.Open.Invoke();
-}]]>
+}
+]]>
 				</body>
 			</do-on>
+			<designed target="Flip" value="0" ver="5"/>
 		</object>
 		<object access-modifier="private" name="DefaultButton" display-name="DefaultButton" uuid="a3c5df98-b462-4f9f-b5a6-c555355f29fa" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="4">
 			<designed target="X" value="785" ver="4"/>
@@ -1301,6 +1302,7 @@ else if (Topics.Selected == 10)
 						<![CDATA[IsActive ? 1 : 0.3]]>
 					</body>
 				</do-trace>
+				<designed target="Flip" value="0" ver="5"/>
 			</object>
 			<object access-modifier="private" name="IsActive" display-name="IsActive" uuid="b976323c-e909-453a-979d-281dcf3c060c" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2"/>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
@@ -1359,11 +1361,13 @@ else if (Topics.Selected == 10)
 {
 	Settings.Printing.SetDefaults();
 	Topics.Printing.Open.Invoke();
-}]]>
+}
+]]>
 				</body>
 			</do-on>
 			<designed target="Flip" value="0" ver="5"/>
 		</object>
+		<designed target="Flip" value="0" ver="5"/>
 	</object>
 	<object access-modifier="private" name="Frame" display-name="Frame" uuid="46a30cf4-3c2b-4ec9-8610-8922a70d0631" base-type="Frame" base-type-id="71f78e19-ef99-4133-a029-2968b14f02b6" ver="2">
 		<designed target="X" value="155" ver="2"/>
@@ -1385,6 +1389,7 @@ else if (Topics.Selected == 10)
 		<designed target="MoveByMouse" value="false" ver="2"/>
 		<designed target="ZValue" value="0" ver="3"/>
 		<designed target="Opacity" value="1" ver="3"/>
+		<designed target="Flip" value="0" ver="5"/>
 	</object>
 	<object access-modifier="private" name="Buttons" display-name="Buttons" uuid="11856adc-94a1-42dc-89e4-d4f034beb364" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="2">
 		<designed target="X" value="0" ver="2"/>
@@ -1456,6 +1461,7 @@ else if (Topics.Selected == 10)
 Close();]]>
 				</body>
 			</do-on>
+			<designed target="Flip" value="0" ver="5"/>
 		</object>
 		<object access-modifier="private" name="CancelButton" display-name="CancelButton" uuid="2a05640b-9536-4e3a-8847-4e30de07e63c" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="2">
 			<designed target="X" value="780" ver="2"/>
@@ -1499,6 +1505,7 @@ Close();]]>
 			<designed target="Opacity" value="1" ver="3"/>
 			<designed target="Checked" value="false" ver="4"/>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="close"/>
+			<designed target="Flip" value="0" ver="5"/>
 		</object>
 		<object access-modifier="private" name="ApplyButton" display-name="ApplyButton" uuid="0e8aefb0-4c5d-4fc0-852d-ede638541173" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="2">
 			<designed target="X" value="870" ver="2"/>
@@ -1551,14 +1558,15 @@ Close();]]>
 					<![CDATA[Settings.Apply();]]>
 				</body>
 			</do-on>
+			<designed target="Flip" value="0" ver="5"/>
 		</object>
 		<do-trace access-modifier="private" target="PenColor" ver="5">
 			<body>
 				<![CDATA[pTheme.BorderColor]]>
 			</body>
 		</do-trace>
+		<designed target="Flip" value="0" ver="5"/>
 	</object>
-	<object access-modifier="private" name="pAlarms" display-name="pAlarms" uuid="d4139187-e360-47a3-b376-dc400ead528f" base-type="Alarms_Table" base-type-id="521d4d69-1b32-4210-ae17-099df1125e3c" base-const="true" base-ref="true" ver="2"/>
 	<object access-modifier="private" name="Settings" display-name="Settings" uuid="972e02c6-0f37-4d6d-af64-7521b9c68350" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="2">
 		<designed target="X" value="0" ver="2"/>
 		<designed target="Y" value="0" ver="2"/>
@@ -1616,54 +1624,35 @@ ColumnsModel.AddColumn("ModelType","","","","string",false,true);
 ColumnsModel.AddColumn("UserFlag","","","","bool",false,true);
 ColumnsModel.AddColumn("Format","","","","string",false,true);
 
-//Если таблица в оперативном режиме, то берем ее параметры, если нет - берем параметры исторической таблицы
-var OperColumn=[];
-if (pAlarms.ActiveMode == 0)
-{
-	for (let i = 0; i < pAlarms.Main_tables_Operative.Table_Operative_mode.Columns.Length; i++)
-		if (pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i].Title != "-")//cheat1
-			OperColumn.push(pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i]);
-}
-else
-{
-	for (let i = 0; i < pAlarms.Main_tables_Historical.Table_History_mode.Columns.Length; i++)
-		if (pAlarms.Main_tables_Historical.Table_History_mode.Columns[i].Title != "-")//cheat1
-			OperColumn.push(pAlarms.Main_tables_Historical.Table_History_mode.Columns[i]);
-}
-
 //Заполняем модель данных
-for (let i = 0; i < OperColumn.length; i++)
+var n=-1;
+for (let i = 0; i < pConfig.TableView.Columns.Length; i++)
+if (pConfig.TableView.Columns[i].guiFlag)
 {
 	ColumnsModel.AddRow();
-	ColumnsModel.SetCellData(i,0,OperColumn[i].Description);
-	ColumnsModel.SetCellData(i,1,OperColumn[i].Title);
-	ColumnsModel.SetCellData(i,2,!OperColumn[i].Hidden);
+	n++;
+	ColumnsModel.SetCellData(n,0,pConfig.TableView.Columns[i].Description);
+	ColumnsModel.SetCellData(n,1,pConfig.TableView.Columns[i].Title);
+	ColumnsModel.SetCellData(n,2,!pConfig.TableView.Columns[i].Hidden);
 	//Если столбец растягивается по ширине, то записываем 0
-	if (OperColumn[i].WidthResizeMode == 1) ColumnsModel.SetCellData(i,3,0);
+	if (pConfig.TableView.Columns[i].WidthResizeMode == 1) ColumnsModel.SetCellData(n,3,0);
 	//Если столбец не скрыт, то считываем его ширину
-	else if (!OperColumn[i].Hidden) ColumnsModel.SetCellData(i,3,OperColumn[i].Width.toString());
+	else if (!pConfig.TableView.Columns[i].Hidden) ColumnsModel.SetCellData(n,3,pConfig.TableView.Columns[i].Width.toString());
 	//В любом другом случае считываем из буфера
-	else ColumnsModel.SetCellData(i,3,pAlarms.Main_panel.private.TableView.widthColumn[i].toString());
-	ColumnsModel.SetCellData(i,4,OperColumn[i].GetIndex());
-	ColumnsModel.SetCellData(i,6,OperColumn[i].Id);
-	ColumnsModel.SetCellData(i,7,pAlarms.Main_panel.private.TableView.modelType[i]);
-	ColumnsModel.SetCellData(i,8,pAlarms.Main_panel.private.TableView.userFlag[i]);
-	ColumnsModel.SetCellData(i,9,OperColumn[i].CustomTimeFormat);
+	else ColumnsModel.SetCellData(n,3,pConfig.TableView.Columns[i].Width.toString());
+	ColumnsModel.SetCellData(n,4,pConfig.TableView.Columns[i].GetIndex());
+	ColumnsModel.SetCellData(n,6,pConfig.TableView.Columns[i].Id);
+	ColumnsModel.SetCellData(n,7,pConfig.TableView.Columns[i].modelType);
+	ColumnsModel.SetCellData(n,8,pConfig.TableView.Columns[i].userFlag);
+	ColumnsModel.SetCellData(n,9,pConfig.TableView.Columns[i].CustomTimeFormat);
 }
 
 //Высота строки и заголовка
-if (pAlarms.ActiveMode == 0)
-{
-	RowsHeigth = pAlarms.Main_tables_Operative.Table_Operative_mode.RowHeight;
-	TitleHeight = pAlarms.Main_tables_Operative.Table_Operative_mode.HeaderHeight;
-}
-else
-{
-	RowsHeigth = pAlarms.Main_tables_Historical.Table_History_mode.RowHeight;
-	TitleHeight = pAlarms.Main_tables_Historical.Table_History_mode.HeaderHeight;
-}
-Font = OperColumn[0].Font;
-FontTitle = OperColumn[0].TitleFont;
+RowsHeigth = pConfig.TableView.RowHeight.Value;
+TitleHeight = pConfig.TableView.HeaderHeight.Value;
+
+Font = pConfig.TableView.Columns[0].Font;
+FontTitle = pConfig.TableView.Columns[0].TitleFont;
 
 OnEdited();]]>
 				</body>
@@ -1672,23 +1661,20 @@ OnEdited();]]>
 				<body kind="javascript">
 					<![CDATA[ColumnsModel.Clear();
 //Заполняем модель данных
-for (let i = 0; i < pAlarms.Main_panel.private.TableView.modelType.Length; i++)
-	if(pAlarms.Main_panel.private.TableView.userFlag[i]==false && pAlarms.Main_panel.private.TableView.systemFlag[i]==false)
+for (let i = 0; i < pConfig.TableView.Columns.Length; i++)
+	if(pConfig.TableView.Columns[i].guiFlag && pConfig.TableView.Columns[i].userFlag == false)
 		{
-			var id = pAlarms.Main_panel.private.TableView.idCache[i];
-			if (id != "")
-			{
-				ColumnsModel.AddRow();
-				ColumnsModel.SetCellData(i,0, DefaultColumnTitle(id));
-				ColumnsModel.SetCellData(i,1, DefaultColumnTitle(id));
-				ColumnsModel.SetCellData(i,2, DefaultColumnVisible(id));
-				ColumnsModel.SetCellData(i,3, DefaultColumnWidth(id));
-				ColumnsModel.SetCellData(i,4, DefaultColumnIndex(id));
-				ColumnsModel.SetCellData(i,6, id);
-				ColumnsModel.SetCellData(i,7, pAlarms.Main_panel.private.TableView.modelType[i]);
-				ColumnsModel.SetCellData(i,8, pAlarms.Main_panel.private.TableView.userFlag[i]);
-				ColumnsModel.SetCellData(i,9, "");
-			}
+			var id = pConfig.TableView.Columns[i].Id;
+			ColumnsModel.AddRow();
+			ColumnsModel.SetCellData(i,0, DefaultColumnTitle(id));
+			ColumnsModel.SetCellData(i,1, DefaultColumnTitle(id));
+			ColumnsModel.SetCellData(i,2, pConfig.TableView.GetDefaultColumnVisible(id));
+			ColumnsModel.SetCellData(i,3, pConfig.TableView.GetDefaultColumnWidth(id));
+			ColumnsModel.SetCellData(i,4, DefaultColumnIndex(id));
+			ColumnsModel.SetCellData(i,6, id);
+			ColumnsModel.SetCellData(i,7, pConfig.TableView.Columns[i].modelType);
+			ColumnsModel.SetCellData(i,8, pConfig.TableView.Columns[i].userFlag);
+			ColumnsModel.SetCellData(i,9, "");
 		}
 
 RowsHeigth = 23;
@@ -1702,30 +1688,17 @@ OnEdited();]]>
 			<do access-modifier="private" name="DefaultColumnTitle" display-name="DefaultColumnTitle" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
 				<body kind="om">
 					<![CDATA[//Возвращает заголовки столбцов по умолчанию
-return pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[pAlarms.Main_panel.private.TableView.GetColPos(columnId)].Description;]]>
+p:int4 = pConfig.TableView.GetColPos(columnId);
+return p==-1?"": pConfig.TableView.Columns[p].Description;]]>
 				</body>
 				<param access-modifier="private" name="columnId" display-name="" uuid="365d5160-6fc8-4b07-b495-74567a473710" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
 			</do>
 			<designed target="Opacity" value="1" ver="3"/>
 			<object access-modifier="private" name="bInit" display-name="bInit" uuid="4e573ca0-477f-4a79-8944-c90a5471581b" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="3"/>
-			<do access-modifier="private" name="DefaultColumnWidth" display-name="DefaultColumnWidth" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
-				<body kind="om">
-					<![CDATA[return pAlarms.Main_panel.private.TableView.DefaultColumnWidth(columnId);
-]]>
-				</body>
-				<param access-modifier="private" name="columnId" display-name="" uuid="648e21ff-4f7d-4c9c-b0bb-cc7518e861a8" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
-			</do>
-			<do access-modifier="private" name="DefaultColumnVisible" display-name="DefaultColumnVisible" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
-				<param access-modifier="private" name="columnId" display-name="" uuid="b3e8af31-f500-4e5f-bf20-c9bb6158afc4" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
-				<body kind="om">
-					<![CDATA[return pAlarms.Main_panel.private.TableView.DefaultColumnVisible(columnId);
-]]>
-				</body>
-			</do>
 			<do access-modifier="private" name="DefaultColumnIndex" display-name="DefaultColumnIndex" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
 				<param access-modifier="private" name="columnId" display-name="" uuid="dcb590e4-6353-424d-aab5-4ba0edfe1d77" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
 				<body kind="om">
-					<![CDATA[return pAlarms.Main_panel.private.TableView.GetColPos(columnId);]]>
+					<![CDATA[return pConfig.TableView.GetColPos(columnId);]]>
 				</body>
 			</do>
 			<object access-modifier="private" name="Error" display-name="Error" uuid="21edea38-c04e-4ffc-8da3-a6c1403929e8" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
@@ -1756,8 +1729,8 @@ while (i < ColumnsModel.GetRowCount())
 {
 	id: string = Variant.ToString(ColumnsModel.GetCellData(i,6), "");
 	if (Variant.ToString(ColumnsModel.GetCellData(i,1), "") != DefaultColumnTitle(id) ||
-		Variant.ToBool(ColumnsModel.GetCellData(i,2), false) != DefaultColumnVisible(id) ||
-		Variant.ToString(ColumnsModel.GetCellData(i,3), "") != String.ToString(DefaultColumnWidth(id)) ||
+		Variant.ToBool(ColumnsModel.GetCellData(i,2), false) != pConfig.TableView.GetDefaultColumnVisible(id) ||
+		Variant.ToString(ColumnsModel.GetCellData(i,3), "") != String.ToString(pConfig.TableView.GetDefaultColumnWidth(id)) ||
 		Variant.ToInt4(ColumnsModel.GetCellData(i,4), 0) != DefaultColumnIndex(id) ||
 		Variant.ToString(ColumnsModel.GetCellData(i,9), "") != ""
 		)
@@ -1778,51 +1751,36 @@ IsDefault = isDefaultColumns &&
 			</do>
 			<do access-modifier="private" name="CheckIsModified" display-name="CheckIsModified" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
 				<body kind="javascript">
-					<![CDATA[// Если таблица в оперативном режиме, то берем ее параметры, если нет - берем параметры исторической таблицы
-var Columns=[];
-if (pAlarms.ActiveMode == 0)
+					<![CDATA[//Поиск изменений в параметрах столбцов
+
+for (let i = 0; i < ColumnsModel.GetRowCount(); i++)
 {
-	for (let i = 0; i < pAlarms.Main_tables_Operative.Table_Operative_mode.Columns.Length; i++)
-		if (pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i].Title != "-")//cheat1
-			Columns.push(pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i]);
-}
-else
-{
-	for (let i = 0; i < pAlarms.Main_tables_Historical.Table_History_mode.Columns.Length; i++)
-		if (pAlarms.Main_tables_Historical.Table_History_mode.Columns[i].Title != "-")//cheat1
-			Columns.push(pAlarms.Main_tables_Historical.Table_History_mode.Columns[i]);
-}
-	
-//Поиск изменений в параметрах столбцов
-if (ColumnsModel.GetRowCount() != Columns.length) return true;
-for (let i = 0; i < Columns.length; i++)
-{
-	if (ColumnsModel.GetCellData(i,4) != Columns[i].GetIndex()) return true;
-	if (ColumnsModel.GetCellData(i,1) != Columns[i].Title) return true;
-	if (!ColumnsModel.GetCellData(i,2) != Columns[i].Hidden) return true;
-	if (ColumnsModel.GetCellData(i,6) != Columns[i].Id) return true;
-	if (ColumnsModel.GetCellData(i,7) != pAlarms.Main_panel.private.TableView.modelType[i]) return true;
-	if (ColumnsModel.GetCellData(i,9) != Columns[i].CustomTimeFormat) return true;
-	if (Columns[i].WidthResizeMode == 1) if (ColumnsModel.GetCellData(i,3) != 0) return true;
-	if (Columns[i].Width == 0) if (ColumnsModel.GetCellData(i,3) != pAlarms.Main_panel.private.TableView.widthColumn[i]) return true;
-	if (Columns[i].Width > 0 && Columns[i].WidthResizeMode == 0) if (ColumnsModel.GetCellData(i,3) != Columns[i].Width) return true;
+	var id = ColumnsModel.GetCellData(i,6);
+	var pos = pConfig.TableView.GetColPos(id);
+	if (pos < 0) return true;
+	if (ColumnsModel.GetCellData(i,4) != pConfig.TableView.Columns[pos].GetIndex()) return true;
+	if (ColumnsModel.GetCellData(i,1) != pConfig.TableView.Columns[pos].Title) return true;
+	if (!ColumnsModel.GetCellData(i,2) != pConfig.TableView.Columns[pos].Hidden) return true;
+	if (ColumnsModel.GetCellData(i,6) != pConfig.TableView.Columns[pos].Id) return true;
+	if (ColumnsModel.GetCellData(i,7) != pConfig.TableView.Columns[pos].modelType) return true;
+	if (ColumnsModel.GetCellData(i,9) != pConfig.TableView.Columns[pos].CustomTimeFormat) return true;
+	if (pConfig.TableView.Columns[pos].WidthResizeMode == 1) if (ColumnsModel.GetCellData(i,3) != 0) return true;
+	if (pConfig.TableView.Columns[pos].Width == 0) if (ColumnsModel.GetCellData(i,3) != pConfig.TableView.Columns[pos].Width) return true;
+	if (pConfig.TableView.Columns[pos].Width > 0 && pConfig.TableView.Columns[pos].WidthResizeMode == 0) if (ColumnsModel.GetCellData(i,3) != pConfig.TableView.Columns[pos].Width) return true;
 }
 
+//Сравниваем количество столбцов
+var guis = 0;
+for (let i = 0; i < pConfig.TableView.Columns.Length; i++)
+	if (pConfig.TableView.Columns[i].guiFlag)
+		guis++;
+if (ColumnsModel.GetRowCount() != guis) return true;
+
 //Поиск изменений в остальных параметрах
-if (pAlarms.ActiveMode == 0)
-{
-	if (Font != Columns[0].Font) return true;
-	if (FontTitle != Columns[0].TitleFont) return true;
-	if (RowsHeigth != pAlarms.Main_tables_Operative.Table_Operative_mode.RowHeight) return true;
-	if (TitleHeight != pAlarms.Main_tables_Operative.Table_Operative_mode.HeaderHeight) return true;
-}
-else
-{
-	if (Font != Columns[0].Font) return true;
-	if (FontTitle != Columns[0].TitleFont) return true;
-	if (RowsHeigth != pAlarms.Main_tables_Historical.Table_History_mode.RowHeight) return true;
-	if (TitleHeight != pAlarms.Main_tables_Historical.Table_History_mode.HeaderHeight) return true;
-}
+if (Font != pConfig.TableView.Columns[0].Font) return true;
+if (FontTitle != pConfig.TableView.Columns[0].TitleFont) return true;
+if (RowsHeigth != pConfig.TableView.RowHeight.Value) return true;
+if (TitleHeight != pConfig.TableView.HeaderHeight.Value) return true;
 
 return false;]]>
 				</body>
@@ -1844,76 +1802,41 @@ for (let j = 0; j < ColumnsModel.GetRowCount(); j++)
 			col.ItsCustom = true;
 			obj.push(col);
 		}
-pAlarms.Main_panel.private.TableView.SetColumnsCfg(JSON.stringify(obj));
+pConfig.TableView.Columns.SetColumnsCfg(JSON.stringify(obj));
 
-//Изменяем порядок столбцов
-var ColumnOper = [];
-var ColumnHist = [];
-for (let i = 0; i < pAlarms.Main_tables_Operative.Table_Operative_mode.Columns.Length; i++)
-	if (pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i].Title != "-")//cheat1
-		{
-			ColumnOper.push(pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i]);
-			ColumnHist.push(pAlarms.Main_tables_Historical.Table_History_mode.Columns[i]);
-		}
-//#23414 для устранения путаницы с размерами, перемещать столбцы надо раньше чем их настраивать
-//#25486 расстановка столбцов должна выполняться в порядке их расположения
-var indexesArray = [];//список названий столбцов в требуемом порядке
-for (let j = 0; j < ColumnsModel.GetRowCount(); j++)
-	indexesArray[ColumnsModel.GetCellData(j,4)/*colIndex*/]=ColumnsModel.GetCellData(j,0)/*Description*/;
-for (let j = 0; j < indexesArray.length; j++)
-	for (let i = 0; i < ColumnOper.length; i++)
-	{
-		if (ColumnOper[i].Description == indexesArray[j])
-			pAlarms.Main_tables_Operative.Table_Operative_mode.MoveColumn(ColumnOper[i].GetIndex(), j);
-		if (ColumnHist[i].Description == indexesArray[j])
-			pAlarms.Main_tables_Historical.Table_History_mode.MoveColumn(ColumnHist[i].GetIndex(), j);
-	}
-
-for (let i = 0; i < ColumnOper.length; i++)
+for (let i = 0; i < pConfig.TableView.Columns.Length; i++)
+if (pConfig.TableView.Columns[i].guiFlag)
 {
 	for (let j = 0; j <  ColumnsModel.GetRowCount();j++)
 	{
 		var id = ColumnsModel.GetCellData(j,6);
-		if (ColumnOper[i].Id == id)
+		if (pConfig.TableView.Columns[i].Id == id && pConfig.TableView.Columns[i].guiFlag)
 		{
+			pConfig.TableView.Columns[i].ColIndex = ColumnsModel.GetCellData(j,4)/*colIndex*/;
 			//Задаем остальные параметры
-			ColumnOper[i].Title = ColumnsModel.GetCellData(j,1);
-			ColumnOper[i].Hidden = !ColumnsModel.GetCellData(j,2);
+			pConfig.TableView.Columns[i].Title = ColumnsModel.GetCellData(j,1);
+			pConfig.TableView.Columns[i].Hidden = !ColumnsModel.GetCellData(j,2);
 			var columnWidth = ColumnsModel.GetCellData(j,3);
 			if (columnWidth > 0) 
 			{
-				ColumnOper[i].WidthResizeMode = 0;
-				ColumnOper[i].Width = columnWidth;
+				pConfig.TableView.Columns[i].WidthResizeMode = 0;
+				pConfig.TableView.Columns[i].Width = columnWidth;
 			}
-			else ColumnOper[i].WidthResizeMode = 1;
-			ColumnOper[i].Font = Font;
-			ColumnOper[i].TitleFont = FontTitle;
-			ColumnOper[i].CustomTimeFormat = ColumnsModel.GetCellData(j,9);
-		}
-		
-		if (ColumnHist[i].Description == ColumnsModel.GetCellData(j,0)) //Ищем столбец в модели по описанию
-		{
-			//Задаем остальные параметры
-			ColumnHist[i].Title = ColumnsModel.GetCellData(j,1);
-			ColumnHist[i].Hidden = !ColumnsModel.GetCellData(j,2);
-			var columnWidth = ColumnsModel.GetCellData(j,3);
-			if (columnWidth > 0) 
-			{
-				ColumnHist[i].WidthResizeMode = 0;
-				ColumnHist[i].Width = columnWidth;
-			}
-			else ColumnHist[i].WidthResizeMode = 1;
-			ColumnHist[i].Font = Font;
-			ColumnHist[i].TitleFont = FontTitle;
-			ColumnHist[i].CustomTimeFormat = ColumnsModel.GetCellData(j,9);
+			else pConfig.TableView.Columns[i].WidthResizeMode = 1;
+			pConfig.TableView.Columns[i].Font = Font;
+			pConfig.TableView.Columns[i].TitleFont = FontTitle;
+			pConfig.TableView.Columns[i].CustomTimeFormat = ColumnsModel.GetCellData(j,9);
 		}
 	}
 }
 
-pAlarms.Main_tables_Operative.Table_Operative_mode.RowHeight = RowsHeigth;//высота строк оперативная таблица
-pAlarms.Main_tables_Historical.Table_History_mode.RowHeight = RowsHeigth;//высота строк историческая таблица
-pAlarms.Main_tables_Operative.Table_Operative_mode.HeaderHeight = TitleHeight;//высота заголовка оперативная таблица
-pAlarms.Main_tables_Historical.Table_History_mode.HeaderHeight = TitleHeight;//высота заголовка историческая таблица
+pConfig.TableView.RowHeight = RowsHeigth;
+pConfig.TableView.HeaderHeight = TitleHeight;
+
+//пока не умеем различать изменения, будем обновлять всё
+pConfig.TableView.VersionColumns.Inc();
+pConfig.TableView.VersionWidth.Inc();
+pConfig.TableView.VersionVisible.Inc();
 
 OnEdited();]]>
 				</body>
@@ -2065,31 +1988,31 @@ errorMatch]]>
 			</object>
 			<do access-modifier="private" name="SetCurrent" display-name="SetCurrent" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 				<body kind="om">
-					<![CDATA[Range1.JSON = pAlarms.Main_panel.private.SeverityJSONtoString(pAlarms.Main_tables_Operative.ApAlarmQueue_1.JsonFilter);
-Range1.JSON_temp = pAlarms.Main_panel.private.GapToArray(Range1.JSON);
-Range1.SoundEnable   = pAlarms.Main_panel.private.SeverityGroups.Range1.SoundEnable;
-Range1.nSoundRepeats = pAlarms.Main_panel.private.SeverityGroups.Range1.nSoundRepeats;
-Range1.SoundPriority = pAlarms.Main_panel.private.SeverityGroups.Range1.SoundPriority;
+					<![CDATA[Range1.JSON = Alarms_Tools.SeverityJSONtoString(pConfig.SeverityGroups.Range1.Severity);
+Range1.JSON_temp = pConfig.SeverityGroups.GapToArray(Range1.JSON);
+Range1.SoundEnable   = pConfig.SeverityGroups.Range1.SoundEnable;
+Range1.nSoundRepeats = pConfig.SeverityGroups.Range1.nSoundRepeats;
+Range1.SoundPriority = pConfig.SeverityGroups.Range1.SoundPriority;
 Range1.syntaxError = false;
 
-Range2.JSON = pAlarms.Main_panel.private.SeverityJSONtoString(pAlarms.Main_tables_Operative.ApAlarmQueue_2.JsonFilter);
-Range2.JSON_temp = pAlarms.Main_panel.private.GapToArray(Range2.JSON);
-Range2.SoundEnable   = pAlarms.Main_panel.private.SeverityGroups.Range2.SoundEnable;
-Range2.nSoundRepeats = pAlarms.Main_panel.private.SeverityGroups.Range2.nSoundRepeats;
-Range2.SoundPriority = pAlarms.Main_panel.private.SeverityGroups.Range2.SoundPriority;
+Range2.JSON = Alarms_Tools.SeverityJSONtoString(pConfig.SeverityGroups.Range2.Severity);
+Range2.JSON_temp = pConfig.SeverityGroups.GapToArray(Range2.JSON);
+Range2.SoundEnable   = pConfig.SeverityGroups.Range2.SoundEnable;
+Range2.nSoundRepeats = pConfig.SeverityGroups.Range2.nSoundRepeats;
+Range2.SoundPriority = pConfig.SeverityGroups.Range2.SoundPriority;
 Range2.syntaxError = false;
 
-Range3.JSON = pAlarms.Main_panel.private.SeverityJSONtoString(pAlarms.Main_tables_Operative.ApAlarmQueue_3.JsonFilter);
-Range3.JSON_temp = pAlarms.Main_panel.private.GapToArray(Range3.JSON);
-Range3.SoundEnable   = pAlarms.Main_panel.private.SeverityGroups.Range3.SoundEnable;
-Range3.nSoundRepeats = pAlarms.Main_panel.private.SeverityGroups.Range3.nSoundRepeats;
-Range3.SoundPriority = pAlarms.Main_panel.private.SeverityGroups.Range3.SoundPriority;
+Range3.JSON = Alarms_Tools.SeverityJSONtoString(pConfig.SeverityGroups.Range3.Severity);
+Range3.JSON_temp = pConfig.SeverityGroups.GapToArray(Range3.JSON);
+Range3.SoundEnable   = pConfig.SeverityGroups.Range3.SoundEnable;
+Range3.nSoundRepeats = pConfig.SeverityGroups.Range3.nSoundRepeats;
+Range3.SoundPriority = pConfig.SeverityGroups.Range3.SoundPriority;
 Range3.syntaxError = false;
 
-Range4.JSON = pAlarms.Main_panel.private.SeverityJSONtoString(pAlarms.Main_tables_Operative.ApAlarmQueue_4.JsonFilter);
-Range4.SoundEnable   = pAlarms.Main_panel.private.SeverityGroups.Range4.tempSoundEnable;
-Range4.nSoundRepeats = pAlarms.Main_panel.private.SeverityGroups.Range4.nSoundRepeats;
-Range4.SoundPriority = pAlarms.Main_panel.private.SeverityGroups.Range4.SoundPriority;
+Range4.JSON = Alarms_Tools.SeverityJSONtoString(pConfig.SeverityGroups.Range4.Severity);
+Range4.SoundEnable   = pConfig.SeverityGroups.Range4.SoundEnable;
+Range4.nSoundRepeats = pConfig.SeverityGroups.Range4.nSoundRepeats;
+Range4.SoundPriority = pConfig.SeverityGroups.Range4.SoundPriority;
 
 OnEdited();]]>
 				</body>
@@ -2101,21 +2024,21 @@ Range1.SoundEnable = true;
 Range1.nSoundRepeats = 0;
 Range1.SoundPriority = 0;
 Range1.syntaxError = false;
-Range1.JSON_temp = pAlarms.Main_panel.private.GapToArray(Range1.JSON);
+Range1.JSON_temp = pConfig.SeverityGroups.GapToArray(Range1.JSON);
 
 Range2.JSON = "445-666";
 Range2.SoundEnable = true;
 Range2.nSoundRepeats = 3;
 Range2.SoundPriority = 0;
 Range2.syntaxError = false;
-Range2.JSON_temp = pAlarms.Main_panel.private.GapToArray(Range2.JSON);
+Range2.JSON_temp = pConfig.SeverityGroups.GapToArray(Range2.JSON);
 
 Range3.JSON = "223-444";
 Range3.SoundEnable = true;
 Range3.nSoundRepeats = 1;
 Range3.SoundPriority = 0;
 Range3.syntaxError = false;
-Range3.JSON_temp = pAlarms.Main_panel.private.GapToArray(Range3.JSON);
+Range3.JSON_temp = pConfig.SeverityGroups.GapToArray(Range3.JSON);
 
 Range4.JSON = "1-222";
 Range4.SoundEnable = true;
@@ -2130,22 +2053,22 @@ OnEdited();]]>
 					<![CDATA[// функция вызывается после редактирования для вычисления признаков изменения и соответствия значениям по умолчанию
 
 IsModified =
-	Range1.JSON != pAlarms.Main_panel.private.SeverityJSONtoString(pAlarms.Main_tables_Operative.ApAlarmQueue_1.JsonFilter) ||
-	Range1.SoundEnable != pAlarms.Main_panel.private.SeverityGroups.Range1.SoundEnable ||
-	Range1.nSoundRepeats != pAlarms.Main_panel.private.SeverityGroups.Range1.nSoundRepeats ||
-	Range1.SoundPriority != pAlarms.Main_panel.private.SeverityGroups.Range1.SoundPriority ||
-	Range2.JSON != pAlarms.Main_panel.private.SeverityJSONtoString(pAlarms.Main_tables_Operative.ApAlarmQueue_2.JsonFilter) ||
-	Range2.SoundEnable != pAlarms.Main_panel.private.SeverityGroups.Range2.SoundEnable ||
-	Range2.nSoundRepeats != pAlarms.Main_panel.private.SeverityGroups.Range2.nSoundRepeats ||
-	Range2.SoundPriority != pAlarms.Main_panel.private.SeverityGroups.Range2.SoundPriority ||
-	Range3.JSON != pAlarms.Main_panel.private.SeverityJSONtoString(pAlarms.Main_tables_Operative.ApAlarmQueue_3.JsonFilter) ||
-	Range3.SoundEnable != pAlarms.Main_panel.private.SeverityGroups.Range3.SoundEnable ||
-	Range3.nSoundRepeats != pAlarms.Main_panel.private.SeverityGroups.Range3.nSoundRepeats ||
-	Range3.SoundPriority != pAlarms.Main_panel.private.SeverityGroups.Range3.SoundPriority ||
-	Range4.JSON != pAlarms.Main_panel.private.SeverityJSONtoString(pAlarms.Main_tables_Operative.ApAlarmQueue_4.JsonFilter) ||
-	Range4.SoundEnable != pAlarms.Main_panel.private.SeverityGroups.Range4.tempSoundEnable ||
-	Range4.nSoundRepeats != pAlarms.Main_panel.private.SeverityGroups.Range4.nSoundRepeats ||
-	Range4.SoundPriority != pAlarms.Main_panel.private.SeverityGroups.Range4.SoundPriority;
+	Range1.JSON != Alarms_Tools.SeverityJSONtoString(pConfig.SeverityGroups.Range1.Severity) ||
+	Range1.SoundEnable != pConfig.SeverityGroups.Range1.SoundEnable ||
+	Range1.nSoundRepeats != pConfig.SeverityGroups.Range1.nSoundRepeats ||
+	Range1.SoundPriority != pConfig.SeverityGroups.Range1.SoundPriority ||
+	Range2.JSON != Alarms_Tools.SeverityJSONtoString(pConfig.SeverityGroups.Range2.Severity) ||
+	Range2.SoundEnable != pConfig.SeverityGroups.Range2.SoundEnable ||
+	Range2.nSoundRepeats != pConfig.SeverityGroups.Range2.nSoundRepeats ||
+	Range2.SoundPriority != pConfig.SeverityGroups.Range2.SoundPriority ||
+	Range3.JSON != Alarms_Tools.SeverityJSONtoString(pConfig.SeverityGroups.Range3.Severity) ||
+	Range3.SoundEnable != pConfig.SeverityGroups.Range3.SoundEnable ||
+	Range3.nSoundRepeats != pConfig.SeverityGroups.Range3.nSoundRepeats ||
+	Range3.SoundPriority != pConfig.SeverityGroups.Range3.SoundPriority ||
+	Range4.JSON != Alarms_Tools.SeverityJSONtoString(pConfig.SeverityGroups.Range4.Severity) ||
+	Range4.SoundEnable != pConfig.SeverityGroups.Range4.SoundEnable ||
+	Range4.nSoundRepeats != pConfig.SeverityGroups.Range4.nSoundRepeats ||
+	Range4.SoundPriority != pConfig.SeverityGroups.Range4.SoundPriority;
 
 IsDefault =
 	Range1.JSON == "667-1000" &&
@@ -2169,39 +2092,31 @@ IsDefault =
 			<do access-modifier="private" name="Apply" display-name="Apply" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da" form-by-id="true">
 				<body kind="om">
 					<![CDATA[// Записываем параметры
-pAlarms.Main_tables_Operative.ApAlarmQueue_1.JsonFilter = MakeRequestJSON(Range1.JSON);
-pAlarms.Main_tables_Operative.ApAlarmQueue_1.severityArray = pAlarms.Main_panel.private.GapToArray(Range1.JSON);
-pAlarms.Main_panel.private.SeverityGroups.Range1.SoundEnable = Range1.SoundEnable;
-pAlarms.Main_panel.private.SeverityGroups.Range1.nSoundRepeats = Range1.nSoundRepeats;
-pAlarms.Main_panel.private.SeverityGroups.Range1.SoundPriority = Range1.SoundPriority;
+pConfig.SeverityGroups.Range1.Severity = MakeRequestJSON(Range1.JSON);
+pConfig.SeverityGroups.Range1.SoundEnable = Range1.SoundEnable;
+pConfig.SeverityGroups.Range1.nSoundRepeats = Range1.nSoundRepeats;
+pConfig.SeverityGroups.Range1.SoundPriority = Range1.SoundPriority;
 
-pAlarms.Main_tables_Operative.ApAlarmQueue_2.JsonFilter = MakeRequestJSON(Range2.JSON);
-pAlarms.Main_tables_Operative.ApAlarmQueue_2.severityArray = pAlarms.Main_panel.private.GapToArray(Range2.JSON);
-pAlarms.Main_panel.private.SeverityGroups.Range2.SoundEnable = Range2.SoundEnable;
-pAlarms.Main_panel.private.SeverityGroups.Range2.nSoundRepeats = Range2.nSoundRepeats;
-pAlarms.Main_panel.private.SeverityGroups.Range2.SoundPriority = Range2.SoundPriority;
+pConfig.SeverityGroups.Range2.Severity = MakeRequestJSON(Range2.JSON);
+pConfig.SeverityGroups.Range2.SoundEnable = Range2.SoundEnable;
+pConfig.SeverityGroups.Range2.nSoundRepeats = Range2.nSoundRepeats;
+pConfig.SeverityGroups.Range2.SoundPriority = Range2.SoundPriority;
 
-pAlarms.Main_tables_Operative.ApAlarmQueue_3.JsonFilter = MakeRequestJSON(Range3.JSON);
-pAlarms.Main_tables_Operative.ApAlarmQueue_3.severityArray = pAlarms.Main_panel.private.GapToArray(Range3.JSON);
-pAlarms.Main_panel.private.SeverityGroups.Range3.SoundEnable = Range3.SoundEnable;
-pAlarms.Main_panel.private.SeverityGroups.Range3.nSoundRepeats = Range3.nSoundRepeats;
-pAlarms.Main_panel.private.SeverityGroups.Range3.SoundPriority = Range3.SoundPriority;
+pConfig.SeverityGroups.Range3.Severity = MakeRequestJSON(Range3.JSON);
+pConfig.SeverityGroups.Range3.SoundEnable = Range3.SoundEnable;
+pConfig.SeverityGroups.Range3.nSoundRepeats = Range3.nSoundRepeats;
+pConfig.SeverityGroups.Range3.SoundPriority = Range3.SoundPriority;
 
-pAlarms.Main_tables_Operative.ApAlarmQueue_4.JsonFilter = MakeRequestJSON(Range4.JSON);
-pAlarms.Main_tables_Operative.ApAlarmQueue_4.severityArray = pAlarms.Main_panel.private.GapToArray(Range4.JSON);
-pAlarms.Main_panel.private.SeverityGroups.Range4.tempSoundEnable = Range4.SoundEnable;
-pAlarms.Main_panel.private.SeverityGroups.Range4.nSoundRepeats = Range4.nSoundRepeats;
-pAlarms.Main_panel.private.SeverityGroups.Range4.SoundPriority = Range4.SoundPriority;
+pConfig.SeverityGroups.Range4.Severity = MakeRequestJSON(Range4.JSON);
+pConfig.SeverityGroups.Range4.SoundEnable = Range4.SoundEnable;
+pConfig.SeverityGroups.Range4.nSoundRepeats = Range4.nSoundRepeats;
+pConfig.SeverityGroups.Range4.SoundPriority = Range4.SoundPriority;
+pConfig.SeverityGroups.Range4.severityArray = pConfig.SeverityGroups.GapToArray(Alarms_Tools.SeverityJSONtoString(pConfig.SeverityGroups.Range4.Severity));
 
 OnEdited();
 
-// Обновляем очереди активных алармов
-pAlarms.Main_tables_Operative.ReloadSoundQueue();
-
-// Обновляем настройки декорирования для информационных сообщений
-pAlarms.NotAckOtherEvents = pAlarms.NotAckOtherEvents;
-
-pAlarms.Main_tables_Operative.TableModel_1.ApAlarmQuery_1.ReloadSmart(true,true);//перезапускаем соединение после изменений Range1234]]>
+pConfig.SeverityGroups.Version.Inc();
+]]>
 				</body>
 			</do>
 			<do access-modifier="private" name="MakeRequestJSON" display-name="MakeRequestJSON" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" form-by-id="true">
@@ -2209,67 +2124,11 @@ pAlarms.Main_tables_Operative.TableModel_1.ApAlarmQuery_1.ReloadSmart(true,true)
 				<body kind="javascript">
 					<![CDATA[//Функция преобразует исходную строку в формат JSON
 //определяются логические операторы и происходит поэтапное формирование логических выражений из элементов массива и происходит формирование строки в JSON формате
-var str = inputString;
-var objectInfo = {};
-var JSONStr = '';
-var tempArray = [];
-var AND = [];
 
 //Если пустая строка, то возвращаем "0" для того, чтобы в очередь не попадали значения
 if (inputString == "") return '{"severity": 0 }';
 
-//Шаблон диапазона
-var gapPattern = /\d+[-]\d+/;
-
-//Заполняем массив символами строки
-var commonArray = str.split(",");
-
-//Фукнция получения выражения вида ">": { "severity": 10 }"
-function MakeExpression(str,gap)
-{
-	let argument = str.match(/\d+/g);
-	let expression = {};
-	//Если имеем дело с диапазоном
-	if (argument==null || argument.length==0) expression = {'data:severity':0};
-	else if (gap != "") expression = {[gap]: {'severity':parseInt(argument[0])}};
-	else expression = {'severity':parseInt(argument[0])};
-	return expression
-}
-
-//Если элемент всего один и не диапазон
-if (commonArray.length == 1 && !gapPattern.test(commonArray[0])) 
-{
-	JSONStr = JSON.stringify(MakeExpression(commonArray[0],""));
-	return JSONStr;
-}
-
-//Формирование JSON-строки
-for (let i = 0; i < commonArray.length; i++)
-{
-	let tempObject = {};
-	tempObject[`AND`] = [];
-	if (gapPattern.test(commonArray[i]))
-	{
-		tempArray = commonArray[i].match(/\d+/g);
-		tempObject[`AND`].push(MakeExpression(tempArray[0],">="));
-		tempObject[`AND`].push(MakeExpression(tempArray[1],"<="));
-		if (commonArray.length > 1)
-		{
-			if (objectInfo[`OR`] == undefined) objectInfo[`OR`] = [];	
-			objectInfo[`OR`].push(tempObject);
-		}
-		else objectInfo = tempObject;
-	}
-	else
-	{
-		if (objectInfo[`OR`] == undefined) objectInfo[`OR`] = [];	
-		objectInfo[`OR`].push(MakeExpression(commonArray[i],""));
-	}
-}
-//записываем объект в виде строки
-JSONStr = JSON.stringify(objectInfo);
-//log(JSONStr);
-return JSONStr;
+return Alarms_Tools.GapToJSON(inputString);
 ]]>
 				</body>
 			</do>
@@ -2313,7 +2172,7 @@ return JSONStr;
 			<do access-modifier="private" name="SetCurrent" display-name="SetCurrent" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da" form-by-id="true">
 				<body kind="om">
 					<![CDATA[//Считываем параметры панели инструментов и панели состояния
-Data = pAlarms.Main_panel.ToolBar.Data;
+Data = pConfig.ToolBar.Data;
 
 OnEdited();
 ]]>
@@ -2321,7 +2180,7 @@ OnEdited();
 			</do>
 			<do access-modifier="private" name="SetDefaults" display-name="SetDefaults" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 				<body kind="om">
-					<![CDATA[Data = pAlarms.Main_panel.ToolBar.GetDefaults();
+					<![CDATA[Data = pConfig.ToolBar.GetDefaults();
 
 OnEdited();
 ]]>
@@ -2332,17 +2191,17 @@ OnEdited();
 					<![CDATA[// функция вызывается после редактирования для вычисления признаков изменения и соответствия значениям по умолчанию
 
 IsModified =
-	Data != pAlarms.Main_panel.ToolBar.Data;
+	Data != pConfig.ToolBar.Data;
 
 IsDefault =
-	Data == pAlarms.Main_panel.ToolBar.GetDefaults();
+	Data == pConfig.ToolBar.GetDefaults();
 ]]>
 				</body>
 			</do>
 			<do access-modifier="private" name="Apply" display-name="Apply" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da" form-by-id="true">
 				<body kind="om">
-					<![CDATA[pAlarms.Main_panel.ToolBar.Data = Settings.Panel.Data;
-pAlarms.Main_panel.ToolBar.ApplyData();
+					<![CDATA[pConfig.ToolBar.Data = Settings.Panel.Data;
+pConfig.ToolBar.ApplyData();
 
 OnEdited();]]>
 				</body>
@@ -2393,10 +2252,10 @@ OnEdited();]]>
 Patterns.AddColumn("Patterns","","","","string",false,true);
 
 i: int4 = 0;
-while (i < pAlarms.Main_panel.private.CommentPattern.PatternsTable.GetRowCount())
+while (i < pConfig.CommentPattern.PatternsTable.GetRowCount())
 {
 	Patterns.AddRow();
-	Patterns.SetCellData(i, 0, pAlarms.Main_panel.private.CommentPattern.PatternsTable.GetCellData(i,0));
+	Patterns.SetCellData(i, 0, pConfig.CommentPattern.PatternsTable.GetCellData(i,0));
 	i += 1;
 }
 
@@ -2413,13 +2272,13 @@ OnEdited();]]>
 				<body kind="om">
 					<![CDATA[// функция вызывается после редактирования для вычисления признаков изменения и соответствия значениям по умолчанию
 
-if (Patterns.GetRowCount() == pAlarms.Main_panel.private.CommentPattern.PatternsTable.GetRowCount())
+if (Patterns.GetRowCount() == pConfig.CommentPattern.PatternsTable.GetRowCount())
 {
 	isModified: bool = false;
 	i: int4 = 0;
 	while (i < Patterns.GetRowCount())
 	{
-		pattern: string = Variant.ToString(pAlarms.Main_panel.private.CommentPattern.PatternsTable.GetCellData(i,0), "");
+		pattern: string = Variant.ToString(pConfig.CommentPattern.PatternsTable.GetCellData(i,0), "");
 		if (Variant.ToString(Patterns.GetCellData(i,0), "") != pattern)
 		{
 			isModified = true;
@@ -2438,14 +2297,14 @@ IsDefault = Patterns.GetRowCount() == 0;]]>
 			<do access-modifier="private" name="Apply" display-name="Apply" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da" form-by-id="true">
 				<body kind="om">
 					<![CDATA[//Применить настройки шаблонов комментариев
-pAlarms.Main_panel.private.CommentPattern.PatternsTable.Reset();
-pAlarms.Main_panel.private.CommentPattern.PatternsTable.AddColumn("Patterns","","","","string",false,true);
+pConfig.CommentPattern.PatternsTable.Reset();
+pConfig.CommentPattern.PatternsTable.AddColumn("Patterns","","","","string",false,true);
 
 i: int4 = 0;
 while (i < Patterns.GetRowCount())
 {
-	pAlarms.Main_panel.private.CommentPattern.PatternsTable.AddRow();
-	pAlarms.Main_panel.private.CommentPattern.PatternsTable.SetCellData(i, 0, Patterns.GetCellData(i,0));
+	pConfig.CommentPattern.PatternsTable.AddRow();
+	pConfig.CommentPattern.PatternsTable.SetCellData(i, 0, Patterns.GetCellData(i,0));
 	i += 1;
 }
 
@@ -2494,15 +2353,15 @@ OnEdited();]]>
 			</object>
 			<do access-modifier="private" name="SetCurrent" display-name="SetCurrent" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da" form-by-id="true">
 				<body kind="om">
-					<![CDATA[Path = pAlarms.Main_panel.private.Export.ExportPath;
-ViewColumnSettings = pAlarms.Main_panel.private.Export.ViewColumnSettings.Value;
+					<![CDATA[Path = pConfig.Export.ExportPath;
+ViewColumnSettings = pConfig.Export.ViewColumnSettings.Value;
 
 OnEdited();]]>
 				</body>
 			</do>
 			<do access-modifier="private" name="SetDefaults" display-name="SetDefaults" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 				<body kind="om">
-					<![CDATA[Path = pAlarms.Main_panel.private.Export.ExportPath.Default;
+					<![CDATA[Path = pConfig.Export.ExportPath.Default;
 ViewColumnSettings = false;
 
 OnEdited();]]>
@@ -2513,19 +2372,19 @@ OnEdited();]]>
 					<![CDATA[// функция вызывается после редактирования для вычисления признаков изменения и соответствия значениям по умолчанию
 
 IsModified =
-	Path != pAlarms.Main_panel.private.Export.ExportPath ||
-	ViewColumnSettings != pAlarms.Main_panel.private.Export.ViewColumnSettings;
+	Path != pConfig.Export.ExportPath ||
+	ViewColumnSettings != pConfig.Export.ViewColumnSettings;
 
 IsDefault =
-	Path == pAlarms.Main_panel.private.Export.ExportPath.Default &&
+	Path == pConfig.Export.ExportPath.Default &&
 	ViewColumnSettings == false;]]>
 				</body>
 			</do>
 			<do access-modifier="private" name="Apply" display-name="Apply" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da" form-by-id="true">
 				<body kind="om">
 					<![CDATA[//Применить настройки экспорта
-pAlarms.Main_panel.private.Export.ExportPath.Update(Settings.Export.Path);
-pAlarms.Main_panel.private.Export.ViewColumnSettings.Value = Settings.Export.ViewColumnSettings;
+pConfig.Export.ExportPath.Update(Settings.Export.Path);
+pConfig.Export.ViewColumnSettings.Value = Settings.Export.ViewColumnSettings;
 
 OnEdited();]]>
 				</body>
@@ -2597,14 +2456,14 @@ OnEdited();]]>
 			<do access-modifier="private" name="SetCurrent" display-name="SetCurrent" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da" form-by-id="true">
 				<body kind="om">
 					<![CDATA[//Считываем параметры событий
-DefColBackground = pAlarms.Main_panel.private.EventSettings.DefColBackground;
-DefColText = pAlarms.Main_panel.private.EventSettings.DefColText;
-AckColBackground = pAlarms.Main_panel.private.EventSettings.AckColBackground;
-AckColText = pAlarms.Main_panel.private.EventSettings.AckColText;
-SelectEventColor = pAlarms.Main_panel.private.EventSettings.SelectEventsCol;
-AckStyleMode = pAlarms.Main_panel.private.EventSettings.AckStyleMode;
-BlinkingColumnsSet(pAlarms.Main_panel.private.EventSettings.BlinkingColumns);
-BlinkAllColumns = pAlarms.Main_panel.private.EventSettings.BlinkAllColumns;
+DefColBackground = pConfig.EventSettings.DefColBackground;
+DefColText = pConfig.EventSettings.DefColText;
+AckColBackground = pConfig.EventSettings.AckColBackground;
+AckColText = pConfig.EventSettings.AckColText;
+SelectEventColor = pConfig.EventSettings.SelectEventsCol;
+AckStyleMode = pConfig.EventSettings.AckStyleMode;
+BlinkingColumnsSet(pConfig.EventSettings.BlinkingColumns);
+BlinkAllColumns = pConfig.EventSettings.BlinkAllColumns;
 
 DecoratorSettings.Reset();
 DecoratorSettings.AddColumn("activity","","","","string",false,true);
@@ -2622,11 +2481,11 @@ DecoratorSettings.AddColumn("ackBackground","","","","uint4",false,true);
 DecoratorSettings.AddColumn("ackText","","","","uint4",false,true);
 
 i: int4 = 0;
-count: int4 = pAlarms.Main_panel.private.EventSettings.DecoratorSettings.GetRowCount();
+count: int4 = pConfig.EventSettings.DecoratorSettings.GetRowCount();
 while (i < count)
 {
 	DecoratorSettings.AddRow();
-	rowJson: string = pAlarms.Main_panel.private.EventSettings.DecoratorSettings.GetRowDataAsJson(i);
+	rowJson: string = pConfig.EventSettings.DecoratorSettings.GetRowDataAsJson(i);
 	DecoratorSettings.SetRowDataAsJson(i, rowJson);
 	i += 1;
 }
@@ -2644,7 +2503,7 @@ AckColBackground = 0xffffffff;
 AckColText = 0xff000000;
 SelectEventColor = 0xff0080ff;
 AckStyleMode = false;
-BlinkingColumnsSet(pAlarms.Main_panel.private.EventSettings.GetBlinkingColumnsDefault());
+BlinkingColumnsSet(pConfig.EventSettings.GetBlinkingColumnsDefault());
 BlinkAllColumns = true;]]>
 				</body>
 			</do>
@@ -2676,13 +2535,13 @@ BlinkAllColumns = true;]]>
 			</object>
 			<do access-modifier="private" name="OnEdited" display-name="OnEdited" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 				<body kind="om">
-					<![CDATA[if (DecoratorSettings.GetRowCount() == pAlarms.Main_panel.private.EventSettings.DecoratorSettings.GetRowCount())
+					<![CDATA[if (DecoratorSettings.GetRowCount() == pConfig.EventSettings.DecoratorSettings.GetRowCount())
 {
 	decoratorModified: bool = false;
 	i: int4 = 0;
 	while (i < DecoratorSettings.GetRowCount())
 	{									
-		if (DecoratorSettings.GetRowDataAsJson(i) != pAlarms.Main_panel.private.EventSettings.DecoratorSettings.GetRowDataAsJson(i))
+		if (DecoratorSettings.GetRowDataAsJson(i) != pConfig.EventSettings.DecoratorSettings.GetRowDataAsJson(i))
 		{
 			decoratorModified = true;
 			break;
@@ -2691,14 +2550,14 @@ BlinkAllColumns = true;]]>
 	}
 
 	IsModified = decoratorModified ||
-		DefColBackground != pAlarms.Main_panel.private.EventSettings.DefColBackground ||
-		DefColText != pAlarms.Main_panel.private.EventSettings.DefColText ||
-		AckColBackground != pAlarms.Main_panel.private.EventSettings.AckColBackground ||
-		AckColText != pAlarms.Main_panel.private.EventSettings.AckColText ||
-		SelectEventColor != pAlarms.Main_panel.private.EventSettings.SelectEventsCol ||
-		AckStyleMode != pAlarms.Main_panel.private.EventSettings.AckStyleMode ||
-		BlinkingColumns != pAlarms.Main_panel.private.EventSettings.BlinkingColumns ||
-		BlinkAllColumns != pAlarms.Main_panel.private.EventSettings.BlinkAllColumns;
+		DefColBackground != pConfig.EventSettings.DefColBackground ||
+		DefColText != pConfig.EventSettings.DefColText ||
+		AckColBackground != pConfig.EventSettings.AckColBackground ||
+		AckColText != pConfig.EventSettings.AckColText ||
+		SelectEventColor != pConfig.EventSettings.SelectEventsCol ||
+		AckStyleMode != pConfig.EventSettings.AckStyleMode ||
+		BlinkingColumns != pConfig.EventSettings.BlinkingColumns ||
+		BlinkAllColumns != pConfig.EventSettings.BlinkAllColumns;
 }
 else
 	IsModified = true;
@@ -2710,33 +2569,32 @@ IsDefault = DecoratorSettings.GetRowCount() == 0 &&
 	AckColText == 0xff000000 &&
 	SelectEventColor == 0xff0080ff &&
 	AckStyleMode == false &&
-	BlinkingColumns == pAlarms.Main_panel.private.EventSettings.GetBlinkingColumnsDefault() &&
+	BlinkingColumns == pConfig.EventSettings.GetBlinkingColumnsDefault() &&
 	BlinkAllColumns == true;]]>
 				</body>
 			</do>
 			<do access-modifier="private" name="Apply" display-name="Apply" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da" form-by-id="true">
 				<body kind="om">
-					<![CDATA[pAlarms.Main_panel.private.EventSettings.DefColBackground = DefColBackground;
-pAlarms.Main_panel.private.EventSettings.DefColText = DefColText;
-pAlarms.Main_panel.private.EventSettings.AckColBackground = AckColBackground;
-pAlarms.Main_panel.private.EventSettings.AckColText = AckColText;
-pAlarms.Main_panel.private.EventSettings.SelectEventsCol = SelectEventColor;
-pAlarms.Main_panel.private.EventSettings.AckStyleMode = AckStyleMode;
-pAlarms.Main_panel.private.EventSettings.BlinkingColumns = BlinkingColumns;
-pAlarms.Main_panel.private.EventSettings.BlinkAllColumns = BlinkAllColumns;
+					<![CDATA[pConfig.EventSettings.DefColBackground = DefColBackground;
+pConfig.EventSettings.DefColText = DefColText;
+pConfig.EventSettings.AckColBackground = AckColBackground;
+pConfig.EventSettings.AckColText = AckColText;
+pConfig.EventSettings.SelectEventsCol = SelectEventColor;
+pConfig.EventSettings.AckStyleMode = AckStyleMode;
+pConfig.EventSettings.BlinkingColumns = BlinkingColumns;
+pConfig.EventSettings.BlinkAllColumns = BlinkAllColumns;
 
 i: int4 = 0;
 count: int4 = DecoratorSettings.GetRowCount();
-pAlarms.Main_panel.private.EventSettings.DecoratorSettings.Clear();
+pConfig.EventSettings.DecoratorSettings.Clear();
 while (i < count)
 {
 	rowJson: string = DecoratorSettings.GetRowDataAsJson(i);
-	pAlarms.Main_panel.private.EventSettings.DecoratorSettings.AddRow();
-	pAlarms.Main_panel.private.EventSettings.DecoratorSettings.SetRowDataAsJson(i, rowJson);
+	pConfig.EventSettings.DecoratorSettings.AddRow();
+	pConfig.EventSettings.DecoratorSettings.SetRowDataAsJson(i, rowJson);
 	i += 1;
 }
-pAlarms.Main_panel.private.EventSettings.ResetDecorators();
-pAlarms.StatePanel.UpdateMessageCount();//#27571 при изменении декорирования может измениться и результат фильтрации
+pConfig.EventSettings.Version.Inc();
 
 OnEdited();]]>
 				</body>
@@ -2807,6 +2665,7 @@ for (let i = 0; i < commonArray.length; i++) {
 	} 
 	else if (!/^\d+$/.test(commonArray[i])) return "errorSyntax";
 }
+if (commonArray.length == 0 && !allowEmptyString) return "errorSyntax";
 
 // Формирование массива чисел
 for (let i = 0; i < commonArray.length; i++) {
@@ -2861,6 +2720,7 @@ for (let j = 0; j < commonArray.length; j++) {
 return sortedArray.toString();]]>
 			</body>
 			<param access-modifier="private" name="inputString" display-name="" uuid="dad7f6f2-9637-4bf3-93b0-75a2a4fb6519" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+			<param access-modifier="private" name="allowEmptyString" display-name="" uuid="485bebf3-43c8-4aa4-8e99-fce141e22a4e" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
 		</do>
 		<do access-modifier="private" name="Apply" display-name="Apply" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 			<body kind="om">
@@ -2876,9 +2736,9 @@ if (ContextMenu.IsModified) ContextMenu.Apply();
 if (Suppression.IsModified) Suppression.Apply();
 if (Printing.IsModified) Printing.Apply();
 
-pAlarms.Main_panel.private.EventSettings.CustomColors = ChooseColorResult.CustomColors;
+pConfig.EventSettings.CustomColors = ChooseColorResult.CustomColors;
 
-pAlarms.Main_panel.private.SaveConfiguration();]]>
+pConfig.Save();]]>
 			</body>
 		</do>
 		<object access-modifier="private" name="PresetFilters" display-name="PresetFilters" uuid="8e9676ec-d628-4765-b1ae-b4189af5eec0" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="2">
@@ -2900,13 +2760,13 @@ pAlarms.Main_panel.private.SaveConfiguration();]]>
 			<designed target="ZValue" value="0" ver="3"/>
 			<do access-modifier="private" name="SetCurrent" display-name="SetCurrent" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da" form-by-id="true">
 				<body kind="javascript">
-					<![CDATA[for (let i = 0; i < pAlarms.Main_panel.private.PresetFilters.name.Length; i++)
+					<![CDATA[for (let i = 0; i < pConfig.PresetFilters.name.Length; i++)
 {
-	c_name[i] = pAlarms.Main_panel.private.PresetFilters.name[i];
-	c_used[i] = pAlarms.Main_panel.private.PresetFilters.used[i];
-	c_json[i] = pAlarms.Main_panel.private.PresetFilters.json[i];
+	c_name[i] = pConfig.PresetFilters.name[i];
+	c_used[i] = pConfig.PresetFilters.used[i];
+	c_json[i] = pConfig.PresetFilters.json[i];
 }
-mode = pAlarms.Main_panel.private.PresetFilters.mode;
+mode = pConfig.PresetFilters.mode;
 
 OnEdited();
 ]]>
@@ -2963,13 +2823,13 @@ IsDefault = (mode==0) && isDefaultColumns;
 			</do>
 			<do access-modifier="private" name="CheckIsModified" display-name="CheckIsModified" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
 				<body kind="javascript">
-					<![CDATA[for (let i = 0; i < pAlarms.Main_panel.private.PresetFilters.name.Length; i++)
+					<![CDATA[for (let i = 0; i < pConfig.PresetFilters.name.Length; i++)
 {
-	if (c_name[i] != pAlarms.Main_panel.private.PresetFilters.name[i]) return true;
-	if (c_used[i] != pAlarms.Main_panel.private.PresetFilters.used[i]) return true;
-	if (c_json[i] != pAlarms.Main_panel.private.PresetFilters.json[i]) return true;
+	if (c_name[i] != pConfig.PresetFilters.name[i]) return true;
+	if (c_used[i] != pConfig.PresetFilters.used[i]) return true;
+	if (c_json[i] != pConfig.PresetFilters.json[i]) return true;
 }
-if (mode != pAlarms.Main_panel.private.PresetFilters.mode) return true;
+if (mode != pConfig.PresetFilters.mode) return true;
 
 return false;
 ]]>
@@ -2977,13 +2837,13 @@ return false;
 			</do>
 			<do access-modifier="private" name="Apply" display-name="Apply" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 				<body kind="javascript">
-					<![CDATA[for (let i = 0; i < pAlarms.Main_panel.private.PresetFilters.name.Length; i++)
+					<![CDATA[for (let i = 0; i < pConfig.PresetFilters.name.Length; i++)
 {
-	pAlarms.Main_panel.private.PresetFilters.name[i] = c_name[i];
-	pAlarms.Main_panel.private.PresetFilters.used[i] = c_used[i];
-	pAlarms.Main_panel.private.PresetFilters.json[i] = c_json[i];
+	pConfig.PresetFilters.name[i] = c_name[i];
+	pConfig.PresetFilters.used[i] = c_used[i];
+	pConfig.PresetFilters.json[i] = c_json[i];
 }
-pAlarms.Main_panel.private.PresetFilters.mode = mode;
+pConfig.PresetFilters.mode = mode;
 //todo действующий фильтр может несовпасть с новой конфигурацией. действующий фильтр надо искать в конфиге и править, либо сбрасывать!
 
 OnEdited();
@@ -3038,7 +2898,7 @@ OnEdited();
 					<![CDATA[// функция вызывается после редактирования для вычисления признаков изменения и соответствия значениям по умолчанию
 
 IsModified =
-	StorageDuration != pAlarms.Main_panel.private.QueryProcessing.StorageDuration;
+	StorageDuration != pConfig.QueryProcessing.StorageDuration;
 
 IsDefault =
 	StorageDuration == 0;
@@ -3047,7 +2907,7 @@ IsDefault =
 			</do>
 			<do access-modifier="private" name="SetCurrent" display-name="SetCurrent" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 				<body kind="om">
-					<![CDATA[StorageDuration = pAlarms.Main_panel.private.QueryProcessing.StorageDuration;
+					<![CDATA[StorageDuration = pConfig.QueryProcessing.StorageDuration;
 
 OnEdited();]]>
 				</body>
@@ -3062,9 +2922,9 @@ OnEdited();]]>
 			<do access-modifier="private" name="Apply" display-name="Apply" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 				<body kind="om">
 					<![CDATA[//Применить настройки
-pAlarms.Main_panel.private.QueryProcessing.StorageDuration = Settings.QueryProcessing.StorageDuration;
+pConfig.QueryProcessing.StorageDuration = Settings.QueryProcessing.StorageDuration;
 
-pAlarms.Main_tables_Operative.TableModel_1.ApAlarmQuery_1.ReloadSmart(true,true);
+pConfig.QueryProcessing.Version.Inc();
 
 OnEdited();]]>
 				</body>
@@ -3092,23 +2952,23 @@ OnEdited();]]>
 					<![CDATA[// функция вызывается после редактирования для вычисления признаков изменения и соответствия значениям по умолчанию
 
 IsModified =
-	Data != pAlarms.Main_panel.private.ContextMenu.Data;
+	Data != pConfig.ContextMenu.Data;
 
 IsDefault =
-	Data == pAlarms.Main_panel.private.ContextMenu.GetDefaults();
+	Data == pConfig.ContextMenu.GetDefaults();
 ]]>
 				</body>
 			</do>
 			<do access-modifier="private" name="SetCurrent" display-name="SetCurrent" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da" form-by-id="true">
 				<body kind="om">
-					<![CDATA[Data = pAlarms.Main_panel.private.ContextMenu.Data;
+					<![CDATA[Data = pConfig.ContextMenu.Data;
 
 OnEdited();]]>
 				</body>
 			</do>
 			<do access-modifier="private" name="SetDefaults" display-name="SetDefaults" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 				<body kind="om">
-					<![CDATA[Data = pAlarms.Main_panel.private.ContextMenu.GetDefaults();
+					<![CDATA[Data = pConfig.ContextMenu.GetDefaults();
 
 OnEdited();]]>
 				</body>
@@ -3135,7 +2995,7 @@ OnEdited();]]>
 			<do access-modifier="private" name="Apply" display-name="Apply" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 				<body kind="om">
 					<![CDATA[//Применить настройки
-pAlarms.Main_panel.private.ContextMenu.Data = Settings.ContextMenu.Data;
+pConfig.ContextMenu.Data = Settings.ContextMenu.Data;
 
 OnEdited();]]>
 				</body>
@@ -3164,13 +3024,13 @@ OnEdited();]]>
 					<![CDATA[// функция вызывается после редактирования для вычисления признаков изменения и соответствия значениям по умолчанию
 
 IsModified =
-	Intervals != pAlarms.Main_panel.private.Suppression.Intervals ||
-	BlockIndefinite != pAlarms.Main_panel.private.Suppression.BlockIndefinite ||
-	SuppressIndefinite != pAlarms.Main_panel.private.Suppression.SuppressIndefinite ||
-	SuppressInterval != pAlarms.Main_panel.private.Suppression.SuppressInterval;
+	Intervals != pConfig.Suppression.Intervals ||
+	BlockIndefinite != pConfig.Suppression.BlockIndefinite ||
+	SuppressIndefinite != pConfig.Suppression.SuppressIndefinite ||
+	SuppressInterval != pConfig.Suppression.SuppressInterval;
 
 IsDefault =
-	Intervals == pAlarms.Main_panel.private.Suppression.GetDefaultIntervals() &&
+	Intervals == pConfig.Suppression.GetDefaultIntervals() &&
 	BlockIndefinite == false &&
 	SuppressIndefinite == false &&
 	SuppressInterval == false;
@@ -3179,17 +3039,17 @@ IsDefault =
 			</do>
 			<do access-modifier="private" name="SetCurrent" display-name="SetCurrent" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da" form-by-id="true">
 				<body kind="om">
-					<![CDATA[Intervals = pAlarms.Main_panel.private.Suppression.Intervals;
-BlockIndefinite = pAlarms.Main_panel.private.Suppression.BlockIndefinite;
-SuppressIndefinite = pAlarms.Main_panel.private.Suppression.SuppressIndefinite;
-SuppressInterval = pAlarms.Main_panel.private.Suppression.SuppressInterval;
+					<![CDATA[Intervals = pConfig.Suppression.Intervals;
+BlockIndefinite = pConfig.Suppression.BlockIndefinite;
+SuppressIndefinite = pConfig.Suppression.SuppressIndefinite;
+SuppressInterval = pConfig.Suppression.SuppressInterval;
 
 OnEdited();]]>
 				</body>
 			</do>
 			<do access-modifier="private" name="SetDefaults" display-name="SetDefaults" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 				<body kind="om">
-					<![CDATA[Intervals = pAlarms.Main_panel.private.Suppression.GetDefaultIntervals();
+					<![CDATA[Intervals = pConfig.Suppression.GetDefaultIntervals();
 BlockIndefinite = false;
 SuppressIndefinite = false;
 SuppressInterval = false;
@@ -3219,10 +3079,10 @@ OnEdited();]]>
 			<do access-modifier="private" name="Apply" display-name="Apply" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 				<body kind="om">
 					<![CDATA[//Применить настройки
-pAlarms.Main_panel.private.Suppression.Intervals = Intervals;
-pAlarms.Main_panel.private.Suppression.BlockIndefinite = BlockIndefinite;
-pAlarms.Main_panel.private.Suppression.SuppressIndefinite = SuppressIndefinite;
-pAlarms.Main_panel.private.Suppression.SuppressInterval = SuppressInterval;
+pConfig.Suppression.Intervals = Intervals;
+pConfig.Suppression.BlockIndefinite = BlockIndefinite;
+pConfig.Suppression.SuppressIndefinite = SuppressIndefinite;
+pConfig.Suppression.SuppressInterval = SuppressInterval;
 
 OnEdited();]]>
 				</body>
@@ -3256,7 +3116,7 @@ OnEdited();]]>
 					<![CDATA[// функция вызывается после редактирования для вычисления признаков изменения и соответствия значениям по умолчанию
 
 IsModified =
-	PageLimit != pAlarms.Main_panel.private.Print.PageLimit;
+	PageLimit != pConfig.Print.PageLimit;
 
 
 IsDefault =
@@ -3266,7 +3126,7 @@ IsDefault =
 			</do>
 			<do access-modifier="private" name="SetCurrent" display-name="SetCurrent" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da" form-by-id="true">
 				<body kind="om">
-					<![CDATA[PageLimit = pAlarms.Main_panel.private.Print.PageLimit;
+					<![CDATA[PageLimit = pConfig.Print.PageLimit;
 
 OnEdited();]]>
 				</body>
@@ -3300,7 +3160,7 @@ OnEdited();]]>
 			<do access-modifier="private" name="Apply" display-name="Apply" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 				<body kind="om">
 					<![CDATA[//Применить настройки
-pAlarms.Main_panel.private.Print.PageLimit = PageLimit;
+pConfig.Print.PageLimit = PageLimit;
 
 OnEdited();]]>
 				</body>
@@ -3320,7 +3180,7 @@ OnEdited();]]>
 	<designed target="Opacity" value="1" ver="3"/>
 	<do-on access-modifier="private" name="Handler_AboutToOpen" display-name="Handler_AboutToOpen" ver="5" event="AboutToOpen">
 		<body kind="om">
-			<![CDATA[Settings.ChooseColorResult.CustomColors = pAlarms.Main_panel.private.EventSettings.CustomColors;]]>
+			<![CDATA[Settings.ChooseColorResult.CustomColors = pConfig.EventSettings.CustomColors;]]>
 		</body>
 	</do-on>
 	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="0718e742-2e37-465f-a057-2f2d3b45ce74" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
@@ -3331,5 +3191,7 @@ OnEdited();]]>
 	</do-trace>
 	<designed target="WindowIconPath" value="Alarms_Icons/Options16.png" ver="5"/>
 	<designed target="Flip" value="0" ver="5"/>
+	<object access-modifier="private" name="pConfig" display-name="pConfig" uuid="e30fcff3-f160-4209-9ecf-2166f2a7e1ec" base-type="Alarms_Config" base-type-id="cac958c3-d08c-4b7b-8345-d70ccc130514" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="pPermissions" display-name="pPermissions" uuid="2126a305-4a35-4f5c-8ae9-0f44df08eb24" base-type="Alarms_Permissions" base-type-id="eaa1f2f7-6334-4d05-a44d-ca72425d2f9f" base-const="true" base-ref="true" ver="5" description=""/>
 </type>
 

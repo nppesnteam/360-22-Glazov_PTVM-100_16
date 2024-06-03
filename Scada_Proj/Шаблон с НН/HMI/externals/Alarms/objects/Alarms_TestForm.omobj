@@ -407,11 +407,12 @@ else
 filter: string = "{\">\":{\"data\":" + String.ToString(lastHour) + "}}";
 if (Alarms_1.SetAdvancedFilterAsJson("time", filter))
 	DebugTool_1.Log("Colum_1.JsonFilter: " +
-	Alarms_1.AlarmsTable.Main_tables_Operative.Table_Operative_mode.Columns[Alarms_1.AlarmsTable.Main_panel.private.TableView.Static.Column_Time.pos].JsonFilter);
+	Alarms_1.AlarmsTable.TableOne.Columns[Alarms_1.Config.TableView.Static.Time.pos].JsonFilter);
 else DebugTool_1.Log("Не удалось установить фильтр пользователя: " + filter);]]>
 			</body>
 		</do-on>
 		<designed target="Checked" value="false" ver="4"/>
+		<designed target="Flip" value="0" ver="5"/>
 	</object>
 	<object access-modifier="private" name="Button_21" display-name="Button_21" uuid="3ef9ba92-1f47-4454-bb0e-543580a2e71d" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="2">
 		<designed target="X" value="240" ver="2"/>
@@ -1173,10 +1174,7 @@ Alarms_1.SubscriptionAdvancedFilter = Filter1;]]>
 		<designed target="OnHoverPenWidth" value="1" ver="2"/>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
 			<body kind="javascript">
-				<![CDATA[if (Alarms_1.ActiveMode == 0)
-	Alarms_1.Main_tables_Operative.Table_Operative_mode.TableDecorator_1.JsonDecorator = JSON.stringify({Conditions:[], Decorating:[], StyleDictionary:[], FormatDictionary:[], Formatting:[]});
-else
-	Alarms_1.Main_tables_Historical.Table_History_mode.TableDecorator_1.JsonDecorator = JSON.stringify({Conditions:[], Decorating:[], StyleDictionary:[], FormatDictionary:[], Formatting:[]});]]>
+				<![CDATA[Alarms_1.AlarmsTable.TableOne.TableDecorator_1.JsonDecorator = JSON.stringify({Conditions:[], Decorating:[], StyleDictionary:[], FormatDictionary:[], Formatting:[]});]]>
 			</body>
 		</do-on>
 		<designed target="Checkable" value="false" ver="2"/>
@@ -1224,7 +1222,7 @@ else
 		<designed target="OnHoverPenWidth" value="1" ver="2"/>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
 			<body kind="javascript">
-				<![CDATA[log(JSON.stringify(JSON.parse(Alarms_1.Main_tables_Operative.Table_Operative_mode.TableDecorator_1.JsonDecorator), null, 2));]]>
+				<![CDATA[log(JSON.stringify(JSON.parse(Alarms_1.AlarmsTable.TableOne.TableDecorator_1.JsonDecorator), null, 2));]]>
 			</body>
 		</do-on>
 		<designed target="Checkable" value="false" ver="2"/>
@@ -1237,6 +1235,7 @@ else
 		<designed target="ZValue" value="0" ver="3"/>
 		<designed target="Opacity" value="1" ver="3"/>
 		<designed target="Checked" value="false" ver="4"/>
+		<designed target="Flip" value="0" ver="5"/>
 	</object>
 	<object access-modifier="private" name="Button_32" display-name="Button_32" uuid="a9a21ff8-5696-4055-8849-d4a0278d245d" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="2">
 		<designed target="X" value="570" ver="2"/>
@@ -1271,7 +1270,7 @@ else
 		<designed target="OnHoverPenWidth" value="1" ver="2"/>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
 			<body kind="javascript">
-				<![CDATA[log(JSON.stringify(JSON.parse(Alarms_1.Main_tables_Historical.Table_History_mode.TableDecorator_1.JsonDecorator), null, 2));]]>
+				<![CDATA[log(JSON.stringify(JSON.parse(Alarms_1.AlarmsTable.TableOne.TableDecorator_1.JsonDecorator), null, 2));]]>
 			</body>
 		</do-on>
 		<designed target="Checkable" value="false" ver="2"/>
@@ -1284,6 +1283,7 @@ else
 		<designed target="ZValue" value="0" ver="3"/>
 		<designed target="Opacity" value="1" ver="3"/>
 		<designed target="Checked" value="false" ver="4"/>
+		<designed target="Flip" value="0" ver="5"/>
 	</object>
 	<object access-modifier="private" name="Button_33" display-name="Button_33" uuid="fb1084b3-50d4-4895-b344-20108c918fc9" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="2">
 		<designed target="X" value="730" ver="2"/>
@@ -1374,7 +1374,7 @@ log("MakeJSONstring total "+errors.toString()+" errors from "+count.toString()+"
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
 			<body kind="om">
 				<![CDATA[// Функция формирование сообщение аудита
-if (!Alarms_1.UseSecurity) return;
+if (!Alarms_1.Permissions.Context.UsingSecurity) return;
 SecurityContext_1.LogAudit("[<SPO Name>] " + SecurityContext_1.CurrentUserDisplayName + " на " + Network_1.ComputerName + " выполнил печать событий", 1);
 ]]>
 			</body>
@@ -1557,15 +1557,10 @@ DebugTool_1.Log("ClearOperativeEventList() => " + String.ToString(result));]]>
 		<designed target="DisabledPenWidth" value="1" ver="4"/>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
 			<body kind="om">
-				<![CDATA[Alarms_1.Theme_1.BackgroundColor = BrushColor;
-Alarms_1.Theme_1.ForegroundColor = FontColor;
-Alarms_1.Theme_1.BorderColor = PenColor;
-Alarms_1.Theme_1.DisabledBorderColor = DisabledPenColor;
-Alarms_1.Theme_1.SelectionColor = OnClickBrushColor;
-Alarms_1.Theme_1.EditorBrushColor = OnHoverBrushColor;
-Alarms_1.Theme_1.EditorFontColor = OnHoverFontColor;]]>
+				<![CDATA[Alarms_1.Theme_1.Presets.Light();]]>
 			</body>
 		</do-on>
+		<designed target="Flip" value="0" ver="5"/>
 	</object>
 	<object access-modifier="private" name="Button_37" display-name="Button_37" uuid="11ed3e72-d2a7-4810-a566-576348a4b319" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="4">
 		<designed target="X" value="1020" ver="4"/>
@@ -1610,15 +1605,10 @@ Alarms_1.Theme_1.EditorFontColor = OnHoverFontColor;]]>
 		<designed target="DisabledPenWidth" value="1" ver="4"/>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
 			<body kind="om">
-				<![CDATA[Alarms_1.Theme_1.BackgroundColor = BrushColor;
-Alarms_1.Theme_1.ForegroundColor = FontColor;
-Alarms_1.Theme_1.BorderColor = PenColor;
-Alarms_1.Theme_1.DisabledBorderColor = DisabledPenColor;
-Alarms_1.Theme_1.SelectionColor = OnClickBrushColor;
-Alarms_1.Theme_1.EditorBrushColor = OnHoverBrushColor;
-Alarms_1.Theme_1.EditorFontColor = OnHoverFontColor;]]>
+				<![CDATA[Alarms_1.Theme_1.Presets.Gray();]]>
 			</body>
 		</do-on>
+		<designed target="Flip" value="0" ver="5"/>
 	</object>
 	<object access-modifier="private" name="Button_38" display-name="Button_38" uuid="1dd5970a-eb8d-477b-96dd-a96e7a33bb92" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="4">
 		<designed target="X" value="1020" ver="4"/>
@@ -1663,15 +1653,10 @@ Alarms_1.Theme_1.EditorFontColor = OnHoverFontColor;]]>
 		<designed target="DisabledPenWidth" value="1" ver="4"/>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
 			<body kind="om">
-				<![CDATA[Alarms_1.Theme_1.BackgroundColor = BrushColor;
-Alarms_1.Theme_1.ForegroundColor = FontColor;
-Alarms_1.Theme_1.BorderColor = PenColor;
-Alarms_1.Theme_1.DisabledBorderColor = DisabledPenColor;
-Alarms_1.Theme_1.SelectionColor = OnClickBrushColor;
-Alarms_1.Theme_1.EditorBrushColor = OnHoverBrushColor;
-Alarms_1.Theme_1.EditorFontColor = OnHoverFontColor;]]>
+				<![CDATA[Alarms_1.Theme_1.Presets.Dark();]]>
 			</body>
 		</do-on>
+		<designed target="Flip" value="0" ver="5"/>
 	</object>
 	<do-trace access-modifier="private" target="BrushColor" ver="5">
 		<body>
@@ -1693,7 +1678,7 @@ Alarms_1.Theme_1.EditorFontColor = OnHoverFontColor;]]>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
 			<body kind="om">
 				<![CDATA[// Функция формирование сообщение аудита
-if (!Alarms_1.UseSecurity) return;
+if (!Alarms_1.Permissions.Context.UsingSecurity) return;
 SecurityContext_1.LogAudit("[<SPO Name>] " + SecurityContext_1.CurrentUserDisplayName + " на " + Network_1.ComputerName + " выполнил экспорт событий в файл " + Alarms_1.GetEventParam(1), 1);
 ]]>
 			</body>
@@ -1779,14 +1764,13 @@ else
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
 			<body kind="om">
 				<![CDATA[// Функция формирование сообщение аудита
-if (!Alarms_1.UseSecurity) return;
+if (!Alarms_1.Permissions.Context.UsingSecurity) return;
 SecurityContext_1.LogAudit("[<SPO Name>] " + SecurityContext_1.CurrentUserDisplayName + " на " + Network_1.ComputerName + " выполнил сохранение событий в файл " + Alarms_1.GetEventParam(2), 1);
 ]]>
 			</body>
 		</do-on>
 	</object>
 	<object access-modifier="private" name="UnacknowledgedEventsButton_1" display-name="UnacknowledgedEventsButton_1" uuid="aa54a24a-1230-40be-93f9-ece805296305" base-type="UnacknowledgedEventsButton" base-type-id="10500900-7ec0-4eed-a752-ecadc74566bc" ver="5" description="" cardinal="1">
-		<designed target="Flip" value="0" ver="5"/>
 		<designed target="X" value="1010.5" ver="5"/>
 		<designed target="Y" value="11.5" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>

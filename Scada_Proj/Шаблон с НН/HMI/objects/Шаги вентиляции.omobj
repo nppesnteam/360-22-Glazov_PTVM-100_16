@@ -70,7 +70,7 @@
 		<do-trace access-modifier="private" target="BrushColor" ver="5">
 			<conditional-expr>
 				<condition>
-					<![CDATA[me.Index==nStep]]>
+					<![CDATA[me.Index==unit.Global.eVent.Val]]>
 				</condition>
 				<expr>
 					<![CDATA[0xff55ff7f]]>
@@ -82,36 +82,19 @@
 				</expr>
 			</default-expr>
 		</do-trace>
+		<designed target="Flip" value="0" ver="5"/>
 	</object>
 	<object access-modifier="private" name="Initializer" display-name="Initializer" uuid="27daaa93-557b-4c1d-acee-952ce27cb9c1" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="5">
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Initialized">
 			<body kind="om">
-				<![CDATA[Step[0].txt.Text="НИЧЕГО НЕ ДЕЛАЕМ";
-Step[1].txt.Text="ПУСК ВЕНТИЛЯТОРОВ";
-Step[2].txt.Text="ОТКРЫТИЕ ШИБЕРОВ ВОЗДУХА";
-Step[3].txt.Text="ВЕНТИЛЯЦИЯ ТОПКИ";
-Step[4].txt.Text="ВОЗЬМИТЕ АНАЛИЗ И НАЖМИТЕ СБРОС";
-Step[5].txt.Text="ИСХОДНОЕ, ПЕРЕКЛЮЧАТЕЛИ ГОРЕЛОК - В ОТКЛ.";
-Step[6].txt.Text="ВЕНТИЛЯЦИЯ ТОПКИ ЗАВЕРШЕНА";
-Step[7].txt.Text="АВАРИЯ ВЕНТИЛЯТОРА 3";
-Step[8].txt.Text="АВАРИЯ ВЕНТИЛЯТОРА 6";
-Step[9].txt.Text="АВАРИЯ ВЕНТИЛЯТОРА 11";
-Step[10].txt.Text="АВАРИЯ ВЕНТИЛЯТОРА 14";
-Step[11].txt.Text="ВЕНТИЛЯЦИЯ ТОПКИ ПОСЛЕ СТОПА";
-i: uint1 = 0;
-while (i<12)
-{
-	Step[i].Y =Step.Y + i*Step.Height;
-	if (i==4)
-	{
-		Step[i].Y=Step.Y + (i+1)*Step.Height;
-	}	
-	if (i==5)
-	{
-		Step[i].Y=Step.Y + (i-1)*Step.Height;
-	}
-	i += 1;
-}]]>
+				<![CDATA[Step[0].txt.Text="Вентиляция не проведена";
+Step[1].txt.Text="Включение вентиляторов";
+Step[2].txt.Text="Открытие ШВ";
+Step[3].txt.Text="Вентиляция";
+Step[4].txt.Text="Закрытие ШВ";
+Step[5].txt.Text="Вентиляция проведена";
+Step[6].txt.Text="Вентиляция после останова";
+Step[7].txt.Text="Вентиляция пропущена";]]>
 			</body>
 		</do-on>
 	</object>
@@ -119,5 +102,7 @@ while (i<12)
 		<init target="Source" ver="5" ref="unit.Connections.ApSource"/>
 		<init target="Path" ver="5" value="ROOT.BOILER.nVent"/>
 	</object>
+	<designed target="Flip" value="0" ver="5"/>
+	<designed target="WindowIconPath" value="" ver="5"/>
 </type>
 

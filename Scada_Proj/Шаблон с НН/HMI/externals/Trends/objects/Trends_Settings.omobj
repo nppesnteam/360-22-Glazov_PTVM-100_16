@@ -1,0 +1,147 @@
+<type access-modifier="private" name="Trends_Settings" display-name="Настройки" uuid="91daec58-54a8-4900-9b93-be8602b98694" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="">
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="a173afd1-3d00-4f67-aa5a-ecfd4d89bcf5" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<object access-modifier="private" name="private" display-name="private" uuid="79f7576c-78c3-4316-a769-c24baccf2808" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" cardinal="1">
+		<do access-modifier="private" name="Initialize" display-name="Initialize" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[if (initialized)
+	return;
+initialized = true;
+//Debug.Log("Initialize settings");
+
+DateTimeFormats[0] = "DD.MM.YYYY hh:mm:ss";
+DateTimeFormats[1] = "MM/DD/YYYY hh:mm:ss";
+
+UnitConversion = JSON.stringify([
+	{
+		"srcUnit": "МПа",
+		"dstUnit": "бар",
+		"Ratio": 10
+	},	{
+		"srcUnit": "МПа",
+		"dstUnit": "кгс/см2",
+		"Ratio": 10.2
+	},	{
+		"srcUnit": "бар",
+		"dstUnit": "МПа",
+		"Ratio": 0.1
+	},	{
+		"srcUnit": "бар",
+		"dstUnit": "кгс/см2",
+		"Ratio": 10.197
+	},	{
+		"srcUnit": "кгс/см2",
+		"dstUnit": "МПа",
+		"Ratio": 0.098
+	},	{
+		"srcUnit": "кгс/см2",
+		"dstUnit": "бар",
+		"Ratio": 0.98
+	}
+]);
+
+LineDecorators.SetDefault();]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="initialized" display-name="initialized" uuid="83d97787-e9cf-461b-8219-2390c93d3144" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="Initializer" display-name="Initializer" uuid="9b53a4e4-d563-45f4-931f-f40e09637ebf" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Initialized">
+				<body kind="om">
+					<![CDATA[Initialize();]]>
+				</body>
+			</do-on>
+		</object>
+	</object>
+	<object access-modifier="private" name="ExportFolder" display-name="Папка для экспорта" uuid="591e553b-bef0-47b5-8e40-275e49030357" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="DateTimeFormats" display-name="Текстовые форматы времени" uuid="36f136c6-62af-4b09-a0a4-226f52762b72" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="10"/>
+	<object access-modifier="private" name="UnitConversion" display-name="Пересчет единиц измерения" uuid="854024ae-094d-4934-8c51-d5d87a69539b" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="LineDecorators" display-name="Оформление графиков" uuid="fc38d36b-4dcf-48d6-be9d-adcee24f755a" base-type="LineStyles" base-type-id="ff917acc-0401-4101-b467-5752cc64518c" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="HeaderText" display-name="Текст верхнего колонтитула" uuid="015a1cfd-2d94-4090-99c2-90dd19f118ae" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="HeaderTextAlignment" display-name="Выравнивание верхнего колонтитула" uuid="1f212c4c-497e-4149-b259-b0fe70258175" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="FooterText" display-name="Текст нижнего колонтитула" uuid="26a1017f-27e9-4438-8206-a94a4e06ff4a" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="FooterTextAlignment" display-name="Выравнивание нижнего колонтитула" uuid="18ca57f2-d0d6-45d3-9727-2a0fb4d3207f" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+	<do access-modifier="private" name="ToJSON" display-name="ToJSON" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="javascript">
+			<![CDATA[private.Initialize();
+
+var settings = {
+	'File': {
+		'ExportFolder': ExportFolder,
+		'DateTimeFormats': []
+	},
+	'UnitConversion': JSON.parse(UnitConversion),
+	'LineDecorators': JSON.parse(LineDecorators.ToJSON()),
+	'Page': {
+		'Header': {
+			'Text': HeaderText,
+			'Alignment': HeaderTextAlignment
+		},
+		'Footer': {
+			'Text': FooterText,
+			'Alignment': FooterTextAlignment
+		}
+	},
+	'ColorPalette': JSON.parse(ColorPalette.GetColors())
+};
+
+for (let i = 0; i < DateTimeFormats.Length; i += 1)
+{
+	if (DateTimeFormats[i] != "")
+		settings.File.DateTimeFormats.push(DateTimeFormats[i]);
+}
+
+if (CustomColors != "")
+	settings.CustomColors = JSON.parse(CustomColors);
+
+return JSON.stringify(settings);]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="FromJSON" display-name="FromJSON" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[private.Initialize();
+
+var settings = JSON.parse(json);
+
+var file = settings.File;
+if (file != undefined)
+{
+	ExportFolder = file.ExportFolder;
+
+	for (let i = 0; i < DateTimeFormats.Length; i++)
+	{
+		if (i < file.DateTimeFormats.length)
+			DateTimeFormats[i] = file.DateTimeFormats[i];
+		else DateTimeFormats[i] = "";
+	}
+}
+
+var unitConversion = settings.UnitConversion;
+if (unitConversion != undefined)
+	UnitConversion = JSON.stringify(unitConversion);
+	
+var lineDecorators = settings.LineDecorators;
+if (lineDecorators != undefined)
+	LineDecorators.FromJSON(JSON.stringify(lineDecorators));
+
+var page = settings.Page;
+if (page != undefined)
+{
+	HeaderText = page.Header.Text;
+	HeaderTextAlignment = page.Header.Alignment;
+	FooterText = page.Footer.Text;
+	FooterTextAlignment = page.Footer.Alignment;
+}
+
+var colorPalette = settings.ColorPalette;
+if (colorPalette != undefined)
+	ColorPalette.Update(JSON.stringify(colorPalette))
+	
+var customColors = settings.CustomColors;
+if (customColors != undefined)		
+	CustomColors = JSON.stringify(customColors);]]>
+		</body>
+		<param access-modifier="private" name="json" display-name="" uuid="cc9f21f9-37d2-48a8-9e90-5dfe014f2317" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<object access-modifier="private" name="ColorPalette" display-name="Палитра цветов" uuid="6d9cbe5b-a7c0-459d-8690-eb62d0bbca0c" base-type="ColorPalette" base-type-id="6aadbfde-782a-4d60-ae52-bfb1df84949f" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="CustomColors" display-name="Пользовательская палитра цветов" uuid="226f196b-254f-4e33-a9e3-d5b4af3e38c9" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+</type>
+

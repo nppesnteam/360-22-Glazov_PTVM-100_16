@@ -119,7 +119,7 @@
 			<designed target="ZValue" value="0" ver="3"/>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="TextChanged">
 				<body kind="om">
-					<![CDATA[Error = pSettingsForm.pAlarms.Main_panel.private.ValidatePath(Text);
+					<![CDATA[Error = Alarms_Tools.ValidatePath(Text);
 pSettingsForm.Settings.Export.Error = Error != "";
 
 if (bInit)
@@ -189,13 +189,13 @@ if (bInit)
 			</do-on>
 			<designed target="Opacity" value="1" ver="4"/>
 			<designed target="Checked" value="false" ver="4"/>
-			<object access-modifier="private" name="Result" display-name="Result" uuid="111cdc74-c272-4a8c-bde2-6fe757c7e844" base-type="DialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" ver="4"/>
+			<object access-modifier="private" name="Result" display-name="Result" uuid="111cdc74-c272-4a8c-bde2-6fe757c7e844" base-type="FolderDialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" ver="4"/>
 			<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="e410f8a0-5487-4fa8-a1ca-db5cafb65249" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
 				<designed target="Enabled" value="true" ver="4"/>
 				<designed target="InvokeTrigger" value="false" ver="4"/>
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
 					<body kind="om">
-						<![CDATA[Editor.Text = Result.Value;
+						<![CDATA[Editor.Text = Result.FolderPath;
 pSettingsForm.Settings.Export.Path = Editor.Text;
 pSettingsForm.Settings.Export.OnEdited();]]>
 					</body>
@@ -237,7 +237,7 @@ pSettingsForm.Settings.Export.OnEdited();]]>
 	<do-on access-modifier="private" name="Handler_AboutToOpen" display-name="Handler_AboutToOpen" ver="5" event="AboutToOpen">
 		<body kind="om">
 			<![CDATA[Path.Editor.Text = pSettingsForm.Settings.Export.Path;
-Path.Editor.Enabled = pSettingsForm.pAlarms.Main_panel.private.Permission.FileSystem;
+Path.Editor.Enabled = pSettingsForm.pPermissions.Permission.FileSystem;
 ViewColumnSettings.State = pSettingsForm.Settings.Export.ViewColumnSettings;
 Path.ChooseFolderButton.Visible = Path.Editor.Enabled;
 

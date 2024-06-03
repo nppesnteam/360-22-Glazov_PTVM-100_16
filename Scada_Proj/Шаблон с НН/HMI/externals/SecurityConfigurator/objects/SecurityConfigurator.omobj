@@ -21,6 +21,7 @@
 		<object access-modifier="private" name="pTheme" display-name="pTheme" uuid="096b6b2d-fcd7-4886-858e-f3631fcede3a" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
 		<init target="pTheme" ver="5" ref="init_Theme"/>
 		<object access-modifier="private" name="pSettings" display-name="pSettings" uuid="eee8a2c4-a2a7-4812-aadd-25c42cf51beb" base-type="SecurityConfigurator_Settings" base-type-id="a7c582fd-25fb-4cc3-8522-3166d1a63de6" base-const="true" base-ref="true" ver="5" description=""/>
+		<object access-modifier="private" name="pPermissions" display-name="pPermissions" uuid="68a8a5dd-8f91-44de-bf6b-353dc43b3efa" base-type="SecurityConfigurator_Permissions" base-type-id="a6a67dc7-2872-46c8-a397-13aa48ddb4e7" base-const="true" base-ref="true" ver="5" description=""/>
 		<object access-modifier="private" name="pScreenKeyboard" display-name="pScreenKeyboard" uuid="2cf8a3b5-15c0-435c-a22e-f90ea299182c" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
 		<object access-modifier="private" name="SecurityContext" display-name="SecurityContext" uuid="a2732dce-bc51-401a-87fb-8bea5fc9a314" base-type="SecurityContext" base-type-id="d9cb0fff-b70a-4e2d-833d-3f73cf74e0dd" ver="5">
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="CurrentUserChanged">
@@ -246,8 +247,10 @@ if (Files.Exists(filePath))
 						<init target="SystemCommands" ver="5" ref="here.Commands.Common"/>
 						<init target="Commands" ver="5" ref="here.Commands.AppList"/>
 						<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
-						<init target="importTemplatesPath" ver="5" ref="here.private.pSettings.AppTemplatesPath"/>
 						<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
+						<init target="pSettings" ver="5" ref="here.private.pSettings"/>
+						<init target="pConfigurationAccess" ver="5" ref="here.ConfigurationAccess"/>
+						<init target="pPermissions" ver="5" ref="here.private.pPermissions"/>
 					</object>
 				</do-on>
 			</object>
@@ -260,6 +263,7 @@ if (Files.Exists(filePath))
 						<init target="SystemCommands" ver="5" ref="here.Commands.Common"/>
 						<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
 						<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
+						<init target="pConfigurationAccess" ver="5" ref="here.ConfigurationAccess"/>
 					</object>
 				</do-on>
 			</object>
@@ -273,6 +277,8 @@ if (Files.Exists(filePath))
 						<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
 						<init target="pSettings" ver="5" ref="here.private.pSettings"/>
 						<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
+						<init target="pConfigurationAccess" ver="5" ref="here.ConfigurationAccess"/>
+						<init target="pPermissions" ver="5" ref="here.private.pPermissions"/>
 					</object>
 				</do-on>
 			</object>
@@ -285,8 +291,8 @@ if (Files.Exists(filePath))
 						<init target="SystemCommands" ver="5" ref="here.Commands.Common"/>
 						<init target="inputAppID" ver="5" ref="here.Commands.Common.GoTo.sendData"/>
 						<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
-						<init target="pConfigurationAccessValue" ver="5" ref="ConfigurationAccess"/>
 						<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
+						<init target="pConfigurationAccess" ver="5" ref="here.ConfigurationAccess"/>
 					</object>
 				</do-on>
 			</object>
@@ -299,8 +305,10 @@ if (Files.Exists(filePath))
 						<init target="SystemCommands" ver="5" ref="here.Commands.Common"/>
 						<init target="inputAppID" ver="5" ref="here.Commands.Common.GoTo.sendData"/>
 						<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
-						<init target="pConfigurationAccessValue" ver="5" ref="ConfigurationAccess"/>
 						<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
+						<init target="pConfigurationAccess" ver="5" ref="here.ConfigurationAccess"/>
+						<init target="pSettings" ver="5" ref="here.private.pSettings"/>
+						<init target="pPermissions" ver="5" ref="here.private.pPermissions"/>
 					</object>
 				</do-on>
 			</object>
@@ -312,9 +320,9 @@ if (Files.Exists(filePath))
 						<init target="Commands" ver="5" ref="here.Commands.Group"/>
 						<init target="GroupId" ver="5" ref="here.Commands.Common.GoTo.sendData"/>
 						<init target="SystemCommands" ver="5" ref="here.Commands.Common"/>
-						<init target="pConfigurationAccessValue" ver="5" ref="ConfigurationAccess"/>
 						<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
 						<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
+						<init target="pConfigurationAccess" ver="5" ref="here.ConfigurationAccess"/>
 					</object>
 				</do-on>
 			</object>
@@ -326,12 +334,11 @@ if (Files.Exists(filePath))
 						<init target="Commands" ver="5" ref="here.Commands.User"/>
 						<init target="SystemCommands" ver="5" ref="here.Commands.Common"/>
 						<init target="UserId" ver="5" ref="here.Commands.Common.GoTo.sendData"/>
-						<init target="pConfigurationAccessValue" ver="5" ref="ConfigurationAccess"/>
-						<init target="pViewConfigurationValue" ver="5" ref="ViewConfiguration"/>
 						<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
 						<init target="pSettings" ver="5" ref="here.private.pSettings"/>
 						<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
 						<init target="ExportMode" ver="5" value="false"/>
+						<init target="pConfigurationAccess" ver="5" ref="here.ConfigurationAccess"/>
 					</object>
 				</do-on>
 			</object>
@@ -342,12 +349,11 @@ if (Files.Exists(filePath))
 					<object access-modifier="private" uuid="4a622ec7-0195-4a02-9c2e-d3386e8138dd" base-type="UserEdit" base-type-id="8a05ed29-54f1-4d67-aa5a-6085548cc89b" ver="5">
 						<init target="SystemCommands" ver="5" ref="here.Commands.Common"/>
 						<init target="Commands" ver="5" ref="here.Commands.User"/>
-						<init target="pConfigurationAccessValue" ver="5" ref="ConfigurationAccess"/>
-						<init target="pViewConfigurationValue" ver="5" ref="ViewConfiguration"/>
 						<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
 						<init target="pSettings" ver="5" ref="here.private.pSettings"/>
 						<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
 						<init target="ExportMode" ver="5" value="false"/>
+						<init target="pConfigurationAccess" ver="5" ref="here.ConfigurationAccess"/>
 					</object>
 				</do-on>
 			</object>
@@ -409,6 +415,7 @@ return Files.CombinePath(folder, "settings.json");]]>
 			</body>
 		</do>
 		<init target="pScreenKeyboard" ver="5" ref="init_ScreenKeyboard"/>
+		<init target="pPermissions" ver="5" ref="init_Permissions"/>
 	</object>
 	<object access-modifier="private" name="Commands" display-name="Commands" uuid="5e3c8f27-883a-482a-9a79-5ca5e06ca113" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
 		<object access-modifier="private" name="Common" display-name="Common" uuid="52934a53-7af2-4ecd-8837-b719521125f9" base-type="SystemCommands" base-type-id="0b754dab-38c6-43db-a050-37201965421c" ver="5">
@@ -420,7 +427,7 @@ return Files.CombinePath(folder, "settings.json");]]>
 		<object access-modifier="private" name="Application" display-name="Application" uuid="870042ed-aa99-4b88-88dc-f29936d2ef52" base-type="ApplicationCommands" base-type-id="1bb4857b-5e24-4e31-a011-db8a88827b94" ver="5"/>
 		<object access-modifier="private" name="Group" display-name="Group" uuid="04ff6d95-57c2-48ca-b007-1b842bc35289" base-type="GroupCommands" base-type-id="9bb6d28c-2cbf-4d1e-88e3-643d738838dc" ver="5"/>
 		<object access-modifier="private" name="User" display-name="User" uuid="1543918f-a22d-4b33-945c-87aabfec72c8" base-type="UserCommands" base-type-id="91ff024c-1b48-4ec4-852f-40d7e1879ef3" ver="5"/>
-		<object access-modifier="private" name="Roles" display-name="Roles" uuid="e3dfe4bb-d63a-4d2b-a910-a33c93e54af9" base-type="ListCommands" base-type-id="d481f36c-0b94-4338-a60e-3e31bf7df8a1" ver="5"/>
+		<object access-modifier="private" name="Roles" display-name="Roles" uuid="e3dfe4bb-d63a-4d2b-a910-a33c93e54af9" base-type="RoleCommands" base-type-id="0a9f57da-9992-430a-9df5-ca597b7c8ba3" ver="5"/>
 	</object>
 	<object access-modifier="private" name="Initializer" display-name="Initializer" uuid="e30f61ce-b3e4-44bd-8fe7-5358c84cc41a" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="5">
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Initialized">
@@ -429,10 +436,7 @@ return Files.CombinePath(folder, "settings.json");]]>
 
 // если путь не задан, используем значение по умолчанию
 if (private.pSettings.BackupsPath == "")
-	private.pSettings.BackupsPath = Files.ToNative(Files.CombinePath(unit.ProductInfo.GetProgramDataFolder(), "Backups"));
-
-if (private.pSettings.AppTemplatesPath == "")
-	private.pSettings.AppTemplatesPath = Files.ToNative(Files.CombinePath(Files.ProjectFolder, Files.CombinePath("resources", "Security_Templates")));]]>
+	private.pSettings.BackupsPath = Files.ToNative(Files.CombinePath(unit.ProductInfo.GetProgramDataFolder(), "Backups"));]]>
 			</body>
 		</do-on>
 	</object>
@@ -598,9 +602,10 @@ Commands.Common.GoTo = true;]]>
 		</body>
 	</do-trace>
 	<param access-modifier="private" name="init_Settings" display-name="Настройки" uuid="504bd3c5-bdf9-4c3d-8bf0-a33fa132a96c" base-type="SecurityConfigurator_Settings" base-type-id="a7c582fd-25fb-4cc3-8522-3166d1a63de6" base-const="true" base-ref="true" ver="5" description=""/>
-	<init target="init_Settings" ver="5">
-		<object access-modifier="private" uuid="1a449ade-6a4f-4dda-bf57-ab6d1570bdb0" base-type="SecurityConfigurator_Settings" base-type-id="a7c582fd-25fb-4cc3-8522-3166d1a63de6" ver="5"/>
-	</init>
+	<param access-modifier="private" name="init_Permissions" display-name="Разрешения" uuid="546c8230-4081-46ca-8198-d753472a3547" base-type="SecurityConfigurator_Permissions" base-type-id="a6a67dc7-2872-46c8-a397-13aa48ddb4e7" base-const="true" base-ref="true" ver="5" description=""/>
 	<param access-modifier="private" name="init_ScreenKeyboard" display-name="Вызов экранной клавиатуры" uuid="3b22c6f3-caa6-4f2d-9d71-0533fce8906a" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
+	<init target="init_Settings" ver="5">
+		<object access-modifier="private" uuid="f28769f3-c2d1-4571-b44f-5dd1b50e2fcd" base-type="SecurityConfigurator_Settings" base-type-id="a7c582fd-25fb-4cc3-8522-3166d1a63de6" ver="5"/>
+	</init>
 </type>
 

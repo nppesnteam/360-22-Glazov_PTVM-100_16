@@ -35,6 +35,34 @@
 	<object access-modifier="private" name="private" display-name="private" uuid="c2fa7987-6771-44b1-b717-5a655538da69" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
 		<object access-modifier="private" name="pTheme" display-name="pTheme" uuid="b158af4e-cf90-464e-b99c-f019bfef2b3f" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
 		<object access-modifier="private" name="pScreenKeyboard" display-name="pScreenKeyboard" uuid="c25a6349-5956-4260-b555-6ec09cab5c66" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
+		<object access-modifier="private" name="SelectedRoleData" display-name="SelectedRoleData" uuid="ca3f4930-6a15-45f4-8b81-2ed47c40f843" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+			<object access-modifier="private" name="Id" display-name="Id" uuid="8756eadb-7627-4b43-aa5d-8c33a67caca3" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1">
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+					<body kind="om">
+						<![CDATA[//Обновить состояние команд
+commandsExecuteAbility : bool = (value != "");
+Commands.DoEdit.CanExecute = commandsExecuteAbility;
+Commands.DoRemoveSelected.CanExecute = commandsExecuteAbility;
+Commands.DoAddRights.CanExecute = commandsExecuteAbility;]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="Name" display-name="Name" uuid="a8709d10-036b-4b4e-8af4-17034b1768fc" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="RightsList" display-name="RightsList" uuid="300afa76-960c-45d5-855d-1cf05f8e037e" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1">
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+					<body kind="om">
+						<![CDATA[Commands.DoDeleteRights.CanExecute = (Id != "" && value != "");]]>
+					</body>
+				</do-on>
+			</object>
+			<do access-modifier="private" name="Reset" display-name="Reset" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[Id = "";
+Name = "";
+RightsList = "";]]>
+				</body>
+			</do>
+		</object>
 		<object access-modifier="private" name="SaveChanges" display-name="SaveChanges" uuid="f11050f4-90da-41c9-b5f8-5209642495b1" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
 				<body kind="om">
@@ -81,30 +109,6 @@
 }]]>
 				</body>
 			</do-on>
-			<do access-modifier="private" name="AddAllRights" display-name="AddAllRights" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
-				<body kind="javascript">
-					<![CDATA[if (roleID == "")
-	return;
-
-var appTokenList = JSON.parse(Application.GetTokensList()).data;
-
-if (appTokenList.length > 0)
-{
-	//формиируем из токена право и добавляем к роли
-	for (let token of appTokenList)
-	{ 
-		let AppName = Application.ApplicationName;
-		let TokenType = (token.tokenType == "bool")?(1):(0);
-		let TokenName = token.tokenName;
-		let TokenValueAllow = (TokenType == 0)?(""):("TRUE"); 
-		let TokenValueDeny = (TokenType == 0)?(""):("FALSE");
-		Application.RoleAddRight(AppName,roleID, TokenName,TokenType,TokenValueAllow,TokenValueDeny);
-	}
-}
-]]>
-				</body>
-				<param access-modifier="private" name="roleID" display-name="" uuid="877021b2-68bb-4f79-bd49-042c859e3dd3" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
-			</do>
 			<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="14a639ad-8f22-40bb-a914-88001b48e204" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="InvokeTrigger" value="false" ver="5"/>
@@ -113,10 +117,27 @@ if (appTokenList.length > 0)
 						<![CDATA[if (RoleName.Error == "" && Commands.DoCreate.CanExecute)
 {
 	Commands.DoCreate.CanExecute = false;
-	Application.CreateRole(RoleName.Value, Application.ApplicationID);
-	LoadRolesList(Application.GetRolesList());
-	currentId: string = WorkPanel.RoleView.GetRoleIdByName(RoleName.Value);
-	AddAllRights(currentId);
+	
+	newName: string = RoleName.Value;
+	
+	//добавить роль
+	Application.CreateRole(newName, Application.ApplicationID);
+	
+	//обновить список ролей
+	LoadRolesList();
+	
+	//выделить добавленную роль
+	for (row: int4 = 0; row < WorkPanel.RoleView.GetRowCount(); row += 1)
+	{
+		currentRoleName: string = WorkPanel.RoleView.GetCellData(row, 1);
+		if (currentRoleName == newName)
+		{
+			WorkPanel.RoleView.SetCurrentCell(row, 1);
+			break;
+		}
+	}
+
+	//обновить состояние команд
 	Commands.DoCreate.CanExecute = true;
 	SaveChanges.needSave = true;
 }]]>
@@ -130,8 +151,7 @@ if (appTokenList.length > 0)
 					<![CDATA[if (value)
 {
 	Commands.DoRemoveSelected = false;
-	if (private.selectedRoleID != "")
-		ShowRemoveDialog.Invoke();
+	ShowRemoveDialog.Invoke();
 }]]>
 				</body>
 			</do-on>
@@ -158,27 +178,14 @@ if (appTokenList.length > 0)
 				<designed target="InvokeTrigger" value="false" ver="5"/>
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
 					<body kind="om">
-						<![CDATA[
-DeleteAllRighs(private.selectedRoleID);
-Application.DeleteRole(private.selectedRoleID);
-LoadRolesList(Application.GetRolesList());
+						<![CDATA[Application.DeleteRole(SelectedRoleData.Id);
+LoadRolesList();
 
 private.SaveChanges.needSave = true;
 WorkPanel.RoleView.SetSelectedRows("[]");]]>
 					</body>
 				</do-on>
 			</object>
-			<do access-modifier="private" name="DeleteAllRighs" display-name="DeleteAllRighs" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
-				<param access-modifier="private" name="roleId" display-name="" uuid="2822a504-0a4a-4eef-a3ba-42236d441d0b" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
-				<body kind="javascript">
-					<![CDATA[var roleRightsList = JSON.parse(Application.GetRoleRights(roleId)).data;
-if (roleRightsList.length > 0)
-{
-	for (let right of roleRightsList)
-		Application.RoleDeleteRight(Application.ApplicationName, roleId ,right.tokenName);
-}]]>
-				</body>
-			</do>
 		</object>
 		<object access-modifier="private" name="ChangeName" display-name="ChangeName" uuid="e88be227-279c-43b9-82cf-7ecc62666f8c" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
 			<object access-modifier="private" name="ShowChangeNameWindow" display-name="ShowChangeNameWindow" uuid="a75246da-fee1-4438-93b0-a702ade97574" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
@@ -200,12 +207,10 @@ if (roleRightsList.length > 0)
 					<![CDATA[if (value)
 {
 	Commands.DoEdit = false;
-	if (selectedRoleID != "")
-	{
-		RoleName.ClearData();
-		RoleName.InputText = selectedRoleName;
-		ShowChangeNameWindow.Invoke();
-	}
+
+	RoleName.ClearData();
+	RoleName.InputText = SelectedRoleData.Name;
+	ShowChangeNameWindow.Invoke();
 }]]>
 				</body>
 			</do-on>
@@ -217,27 +222,13 @@ if (roleRightsList.length > 0)
 						<![CDATA[if (RoleName.Error == "")
 {
 	SaveChanges.needSave = true;
-	Application.ChangeRole(selectedRoleID, RoleName.Value);
-	LoadRolesList(Application.GetRolesList());
+	
+	Application.ChangeRole(SelectedRoleData.Id, RoleName.Value);
+	LoadRolesList();
 }]]>
 					</body>
 				</do-on>
 			</object>
-		</object>
-		<object access-modifier="private" name="selectedRoleID" display-name="selectedRoleID" uuid="fc94cd1d-7572-411b-b17e-c184ecc9ae03" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5">
-			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
-				<body kind="om">
-					<![CDATA[if (value != oldValue)
-{
-	oldValue = value;
-	
-	commandsExecuteAbility : bool = (value != "");
-	Commands.DoEdit.CanExecute = commandsExecuteAbility;
-	Commands.DoRemoveSelected.CanExecute = commandsExecuteAbility;
-}]]>
-				</body>
-			</do-on>
-			<object access-modifier="private" name="oldValue" display-name="oldValue" uuid="82fcb1e6-667d-412f-89b2-c2f8e6944ba7" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
 		</object>
 		<do-trace access-modifier="private" target="CreateRole" ver="5">
 			<body>
@@ -259,37 +250,167 @@ if (roleRightsList.length > 0)
 				<![CDATA[SystemCommands.DoSave]]>
 			</body>
 		</do-trace>
-		<object access-modifier="private" name="selectedRoleName" display-name="selectedRoleName" uuid="a7cf58e1-8313-49c2-a77f-cb90c3456718" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<object access-modifier="private" name="AddRigths" display-name="AddRigths" uuid="be975978-49ca-43ea-bb77-e36007e9c54b" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+			<object access-modifier="private" name="ShowSetChangeRightsDialog" display-name="ShowSetChangeRightsDialog" uuid="5fcaffa2-e641-46e0-84c0-66e1f8061a04" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="8c4749ef-c4b7-46cc-b16c-abb82d7bb1a5" base-type="ChangeRights" base-type-id="24f489ad-7aec-41a5-b0f7-8ed917e6f052" ver="5">
+						<init target="pApplyChanges" ver="5" ref="OnAdd"/>
+						<init target="CurrentApp" ver="5" ref="Application.ApplicationID"/>
+						<init target="CurrentRights" ver="5" ref="SelectedRoleData.RightsList"/>
+						<init target="DeleteMode" ver="5" value="false"/>
+						<init target="Init_Theme" ver="5" ref="here.private.pTheme"/>
+						<init target="pResult" ver="5" ref="RightsDialogResult"/>
+					</object>
+				</do-on>
+			</object>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value)
+{
+	Commands.DoAddRights = false;
+	
+	ShowSetChangeRightsDialog.Invoke();
+}]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="OnAdd" display-name="OnAdd" uuid="3850538a-867b-4647-9644-d7d580d7663a" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="javascript">
+						<![CDATA[if (RightsDialogResult.Value == "")
+	return;
+	
+try
+{
+	var rightsList = JSON.parse(RightsDialogResult.Value);
+}
+catch (error)
+{
+	return;
+}
+
+const addRightToRole = Application.RoleAddRight;
+
+const appName = Application.ApplicationID;
+const roleId = SelectedRoleData.Id;
+
+//добавить выбранные права
+for (let right of rightsList)
+{
+	let type = right.Type;
+	let name = right.TokenName;
+	let allowValue = right.TokenValueAllow;
+	let denyValue = right.TokenValueDeny;
+	addRightToRole(appName, roleId, name, type, allowValue, denyValue);	
+}
+
+//сохранение изменений
+SaveChanges.needSave = true;
+
+//очистить поле обмена
+RightsDialogResult.Value = "";
+
+//обновить список прав
+UpdateRightsInTable();]]>
+					</body>
+				</do-on>
+			</object>
+		</object>
+		<object access-modifier="private" name="DeleteRigths" display-name="DeleteRigths" uuid="8d89bd5d-4fe2-4b7b-ab22-5500702aa732" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value)
+{
+	Commands.DoDeleteRights = false;
+
+	ShowSetChangeRightsDialog.Invoke();
+}]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="ShowSetChangeRightsDialog" display-name="ShowSetChangeRightsDialog" uuid="fe0f5d6b-5289-48a8-9843-0096174a70f9" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="6454fe48-67c3-4bd6-afd9-e5943cff4808" base-type="ChangeRights" base-type-id="24f489ad-7aec-41a5-b0f7-8ed917e6f052" ver="5">
+						<init target="pApplyChanges" ver="5" ref="OnDelete"/>
+						<init target="CurrentRights" ver="5" ref="SelectedRoleData.RightsList"/>
+						<init target="DeleteMode" ver="5" value="true"/>
+						<init target="Init_Theme" ver="5" ref="here.private.pTheme"/>
+						<init target="pResult" ver="5" ref="RightsDialogResult"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="OnDelete" display-name="OnDelete" uuid="701d6f4d-fb83-42ae-af4f-c95b090f43f2" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="javascript">
+						<![CDATA[if (RightsDialogResult.Value == "")
+	return;
+	
+try
+{
+	var rightsList = JSON.parse(RightsDialogResult.Value);
+}
+catch (error)
+{
+	return;
+}
+
+const deleteRightToRole = Application.RoleDeleteRight;
+
+const appName = Application.ApplicationID;
+const roleId = SelectedRoleData.Id;
+
+//удалить выбранные права
+for (let right of rightsList)
+	deleteRightToRole(appName, roleId, right.TokenName);
+
+//сохранение изменений
+SaveChanges.needSave = true;
+
+//очистить поле обмена
+RightsDialogResult.Value = "";
+
+//обновить список прав
+UpdateRightsInTable();]]>
+					</body>
+				</do-on>
+			</object>
+		</object>
+		<object access-modifier="private" name="RightsDialogResult" display-name="RightsDialogResult" uuid="4bfc0b8b-8db1-4da0-9ee5-341253ef7050" base-type="EditDialogResult" base-type-id="ce8af278-7358-4aa7-897d-e37d5d49460e" ver="5" description="" cardinal="1"/>
 		<object access-modifier="private" name="RoleName" display-name="RoleName" uuid="51bc0a2d-10bf-4789-810b-e1f33c3282e2" base-type="InputDialogResult" base-type-id="cdcda119-652b-45ed-bfc4-8cc21b98730d" ver="5">
 			<object access-modifier="private" name="IsChanged" display-name="IsChanged" uuid="541a3f93-4f90-4914-be90-7d671653e840" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5">
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
 					<body kind="javascript">
 						<![CDATA[const errorText = RoleName.Error;
-const currentRoleName = private.selectedRoleName;
+const currentRoleName = SelectedRoleData.Name;
+const rolesModel = WorkPanel.RoleView.Model;
 
-var inputText = InputText.Value.trim();
+var verifiableName = InputText.Value.trim().toLowerCase();
 
 errorText.Value = "";
 
-
-
-if (inputText != "")
+if (verifiableName != "")
 {
 	//если имя роли не изменилось
-	if (currentRoleName.toLowerCase() == inputText.toLowerCase())
+	if (currentRoleName.toLowerCase() == verifiableName)
 		return;
 
-	// Проверка дублирования имён
-	var roleList = JSON.parse(Application.GetRolesList()).data;	
-	for (let role of roleList)
-	{
-		if (role.roleName.toLowerCase() == inputText.toLowerCase())
-		{
-			errorText.Value = "Повторяющиеся имена недопустимы";
-			break;
-		}
-	}
-}
+	let rolesList = JSON.parse(Application.GetRolesList()).data;
+	
+	//если ролей нет
+	if (rolesList.length == 0)
+		return;
+		
+	//поиск повторяющихся имен
+	let nameList = rolesList.map((role) => role.roleName.toLowerCase());
+	if (nameList.includes(verifiableName))
+		errorText.Value = "Повторяющиеся имена недопустимы";
+}			
 else
 {
 	errorText.Value = "Имя роли не может быть пустым";
@@ -310,65 +431,6 @@ RoleName.Value ="";]]>
 				</body>
 			</do>
 		</object>
-		<do access-modifier="private" name="UpdateRolesTokenRights" display-name="UpdateRolesTokenRights" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
-			<body kind="javascript">
-				<![CDATA[
-try
-{
-	var appTokenList = JSON.parse(Application.GetTokensList()).data;
-	var rolesList = JSON.parse(Application.GetRolesList()).data;
-}
-catch
-{
-	return;
-}
-
-if (rolesList.length != 0)
-{
-	for (var i = 0; i < rolesList.length; i++ )
-	{
-		var roleRightsList = JSON.parse(Application.GetRoleRights(rolesList[i].roleID)).data;
-		var newRigthsList = [];
-		
-		//добавляем токены
-		if (roleRightsList.length != 0)
-		{
-			for (let j = 0; j < appTokenList.length; j++)
-			{
-				if (roleRightsList.findIndex(right => right.tokenName === appTokenList[j].tokenName) == -1)
-				{
-					newRigthsList.push(appTokenList[j]);
-				}
-			}
-		}
-		else
-		{
-			newRigthsList = appTokenList;
-		}
-		
-		//Формируем права 
-		for (var j = 0; j < newRigthsList.length; j++)
-		{
-			let TokenType = (newRigthsList[j].tokenType == "bool")?(1):(0);
-			let TokenValueAllow = (TokenType == 0)?(""):("TRUE"); 
-			let TokenValueDeny = (TokenType == 0)?(""):("FALSE");
-			Application.RoleAddRight(Application.ApplicationName,rolesList[i].roleID, newRigthsList[j].tokenName, TokenType, TokenValueAllow, TokenValueDeny);
-		}
-		
-		//Удаляем лишние
-		for (let j = 0; j < roleRightsList.length; j++)
-		{
-			if (appTokenList.findIndex(right => right.tokenName === roleRightsList[j].tokenName) == -1)
-			{
-				Application.RoleDeleteRight(Application.ApplicationName, rolesList[i].roleID, roleRightsList[j].tokenName);
-			}
-		}
-	}
-	SystemCommands.GoTo.doBlockingControll();
-	Application.Save();
-}]]>
-			</body>
-		</do>
 		<do access-modifier="private" name="LoadRolesList" display-name="LoadRolesList" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 			<body kind="javascript">
 				<![CDATA[const rolesModel = WorkPanel.RoleView.TableModel;
@@ -376,7 +438,7 @@ if (rolesList.length != 0)
 WorkPanel.RoleView.Init();
 rolesModel.Clear();
 
-var rolesList = JSON.parse(roleListJSON).data;
+var rolesList = JSON.parse(Application.GetRolesList()).data;
 
 if (rolesList.length == 0)
 	return;
@@ -389,7 +451,22 @@ for (let [row, role] of rolesList.entries())
 	rolesModel.SetRowDataAsJson(row, JSON.stringify(rowData));
 }]]>
 			</body>
-			<param access-modifier="private" name="roleListJSON" display-name="" uuid="506bd925-b75c-48b0-876c-8d6ac441c33a" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+		<do access-modifier="private" name="UpdateRightsInTable" display-name="UpdateRightsInTable" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[//подготовка списка прав для отображения
+const roleId = SelectedRoleData.Id;
+
+var roleRightsList = JSON.parse(Application.GetRoleRights(roleId)).data;
+
+var rightsEntry = {"Rights": roleRightsList, "EffectiveRights": roleRightsList};
+
+//сохранить список назначенных прав в поле
+SelectedRoleData.RightsList = (roleRightsList.length > 0) ? (JSON.stringify(roleRightsList)) : ("");
+
+//загрузка прав в таблицу
+WorkPanel.RightsTable.ShowRights(JSON.stringify(rightsEntry));]]>
+			</body>
 		</do>
 		<do access-modifier="private" name="SaveViewSettings" display-name="SaveViewSettings" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 			<body kind="om">
@@ -398,19 +475,30 @@ for (let [row, role] of rolesList.entries())
 		</do>
 		<init target="pTheme" ver="5" ref="init_Theme"/>
 		<init target="pScreenKeyboard" ver="5" ref="init_ScreenKeyboard"/>
-		<do access-modifier="private" name="UpdateRightsInTable" display-name="UpdateRightsInTable" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
-			<body kind="javascript">
-				<![CDATA[//подготовка списка прав для отображения
-const roleId = selectedRoleID;
-
-var roleRightsList = JSON.parse(Application.GetRoleRights(roleId)).data;
-
-var rightsEntry = {"Rights": roleRightsList, "EffectiveRights": roleRightsList};
-
-//загрузка прав в таблицу
-WorkPanel.RightsTable.ShowRights(JSON.stringify(rightsEntry));]]>
+		<do-trace access-modifier="private" target="AddRigths" ver="5">
+			<body>
+				<![CDATA[Commands.DoAddRights]]>
 			</body>
-		</do>
+		</do-trace>
+		<do-trace access-modifier="private" target="DeleteRigths" ver="5">
+			<body>
+				<![CDATA[Commands.DoDeleteRights]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="ShowError" display-name="ShowError" uuid="f753a880-32eb-4bbe-9a2a-edb3624c8173" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="223bca99-7570-4708-99ed-c2a06134fdd2" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="5">
+					<init target="Message" ver="5" ref="message"/>
+					<init target="Buttons" ver="5" value="0"/>
+					<init target="Icon" ver="5" value="3"/>
+					<designed target="WindowCaption" value="Ошибка" ver="5"/>
+					<init target="pTheme" ver="5" ref="here.private.pTheme"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="message" display-name="message" uuid="07c4ea13-1dd0-486f-b208-307f821cbe98" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</object>
 	</object>
 	<object access-modifier="private" name="Debug" display-name="Debug" uuid="954e1ab1-eebd-4f20-a0ae-e0e476a2ddb1" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
 	<object access-modifier="private" name="Application" display-name="Application" uuid="56d5f2c4-6b8e-4526-b7aa-f0a9bceb78d8" base-type="SecurityManagerApplication" base-type-id="cfc3985c-54fc-4fe4-b001-cade048d6ee0" ver="5">
@@ -425,8 +513,8 @@ WorkPanel.RightsTable.ShowRights(JSON.stringify(rightsEntry));]]>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="LoadComplete">
 			<body kind="om">
 				<![CDATA[Title.AppNameText = ApplicationName;
-private.LoadRolesList(GetRolesList());
-private.UpdateRolesTokenRights();
+private.LoadRolesList();
+
 Commands.DoCreate.CanExecute = true;
 SystemCommands.GoTo.doUnblockingControll();]]>
 			</body>
@@ -440,21 +528,20 @@ SystemCommands.GoTo.doUnblockingControll();]]>
 		</do-on>
 		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="SaveFailed">
 			<body kind="om">
-				<![CDATA[ShowError.message = GetErrorDescriptionByCode(FailReasonCode);
-ShowError.Invoke();
+				<![CDATA[private.ShowError.message = GetErrorDescriptionByCode(FailReasonCode);
+private.ShowError.Invoke();
 SystemCommands.GoTo.doUnblockingControll();]]>
 			</body>
 		</do-on>
 		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="LoadFailed">
 			<body kind="om">
 				<![CDATA[SystemCommands.GoTo.doUnblockingControll();
-ShowError.message = GetErrorDescriptionByCode(FailReasonCode);
-ShowError.Invoke();
+private.ShowError.message = GetErrorDescriptionByCode(FailReasonCode);
+private.ShowError.Invoke();
 SystemCommands.GoTo.doUnblockingControll();]]>
 			</body>
 		</do-on>
 	</object>
-	<object access-modifier="private" name="inputAppID" display-name="inputAppID" uuid="0eeb669a-4f51-4c33-9961-3c62ebc38c9d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 	<object access-modifier="private" name="Title" display-name="Title" uuid="323f4c00-644b-4d75-8a97-33e5dec35687" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 		<designed target="X" value="0" ver="5"/>
 		<designed target="Y" value="0" ver="5"/>
@@ -473,11 +560,6 @@ SystemCommands.GoTo.doUnblockingControll();]]>
 		<designed target="PenWidth" value="1" ver="5"/>
 		<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
 		<designed target="BrushStyle" value="0" ver="5"/>
-		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseRightClick">
-			<body kind="javascript">
-				<![CDATA[log(Application.GetRolesList());]]>
-			</body>
-		</do-on>
 		<object access-modifier="private" name="Icon" display-name="Icon" uuid="b3ae5109-576a-466e-8c40-155a237c9c2b" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="5">
 			<designed target="X" value="2" ver="5"/>
 			<designed target="Y" value="7" ver="5"/>
@@ -585,8 +667,8 @@ SystemCommands.GoTo.doUnblockingControll();]]>
 			<designed target="RowHeight" value="25" ver="5"/>
 			<designed target="RowOrder" value="0" ver="5"/>
 			<designed target="SelectionBehavior" value="1" ver="5"/>
-			<designed target="SelectionMode" value="1" ver="5"/>
-			<designed target="SelectionOverlayEnabled" value="true" ver="5"/>
+			<designed target="SelectionMode" value="3" ver="5"/>
+			<designed target="SelectionOverlayEnabled" value="false" ver="5"/>
 			<designed target="LatestRowTracking" value="false" ver="5"/>
 			<designed target="DelayedSortingEnabled" value="false" ver="5"/>
 			<designed target="HorizontalScrollMode" value="0" ver="5"/>
@@ -682,14 +764,13 @@ private.SaveViewSettings();]]>
 					<![CDATA[if (row >= 0 && row < GetRowCount())
 {
 	rowInModel:int4 = MapRowToModel(row);
-	private.selectedRoleID = Variant.ToString(TableModel.GetCellData(rowInModel,0),"");
-	private.selectedRoleName = Variant.ToString(TableModel.GetCellData(rowInModel,1),"");
+	private.SelectedRoleData.Id = Variant.ToString(TableModel.GetCellData(rowInModel, 0), "");
+	private.SelectedRoleData.Name = Variant.ToString(TableModel.GetCellData(rowInModel, 1), "");
 	private.UpdateRightsInTable();
 }
 else
 {
-	private.selectedRoleID = "";
-	private.selectedRoleName = "";
+	private.SelectedRoleData.Reset();
 	WorkPanel.RightsTable.RemoveAllRows();
 }]]>
 				</body>
@@ -722,6 +803,8 @@ Column[1].SortOrder = 0;
 	
 ApplySort();
 
+Decorator.JsonDecorator = GetJsonDecorator(selectionColor);
+
 Model.Reset();
 Model.AddColumn("roleID","","","","string",false,true);
 Model.AddColumn("roleName","","","","string",false,true);]]>
@@ -732,27 +815,17 @@ Model.AddColumn("roleName","","","","string",false,true);]]>
 				<designed target="MinHeight" value="0" ver="5"/>
 				<designed target="MaxWidth" value="220" ver="5"/>
 				<designed target="MaxHeight" value="16777215" ver="5"/>
+				<do-trace access-modifier="private" target="MinWidth" ver="5">
+					<body>
+						<![CDATA[Splitter.Position]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="MaxWidth" ver="5">
+					<body>
+						<![CDATA[Splitter.Position]]>
+					</body>
+				</do-trace>
 			</object>
-			<do access-modifier="private" name="GetRoleIdByName" display-name="GetRoleIdByName" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
-				<param access-modifier="private" name="roleName" display-name="" uuid="b6c1a9f8-4b71-463d-ba35-29294f93b525" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
-				<body kind="om">
-					<![CDATA[checkedRoleName:string = String.Trim(roleName);
-if (checkedRoleName == "")
-	return "";
-
-for (row: int4 = 0; row < GetRowCount(); row += 1 )
-{
-	currentName:string = GetCellData(row, 1);
-	if (checkedRoleName == currentName)
-	{
-		SetCurrentCell(row, 1);
-		return GetCellData(row, 0);
-	}
-}
-
-return "";]]>
-				</body>
-			</do>
 			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
 				<body>
 					<![CDATA[private.pTheme.EditorBrushColor]]>
@@ -781,91 +854,55 @@ else if (keyCode == 109) 		// Delete
 	Commands.DoRemoveSelected = true;]]>
 				</body>
 			</do-on>
+			<object access-modifier="private" name="selectionColor" display-name="selectionColor" uuid="fa715f83-1f18-496b-bbc3-c6b977f0d24b" base-type="notifying_uint8" base-type-id="2e6d6c20-2489-49e1-9d5f-fe68a21b43df" ver="5" description="" cardinal="1"/>
+			<designed target="RowHeightResizeMode" value="3" ver="5"/>
+			<do-trace access-modifier="private" target="selectionColor" ver="5">
+				<body>
+					<![CDATA[private.pTheme.SelectionColor]]>
+				</body>
+			</do-trace>
+			<object access-modifier="private" name="Decorator" display-name="Decorator" uuid="4faa2242-b58d-4892-aec8-a3044909e94a" base-type="TableDecorator" base-type-id="2ff6a2d7-9573-4060-bfea-29c63d61b079" ver="5" description="" cardinal="1">
+				<designed target="JsonDecorator" value="" ver="5"/>
+			</object>
+			<do access-modifier="private" name="GetJsonDecorator" display-name="GetJsonDecorator" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+				<body kind="javascript">
+					<![CDATA[var decorator = {};
+
+decorator.StyleDictionary = [
+	{
+		'style_name': "selected_style",
+		'style': { 'background_color': `#${selectionColor.toString(16)}` }
+	}
+];
+
+decorator.Decorating = [
+	{
+		'decoration_rule_name': "selected_rule", 
+		'decoration_rule': { 'row:isSelected': true },
+		'rowstyle': "selected_style"
+	}
+
+];
+
+return JSON.stringify(decorator);]]>
+				</body>
+				<param access-modifier="private" name="selectionColor" display-name="" uuid="b67563c3-3cc6-4dca-9bdc-cc4624173db0" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5"/>
+			</do>
 		</object>
-		<object access-modifier="private" name="Slider" display-name="Slider" uuid="448642c9-3c3c-475d-9e0e-86e9caa65984" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
-			<designed target="X" value="220" ver="5"/>
+		<object access-modifier="private" name="Splitter" display-name="Splitter" uuid="d60e0285-0500-461d-bde7-ce7d6b62c52e" base-type="HorizontalSplitter" base-type-id="9f2e11a5-219a-4c9b-bceb-928724b2f965" ver="5" description="" cardinal="1">
+			<designed target="X" value="843" ver="5"/>
 			<designed target="Y" value="0" ver="5"/>
-			<designed target="ZValue" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
-			<designed target="Scale" value="1" ver="5"/>
-			<designed target="Visible" value="true" ver="5"/>
-			<designed target="Opacity" value="1" ver="5"/>
-			<designed target="Enabled" value="true" ver="5"/>
-			<designed target="Tooltip" value="" ver="5"/>
 			<designed target="Width" value="4" ver="5"/>
 			<designed target="Height" value="378" ver="5"/>
-			<designed target="RoundingRadius" value="0" ver="5"/>
-			<designed target="PenColor" value="0xff808080" ver="5"/>
-			<designed target="PenStyle" value="1" ver="5"/>
-			<designed target="PenWidth" value="1" ver="5"/>
-			<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
-			<designed target="BrushStyle" value="1" ver="5"/>
-			<object access-modifier="private" name="bPressed" display-name="bPressed" uuid="a1b01de5-2720-4a12-86f3-07838a332302" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
-			<object access-modifier="private" name="MouseIsOver" display-name="MouseIsOver" uuid="6f821adb-c4a6-411d-aeb7-23b5b95c23ed" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
-			<do-trace access-modifier="private" target="BrushColor" ver="5">
-				<body>
-					<![CDATA[MouseIsOver ? private.pTheme.SelectionColor : private.pTheme.BackgroundColor]]>
-				</body>
-			</do-trace>
-			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseMove">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseRelease">
 				<body kind="om">
-					<![CDATA[if (bPressed)
-{
-	distance: double = Distance + event.X;
-	
-	min: double = 30;
-	if (distance < min)
-		distance = min;
-		
-	max: double = parent.Width - 30;
-	if (distance > max)
-		distance = max;
-	
-	if (Distance != distance)
-	{
-		Distance = distance;
-		RoleView.SizeLimits.MinWidth = Distance;
-		RoleView.SizeLimits.MaxWidth = Distance;
-		private.SaveViewSettings();
-	}
-}]]>
+					<![CDATA[here.private.SaveViewSettings();]]>
 				</body>
 			</do-on>
-			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MousePress">
-				<body kind="om">
-					<![CDATA[bPressed = true;]]>
-				</body>
-			</do-on>
-			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseRelease">
-				<body kind="om">
-					<![CDATA[bPressed = false;]]>
-				</body>
-			</do-on>
-			<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseEnter">
-				<body kind="om">
-					<![CDATA[MouseIsOver = true;]]>
-				</body>
-			</do-on>
-			<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="MouseLeave">
-				<body kind="om">
-					<![CDATA[MouseIsOver = false;
-bPressed = false;]]>
-				</body>
-			</do-on>
-			<object access-modifier="private" name="Distance" display-name="Distance" uuid="30503676-4251-47fc-851f-7adc98c808f1" base-type="double" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="5" description="" cardinal="1"/>
-			<init target="Distance" ver="5" value="220"/>
-			<designed target="Flip" value="0" ver="5"/>
-			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="44857aed-ce36-4840-8104-4bcd68432d26" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
-				<designed target="MinWidth" value="4" ver="5"/>
-				<designed target="MinHeight" value="0" ver="5"/>
-				<designed target="MaxWidth" value="4" ver="5"/>
-				<designed target="MaxHeight" value="16777215" ver="5"/>
-			</object>
-			<do-trace access-modifier="private" target="PenColor" ver="5">
-				<body>
-					<![CDATA[private.pTheme.BorderColor]]>
-				</body>
-			</do-trace>
+			<init target="Position" ver="5" value="220"/>
+			<init target="Minimum" ver="5" value="30"/>
+			<init target="init_Theme" ver="5" ref="here.init_Theme"/>
 		</object>
 		<object access-modifier="private" name="LinearLayout" display-name="LinearLayout" uuid="c2490c2a-bd41-40de-858f-fa1573285506" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
 			<designed target="Orientation" value="1" ver="5"/>
@@ -880,7 +917,7 @@ bPressed = false;]]>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Width" value="623" ver="5"/>
 			<designed target="Height" value="378" ver="5"/>
-			<object access-modifier="private" name="ExchangeDialogData" display-name="ExchangeDialogData" uuid="7cad1704-9286-4a0e-9695-337a567fba31" base-type="ChangedRightsResult" base-type-id="3efb0823-a348-4b39-a762-64290867ccb6" ver="5"/>
+			<object access-modifier="private" name="ExchangeDialogData" display-name="ExchangeDialogData" uuid="7cad1704-9286-4a0e-9695-337a567fba31" base-type="ChangeRightResult" base-type-id="3efb0823-a348-4b39-a762-64290867ccb6" ver="5"/>
 			<object access-modifier="private" name="OnViewSettingsChanged" display-name="OnViewSettingsChanged" uuid="563a03e4-ddc8-4b27-86f5-707820224c9b" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="InvokeTrigger" value="false" ver="5"/>
@@ -897,7 +934,7 @@ bPressed = false;]]>
 					<body kind="om">
 						<![CDATA[if (ExchangeDialogData.GetDataValidation())
 {
-	roleId: string = here.private.selectedRoleID;
+	roleId: string = here.private.SelectedRoleData.Id;
 	here.Application.RoleChangeRight(ExchangeDialogData.App, roleId, ExchangeDialogData.Name, ExchangeDialogData.AllowValue, ExchangeDialogData.DenyValue);
 	here.private.UpdateRightsInTable();
 	ExchangeDialogData.ResetParamsValues();
@@ -913,30 +950,20 @@ bPressed = false;]]>
 			<init target="EditingAllowed" ver="5" value="true"/>
 			<do-trace access-modifier="private" target="EditingAllowed" ver="5">
 				<body>
-					<![CDATA[pConfigurationAccessValue.Value]]>
+					<![CDATA[pConfigurationAccess.Value]]>
 				</body>
 			</do-trace>
 			<init target="pRightValueChanged" ver="5" ref="ChangeRightComplete"/>
+			<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="2aca1ad8-251b-4070-adb6-d4334aacfd81" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5" description="" cardinal="1">
+				<designed target="Weight" value="1000" ver="5"/>
+			</object>
 		</object>
 	</object>
-	<object access-modifier="private" name="ShowError" display-name="ShowError" uuid="f753a880-32eb-4bbe-9a2a-edb3624c8173" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
-		<designed target="Enabled" value="true" ver="5"/>
-		<designed target="InvokeTrigger" value="false" ver="5"/>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
-			<object access-modifier="private" uuid="223bca99-7570-4708-99ed-c2a06134fdd2" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="5">
-				<init target="Message" ver="5" ref="message"/>
-				<init target="Buttons" ver="5" value="0"/>
-				<init target="Icon" ver="5" value="3"/>
-				<designed target="WindowCaption" value="Ошибка" ver="5"/>
-				<init target="pTheme" ver="5" ref="here.private.pTheme"/>
-			</object>
-		</do-on>
-		<object access-modifier="private" name="message" display-name="message" uuid="07c4ea13-1dd0-486f-b208-307f821cbe98" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
-	</object>
-	<object access-modifier="private" name="Commands" display-name="Commands" uuid="f6306372-45dc-4e9b-96c1-9ca784e69375" base-type="ListCommands" base-type-id="d481f36c-0b94-4338-a60e-3e31bf7df8a1" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="inputAppID" display-name="inputAppID" uuid="0eeb669a-4f51-4c33-9961-3c62ebc38c9d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	<object access-modifier="private" name="pConfigurationAccess" display-name="Разрешить редактирование" uuid="d32db8c5-e9db-4c53-8dc0-22776d2672c0" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="Commands" display-name="Commands" uuid="f6306372-45dc-4e9b-96c1-9ca784e69375" base-type="RoleCommands" base-type-id="0a9f57da-9992-430a-9df5-ca597b7c8ba3" base-const="true" base-ref="true" ver="5"/>
 	<object access-modifier="private" name="SystemCommands" display-name="SystemCommands" uuid="9811db03-cc48-4bab-8cc8-79fdbad1836c" base-type="SystemCommands" base-type-id="0b754dab-38c6-43db-a050-37201965421c" base-const="true" base-ref="true" ver="5"/>
 	<designed target="WindowIconPath" value="" ver="5"/>
-	<object access-modifier="private" name="pConfigurationAccessValue" display-name="pConfigurationAccessValue" uuid="d32db8c5-e9db-4c53-8dc0-22776d2672c0" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" base-const="true" base-ref="true" ver="5" description=""/>
 	<object access-modifier="private" name="Layout" display-name="Layout" uuid="d0223b7a-6135-4e6a-9eb4-65fa8bb7bce9" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
 		<designed target="Orientation" value="2" ver="5"/>
 		<designed target="Gap" value="0" ver="5"/>
@@ -952,7 +979,7 @@ var content = JSON.parse(settings);
 if (content.Layout != undefined){
 	var layout = content.Layout;
 	
-	rolesView.SizeLimits.MinWidth = layout.RolesTable;
+	WorkPanel.Splitter.Position = layout.RolesTable;
 }
 
 let rolesTable = content.RolesTable;
@@ -994,7 +1021,7 @@ var rightsView = WorkPanel.RightsTable;
 var settings = 
 	{
 		"Layout" : {
-			"RolesTable": rolesView.SizeLimits.MinWidth
+			"RolesTable": WorkPanel.Splitter.Position.Value
 		},
 		"RolesTable" : {
 			"Columns":{}

@@ -196,7 +196,7 @@ Close();]]>
 	<object access-modifier="private" name="private" display-name="private" uuid="1eb839a8-80b3-40c9-bcf0-7ef6386bfb60" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
 		<object access-modifier="private" name="pTheme" display-name="pTheme" uuid="9ad08c3f-f8d9-4983-9734-c6af30f097f1" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
 		<init target="pTheme" ver="5" ref="init_Theme"/>
-		<object access-modifier="private" name="pResult" display-name="Ссылка на результат" uuid="711b1399-a918-4701-8d1c-0fe080976dab" base-type="ChangedRightsResult" base-type-id="3efb0823-a348-4b39-a762-64290867ccb6" base-const="true" base-ref="true" ver="5"/>
+		<object access-modifier="private" name="pResult" display-name="Ссылка на результат" uuid="711b1399-a918-4701-8d1c-0fe080976dab" base-type="ChangeRightResult" base-type-id="3efb0823-a348-4b39-a762-64290867ccb6" base-const="true" base-ref="true" ver="5"/>
 		<init target="pResult" ver="5" ref="init_ChangedRightsResult"/>
 	</object>
 	<object access-modifier="private" name="pTokensDefinition" display-name="Ссылка на определение прав" uuid="50da9da2-fa14-4bad-a6ae-8b2114ec8abd" base-type="TokensDefinition" base-type-id="2d057de8-3722-4426-b142-42fa7ada0520" ver="5" base-ref="true"/>
@@ -254,6 +254,6 @@ EditableValue.Maximum = String.ToInt8(String.SubString(range, separatorPosition 
 EditableValue.Value = String.ToInt8(valueAsString, 0);]]>
 		</body>
 	</do-on>
-	<param access-modifier="private" name="init_ChangedRightsResult" display-name="Результат" uuid="d53e815a-4c82-4106-a0e8-2399d88361b3" base-type="ChangedRightsResult" base-type-id="3efb0823-a348-4b39-a762-64290867ccb6" base-const="true" base-ref="true" ver="5" description=""/>
+	<param access-modifier="private" name="init_ChangedRightsResult" display-name="Результат" uuid="d53e815a-4c82-4106-a0e8-2399d88361b3" base-type="ChangeRightResult" base-type-id="3efb0823-a348-4b39-a762-64290867ccb6" base-const="true" base-ref="true" ver="5" description=""/>
 </type>
 

@@ -6,7 +6,7 @@
 	<designed target="Visible" value="true" ver="2"/>
 	<designed target="Enabled" value="true" ver="2"/>
 	<designed target="Tooltip" value="" ver="2"/>
-	<designed target="Width" value="480" ver="2"/>
+	<designed target="Width" value="520" ver="2"/>
 	<designed target="Height" value="160" ver="2"/>
 	<designed target="PenColor" value="4278190080" ver="2"/>
 	<designed target="PenStyle" value="0" ver="2"/>
@@ -212,7 +212,7 @@ else if (!Checkbox_1.State && !Checkbox_2.State && !Checkbox_3.State)
 		</do-trace>
 	</object>
 	<object access-modifier="private" name="OkButton" display-name="OkButton" uuid="0a227e28-7e35-4fde-b68e-d57ab488e95a" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="2">
-		<designed target="X" value="300" ver="2"/>
+		<designed target="X" value="340" ver="2"/>
 		<designed target="Y" value="120" ver="2"/>
 		<designed target="Rotation" value="0" ver="2"/>
 		<designed target="Scale" value="1" ver="2"/>
@@ -256,13 +256,13 @@ else if (!Checkbox_1.State && !Checkbox_2.State && !Checkbox_3.State)
 			<body kind="om">
 				<![CDATA[
 if (Checkbox_1.State)
-	pDialogResult.Value = DateTime.ToString(DateEditor_1.Value, "%d.%m.%Y");
+	OnComplete.Args.Push( DateTime.ToString(DateEditor_1.Value, "%d.%m.%Y") );
 else if (Checkbox_2.State)
-	pDialogResult.Value = DateTime.ToString(DateTime.Create(DateTime.Year(DateEditor_2.Value), DateTime.Month(DateEditor_2.Value), DateTime.Day(DateEditor_2.Value), DateTime.Hour(TimeEditor_2.Value), DateTime.Minute(TimeEditor_2.Value), DateTime.Second(TimeEditor_2.Value) ));
+	OnComplete.Args.Push(DateTime.ToString(DateTime.Create(DateTime.Year(DateEditor_2.Value), DateTime.Month(DateEditor_2.Value), DateTime.Day(DateEditor_2.Value), DateTime.Hour(TimeEditor_2.Value), DateTime.Minute(TimeEditor_2.Value), DateTime.Second(TimeEditor_2.Value) )));
 else if (Checkbox_3.State)
-	pDialogResult.Value = ">="+DateTime.ToString(IntervalEditor_3.Begin)+" И <="+DateTime.ToString(IntervalEditor_3.End);
+	OnComplete.Args.Push(">="+DateTime.ToString(IntervalEditor_3.Begin)+" И <="+DateTime.ToString(IntervalEditor_3.End));
 
-pDialogEvent.Invoke();
+OnComplete.Invoke();
 
 Close();]]>
 			</body>
@@ -275,7 +275,7 @@ Close();]]>
 		</do-trace>
 	</object>
 	<object access-modifier="private" name="CancelButton" display-name="CancelButton" uuid="0ac8d4e5-63d3-470a-bac2-81632a6891f3" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="2">
-		<designed target="X" value="390" ver="2"/>
+		<designed target="X" value="430" ver="2"/>
 		<designed target="Y" value="120" ver="2"/>
 		<designed target="Rotation" value="0" ver="2"/>
 		<designed target="Scale" value="1" ver="2"/>
@@ -318,8 +318,7 @@ Close();]]>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="close"/>
 		<designed target="Flip" value="0" ver="5"/>
 	</object>
-	<object access-modifier="private" name="pDialogResult" display-name="pDialogResult" uuid="429afb46-1553-40a4-856b-a5d59425f445" base-type="DialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" base-const="true" base-ref="true" ver="5" description=""/>
-	<object access-modifier="private" name="pDialogEvent" display-name="pDialogEvent" uuid="a7c7752e-6c3a-462b-afba-8d5cbd0274a3" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="a7c7752e-6c3a-462b-afba-8d5cbd0274a3" base-type="EventHandler" base-type-id="c01b71c2-42e8-4333-b70e-cc35fdf96f7e" base-const="true" base-ref="true" ver="5" description=""/>
 	<do-on access-modifier="private" name="Handler_Opened" display-name="Handler_Opened" ver="5" event="Opened">
 		<body kind="om">
 			<![CDATA[DateEditor_1.Editor.Focus = true; //Переводим Focus на форму для обработки нажатия клавиш]]>

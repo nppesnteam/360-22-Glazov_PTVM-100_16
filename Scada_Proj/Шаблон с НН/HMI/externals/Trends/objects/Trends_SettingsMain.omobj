@@ -55,7 +55,7 @@ bToolBarBtnVisible[17] = pToolBar.btnZoomIn.IsVisible;
 bToolBarBtnVisible[18] = pToolBar.btnXZoom.IsVisible;
 bToolBarBtnVisible[19] = pToolBar.btnPause.Accessed;
 bToolBarBtnVisible[20] = pToolBar.IntervalEditor.Accessed;
-bToolBarBtnVisible[21] = pToolBar.btnRequest.Accessed;]]>
+bToolBarBtnVisible[21] = pToolBar.reqFrame.Accessed;]]>
 			</body>
 		</do>
 		<do access-modifier="private" name="Apply" display-name="Apply" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
@@ -90,7 +90,7 @@ pToolBar.btnXZoom.IsVisible = bToolBarBtnVisible[18];
 pToolBar.btnYZoom.IsVisible = bToolBarBtnVisible[18];
 pToolBar.btnPause.Accessed = bToolBarBtnVisible[19];
 pToolBar.IntervalEditor.Accessed = bToolBarBtnVisible[20];
-pToolBar.btnRequest.Accessed = bToolBarBtnVisible[21];
+pToolBar.reqFrame.Accessed = bToolBarBtnVisible[21];
 
 bChanged = false;]]>
 			</body>
@@ -118,7 +118,7 @@ bChanged = false;]]>
 	(bToolBarBtnVisible[18] != pToolBar.btnXZoom.IsVisible) ||
 	(bToolBarBtnVisible[19] != pToolBar.btnPause.IsVisible) ||
 	(bToolBarBtnVisible[20] != pToolBar.IntervalEditor.Accessed) ||
-	(bToolBarBtnVisible[21] != pToolBar.btnRequest.Accessed);]]>
+	(bToolBarBtnVisible[21] != pToolBar.reqFrame.Accessed);]]>
 			</body>
 		</do>
 	</object>

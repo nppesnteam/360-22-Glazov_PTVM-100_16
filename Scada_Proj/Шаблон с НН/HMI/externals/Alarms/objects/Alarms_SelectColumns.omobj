@@ -90,6 +90,11 @@ else if (event.KeyCode == 75) // Escape
 			<designed target="SortPriority" value="0" ver="5"/>
 			<designed target="SortMode" value="0" ver="5"/>
 			<designed target="WordWrap" value="true" ver="5"/>
+			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BackgroundColor]]>
+				</body>
+			</do-trace>
 		</object>
 		<object access-modifier="private" name="Column2" display-name="Column2" uuid="777f9f9a-08c1-4fef-a025-60717afcfba8" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="5" description="" cardinal="1">
 			<designed target="Title" value="" ver="5"/>
@@ -116,6 +121,16 @@ else if (event.KeyCode == 75) // Escape
 			<designed target="SortPriority" value="0" ver="5"/>
 			<designed target="SortMode" value="0" ver="5"/>
 			<designed target="WordWrap" value="true" ver="5"/>
+			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BackgroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
 		</object>
 		<init target="TableModel" ver="5">
 			<object access-modifier="private" uuid="b17fdf16-e888-48d7-9104-1b496c6c0085" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="5">
@@ -128,6 +143,12 @@ else if (event.KeyCode == 75) // Escape
 				<![CDATA[scrolled();]]>
 			</body>
 		</do-on>
+		<designed target="RowHeightResizeMode" value="3" ver="5"/>
+		<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+			<body>
+				<![CDATA[pTheme.BackgroundColor]]>
+			</body>
+		</do-trace>
 	</object>
 	<object access-modifier="private" name="Checkboxes" display-name="Checkboxes" uuid="a089320a-dbc9-4c49-b7fe-ea951ea64816" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="2" cardinal="25">
 		<designed target="X" value="12" ver="2"/>
@@ -205,7 +226,7 @@ for(let i = 0; i < Checkboxes.Length; i++)
 		columns.push(column);
 	}
 }
-Result.Value = JSON.stringify(columns);
+OnComplete.Args.Push(JSON.stringify(columns));
 OnComplete.Invoke();
 
 Close();]]>
@@ -301,8 +322,7 @@ OkButton.X = CancelButton.X - OkButton.Width - 10;]]>
 			</body>
 		</do-on>
 	</object>
-	<object access-modifier="private" name="Result" display-name="Result" uuid="b8775cb0-c1fa-48f0-b248-87846d3a47d5" base-type="DialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" base-const="true" base-ref="true" ver="4"/>
-	<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="98fea66d-0bc7-4929-bb48-12f6247333f1" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="b8775cb0-c1fa-48f0-b248-87846d3a47d5" base-type="EventHandler" base-type-id="c01b71c2-42e8-4333-b70e-cc35fdf96f7e" base-const="true" base-ref="true" ver="4"/>
 	<object access-modifier="private" name="Debug" display-name="Debug" uuid="05e83363-2719-4df7-89f0-f3c3b25bbd1b" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="4"/>
 	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="bfd2858b-c95d-4676-8646-5296cba20176" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
 	<do-trace access-modifier="private" target="BrushColor" ver="5">

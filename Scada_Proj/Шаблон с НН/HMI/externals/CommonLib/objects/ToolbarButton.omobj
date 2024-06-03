@@ -1,4 +1,4 @@
-<type access-modifier="public" name="ToolbarButton" display-name="ToolbarButton" uuid="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+<type access-modifier="public" name="ToolbarButton" display-name="Кнопка панели инструментов" uuid="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="Rotation" value="0" ver="5"/>
@@ -53,61 +53,17 @@
 				<![CDATA[(ButtonHeight - IconSize) / 2 - Margin]]>
 			</expr>
 		</init>
+		<designed target="Flip" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[IconFile != ""]]>
+			</body>
+		</do-trace>
 	</object>
 	<object access-modifier="private" name="private" display-name="private" uuid="45115ac4-512c-4c6a-97f4-ec1c43a3c525" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
-		<object access-modifier="private" name="theme" display-name="theme" uuid="0cdf3a9c-175e-472f-a7eb-5d26dcc05e1a" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5" description="" cardinal="1">
-			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
-				<body>
-					<![CDATA[pTheme.BackgroundColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
-				<body>
-					<![CDATA[pTheme.ForegroundColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="DisabledFontColor" ver="5">
-				<body>
-					<![CDATA[pTheme.DisabledFontColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="EditorBrushColor" ver="5">
-				<body>
-					<![CDATA[pTheme.EditorBrushColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="EditorFontColor" ver="5">
-				<body>
-					<![CDATA[pTheme.EditorFontColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="SelectionColor" ver="5">
-				<body>
-					<![CDATA[pTheme.SelectionColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="BorderColor" ver="5">
-				<body>
-					<![CDATA[pTheme.BorderColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="DisabledBorderColor" ver="5">
-				<body>
-					<![CDATA[pTheme.DisabledBorderColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="Font" ver="5">
-				<body>
-					<![CDATA[pTheme.Font]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="TitleFont" ver="5">
-				<body>
-					<![CDATA[pTheme.TitleFont]]>
-				</body>
-			</do-trace>
-		</object>
 		<object access-modifier="private" name="MouseIsOver" display-name="MouseIsOver" uuid="1bf59f0b-6e05-4b3f-b060-45661f60c6ab" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+		<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="d1fe9786-bf1a-4a23-9bd8-ea4b738e8903" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
+		<init target="pTheme" ver="5" ref="init_Theme"/>
 	</object>
 	<object access-modifier="private" name="Debug" display-name="Debug" uuid="de07fd55-2196-45f3-a994-61ff8c97ac23" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
 	<object access-modifier="private" name="IconFile" display-name="IconFile" uuid="0a11f794-3123-42e8-a244-c40d0a5b4a8a" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
@@ -207,7 +163,7 @@ Title.Y = 0;]]>
 	</object>
 	<do-trace access-modifier="private" target="PenColor" ver="5">
 		<body>
-			<![CDATA[Active && (Checked || private.MouseIsOver || pDropDown.private.MouseIsOver) ? private.theme.BorderColor : 0]]>
+			<![CDATA[Active && (Checked || private.MouseIsOver || pDropDown.private.MouseIsOver) ? private.pTheme.BorderColor : 0]]>
 		</body>
 	</do-trace>
 	<do-trace access-modifier="private" target="PenStyle" ver="5">
@@ -221,7 +177,7 @@ Title.Y = 0;]]>
 				<![CDATA[Active && Checked]]>
 			</condition>
 			<expr>
-				<![CDATA[private.theme.SelectionColor]]>
+				<![CDATA[private.pTheme.ToolbarSelectionColor]]>
 			</expr>
 		</conditional-expr>
 		<conditional-expr>
@@ -229,7 +185,7 @@ Title.Y = 0;]]>
 				<![CDATA[Active && (private.MouseIsOver || pDropDown.private.MouseIsOver)]]>
 			</condition>
 			<expr>
-				<![CDATA[private.theme.EditorBrushColor]]>
+				<![CDATA[private.pTheme.ToolbarEditorColor]]>
 			</expr>
 		</conditional-expr>
 		<default-expr>
@@ -243,7 +199,6 @@ Title.Y = 0;]]>
 			<![CDATA[IsVisible]]>
 		</body>
 	</do-trace>
-	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="57fd19a4-c5bf-40aa-bf4f-232bb534e4df" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
 	<init target="ButtonHeight" ver="5" value="30"/>
 	<param access-modifier="private" name="Margin" display-name="Margin" uuid="36afde2b-7be3-4b0c-8bfc-b31e087a60cc" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5" description=""/>
 	<param access-modifier="private" name="IconSize" display-name="IconSize" uuid="456c26d5-79f4-4a92-b595-252823dd3da1" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5" description=""/>
@@ -284,28 +239,39 @@ Title.Y = 0;]]>
 		</init>
 		<do-trace access-modifier="private" target="FontColor" ver="5">
 			<body>
-				<![CDATA[private.theme.ForegroundColor]]>
+				<![CDATA[private.pTheme.ToolbarFontColor]]>
 			</body>
 		</do-trace>
-		<init target="Width" ver="5">
-			<expr>
-				<![CDATA[ButtonWidth - ButtonHeight - 2]]>
-			</expr>
-		</init>
 		<object access-modifier="private" name="margin" display-name="margin" uuid="91a0ec94-199a-4ee0-a72a-fd7c86cdc07c" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
-		<init target="X" ver="5">
-			<expr>
-				<![CDATA[ButtonHeight]]>
-			</expr>
-		</init>
+		<designed target="Flip" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="Font" ver="5">
+			<body>
+				<![CDATA[private.pTheme.Font]]>
+			</body>
+		</do-trace>
 		<init target="margin" ver="5">
 			<expr>
-				<![CDATA[ButtonHeight]]>
+				<![CDATA[IconSize > 0 ? ButtonHeight : 0]]>
 			</expr>
 		</init>
-		<designed target="Flip" value="0" ver="5"/>
+		<init target="Width" ver="5">
+			<expr>
+				<![CDATA[ButtonWidth - (IconSize > 0 ? ButtonHeight : 0) - 2]]>
+			</expr>
+		</init>
+		<init target="X" ver="5">
+			<expr>
+				<![CDATA[IconSize > 0 ? ButtonHeight : 0]]>
+			</expr>
+		</init>
+		<init target="TextAlignment" ver="5">
+			<expr>
+				<![CDATA[IconSize > 0 ? 129 : 132]]>
+			</expr>
+		</init>
 	</object>
 	<init target="Margin" ver="5" value="1"/>
 	<designed target="Flip" value="0" ver="5"/>
+	<param access-modifier="private" name="init_Theme" display-name="Тема оформления" uuid="04eaf187-184f-4988-86ff-326f2d9f87f8" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
 </type>
 

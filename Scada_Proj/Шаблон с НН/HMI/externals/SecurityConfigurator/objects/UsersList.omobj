@@ -69,7 +69,7 @@
 					<![CDATA[if (value)
 {
 	Commands.DoRemoveSelected = false;
-
+	
 	if (!IsUserIdValid())
 		return;
 	
@@ -82,7 +82,7 @@
 	{
 		ShowRemoveDialog.message = "Вы действительно хотите удалить пользователя '" + SelectedUserLogin + "'?";
 		if (pSettings.DomainNodes != "")
-			SecurityContext.NodesReadQueue.Init(pSettings.DomainNodes);
+			SecurityContext.ReadNodesQueue.Init(SecurityContext.GetNodesCount());
 		else
 			ShowRemoveDialog.Invoke();
 	}
@@ -149,74 +149,69 @@
 			<object access-modifier="private" name="ShowExportSettingsDialog" display-name="ShowExportSettingsDialog" uuid="31df32b8-1fd9-4804-a5c9-0306bafba08d" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="InvokeTrigger" value="false" ver="5"/>
-				<object access-modifier="private" name="ExportSettingsResult" display-name="ExportSettingsResult" uuid="5ff48844-1057-49d1-ad07-9ca30513afcd" base-type="FileDialogResult" base-type-id="602926f1-7d01-4d50-a5c0-d8fd35eadc74" ver="5" description="" cardinal="1"/>
+				<object access-modifier="private" name="Folder" display-name="Folder" uuid="44e6abc0-1e27-4430-bec6-9bcaa89e86c8" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+				<object access-modifier="private" name="FileType" display-name="FileType" uuid="c4bb8954-b2c0-4955-97f5-636803c7de99" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+				<object access-modifier="private" name="ExportSettingsResult" display-name="ExportSettingsResult" uuid="5ff48844-1057-49d1-ad07-9ca30513afcd" base-type="ExportSettingsResult" base-type-id="75c6ad0a-e6d8-4bbe-afb1-ede4c5a88b39" ver="5" description="" cardinal="1"/>
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
 					<object access-modifier="private" uuid="438f0bf5-4ffe-4e79-bbef-a4198fa0b5e4" base-type="ExportSettingsDialog" base-type-id="6baaeecf-5f5b-4973-86c7-165d2c4c37c9" ver="5">
 						<init target="Init_Theme" ver="5" ref="here.private.pTheme"/>
 						<init target="Init_ScreenKeyboardOptions" ver="5" ref="here.private.pScreenKeyboard"/>
-						<init target="pApplySettings" ver="5" ref="StartExport"/>
-						<init target="FileTypeFilter" ver="5">
-							<expr>
-								<![CDATA[SystemCommands.DoExportToFile.GetExportFileFilter()]]>
-							</expr>
-						</init>
-						<init target="pSettingsResult" ver="5" ref="ExportSettingsResult"/>
+						<init target="pOnComplete" ver="5" ref="StartExport"/>
+						<init target="DefaultFileName" ver="5" value="Список пользователей"/>
+						<init target="FileTypeFilter" ver="5" value="Книга Excel (*.xlsx)|*.xlsx|Текстовый файл (*.csv)|*.csv"/>
+						<init target="DefaultFileType" ver="5" ref="FileType"/>
+						<init target="pPermissions" ver="5" ref="here.pPermissions"/>
 						<init target="DefaultFolderPath" ver="5">
 							<expr>
-								<![CDATA[SystemCommands.DoExportToFile.ExportPath]]>
+								<![CDATA[GetExportFolderPath()]]>
 							</expr>
 						</init>
-						<init target="DefaultFileName" ver="5" value="Список пользователей"/>
-						<init target="DefaultExportUserRights" ver="5" value="false"/>
-						<init target="pExportUserRightsResult" ver="5" ref="IsExportUserRightsTables"/>
-						<init target="DefaultFileType" ver="5">
-							<expr>
-								<![CDATA[SystemCommands.DoExportToFile.FileType]]>
-							</expr>
-						</init>
+						<init target="pResult" ver="5" ref="ExportSettingsResult"/>
 					</object>
 				</do-on>
 				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Invoked">
 					<body kind="om">
-						<![CDATA[exportPath: string = SystemCommands.DoExportToFile.ExportPath;
-if (exportPath != "" && !Files.Exists(exportPath))
-	Files.CreateRecursiveFolder(exportPath);]]>
+						<![CDATA[folder: string = GetExportFolderPath();
+Files.CreateRecursiveFolder(folder);]]>
 					</body>
 				</do-on>
-				<object access-modifier="private" name="IsExportUserRightsTables" display-name="IsExportUserRightsTables" uuid="c966f1d7-a8e9-4183-a807-9321ae9b2fd5" base-type="DialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" ver="5" description="" cardinal="1"/>
 				<object access-modifier="private" name="StartExport" display-name="StartExport" uuid="c17f386a-ac7f-4737-81fd-dd6302737132" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
 					<designed target="Enabled" value="true" ver="5"/>
 					<designed target="InvokeTrigger" value="false" ver="5"/>
 					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
 						<body kind="om">
-							<![CDATA[//сформировать полный путь
-folderPath: string = ExportSettingsResult.FolderPath;
-format: string = SystemCommands.DoExportToFile.GetFileExtensionAsString(ExportSettingsResult.FileType);
-fileName: string = ExportSettingsResult.FileName;
-filePath: string = ExportSettingsResult.FilePath;
-isExportUserRightsTables: bool = (IsExportUserRightsTables.Value == "true");
+							<![CDATA[// запоминаем выбранную папку
+pSettings.ExportFolder = ExportSettingsResult.FolderPath;
+
+// выбираем формат в зависимости от типа файла
+format: string;
+if (ExportSettingsResult.FileType == 0)
+	format = "xlsx";
+else if (ExportSettingsResult.FileType == 1)
+	format = "csv";	
 
 //сохранить список пользователей
-if (TryUsersViewExport(filePath, format))
+if (TryUsersViewExport(ExportSettingsResult.FilePath, format))
 {
 	//сохранить параметры как значения по умолчанию
-	SystemCommands.DoExportToFile.ExportPath = ExportSettingsResult.FolderPath;
-	SystemCommands.DoExportToFile.FileType = ExportSettingsResult.FileType;
+	Folder = ExportSettingsResult.FolderPath;
+	FileType = ExportSettingsResult.FileType;
 	private.SaveViewSettings();
 
 	//если требуется сохраняем таблицы прав пользователей
-	if (isExportUserRightsTables)
+	if (ExportSettingsResult.ExportUserRights)
 	{
 		//запускаем экспорт прав пользователей в таблицы
 		userCount: int4 = UsersView.TableModel.GetRowCount();
 		SystemCommands.Statusbar.Init(userCount);
 		SystemCommands.Statusbar.Update("Запуск экспорта списка прав пользователей");
+		UserRightsExporter.FileFormat = format;
 		UserRightsExporter.UserLoadQueue.Init(userCount);
 	}
 	else
 	{
 		//уведомляем об успешном окончании экспорта
-		ShowComplete.message = "Список пользователей успешно сохранен \n"+filePath;
+		ShowComplete.message = "Список пользователей успешно сохранен \n" + Files.ToNative(ExportSettingsResult.FilePath);
 		ShowComplete.Invoke();
 	}
 }]]>
@@ -240,6 +235,18 @@ catch (error)
 					<param access-modifier="private" name="filePath" display-name="" uuid="70e7ed94-70da-4289-93ec-d02070b6aac9" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 					<param access-modifier="private" name="format" display-name="" uuid="0cfcb66e-61fe-47a2-952b-87ab7ac96c81" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 				</do>
+				<do access-modifier="private" name="GetExportFolderPath" display-name="GetExportFolderPath" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+					<body kind="om">
+						<![CDATA[// Если есть доступ к файловой системе, то используем последнюю использованную, иначе разрешенную папку
+folder: string = pPermissions.FileSystemAccess ? Folder : pSettings.ExportFolder;
+
+// Если путь не указан, то используем Export в папке с данными программы
+if (folder == "")
+	folder = Files.CombinePath(unit.ProductInfo.GetProgramDataFolder(), "Export");
+
+return folder;]]>
+					</body>
+				</do>
 			</object>
 			<object access-modifier="private" name="UserRightsExporter" display-name="UserRightsExporter" uuid="9155e2d0-0943-4bf2-9a32-bc4bf575b812" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
 				<object access-modifier="private" name="LoadUserById" display-name="LoadUserById" uuid="2ea18f78-6218-4d8c-a4a8-33519db58e24" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
@@ -255,6 +262,8 @@ catch (error)
 							<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
 							<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
 							<init target="pExportError" ver="5" ref="ExportError"/>
+							<init target="pSettings" ver="5" ref="here.pSettings"/>
+							<init target="ExportFileFormat" ver="5" ref="FileFormat"/>
 						</object>
 					</do-on>
 					<object access-modifier="private" name="ExportComplete" display-name="ExportComplete" uuid="034534e6-148d-4728-87c7-d070d94abb56" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
@@ -322,7 +331,7 @@ SystemCommands.Statusbar.Update("");
 
 //уведомить пользователя
 exportFolderPath: string = ExportToFile.ShowExportSettingsDialog.ExportSettingsResult.FolderPath;
-ShowComplete.message = "Список пользователей и таблицы назначенных прав сохранены в директорию:\n"+ exportFolderPath;
+ShowComplete.message = "Список пользователей и таблицы назначенных прав сохранены в директорию:\n" + Files.ToNative(exportFolderPath);
 ShowComplete.Invoke();
 
 //вернуть управление пользователю
@@ -348,6 +357,7 @@ SystemCommands.GoTo.doUnblockingControll();]]>
 					<object access-modifier="private" name="currentUserDispayName" display-name="currentUserDispayName" uuid="a315695d-7519-408e-aed8-88f87fe962a6" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
 					<init target="pStoped" ver="5" ref="OnInterrupted"/>
 				</object>
+				<object access-modifier="private" name="FileFormat" display-name="FileFormat" uuid="7834ca54-7663-41e3-8e0e-7d4868ebad73" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
 			</object>
 		</object>
 		<object access-modifier="private" name="ImportFromFile" display-name="ImportFromFile" uuid="0c5dab31-3a5e-453b-8f90-8a89813e0bfb" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
@@ -358,12 +368,15 @@ SystemCommands.GoTo.doUnblockingControll();]]>
 					<object access-modifier="private" uuid="e68c5705-564a-4289-8255-b1c5f177da34" base-type="OpenFileDialog" base-type-id="41505bc5-e0a8-4d93-b1a9-de842aaf215b" ver="5">
 						<init target="Result" ver="5" ref="DialogResult"/>
 						<init target="OnComplete" ver="5" ref="StartImport"/>
-						<init target="FileTypeFilter" ver="5" value="Текстовый файл (*.csv)|*.csv|Книга Excel (*.xlsx)|*.xlsx"/>
-						<init target="RootPath" ver="5" value=""/>
+						<init target="FileTypeFilter" ver="5" value="Книга Excel (*.xlsx)|*.xlsx|Текстовый файл (*.csv)|*.csv"/>
 						<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
 						<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
+						<init target="DefaultFileType" ver="5" ref="FileType"/>
+						<init target="DefaultPath" ver="5" ref="Folder"/>
 					</object>
 				</do-on>
+				<object access-modifier="private" name="Folder" display-name="Folder" uuid="4f00f9e4-b293-46d5-9e06-48fe3db45d81" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+				<object access-modifier="private" name="FileType" display-name="FileType" uuid="cd4de079-2f82-45a4-8f79-cb3833fc8778" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
 				<object access-modifier="private" name="DialogResult" display-name="DialogResult" uuid="2ac8dd67-6fab-46ca-82fd-f40bfd1c46ca" base-type="FileDialogResult" base-type-id="602926f1-7d01-4d50-a5c0-d8fd35eadc74" ver="5"/>
 				<object access-modifier="private" name="StartImport" display-name="StartImport" uuid="a6bbfe4d-1062-41f3-a5d6-dc638fda119b" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
 					<designed target="Enabled" value="true" ver="5"/>
@@ -374,10 +387,10 @@ SystemCommands.GoTo.doUnblockingControll();]]>
 Importer.LoadFile(DialogResult.FilePath);
 SystemCommands.GoTo.doBlockingControll();
 
-//запоминаем выбор как значение по умолчанию
-SystemCommands.DoImport.ImportPath = DialogResult.FolderPath;
-SystemCommands.DoImport.FileType = DialogResult.FileType;
-private.SaveViewSettings();]]>
+// запоминаем выбор как значение по умолчанию
+Folder = DialogResult.FolderPath;
+FileType = DialogResult.FileType;
+SaveViewSettings();]]>
 						</body>
 					</do-on>
 				</object>
@@ -532,64 +545,8 @@ Commands.DoRemoveSelected.CanExecute = isUserDataValid;]]>
 			</body>
 		</do-trace>
 	</object>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="0cb94c26-ad9a-46d9-88eb-6db58b03798a" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
 	<object access-modifier="private" name="SecurityContext" display-name="SecurityContext" uuid="f7025263-41d3-4e2b-8069-e118de68110d" base-type="SecurityContext" base-type-id="d9cb0fff-b70a-4e2d-833d-3f73cf74e0dd" ver="5">
-		<object access-modifier="private" name="NodesReadQueue" display-name="NodesReadQueue" uuid="12aadd0e-1324-43d7-8f91-8526af2df33f" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
-			<object access-modifier="private" name="Index" display-name="Index" uuid="4aa3d2ea-b4fd-4c87-980e-c3c2fc8b94d0" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
-			<object access-modifier="private" name="Count" display-name="Count" uuid="3b8fc944-be04-4422-bbcb-ea56bbdb7f3b" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
-			<object access-modifier="private" name="Nodes" display-name="Nodes" uuid="cecc50df-41e7-4b95-b569-83acf2bfe270" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
-			<object access-modifier="private" name="CurrentNodeName" display-name="CurrentNodeName" uuid="6c527860-0acd-41e3-8d6b-b931bf30d971" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
-			<do access-modifier="private" name="Init" display-name="Init" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
-				<body kind="javascript">
-					<![CDATA[if (nodes == "")
-	return;
-	
-let nodesList = [];
-for (let currentNode of nodes.split(","))
-	nodesList.push(currentNode.trim());
-	
-Nodes = JSON.stringify(nodesList);
-Index = 0;
-Count = nodesList.length;
-Next();]]>
-				</body>
-				<param access-modifier="private" name="nodes" display-name="" uuid="dc0fe501-bf54-4e48-95cb-5225f1ac562a" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
-			</do>
-			<do access-modifier="private" name="Next" display-name="Next" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
-				<body kind="javascript">
-					<![CDATA[if (Nodes == "") 
-	return;
-	
-let nodesList = JSON.parse(Nodes);
-if (Index < Count)
-{
-	let node = nodesList[Index];
-	CurrentNodeName = node;
-	SecurityContext.RemoteGetLoggedUsersList(node);
-}]]>
-				</body>
-			</do>
-			<do access-modifier="private" name="IsReaded" display-name="IsReaded" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
-				<body kind="om">
-					<![CDATA[//если очередь прошла по всем узлам, то выводим диалог удаления пользователя
-Index += 1;	
-
-if (IsEnd()) 
-	private.Remove.ShowRemoveDialog.Invoke();
-else
-	Next();]]>
-				</body>
-			</do>
-			<do access-modifier="private" name="IsEnd" display-name="IsEnd" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
-				<body kind="om">
-					<![CDATA[return Index == Count || Count == 0;]]>
-				</body>
-			</do>
-			<do access-modifier="private" name="Stop" display-name="Stop" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
-				<body kind="om">
-					<![CDATA[Index = Count;]]>
-				</body>
-			</do>
-		</object>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="RemoteGetLoggedUsersFinished">
 			<body kind="om">
 				<![CDATA[userOnCurrentNode: string = "";
@@ -599,19 +556,19 @@ for (userIndex :uint4 = 0; userIndex < GetRemoteLoggedUsersCount(); userIndex +=
 	userOnCurrentNode = GetRemoteLoggedUserByIndex(userIndex);
 	if (userOnCurrentNode == private.SelectedUserLogin)
 	{
-		private.Remove.ShowForbiddenMessage.message = "Пользователя '" + userOnCurrentNode + "', нельзя удалить - его сессия активна на узле: '"+NodesReadQueue.CurrentNodeName+"'";
+		private.Remove.ShowForbiddenMessage.message = "Пользователя '" + userOnCurrentNode + "', нельзя удалить - его сессия активна на узле: '"+ReadNodesQueue.ReadedNodeName+"'";
 		private.Remove.ShowForbiddenMessage.Invoke();
-		NodesReadQueue.Stop();
+		ReadNodesQueue.Stop();
 		return;	
 	}
 }
 
-NodesReadQueue.IsReaded();]]>
+ReadNodesQueue.IsCompleted();]]>
 			</body>
 		</do-on>
 		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="RemoteGetLoggedUsersFailed">
 			<body kind="om">
-				<![CDATA[nodeName:string = NodesReadQueue.CurrentNodeName;
+				<![CDATA[nodeName:string = ReadNodesQueue.ReadedNodeName;
 message:string = "";
 if (errorCode == 1)
 	message = "Не удалось отправить запрос на удаленную машину";
@@ -622,7 +579,7 @@ else
 
 private.ShowError.message = message + ". Узел '"+nodeName+"'" + "\nКод ошибки: "+String.ToString(errorCode);	//Описание ошибки
 private.ShowError.Invoke();
-NodesReadQueue.IsReaded();
+ReadNodesQueue.IsCompleted();
 
 /*
 //Код - Описание - Источник
@@ -633,6 +590,48 @@ NodesReadQueue.IsReaded();
 */]]>
 			</body>
 		</do-on>
+		<object access-modifier="private" name="ReadNodesQueue" display-name="ReadNodesQueue" uuid="a4a45918-b39a-4aac-a59f-a39a3b9a81e3" base-type="ActionsQueue" base-type-id="7cd7ab97-3392-4032-badc-0d7bdd897063" ver="5" description="" cardinal="1">
+			<object access-modifier="private" name="DoRead" display-name="DoRead" uuid="c0b5d2fd-562d-47c9-88f3-8495e7929a88" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="javascript">
+						<![CDATA[var nodesAsString = pSettings.DomainNodes;
+
+if (nodesAsString == "")
+{
+	Stop();
+	return;
+}
+
+//получаем массив имен узлов
+let nodeList = nodesAsString.split(",").map((node) => node.trim()).filter((node) => node != "");
+let index = GetCurrentIndex();
+let nodeName = nodeList[index];
+ReadedNodeName = nodeName;
+RemoteGetLoggedUsersList(nodeName);]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="OnFinished" display-name="OnFinished" uuid="aa602d21-8708-439d-9796-dcf05b194baf" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[here.private.Remove.ShowRemoveDialog.Invoke();
+ReadedNodeName = "";]]>
+					</body>
+				</do-on>
+			</object>
+			<init target="pExecuteAction" ver="5" ref="DoRead"/>
+			<init target="pFinished" ver="5" ref="OnFinished"/>
+			<object access-modifier="private" name="ReadedNodeName" display-name="ReadedNodeName" uuid="d5a77056-846f-4616-abcc-5b245952f395" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+		</object>
+		<do access-modifier="private" name="GetNodesCount" display-name="GetNodesCount" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+			<body kind="javascript">
+				<![CDATA[return pSettings.DomainNodes.split(",").map((node) => node.trim()).filter((node) => node != "").length;]]>
+			</body>
+		</do>
 	</object>
 	<object access-modifier="private" name="SecurityManager" display-name="SecurityManager" uuid="b4806a19-1a05-4741-8104-8683c906f33e" base-type="SecurityManager" base-type-id="179958e0-f45a-40f3-9668-98e4ea2987da" ver="5">
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="RequestUsersListComplete">
@@ -716,13 +715,13 @@ private.ShowError.Invoke();]]>
 		<designed target="Width" value="845" ver="5"/>
 		<designed target="Height" value="400" ver="5"/>
 		<designed target="SelectionBehavior" value="1" ver="5"/>
-		<designed target="SelectionMode" value="1" ver="5"/>
+		<designed target="SelectionMode" value="3" ver="5"/>
 		<designed target="HeaderHeight" value="25" ver="5"/>
 		<designed target="HeaderVisible" value="true" ver="5"/>
 		<designed target="RowHeight" value="25" ver="5"/>
 		<designed target="RowOrder" value="0" ver="5"/>
 		<designed target="LatestRowTracking" value="false" ver="5"/>
-		<designed target="SelectionOverlayEnabled" value="true" ver="5"/>
+		<designed target="SelectionOverlayEnabled" value="false" ver="5"/>
 		<designed target="DelayedSortingEnabled" value="false" ver="5"/>
 		<designed target="HorizontalScrollMode" value="0" ver="5"/>
 		<designed target="VerticalScrollMode" value="0" ver="5"/>
@@ -892,6 +891,8 @@ Column[11].Id = "roles";
 Column[11].Title = "Роли";
 	
 ApplySort();
+
+Decorator.JsonDecorator = GetJsonDecorator(selectionColor);
 	
 Model.AddColumn("uid","","","","string",false,true);
 Model.AddColumn("symbolicId","","","","string",false,true);
@@ -921,6 +922,7 @@ for (var i = 0; i < Column.Length; i++)
 		'id': i,
 		'title': column.Title,
 		'checked': !column.Hidden,
+		'active': i > 0,
 		'staysOpen': true
 	});
 }
@@ -950,7 +952,7 @@ ChangeColumnVisibilityById(i);]]>
 					<init target="pResult" ver="5" ref="MenuResult"/>
 					<init target="WindowX" ver="5" ref="mouseX"/>
 					<init target="WindowY" ver="5" ref="mouseY"/>
-					<init target="pTheme" ver="5" ref="here.private.pTheme"/>
+					<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
 				</object>
 			</do-on>
 			<object access-modifier="private" name="mouseX" display-name="mouseX" uuid="aad48e17-d37d-4929-be5b-ad734bb5d6e7" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
@@ -1012,53 +1014,58 @@ else
 							<![CDATA[GetMenuItems()]]>
 						</expr>
 					</init>
-					<init target="pTheme" ver="5" ref="here.private.pTheme"/>
+					<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
 				</object>
 			</do-on>
 			<do access-modifier="private" name="GetMenuItems" display-name="GetMenuItems" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
 				<body kind="javascript">
 					<![CDATA[var items = [];
-items.push({
-	'id': "insert",
-	'title': "Добавить учетную запись пользователя...",
-	'active': Commands.DoCreate.CanExecute.Value,
-	'icon': "Security_Icons/Add16.png",
-	'keyGesture': "Insert"
-});
+if (pConfigurationAccess.Value)
+{
+	items.push({
+		'id': "insert",
+		'title': "Добавить учетную запись пользователя...",
+		'active': Commands.DoCreate.CanExecute.Value,
+		'icon': "Security_Icons/Add16.png",
+		'keyGesture': "Insert"
+	});
 
-items.push({
-	'id': "edit",
-	'title': "Редактировать учетную запись пользователя... ",
-	'active': Commands.DoEdit.CanExecute.Value,
-	'icon': "Security_Icons/Edit16.png",
-	'keyGesture': "Enter"
-});
+	items.push({
+		'id': "edit",
+		'title': "Редактировать учетную запись пользователя... ",
+		'active': Commands.DoEdit.CanExecute.Value,
+		'icon': "Security_Icons/Edit16.png",
+		'keyGesture': "Enter"
+	});
 
-items.push({
-	'id': "delete",
-	'title': "Удалить учетную запись пользователя...",
-	'active': Commands.DoRemoveSelected.CanExecute.Value,
-	'icon': "Security_Icons/Delete16.png",
-	'keyGesture': "Delete"
-});
+	items.push({
+		'id': "delete",
+		'title': "Удалить учетную запись пользователя...",
+		'active': Commands.DoRemoveSelected.CanExecute.Value,
+		'icon': "Security_Icons/Delete16.png",
+		'keyGesture': "Delete"
+	});
 
-items.push({
-	'title': "-"
-});
+	items.push({
+		'title': "-"
+	});
+
+	//до решения задачи по импорту
+	/* 
+	items.push({
+		'id': "import",
+		'title': "Импорт из файла...",
+		'active': SystemCommands.DoImport.CanExecute.Value
+	});
+	*/
+}
 
 items.push({
 	'id': "export",
 	'title': "Экспорт в файл...",
 	'active': SystemCommands.DoExportToFile.CanExecute.Value
 });
-//до решения задачи по импорту
-/* 
-items.push({
-	'id': "import",
-	'title': "Импорт из файла...",
-	'active': SystemCommands.DoImport.CanExecute.Value
-});
-*/
+
 items.push({
 	'title': "-"
 });
@@ -1112,33 +1119,72 @@ if (button == 2)
 				<![CDATA[here.private.pTheme.DisabledBorderColor]]>
 			</body>
 		</do-trace>
+		<designed target="RowHeightResizeMode" value="3" ver="5"/>
+		<object access-modifier="private" name="selectionColor" display-name="selectionColor" uuid="2b277f0d-2149-4cf6-8330-83a88ff59235" base-type="notifying_uint8" base-type-id="2e6d6c20-2489-49e1-9d5f-fe68a21b43df" ver="5" description="" cardinal="1"/>
+		<do-trace access-modifier="private" target="selectionColor" ver="5">
+			<body>
+				<![CDATA[private.pTheme.SelectionColor]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="Decorator" display-name="Decorator" uuid="f49323db-467a-46b5-b643-a3ff2f1878f6" base-type="TableDecorator" base-type-id="2ff6a2d7-9573-4060-bfea-29c63d61b079" ver="5" description="" cardinal="1">
+			<designed target="JsonDecorator" value="" ver="5"/>
+		</object>
+		<do access-modifier="private" name="GetJsonDecorator" display-name="GetJsonDecorator" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[var decorator = {};
+
+decorator.StyleDictionary = [
+	{
+		'style_name': "selected_style",
+		'style': { 'background_color': `#${selectionColor.toString(16)}` }
+	}
+];
+
+decorator.Decorating = [
+	{
+		'decoration_rule_name': "selected_rule", 
+		'decoration_rule': { 'row:isSelected': true },
+		'rowstyle': "selected_style"
+	}
+
+];
+
+return JSON.stringify(decorator);]]>
+			</body>
+			<param access-modifier="private" name="selectionColor" display-name="" uuid="fa73edfe-e47f-44a5-b3c5-ed951c2a4a9e" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5"/>
+		</do>
 	</object>
 	<designed target="ZValue" value="0" ver="5"/>
 	<designed target="Opacity" value="1" ver="5"/>
+	<object access-modifier="private" name="Files" display-name="Files" uuid="058ff2bf-2732-4da3-b3ac-9c3396f56047" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5">
+		<designed target="RootPath" value="/" ver="5"/>
+	</object>
+	<object access-modifier="private" name="pConfigurationAccess" display-name="Разрешить редактирование" uuid="53ce6fb9-1aa9-407c-a168-45f867f4fbdc" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" base-const="true" base-ref="true" ver="5" description=""/>
 	<object access-modifier="private" name="Commands" display-name="Commands" uuid="ae49d8aa-bbc4-4fb3-bb21-4734dc84173b" base-type="ListCommands" base-type-id="d481f36c-0b94-4338-a60e-3e31bf7df8a1" base-const="true" base-ref="true" ver="5"/>
 	<object access-modifier="private" name="Layout" display-name="Layout" uuid="8996f187-d614-415c-b302-a3296cc51ae2" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5">
 		<designed target="Orientation" value="1" ver="5"/>
 		<designed target="Gap" value="0" ver="5"/>
 	</object>
 	<object access-modifier="private" name="SystemCommands" display-name="SystemCommands" uuid="ba32585c-e6b7-433c-b066-0e3e6035c1bd" base-type="SystemCommands" base-type-id="0b754dab-38c6-43db-a050-37201965421c" base-const="true" base-ref="true" ver="5"/>
-	<object access-modifier="private" name="Debug" display-name="Debug" uuid="0cb94c26-ad9a-46d9-88eb-6db58b03798a" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
 	<designed target="WindowIconPath" value="" ver="5"/>
 	<do access-modifier="private" name="GetViewSettings" display-name="GetViewSettings" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
 		<body kind="javascript">
-			<![CDATA[var settings = 
-	{
-		"Layout" : {},
-		"UsersTable" : {
-			"Columns" : {}
-		},
-		"ExportSettings" : {
-			"ExportPath" : SystemCommands.DoExportToFile.ExportPath,
-			"FileType"  :SystemCommands.DoExportToFile.FileType,
-			"isExportUserRightsTables" : private.ExportToFile.ShowExportSettingsDialog.IsExportUserRightsTables.Value.Value
-		}
-	};
+			<![CDATA[var settings = {
+	"UsersTable" : {
+		"Columns" : {}
+	},
+	"Export" : {
+		"Folder": private.ExportToFile.ShowExportSettingsDialog.Folder,
+		"FileType" : private.ExportToFile.ShowExportSettingsDialog.FileType,
+		"ExportUserRights" : private.ExportToFile.ShowExportSettingsDialog.ExportSettingsResult.ExportUserRights
+	},
+	"Import" : {
+		"Folder": private.ImportFromFile.ShowOpenDialog.Folder,
+		"FileType" : private.ImportFromFile.ShowOpenDialog.FileType
+	}
+};
 
-for (var i = 1; i < UsersView.Column.Length; i++)
+for (var i = 0; i < UsersView.Column.Length; i++)
 {		
 	var column = UsersView.Column[i];
 	var columnInfo = {
@@ -1162,12 +1208,27 @@ return JSON.stringify(settings);]]>
 		<body kind="javascript">
 			<![CDATA[var content = JSON.parse(settings);
 
+let exportSettings = content.Export;
+if (exportSettings != undefined)
+{
+	private.ExportToFile.ShowExportSettingsDialog.Folder = exportSettings.Folder;
+	private.ExportToFile.ShowExportSettingsDialog.FileType = exportSettings.FileType;
+	private.ExportToFile.ShowExportSettingsDialog.ExportSettingsResult.ExportUserRights = exportSettings.ExportUserRights;
+}
+
+let importSettings = content.Import;
+if (importSettings != undefined)
+{
+	private.ImportFromFile.ShowOpenDialog.Folder = importSettings.Folder;
+	private.ImportFromFile.ShowOpenDialog.FileType = importSettings.FileType;
+}
+
 var usersTable = content.UsersTable;
 if (usersTable != undefined)
 {
 	if (usersTable.Columns != undefined)
 	{
-		for (var i = 1; i < UsersView.Column.Length; i++)
+		for (var i = 0; i < UsersView.Column.Length; i++)
 		{
 			var column = UsersView.Column[i];
 
@@ -1191,14 +1252,6 @@ if (usersTable != undefined)
 		
 		UsersView.ApplySort();
 	}
-}
-
-var exportSettings = content.ExportSettings;
-if (exportSettings != undefined)
-{
-	SystemCommands.DoExportToFile.ExportPath = exportSettings.ExportPath;
-	SystemCommands.DoExportToFile.FileType = exportSettings.FileType;
-	private.ExportToFile.ShowExportSettingsDialog.IsExportUserRightsTables.Value.Value = exportSettings.isExportUserRightsTables;
 }]]>
 		</body>
 	</do>
@@ -1209,9 +1262,6 @@ if (exportSettings != undefined)
 Height = WindowHeight;]]>
 		</body>
 	</do-on>
-	<object access-modifier="private" name="Files" display-name="Files" uuid="058ff2bf-2732-4da3-b3ac-9c3396f56047" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5">
-		<designed target="RootPath" value="/" ver="5"/>
-	</object>
 	<param access-modifier="private" name="init_Theme" display-name="Тема оформления" uuid="4ee99825-d8f3-4d3d-a1cd-c65edf31a4b0" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
 	<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="AboutToOpen">
 		<body kind="om">
@@ -1224,6 +1274,7 @@ UpdateView(SystemCommands.ViewSettings.Data[SystemCommands.Forms.UserList]);]]>
 		</body>
 	</do-on>
 	<object access-modifier="private" name="pSettings" display-name="pSettings" uuid="f902e9c7-1a53-49ec-8aa7-8d165d857dc2" base-type="SecurityConfigurator_Settings" base-type-id="a7c582fd-25fb-4cc3-8522-3166d1a63de6" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="pPermissions" display-name="pPermissions" uuid="3f3af5a3-7bc8-4e78-b189-036cb75b5238" base-type="SecurityConfigurator_Permissions" base-type-id="a6a67dc7-2872-46c8-a397-13aa48ddb4e7" base-const="true" base-ref="true" ver="5" description=""/>
 	<param access-modifier="private" name="init_ScreenKeyboard" display-name="Вызов экранной клавиатуры" uuid="23294ec7-038b-43e5-9e31-e1ac1eee81c1" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
 	<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="KeyPress">
 		<body kind="om">

@@ -56,6 +56,7 @@ while (n < Chart.Length)
 if (ActiveMode == unit.Const.amOPERATIVE)
 {
 	MoveToNow();
+	SetPause(false);
 }
 else
 {
@@ -71,7 +72,6 @@ Chart[0].LinkCrossPoint();
 MiniTrend.LinkToChart(0);
 
 // Приоритеты декораторов
-private.LineDecor.SetDefault();
 i:int4 = 1;
 while (i < Line.Length)
 {
@@ -85,7 +85,9 @@ while (i < Line.Length)
 	i += 1;
 }
 
-UpdateYRanges(AutoRange);]]>
+UpdateYRanges(AutoRange);
+
+Legend.UpdateHeight();]]>
 			</body>
 		</do>
 		<object access-modifier="private" name="bInit" display-name="bInit" uuid="3a6aab87-e897-4f08-acf0-3feeee78b5d6" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
@@ -93,25 +95,22 @@ UpdateYRanges(AutoRange);]]>
 		<do access-modifier="private" name="VariantToString" display-name="VariantToString" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
 			<param access-modifier="private" name="value" display-name="" uuid="f0f31b50-6c29-4eb3-9d8f-167bfb72dc91" base-type="variant" base-type-id="7d3322c1-a2cf-4732-a957-abd69e3e4b7a" ver="5"/>
 			<body kind="om">
-				<![CDATA[	result:string;
-
-	if (Variant.IsFloat(value) || Variant.IsDouble(value))
-	{
-			result = ValueRound(Variant.ToDouble(value, -1), precision);
-	}
-	else if (Variant.IsBool(value))
-	{
-			result = Variant.ToBool(value, false)? "1" : "0";
-	}
-	else if (Variant.IsString(value))
-	{
-			result = Variant.ToString(value, "");
-	}
-	else 
-	{
-			result = Str.ToString(Variant.ToInt8(value, 0));		
-	}
-return result;]]>
+				<![CDATA[if (Variant.IsFloat(value) || Variant.IsDouble(value))
+{
+	return ValueRound(Variant.ToDouble(value, -1), precision);
+}
+else if (Variant.IsBool(value))
+{
+	return Variant.ToBool(value, false)? "1" : "0";
+}
+else if (Variant.IsString(value))
+{
+	return Variant.ToString(value, "");
+}
+else 
+{
+	return String.ToString(Variant.ToInt8(value, 0));
+}]]>
 			</body>
 			<param access-modifier="private" name="precision" display-name="" uuid="3b6eb3cb-9e93-4bbc-8d2e-bd7a3cc94516" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
 		</do>
@@ -172,7 +171,7 @@ return String.ToLocalizedString("%."+decimals+"f", value);
 //Debug.Log("'" + event.description + "' is full description of " + event.tag);
 var index = Params.GetIndexByPath(event.tag);
 Params.Lines[index].Description = event.description;
-pLegend.Update();]]>
+Legend.UpdateItem(index);]]>
 					</body>
 				</do-on>
 			</object>
@@ -185,7 +184,7 @@ pLegend.Update();]]>
 //Debug.Log(event.relativeTag + " is relative tag of " + event.tag);
 var index = Params.GetIndexByPath(event.tag);
 Params.Lines[index].RelationTag = event.relativeTag;
-pLegend.Update();]]>
+Legend.UpdateItem(index);]]>
 					</body>
 				</do-on>
 			</object>
@@ -194,8 +193,6 @@ pLegend.Update();]]>
 			<init target="pRelativeTagReaded" ver="5" ref="RelativeTagReaded"/>
 			<init target="init_ApSource" ver="5" ref="here.initApSource"/>
 		</object>
-		<object access-modifier="private" name="Palette" display-name="Palette" uuid="6c1dd5d1-3321-4324-b800-c1c6c43158b8" base-type="ColorPalette" base-type-id="6aadbfde-782a-4d60-ae52-bfb1df84949f" ver="5" description="" cardinal="1"/>
-		<object access-modifier="private" name="UnitConvert" display-name="UnitConvert" uuid="59ceef9b-e8dc-46ae-aeee-080ad5e857c5" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
 		<object access-modifier="private" name="bPlayStatus" display-name="bPlayStatus" uuid="ab5a258a-1ee1-48be-815d-8b66cc7e4a96" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
 		<object access-modifier="private" name="chartMousePressed" display-name="chartMousePressed" uuid="2e20dcb0-6a70-40d7-87b9-13cb0e700c19" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
 		<object access-modifier="private" name="chartMouseWheel" display-name="chartMouseWheel" uuid="abb04374-a148-48ed-af5f-306c9ab2a111" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
@@ -227,14 +224,13 @@ if (error != "")
 	pOnError.Invoke();
 }
 
-Active = false;
+Legend.UpdateMinMaxSize();
 
-pLegend.Update();]]>
+Active = false;]]>
 				</body>
 			</do-on>
 		</object>
 		<object access-modifier="private" name="QueryError" display-name="QueryError" uuid="6c9c8886-206b-4f6f-82c2-abc4d5c07072" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" cardinal="21"/>
-		<object access-modifier="private" name="FileDataSize" display-name="FileDataSize" uuid="5b6086eb-6847-485d-a6ca-6fe327c75634" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5" description="" cardinal="21"/>
 		<object access-modifier="private" name="LoadingFilePath" display-name="LoadingFilePath" uuid="87c4e4bb-7418-47bd-b0c5-43c2b0be5091" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
 		<object access-modifier="private" name="LoadingFolder" display-name="LoadingFolder" uuid="60478842-b1dc-4a52-a8c8-6ad736ab98c9" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
 		<object access-modifier="private" name="ExportTrendsPath" display-name="ExportTrendsPath" uuid="f82e4695-e70a-43e7-b91a-0d980c5415d7" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
@@ -258,7 +254,7 @@ while (n < Chart.Length)
 			<param access-modifier="private" name="index" display-name="" uuid="d5dbd76e-c027-4a3f-b549-15f96acf307f" base-type="int8" base-type-id="1f8f5a02-c52c-4260-90d1-e3b1b93b3949" ver="5"/>
 			<param access-modifier="private" name="value" display-name="" uuid="8fa7360e-6051-4f30-b334-8f0bb216daa5" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
 		</do>
-		<do access-modifier="private" name="ExportParams" display-name="ExportParams" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<do access-modifier="private" name="ExportParams" display-name="ExportParams" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
 			<body kind="om">
 				<![CDATA[//Debug.Log("ExportParams");
 
@@ -289,10 +285,9 @@ while (n < Params.Charts.Length)
 	n	+= 1;
 }
 
-Params.SaveToFile(fileName);]]>
+return Params.SaveToFile(filePath);]]>
 			</body>
-			<param access-modifier="private" name="linesCount" display-name="" uuid="b26601a5-56eb-4997-a2dd-005e8bdb64c0" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
-			<param access-modifier="private" name="fileName" display-name="" uuid="23c45208-98ad-4ee1-b729-311fd3394840" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<param access-modifier="private" name="filePath" display-name="" uuid="23c45208-98ad-4ee1-b729-311fd3394840" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 		</do>
 		<do access-modifier="private" name="RestartOperativeMode" display-name="RestartOperativeMode" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 			<body kind="om">
@@ -358,6 +353,7 @@ while (n < Chart.Length)
 			<body kind="om">
 				<![CDATA[if (DataIntervalBegin != begin || DataIntervalEnd != end)
 {
+	//Debug.Log("UpdateDataInterval: " + DateTime.ToString(begin) + " - " + DateTime.ToString(end));
 	if (DataIntervalBegin != begin)
 	{
 		DataIntervalBegin = begin;
@@ -388,10 +384,9 @@ while (n < Chart.Length)
 		j += 1;
 	}
 }
+
 now: uint8 = DateTime.UtcNow();
-private.SetExtrapolationLimit(now<end ? now : end);
-//Debug.Log("UpdateOperativeTimeInterval . ExtrapolationLimit = "+DateTime.ToString(Variant.ToUint8(Chart.RightExtrapolationLimit,0)));
-]]>
+private.SetExtrapolationLimit(now<end ? now : end);]]>
 			</body>
 			<param access-modifier="private" name="begin" display-name="" uuid="48e5ed61-4f73-4de7-9949-194317ecb521" base-type="timestamp" base-type-id="27c3d64b-a025-4ed3-8f63-d47e43a496aa" ver="5"/>
 			<param access-modifier="private" name="end" display-name="" uuid="18c01181-5ca3-4926-b140-fc4ceded5768" base-type="timestamp" base-type-id="27c3d64b-a025-4ed3-8f63-d47e43a496aa" ver="5"/>
@@ -429,9 +424,27 @@ while (i < Chart.Length)
 }]]>
 			</body>
 		</do>
-		<object access-modifier="private" name="DataIntervalBegin" display-name="DataIntervalBegin" uuid="6a1893ce-e798-49fc-8ec4-2d060308eeb5" base-type="timestamp" base-type-id="27c3d64b-a025-4ed3-8f63-d47e43a496aa" ver="5" description="" cardinal="1"/>
-		<object access-modifier="private" name="DataIntervalEnd" display-name="DataIntervalEnd" uuid="f426dbc1-1a0e-436f-bbb3-3d3c0210b6d9" base-type="timestamp" base-type-id="27c3d64b-a025-4ed3-8f63-d47e43a496aa" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="DataIntervalBegin" display-name="DataIntervalBegin" uuid="6a1893ce-e798-49fc-8ec4-2d060308eeb5" base-type="notifying_timestamp" base-type-id="fb54ffc6-3bfa-4c71-8ae4-fc5d62558895" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="DataIntervalEnd" display-name="DataIntervalEnd" uuid="f426dbc1-1a0e-436f-bbb3-3d3c0210b6d9" base-type="notifying_timestamp" base-type-id="fb54ffc6-3bfa-4c71-8ae4-fc5d62558895" ver="5" description="" cardinal="1"/>
 		<object access-modifier="private" name="EventParams" display-name="EventParams" uuid="bb22c049-f45a-4afc-b9b0-a8137d677f39" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="2"/>
+		<object access-modifier="private" name="ShowError" display-name="ShowError" uuid="5812eab3-006d-4fc2-bb02-634f92b557c1" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="4b34b276-4d0b-40b9-a47c-a643686755f9" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="5">
+					<init target="Icon" ver="5" value="2"/>
+					<init target="Buttons" ver="5" value="0"/>
+					<init target="Message" ver="5">
+						<expr>
+							<![CDATA[message]]>
+						</expr>
+					</init>
+					<designed target="WindowCaption" value="Внимание" ver="5"/>
+					<init target="pTheme" ver="5" ref="here.private.pTheme"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="message" display-name="message" uuid="d0e104c3-2525-4a03-ad81-d07eeb69a35f" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</object>
 		<object access-modifier="private" name="ShowComplete" display-name="ShowComplete" uuid="c0df5bb0-9b7c-4fab-b719-2b339a3a6e01" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
 			<designed target="Enabled" value="true" ver="5"/>
 			<designed target="InvokeTrigger" value="false" ver="5"/>
@@ -444,6 +457,7 @@ while (i < Chart.Length)
 							<![CDATA[message]]>
 						</expr>
 					</init>
+					<init target="pTheme" ver="5" ref="here.private.pTheme"/>
 				</object>
 			</do-on>
 			<object access-modifier="private" name="message" display-name="message" uuid="32716ccc-981b-4b65-8d1f-b0f8ae831f96" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
@@ -531,7 +545,7 @@ if (i > 0)
 {
 	// Получаем цвет графика, отличающийся от остальных
 	usedColors: string = Params.GetUsedColors();
-	color: uint4 = Palette.GetNext(usedColors);  
+	color: uint4 = pSettings.ColorPalette.GetNext(usedColors);  
 
 	Params.Lines[i].Used = true;
 	Params.Lines[i].TypeGraph = typeGraph;
@@ -569,13 +583,14 @@ if (i > 0)
 	// Если график не в текущем режиме- значит он дублирующий и не отображается в оперативном режиме
 	// Помечаем график чтобы отображать его в легенде и чарте оперативного режима
 	Params.Lines[i].bMainTime = nXColumn == nCurrentMode || !UseServerTime;
-	Lines.SetDefaultStyles(i);
+	Lines.SetDefaultStyle(i);
 
 	// увеличиваем счетчик линий	
 	Params.LinesCount = Params.LinesCount + 1;
 	
 	Lines.Add(i, typeGraph);
 	Axis.LinkUpdate(GlobalRanges);
+	UpdateYRanges(AutoRange);
 }
 return i;]]>
 			</body>
@@ -584,6 +599,62 @@ return i;]]>
 			<param access-modifier="private" name="nXColumn" display-name="" uuid="8dcf7f20-d029-423f-bde3-6e529b70ee60" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
 			<param access-modifier="private" name="typeGraph" display-name="" uuid="5fd0d286-9147-44d1-a2c4-efab47855b1c" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
 			<param access-modifier="private" name="nChart" display-name="" uuid="9267b97c-2792-4fa1-9271-fec7b8028ff4" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		</do>
+		<do access-modifier="private" name="ItemsAddByJson" display-name="ItemsAddByJson" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<param access-modifier="private" name="json" display-name="" uuid="68e0f9df-06c9-4c1e-b580-3332584166fe" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<body kind="javascript">
+				<![CDATA[//log("DoOnDrop:"+json);
+var itemsData = JSON.parse(json).data;
+
+var i = 0;
+//var addedItems = [];
+while (i < itemsData.length)
+{
+	var tag = itemsData[i].tag;
+	if (tag !=undefined)		// поле tag должно быть обязательно
+	{
+		var itemIndex = AddItem(tag, itemsData[i].eunits, itemsData[i].description, nChart);
+		if (itemIndex > 0)
+		{
+			// Переименование свойств в формат функции ConfigureGraphic
+			itemsData[i].tag = undefined;
+			if (itemsData[i].Color != undefined)
+			{
+				 itemsData[i].color = itemsData[i].Color;
+				 itemsData[i].Color = undefined;
+			}
+			if (itemsData[i].Axis != undefined)
+			{
+				 itemsData[i].tagAxis = itemsData[i].Axis;
+				 itemsData[i].Axis = undefined;
+			}
+			if (itemsData[i].AxisColor != undefined)
+			{
+				 itemsData[i].colorAxis = itemsData[i].AxisColor;
+				 itemsData[i].AxisColor = undefined;
+			}
+			if (itemsData[i].LowRange != undefined)
+			{
+				 itemsData[i].lowRange = itemsData[i].LowRange;
+				 itemsData[i].LowRange = undefined;
+			}
+			if (itemsData[i].HighRange != undefined)
+			{
+				 itemsData[i].highRange = itemsData[i].HighRange;
+				 itemsData[i].HighRange = undefined;
+			}
+			var stringConfig = JSON.stringify(itemsData[i], null, 2);
+			ConfigureGraphic(tag, stringConfig);
+		}
+	}
+	i += 1;
+}
+
+// в историческом режиме загружаем данные добавленных графиков
+if (ActiveMode == unit.Const.amHISTORY)
+	LoadHistoricalData();]]>
+			</body>
+			<param access-modifier="private" name="nChart" display-name="" uuid="69767203-1e3c-43bc-bc97-d5409d46a50b" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
 		</do>
 		<do access-modifier="private" name="RemoveItem" display-name="RemoveItem" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 			<body kind="om">
@@ -667,43 +738,51 @@ return pApSrc.Port;]]>
 			</body>
 		</do>
 		<init target="pTheme" ver="5" ref="here.init_Theme"/>
+		<object access-modifier="private" name="pPermissions" display-name="pPermissions" uuid="b0865380-bd89-4cc8-a4f8-9b5360595d1a" base-type="Trends_Permissions" base-type-id="083b63d1-3678-4da0-80a0-9c09d0076a3c" base-const="true" base-ref="true" ver="5" description=""/>
 		<object access-modifier="private" name="pScreenKeyboard" display-name="pScreenKeyboard" uuid="1e1641ef-ab06-4242-be1c-3014b5b747cc" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
-		<object access-modifier="private" name="FileOpenFormatDT" display-name="FileOpenFormatDT" uuid="1b7e56bf-fdce-418a-aaf7-46602e732b31" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="10"/>
 		<object access-modifier="private" name="ErrorMessages" display-name="ErrorMessages" uuid="48b0492e-4be8-46a7-aeaa-277b0cbb7be8" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
 		<init target="pScreenKeyboard" ver="5" ref="here.init_ScreenKeyboard"/>
-		<init target="UnitConvert" ver="5" value='[
-  {
-    "srcUnit": "МПа",
-    "dstUnit": "бар",
-    "Ratio": 10
-  },
-  {
-    "srcUnit": "МПа",
-    "dstUnit": "кгс/см2",
-    "Ratio": 10.2
-  },
-  {
-    "srcUnit": "бар",
-    "dstUnit": "МПа",
-    "Ratio": 0.1
-  },
-  {
-    "srcUnit": "бар",
-    "dstUnit": "кгс/см2",
-    "Ratio": 10.197
-  },
-  {
-    "srcUnit": "кгс/см2",
-    "dstUnit": "МПа",
-    "Ratio": 0.098
-  },
-  {
-    "srcUnit": "кгс/см2",
-    "dstUnit": "бар",
-    "Ratio": 0.98
-  }
-]'/>
-		<object access-modifier="private" name="LineDecor" display-name="LineDecor" uuid="bd3851f0-c07e-40a0-890f-e8ac798756de" base-type="Trends_LineStyle" base-type-id="ff917acc-0401-4101-b467-5752cc64518c" ver="5" description="" cardinal="1"/>
+		<init target="pPermissions" ver="5" ref="here.init_Permissions"/>
+		<object access-modifier="private" name="NotifyViewChanged" display-name="NotifyViewChanged" uuid="852532f9-54cd-40f3-926c-8270e64d9961" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[Timer.Active = true;]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="Timer" display-name="Timer" uuid="eccb53a9-ab51-4d62-8a81-fb9a4a059ebf" base-type="Timer" base-type-id="72ba7cd4-549e-41f2-923c-2431b91f349a" ver="5">
+				<designed target="Period" value="250" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnTimer">
+					<body kind="om">
+						<![CDATA[Active = false;
+pOnViewChanged.Invoke();]]>
+					</body>
+				</do-on>
+			</object>
+		</object>
+		<object access-modifier="private" name="pSettings" display-name="pSettings" uuid="05b03d29-810a-4b23-b7c6-a8699f1f3188" base-type="Trends_Settings" base-type-id="91daec58-54a8-4900-9b93-be8602b98694" base-const="true" base-ref="true" ver="5" description=""/>
+		<init target="pSettings" ver="5" ref="here.init_Settings"/>
+		<object access-modifier="private" name="pTemplates" display-name="pTemplates" uuid="d83f7b1b-a2d6-40fb-96e1-9dd1e4bb492e" base-type="Templates" base-type-id="020ae0f1-0abb-4c52-9c0e-0152917830ed" base-const="true" base-ref="true" ver="5" description=""/>
+		<init target="pTemplates" ver="5" ref="here.init_Templates"/>
+		<do access-modifier="private" name="GetExportPath" display-name="GetExportPath" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[// Если путь не указан, то используем Export в папке с данными программы
+if (pSettings.ExportFolder == "")
+	return Files.CombinePath(unit.ProductInfo.GetProgramDataFolder(), "Export");
+else return pSettings.ExportFolder;]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="GetExportPathRoot" display-name="GetExportPathRoot" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[// Если fileSystemAccess = true, то пользователь может сменить этот путь на любой другой, иначе он ограничен папкой экспорта.
+if (pPermissions.FileSystemAccess)
+	return ""; // корневой путь произвольного доступа
+else
+	return GetExportPath();]]>
+			</body>
+		</do>
 	</object>
 	<object access-modifier="private" name="Lines" display-name="Lines" uuid="f13d4102-8187-42de-9b61-6abebec0fbd7" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
 		<do access-modifier="private" name="Add" display-name="Add" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
@@ -786,14 +865,14 @@ while (i < Line.Length)
 {
 	if (Params.Lines[i].Used)
 	{
-		lineWidthGood:float = Params.Lines[i].WidthGood;	
-		lineStyleGood:uint4 = Params.Lines[i].StyleGood;
+		lineWidthGood: float = Params.Lines[i].WidthGood;	
+		lineStyleGood: uint4 = Params.Lines[i].StyleGood;
 		if (index == i)		// Для выделенного графика
 		{																																					
 			// Увеличение при выделении
 			lineWidthGood += DeltaLineWidth;
 
-		// Привязка выделенной линии к реперам
+			// Привязка выделенной линии к реперам
 			lineId:int4 = Line[i].ID;		// определяем id выделенной линии
 			j:int4 = 0;
 			while	(j < Chart.ControlLine.Length)
@@ -805,7 +884,7 @@ while (i < Line.Length)
 		}
 		// при нулевом стиле линии точки не отображаются, поэтому
 		// при выбранном нулевом стиле, стиль устанавливается в 1, а толщина линии обнуляется
-		Line[i].LineWidth = 			(lineStyleGood!=unit.Const.slWITHOUT_LINE) ? lineWidthGood : 0;
+		Line[i].LineWidth = (lineStyleGood!=unit.Const.slWITHOUT_LINE) ? lineWidthGood : 0;
 		Line[i].LineBrushStyle =	(lineStyleGood!=unit.Const.slWITHOUT_LINE) ? lineStyleGood : unit.Const.slSOLID_LINE;
 		Line[i].PointSize = TypeConvert.ToUint4(lineWidthGood <= 2 ? 15 : lineWidthGood * 5 + 5);
 		DecorApply(i);
@@ -817,16 +896,15 @@ while (i < Line.Length)
 		</do>
 		<do access-modifier="private" name="SetColor" display-name="SetColor" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 			<body kind="om">
-				<![CDATA[
-Line[index].Color = color;
+				<![CDATA[Line[index].Color = color;
 Params.Lines[index].ColorMain = color;
-i:int4 = 0;
+
+i: int4 = 0;
 while (i < Line.Decor.Length)
 {
-	if (Line[index].Decor[i].Active && Params.Lines[index].Decor.Style[i].LineColor==unit.Const.slUNDEFINED)
-	{
+	if (Line[index].Decor[i].Active && Params.Lines[index].Decor.Style[i].LineColor == unit.Const.slUNDEFINED)
 		Line[index].Decor[i].Color = color;
-	}
+
 	i += 1;
 }
 
@@ -848,48 +926,48 @@ if (index == 0)
 			"Освободите поле графиков и повторите загрузку.";
 	pOnError.Invoke();
 	return false;
-}			
+}
 Params.nItem[exindex] = index;	// Запоминаем индекс графика, чтобы использовать после полной загрузки
 	
 if (Files.Exists(fileName))		// если файл для загрузки существует
 {	
+	if (exindex == 0)
+	{
+		IndexItemLoad = index;	
+		private.ItemsAdd("", "", "", unit.Const.tmSOURCE, unit.Const.tgFILE_GRAPH, 0);
+	}
+	else
+	{
+		Params.Lines[index].Used = true;
+		Params.CopyLineFromEx(index, exindex);
+		Lines.Add(index, unit.Const.tgFILE_GRAPH);
+		IndexItemLoad = 0;
+	}
+	
+	Params.Lines[index].TypeGraph = unit.Const.tgFILE_GRAPH;
+	Params.Lines[index].FileName = (private.LoadingFolder != "") ? private.LoadingFilePath : fileName;
+	
+	//	загружаем данные
 	if (String.EndsWith(fileName, ".json"))
 	{
 		Line[index].DataSource_1.Load(fileName, "json");
 		UploadFilesMask = Math.SetBit(UploadFilesMask, TypeConvert.ToUint1(index));
 	}
-	if (String.EndsWith(fileName, ".csv"))
+	else if (String.EndsWith(fileName, ".csv"))
 	{
-		params:string = "{\"timeStampFormat\": \""+private.FileOpenFormatDT[0]+"\"}";
+		params: string = "{\"timeStampFormat\": \"" + private.pSettings.DateTimeFormats[0] + "\"}";
 		Line[index].DataSource_1.LoadExtended(fileName, "csv", params);
 		UploadFilesMask = Math.SetBit(UploadFilesMask, TypeConvert.ToUint1(index));
 	}
+	
+	return true;
 }
 else
 {
 	private.EventParams[0] = "Файл не существует: " + fileName + ").\r\n";
 	pOnError.Invoke();
 	return false;
-}
-		
-if (exindex == 0)
-{
-	IndexItemLoad = index;
-
-	private.ItemsAdd("", "", "", unit.Const.tmSOURCE, unit.Const.tgFILE_GRAPH, 0);
-}
-else
-{
-	Params.Lines[index].Used = true;
-	Params.CopyLineFromEx(index, exindex);
-	Lines.Add(index, unit.Const.tgFILE_GRAPH);
-	IndexItemLoad = 0;
-}
-
-Params.Lines[index].TypeGraph = unit.Const.tgFILE_GRAPH;
-Params.Lines[index].FileName = (private.LoadingFolder != "") ? private.LoadingFilePath : fileName;
-
-return true;]]>
+}]]>
 			</body>
 			<param access-modifier="private" name="fileName" display-name="" uuid="874db621-726d-43fb-9c75-cd140667f620" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 			<param access-modifier="private" name="exindex" display-name="" uuid="18b9571c-e05f-4ccf-b897-a87a7caaa6c5" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
@@ -898,28 +976,47 @@ return true;]]>
 			<body kind="om">
 				<![CDATA[//Debug.Log("Lines.Save: "+folder);
 Files.CreateRecursiveFolder(folder);
-
-// Завершение процедуры записи отслеживается по изменению количества готовых записанных файлов
-// признаком завершения является равенство количества запросов и количества записанных файлов.
-SaveFilesMask = 0; // Обнуляем маску запросов на запись файлов
-
-// сохраняем параметры графиков
-paramsPath: string = Files.CombinePath(folder, "00.json");
-private.ExportParams(Params.LinesCount, paramsPath);
-
-// сохраняем графики в отдельные файлы
-f: int4 = 0;
-i: uint1 = 1;
-while (i < Line.Length)
+if (Files.Error.State)
 {
-	if (Params.Lines[i].Used) 
+	if (private.ExportFile != "")
 	{
-		f += 1; // увеличиваем номер файла
-		filePath: string = Files.CombinePath(folder, String.ToString(f) + ".json");
-		Line[i].DataSource_1.Save(filePath, "json");
-		SaveFilesMask = Math.SetBit(SaveFilesMask, i);
+		private.EventParams[0] = private.ExportFile;
+		private.EventParams[1] = Files.Error.Text;
+		pOnDataSave.Invoke();
+		
+		private.ShowError.message = "Ошибка сохранения графиков в файл\n" + private.ExportFile + "\n" + Files.Error.Text;
+		private.ShowError.Invoke();
 	}
-	i += 1;
+	else
+	{
+		private.EventParams[0] = Files.Error.Text;
+		pOnError.Invoke();
+	}
+}
+else
+{
+	// Завершение процедуры записи отслеживается по изменению количества готовых записанных файлов
+	// признаком завершения является равенство количества запросов и количества записанных файлов.
+	SaveFilesMask = 0; // Обнуляем маску запросов на запись файлов
+	
+	// сохраняем параметры графиков
+	paramsPath: string = Files.CombinePath(folder, "00.json");
+	private.ExportParams(paramsPath);
+	
+	// сохраняем графики в отдельные файлы
+	f: int4 = 0;
+	i: uint1 = 1;
+	while (i < Line.Length)
+	{
+		if (Params.Lines[i].Used) 
+		{
+			f += 1; // увеличиваем номер файла
+			filePath: string = Files.CombinePath(folder, String.ToString(f) + ".json");
+			Line[i].DataSource_1.Save(filePath, "json");
+			SaveFilesMask = Math.SetBit(SaveFilesMask, i);
+		}
+		i += 1;
+	}
 }]]>
 			</body>
 			<param access-modifier="private" name="folder" display-name="" uuid="64bdf917-f2ac-461a-a20f-adadbbba0c0b" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
@@ -951,7 +1048,7 @@ Chart[nChart].LinkCrossPoint();]]>
 		</do>
 		<do access-modifier="private" name="SetCanonicalType" display-name="SetCanonicalType" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 			<body kind="om">
-				<![CDATA[//Debug.Log("ItemCTD[" + String.ToString(index) + "]=" + String.ToString(canonicalType));
+				<![CDATA[//Debug.Log("ItemCDT[" + String.ToString(index) + "]=" + String.ToString(canonicalType));
 if (Params.Lines[index].ItemCDT != canonicalType)
 {
 	Params.Lines[index].ItemCDT = canonicalType;
@@ -990,8 +1087,7 @@ Axis.LinkUpdate(GlobalRanges);]]>
 		<do access-modifier="private" name="BeginReadRT" display-name="BeginReadRT" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 			<param access-modifier="private" name="index" display-name="" uuid="a5dbd3e3-66d2-494a-8e7f-aeb052386c32" base-type="int8" base-type-id="1f8f5a02-c52c-4260-90d1-e3b1b93b3949" ver="5"/>
 			<body kind="om">
-				<![CDATA[
-// останавливаем и удаляем данные
+				<![CDATA[// останавливаем и удаляем данные
 Line[index].DataSource_1.CancelReadAsync();
 Line[index].DataSource_1.Clear();
 
@@ -999,15 +1095,14 @@ Line[index].DataSource_1.EnableRT(true);
 Line[index].DataSource_1.ApItemValueQuery.Mode = unit.Const.vqmOPERATIVE;
 Line[index].DataSource_1.ApItemValueQuery.OperativeInterval = OperativeStoredInterval.currentValue;  
 Line[index].DataSource_1.ApItemValueQuery.Reload();	
-Line[index].DataSource_1.BeginReadAsync();
-]]>
+Line[index].DataSource_1.BeginReadAsync();]]>
 			</body>
 		</do>
 		<object access-modifier="private" name="UploadFilesMask" display-name="UploadFilesMask" uuid="857262d0-a1ce-4821-b2eb-13559d4a321a" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5"/>
 		<object access-modifier="private" name="HistoryRequestMask" display-name="HistoryRequestMask" uuid="51659c87-16c3-4d05-896c-03081215a4f1" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5" description="" cardinal="1"/>
 		<do access-modifier="private" name="FinalUploadFiles" display-name="FinalUploadFiles" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 			<body kind="om">
-				<![CDATA[// Debug.Log("FinalUploadFiles");
+				<![CDATA[//Debug.Log("FinalUploadFiles");
 
 // Если директория распаковки определена функцией LoadFromFile()
 if (private.LoadingFolder != "")
@@ -1018,6 +1113,7 @@ if (private.LoadingFolder != "")
 }
 if (IndexItemLoad > 0)
 {
+	// при загрузке одного файла без параметров определяем диапазон времени и значений
 	Params.ExParams.Xmin = Variant.ToUint8(Line[IndexItemLoad].GetMinX(), 0);
 	Params.ExParams.Xmax = Variant.ToUint8(Line[IndexItemLoad].GetMaxX(), 0);
 	Params.ExParams.tHistRangeStart = Params.ExParams.Xmin;
@@ -1028,14 +1124,15 @@ if (IndexItemLoad > 0)
 	Params.ExParams.Axis[IndexItemLoad].fixYmin -= span * 0.1;
 	Params.ExParams.Axis[IndexItemLoad].fixYmax += span * 0.1;
 }
-ActiveMode = unit.Const.amHISTORY;				 // Переключаемся в исторический режим
+ActiveMode = unit.Const.amHISTORY;	 // Переключаемся в исторический режим
 Axis.LinkUpdate(Params.ExParams.bGlobalRanges);
 UpdateYRanges(Params.ExParams.bAutoRange);
 
-SetTimeInterval(Params.ExParams.Xmin, Params.ExParams.Xmax);
+// интервал времени и данных приводим к историческому интервалу
+SetTimeInterval(Params.ExParams.tHistRangeStart, Params.ExParams.tHistRangeEnd);
 private.UpdateDataInterval(Params.ExParams.tHistRangeStart, Params.ExParams.tHistRangeEnd);
 
-pLegend.Update();
+Legend.Update();
 
 // уведомляем о загрузке файла
 if (private.ErrorMessages != "")
@@ -1059,28 +1156,25 @@ else
 		<init target="HistoryNeedMask" ver="5" value="0"/>
 		<object access-modifier="private" name="IndexItemLoad" display-name="IndexItemLoad" uuid="07fc415d-dd10-4f78-a561-0af10f6ea79b" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
 		<init target="IndexItemLoad" ver="5" value="0"/>
-		<do access-modifier="private" name="SetDefaultStyles" display-name="SetDefaultStyles" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<do access-modifier="private" name="SetDefaultStyle" display-name="SetDefaultStyle" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 			<body kind="om">
 				<![CDATA[//Debug.Log("SetDefaultStyles["+String.ToString(index)+"]");
-i:int4 = 0;
-while (i < private.LineDecor.Style.Length)
+i: int4 = 0;
+while (i < private.pSettings.LineDecorators.Style.Length)
 {
-	if (private.LineDecor.Style[i].Title != "")
+	if (private.pSettings.LineDecorators.Style[i].Title != "")
 	{
-		Params.Lines[index].Decor.Style[i].Title =		private.LineDecor.Style[i].Title;
-		Params.Lines[index].Decor.Style[i].ConditionColumn = private.LineDecor.Style[i].ConditionColumn;
-		Params.Lines[index].Decor.Style[i].ConditionMin =		private.LineDecor.Style[i].ConditionMin;
-		Params.Lines[index].Decor.Style[i].ConditionMax =		private.LineDecor.Style[i].ConditionMax;
-		Params.Lines[index].Decor.Style[i].LineColor =	private.LineDecor.Style[i].LineColor;
-		Params.Lines[index].Decor.Style[i].LineWidth =	private.LineDecor.Style[i].LineWidth;
-		Params.Lines[index].Decor.Style[i].LineStyle =	private.LineDecor.Style[i].LineStyle;
-		Params.Lines[index].Decor.Style[i].Active =		private.LineDecor.Style[i].Active;
+		Params.Lines[index].Decor.Style[i].Title = private.pSettings.LineDecorators.Style[i].Title;
+		Params.Lines[index].Decor.Style[i].ConditionColumn = private.pSettings.LineDecorators.Style[i].ConditionColumn;
+		Params.Lines[index].Decor.Style[i].ConditionMin = private.pSettings.LineDecorators.Style[i].ConditionMin;
+		Params.Lines[index].Decor.Style[i].ConditionMax = private.pSettings.LineDecorators.Style[i].ConditionMax;
+		Params.Lines[index].Decor.Style[i].LineColor = private.pSettings.LineDecorators.Style[i].LineColor;
+		Params.Lines[index].Decor.Style[i].LineWidth = private.pSettings.LineDecorators.Style[i].LineWidth;
+		Params.Lines[index].Decor.Style[i].LineStyle = private.pSettings.LineDecorators.Style[i].LineStyle;
+		Params.Lines[index].Decor.Style[i].Active = private.pSettings.LineDecorators.Style[i].Active;
 	}
 	i += 1;
-}
-
-//	Params.Lines[i].ColorManual = DefaultManualColor;                ????
-]]>
+}]]>
 			</body>
 			<param access-modifier="private" name="index" display-name="" uuid="6f194c4d-5f2a-4bc2-a813-adf3c3097d2a" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
 		</do>
@@ -1129,37 +1223,6 @@ while (j < Line.Decor.Length)
 }]]>
 			</body>
 			<param access-modifier="private" name="index" display-name="" uuid="6e9a2795-36ac-42f6-998a-baf5fceb2023" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
-		</do>
-		<do access-modifier="private" name="ConfigureStyle" display-name="ConfigureStyle" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
-			<body kind="javascript">
-				<![CDATA[//Debug.Log("SetDefaultStyles["+String.ToString(index)+"]");
-var indexes = JSON.parse(itemIndexes);
-
-i:int4 = 0;
-while (i < private.LineDecor.Length)
-{
-	if (private.LineDecor[i].Title != "")
-	{
-		Params.Lines[index].Decor[i].Title = private.LineDecor[i].Title;
-		Params.Lines[index].Decor[i].ConditionColumn = private.LineDecor[i].ConditionColumn;
-		Params.Lines[index].Decor[i].ConditionMin = private.LineDecor[i].ConditionMin;
-		Params.Lines[index].Decor[i].ConditionMax = private.LineDecor[i].ConditionMax;
-		Params.Lines[index].Decor[i].Color = private.LineDecor[i].LineColor;
-		Params.Lines[index].Decor[i].Width = private.LineDecor[i].LineWidth;
-		Params.Lines[index].Decor[i].Style = private.LineDecor[i].LineStyle;
-		if (private.LineDecor[i].Title == "Ручной ввод")
-			Params.Lines[index].Decor[i].bActive = EnableManualColor;
-		else
-			Params.Lines[index].Decor[i].bActive = true;
-	}
-	i += 1;
-}
-
-//	Params.Lines[i].ColorManual = DefaultManualColor;                ????
-]]>
-			</body>
-			<param access-modifier="private" name="index" display-name="" uuid="c05ceaf0-0afe-438d-bde0-ee65d60b9198" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
-			<param access-modifier="private" name="config" display-name="" uuid="b4e34a82-4293-4614-97bd-dd85eebbee57" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 		</do>
 	</object>
 	<object access-modifier="private" name="Axis" display-name="Axis" uuid="fb02bf3d-c98e-4edd-9d55-22ca371ccfc1" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
@@ -1418,27 +1481,42 @@ if (!Params.bAutoRange)
 	<object access-modifier="private" name="Repers" display-name="Repers" uuid="cf4fb14c-1560-447b-aee7-ced747f077b4" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
 		<object access-modifier="private" name="iActive" display-name="iActive" uuid="9c72ab03-47dc-4595-a40d-97df6bcb6769" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
 		<object access-modifier="private" name="iLastAdd" display-name="iLastAdd" uuid="e998a828-46d5-4c63-9638-cc37b07032e6" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5" description="" cardinal="1"/>
-		<do access-modifier="private" name="GetNext" display-name="GetNext" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+		<do access-modifier="private" name="Add" display-name="Add" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 			<body kind="om">
-				<![CDATA[// Поиск доступного репера для установки
-i:int4 = 1;
-// перебираем реперы в поисках свободного (невидимого)
-while (i<Chart.ControlLine.Length && Chart.ControlLine[i].Visible) { i += 1; }
+				<![CDATA[private.Initializer();
+//Debug.Log("Add reper at time " + DateTime.ToString(time));
+
+// Перебираем реперы в поисках свободного (невидимого)
+iReper: int4 = 1;
+while (iReper < Chart.ControlLine.Length && Chart.ControlLine[iReper].Visible)
+	iReper += 1;
 
 // Проверяем последний репер
-if (i == (Chart.ControlLine.Length-1))			
+if (iReper == (Chart.ControlLine.Length-1))			
 {				
-		if (Chart.ControlLine[i].Visible)	// если последний репер тоже уже установлен
-		{
-			i = Repers.iLastAdd + 1;
-			if (i >= Chart.ControlLine.Length) 
-				i = 1;			// снова переходим к первому реперу и выбираем его для установки на новое место									
-		}
+	if (Chart.ControlLine[iReper].Visible)	// если последний репер тоже уже установлен
+	{
+		iReper = Repers.iLastAdd + 1;
+		if (iReper >= Chart.ControlLine.Length) 
+			iReper = 1; // снова переходим к первому реперу и выбираем его для установки на новое место									
+	}
 }
-//Debug.Log("NextReper "+Str.ToString(i)+" "+Str.ToString(n));
-return i;
-]]>
+
+Repers.iLastAdd = iReper;
+Repers.iActive = iReper;
+
+n:int4 = 0;
+while (n < Chart.Length)
+{
+	Chart[n].ControlLine[iReper].Visible = true;
+	Chart[n].ControlLine[iReper].Value = time;
+	Chart[n].ControlLine[iReper].setActive(true);
+	n += 1;
+}
+
+Legend.UpdateVQT();]]>
 			</body>
+			<param access-modifier="private" name="time" display-name="" uuid="27581523-ca52-41c5-b2d2-1d35b5133972" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5"/>
 		</do>
 		<do access-modifier="private" name="RemoveAll" display-name="RemoveAll" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 			<body kind="om">
@@ -1460,7 +1538,7 @@ while (n < Chart.Length)
 Repers.iLastAdd = 0; // обнуляем индекс добавленного репера
 Repers.iActive = 0; // обнуляем индекс активного репера
 
-pLegend.UpdateValues();]]>
+Legend.UpdateVQT();]]>
 			</body>
 		</do>
 		<init target="iActive" ver="5" value="0"/>
@@ -1504,7 +1582,7 @@ if (index >= 0 && index < Chart.ControlLine.Length)
 		}
 	}
 	
-	pLegend.UpdateValues();
+	Legend.UpdateVQT();
 }]]>
 			</body>
 			<param access-modifier="private" name="index" display-name="" uuid="e0d58c6d-5a10-4bc3-ba76-2ab49c3d6908" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
@@ -1591,8 +1669,26 @@ if (ActiveMode == unit.Const.amOPERATIVE)
 		}
 	}
 
-	// Ставим на паузу, если текущее время за пределами отображаемого интервала
-	SetPause(rb < now - unit.Const.dtONE_SECOND);
+	// Ставим на паузу или снимаем с паузы в зависимости от положения текущего времени.
+	// Делаем это с учетом сдвига отображения красной линии и защитного секундного интервала.
+	if (rb < now - unit.Const.dtONE_SECOND)
+	{
+		//Debug.Log("Ставим на паузу, так как текущее время за пределами отображаемого интервала");
+		SetPause(true);
+	}
+	else
+	{
+		// определяем правую границу для оперативного режима
+		t2: uint8 = now;
+		if (ShowRedLine)
+			t2 += ViewInterval.currentValue * RedLineShift / 100;
+		
+		if (rb > t2 + unit.Const.dtONE_SECOND)
+		{
+			//Debug.Log("Снимаем с паузы, так как текущее время в пределах отображаемого интервала");
+			SetPause(false);
+		}
+	}
 }]]>
 				</body>
 			</do-on>
@@ -1643,14 +1739,14 @@ while (i < ControlLine.Length)																			// перебираем реп�
 
 if (selectedReper)
 {
-	pLegend.UpdateValues();
+	Legend.UpdateVQT();
 }
 else	// если кликом не попали в репер
 {
 	//	Добавление репера
 	if (here.CursorMode == unit.Const.cmADD_REPER)
 	{
-		AddControlLineAtTime(Variant.ToUint8(clickValue, 0));
+		Repers.Add(Variant.ToUint8(clickValue, 0));
 
 		if (!ControlLineMultipleAdd)
 			here.CursorMode = unit.Const.cmHAND_MOVE;
@@ -1787,7 +1883,7 @@ if (this.CalcWidth != this.GetAxisWidthCalc())
 			<designed target="Value" value="0" ver="5" type-id="7ad62ecf-96dd-4751-9b96-e77954b44409"/>
 			<designed target="BrushStyle" value="2" ver="5"/>
 			<designed target="BrushOpacity" value="1" ver="5"/>
-			<designed target="ShowValues" value="true" ver="5"/>
+			<designed target="ShowValues" value="false" ver="5"/>
 			<designed target="BgValuesColor" value="4292006610" ver="5"/>
 			<designed target="BgValuesOpacity" value="1" ver="5"/>
 			<designed target="Visible" value="false" ver="5"/>
@@ -1811,84 +1907,73 @@ if (this.CalcWidth != this.GetAxisWidthCalc())
 				</do-trace>
 				<designed target="X" value="0" ver="5" type-id="7ad62ecf-96dd-4751-9b96-e77954b44409"/>
 				<designed target="Y" value="0" ver="5" type-id="7ad62ecf-96dd-4751-9b96-e77954b44409"/>
-			</object>
-			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="DataChanged">
-				<body kind="om">
-					<![CDATA[//  Debug.Log("DataChanged ControlLine ");
-i:int4 = 1;
-while (i < CrossPoint.Length)
+				<do access-modifier="private" name="UpdateTooltip" display-name="UpdateTooltip" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+					<body kind="om">
+						<![CDATA[value: variant = GetValue(unit.Const.cpVALUE);
+if (Variant.IsEmpty(value))
 {
-	if (Params.Lines[i].Used)
-	{
-		vv:variant = CrossPoint[i].GetValue(unit.Const.cpVALUE);
-		if (Variant.IsEmpty(vv))
-		{
-			CrossPoint[i].ToolTipText = "???";
-		}
-		else
-		{
-			vvs:string = here.private.VariantToString(vv, YAxisPrecision);
-//		Debug.Log("DataChanged Point:"+Str.ToString(i)+" Value:"+Str.ToString(Variant.ToFloat(vv,0)));
-			vq:variant = CrossPoint[i].GetValue(unit.Const.cpQUALITY);
-			vqs:string = here.private.VariantToString(vq, 0);
-			CrossPoint[i].ToolTipText = vvs + " (" + vqs + ")";
-			nXColumn:int4 = (ActiveMode==unit.Const.amOPERATIVE) ? unit.Const.tmSOURCE : Params.Lines[i].nXColumn; 
-			if (pLegend.nRowInLegend.Length>0 && ShowRedLine)
-				pLegend.SetVQT(pLegend.nRowInLegend[i], vv, Variant.ToUint4(vq,0), Variant.ToUint8(Value,0), nXColumn);
-		}
-	}
-	i += 1;
+	ToolTipText = "";
 }
-]]>
+else
+{
+	strValue: string = here.private.VariantToString(value, YAxisPrecision);
+	quality: variant = GetValue(unit.Const.cpQUALITY);
+	qualityStr: string = String.ToString(Variant.ToUint2(quality, 0));
+	ToolTipText = strValue + " (" + qualityStr + ")";
+}]]>
+					</body>
+				</do>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="DataChanged">
+				<body kind="om">
+					<![CDATA[if (Visible)
+{
+	UpdatePointTooltips();
+	
+	if (Repers.iActive == Index)
+		Legend.UpdateVQT();
+}]]>
 				</body>
 			</do-on>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ChangeValue">
 				<body kind="om">
-					<![CDATA[//Debug.Log("ChangeValue ControlLine ");
-i:int4 = 1;
-timeValue:uint8 = Variant.ToUint8(Value, 0);
-while (i < Line.Length)
+					<![CDATA[if (Visible)
 {
-	if (Params.Lines[i].Used)
+	UpdatePointTooltips();
+	
+	if (Repers.iActive == Index)
+		Legend.UpdateVQT();
+	
+	// Синхронизируем данный репер на всех чартах
+	timeValue: uint8 = Variant.ToUint8(Value, 0);
+	n: int4 = 0;
+	while (n < Chart.Length)
 	{
-		nChart:int4 = Params.Lines[i].nChart;
-		if (nChart == Chart.Index)
+		timeValueChart:uint8 = Variant.ToUint8(Chart[n].ControlLine[this.Index].Value, 0);
+		if (n!=SelectedChart && timeValueChart!=timeValue)
 		{
-			vv:variant = CrossPoint[i].GetValue(unit.Const.cpVALUE);
-			if (Variant.IsEmpty(vv))
-			{
-				this.CrossPoint[i].ToolTipText = "???";
-			}
-			else
-			{
-				vvs: string = here.private.VariantToString(vv, YAxisPrecision);
-				vq: variant = CrossPoint[i].GetValue(unit.Const.cpQUALITY);
-				vqs: string = here.private.VariantToString(vq, 0);
-				CrossPoint[i].ToolTipText = vvs + " (" + vqs + ")";
-				nXColumn:int4 = (ActiveMode==unit.Const.amOPERATIVE) ? unit.Const.tmSOURCE : Params.Lines[i].nXColumn; 
-				if (pLegend.nRowInLegend.Length >0)
-					pLegend.SetVQT(pLegend.nRowInLegend[i], vv, Variant.ToUint4(vq, 0), timeValue, nXColumn);
-			}
+			Chart[n].ControlLine[this.Index].Value = timeValue;
 		}
+		n += 1;
 	}
-	i += 1;
-}
-
-// Синхронизируем данный репер на всех чартах
-n:int4 = 0;
-while (n < Chart.Length)
-{
-	timeValueChart:uint8 = Variant.ToUint8(Chart[n].ControlLine[this.Index].Value, 0);
-	if (n!=SelectedChart && timeValueChart!=timeValue)
-	{
-		Chart[n].ControlLine[this.Index].Value = timeValue;
-	}
-	n += 1;
 }]]>
 				</body>
 			</do-on>
 			<designed target="ShowAxisValues" value="true" ver="5"/>
 			<init target="Axis" ver="5" ref="Axis_X"/>
+			<do access-modifier="private" name="UpdatePointTooltips" display-name="UpdatePointTooltips" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[for (i: int4 = 1; i < Line.Length; i += 1)
+{
+	if (Params.Lines[i].Used)
+	{
+		nChart: int4 = Params.Lines[i].nChart;
+		if (nChart == Chart.Index)
+			CrossPoint[i].UpdateTooltip();
+	}
+}]]>
+				</body>
+			</do>
 		</object>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MousePress">
 			<body kind="om">
@@ -1923,7 +2008,7 @@ SelectedChart = TypeConvert.ToInt4(Index);]]>
 				<designed target="BrushStyle" value="2" ver="5"/>
 				<designed target="BrushOpacity" value="1" ver="5"/>
 				<designed target="BgValuesColor" value="0xffd2d2d2" ver="5"/>
-				<designed target="BgValuesOpacity" value="0.8" ver="5"/>
+				<designed target="BgValuesOpacity" value="0.800000012" ver="5"/>
 				<designed target="Visible" value="false" ver="5"/>
 				<designed target="Font" value="Tahoma,10,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
 				<designed target="ToolTipText" value="" ver="5"/>
@@ -1958,16 +2043,11 @@ private.tMouseWheelStart = DateTime.UtcNow();]]>
 		<designed target="RightExtrapolationLimit" value="116444736000000000" ver="5" type-id="c8ff7701-da6e-4d53-888a-81fa680ff561"/>
 		<designed target="MinTimeline" value="116444736000000000" ver="5" type-id="c8ff7701-da6e-4d53-888a-81fa680ff561"/>
 		<designed target="MaxTimeline" value="116444736000000000" ver="5" type-id="c8ff7701-da6e-4d53-888a-81fa680ff561"/>
-		<object access-modifier="private" name="LayoutWeight_1" display-name="LayoutWeight_1" uuid="720ba948-6cc1-40f1-bf09-21cb7c67fe03" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5" description="" cardinal="1">
-			<designed target="Weight" value="1" ver="5"/>
-		</object>
 		<do access-modifier="private" name="SetVisible" display-name="SetVisible" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 			<body kind="om">
 				<![CDATA[//Debug.Log("-Chart_SetVisible["+String.ToString(Index)+"]="+String.ToString(visible));
 Params.Charts[Index].bVisible = visible;
-Visible = visible;
-LayoutWeight_1 = visible ? 1 : 0;
-]]>
+Visible = visible;]]>
 			</body>
 			<param access-modifier="private" name="visible" display-name="" uuid="e354b783-bde4-46ed-a927-9bdb9034189b" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
 		</do>
@@ -2000,9 +2080,7 @@ return -1;]]>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnDrop">
 				<body kind="om">
 					<![CDATA[
-DropText = data.GetText();
-SelectedChart = TypeConvert.ToInt4(Index);
-pOnDrop.Invoke();
+private.ItemsAddByJson(data.GetText(), TypeConvert.ToInt4(Index));
 ]]>
 				</body>
 			</do-on>
@@ -2123,12 +2201,127 @@ while (i < Axis_Y.Length)
 		</do>
 		<object access-modifier="private" name="mousePressTop" display-name="mousePressTop" uuid="e0498583-92a5-4847-8345-26e5a1b7eb02" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5" description="" cardinal="1"/>
 	</object>
+	<object access-modifier="private" name="MiniTrend" display-name="MiniTrend" uuid="eebae86b-5e59-48c7-a574-c4f90b4df87e" base-type="MiniTrend" base-type-id="2a508563-364d-4472-b86f-4a1a2242c585" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="800" ver="5"/>
+		<designed target="Height" value="50" ver="5"/>
+		<designed target="BrushColor" value="0xffffffff" ver="5"/>
+		<designed target="MinTimeline" value="0" ver="5" type-id="7ad62ecf-96dd-4751-9b96-e77954b44409"/>
+		<designed target="MaxTimeline" value="0" ver="5" type-id="7ad62ecf-96dd-4751-9b96-e77954b44409"/>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="281c6c9f-b0b9-4c15-87ee-5e528637a812" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="0" ver="5"/>
+			<designed target="MinHeight" value="50" ver="5"/>
+			<designed target="MaxWidth" value="16777215" ver="5"/>
+			<designed target="MaxHeight" value="50" ver="5"/>
+			<do-trace access-modifier="private" target="MaxHeight" ver="5">
+				<body>
+					<![CDATA[ShowMiniTrends ? 50 : 0]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="MinHeight" ver="5">
+				<body>
+					<![CDATA[ShowMiniTrends ? 50 : 0]]>
+				</body>
+			</do-trace>
+		</object>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[ShowMiniTrends]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="BrushColor" ver="5">
+			<body>
+				<![CDATA[private.pTheme.EditorBrushColor]]>
+			</body>
+		</do-trace>
+		<init target="Axis" ver="5" ref="Chart.Axis_X"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MousePress">
+			<body kind="om">
+				<![CDATA[bMousePressed = true;
+//Debug.Log("MiniTrend mouse press");]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseLeave">
+			<body kind="om">
+				<![CDATA[bMousePressed = false;
+//Debug.Log("MiniTrend mouse leave");]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseRelease">
+			<body kind="om">
+				<![CDATA[bMousePressed = false;
+//Debug.Log("MiniTrend mouse release");]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="bMousePressed" display-name="bMousePressed" uuid="a8d42d2a-4367-456a-9966-3b6dfea1d756" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="nChart" display-name="nChart" uuid="f3b00638-600f-4109-812d-d4140ea52e2b" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+		<do access-modifier="private" name="LinkToChart" display-name="LinkToChart" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<param access-modifier="private" name="newChart" display-name="" uuid="d6823a19-dc21-4895-b06a-983baf7de731" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<body kind="om">
+				<![CDATA[// Привязка минитрендов к оси чарта
+if (nChart != newChart)
+{
+	SetAxisById(Chart[newChart].Axis_X.GetID());
+	nChart = newChart;
+}
+]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="DragNDrop_1" display-name="DragNDrop_1" uuid="feb2445f-2163-454f-b318-02d25c8a05ba" base-type="DragNDrop" base-type-id="c4ddb32f-3653-44c8-be57-3a595e10c2fb" ver="5">
+			<designed target="DragEnabled" value="true" ver="5"/>
+			<designed target="DropEnabled" value="true" ver="5"/>
+			<designed target="Image" value="" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnDrop">
+				<body kind="om">
+					<![CDATA[
+private.ItemsAddByJson(data.GetText(), 0);
+]]>
+				</body>
+			</do-on>
+		</object>
+	</object>
+	<object access-modifier="private" name="Splitter" display-name="Splitter" uuid="2438e26f-a7e6-4e9d-bdb6-ee52b8114cf1" base-type="VerticalSplitter" base-type-id="f7b3175e-374e-46fc-bdf9-e8330c5fa171" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="800" ver="5"/>
+		<designed target="Height" value="4" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.init_Theme"/>
+		<init target="Position" ver="5" value="150"/>
+		<init target="Minimum" ver="5" value="20"/>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[ShowLegend]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseRelease">
+			<body kind="om">
+				<![CDATA[Legend.Autosize = false;]]>
+			</body>
+		</do-on>
+	</object>
 	<object access-modifier="private" name="Layout" display-name="Layout" uuid="ebe796f3-0ec7-4265-95b0-efd4f6875c47" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5">
 		<designed target="Orientation" value="2" ver="5"/>
 		<designed target="Gap" value="0" ver="5"/>
 	</object>
+	<object access-modifier="private" name="Initializer" display-name="Initializer" uuid="39ce21ae-f1ca-472f-b828-f48a952deb00" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="5" description="" cardinal="1">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Initialized">
+			<body kind="om">
+				<![CDATA[private.Initializer();]]>
+			</body>
+		</do-on>
+	</object>
 	<object access-modifier="private" name="Files" display-name="Files" uuid="ca390ef4-3feb-4c76-8763-526e0ffd1645" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5" description="" cardinal="1">
 		<designed target="RootPath" value="/" ver="5"/>
+		<init target="Error" ver="5">
+			<object access-modifier="private" uuid="5ce0a2fc-af0b-4519-acb7-9ebffbe46c5b" base-type="FileSystemError" base-type-id="38147fa1-a364-43d4-bd0b-07ee8556c2f2" ver="5"/>
+		</init>
 	</object>
 	<object access-modifier="private" name="Archiver_1" display-name="Archiver_1" uuid="9b9b7e34-db09-4bf3-a190-5681c1fb83b6" base-type="Archiver" base-type-id="3d5db667-b706-495b-a916-9785b07dd0ae" ver="5" description="" cardinal="1">
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="UnpackFinished">
@@ -2146,17 +2339,22 @@ else
 		</do-on>
 		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="PackFinished">
 			<body kind="om">
-				<![CDATA[//Debug.Log("Упаковка завершена " + error);
-if (error != "")
+				<![CDATA[// уведомляем о том, как сохранение выполнено
+if (error == "")
 {
-	private.EventParams[0] = error;
-	pOnError.Invoke();
+	private.ShowComplete.message = "Графики сохранены в файл\n" + private.ExportFile;
+	private.ShowComplete.Invoke();
 }
 else
 {
-	private.EventParams[0] = private.ExportFile;
-	pOnDataSave.Invoke();
+	private.ShowError.message = "Ошибка сохранения графиков в файл\n" + private.ExportFile + "\n" + error;
+	private.ShowError.Invoke();
 }
+
+// уведомляем о завершении сохранения данных
+private.EventParams[0] = private.ExportFile;
+private.EventParams[1] = error;
+pOnDataSave.Invoke();
 
 Files.RemoveRecursive(private.ExportTrendsPath);
 private.ExportTrendsPath = "";
@@ -2166,52 +2364,9 @@ private.ExportFile = "";]]>
 		<designed target="CompressionLevel" value="1" ver="5"/>
 	</object>
 	<object access-modifier="private" name="Params" display-name="Params" uuid="9804fc81-39d3-40fe-b866-4be1f68a4ed9" base-type="Trends_Parameters" base-type-id="b3130c37-74d0-4745-864b-c3a1702c818e" ver="5">
-		<object access-modifier="private" name="ExParams" display-name="ExParams" uuid="f51eff45-faec-44c1-a9e4-14f81b9b9098" base-type="Trends_Parameters" base-type-id="b3130c37-74d0-4745-864b-c3a1702c818e" ver="5">
-			<init target="pOnError" ver="5" ref="DoOnErrorEx"/>
-		</object>
+		<object access-modifier="private" name="ExParams" display-name="ExParams" uuid="f51eff45-faec-44c1-a9e4-14f81b9b9098" base-type="Trends_Parameters" base-type-id="b3130c37-74d0-4745-864b-c3a1702c818e" ver="5"/>
 		<object access-modifier="private" name="nItem" display-name="nItem" uuid="f0f02952-7732-48fa-b583-4fdf9e901212" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" cardinal="21"/>
 		<init target="pExParams" ver="5" ref="this.ExParams"/>
-		<object access-modifier="private" name="DoOnError" display-name="DoOnError" uuid="4cfb6ad6-7652-47a0-a2ff-c270b50bf815" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
-			<designed target="Enabled" value="true" ver="5"/>
-			<designed target="InvokeTrigger" value="false" ver="5"/>
-			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
-				<body kind="om">
-					<![CDATA[here.private.EventParams = Params.EventParams;
-here.pOnError.Invoke();]]>
-				</body>
-			</do-on>
-		</object>
-		<init target="pOnError" ver="5" ref="DoOnError"/>
-		<object access-modifier="private" name="DoOnErrorEx" display-name="DoOnErrorEx" uuid="13abe121-eeed-4372-8715-35e9d8d24d01" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
-			<designed target="Enabled" value="true" ver="5"/>
-			<designed target="InvokeTrigger" value="false" ver="5"/>
-			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
-				<body kind="om">
-					<![CDATA[here.private.EventParams = ExParams.EventParams;
-here.pOnError.Invoke();]]>
-				</body>
-			</do-on>
-		</object>
-	</object>
-	<object access-modifier="private" name="ExportPath" display-name="ExportPath" uuid="a3c47964-d2c7-479a-b3a8-c1966b937269" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5">
-		<do access-modifier="private" name="Update" display-name="Update" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
-			<body kind="om">
-				<![CDATA[// Если путь не указан, то используем Export в папке с данными программы
-if (folderPath == "")
-	ExportPath = Files.CombinePath(unit.ProductInfo.GetProgramDataFolder(), "Export");
-else ExportPath = folderPath;
-
-// Если fileSystemAccess = true, то пользователь может сменить этот путь на любой другой, иначе он ограничен этой папкой.
-if (fileSystemAccess)
-	Root = ""; // корневой путь произвольного доступа
-else Root = ExportPath;
-
-//Debug.Log("ExportPath updated to '" + ExportPath + (fileSystemAccess ? "'" : "' with '" + Root + "' root"));]]>
-			</body>
-			<param access-modifier="private" name="folderPath" display-name="" uuid="baf49fed-6541-4241-8fc7-f6f5681f6736" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
-			<param access-modifier="private" name="fileSystemAccess" display-name="" uuid="55e30227-d4aa-4134-8ea0-adec0b06ecf2" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
-		</do>
-		<object access-modifier="private" name="Root" display-name="Root" uuid="e0ad0b63-4d89-4dd3-94f1-298a0966aa1e" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
 	</object>
 	<object access-modifier="private" name="Timer_of_ReadData" display-name="Timer_of_ReadData" uuid="0377029c-a76b-49fa-932c-9a0733554c3b" base-type="Timer" base-type-id="72ba7cd4-549e-41f2-923c-2431b91f349a" ver="5">
 		<designed target="Period" value="1000" ver="5"/>
@@ -2230,7 +2385,7 @@ if (DateTime.AddSeconds(private.tMouseWheelStart, 0.5) < now)
 if (!MiniTrend.bMousePressed && !private.chartMousePressed && !private.chartMouseWheel)
 	private.UpdateOperativeTimeInterval(now, false);
 
-pLegend.UpdateValues();]]>
+Legend.UpdateMinMaxSize();]]>
 			</body>
 		</do-on>
 		<init target="Period" ver="5" ref="DataUpdatePeriod"/>
@@ -2247,8 +2402,9 @@ pLegend.UpdateValues();]]>
 	if (value == unit.Const.amOPERATIVE)
 	{
 		// Оперативный режим
-		MoveToNow();		
-		private.RestartOperativeMode();
+		MoveToNow();
+		SetPause(false);
+		private.RestartOperativeMode();		
 	}
 	else
 	{
@@ -2261,12 +2417,11 @@ pLegend.UpdateValues();]]>
 	Lines.UpdateVisible(value);	
 
 	Axis.LinkUpdate(Params.bGlobalRanges);
-	pLegend.Update();
+	Legend.Update();
 }]]>
 			</body>
 		</do-on>
 	</object>
-	<object access-modifier="private" name="pLegend" display-name="pLegend" uuid="11e1e2d4-2ec7-4a3c-9066-3d416eccf706" base-type="Trends_Legend" base-type-id="12a9628e-5f57-42ef-afe7-6a7cf5b34b8d" base-const="true" base-ref="true" ver="5" description=""/>
 	<object access-modifier="private" name="AutoRange" display-name="Автоматическое определение диапазона значений для всех сигналов" uuid="c855d6e7-9d45-437c-b83b-665fb3eb7888" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
 			<body kind="om">
@@ -2354,23 +2509,7 @@ while (n < Chart.Length)
 		</do-on>
 	</object>
 	<object access-modifier="private" name="ControlLineMultipleAdd" display-name="Множественное добавление реперов" uuid="5a38a780-19ad-4bd3-8320-e35a10569725" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
-	<object access-modifier="private" name="ShowEU" display-name="Видимость единиц измерений" uuid="1671eec2-0bb0-44ac-92c6-bf3838269d68" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
-			<body kind="om">
-				<![CDATA[i:int4 = 0;
-n:int4 = 0;
-while (n < Chart.Length)
-{
-	while (i < Chart.Axis_Y.Length)
-	{
-		Chart[n].Axis_Y[i].ShowUnit = value;
-		i += 1;
-	}
-	n += 1;
-}]]>
-			</body>
-		</do-on>
-	</object>
+	<object access-modifier="private" name="ShowEU" display-name="Видимость единиц измерений" uuid="1671eec2-0bb0-44ac-92c6-bf3838269d68" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
 	<object access-modifier="private" name="ShowMarkerLabels" display-name="Видимость выносок реперов" uuid="6cabe6d8-6a35-4978-8fd6-f57236e15873" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
 			<body kind="om">
@@ -2399,6 +2538,10 @@ while (i < Line.Length)
 		</do-on>
 	</object>
 	<object access-modifier="private" name="ShowMiniTrends" display-name="Видимость минитрендов" uuid="31ae2d75-1cfc-46b9-a9e2-72aecb99642a" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="ShowLegend" display-name="Видимость легенды" uuid="405c6e65-d3f6-4109-b84b-26d0d045bcfe" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+	<object access-modifier="private" name="ShowFullDescription" display-name="Показывать полное описание" uuid="b07919a4-7d9b-47ff-b790-2475cb05a058" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+	<object access-modifier="private" name="ShowRelativeTag" display-name="Показывать относительный тег" uuid="27c2ab8d-6989-478c-9b38-1ab78aa1e870" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+	<object access-modifier="private" name="MaxLineLegendShow" display-name="Максимальное количество строк в легенде" uuid="60602a66-5e8d-4acb-81c5-38ad65b5a09b" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5"/>
 	<object access-modifier="private" name="DeltaLineWidth" display-name="Утолщение выделенного графика" uuid="83fd3b44-70bd-481a-a8b3-65b05f5a09a9" base-type="notifying_float" base-type-id="bb7d05ee-cbf0-4c44-8740-1905239c8ead" ver="5"/>
 	<do access-modifier="private" name="GetEventParam" display-name="GetEventParam" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
 		<body kind="om">
@@ -2430,12 +2573,12 @@ if (nChart<0 || nChart > Params.Charts.Length)
 itemIndex: int4 = private.ItemsAdd(path, eUnit, description, nXColumn, unit.Const.tgMAIN_GRAPH, nChart);
 if (itemIndex > 0)
 {
-	pLegend.Update();
+	Legend.Update();
 
-	if (pLegend.ShowRelativeTag)
+	if (ShowRelativeTag)
 		private.ServerAPI.ReadRelativeTag(path);
 		
-	if (pLegend.ShowFullDescription)
+	if (ShowFullDescription)
 		private.ServerAPI.ReadFullDescription(path);
 }
 //Debug.Log(String.ToString(itemIndex) + ": " + path);
@@ -2498,7 +2641,7 @@ else
 
 //Debug.Log("Remove " + String.ToString(index) + " item");
 Params.ResetLine(index);
-
+/*
 nAxis:int4 = Params.Lines[index].numAxis;  // Определяем ось к которой привязан сигнал
 bAxisHide:bool = true;												// собираемся скрыть ось к которой привязан график
 i:int4 = 1;
@@ -2510,15 +2653,15 @@ while (i <= unit.Const.MAX_LINES)		// проверяем есть ли еще п
 			bAxisHide = false;		// ось скрывать не будем
 	}
 	i += 1;
-}
+}//*/
 
 private.RemoveItem(index);
-if (bAxisHide)	
-	Chart.Axis_Y[nAxis].Visible = false;
+//if (bAxisHide)	
+//	Chart.Axis_Y[nAxis].Visible = false;
 
 Params.LinesCount -= 1;
 
-pLegend.Update();
+Legend.Update();
 
 //Debug.Log("Item[" + String.ToString(index) + "] removed");]]>
 		</body>
@@ -2538,7 +2681,7 @@ while (i < unit.Const.MAX_LINES)
 
 private.RemoveItem(unit.Const.ALL);
 
-pLegend.Clear();]]>
+Legend.Clear();]]>
 		</body>
 	</do>
 	<do access-modifier="private" name="SetLabelColor" display-name="SetLabelColor" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
@@ -2652,6 +2795,13 @@ currentValue = value;]]>
 		</do>
 		<object access-modifier="private" name="Begin" display-name="Начало видимого интервала времени" uuid="78a76f12-ccfc-4e4a-8caa-cfc83413e809" base-type="notifying_timestamp" base-type-id="fb54ffc6-3bfa-4c71-8ae4-fc5d62558895" ver="5" description="" cardinal="1"/>
 		<object access-modifier="private" name="End" display-name="Конец видимого интервала времени" uuid="b6a982e2-1db5-4053-b0b8-bacffa2d08be" base-type="notifying_timestamp" base-type-id="fb54ffc6-3bfa-4c71-8ae4-fc5d62558895" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="DifferentFromDataInterval" display-name="DifferentFromDataInterval" uuid="6ef8f583-40b2-4c04-949b-075dc1802dfe" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+		<do-trace access-modifier="private" target="DifferentFromDataInterval" ver="5">
+			<body>
+				<![CDATA[Begin < private.DataIntervalBegin - unit.Const.dtONE_SECOND ||
+End > private.DataIntervalEnd + unit.Const.dtONE_SECOND]]>
+			</body>
+		</do-trace>
 	</object>
 	<object access-modifier="private" name="OperativeStoredInterval" display-name="Хранимый интервал оперативного режима, мин" uuid="54624895-41a5-47e4-b177-ad1a72a8f727" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5">
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
@@ -2745,41 +2895,47 @@ if (ZoomXEnable)
 		<param access-modifier="private" name="factor" display-name="" uuid="1a3a162f-a22e-4807-ab6e-3c473b4285a0" base-type="double" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="5"/>
 	</do>
 	<do access-modifier="private" name="SetTimeInterval" display-name="SetTimeInterval" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
-		<param access-modifier="private" name="t1" display-name="" uuid="98620a53-c10e-4f98-bf92-3d233e6b04ba" base-type="timestamp" base-type-id="27c3d64b-a025-4ed3-8f63-d47e43a496aa" ver="5"/>
-		<param access-modifier="private" name="t2" display-name="" uuid="2a78f062-d9f8-4e08-ad3c-25a1b0c49d13" base-type="timestamp" base-type-id="27c3d64b-a025-4ed3-8f63-d47e43a496aa" ver="5"/>
+		<param access-modifier="private" name="begin" display-name="" uuid="98620a53-c10e-4f98-bf92-3d233e6b04ba" base-type="timestamp" base-type-id="27c3d64b-a025-4ed3-8f63-d47e43a496aa" ver="5"/>
+		<param access-modifier="private" name="end" display-name="" uuid="2a78f062-d9f8-4e08-ad3c-25a1b0c49d13" base-type="timestamp" base-type-id="27c3d64b-a025-4ed3-8f63-d47e43a496aa" ver="5"/>
 		<body kind="om">
-			<![CDATA[//Debug.Log("SetTimeInterval:"+DateTime.ToString(t1)+"-"+DateTime.ToString(t2));
-if (t2 == t1) return;
-// запоминаем интервал
-ViewInterval.Update(t2 - t1);
-ViewInterval.Begin = t1;
-ViewInterval.End = t2;
-
-n: int4 = 0;
-while (n < Chart.Length)
+			<![CDATA[if (end > begin)
 {
-	if (Params.Charts[n].bVisible)
-		Chart[n].UpdateAxisXInterval(t1, t2);
-	n += 1;
-}
-]]>
+	//Debug.Log("SetTimeInterval: " + DateTime.ToString(begin) + " - " + DateTime.ToString(end));
+	
+	// запоминаем интервал
+	ViewInterval.Update(end - begin);
+	ViewInterval.Begin = begin;
+	ViewInterval.End = end;
+	
+	for(n: int4 = 0; n < Chart.Length; n += 1)
+	{
+		if (Params.Charts[n].bVisible)
+			Chart[n].UpdateAxisXInterval(begin, end);
+	}
+}]]>
 		</body>
 	</do>
 	<do access-modifier="private" name="LoadHistoricalData" display-name="LoadHistoricalData" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
-		<body kind="javascript">
-			<![CDATA[private.UpdateDataInterval(ViewInterval.Begin, ViewInterval.End);
+		<body kind="om">
+			<![CDATA[//Debug.Log("LoadHistoricalData: " + DateTime.ToString(ViewInterval.Begin) + " - " + DateTime.ToString(ViewInterval.End));
+private.UpdateDataInterval(ViewInterval.Begin, ViewInterval.End);
 
-var itemIndexes = [];
-var i = 1;
-while (i < Line.Length)
+Lines.HistoryRequestMask = 0;
+Lines.HistoryNeedMask = 0;
+
+for (i: uint1 = 1; i < Line.Length; i += 1)
 {
 	if (Params.Lines[i].Used && Params.Lines[i].TypeGraph != unit.Const.tgFILE_GRAPH)
-		itemIndexes.push(i);
-	i += 1;
-}
-
-if (itemIndexes.length > 0)
-	LoadItemsHistory(JSON.stringify(itemIndexes));]]>
+	{
+		if (Line[i].ApItem.Advised)
+			private.HistoryRequest(i);
+		else
+			Lines.HistoryNeedMask = Lines.HistoryNeedMask | (1 << i);
+		
+		if (!private.Timer_ValueQuery.Active)
+			private.Timer_ValueQuery.Active = true;
+	}
+}]]>
 		</body>
 	</do>
 	<do access-modifier="private" name="CancelHistoryRequest" display-name="CancelHistoryRequest" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
@@ -2792,23 +2948,6 @@ while (i < Line.Length)
 }
 Lines.HistoryRequestMask = 0;]]>
 		</body>
-	</do>
-	<do access-modifier="private" name="LoadItemsHistory" display-name="LoadItemsHistory" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
-		<body kind="javascript">
-			<![CDATA[Lines.HistoryRequestMask.Value = 0;
-Lines.HistoryNeedMask = 0;
-private.Timer_ValueQuery.Active = true;
-
-var indexes = JSON.parse(itemIndexes);
-for (var i in indexes)
-{
-	if (Line[indexes[i]].ApItem.Advised)
-		private.HistoryRequest(indexes[i]);
-	else
-		Lines.HistoryNeedMask = Lines.HistoryNeedMask | (1 << indexes[i]);
-}]]>
-		</body>
-		<param access-modifier="private" name="itemIndexes" display-name="" uuid="8144314f-ce85-404c-8572-d242e52cc0de" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 	</do>
 	<do access-modifier="private" name="UpdateYRanges" display-name="UpdateYRanges" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 		<body kind="om">
@@ -2825,20 +2964,15 @@ while (n < Chart.Length)
 		i = 0;
 		while (i < Chart.Axis_Y.Length)
 		{
-			bUserScale:bool = i==0 ? Params.Charts[n].bUserScale : Params.Axis[i].bUserScale;
+			bUserScale: bool = i == 0 ? Params.Charts[n].bUserScale : Params.Axis[i].bUserScale;
 			if (!bUserScale)	// Если не включен режим ручного масштабирования для оси
 			{		
 				// устанавливаем режим автоподстройки у оси
 				Chart[n].Axis_Y[i].Scale = autoRange ? unit.Const.scAUTO : unit.Const.scFIXED;
+				
 				// если автоподстройка отключена, то задаем интервал по оси	
 				if (!autoRange)
-				{
-					margin: double = 0.001 * (Params.Axis[i].fixYmax - Params.Axis[i].fixYmin);
-					min: double = Params.Axis[i].fixYmin - margin;
-					max: double = Params.Axis[i].fixYmax + margin;
-					Chart[n].Axis_Y[i].SetInterval(min, max);
-//		Debug.Log("UpdateYRanges["+String.ToString(i) + "]=(" + String.ToString(min) + "," + String.ToString(max) + ")");
-				}
+					Chart[n].Axis_Y[i].SetInterval(Params.Axis[i].fixYmin, Params.Axis[i].fixYmax);
 			}
 			i += 1;	
 		}
@@ -2892,98 +3026,21 @@ MiniTrend.Enabled = false;]]>
 	<object access-modifier="private" name="YAxisPrecision" display-name="Точность отображения значений" uuid="17bbb09e-8796-4fee-8cc2-c628052b454d" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5"/>
 	<object access-modifier="private" name="SelectedItem" display-name="SelectedItem" uuid="a644e701-df41-4473-8838-f7548b401a13" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
 	<object access-modifier="private" name="ShowRedLine" display-name="Показывать красную линию" uuid="003bbbb0-b4ff-4dba-b92e-39d37d49cab9" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" cardinal="1"/>
-	<object access-modifier="private" name="RedLineShift" display-name="RedLineShift" uuid="67b8aee6-f539-43fd-84cd-48086ed0595c" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="RedLineShift" display-name="Сдвиг красной линии, %" uuid="67b8aee6-f539-43fd-84cd-48086ed0595c" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5" description="" cardinal="1"/>
 	<object access-modifier="private" name="AdviseWarnings" display-name="AdviseWarnings" uuid="df2ac561-09d5-4849-83b7-57b87a20b962" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
 	<object access-modifier="private" name="pOnMouseRightRelease" display-name="pOnMouseRightRelease" uuid="9fdd9dec-6e25-4496-b18c-627f622c80c0" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description=""/>
-	<object access-modifier="private" name="pOnDrop" display-name="pOnDrop" uuid="85d76759-d126-44d0-a028-ef0bee7232c2" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="pOnLegendMouseRightRelease" display-name="pOnLegendMouseRightRelease" uuid="69460211-a56a-48ee-85c8-a6de52bcb433" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-сonst="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="pOnSettingsChanged" display-name="pOnSettingsChanged" uuid="b49ef3c8-6ff3-4236-bed4-f6a673efdc49" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-сonst="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="pOnViewChanged" display-name="pOnViewChanged" uuid="dd15eaf4-0225-484a-918b-2138ca4fdc28" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-сonst="true" base-ref="true" ver="5"/>
 	<object access-modifier="private" name="pOnHistoryLoad" display-name="pOnHistoryLoad" uuid="0a6aad16-cf6e-4455-b39c-0592296559b9" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description=""/>
 	<object access-modifier="private" name="pOnDataLoad" display-name="pOnDataLoad" uuid="56aa896c-8615-40a2-8e2e-00df6e0512c1" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description=""/>
 	<object access-modifier="private" name="pOnDataSave" display-name="pOnDataSave" uuid="fb1f55b2-16cb-4b4b-8df9-324be1fd4825" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="pOnScreenSave" display-name="pOnScreenSave" uuid="0b92dcff-850b-4d68-9256-392678357aab" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
 	<object access-modifier="private" name="pOnTableExport" display-name="pOnTableExport" uuid="acb9f69c-2dda-4f29-8856-4c7917f4189c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
-	<object access-modifier="private" name="pOnSaveSignalsList" display-name="pOnSaveSignalsList" uuid="50c3b020-58f1-41b4-baa3-dda056dc7daf" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
-	<object access-modifier="private" name="pOnLoadSignalsList" display-name="pOnLoadSignalsList" uuid="0b2fe493-899a-4ba5-9318-ac24a2a7c50d" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="pOnSaveSignalList" display-name="pOnSaveSignalList" uuid="50c3b020-58f1-41b4-baa3-dda056dc7daf" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="pOnDoPrintSettings" display-name="pOnDoPrintSettings" uuid="8f99c8b3-000b-43bd-9cfd-c99a73b6a6fc" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="pOnPrint" display-name="pOnPrint" uuid="6581b8a8-e75b-4423-8c9e-00aebe2f692d" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
 	<object access-modifier="private" name="pOnError" display-name="pOnError" uuid="a3479681-c56d-4fb2-a90b-e7af3647997d" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
-	<object access-modifier="private" name="MiniTrend" display-name="MiniTrend" uuid="eebae86b-5e59-48c7-a574-c4f90b4df87e" base-type="MiniTrend" base-type-id="2a508563-364d-4472-b86f-4a1a2242c585" ver="5" description="" cardinal="1">
-		<designed target="X" value="0" ver="5"/>
-		<designed target="Y" value="550" ver="5"/>
-		<designed target="Rotation" value="0" ver="5"/>
-		<designed target="Scale" value="1" ver="5"/>
-		<designed target="Visible" value="true" ver="5"/>
-		<designed target="Enabled" value="true" ver="5"/>
-		<designed target="Tooltip" value="" ver="5"/>
-		<designed target="Width" value="800" ver="5"/>
-		<designed target="Height" value="50" ver="5"/>
-		<designed target="BrushColor" value="0xffffffff" ver="5"/>
-		<designed target="MinTimeline" value="0" ver="5" type-id="7ad62ecf-96dd-4751-9b96-e77954b44409"/>
-		<designed target="MaxTimeline" value="0" ver="5" type-id="7ad62ecf-96dd-4751-9b96-e77954b44409"/>
-		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="281c6c9f-b0b9-4c15-87ee-5e528637a812" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
-			<designed target="MinWidth" value="0" ver="5"/>
-			<designed target="MinHeight" value="0" ver="5"/>
-			<designed target="MaxWidth" value="16777215" ver="5"/>
-			<designed target="MaxHeight" value="50" ver="5"/>
-			<do-trace access-modifier="private" target="MaxHeight" ver="5">
-				<body>
-					<![CDATA[ShowMiniTrends ? 50 : 0]]>
-				</body>
-			</do-trace>
-		</object>
-		<do-trace access-modifier="private" target="Visible" ver="5">
-			<body>
-				<![CDATA[ShowMiniTrends]]>
-			</body>
-		</do-trace>
-		<do-trace access-modifier="private" target="BrushColor" ver="5">
-			<body>
-				<![CDATA[private.pTheme.EditorBrushColor]]>
-			</body>
-		</do-trace>
-		<init target="Axis" ver="5" ref="Chart.Axis_X"/>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MousePress">
-			<body kind="om">
-				<![CDATA[bMousePressed = true;
-//Debug.Log("MiniTrend mouse press");]]>
-			</body>
-		</do-on>
-		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseLeave">
-			<body kind="om">
-				<![CDATA[bMousePressed = false;
-//Debug.Log("MiniTrend mouse leave");]]>
-			</body>
-		</do-on>
-		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseRelease">
-			<body kind="om">
-				<![CDATA[bMousePressed = false;
-//Debug.Log("MiniTrend mouse release");]]>
-			</body>
-		</do-on>
-		<object access-modifier="private" name="bMousePressed" display-name="bMousePressed" uuid="a8d42d2a-4367-456a-9966-3b6dfea1d756" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
-		<object access-modifier="private" name="DragNDrop_2" display-name="DragNDrop_2" uuid="b3c00d09-e919-4333-b895-06583aec71b6" base-type="DragNDrop" base-type-id="c4ddb32f-3653-44c8-be57-3a595e10c2fb" ver="5">
-			<designed target="DragEnabled" value="true" ver="5"/>
-			<designed target="DropEnabled" value="true" ver="5"/>
-			<designed target="Image" value="" ver="5"/>
-			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnDrop">
-				<body kind="om">
-					<![CDATA[
-DropText = data.GetText();
-pOnDrop.Invoke();
-]]>
-				</body>
-			</do-on>
-		</object>
-		<object access-modifier="private" name="nChart" display-name="nChart" uuid="f3b00638-600f-4109-812d-d4140ea52e2b" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
-		<do access-modifier="private" name="LinkToChart" display-name="LinkToChart" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
-			<param access-modifier="private" name="newChart" display-name="" uuid="d6823a19-dc21-4895-b06a-983baf7de731" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
-			<body kind="om">
-				<![CDATA[// Привязка минитрендов к оси чарта
-if (nChart != newChart)
-{
-	SetAxisById(Chart[newChart].Axis_X.GetID());
-	nChart = newChart;
-}
-]]>
-			</body>
-		</do>
-	</object>
 	<object access-modifier="private" name="Line" display-name="Line" uuid="6917d238-728c-4c93-8096-948eeef57d27" base-type="Line" base-type-id="3337f550-4fea-4eff-8ef4-2e7b87f33711" ver="5" description="" cardinal="31">
 		<designed target="Color" value="4278190335" ver="5"/>
 		<designed target="Title" value="" ver="5"/>
@@ -3021,7 +3078,11 @@ if (nChart != newChart)
 			</object>
 			<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="ReadFinished">
 				<body kind="om">
-					<![CDATA[//Debug.Log("DataSource[" + String.ToString(parent.Index) + "] readed " + String.ToString(rowsRead) + ", errorCode=" + String.ToString(errorCode));
+					<![CDATA[if (rowsRead > 0)
+{
+	//Debug.Log("DataSource[" + String.ToString(parent.Index) + "] readed " + String.ToString(rowsRead) + ", errorCode=" + String.ToString(errorCode));
+	Legend.UpdateItemMinMaxSize(parent.Index);
+}
 
 index:uint1 = TypeConvert.ToUint1(parent.Index);
 if (Math.TestBit(Lines.HistoryRequestMask, index))
@@ -3049,9 +3110,7 @@ if (Math.TestBit(Lines.HistoryRequestMask, index))
 			}			
 		}
 	}
-}
-
-]]>
+}]]>
 				</body>
 			</do-on>
 			<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="SaveFinished">
@@ -3062,13 +3121,25 @@ if (errorCode == 1)
 	// прерываем обработку загруженных файлов, чтобы не показывать все остальные ошибки
 	Lines.SaveFilesMask = 0;
 		
-	// результ сохранения - ошибка
-	private.EventParams[0] = "Не удалось сохранить файл с данными в " + private.ExportTrendsPath;
-	pOnError.Invoke();		
+	if (private.ExportFile != "")
+	{
+		error: string = "Код ошибки " + String.ToString(errorCode);
+		private.EventParams[0] = private.ExportFile;
+		private.EventParams[1] = error;
+		pOnDataSave.Invoke();
+		
+		private.ShowError.message = "Ошибка сохранения графиков в файл\n" + private.ExportFile + "\n" + error;
+		private.ShowError.Invoke();
+	}
+	else
+	{
+		// результ сохранения - ошибка
+		private.EventParams[0] = "Не удалось сохранить файл с данными в " + private.ExportTrendsPath;
+		pOnError.Invoke();
+	}
 }
 else if (Lines.SaveFilesMask > 0)
 {
-	private.FileDataSize[parent.Index] = rowsSave;
 	Lines.SaveFilesMask = Math.ClearBit(Lines.SaveFilesMask, TypeConvert.ToUint1(parent.Index));
 	
 	if (Lines.SaveFilesMask == 0)
@@ -3082,8 +3153,9 @@ else if (Lines.SaveFilesMask > 0)
 		{
 			// сохранение выполнялось в папку, просто уведомляем об окончании сохранения
 			private.EventParams[0] = "";
+			private.EventParams[1] = "";
 			pOnDataSave.Invoke();
-		}	
+		}
 	}
 }
 
@@ -3093,7 +3165,8 @@ else if (Lines.SaveFilesMask > 0)
 			</do-on>
 			<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="LoadFinished">
 				<body kind="om">
-					<![CDATA[//Debug.Log("DataSource[" + String.ToString(parent.Index) + "] loaded " + ", errorCode=" + String.ToString(resultOfExecution));
+					<![CDATA[//Debug.Log("DataSource[" + String.ToString(parent.Index) + "] loaded" + ", errorCode=" + String.ToString(resultOfExecution));
+Legend.UpdateItemMinMaxSize(parent.Index);
 
 index:uint1 = TypeConvert.ToUint1(parent.Index);
 if (Math.TestBit(Lines.UploadFilesMask, index))
@@ -3101,7 +3174,6 @@ if (Math.TestBit(Lines.UploadFilesMask, index))
 	if (resultOfExecution != 3)
 	{
 		// Для графиков загруженных из файла
-//		private.FileDataSize[parent.Index] = rowsRead;
 		if (resultOfExecution > 0)
 		{
 			if (private.ErrorMessages != "")
@@ -3110,7 +3182,8 @@ if (Math.TestBit(Lines.UploadFilesMask, index))
 			RemoveItemByIndex(index);
 		}
 		Lines.UploadFilesMask = Math.ClearBit(Lines.UploadFilesMask, index);		
-			// Если все запросы на загрузку файлов выполнены
+		
+		// Если все запросы на загрузку файлов выполнены
 		if (Lines.UploadFilesMask == 0)
 		{
 			Lines.FinalUploadFiles();
@@ -3125,10 +3198,10 @@ if (Math.TestBit(Lines.UploadFilesMask, index))
 			<init target="Path" ver="5" value="**"/>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnAdviseStateChanged">
 				<body kind="om">
-					<![CDATA[index: int8 = parent.Index;
+					<![CDATA[index: uint1 = TypeConvert.ToUint1(parent.Index);
 if (Params.Lines[index].Used)
 {
-//		Debug.Log(Params.Lines[index].Tag + " AdviseState=" + String.ToString(adviseState)+", HistoryNeedMask="+String.ToString(Lines.HistoryNeedMask));
+	//Debug.Log(Params.Lines[index].Tag + " AdviseState=" + String.ToString(adviseState)+", CanonicalType="+String.ToString(CanonicalType));
 	if (adviseState == unit.Const.stADVISED_OK)
 	{
 		Lines.SetCanonicalType(index, CanonicalType);
@@ -3136,8 +3209,8 @@ if (Params.Lines[index].Used)
 		if (ActiveMode == unit.Const.amOPERATIVE && Params.Lines[index].bMainTime)
 			Lines.BeginReadRT(index);
 			
-		if (Math.TestBit(Lines.HistoryNeedMask, TypeConvert.ToUint1(index)))	
-			private.HistoryRequest(TypeConvert.ToUint1(index));
+		if (Math.TestBit(Lines.HistoryNeedMask, index))	
+			private.HistoryRequest(index);
 	}
 	
 	if (adviseState == unit.Const.stADVISED_OK || adviseState == unit.Const.stNOADVISED)
@@ -3148,30 +3221,39 @@ if (Params.Lines[index].Used)
 			<init target="Source" ver="5" ref="initApSource"/>
 			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnDescriptionChanged">
 				<body kind="om">
-					<![CDATA[index:int4 = TypeConvert.ToInt4(parent.Index);
-if (description != "" && Params.Lines[index].Description == "")	// Если пользователь не задал описание
+					<![CDATA[line: int8 = parent.Index;
+if (description != "" && Params.Lines[line].Description == "")	// Если пользователь не задал описание
 {
-	//Debug.Log("Item[" + String.ToString(index) + "].Description=" + description);
-	Params.Lines[index].Description = description;
-	Line[index].Title = description;
+	//Debug.Log("Item[" + String.ToString(line) + "].Description=" + description);
+	Params.Lines[line].Description = description;
+	Line[line].Title = description;
 	
-	pLegend.Update();
+	Legend.UpdateItem(line);
 }]]>
 				</body>
 			</do-on>
 			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="OnUnitsChanged">
 				<body kind="om">
-					<![CDATA[index:int4 = TypeConvert.ToInt4(parent.Index);
-if (units!="" && Params.Lines[index].Unit=="")	// Если пользователь не задал ед.измерения
+					<![CDATA[line: int8 = parent.Index;
+if (units != "" && Params.Lines[line].Unit == "")	// Если пользователь не задал ед.измерения
 {
-	//Debug.Log("Item[" + String.ToString(index) + "].EUnit=" + units);
+	//Debug.Log("Item[" + String.ToString(line) + "].EUnit=" + units);
 	
-	Params.Lines[index].Unit = units;  // Берем ед.изм. из сигнала
-	Line[index].Unit = units;
+	Params.Lines[line].Unit = units;  // Берем ед.изм. из сигнала
+	Line[line].Unit = units;
 	
-	pLegend.Update();
+	Legend.UpdateItem(line);
 	UpdateYRanges(AutoRange);
 	ConvertUnitsMenu.Update();
+}]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="OnVqtChanged">
+				<body kind="om">
+					<![CDATA[if (!Variant.IsEmpty(value))
+{
+	//Debug.Log("ApItem[" + String.ToString(parent.Index) + "] changed to " + ValueAsString);
+	Legend.UpdateItemVQT(parent.Index);
 }]]>
 				</body>
 			</do-on>
@@ -3199,9 +3281,11 @@ if (units!="" && Params.Lines[index].Unit=="")	// Если пользовате�
 	<param access-modifier="private" name="init_ScreenKeyboard" display-name="Вызов экранной клавиатуры" uuid="049cef34-4ba8-48e8-a2c0-dc3f89fb167d" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" ver="5" description="" cardinal="1" base-ref="true">
 		<init target="Enabled" ver="5" value="false"/>
 	</param>
+	<param access-modifier="private" name="init_Permissions" display-name="Разрешения" uuid="2c37c1a7-d9b7-4b8c-9954-01eaba052642" base-type="Trends_Permissions" base-type-id="083b63d1-3678-4da0-80a0-9c09d0076a3c" base-const="true" base-ref="true" ver="5" description=""/>
+	<param access-modifier="private" name="init_Settings" display-name="Настройки" uuid="a9a2ebfe-5cf5-4acd-b9f3-387c814e5726" base-type="Trends_Settings" base-type-id="91daec58-54a8-4900-9b93-be8602b98694" base-const="true" base-ref="true" ver="5" description=""/>
+	<param access-modifier="private" name="init_Templates" display-name="Шаблоны" uuid="caf58bed-8a30-4572-9de8-429adfadc982" base-type="Templates" base-type-id="020ae0f1-0abb-4c52-9c0e-0152917830ed" base-const="true" base-ref="true" ver="5" description=""/>
 	<param access-modifier="private" name="initApSource" display-name="initApSource" uuid="455d68a1-aeeb-4e53-af18-21959daabe92" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" base-const="true" base-ref="true" ver="5" description=""/>
 	<object access-modifier="private" name="SelectedChart" display-name="SelectedChart" uuid="e8e249c1-25d6-4aa2-9448-7f15ffc0ff71" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
-	<object access-modifier="private" name="DropText" display-name="DropText" uuid="abc81f93-68a3-4cf2-8e65-2295269b4940" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
 	<init target="RedLineShift" ver="5" value="1"/>
 	<param access-modifier="private" name="DataUpdatePeriod" display-name="Период обновления данных, мс" uuid="f43abf5c-ca96-4af1-a20f-31924354555f" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
 	<init target="DataUpdatePeriod" ver="5" value="1000"/>
@@ -3331,11 +3415,10 @@ private.UpdateOperativeTimeInterval(now, true);]]>
 	<object access-modifier="private" name="ZoomYEnable" display-name="ZoomYEnable" uuid="8291e26b-d194-454d-9f83-bd8cc1a7e62b" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
 			<body kind="om">
-				<![CDATA[if (!ZoomXEnable && !ZoomYEnable)
-{
-	if (CursorMode == unit.Const.cmZOOM) CursorMode = unit.Const.cmHAND_MOVE;
-}
-]]>
+				<![CDATA[here.private.NotifyViewChanged.Invoke();
+
+if (!ZoomXEnable && !ZoomYEnable && CursorMode == unit.Const.cmZOOM)
+	CursorMode = unit.Const.cmHAND_MOVE;]]>
 			</body>
 		</do-on>
 	</object>
@@ -3343,11 +3426,10 @@ private.UpdateOperativeTimeInterval(now, true);]]>
 	<object access-modifier="private" name="ZoomXEnable" display-name="ZoomXEnable" uuid="9d906521-4346-4e0a-a1d5-7cd20c874fa3" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
 			<body kind="om">
-				<![CDATA[if (!ZoomXEnable && !ZoomYEnable)
-{
-	if (CursorMode == unit.Const.cmZOOM) CursorMode = unit.Const.cmHAND_MOVE;
-}
-]]>
+				<![CDATA[here.private.NotifyViewChanged.Invoke();
+
+if (!ZoomXEnable && !ZoomYEnable && CursorMode == unit.Const.cmZOOM)
+	CursorMode = unit.Const.cmHAND_MOVE;]]>
 			</body>
 		</do-on>
 	</object>
@@ -3374,13 +3456,13 @@ return SetGraphicColorU4(tag, color);
 		<body kind="om">
 			<![CDATA[private.Initializer();  // инициализатор выполняется только один раз 
 
-index:int4 = Params.GetIndexByPath(tag);
-result:bool = false;
+index: int4 = Params.GetIndexByPath(tag);
+result: bool = false;
 if (index > 0)
 {
 	Lines.SetColor(index, color);
 	Params.Lines[index].ColorMain = color;	
-	pLegend.Update();
+	Legend.UpdateItem(index);
 	result = true;
 }
 return result;]]>
@@ -3404,16 +3486,16 @@ return SetAxisColorU4(tag, color);
 		<body kind="om">
 			<![CDATA[private.Initializer();  // инициализатор выполняется только один раз 
 
-result:bool = false;
-index:int4 = Params.GetIndexByPath(axisName);
+result: bool = false;
+index: int4 = Params.GetIndexByPath(axisName);
 if (index >= 0)		// Если ось с указанным тегом найдена
 {
-	nAxis:int4 = Params.Lines[index].numAxis;
+	nAxis: int4 = Params.Lines[index].numAxis;
 	Params.Axis[index].ColorY = color;
 	Axis.SetColor(nAxis, color);
 	result = true;
 }
-pLegend.Update();
+Legend.UpdateItem(index);
 return result;
 
 ]]>
@@ -3421,49 +3503,22 @@ return result;
 		<param access-modifier="private" name="axisName" display-name="" uuid="79de29cb-e978-4dbb-96bc-0eb4e9e9a800" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 		<param access-modifier="private" name="color" display-name="" uuid="07df73a5-1472-48ab-8e6f-10fbad69105b" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
 	</do>
-	<do access-modifier="private" name="AddControlLineAtTime" display-name="AddControlLineAtTime" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
-		<body kind="om">
-			<![CDATA[private.Initializer();
-//Debug.Log("AddControlLineAtTime " + DateTime.ToString(time));
-
-iReper: int4 = Repers.GetNext();
-Repers.iLastAdd = iReper;
-Repers.iActive = iReper;
-
-n:int4 = 0;
-while (n < Chart.Length)
-{
-	Chart[n].ControlLine[iReper].Visible = true;
-	Chart[n].ControlLine[iReper].Value = time;
-	Chart[n].ControlLine[iReper].setActive(true);
-	n += 1;
-}
-
-pLegend.UpdateValues();]]>
-		</body>
-		<param access-modifier="private" name="time" display-name="" uuid="27581523-ca52-41c5-b2d2-1d35b5133972" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5"/>
-	</do>
 	<do access-modifier="private" name="SetGraphicThickness" display-name="SetGraphicThickness" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
 		<param access-modifier="private" name="tag" display-name="" uuid="44e93b27-4918-4c4c-8a4f-0add65d097dc" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 		<param access-modifier="private" name="value" display-name="" uuid="172845c7-848d-4a6a-9267-8bba532c1815" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
 		<body kind="om">
 			<![CDATA[private.Initializer();  // инициализатор выполняется только один раз 
 
-index:int4 = Params.GetIndexByPath(tag);
-
+index: int4 = Params.GetIndexByPath(tag);
 if (index > 0)
 {
 	Params.Lines[index].WidthGood = value;
 	Lines.Update();
-	pLegend.Update();
+	Legend.UpdateItem(index);
 	return true;
 }
 else
-{
-	return false;
-}
-
-]]>
+	return false;]]>
 		</body>
 	</do>
 	<do access-modifier="private" name="SetGraphicAxis" display-name="SetGraphicAxis" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
@@ -3493,9 +3548,7 @@ if (axisTag!="" && tag!="")
 
 	Params.Lines[n0].numAxis = nAxis;     // запоминем индекс новой шкалы для данного графика
 }
-Axis.LinkUpdate(Params.bGlobalRanges);
-pLegend.Update();
-]]>
+Axis.LinkUpdate(Params.bGlobalRanges);]]>
 		</body>
 	</do>
 	<do access-modifier="private" name="SetOperativInterval" display-name="SetOperativInterval" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
@@ -3551,7 +3604,8 @@ private.SetMarkerLabelVisible(Params.GetIndexByPath(tag), value);]]>
 		<body kind="om">
 			<![CDATA[if (Files.Exists(filePath))
 {
-	if (Params.ExParams.LoadFromFile(filePath))  // Загружаем параметры сипска сигналов в набор переменных private.ExParams
+	error: string = Params.ExParams.LoadFromFile(filePath);
+	if (error == "")  // Загружаем параметры списка сигналов в набор переменных private.ExParams
 	{
 		// перед загрузкой удаляем все графики
 		Clear();
@@ -3613,7 +3667,7 @@ private.SetMarkerLabelVisible(Params.GetIndexByPath(tag), value);]]>
 				}	
 				n += 1;
 			}
-			pLegend.Update();
+			Legend.Update();
 		}
 		
 		// Обновляем привязку осей
@@ -3622,14 +3676,11 @@ private.SetMarkerLabelVisible(Params.GetIndexByPath(tag), value);]]>
 		// восстанавливаем режим масштабирования, не изменяя диапазонов осей, так они были загружены из файла
 		Params.bAutoRange = Params.ExParams.bAutoRange;
 		AutoRange = Params.ExParams.bAutoRange;
-
-		private.EventParams[0] = filePath;
-		pOnLoadSignalsList.Invoke();
 		return true;
 	}
 	else
 	{
-		private.EventParams[0] = "Не удалось загрузить " + filePath + ".";
+		private.EventParams[0] = "Не удалось загрузить " + filePath + ".\n" + error;
 		pOnError.Invoke();
 		return false;
 	}
@@ -3645,37 +3696,31 @@ else
 	</do>
 	<do access-modifier="private" name="SaveSignalsList" display-name="SaveSignalsList" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
 		<body kind="om">
-			<![CDATA[private.Initializer();  // инициализатор выполняется только один раз 
+			<![CDATA[private.Initializer();  // инициализатор выполняется только один раз
 
 folder: string = Files.ParentPath(filePath);
 Files.CreateRecursiveFolder(folder);
 
-i:int4 = 1;
-n:int4 = 0;
-while (i < Line.Length)
+error: string = private.ExportParams(filePath);
+if (error == "")
 {
-	if (Params.Lines[i].Used)
-		n += i;
-	i += 1;
-}
-private.ExportParams(n, filePath);
-
-if (Files.Exists(filePath))
-{
-	private.EventParams[0] = filePath;
-	pOnSaveSignalsList.Invoke();
-	return true;
+	private.ShowComplete.message = "Список сигналов сохранен в файл\n" + filePath;
+	private.ShowComplete.Invoke();
 }
 else
-	return false;]]>
+{
+	here.private.ShowError.message = error;
+	here.private.ShowError.Invoke();
+}
+
+private.EventParams[0] = filePath;
+private.EventParams[1] = error;
+pOnSaveSignalList.Invoke();
+return error == "";]]>
 		</body>
 		<param access-modifier="private" name="filePath" display-name="" uuid="3ac8d6fe-3bcc-4a17-9119-721fd706d106" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 	</do>
 	<init target="OperativeStoredInterval" ver="5" value="10"/>
-	<object access-modifier="private" name="EnableTitlePrint" display-name="Вывод названия графика при печати" uuid="27503c83-c0e2-4d23-bc28-43d277e48582" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
-	<object access-modifier="private" name="TitlePrint" display-name="Название графика при печати" uuid="6d9f1634-d986-431b-8b94-49144e7865b5" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
-	<init target="EnableTitlePrint" ver="5" value="false"/>
-	<init target="TitlePrint" ver="5" value=""/>
 	<designed target="Flip" value="0" ver="5"/>
 	<do access-modifier="private" name="FitToScreen" display-name="FitToScreen" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 		<body kind="om">
@@ -3694,6 +3739,7 @@ UpdateYRanges(Params.bAutoRange);]]>
 		<param access-modifier="private" name="sJsonConfiguration" display-name="" uuid="c647b89e-6bbb-4261-ab5f-64d70caee768" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 		<body kind="javascript">
 			<![CDATA[private.Initializer();  // инициализатор выполняется только один раз 
+//log("ConfigureGraphic:"+sJsonConfiguration);
 
 var result = false;
 var index = Params.GetIndexByPath(tag);
@@ -3713,24 +3759,32 @@ if (index >= 0)
 		Line[index].Unit = Config.unit;
 	}
 	if (Config.thicknessGood != null)
+		Config.thickness = Config.thicknessGood;
+	if (Config.thickness != null)
 	{
-		Params.Lines[index].WidthGood = Config.thicknessGood;
+		Params.Lines[index].WidthGood = Config.thickness;
 	}
 	if (Config.thicknessBad != null)
 	{
-		Params.Lines[index].WidthBad = Config.thicknessBad;
+		let istyle = Params.Lines[index].Decor.GetIndexByTitle("Плохое качество");
+		Params.Lines[index].Decor.Style[istyle].LineWidth = Config.thicknessBad;
 	}
 	if (Config.brushStyleGood != null)
+		Config.brushStyle = Config.brushStyleGood;
+	if (Config.brushStyle != null)
 	{
-		if (Config.brushStyleGood>=0 && Config.brushStyleGood<=5)
-			Params.Lines[index].StyleGood = Config.brushStyleGood;
+		if (Config.brushStyle>=0 && Config.brushStyle<=5)
+			Params.Lines[index].StyleGood = Config.brushStyle;
 		else
-			log("Trends.ConfigureGraphic: Недопустимое значение в параметре brushStyleGood.");
+			log("Trends.ConfigureGraphic: Недопустимое значение в параметре brushStyle.");
 	}
 	if (Config.brushStyleBad != null)
 	{
 		if (Config.brushStyleBad>=0 && Config.brushStyleBad<=5)
-			Params.Lines[index].StyleBad = Config.brushStyleBad;
+		{
+			let istyle = Params.Lines[index].Decor.GetIndexByTitle("Плохое качество");
+			Params.Lines[index].Decor.Style[istyle].LineStyle = Config.brushStyleBad;
+		}
 		else
 			log("Trends.ConfigureGraphic: Недопустимое значение в параметре brushStyleBad.");
 	}
@@ -3740,13 +3794,15 @@ if (index >= 0)
 	}
 	if (Config.colorManual != null)
 	{
-		Params.Lines[index].ColorManual = Config.colorManual;
+		let istyle = Params.Lines[index].Decor.GetIndexByTitle("Ручной ввод");
+		Params.Lines[index].Decor.Style[istyle].LineColor = Config.colorManual;
 			// Флаг использования цвета ручного ввода устанавливается автоматически, если цвет не совпадает с основным цветом
-		Params.Lines[index].bUseColorManual = (Config.colorManual != Params.Lines[index].ColorMain);
+		Params.Lines[index].Decor.Style[istyle].Active = (Config.colorManual != Params.Lines[index].ColorMain);
 	}
 	if (Config.useColorManual != null)
 	{
-		Params.Lines[index].bUseColorManual = Config.useColorManual;
+		let istyle = Params.Lines[index].Decor.GetIndexByTitle("Ручной ввод");
+		Params.Lines[index].Decor.Style[istyle].Active = Config.useColorManual;
 	}
 	if (Config.synchroColorMarker != null)
 	{
@@ -3777,7 +3833,7 @@ if (index >= 0)
 			Params.Lines[index].PointSymbolCode = unit.Const.mrk.MARKER_CODE[Config.pointSymbol];
 		}
 		else
-			log("Trends.ConfigureGraphic: Недопустимое значение в параметре Config.pointSymbol.");
+			log("Trends.ConfigureGraphic: Недопустимое значение в параметре pointSymbol.");
 	}
 	if (Config.typeStringYValue != null)
 	{
@@ -3793,13 +3849,23 @@ if (index >= 0)
 	}
 	if (Config.LineDecorators != null)
 	{
-		let error = Params.Lines[index].Decor.SetStyle(JSON.stringify(Config.LineDecorators));
+		let error = Params.Lines[index].Decor.FromJSON(JSON.stringify(Config.LineDecorators));
 		if (error != "")	
 			log("Trends.ConfigureGraphic.LineDecorators: " + error);
 	}
-	
+	if (Config.visible != null)
+	{
+		Lines.SetVisible(index, Config.visible);
+	}
+	if (Config.convertUnit)
+	{
+		let indexes = [];
+		indexes.push(index);
+		ConvertUnits(Config.convertUnit, JSON.stringify(indexes));
+	}
+		
 	Lines.Update();
-	pLegend.Update();
+	Legend.UpdateItem(index);
 	result = true;
 }
 return result;
@@ -3873,17 +3939,6 @@ Lines.Update();]]>
 				<init target="OnComplete" ver="5" ref="OpenFile"/>
 				<init target="Result" ver="5" ref="DialogResult"/>
 				<init target="DefaultFileType" ver="5" ref="FileType"/>
-				<init target="RootPath" ver="5">
-					<expr>
-						<![CDATA[ExportPath.Root]]>
-					</expr>
-				</init>
-				<init target="DefaultPath" ver="5">
-					<expr>
-						<![CDATA[ExportPath]]>
-					</expr>
-				</init>
-				<init target="EditSettingsAllowed" ver="5" value="true"/>
 				<init target="OnEditSettings" ver="5" ref="ShowFileSettingsDialog"/>
 				<do-trace access-modifier="private" target="EditSettingsAllowed" ver="5">
 					<body>
@@ -3892,6 +3947,26 @@ Lines.Update();]]>
 				</do-trace>
 				<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
 				<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
+				<init target="ChangeFolderAllowed" ver="5">
+					<expr>
+						<![CDATA[here.private.pPermissions.FileSystemAccess]]>
+					</expr>
+				</init>
+				<init target="CreateFolderAllowed" ver="5">
+					<expr>
+						<![CDATA[here.private.pPermissions.FileSystemAccess]]>
+					</expr>
+				</init>
+				<init target="DefaultPath" ver="5">
+					<expr>
+						<![CDATA[here.private.GetExportPath()]]>
+					</expr>
+				</init>
+				<init target="RootPath" ver="5">
+					<expr>
+						<![CDATA[here.private.GetExportPathRoot()]]>
+					</expr>
+				</init>
 			</object>
 		</do-on>
 		<object access-modifier="private" name="OpenFile" display-name="OpenFile" uuid="530057b7-070b-4839-b18e-cea08442f805" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
@@ -3910,8 +3985,19 @@ else if (DialogResult.FileType==unit.Const.ftAVZ || DialogResult.FileType==unit.
 	LoadFromFile(DialogResult.FilePath);
 }
 
-// запоминаем выбор как значение по умолчанию
-FileType = DialogResult.FileType;]]>
+// запоминаем выбор типа файла
+if (FileType != DialogResult.FileType)
+{
+	FileType = DialogResult.FileType;
+	pOnViewChanged.Invoke();
+}
+
+// запоминаем папку экспорта
+if (private.pSettings.ExportFolder != DialogResult.FolderPath)
+{
+	private.pSettings.ExportFolder = DialogResult.FolderPath;
+	pOnSettingsChanged.Invoke();
+}]]>
 				</body>
 			</do-on>
 		</object>
@@ -3919,10 +4005,21 @@ FileType = DialogResult.FileType;]]>
 		<object access-modifier="private" name="DialogResult" display-name="DialogResult" uuid="2d330a37-92d5-41f4-8ba4-63aca75d4065" base-type="FileDialogResult" base-type-id="602926f1-7d01-4d50-a5c0-d8fd35eadc74" ver="5"/>
 		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Invoked">
 			<body kind="om">
-				<![CDATA[if (!Files.Exists(ExportPath))
-	Files.CreateRecursiveFolder(ExportPath);]]>
+				<![CDATA[Files.CreateRecursiveFolder(private.GetExportPath());]]>
 			</body>
 		</do-on>
+		<object access-modifier="private" name="ShowFileSettingsDialog" display-name="ShowFileSettingsDialog" uuid="5f500b76-f632-4181-b971-fa742b2d9476" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-dialog">
+				<object access-modifier="private" uuid="f630a07e-5463-476c-bf6c-7b9e8b9512c1" base-type="Trends_OpenFileSettings" base-type-id="e5694de9-ff21-400b-aede-1c9fde7450ea" ver="5">
+					<init target="pSettings" ver="5" ref="here.private.pSettings"/>
+					<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
+					<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
+					<init target="pOnComplete" ver="5" ref="here.pOnSettingsChanged"/>
+				</object>
+			</do-on>
+		</object>
 	</object>
 	<object access-modifier="private" name="ShowSaveDialog" display-name="ShowSaveDialog" uuid="fe08c1d3-d503-46d9-8211-ad295031cb9f" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
 		<designed target="Enabled" value="true" ver="5"/>
@@ -3934,16 +4031,6 @@ FileType = DialogResult.FileType;]]>
 				<init target="FileTypeFilter" ver="5" value="Список сигналов (*.jtsl)|*.jtsl|Архив с данными (*.avz)|*.avz"/>
 				<init target="Result" ver="5" ref="DialogResult"/>
 				<init target="DefaultFileType" ver="5" ref="FileType"/>
-				<init target="RootPath" ver="5">
-					<expr>
-						<![CDATA[ExportPath.Root]]>
-					</expr>
-				</init>
-				<init target="DefaultPath" ver="5">
-					<expr>
-						<![CDATA[ExportPath]]>
-					</expr>
-				</init>
 				<init target="DefaultFileName" ver="5">
 					<expr>
 						<![CDATA[ActiveMode == 0 && FileType == 1 ? "trends" + DateTime.ToString(DateTime.Now(), "%d_%m_%Y_%H_%M_%S") + ".avz" : ""]]>
@@ -3951,6 +4038,26 @@ FileType = DialogResult.FileType;]]>
 				</init>
 				<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
 				<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
+				<init target="ChangeFolderAllowed" ver="5">
+					<expr>
+						<![CDATA[here.private.pPermissions.FileSystemAccess]]>
+					</expr>
+				</init>
+				<init target="CreateFolderAllowed" ver="5">
+					<expr>
+						<![CDATA[here.private.pPermissions.FileSystemAccess]]>
+					</expr>
+				</init>
+				<init target="RootPath" ver="5">
+					<expr>
+						<![CDATA[here.private.GetExportPathRoot()]]>
+					</expr>
+				</init>
+				<init target="DefaultPath" ver="5">
+					<expr>
+						<![CDATA[here.private.GetExportPath()]]>
+					</expr>
+				</init>
 			</object>
 		</do-on>
 		<object access-modifier="private" name="SaveFile" display-name="SaveFile" uuid="071db690-4dec-4e50-8a1d-390387e7f1e8" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
@@ -3969,8 +4076,19 @@ else if (DialogResult.FileType == 1)
 	SaveToFile(DialogResult.FilePath);
 }
 
-// запоминаем выбор как значение по умолчанию
-FileType = DialogResult.FileType;]]>
+// запоминаем выбор типа файла
+if (FileType != DialogResult.FileType)
+{
+	FileType = DialogResult.FileType;
+	pOnViewChanged.Invoke();
+}
+
+// запоминаем папку экспорта
+if (private.pSettings.ExportFolder != DialogResult.FolderPath)
+{
+	private.pSettings.ExportFolder = DialogResult.FolderPath;
+	pOnSettingsChanged.Invoke();
+}]]>
 				</body>
 			</do-on>
 		</object>
@@ -3978,8 +4096,7 @@ FileType = DialogResult.FileType;]]>
 		<object access-modifier="private" name="DialogResult" display-name="DialogResult" uuid="73f25b32-18c6-42f4-acc5-58bbfef28ee0" base-type="FileDialogResult" base-type-id="602926f1-7d01-4d50-a5c0-d8fd35eadc74" ver="5"/>
 		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Invoked">
 			<body kind="om">
-				<![CDATA[if (!Files.Exists(ExportPath))
-	Files.CreateRecursiveFolder(ExportPath);]]>
+				<![CDATA[Files.CreateRecursiveFolder(private.GetExportPath());]]>
 			</body>
 		</do-on>
 		<do-trace access-modifier="private" target="Enabled" ver="5">
@@ -3995,16 +4112,6 @@ FileType = DialogResult.FileType;]]>
 			<object access-modifier="private" uuid="53e39b5f-fee8-4bbe-b5e8-f13c19fa173b" base-type="SaveFileDialog" base-type-id="d69a91c3-89e9-4e7b-994e-9242dbc5e095" ver="5">
 				<init target="OnComplete" ver="5" ref="StartExport"/>
 				<init target="Result" ver="5" ref="DialogResult"/>
-				<init target="RootPath" ver="5">
-					<expr>
-						<![CDATA[ExportPath.Root]]>
-					</expr>
-				</init>
-				<init target="DefaultPath" ver="5">
-					<expr>
-						<![CDATA[ExportPath]]>
-					</expr>
-				</init>
 				<init target="FileTypeFilter" ver="5">
 					<expr>
 						<![CDATA[here.private.GetExportFileFilter()]]>
@@ -4013,13 +4120,33 @@ FileType = DialogResult.FileType;]]>
 				<init target="DefaultFileType" ver="5" ref="FileType"/>
 				<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
 				<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
+				<init target="ChangeFolderAllowed" ver="5">
+					<expr>
+						<![CDATA[here.private.pPermissions.FileSystemAccess]]>
+					</expr>
+				</init>
+				<init target="CreateFolderAllowed" ver="5">
+					<expr>
+						<![CDATA[here.private.pPermissions.FileSystemAccess]]>
+					</expr>
+				</init>
+				<init target="RootPath" ver="5">
+					<expr>
+						<![CDATA[here.private.GetExportPathRoot()]]>
+					</expr>
+				</init>
+				<init target="DefaultPath" ver="5">
+					<expr>
+						<![CDATA[here.private.GetExportPath()]]>
+					</expr>
+				</init>
 			</object>
 		</do-on>
 		<object access-modifier="private" name="FileType" display-name="FileType" uuid="13d1a585-0903-4786-bab5-2d724e055c7b" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
 		<object access-modifier="private" name="DialogResult" display-name="DialogResult" uuid="1ac72d1a-a432-41cf-9535-fcd1a650ce53" base-type="FileDialogResult" base-type-id="602926f1-7d01-4d50-a5c0-d8fd35eadc74" ver="5"/>
 		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Invoked">
 			<body kind="om">
-				<![CDATA[Files.CreateRecursiveFolder(ExportPath);]]>
+				<![CDATA[Files.CreateRecursiveFolder(private.GetExportPath());]]>
 			</body>
 		</do-on>
 		<do-trace access-modifier="private" target="Enabled" ver="5">
@@ -4034,44 +4161,64 @@ FileType = DialogResult.FileType;]]>
 				<body kind="om">
 					<![CDATA[Exporter.StartExport(DialogResult.FilePath);
 
-// запоминаем выбор как значение по умолчанию
-FileType = DialogResult.FileType;]]>
+// запоминаем выбор типа файла
+if (FileType != DialogResult.FileType)
+{
+	FileType = DialogResult.FileType;
+	pOnViewChanged.Invoke();
+}]]>
 				</body>
 			</do-on>
 		</object>
 		<object access-modifier="private" name="Exporter" display-name="Exporter" uuid="229ba288-9734-4c39-a63f-788b2fc51e79" base-type="Trends_Exporter" base-type-id="0ef355d8-dbf1-4bae-bc8a-c8cbf5f0598e" ver="5" description="" cardinal="1">
 			<init target="init_Chart" ver="5" ref="Chart"/>
 			<init target="pChart" ver="5" ref="here"/>
-			<object access-modifier="private" name="ExportFinished" display-name="ExportFinished" uuid="8ea53973-b8b6-4a98-a50f-3e24be3ef34b" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<object access-modifier="private" name="Finished" display-name="Finished" uuid="8ea53973-b8b6-4a98-a50f-3e24be3ef34b" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="InvokeTrigger" value="false" ver="5"/>
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
 					<body kind="om">
 						<![CDATA[filePath: string = Exporter.GetEventParam(0);
+error: string = Exporter.GetEventParam(1);
 
 here.private.EventParams[0] = filePath;
+here.private.EventParams[1] = error;
 here.pOnTableExport.Invoke();
 
-// уведомляем о том, что сохранение выполнено
-here.private.ShowComplete.message = "Табличные данные сохранены в файл\n" + filePath;
-here.private.ShowComplete.Invoke();]]>
+// уведомляем о том, как сохранение выполнено
+if (error == "")
+{
+	here.private.ShowComplete.message = "Табличные данные сохранены в файл\n" + filePath;
+	here.private.ShowComplete.Invoke();
+}
+else
+{
+	here.private.ShowError.message = "Ошибка сохранения табличных данных в файл\n" + filePath + "\n" + error;
+	here.private.ShowError.Invoke();
+}]]>
 					</body>
 				</do-on>
 			</object>
-			<init target="pExportFinished" ver="5" ref="ExportFinished"/>
-			<object access-modifier="private" name="OnError" display-name="OnError" uuid="b014e2e5-e896-4cc3-a841-9632c13c1e3e" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
-				<designed target="Enabled" value="true" ver="5"/>
-				<designed target="InvokeTrigger" value="false" ver="5"/>
-				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
-					<body kind="om">
-						<![CDATA[here.private.EventParams[0] = Exporter.GetEventParam(0);
-here.pOnError.Invoke();]]>
-					</body>
-				</do-on>
-			</object>
-			<init target="pOnError" ver="5" ref="OnError"/>
+			<init target="pExportFinished" ver="5" ref="Finished"/>
 			<init target="pTheme" ver="5" ref="here.init_Theme"/>
 		</object>
+	</object>
+	<object access-modifier="private" name="ShowPrintDialog" display-name="ShowPrintDialog" uuid="5be65705-d062-4654-8a39-4f3fa8de61ff" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-dialog">
+			<object access-modifier="private" uuid="ee567c1f-a7ac-4673-a340-7e0afb373fb1" base-type="Trends_Print" base-type-id="9ea85c57-5943-4aa2-a7c6-3e8b12cba954" ver="5">
+				<init target="pOnPrint" ver="5" ref="here.pOnPrint"/>
+				<init target="pOnPrintPreview" ver="5" ref="here.pOnDoPrintSettings"/>
+				<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
+				<init target="pChart" ver="5" ref="here"/>
+				<init target="pOnClosed" ver="5" ref="here.pOnSettingsChanged"/>
+				<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
+				<init target="pPermissions" ver="5" ref="here.private.pPermissions"/>
+				<init target="pSettings" ver="5" ref="here.private.pSettings"/>
+				<init target="pTemplates" ver="5" ref="here.private.pTemplates"/>
+			</object>
+		</do-on>
 	</object>
 	<object access-modifier="private" name="OpenDataTable" display-name="OpenDataTable" uuid="023f2aae-21af-4c1d-b534-ca009ab0ad22" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
 		<designed target="Enabled" value="true" ver="5"/>
@@ -4081,6 +4228,9 @@ here.pOnError.Invoke();]]>
 				<init target="init_Chart" ver="5" ref="here"/>
 				<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
 				<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
+				<init target="pSettings" ver="5" ref="here.private.pSettings"/>
+				<init target="pPermissions" ver="5" ref="here.private.pPermissions"/>
+				<init target="pTemplates" ver="5" ref="here.private.pTemplates"/>
 			</object>
 		</do-on>
 		<do-trace access-modifier="private" target="Enabled" ver="5">
@@ -4089,16 +4239,6 @@ here.pOnError.Invoke();]]>
 			</body>
 		</do-trace>
 		<object access-modifier="private" name="Settings" display-name="Settings" uuid="72bb962f-5f83-4223-a06b-a297c6b63827" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
-	</object>
-	<object access-modifier="private" name="ShowFileSettingsDialog" display-name="ShowFileSettingsDialog" uuid="5f500b76-f632-4181-b971-fa742b2d9476" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
-		<designed target="Enabled" value="true" ver="5"/>
-		<designed target="InvokeTrigger" value="false" ver="5"/>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-dialog">
-			<object access-modifier="private" uuid="f630a07e-5463-476c-bf6c-7b9e8b9512c1" base-type="Trends_OpenFileSettings" base-type-id="e5694de9-ff21-400b-aede-1c9fde7450ea" ver="5">
-				<init target="pChart" ver="5" ref="here"/>
-				<init target="pTheme" ver="5" ref="here.private.pTheme"/>
-			</object>
-		</do-on>
 	</object>
 	<do access-modifier="private" name="ConvertUnits" display-name="ConvertUnits" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 		<body kind="javascript">
@@ -4122,7 +4262,7 @@ else
 
 if (altUnit != "")
 {
-	let unitConvert = JSON.parse(private.UnitConvert);
+	let unitConvert = JSON.parse(private.pSettings.UnitConversion);
 	for (let i in unitConvert)
 	{
 		// ищем преобразование к целевым единицам
@@ -4154,7 +4294,7 @@ for (let j of selItems)
 }
 
 Lines.Update();
-pLegend.Update();
+Legend.Update();
 ConvertUnitsMenu.Update();]]>
 		</body>
 		<param access-modifier="private" name="altUnit" display-name="" uuid="bb24b294-3902-436f-831a-efaf49e2204d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
@@ -4179,7 +4319,7 @@ if (itemIndexes == "")
 else
 	selItems = JSON.parse(itemIndexes);
 
-let unitConvert = JSON.parse(private.UnitConvert);
+let unitConvert = JSON.parse(private.pSettings.UnitConversion);
 
 let dstUnits = new Map();
 let bNeedSetDefault = false;
@@ -4233,5 +4373,270 @@ Value = Get("");]]>
 		</do>
 	</object>
 	<init target="ConvertUnitsMenu" ver="5" value="[]"/>
+	<object access-modifier="private" name="Legend" display-name="Legend" uuid="8f431254-6314-463a-a070-f6128f928cba" base-type="Trends_Legend" base-type-id="12a9628e-5f57-42ef-afe7-6a7cf5b34b8d" ver="5">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="54" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="800" ver="5"/>
+		<designed target="Height" value="150" ver="5"/>
+		<object access-modifier="private" name="SwitchVisible" display-name="SwitchVisible" uuid="22829e54-5736-4ebf-ad2b-edf195f90bab" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[here.ShowLegend = !here.ShowLegend;]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="RowsChanged" display-name="RowsChanged" uuid="c39406c6-dfec-4d4d-9750-68790e0f9e96" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[UpdateHeight();]]>
+				</body>
+			</do-on>
+		</object>
+		<init target="pOnRowsChanged" ver="5" ref="RowsChanged"/>
+		<do-trace access-modifier="private" target="ShowMilliseconds" ver="5">
+			<body>
+				<![CDATA[here.ShowMilliseconds]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="Autosize" display-name="Autosize" uuid="96dfe16b-244c-402e-b184-217e4feadd1d" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+		<init target="Autosize" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="ShowRelativeTag" ver="5">
+			<body>
+				<![CDATA[here.ShowRelativeTag]]>
+			</body>
+		</do-trace>
+		<init target="init_Theme" ver="5" ref="here.init_Theme"/>
+		<init target="init_ScreenKeyboard" ver="5" ref="here.init_ScreenKeyboard"/>
+		<init target="pChart" ver="5" ref="here"/>
+		<object access-modifier="private" name="DoOnMouseRightRelease" display-name="DoOnMouseRightRelease" uuid="4e1fa62e-f0b8-4cd7-aee8-2f248ab42734" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[here.private.EventParams[0] = parent.GetEventParam(0);
+here.private.EventParams[1] = parent.GetEventParam(1);
+here.pOnLegendMouseRightRelease.Invoke();]]>
+				</body>
+			</do-on>
+		</object>
+		<init target="pOnMouseRightRelease" ver="5" ref="DoOnMouseRightRelease"/>
+		<object access-modifier="private" name="DragNDrop_1" display-name="DragNDrop_1" uuid="6bfe4742-ff30-4562-90b7-cf12db9579ec" base-type="DragNDrop" base-type-id="c4ddb32f-3653-44c8-be57-3a595e10c2fb" ver="5">
+			<designed target="DragEnabled" value="true" ver="5"/>
+			<designed target="DropEnabled" value="true" ver="5"/>
+			<designed target="Image" value="" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnDrop">
+				<body kind="om">
+					<![CDATA[
+here.private.ItemsAddByJson(data.GetText(), 0);
+]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="OpenGraphicSettings" display-name="OpenGraphicSettings" uuid="cc64b598-14ee-4d28-9cbe-90506bf173cd" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="1890904f-e895-4fad-8e4e-180999dd03f7" base-type="Trends_GraphicSettings" base-type-id="7f88133f-deaf-4376-a13d-a52efda68de5" ver="5">
+					<init target="pOnComplete" ver="5" ref="OnComplete"/>
+					<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
+					<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
+					<init target="pChart" ver="5" ref="here"/>
+					<init target="pColorDialogResult" ver="5" ref="ColorDialogResult"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="a4072568-342b-4232-a970-143c89f26648" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[if (here.private.pSettings.CustomColors != ColorDialogResult.CustomColors)
+{
+	here.private.pSettings.CustomColors = ColorDialogResult.CustomColors;
+	pOnSettingsChanged.Invoke();
+}
+
+UpdateItem(SelectedItem);]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ColorDialogResult" display-name="ColorDialogResult" uuid="2e64873c-0704-47c1-bb42-8789ef2f826d" base-type="ColorDialogResult" base-type-id="b51f78e4-f30c-411b-9a81-b57ef602013a" ver="5" description="" cardinal="1"/>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[ColorDialogResult.CustomColors = here.private.pSettings.CustomColors;]]>
+				</body>
+			</do-on>
+		</object>
+		<init target="pOnDoubleClick" ver="5" ref="OpenGraphicSettings"/>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="f1ee6f37-c658-4636-a6b5-6145bf441ff7" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="0" ver="5"/>
+			<designed target="MinHeight" value="150" ver="5"/>
+			<designed target="MaxWidth" value="16777215" ver="5"/>
+			<designed target="MaxHeight" value="150" ver="5"/>
+			<do-trace access-modifier="private" target="MinHeight" ver="5">
+				<body>
+					<![CDATA[Splitter.Position]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="MaxHeight" ver="5">
+				<body>
+					<![CDATA[Splitter.Position]]>
+				</body>
+			</do-trace>
+		</object>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[ShowLegend]]>
+			</body>
+		</do-trace>
+		<do access-modifier="private" name="UpdateHeight" display-name="UpdateHeight" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (Autosize)
+{
+	lines: int4 = View.GetRowCount();
+	if (lines < 1)
+		lines = 1;	
+	else if (MaxLineLegendShow > 0 && lines > MaxLineLegendShow)
+		lines = MaxLineLegendShow;
+		
+	legendHeight: double = (View.HeaderHeight + 2) + lines * (View.RowHeight + 2) + 18;
+		
+	if (Splitter.Position != legendHeight)
+	{
+		Splitter.Position = legendHeight;
+		//Debug.Log("Legend auto update height to " + String.ToString(Splitter.Position) + " for " + String.ToString(lines) + " lines");
+	}
+}]]>
+			</body>
+		</do>
+		<init target="pOnViewChanged" ver="5" ref="here.private.NotifyViewChanged"/>
+	</object>
+	<init target="ShowLegend" ver="5" value="false"/>
+	<init target="MaxLineLegendShow" ver="5" value="4"/>
+	<init target="ShowFullDescription" ver="5" value="false"/>
+	<init target="ShowRelativeTag" ver="5" value="false"/>
+	<object access-modifier="private" name="ChartPrint" display-name="ChartPrint" uuid="23abe4a1-7aa8-4892-b582-96f9fcb348af" base-type="Print" base-type-id="da4ac71d-92b8-427c-9ef0-5c6cb681ae96" ver="5" description="" cardinal="1">
+		<designed target="Area" value="0" ver="5"/>
+	</object>
+	<do access-modifier="private" name="ShowPrintPreview" display-name="ShowPrintPreview" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[pOnDoPrintSettings.Invoke();
+ChartPrint.PrintPreviewDialog();
+]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="Print" display-name="Print" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[pOnPrint.Invoke();
+ChartPrint.Print();]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="SaveScreenshot" display-name="SaveScreenshot" uuid="aba641a5-c043-42df-8f98-8fc2770f4949" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[// Делаем скриншот трендов и легенды
+if (Screenshot.ShotRegion(here.ScreenX(0, 0), here.ScreenY(0, 0), TypeConvert.ToInt4(here.Width), TypeConvert.ToInt4(here.Height)))
+{
+	// Предлагаем сохранить
+	ShowSaveDialog.Invoke();
+}
+else
+{
+	private.EventParams[0] = "Не удалось подготовить текущее изображение";
+	pOnError.Invoke();
+}]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="ShowSaveDialog" display-name="ShowSaveDialog" uuid="8ca6dc11-9105-4c8f-b9a1-dac4b8a0ebe7" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-dialog">
+				<object access-modifier="private" uuid="e29c750d-e5b3-40f2-980d-bf6f9d4e3c0f" base-type="SaveFileDialog" base-type-id="d69a91c3-89e9-4e7b-994e-9242dbc5e095" ver="5">
+					<init target="EditSettingsAllowed" ver="5" value="false"/>
+					<init target="OnComplete" ver="5" ref="SaveFile"/>
+					<init target="FileTypeFilter" ver="5" value="PNG (*.png)|*.png"/>
+					<init target="Result" ver="5" ref="DialogResult"/>
+					<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
+					<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
+					<init target="ChangeFolderAllowed" ver="5">
+						<expr>
+							<![CDATA[here.private.pPermissions.FileSystemAccess]]>
+						</expr>
+					</init>
+					<init target="CreateFolderAllowed" ver="5">
+						<expr>
+							<![CDATA[here.private.pPermissions.FileSystemAccess]]>
+						</expr>
+					</init>
+					<init target="RootPath" ver="5">
+						<expr>
+							<![CDATA[here.private.GetExportPathRoot()]]>
+						</expr>
+					</init>
+					<init target="DefaultPath" ver="5">
+						<expr>
+							<![CDATA[here.private.GetExportPath()]]>
+						</expr>
+					</init>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="DialogResult" display-name="DialogResult" uuid="41a4d9a6-83b9-47ed-b489-989fc597c5b7" base-type="FileDialogResult" base-type-id="602926f1-7d01-4d50-a5c0-d8fd35eadc74" ver="5"/>
+			<object access-modifier="private" name="SaveFile" display-name="SaveFile" uuid="45214c74-3e72-4cac-a159-3fb7d6e7b6ef" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[filePath: string = DialogResult.FilePath.Value;
+error: string;
+
+if (!Screenshot.Save(filePath))
+	error = "Не удалось сохранить в файл";
+	
+Screenshot.Clear();
+
+// запоминаем папку экспорта
+if (private.pSettings.ExportFolder != DialogResult.FolderPath)
+{
+	private.pSettings.ExportFolder = DialogResult.FolderPath;
+	pOnSettingsChanged.Invoke();
+}
+
+// уведомляем о том, как сохранение выполнено
+if (error == "")
+{
+	private.ShowComplete.message = "Текущее изображение сохранено в файл\n" + filePath;
+	private.ShowComplete.Invoke();
+}
+else
+{
+	private.ShowError.message = "Не удалось сохранить текущее изображение в файл\n" + filePath;
+	private.ShowError.Invoke();
+}
+
+NotifyResult(filePath, error);]]>
+					</body>
+				</do-on>
+			</object>
+			<do access-modifier="private" name="NotifyResult" display-name="NotifyResult" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[private.EventParams[0] = filePath;
+private.EventParams[1] = error;
+pOnScreenSave.Invoke();]]>
+				</body>
+				<param access-modifier="private" name="filePath" display-name="" uuid="3ee4fb84-459f-4eff-92de-228429620287" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+				<param access-modifier="private" name="error" display-name="" uuid="1847fa2d-6e94-4e3f-8b8c-766610579f9e" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			</do>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[Files.CreateRecursiveFolder(here.private.GetExportPath());]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="Screenshot" display-name="Screenshot" uuid="0a9806f3-f20f-4499-b274-e8858f1af8fb" base-type="Screenshot" base-type-id="ee8cdf0b-f2a3-445d-94f7-d61c8ba6f853" ver="5"/>
+	</object>
 </type>
 

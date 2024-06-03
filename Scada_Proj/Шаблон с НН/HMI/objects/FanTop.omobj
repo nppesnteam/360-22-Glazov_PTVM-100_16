@@ -19,7 +19,7 @@
 		<designed target="Enabled" value="true" ver="5"/>
 		<designed target="Tooltip" value="" ver="5"/>
 		<designed target="Width" value="12.5" ver="5"/>
-		<designed target="Height" value="20" ver="5"/>
+		<designed target="Height" value="24.5" ver="5"/>
 		<designed target="RoundingRadius" value="0" ver="5"/>
 		<designed target="PenColor" value="0xff000000" ver="5"/>
 		<designed target="PenStyle" value="1" ver="5"/>
@@ -100,7 +100,7 @@
 		<designed target="PenColor" value="0xff000000" ver="5"/>
 		<designed target="PenStyle" value="1" ver="5"/>
 		<designed target="PenWidth" value="0.5" ver="5"/>
-		<designed target="BrushColor" value="0xffff8080" ver="5"/>
+		<designed target="BrushColor" value="0xffb5adad" ver="5"/>
 		<designed target="BrushStyle" value="1" ver="5"/>
 		<designed target="PieAngle" value="360" ver="5"/>
 		<designed target="PieAngleStart" value="360" ver="5"/>
@@ -142,7 +142,7 @@
 			<do-trace access-modifier="private" target="BrushColor" ver="5">
 				<conditional-expr>
 					<condition>
-						<![CDATA[OutbOn]]>
+						<![CDATA[bOn]]>
 					</condition>
 					<expr>
 						<![CDATA[0xff00ff00]]>
@@ -155,12 +155,30 @@
 				</default-expr>
 			</do-trace>
 		</object>
+		<do-trace access-modifier="private" target="BrushColor" ver="5">
+			<conditional-expr>
+				<condition>
+					<![CDATA[bErrorCantCtrl]]>
+				</condition>
+				<expr>
+					<![CDATA[0xffff0000]]>
+				</expr>
+			</conditional-expr>
+			<conditional-expr>
+				<condition>
+					<![CDATA[bTurnedOn]]>
+				</condition>
+				<expr>
+					<![CDATA[0xff00ff00]]>
+				</expr>
+			</conditional-expr>
+			<default-expr>
+				<expr>
+					<![CDATA[0xffb5adad]]>
+				</expr>
+			</default-expr>
+		</do-trace>
 	</object>
-	<do-trace access-modifier="private" target="Tooltip" ver="5">
-		<body>
-			<![CDATA[NAME]]>
-		</body>
-	</do-trace>
 	<designed target="Flip" value="0" ver="5"/>
 </type>
 

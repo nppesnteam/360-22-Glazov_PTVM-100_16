@@ -1,0 +1,27 @@
+<type access-modifier="public" name="Statistics_Settings" display-name="Настройки" uuid="a8c582fd-25fb-4cc3-8522-3166d1a63de6" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+	<object access-modifier="private" name="ParameterListFolder" display-name="Папка со списками параметров" uuid="2c3f5209-58cf-4ce1-b202-0063149291ad" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	<object access-modifier="private" name="SnapshotFolder" display-name="Папка с файлами статистики" uuid="9eaccbbf-af44-4579-b0f6-c9620fd1c920" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	<do access-modifier="private" name="ToJSON" display-name="ToJSON" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="javascript">
+			<![CDATA[var settings = {
+	'ParameterListFolder': ParameterListFolder,
+	'SnapshotFolder': SnapshotFolder,
+	'ExportFolder': ExportFolder
+};
+
+return JSON.stringify(settings);]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="FromJSON" display-name="FromJSON" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[var settings = JSON.parse(json);
+
+ParameterListFolder = settings.ParameterListFolder;
+SnapshotFolder = settings.SnapshotFolder;
+ExportFolder = settings.ExportFolder;]]>
+		</body>
+		<param access-modifier="private" name="json" display-name="" uuid="53efaaa5-3bef-4b9f-97bd-b3a14cd9b97a" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<object access-modifier="private" name="ExportFolder" display-name="Папка для экспорта" uuid="1ce233bb-52e2-4563-bb5b-c6ad500856eb" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+</type>
+

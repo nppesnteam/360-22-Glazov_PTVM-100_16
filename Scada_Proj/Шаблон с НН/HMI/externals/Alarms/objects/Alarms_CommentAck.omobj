@@ -99,10 +99,10 @@ else if (event.KeyCode == 75)
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
 			<body kind="om">
 				<![CDATA[if (pAlarms.WriteComputerNameToComment.Value)
-	pAlarms.Main_panel.private.AckComment += ": " + CommentEditor.Text;
-else pAlarms.Main_panel.private.AckComment = CommentEditor.Text;
+	pAlarms.Dialogs.OpenCommentAck.AckComment += ": " + CommentEditor.Text;
+else pAlarms.Dialogs.OpenCommentAck.AckComment = CommentEditor.Text;
 
-pAlarms.Main_panel.private.AckContinue.Invoke();
+pAlarms.Dialogs.OpenCommentAck.AckContinue.Invoke();
 
 Close();]]>
 			</body>
@@ -204,23 +204,23 @@ here.WindowCaption = "Ввод комментария квитирования (
 			<![CDATA[CloseForm.Active = true;
 endTime = 30;
 
-var msgs = JSON.parse(pAlarms.Main_panel.private.AckedMsgs);
+var msgs = JSON.parse(pAlarms.Dialogs.OpenCommentAck.AckedMsgs);
 var content = {columns:[], rows:[]};
 //один столбец Table.TableModel.AddColumn("Message","Список сообщений","Description","","string",false,true);
 content.columns.push( {"ordinal":0,"name":"Message","displayName":"Список сообщений","description":"Description","units":"","typeCode":"string","isReadOnly":false,"maybeEmpty":true,"isUnique":false,"isPartOfId":false,"isCustom":true} );
 for (let i = 0; i < msgs.length; i++)
 {
 	var row = [];
-	row.push(msgs[i].message);
+	row.push(msgs[i].Message);
 	content.rows.push(row);
 }
 Table.TableModel.SetContentAsJson(JSON.stringify(content));
 
 //Заполняем шаблоны комментирования
 CommentPattern.AddItem("Выберите шаблон комментария");
-for (let i = 0; i < pAlarms.Main_panel.private.CommentPattern.PatternsTable.GetRowCount(); i++)
+for (let i = 0; i < pAlarms.pConfig.CommentPattern.PatternsTable.GetRowCount(); i++)
 {
-	CommentPattern.AddItem(pAlarms.Main_panel.private.CommentPattern.PatternsTable.GetCellData(i,0));
+	CommentPattern.AddItem(pAlarms.pConfig.CommentPattern.PatternsTable.GetCellData(i,0));
 }]]>
 		</body>
 	</do-on>
@@ -313,6 +313,8 @@ for (let i = 0; i < pAlarms.Main_panel.private.CommentPattern.PatternsTable.GetR
 				<![CDATA[pTheme.BorderColor]]>
 			</body>
 		</do-trace>
+		<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="66ddb688-9ef8-4a36-b788-ddb9cc01017e" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+		<init target="pTheme" ver="5" ref="init_Theme"/>
 	</object>
 	<object access-modifier="private" name="Label" display-name="Label" uuid="94bbe451-a73d-4b98-a0da-0a405ca2c448" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="2">
 		<designed target="X" value="10" ver="2"/>
@@ -332,7 +334,7 @@ for (let i = 0; i < pAlarms.Main_panel.private.CommentPattern.PatternsTable.GetR
 		<designed target="Opacity" value="1" ver="4"/>
 		<do-trace access-modifier="private" target="FontColor" ver="5">
 			<body>
-				<![CDATA[pTheme.ForegroundColor]]>
+				<![CDATA[Table.pTheme.ForegroundColor]]>
 			</body>
 		</do-trace>
 	</object>
@@ -363,10 +365,9 @@ for (let i = 0; i < pAlarms.Main_panel.private.CommentPattern.PatternsTable.GetR
 	</object>
 	<designed target="ZValue" value="0" ver="3"/>
 	<designed target="Opacity" value="1" ver="3"/>
-	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="66ddb688-9ef8-4a36-b788-ddb9cc01017e" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
 	<do-trace access-modifier="private" target="BrushColor" ver="5">
 		<body>
-			<![CDATA[pTheme.BackgroundColor]]>
+			<![CDATA[Table.pTheme.BackgroundColor]]>
 		</body>
 	</do-trace>
 	<designed target="WindowIconPath" value="Alarms_Icons/Alarms.ico" ver="5"/>

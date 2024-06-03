@@ -128,7 +128,7 @@
 	<object access-modifier="private" name="private" display-name="private" uuid="3c2b30a8-e374-40c0-880b-341ac10578c1" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
 		<object access-modifier="private" name="pTheme" display-name="pTheme" uuid="da4770fa-a71b-4422-9221-4c0508539dfc" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
 		<object access-modifier="private" name="pScreenKeyboard" display-name="pScreenKeyboard" uuid="47ff0dd4-d110-42eb-acc7-52f87688dae2" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
-		<object access-modifier="private" name="DialogResult" display-name="DialogResult" uuid="a8b765e2-3044-4ac4-b754-12f94b17911b" base-type="DialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" ver="5"/>
+		<object access-modifier="private" name="DialogResult" display-name="DialogResult" uuid="a8b765e2-3044-4ac4-b754-12f94b17911b" base-type="FolderDialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" ver="5"/>
 		<object access-modifier="private" name="SelectedRow" display-name="SelectedRow" uuid="d200d948-1c18-402e-8d13-61e5c3b1f52a" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5">
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
 				<body kind="om">
@@ -375,44 +375,57 @@ if (rightsList.length > 0)
 					<![CDATA[if (value)
 {
 	SystemCommands.DoExportToFile = false;
-	ShowSaveDialog.Invoke();	
+	ShowSaveDialog.Invoke();
 }]]>
 				</body>
 			</do-on>
 			<object access-modifier="private" name="ShowSaveDialog" display-name="ShowSaveDialog" uuid="00249f61-d727-4833-806f-a356069ed0d0" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<object access-modifier="private" name="Folder" display-name="Folder" uuid="71f67fff-d664-4c11-bfac-4285d44fa094" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+				<object access-modifier="private" name="FileType" display-name="FileType" uuid="69d7d160-e4bd-4701-a642-b05e615586ac" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
 				<object access-modifier="private" name="DialogResult" display-name="DialogResult" uuid="7339be55-0a8e-4ab8-bc49-47b18a78705e" base-type="FileDialogResult" base-type-id="602926f1-7d01-4d50-a5c0-d8fd35eadc74" ver="5" description="" cardinal="1"/>
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
 					<object access-modifier="private" uuid="8391a14d-f80a-4155-af65-af2e08df48e4" base-type="SaveFileDialog" base-type-id="d69a91c3-89e9-4e7b-994e-9242dbc5e095" ver="5">
 						<init target="Result" ver="5" ref="DialogResult"/>
 						<init target="OnComplete" ver="5" ref="Export"/>
-						<init target="DefaultFileName" ver="5" ref="Application.ApplicationName"/>
-						<init target="DefaultPath" ver="5" ref="SystemCommands.DoExportToFile.ExportPath"/>
-						<init target="DefaultFileType" ver="5" ref="SystemCommands.DoExportToFile.FileType"/>
-						<init target="FileTypeFilter" ver="5">
-							<expr>
-								<![CDATA[SystemCommands.DoExportToFile.GetExportFileExtendedFilter()]]>
-							</expr>
-						</init>
 						<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
 						<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
+						<init target="FileTypeFilter" ver="5" value="Шаблон приложения (*.json)|*.json|Книга Excel (*.xlsx)|*.xlsx|Текстовый файл (*.csv)|*.csv"/>
+						<init target="DefaultFileName" ver="5">
+							<expr>
+								<![CDATA[Application.ApplicationName]]>
+							</expr>
+						</init>
+						<init target="DefaultFileType" ver="5" ref="FileType"/>
+						<init target="ChangeFolderAllowed" ver="5">
+							<expr>
+								<![CDATA[pPermissions.FileSystemAccess]]>
+							</expr>
+						</init>
+						<init target="CreateFolderAllowed" ver="5">
+							<expr>
+								<![CDATA[pPermissions.FileSystemAccess]]>
+							</expr>
+						</init>
+						<init target="DefaultPath" ver="5">
+							<expr>
+								<![CDATA[GetExportFolderPath()]]>
+							</expr>
+						</init>
+						<init target="RootPath" ver="5">
+							<expr>
+								<![CDATA[pPermissions.FileSystemAccess ? "" : GetExportFolderPath()]]>
+							</expr>
+						</init>
 					</object>
-				</do-on>
-				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Invoked">
-					<body kind="om">
-						<![CDATA[exportPath: string = SystemCommands.DoExportToFile.ExportPath;
-if (exportPath != "" && !Files.Exists(exportPath))
-	Files.CreateRecursiveFolder(exportPath);]]>
-					</body>
 				</do-on>
 				<object access-modifier="private" name="Export" display-name="Export" uuid="13a7e9f4-3fec-4c9c-be53-8258ebfb2d52" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
 					<designed target="Enabled" value="true" ver="5"/>
 					<designed target="InvokeTrigger" value="false" ver="5"/>
 					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
 						<body kind="om">
-							<![CDATA[format: string;
-messagePrefix: string = "";
+							<![CDATA[messagePrefix: string = "";
 
 if (DialogResult.FileType == 0)
 {
@@ -421,27 +434,49 @@ if (DialogResult.FileType == 0)
 }
 else
 {
+	format: string;
 	if (DialogResult.FileType == 1)
-		format = "csv";
-	else if (DialogResult.FileType == 2)
 		format = "xlsx";
-	else if (DialogResult.FileType == 3)
-		format = "pdf";
+	else if (DialogResult.FileType == 2)
+		format = "csv";
 
 	RightsEditor.View.Save(DialogResult.FilePath, format);
 	messagePrefix = "Список прав приложения";
 }
+
 // запоминаем выбор как значение по умолчанию
-SystemCommands.DoExportToFile.ExportPath = DialogResult.FolderPath;
-SystemCommands.DoExportToFile.FileType = DialogResult.FileType;
-private.SaveViewSettings();
+Folder = DialogResult.FolderPath;
+FileType = DialogResult.FileType;
+SaveViewSettings();
+
+// если есть доступ к файловой системе, то запоминаем выбор в настройках
+if (pPermissions.FileSystemAccess)
+	pSettings.ExportFolder = DialogResult.FolderPath;
 
 // уведомляем о том, что сохранение выполнено
-private.ShowComplete.message = messagePrefix + " '"+Application.ApplicationName+"' сохранен в файл\n" + DialogResult.FilePath;
-private.ShowComplete.Invoke();]]>
+ShowComplete.message = messagePrefix + " '" + Application.ApplicationName + "' сохранен в файл\n" + DialogResult.FilePath;
+ShowComplete.Invoke();]]>
 						</body>
 					</do-on>
 				</object>
+				<do access-modifier="private" name="GetExportFolderPath" display-name="GetExportFolderPath" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+					<body kind="om">
+						<![CDATA[// Если есть доступ к файловой системе, то используем последнюю использованную, иначе разрешенную папку
+folder: string = pPermissions.FileSystemAccess ? Folder : pSettings.ExportFolder;
+
+// Если путь не указан, то используем Export в папке с данными программы
+if (folder == "")
+	folder = Files.CombinePath(unit.ProductInfo.GetProgramDataFolder(), "Export");
+
+return folder;]]>
+					</body>
+				</do>
+				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[folder: string = GetExportFolderPath();
+Files.CreateRecursiveFolder(folder);]]>
+					</body>
+				</do-on>
 			</object>
 		</object>
 		<object access-modifier="private" name="TokenName" display-name="TokenName" uuid="c1b5de1b-963e-47e6-b3ae-8afa08f69cfe" base-type="InputDialogResult" base-type-id="cdcda119-652b-45ed-bfc4-8cc21b98730d" ver="5">
@@ -564,7 +599,7 @@ ChangeToken.currentTokenName = "";]]>
 			<designed target="Width" value="850" ver="5"/>
 			<designed target="Height" value="370" ver="5"/>
 			<designed target="SelectionBehavior" value="1" ver="5"/>
-			<designed target="SelectionMode" value="1" ver="5"/>
+			<designed target="SelectionMode" value="3" ver="5"/>
 			<object access-modifier="private" name="Column" display-name="Column" uuid="8c7c12c6-e5e4-4d0f-ac42-d4a7304937bc" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="5" cardinal="4">
 				<designed target="Title" value="" ver="5"/>
 				<designed target="Description" value="" ver="5"/>
@@ -592,7 +627,7 @@ ChangeToken.currentTokenName = "";]]>
 				<designed target="ColumnOwnId" value="" ver="5"/>
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseDoubleClick">
 					<body kind="om">
-						<![CDATA[if (pConfigurationAccessValue.Value && Column[Index].Id == "name")
+						<![CDATA[if (pConfigurationAccess.Value && Column[Index].Id == "name")
 	Commands.DoChangeToken = true;]]>
 					</body>
 				</do-on>
@@ -637,7 +672,7 @@ ChangeToken.currentTokenName = "";]]>
 			<designed target="RowHeight" value="25" ver="5"/>
 			<designed target="RowOrder" value="0" ver="5"/>
 			<designed target="LatestRowTracking" value="false" ver="5"/>
-			<designed target="SelectionOverlayEnabled" value="true" ver="5"/>
+			<designed target="SelectionOverlayEnabled" value="false" ver="5"/>
 			<object access-modifier="private" name="Decorator" display-name="Decorator" uuid="a44121de-ae25-4017-8390-f3f61f14d987" base-type="TableDecorator" base-type-id="2ff6a2d7-9573-4060-bfea-29c63d61b079" ver="5">
 				<designed target="JsonDecorator" value="" ver="5"/>
 			</object>
@@ -667,6 +702,7 @@ ChangeToken.currentTokenName = "";]]>
 			<object access-modifier="private" name="Model" display-name="Model" uuid="236e9d05-86f7-4253-a9a8-56137e2fed46" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="5">
 				<designed target="Frozen" value="false" ver="5"/>
 				<designed target="MaxRowCount" value="100000" ver="5"/>
+				<designed target="OptOfProcessingEvents" value="0" ver="5"/>
 			</object>
 			<do access-modifier="private" name="Init" display-name="Init" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 				<body kind="om">
@@ -692,6 +728,7 @@ Column[3].Id = "description";
 Column[3].Hidden = false;
 Column[3].Width = 350;
 
+Decorator.JsonDecorator = GetJsonDecorator(selectionColor);
 	
 Model.Reset();
 Model.AddColumn("id","","","","string",false,true);
@@ -699,49 +736,62 @@ Model.AddColumn("type","","","","string",false,true);
 Model.AddColumn("name","","","","string",false,true);
 Model.AddColumn("description","","","","string",false,true);
 Model.Clear();
-	
-Decorator.JsonDecorator = GetJsonDecorator();]]>
+]]>
 				</body>
 			</do>
 			<do access-modifier="private" name="GetJsonDecorator" display-name="GetJsonDecorator" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
 				<body kind="javascript">
-					<![CDATA[var Object = {};
-Object.Formatting = [];
-Object.Decorating = [];
-Object.StyleDictionary = [];
+					<![CDATA[var decorator = {};
 
-var tokenType_format = {};
-tokenType_format[`formatting_rule_name`] = "tokenType_format";
-tokenType_format[`formatting_column`] = "type";
-tokenType_format[`conditions`] = [];
-tokenType_format[`conditions`].push({'condition':{'data:type': 'bool'},'text':'логическое'});
-tokenType_format[`conditions`].push({'condition':{'data:type': 'string'},'text':'строковое'});
-Object.Formatting.push(tokenType_format);
+decorator.StyleDictionary = [
+	{
+		'style_name': "selected_style",
+		'style': { 'background_color': `#${selectionColor.toString(16)}` }
+	},
+		{
+		'style_name': "boolStyle",
+		'style': {'color': '#ff000000', 'background_color': '#ffddddff'}
+	},
+	{
+		'style_name': "stringStyle",
+		'style': {'color': '#ff000000', 'background_color': '#fff3d3b4'}
+	}
+];
 
-var boolDecorating = {};
-boolDecorating[`decoration_rule_name`] = "bool_decorating";
-boolDecorating[`decoration_rule`] = {'data:type': 'bool'};
-boolDecorating[`columnstyle`] = {'type':"boolStyle"};
-Object.Decorating.push(boolDecorating);
+decorator.Formatting = [
+	{
+		'formatting_rule_name': "tokenType_format",
+		'formatting_column': "type",
+		'conditions': [
+			{'condition': {'data:type': 'bool'}, 'text': 'логическое'},
+			{'condition': {'data:type': 'string'}, 'text': 'строковое'}
+		]
+	}
+];
 
-var stringDecorating = {};
-stringDecorating[`decoration_rule_name`] = "string_decorating";
-stringDecorating[`decoration_rule`] = {'data:type': 'string'};
-stringDecorating[`columnstyle`] = {'type':"stringStyle"};
-Object.Decorating.push(stringDecorating);
+decorator.Decorating = [
+	{
+		'decoration_rule_name': "selected_rule", 
+		'decoration_rule': { 'row:isSelected': true },
+		'rowstyle': "selected_style"
+	},
+	{
+		'decoration_rule_name': "string_decorating",
+		'decoration_rule': {'data:type': 'string'},
+		'columnstyle': {'type': "stringStyle"}
+	},
+	{
+		'decoration_rule_name': "bool_decorating",
+		'decoration_rule': {'data:type': 'bool'},
+		'columnstyle': {'type': "boolStyle"}
+	}
 
-var boolStyle = {};
-boolStyle[`style_name`] = "boolStyle";
-boolStyle[`style`] = {'background_color':'#ffddddff'};
-Object.StyleDictionary.push(boolStyle);
+];
 
-var stringStyle = {};
-stringStyle[`style_name`] = "stringStyle";
-stringStyle[`style`] = {'background_color':'#fff3d3b4'};
-Object.StyleDictionary.push(stringStyle);
-
-return JSON.stringify(Object, null, 2);]]>
+return JSON.stringify(decorator);
+]]>
 				</body>
+				<param access-modifier="private" name="selectionColor" display-name="" uuid="c835a8b7-809e-47e4-acd6-cd41ad42c65c" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5"/>
 			</do>
 			<designed target="BackgroundColor" value="0xffffffff" ver="5"/>
 			<designed target="FrameColor" value="0xff808080" ver="5"/>
@@ -759,6 +809,13 @@ return JSON.stringify(Object, null, 2);]]>
 			<do-trace access-modifier="private" target="GridColor" ver="5">
 				<body>
 					<![CDATA[here.private.pTheme.DisabledBorderColor]]>
+				</body>
+			</do-trace>
+			<object access-modifier="private" name="selectionColor" display-name="selectionColor" uuid="ec70d637-8594-4b12-b3f3-345de2a9d1c0" base-type="notifying_uint8" base-type-id="2e6d6c20-2489-49e1-9d5f-fe68a21b43df" ver="5" description="" cardinal="1"/>
+			<designed target="RowHeightResizeMode" value="3" ver="5"/>
+			<do-trace access-modifier="private" target="selectionColor" ver="5">
+				<body>
+					<![CDATA[private.pTheme.SelectionColor]]>
 				</body>
 			</do-trace>
 		</object>
@@ -826,21 +883,23 @@ SystemCommands.GoTo.doUnblockingControll();
 		</do-on>
 	</object>
 	<object access-modifier="private" name="inputAppID" display-name="inputAppID" uuid="02df1b32-9927-4635-99f6-92ee6956b86f" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	<object access-modifier="private" name="pConfigurationAccess" display-name="Разрешить редактирование" uuid="fcd0d53f-6d63-4582-9ce9-5eb7f9e4f3d6" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" base-const="true" base-ref="true" ver="5" description=""/>
 	<object access-modifier="private" name="Commands" display-name="Commands" uuid="7bd6ae28-33c3-4380-b6c8-0948182dc3a6" base-type="ApplicationCommands" base-type-id="1bb4857b-5e24-4e31-a011-db8a88827b94" base-const="true" base-ref="true" ver="5"/>
 	<object access-modifier="private" name="SystemCommands" display-name="SystemCommands" uuid="f956869b-b49e-4fa3-b739-bf649d66bf8d" base-type="SystemCommands" base-type-id="0b754dab-38c6-43db-a050-37201965421c" base-const="true" base-ref="true" ver="5"/>
 	<designed target="WindowIconPath" value="" ver="5"/>
-	<object access-modifier="private" name="pConfigurationAccessValue" display-name="pConfigurationAccessValue" uuid="fcd0d53f-6d63-4582-9ce9-5eb7f9e4f3d6" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" base-const="true" base-ref="true" ver="5" description=""/>
 	<do access-modifier="private" name="GetViewSettings" display-name="GetViewSettings" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
 		<body kind="javascript">
 			<![CDATA[var rightsTable = RightsEditor.View;
 
-var settings = 
-	{	
-		"Layout":{},
-		"AppRightsTable": {
-			"Columns" : {}
-		}
-	};
+var settings = {	
+	"AppRightsTable": {
+		"Columns" : {}
+	},
+	"Export" : {
+		"Folder": private.ExportToFile.ShowSaveDialog.Folder,
+		"FileType": private.ExportToFile.ShowSaveDialog.FileType
+	}
+};
 
 for (var i = 0; i < rightsTable.Column.Length; i++)
 {		
@@ -863,13 +922,21 @@ return JSON.stringify(settings);]]>
 	</do>
 	<do access-modifier="private" name="UpdateView" display-name="UpdateView" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 		<body kind="javascript">
-			<![CDATA[var rightsTable = RightsEditor.View;
+			<![CDATA[var content = JSON.parse(settings);
 
-var content = JSON.parse(settings);
+let exportSettings = content.Export;
+if (exportSettings != undefined)
+{
+	private.ExportToFile.ShowSaveDialog.Folder = exportSettings.Folder;
+	private.ExportToFile.ShowSaveDialog.FileType = exportSettings.FileType;
+}
+
 var appRightsTable = content.AppRightsTable;
 if (appRightsTable != undefined)
 {
+	var rightsTable = RightsEditor.View;
 	rightsTable.Init();
+	
 	if (appRightsTable.Columns != undefined)
 	for (var i = 0; i < rightsTable.Column.Length; i++)
 	{
@@ -920,5 +987,7 @@ UpdateView(SystemCommands.ViewSettings.Data[SystemCommands.Forms.AppEdit]);]]>
 		</body>
 	</do-on>
 	<param access-modifier="private" name="init_ScreenKeyboard" display-name="Вызов экранной клавиатуры" uuid="c2ab973e-8d30-44a6-a714-6a90a2369a9e" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="pSettings" display-name="pSettings" uuid="048992c4-d245-4a1d-a9b9-f474666417fd" base-type="SecurityConfigurator_Settings" base-type-id="a7c582fd-25fb-4cc3-8522-3166d1a63de6" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="pPermissions" display-name="pPermissions" uuid="cf7907ca-45a7-4abd-a288-7de59755ca73" base-type="SecurityConfigurator_Permissions" base-type-id="a6a67dc7-2872-46c8-a397-13aa48ddb4e7" base-const="true" base-ref="true" ver="5" description=""/>
 </type>
 

@@ -103,6 +103,13 @@
 		</do-trace>
 		<designed target="Checked" value="false" ver="5"/>
 	</object>
+	<object access-modifier="private" name="FolderFrame" display-name="FolderFrame" uuid="49274afa-10a2-4e57-8ce8-b90e6fa0b6ef" base-type="ErrorFrame" base-type-id="360a528b-50b0-4a9d-a198-5e2f73fe204c" ver="5" description="" cardinal="1">
+		<designed target="X" value="30" ver="5"/>
+		<designed target="Y" value="10" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="490" ver="5"/>
+		<designed target="Height" value="25" ver="5"/>
+	</object>
 	<object access-modifier="private" name="FolderEdit" display-name="FolderEdit" uuid="21e7db17-6331-4d07-8bd0-c5f14c86bfcb" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5">
 		<designed target="X" value="30" ver="5"/>
 		<designed target="Y" value="10" ver="5"/>
@@ -122,41 +129,35 @@
 		<designed target="HideInput" value="false" ver="5"/>
 		<designed target="PlaceholderText" value="" ver="5"/>
 		<designed target="ReadOnly" value="false" ver="5"/>
-		<do-trace access-modifier="private" target="Text" ver="5">
-			<body>
-				<![CDATA[FolderPath]]>
-			</body>
-		</do-trace>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="EditFinished">
-			<body kind="om">
-				<![CDATA[//Debug.Log("Folder edited: " + text);
-if (Files.IsDirectory(text))
-	FolderPath = text;
-else ShowError.Invoke();]]>
-			</body>
-		</do-on>
-		<object access-modifier="private" name="ShowError" display-name="ShowError" uuid="2a00ca39-1c4d-4d20-8cfb-94e35daf36ec" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
-			<designed target="Enabled" value="true" ver="5"/>
-			<designed target="InvokeTrigger" value="false" ver="5"/>
-			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
-				<object access-modifier="private" uuid="4998fcfa-8c2f-4bf7-9890-1c8e474dd253" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="5">
-					<init target="Message" ver="5">
-						<expr>
-							<![CDATA["Папка \"" + Text + "\" не найдена, попробуйте указать другой путь"]]>
-						</expr>
-					</init>
-					<init target="Icon" ver="5" value="2"/>
-					<init target="Buttons" ver="5" value="0"/>
-					<designed target="WindowCaption" value="Путь к папке" ver="5"/>
-				</object>
-			</do-on>
-		</object>
 		<designed target="Flip" value="0" ver="5"/>
 		<do-trace access-modifier="private" target="Font" ver="5">
 			<body>
 				<![CDATA[pTheme.Font]]>
 			</body>
 		</do-trace>
+		<do access-modifier="private" name="Validate" display-name="Validate" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[if (Files.AbsolutePath(path) == "/")
+	return "Укажите путь к папке";
+
+if (!Files.IsDirectory(path))
+	return "Указанная папка не найдена";
+
+return "";]]>
+			</body>
+			<param access-modifier="private" name="path" display-name="" uuid="743fb4e2-fd73-458d-93fc-4bbcca61fc53" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="TextChanged">
+			<body kind="om">
+				<![CDATA[//Debug.Log("Folder editor changed: " + text);
+FolderFrame.Error = Validate(text);
+if (FolderFrame.Error == "")
+{
+	if (FolderPath != text)
+		FolderPath = text;
+}]]>
+			</body>
+		</do-on>
 	</object>
 	<do access-modifier="private" name="UpdateLayout" display-name="UpdateLayout" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 		<body kind="om">
@@ -165,6 +166,7 @@ else ShowError.Invoke();]]>
 editWidth: double = Width - FolderEdit.X - 2;
 if (CreateFolderAllowed)
 	editWidth -= NewFolderButton.Width + 4;
+FolderFrame.Width = editWidth;
 FolderEdit.Width = editWidth;
 ]]>
 		</body>
@@ -172,16 +174,11 @@ FolderEdit.Width = editWidth;
 	<object access-modifier="private" name="Debug" display-name="Debug" uuid="e3e7fc81-58fd-446f-9329-e4d40f28b3cc" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
 	<object access-modifier="private" name="Files" display-name="Files" uuid="8d470a11-d60d-4d67-af2d-4c9a4877d8f7" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5">
 		<designed target="RootPath" value="/" ver="5"/>
-		<do-trace access-modifier="private" target="RootPath" ver="5">
-			<body>
-				<![CDATA[here.RootPath]]>
-			</body>
-		</do-trace>
 		<object access-modifier="private" name="lastError" display-name="lastError" uuid="b2afbece-686c-4b9b-8a11-a9e36fc5457a" base-type="FileSystemError" base-type-id="38147fa1-a364-43d4-bd0b-07ee8556c2f2" ver="5"/>
 		<init target="Error" ver="5" ref="lastError"/>
+		<init target="RootPath" ver="5" ref="here.RootPath"/>
 	</object>
 	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="8261b25e-6271-42df-82f9-4f85604d5ebe" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
-	<object access-modifier="private" name="RootPath" display-name="Корневой путь" uuid="d99975e1-fe8e-47c6-ae39-312a0751bf7e" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
 	<do access-modifier="private" name="BrowseUp" display-name="BrowseUp" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 		<body kind="om">
 			<![CDATA[parent: string = Files.ParentPath(FolderPath);
@@ -194,7 +191,14 @@ if (Files.IsDirectory(parent))
 }]]>
 		</body>
 	</do>
-	<object access-modifier="private" name="FolderPath" display-name="Путь к папке" uuid="ef99ca50-d264-42d3-8ce7-f1af396a750d" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<object access-modifier="private" name="FolderPath" display-name="Путь к папке" uuid="ef99ca50-d264-42d3-8ce7-f1af396a750d" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (FolderEdit.Text != value)
+	FolderEdit.Text = value;]]>
+			</body>
+		</do-on>
+	</object>
 	<object access-modifier="private" name="NewFolderButton" display-name="NewFolderButton" uuid="29aeb2b5-5a3f-4d16-85ee-a31188e8033b" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
 		<designed target="X" value="522" ver="5"/>
 		<designed target="Y" value="10" ver="5"/>
@@ -254,6 +258,7 @@ if (Files.IsDirectory(parent))
 			<designed target="Active" value="true" ver="5"/>
 			<designed target="CurrentFrameNumber" value="0" ver="5"/>
 			<designed target="Speed" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
 		</object>
 		<object access-modifier="private" name="FolderName" display-name="FolderName" uuid="0e39e4cc-ab92-492f-bb0d-e18c704abc52" base-type="InputDialogResult" base-type-id="cdcda119-652b-45ed-bfc4-8cc21b98730d" ver="5">
 			<do-trace access-modifier="private" target="Error" ver="5">
@@ -281,9 +286,11 @@ if (!Files.IsDirectory(folderPath))
 
 if (Files.IsDirectory(folderPath))
 {
-	FolderPath = Files.ToNative(folderPath);
-	OnFolderCreated.Invoke();
-}]]>
+	FolderPath = Files.ToNative(folderPath);	
+	OnFolderCreated.Invoke();	
+}
+
+FolderFrame.Error = FolderEdit.Validate(folderPath);]]>
 				</body>
 			</do-on>
 		</object>
@@ -316,6 +323,7 @@ if (Files.IsDirectory(folderPath))
 			</body>
 		</do-trace>
 		<designed target="Checked" value="false" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
 	</object>
 	<object access-modifier="private" name="CreateFolderAllowed" display-name="Разрешено создание папок" uuid="b7b7b22c-cf22-4716-ae61-d1e88833e2b3" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
 	<do access-modifier="private" name="CanBrowseUp" display-name="CanBrowseUp" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
@@ -328,5 +336,6 @@ return Files.IsDirectory(parent) && parent != "";]]>
 	</do>
 	<object access-modifier="private" name="OnFolderCreated" display-name="OnFolderCreated" uuid="c6c81354-9add-469a-a329-28bded4edbd7" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description=""/>
 	<designed target="Flip" value="0" ver="5"/>
+	<param access-modifier="private" name="RootPath" display-name="Корневой путь" uuid="d99975e1-fe8e-47c6-ae39-312a0751bf7e" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 </type>
 

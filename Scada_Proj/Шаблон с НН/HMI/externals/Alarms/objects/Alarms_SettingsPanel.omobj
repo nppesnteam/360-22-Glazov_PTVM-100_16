@@ -70,7 +70,7 @@ pSettingsForm.Settings.Panel.OnEdited();]]>
 	</object>
 	<do-on access-modifier="private" name="Handler_AboutToOpen" display-name="Handler_AboutToOpen" ver="5" event="AboutToOpen">
 		<body kind="javascript">
-			<![CDATA[var items = JSON.parse(pSettingsForm.pAlarms.Main_panel.ToolBar.AddDesign());
+			<![CDATA[var items = JSON.parse(pSettingsForm.pConfig.ToolBar.GetToolbarDesign());
 var data = JSON.parse(pSettingsForm.Settings.Panel.Data);
 var visible = {};
 for (let i = 0; i < data.length; i++) visible[data[i].Id] = data[i].Visible;
@@ -100,6 +100,8 @@ for (let i = 0; i < items.length; i++)
 			}
 			else log("нехватает картинок");
 		}
+		
+		Background.Height = Checkbox[checkbox_n].Y + 26 - Background.Y + 4;
 	}
 	else log("нехватает крыжиков");
 }
@@ -129,6 +131,31 @@ while(image_n < Image.Length)
 bInit = true;]]>
 		</body>
 	</do-on>
+	<object access-modifier="private" name="Background" display-name="Background" uuid="5f5ef0eb-b549-4283-aa0e-531bb7065a00" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="62" ver="5"/>
+		<designed target="Height" value="100" ver="5"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<designed target="PenColor" value="0xff000000" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="4278190080" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<do-trace access-modifier="private" target="BrushColor" ver="5">
+			<body>
+				<![CDATA[pTheme.ToolbarBrushColor]]>
+			</body>
+		</do-trace>
+	</object>
 	<object access-modifier="private" name="Image" display-name="Image" uuid="0a023875-54e0-458c-a25f-c5de6e2f4fff" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="3" cardinal="21">
 		<designed target="X" value="20" ver="3"/>
 		<designed target="Y" value="0" ver="3"/>

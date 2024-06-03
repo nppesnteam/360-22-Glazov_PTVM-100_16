@@ -981,6 +981,13 @@ if (isSelected && isUserCol)
 	pSettingsForm.Settings.View.OnEdited();
 	ColumnsTable.UpdateIsVisible();
 	ColumnsTable.UpdateTWErrors();
+	if (ColumnsTable.GetRowCount() > 0)//#38211 самый удачный костыль таблицам
+	{
+		r:int4 = ColumnsTable.curRow >= ColumnsTable.GetRowCount() ? ColumnsTable.GetRowCount()-1 : ColumnsTable.curRow;
+		ColumnsTable.SetCurrentCell(r, 0);
+		ColumnsTable.SetCurrentCell(r, 1);
+		ColumnsTable.SetCurrentCell(r, ColumnsTable.curCol);
+	}
 	UpdateButtonEnable();
 }]]>
 			</body>

@@ -25,32 +25,9 @@
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
 				<body kind="om">
 					<![CDATA[// принудительно скрываем/отображаем столбец с цветом оси
-View.Columns[unit.Const.cn.CL_AXIS].Hidden = value || View.Columns[unit.Const.cn.CL_LINE].Hidden;]]>
+View.Columns[private.Columns.CL_AXIS].Hidden = value || View.Columns[private.Columns.CL_LINE].Hidden;]]>
 				</body>
 			</do-on>
-		</object>
-		<object access-modifier="private" name="OpenGraphicSettings" display-name="OpenGraphicSettings" uuid="4cb5f902-daf1-4a96-845f-dc602cd908d2" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
-			<designed target="Enabled" value="true" ver="5"/>
-			<designed target="InvokeTrigger" value="false" ver="5"/>
-			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
-				<object access-modifier="private" uuid="ac5c25c4-6eef-41a9-8598-26e3bfb372c9" base-type="Trends_GraphicSettings" base-type-id="7f88133f-deaf-4376-a13d-a52efda68de5" ver="5">
-					<init target="pChart" ver="5" ref="here.pChart"/>
-					<init target="pOnComplete" ver="5" ref="OnComplete"/>
-					<init target="pColorDialogResult" ver="5" ref="here.pColorDialogResult"/>
-					<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
-					<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
-				</object>
-			</do-on>
-			<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="bb76139d-8d5f-491e-a350-546be01cdaab" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
-				<designed target="Enabled" value="true" ver="5"/>
-				<designed target="InvokeTrigger" value="false" ver="5"/>
-				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
-					<body kind="om">
-						<![CDATA[pSaveConfig.Invoke();
-Update();]]>
-					</body>
-				</do-on>
-			</object>
 		</object>
 		<init target="pTheme" ver="5" ref="init_Theme"/>
 		<do-trace access-modifier="private" target="SynchronizeColor" ver="5">
@@ -59,6 +36,66 @@ Update();]]>
 			</body>
 		</do-trace>
 		<init target="pScreenKeyboard" ver="5" ref="init_ScreenKeyboard"/>
+		<object access-modifier="private" name="Columns" display-name="Колонки в таблице Легенды" uuid="eec16a2e-37a3-4a3a-bf26-1003e90e4d39" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+			<object access-modifier="private" name="ADVISE" display-name="ADVISE" uuid="942d526c-7fae-4fcc-9507-288af26ea7d9" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<object access-modifier="private" name="CL_AXIS" display-name="CL_AXIS" uuid="07ff8536-ea78-4e93-8368-fcdd985637f6" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<object access-modifier="private" name="CL_LINE" display-name="CL_LINE" uuid="401b5d25-d8db-4a05-8813-a5699434eff1" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<object access-modifier="private" name="LINE_STYLE" display-name="LINE_STYLE" uuid="58c8bd32-e643-4c93-95aa-d218abd79c47" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<object access-modifier="private" name="MARKER" display-name="MARKER" uuid="be4ee1c5-ac7f-4860-a738-3c0c2cdade83" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<object access-modifier="private" name="DESCRIPTION" display-name="DESCRIPTION" uuid="77285c2f-0cdb-4c91-a713-be1f69c629a8" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<object access-modifier="private" name="TAG" display-name="TAG" uuid="8bf4b4bb-874c-4edc-aa8a-2095059bb30e" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<object access-modifier="private" name="VALUE" display-name="VALUE" uuid="fe225304-2767-4d42-bef5-d533eb0879de" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<object access-modifier="private" name="EU" display-name="EU" uuid="a8b59c40-8738-443e-a0ac-364c08e7fdb9" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<object access-modifier="private" name="TIME" display-name="TIME" uuid="1e83ae24-c635-4e51-ad5b-955229794df2" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<object access-modifier="private" name="QUALITY" display-name="QUALITY" uuid="30f5bec3-ce4b-43b9-8ea2-c3d6053cb92e" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<object access-modifier="private" name="MINIMUM" display-name="MINIMUM" uuid="677636fb-0a9a-4098-90db-d71ff5fd2149" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<object access-modifier="private" name="MAXIMUM" display-name="MAXIMUM" uuid="3f6d0323-1494-4cc9-a12f-fe33482a37bf" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<object access-modifier="private" name="QUANTITY" display-name="QUANTITY" uuid="ac66e4f2-d98b-4e92-80db-6b9367ddca2c" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<init target="ADVISE" ver="5" value="0"/>
+			<init target="CL_AXIS" ver="5" value="1"/>
+			<init target="CL_LINE" ver="5" value="2"/>
+			<init target="LINE_STYLE" ver="5" value="3"/>
+			<init target="MARKER" ver="5" value="4"/>
+			<init target="DESCRIPTION" ver="5" value="5"/>
+			<init target="TAG" ver="5" value="6"/>
+			<init target="VALUE" ver="5" value="7"/>
+			<init target="EU" ver="5" value="8"/>
+			<init target="TIME" ver="5" value="9"/>
+			<init target="QUALITY" ver="5" value="10"/>
+			<init target="MINIMUM" ver="5" value="11"/>
+			<init target="MAXIMUM" ver="5" value="12"/>
+			<init target="QUANTITY" ver="5" value="13"/>
+			<object access-modifier="private" name="INTERPOLATION" display-name="INTERPOLATION" uuid="1eceaa9b-f69a-4443-abb7-c26e357877c4" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<init target="INTERPOLATION" ver="5" value="14"/>
+		</object>
+		<do access-modifier="private" name="SetVQT" display-name="SetVQT" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[View.Initialize();
+
+if (row >= 0 && row < View.TableModel.GetRowCount())
+{
+	// значение
+	if (Variant.IsEmpty(value))
+		View.TableModel.SetCellData(row, private.Columns.VALUE, "");
+	else View.TableModel.SetCellData(row, private.Columns.VALUE, pChart.private.VariantToString(value, pChart.YAxisPrecision));
+	
+	// качество
+	View.TableModel.SetCellData(row, private.Columns.QUALITY, quality);
+		
+	// метка времени
+	format: string = ShowMilliseconds ? "%d.%m.%Y %H:%M:%S.%f" : "%d.%m.%Y %H:%M:%S";
+	if (pChart.UseServerTime)
+		format += nXColumn == unit.Const.tmSOURCE ? " (Источника)" : " (Сервера)";
+	timeStr: string = DateTime.ToString(DateTime.ToLocal(timestamp), format);	
+	View.TableModel.SetCellData(row, private.Columns.TIME, timeStr);
+}]]>
+			</body>
+			<param access-modifier="private" name="row" display-name="" uuid="8b3e4c7b-2f06-41fe-924a-2e6071849a1b" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<param access-modifier="private" name="value" display-name="" uuid="2a0c51c8-3a00-4de1-afd8-f34eff76a3ad" base-type="variant" base-type-id="7d3322c1-a2cf-4732-a957-abd69e3e4b7a" ver="5"/>
+			<param access-modifier="private" name="quality" display-name="" uuid="5ee01bf1-3f4f-40c6-a396-963386772ad8" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
+			<param access-modifier="private" name="timestamp" display-name="" uuid="dfe5f4af-fc03-4541-ae5f-635cdc39b034" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5"/>
+			<param access-modifier="private" name="nXColumn" display-name="" uuid="2a8b44c3-d3ee-4ea9-906d-c750f59908d1" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		</do>
 	</object>
 	<object access-modifier="private" name="Initializer" display-name="Initializer" uuid="28c8eb81-ea87-4a67-9e1e-b3aed45375b9" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="5" description="" cardinal="1">
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Initialized">
@@ -70,23 +107,6 @@ Update();]]>
 	<object access-modifier="private" name="Debug" display-name="Debug" uuid="95fdee38-ce8f-423c-a2b9-074682ba1b2e" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
 	<object access-modifier="private" name="Files" display-name="Files" uuid="79862f6b-ff3e-4b19-b1ac-78870f274eb4" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5">
 		<designed target="RootPath" value="/" ver="5"/>
-	</object>
-	<object access-modifier="private" name="pColorDialogResult" display-name="pColorDialogResult" uuid="ca53a7a6-43d6-4f33-83d9-818b18cb7027" base-type="ColorDialogResult" base-type-id="b51f78e4-f30c-411b-9a81-b57ef602013a" base-const="true" base-ref="true" ver="5" description=""/>
-	<object access-modifier="private" name="bRequestRefresh" display-name="bRequestRefresh" uuid="8c92ac2d-6bf4-422d-bb21-349615c70ce6" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
-	<object access-modifier="private" name="Timer_RefreshTimeOut" display-name="Timer_RefreshTimeOut" uuid="9ccdf13d-a8a1-47a4-890a-563550a5309c" base-type="Timer" base-type-id="72ba7cd4-549e-41f2-923c-2431b91f349a" ver="5">
-		<designed target="Period" value="1000" ver="5"/>
-		<designed target="Active" value="false" ver="5"/>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnTimer">
-			<body kind="om">
-				<![CDATA[Active = false;	
-if (bRequestRefresh) 
-{
-	bRequestRefresh = false;
-	Update();
-}
-]]>
-			</body>
-		</do-on>
 	</object>
 	<object access-modifier="private" name="Layout" display-name="Layout" uuid="3af89793-ea94-4ba4-ba77-dfb30414f236" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5">
 		<designed target="Orientation" value="1" ver="5"/>
@@ -127,14 +147,14 @@ if (bRequestRefresh)
 			<designed target="WordWrap" value="false" ver="5"/>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseDoubleClick">
 				<body kind="om">
-					<![CDATA[private.OpenGraphicSettings.Invoke();]]>
+					<![CDATA[pOnDoubleClick.Invoke();]]>
 				</body>
 			</do-on>
 			<designed target="TitleTextAlignment" value="132" ver="5"/>
 			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="WidthChanged">
 				<body kind="om">
 					<![CDATA[if (initialized)
-	pSaveConfig.Invoke();]]>
+	pOnViewChanged.Invoke();]]>
 				</body>
 			</do-on>
 			<designed target="ColumnOwnId" value="" ver="5"/>
@@ -176,85 +196,6 @@ ShowContextMenu.Invoke();]]>
 					<![CDATA[private.pTheme.TitleFont]]>
 				</body>
 			</do-trace>
-			<object access-modifier="private" name="ShowContextMenu" display-name="ShowContextMenu" uuid="b26f5b93-ab63-4063-9e82-6d14ae1b64a8" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
-				<designed target="Enabled" value="true" ver="5"/>
-				<designed target="InvokeTrigger" value="false" ver="5"/>
-				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
-					<object access-modifier="private" uuid="1bbed998-379a-4aaa-9d4e-1e64c0614cb0" base-type="Menu" base-type-id="07bb4545-980a-4140-bbaa-4d1397447864" ver="5">
-						<init target="pResult" ver="5" ref="MenuResult"/>
-						<init target="pAction" ver="5" ref="OnMenuClick"/>
-						<init target="pTheme" ver="5" ref="here.private.pTheme"/>
-						<init target="WindowX" ver="5">
-							<expr>
-								<![CDATA[mX]]>
-							</expr>
-						</init>
-						<init target="WindowY" ver="5">
-							<expr>
-								<![CDATA[mY]]>
-							</expr>
-						</init>
-						<init target="Items" ver="5">
-							<expr>
-								<![CDATA[GetMenuItems()]]>
-							</expr>
-						</init>
-					</object>
-				</do-on>
-				<object access-modifier="private" name="mX" display-name="mX" uuid="43b2ab13-2434-4e31-924c-6a40182a817e" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
-				<object access-modifier="private" name="mY" display-name="mY" uuid="83c5ee5c-034f-415a-a4fb-66f3c66660f8" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
-				<object access-modifier="private" name="MenuResult" display-name="MenuResult" uuid="f6f639cf-7b71-4bfa-ba8e-e14d0c0d5480" base-type="MenuResult" base-type-id="0fe7658c-92f4-4af7-b038-3594414ac651" ver="5"/>
-				<object access-modifier="private" name="OnMenuClick" display-name="OnMenuClick" uuid="5f450b5b-d167-4fb1-9b16-8d82883461db" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
-					<designed target="Enabled" value="true" ver="5"/>
-					<designed target="InvokeTrigger" value="false" ver="5"/>
-					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
-						<body kind="om">
-							<![CDATA[if (String.StartsWith(MenuResult.Id, "column_"))
-{
-	columnId: string = String.SubString(MenuResult.Id, 7);
-	ChangeColumnVisibility(columnId);
-}]]>
-						</body>
-					</do-on>
-				</object>
-			</object>
-			<do access-modifier="private" name="GetMenuItems" display-name="GetMenuItems" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
-				<body kind="javascript">
-					<![CDATA[var items = [];
-
-var i = 0;
-while (i < View.Columns.Length)
-{
-	if (!private.SynchronizeColor.Value || i != unit.Const.cn.CL_AXIS)
-	{
-		var column = View.Columns[i];
-		items.push({
-			 'id': "column_" + column.Id,
-			 'title': column.Title == "" ? column.Description : column.Title,
-			 'checked': !column.Hidden,
-			 'staysOpen': true
-			});
-	}
-	i += 1;
-}
-
-return JSON.stringify(items);]]>
-				</body>
-			</do>
-			<do access-modifier="private" name="ChangeColumnVisibility" display-name="ChangeColumnVisibility" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
-				<body kind="om">
-					<![CDATA[for (i: int4 = 0; i < View.Columns.Length; i += 1)
-{
-	if (View.Columns[i].Id == id)
-	{
-		View.Columns[i].Hidden = !View.Columns[i].Hidden;
-		pSaveConfig.Invoke();
-		break;
-	}
-}]]>
-				</body>
-				<param access-modifier="private" name="id" display-name="" uuid="7ab71300-a0d0-4b1e-95ea-d4fc821d345c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
-			</do>
 		</object>
 		<object access-modifier="private" name="TableModel_1" display-name="TableModel_1" uuid="5b0f4fbf-4f30-485c-b676-c38f24c1ad7f" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="5">
 			<designed target="Frozen" value="false" ver="5"/>
@@ -286,7 +227,7 @@ return JSON.stringify(items);]]>
 if (initialized)
 	return;
 
-// Номера колонок в модели и в таблице должны соответствовать и равны значениям констант Const.cn.*
+// Номера колонок в модели и в таблице должны соответствовать и равны значениям констант private.Columns.*
 TableModel_1.AddColumn("Advise",     "","","","string",false,true);
 TableModel_1.AddColumn("AxisColor",  "","","","uint4",false,true);
 TableModel_1.AddColumn("LineColor",  "","","","uint4",false,true);
@@ -497,6 +438,85 @@ else	pChart.Lines.SetSelect(0);]]>
 			</body>
 		</do-on>
 		<object access-modifier="private" name="initialized" display-name="initialized" uuid="fc70030d-38df-4bbf-bcf2-f11d830d84d7" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="ShowContextMenu" display-name="ShowContextMenu" uuid="b26f5b93-ab63-4063-9e82-6d14ae1b64a8" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+				<object access-modifier="private" uuid="1bbed998-379a-4aaa-9d4e-1e64c0614cb0" base-type="Menu" base-type-id="07bb4545-980a-4140-bbaa-4d1397447864" ver="5">
+					<init target="pResult" ver="5" ref="MenuResult"/>
+					<init target="pAction" ver="5" ref="OnMenuClick"/>
+					<init target="WindowX" ver="5">
+						<expr>
+							<![CDATA[mX]]>
+						</expr>
+					</init>
+					<init target="WindowY" ver="5">
+						<expr>
+							<![CDATA[mY]]>
+						</expr>
+					</init>
+					<init target="Items" ver="5">
+						<expr>
+							<![CDATA[GetMenuItems()]]>
+						</expr>
+					</init>
+					<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="mX" display-name="mX" uuid="43b2ab13-2434-4e31-924c-6a40182a817e" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<object access-modifier="private" name="mY" display-name="mY" uuid="83c5ee5c-034f-415a-a4fb-66f3c66660f8" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<object access-modifier="private" name="MenuResult" display-name="MenuResult" uuid="f6f639cf-7b71-4bfa-ba8e-e14d0c0d5480" base-type="MenuResult" base-type-id="0fe7658c-92f4-4af7-b038-3594414ac651" ver="5"/>
+			<object access-modifier="private" name="OnMenuClick" display-name="OnMenuClick" uuid="5f450b5b-d167-4fb1-9b16-8d82883461db" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[if (String.StartsWith(MenuResult.Id, "column_"))
+{
+	columnId: string = String.SubString(MenuResult.Id, 7);
+	ChangeColumnVisibility(columnId);
+}]]>
+					</body>
+				</do-on>
+			</object>
+			<do access-modifier="private" name="GetMenuItems" display-name="GetMenuItems" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+				<body kind="javascript">
+					<![CDATA[var items = [];
+
+var i = 0;
+while (i < View.Columns.Length)
+{
+	if (!private.SynchronizeColor.Value || i != private.Columns.CL_AXIS)
+	{
+		var column = View.Columns[i];
+		items.push({
+			 'id': "column_" + column.Id,
+			 'title': column.Title == "" ? column.Description : column.Title,
+			 'checked': !column.Hidden,
+			 'staysOpen': true
+			});
+	}
+	i += 1;
+}
+
+return JSON.stringify(items);]]>
+				</body>
+			</do>
+			<do access-modifier="private" name="ChangeColumnVisibility" display-name="ChangeColumnVisibility" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[for (i: int4 = 0; i < View.Columns.Length; i += 1)
+{
+	if (View.Columns[i].Id == id)
+	{
+		View.Columns[i].Hidden = !View.Columns[i].Hidden;
+		pOnViewChanged.Invoke();
+		break;
+	}
+}]]>
+				</body>
+				<param access-modifier="private" name="id" display-name="" uuid="05b9f9d3-125e-481f-bcbb-ca9498666310" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			</do>
+		</object>
 	</object>
 	<do access-modifier="private" name="Clear" display-name="Clear" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 		<body kind="om">
@@ -509,23 +529,13 @@ if (rowCount > 0)
 	</do>
 	<do access-modifier="private" name="Update" display-name="Update" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 		<body kind="om">
-			<![CDATA[if (Timer_RefreshTimeOut.Active)
-{
-	// Если легенду уже недавно обновляли, то запоминаем запрос, чтобы выполнить обновление через таймаут
-	bRequestRefresh = true;
-	return;
-}
-Timer_RefreshTimeOut.Active = true;  // активируем таймаут до следующего вызова обновления легенды
-
+			<![CDATA[//Debug.Log("Update legend rows");
 View.Initialize();
 
 LinesCount:int4 = 0;			// для подсчета графиков
 RowCount0:int4 = View.TableModel_1.GetRowCount(); // Запоминаем начальное количество строк в таблице
 
-vv:variant;
-vs:string;
 i:int4 = 1;
-nAxis:int4;
 while (i <= unit.Const.MAX_LINES)		// перебираем графики
 {
 		//Для оперативного режима ВЫводим строки только с основным режимом времени, в историческом режиме выводим все строки
@@ -538,53 +548,13 @@ while (i <= unit.Const.MAX_LINES)		// перебираем графики
 		LinesCount += 1; // увеличиваем счетчик графиков
 		if (View.TableModel_1.GetRowCount() < LinesCount)
 			View.TableModel_1.AddRow();	 // если строк не хватает добавляем
-
-		adviseSymbol: string;
-		if (pChart.Params.Lines[i].TypeGraph == unit.Const.tgFILE_GRAPH)
-			adviseSymbol = "f";
-		else if (pChart.Line[i].ApItem.AdviseState == unit.Const.stNOADVISED)
-			adviseSymbol = "!";
-		else adviseSymbol = "";
-		View.TableModel_1.SetCellData(LinesCount-1, unit.Const.cn.ADVISE, adviseSymbol);
-
-		if (ShowRelativeTag.Value && pChart.Params.Lines[i].RelationTag != "")
-			View.TableModel_1.SetCellData(LinesCount-1, unit.Const.cn.TAG, pChart.Params.Lines[i].RelationTag);
-		else View.TableModel_1.SetCellData(LinesCount-1, unit.Const.cn.TAG, pChart.Params.Lines[i].Tag);
-		if (pChart.Params.Lines[i].Tag == "")
-			View.TableModel_1.SetCellData(LinesCount-1, unit.Const.cn.TAG, pChart.Params.Lines[i].FileName);
-		View.TableModel_1.SetCellData(LinesCount-1, unit.Const.cn.DESCRIPTION, pChart.Params.Lines[i].Description);	
-		vs = pChart.Params.Lines[i].AltUnit!="" ? pChart.Params.Lines[i].AltUnit : pChart.Params.Lines[i].Unit;
-		View.TableModel_1.SetCellData(LinesCount-1, unit.Const.cn.EU, vs);
-		
-		// маркер точек
-		pointSymbol:string = pChart.Params.Lines[i].PointSymbol;
-		if (pointSymbol == "") pointSymbol = "●"; // символ по умолчанию
-		View.TableModel_1.SetCellData(LinesCount-1, unit.Const.cn.MARKER, pointSymbol);
-		
-		// стиль линии
-		lineStyle: string = unit.Const.lst.GetName(pChart.Params.Lines[i].StyleGood);
-		View.TableModel_1.SetCellData(LinesCount-1, unit.Const.cn.LINE_STYLE, lineStyle);
-
-		interpolation_mode:string = pChart.Params.Lines[i].Interpolation ? "линии" : "ступеньки";
-		View.TableModel_1.SetCellData(LinesCount-1, unit.Const.cn.INTERPOLATION, interpolation_mode);
-		nAxis = pChart.Params.Lines[i].numAxis;	// номер оси к которой привязан график
-		if (pChart.ActiveMode == unit.Const.amOPERATIVE)		// Для оперативного режима		
-		{		
-			vv = Variant.FromUint4(pChart.Params.Axis[nAxis].ColorY);  
-			View.TableModel_1.SetCellData(LinesCount-1, unit.Const.cn.CL_AXIS, vv);		// Цвет оси
-			vv = Variant.FromUint4(pChart.Params.Lines[i].ColorMain);  
-			View.TableModel_1.SetCellData(LinesCount-1, unit.Const.cn.CL_LINE, vv);		// Цвет линии
-		}
-		else									// Для исторического режима
-		{									
-			vv = Variant.FromUint4(pChart.Params.Axis[nAxis].ColorY); 
-			View.TableModel_1.SetCellData(LinesCount-1 ,unit.Const.cn.CL_AXIS, vv);		// Цвет оси
-			vv = Variant.FromUint4(pChart.Params.Lines[i].ColorMain);
-			View.TableModel_1.SetCellData(LinesCount-1, unit.Const.cn.CL_LINE, vv);		// Цвет 
-		}
 		
 		iItemInLegend[LinesCount - 1] = i;	// Запоминаем индекс графика для строки легенды
 		nRowInLegend[i] = LinesCount - 1;	// Запоминаем строку легенды для графика
+		
+		UpdateItem(i);
+		UpdateItemVQT(i);
+		UpdateItemMinMaxSize(i);
 	}
 	else
 	{
@@ -592,213 +562,236 @@ while (i <= unit.Const.MAX_LINES)		// перебираем графики
 	}
 	i += 1;
 }
-UpdateValues();
 
 while (View.TableModel_1.GetRowCount() > LinesCount)
 {
 	View.TableModel_1.RemoveRow(View.TableModel_1.GetRowCount()-1);
 }
 
-rowSelected: int4 = nRowInLegend[pChart.SelectedItem];
-if (rowSelected >= 0)
-	View.SetSelectedRows("["+Str.ToString(rowSelected)+"]");
-else
-	View.SetSelectedRows("[]");
+SelectItem(pChart.SelectedItem);
 
 if (RowCount0 != View.TableModel_1.GetRowCount()) // Если количество строк изменилось
 	pOnRowsChanged.Invoke();]]>
 		</body>
 	</do>
-	<do access-modifier="private" name="UpdateValues" display-name="UpdateValues" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+	<do access-modifier="private" name="UpdateItem" display-name="UpdateItem" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 		<body kind="om">
-			<![CDATA[//Debug.Log("Legend.UpdateValues");
-View.Initialize();
-
-empty: variant;
-rowCount: int4 = View.TableModel.GetRowCount();
-
-i: int4 = 1;
-while (i < pChart.Line.Length)
+			<![CDATA[row: int4 = nRowInLegend[line];
+if (row >= 0 && row < View.TableModel.GetRowCount())		
 {
-	nRow: int4 = nRowInLegend[i];
-	if (nRow >= 0 && nRow < rowCount)		
-	{
-		nChart: int4 = pChart.Params.Lines[i].nChart;
-		activeReper: int4 = pChart.Repers.iActive;
-		if (activeReper > 0)
-		{
-			vv: variant = pChart.Chart[nChart].ControlLine[activeReper].CrossPoint[i].GetValue(unit.Const.cpVALUE);
-			vq: uint4 = Variant.ToUint4(pChart.Chart[nChart].ControlLine[activeReper].CrossPoint[i].GetValue(unit.Const.cpQUALITY), 0);
-			vt: uint8 = Variant.ToUint8(pChart.Chart[nChart].ControlLine[activeReper].Value, 0);
- 			SetVQT(nRow, vv, vq, vt, pChart.Params.Lines[i].nXColumn);
-		}
-		else
-		{
-			if (pChart.ActiveMode == unit.Const.amOPERATIVE && pChart.ShowRedLine)
-			{
-				recalcValue:variant = pChart.Line[i].ApItem.Value;
-				if (!Variant.IsEmpty(recalcValue) && !Variant.IsBool(recalcValue) && !Variant.IsString(recalcValue))
-				{
-					recalcValue *= pChart.Params.Lines[i].Ratio;
-					recalcValue += pChart.Params.Lines[i].Offset;
-				}	
-				SetVQT(nRow, recalcValue, pChart.Line[i].ApItem.Quality, pChart.Line[i].ApItem.TimeStamp, unit.Const.tmSOURCE);
-			}
-			else
-			{
-				View.TableModel.SetCellData(nRow, unit.Const.cn.VALUE, empty);
-				View.TableModel.SetCellData(nRow, unit.Const.cn.TIME, 	empty);
-				View.TableModel.SetCellData(nRow, unit.Const.cn.QUALITY, empty);
-			}
-		}
+	adviseSymbol: string;
+	if (pChart.Params.Lines[line].TypeGraph == unit.Const.tgFILE_GRAPH)
+		adviseSymbol = "f";
+	else if (pChart.Line[line].ApItem.AdviseState == unit.Const.stNOADVISED)
+		adviseSymbol = "!";
+	else adviseSymbol = "";
+	View.TableModel_1.SetCellData(row, private.Columns.ADVISE, adviseSymbol);
 
-		if (pChart.Line[i].DataSource_1.Size > 0)
-		{
-			minY: string = pChart.private.VariantToString(pChart.Line[i].GetMinY(), pChart.YAxisPrecision);
-			maxY: string = pChart.private.VariantToString(pChart.Line[i].GetMaxY(), pChart.YAxisPrecision);
-			View.TableModel.SetCellData(nRow, unit.Const.cn.MINIMUM, minY);
-			View.TableModel.SetCellData(nRow, unit.Const.cn.MAXIMUM, maxY);
-		}
-		else
-		{
-			View.TableModel.SetCellData(nRow, unit.Const.cn.MINIMUM, "");
-			View.TableModel.SetCellData(nRow, unit.Const.cn.MAXIMUM, "");
-		}
+	if (ShowRelativeTag.Value && pChart.Params.Lines[line].RelationTag != "")
+		View.TableModel_1.SetCellData(row, private.Columns.TAG, pChart.Params.Lines[line].RelationTag);
+	else View.TableModel_1.SetCellData(row, private.Columns.TAG, pChart.Params.Lines[line].Tag);
+	if (pChart.Params.Lines[line].Tag == "")
+		View.TableModel_1.SetCellData(row, private.Columns.TAG, pChart.Params.Lines[line].FileName);
+	View.TableModel_1.SetCellData(row, private.Columns.DESCRIPTION, pChart.Params.Lines[line].Description);	
 
-		View.TableModel.SetCellData(nRow, unit.Const.cn.QUANTITY, pChart.Line[i].DataSource_1.Size);
-	}
-	i += 1;
-}
-]]>
-		</body>
-	</do>
-	<do access-modifier="private" name="SetVQT" display-name="SetVQT" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
-		<body kind="om">
-			<![CDATA[View.Initialize();
-
-if (row >= 0 && row < View.TableModel.GetRowCount())
-{
-	// значение
-	if (Variant.IsEmpty(value))
-		View.TableModel.SetCellData(row, unit.Const.cn.VALUE, "");
-	else View.TableModel.SetCellData(row, unit.Const.cn.VALUE, pChart.private.VariantToString(value, pChart.YAxisPrecision));
+	// едины измерения	
+	eUnit: string = pChart.Params.Lines[line].AltUnit != "" ? pChart.Params.Lines[line].AltUnit : pChart.Params.Lines[line].Unit;
+	View.TableModel_1.SetCellData(row, private.Columns.EU, eUnit);
 	
-	// качество
-	View.TableModel.SetCellData(row, unit.Const.cn.QUALITY, quality);
-		
-	// метка времени
-	format: string = ShowMilliseconds ? "%d.%m.%Y %H:%M:%S.%f" : "%d.%m.%Y %H:%M:%S";
-	if (pChart.UseServerTime)
-		format += nXColumn == unit.Const.tmSOURCE ? " (Источника)" : " (Сервера)";
-	timeStr: string = DateTime.ToString(DateTime.ToLocal(timestamp), format);	
-	View.TableModel.SetCellData(row, unit.Const.cn.TIME, timeStr);
+	// маркер точек
+	pointSymbol: string = pChart.Params.Lines[line].PointSymbol;
+	if (pointSymbol == "") pointSymbol = "●"; // символ по умолчанию
+	View.TableModel_1.SetCellData(row, private.Columns.MARKER, pointSymbol);
+	
+	// стиль линии
+	lineStyle: string = unit.Const.lst.GetName(pChart.Params.Lines[line].StyleGood);
+	View.TableModel_1.SetCellData(row, private.Columns.LINE_STYLE, lineStyle);
+
+	// интерполяция
+	interpolation_mode: string = pChart.Params.Lines[line].Interpolation ? "линии" : "ступеньки";
+	View.TableModel_1.SetCellData(row, private.Columns.INTERPOLATION, interpolation_mode);
+
+	// Цвет оси и линии
+	nAxis: int4 = pChart.Params.Lines[line].numAxis;	// номер оси к которой привязан график
+	View.TableModel_1.SetCellData(row, private.Columns.CL_AXIS, pChart.Params.Axis[nAxis].ColorY);
+	View.TableModel_1.SetCellData(row, private.Columns.CL_LINE, pChart.Params.Lines[line].ColorMain);
 }]]>
 		</body>
-		<param access-modifier="private" name="row" display-name="" uuid="8b3e4c7b-2f06-41fe-924a-2e6071849a1b" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
-		<param access-modifier="private" name="value" display-name="" uuid="2a0c51c8-3a00-4de1-afd8-f34eff76a3ad" base-type="variant" base-type-id="7d3322c1-a2cf-4732-a957-abd69e3e4b7a" ver="5"/>
-		<param access-modifier="private" name="quality" display-name="" uuid="5ee01bf1-3f4f-40c6-a396-963386772ad8" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
-		<param access-modifier="private" name="timestamp" display-name="" uuid="dfe5f4af-fc03-4541-ae5f-635cdc39b034" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5"/>
-		<param access-modifier="private" name="nXColumn" display-name="" uuid="2a8b44c3-d3ee-4ea9-906d-c750f59908d1" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<param access-modifier="private" name="line" display-name="" uuid="8479c613-4c65-47f7-a4d9-7e0faf60cfb9" base-type="int8" base-type-id="1f8f5a02-c52c-4260-90d1-e3b1b93b3949" ver="5"/>
+	</do>
+	<do access-modifier="private" name="SelectItem" display-name="SelectItem" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[row: int4 = nRowInLegend[line];
+if (row >= 0 && row < View.TableModel.GetRowCount())		
+	View.SetSelectedRows("[" + String.ToString(row) + "]");
+else View.SetSelectedRows("[]");]]>
+		</body>
+		<param access-modifier="private" name="line" display-name="" uuid="e530c863-c9be-4f04-b788-e69e71c4945e" base-type="int8" base-type-id="1f8f5a02-c52c-4260-90d1-e3b1b93b3949" ver="5"/>
+	</do>
+	<do access-modifier="private" name="UpdateVQT" display-name="UpdateVQT" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[View.Initialize();
+//Debug.Log("Update VQT on legend");
+
+for (i: int4; i < pChart.Line.Length; i += 1)
+{
+	if (pChart.Params.Lines[i].Used)
+		UpdateItemVQT(i);
+}]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="UpdateItemVQT" display-name="UpdateItemVQT" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[empty: variant;
+row: int4 = nRowInLegend[line];
+if (row >= 0 && row < View.TableModel.GetRowCount())		
+{	
+	activeReper: int4 = pChart.Repers.iActive;
+	if (activeReper > 0)
+	{
+		nChart: int4 = pChart.Params.Lines[line].nChart;
+		value: variant = pChart.Chart[nChart].ControlLine[activeReper].CrossPoint[line].GetValue(unit.Const.cpVALUE);
+		quality: uint4 = Variant.ToUint4(pChart.Chart[nChart].ControlLine[activeReper].CrossPoint[line].GetValue(unit.Const.cpQUALITY), 0);
+		timestamp: uint8 = Variant.ToUint8(pChart.Chart[nChart].ControlLine[activeReper].Value, 0);
+		private.SetVQT(row, value, quality, timestamp, pChart.Params.Lines[line].nXColumn);
+		//Debug.Log("Set VQT for active reper");
+	}
+	else
+	{
+		if (pChart.ActiveMode == unit.Const.amOPERATIVE && pChart.ShowRedLine)
+		{
+			recalcValue: variant = pChart.Line[line].ApItem.Value;
+			if (!Variant.IsEmpty(recalcValue) && !Variant.IsBool(recalcValue) && !Variant.IsString(recalcValue))
+			{
+				recalcValue *= pChart.Params.Lines[line].Ratio;
+				recalcValue += pChart.Params.Lines[line].Offset;
+			}	
+			private.SetVQT(row, recalcValue, pChart.Line[line].ApItem.Quality, pChart.Line[line].ApItem.TimeStamp, unit.Const.tmSOURCE);
+			//Debug.Log("Set VQT as current value: " + pChart.Line[line].ApItem.ValueAsString);
+		}
+		else
+		{
+			View.TableModel.SetCellData(row, private.Columns.VALUE, empty);
+			View.TableModel.SetCellData(row, private.Columns.TIME, empty);
+			View.TableModel.SetCellData(row, private.Columns.QUALITY, empty);
+			//Debug.Log("Clear VQT without active reper and redline");
+		}
+	}
+}]]>
+		</body>
+		<param access-modifier="private" name="line" display-name="" uuid="6d7f11fc-a41c-49d0-9b0b-a855099ee02a" base-type="int8" base-type-id="1f8f5a02-c52c-4260-90d1-e3b1b93b3949" ver="5"/>
+	</do>
+	<do access-modifier="private" name="UpdateMinMaxSize" display-name="UpdateMinMaxSize" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[View.Initialize();
+//Debug.Log("Update Min, Max and Quantity on legend");
+
+for (i: int4; i < pChart.Line.Length; i += 1)
+{
+	if (pChart.Params.Lines[i].Used)
+		UpdateItemMinMaxSize(i);
+}]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="UpdateItemMinMaxSize" display-name="UpdateItemMinMaxSize" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[row: int4 = nRowInLegend[line];
+if (row >= 0 && row < View.TableModel.GetRowCount())		
+{
+	if (pChart.Line[line].DataSource_1.Size > 0)
+	{
+		minY: string = pChart.private.VariantToString(pChart.Line[line].GetMinY(), pChart.YAxisPrecision);
+		maxY: string = pChart.private.VariantToString(pChart.Line[line].GetMaxY(), pChart.YAxisPrecision);
+		View.TableModel.SetCellData(row, private.Columns.MINIMUM, minY);
+		View.TableModel.SetCellData(row, private.Columns.MAXIMUM, maxY);
+	}
+	else
+	{
+		View.TableModel.SetCellData(row, private.Columns.MINIMUM, "");
+		View.TableModel.SetCellData(row, private.Columns.MAXIMUM, "");
+	}
+	
+	size: uint8 = pChart.Line[line].DataSource_1.Size;
+	View.TableModel.SetCellData(row, private.Columns.QUANTITY, size);
+}]]>
+		</body>
+		<param access-modifier="private" name="line" display-name="" uuid="9e5e33ed-9ccc-4f4c-89ee-e34a720d39b7" base-type="int8" base-type-id="1f8f5a02-c52c-4260-90d1-e3b1b93b3949" ver="5"/>
 	</do>
 	<object access-modifier="private" name="pChart" display-name="pChart" uuid="da6ea230-56f3-463f-bb00-15d0370488da" base-type="Trends_Chart" base-type-id="659f73ba-7fa5-4aa4-ac4d-623541275829" base-const="true" base-ref="true" ver="5" description=""/>
 	<object access-modifier="private" name="iItemInLegend" display-name="iItemInLegend" uuid="05174ebb-ba63-4abe-8147-eb0b7009bdb5" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" cardinal="30"/>
 	<object access-modifier="private" name="nRowInLegend" display-name="nRowInLegend" uuid="61d54c5c-f3fe-4f2e-a07c-ff2b61925aa5" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" cardinal="31"/>
-	<object access-modifier="private" name="pSaveConfig" display-name="pSaveConfig" uuid="7e82afe4-0bc0-4921-9698-242f9b1a56d6" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-сonst="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="pOnViewChanged" display-name="pOnViewChanged" uuid="7e82afe4-0bc0-4921-9698-242f9b1a56d6" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-сonst="true" base-ref="true" ver="5"/>
 	<object access-modifier="private" name="pOnRowsChanged" display-name="pOnRowsChanged" uuid="36f3768e-24fb-4e31-ac86-69e0b8e81e6a" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-сonst="true" base-ref="true" ver="5"/>
-	<do access-modifier="private" name="SaveSettings" display-name="SaveSettings" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
-		<param access-modifier="private" name="folder" display-name="" uuid="ad64623c-7663-4c0b-89e4-6f9f80d7cd15" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	<do access-modifier="private" name="GetViewSettings" display-name="GetViewSettings" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
 		<body kind="javascript">
-			<![CDATA[var filePath = Files.CombinePath(folder, "legend.json"); 
-//log("Сохранение настроек легенды в файл "  + filePath);
-try
-{
-	var settings = {
-		"Columns" : {}
+			<![CDATA[View.Initialize();
+
+var settings = {
+	"Columns" : {}
+};
+
+for (var i = 0; i < View.Columns.Length; i++)
+{		
+	var column = View.Columns[i];
+
+	var columnInfo = {
+		"Index": column.Index,
+		"Width": column.Width
 	};
 
-	View.Initialize();
-	for (var i = 0; i < View.Columns.Length; i++)
-	{		
-		var column = View.Columns[i];
-	
-		var columnInfo = {
-			"Index": column.Index,
-			"Width": column.Width
-		};
-	
-		if (column.Hidden)
-			columnInfo.Hidden = true;
-	
-		if (column.SortingEnabled != false)
-		{
-			columnInfo.SortOrder = column.SortOrder;
-			columnInfo.SortPriority = column.SortPriority;
-		}
-	
-		settings.Columns[column.Id] = columnInfo;
+	if (column.Hidden)
+		columnInfo.Hidden = true;
+
+	if (column.SortingEnabled != false)
+	{
+		columnInfo.SortOrder = column.SortOrder;
+		columnInfo.SortPriority = column.SortPriority;
 	}
 
-	Files.WriteTextFile(filePath, JSON.stringify(settings, null, 2));
+	settings.Columns[column.Id] = columnInfo;
 }
-catch(err)
-{
-	log("Не удалось сохранить настройки легенды в "  + filePath + "\n" + err.message);
-}]]>
+
+return JSON.stringify(settings, null, 2);]]>
 		</body>
 	</do>
-	<do access-modifier="private" name="LoadSettings" display-name="LoadSettings" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+	<do access-modifier="private" name="UpdateView" display-name="UpdateView" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 		<body kind="javascript">
-			<![CDATA[var filePath = Files.CombinePath(folder, "legend.json"); 
-if (Files.Exists(filePath))
+			<![CDATA[var settings = JSON.parse(json);
+
+if (settings.Columns != undefined)
 {
-	//log("Загрузка настроек легенды из файла "  + filePath);
-	try
+	View.Initialize();
+
+	for (var i = 0; i < View.Columns.Length; i++)
 	{
-		var json = Files.ReadTextFile(filePath);
-		
-		var settings = JSON.parse(json);
-		if (settings.Columns != undefined)
+		var column = View.Columns[i];
+
+		var columnInfo = settings.Columns[column.Id];
+		if (columnInfo != undefined)
 		{
-			View.Initialize();
-			for (var i = 0; i < View.Columns.Length; i++)
+			var columnWidth = columnInfo.Width;
+			if (columnWidth > 0) // ширину столбца изменяем, только если она больше 0
+				column.Width = columnWidth;
+
+			if (private.SynchronizeColor.Value && i == private.Columns.CL_AXIS)
+				column.Hidden = true;
+			else column.Hidden = columnInfo.Hidden == true;
+
+			column.SortingEnabled = columnInfo.SortOrder != undefined;
+			if (column.SortingEnabled)
 			{
-				var column = View.Columns[i];
-		
-				var columnInfo = settings.Columns[column.Id];
-				if (columnInfo != undefined)
-				{
-					var columnWidth = columnInfo.Width;
-					if (columnWidth > 0) // ширину столбца изменяем, только если она больше 0
-						column.Width = columnWidth;
-		
-					if (private.SynchronizeColor.Value && i == unit.Const.cn.CL_AXIS)
-						column.Hidden = true;
-					else column.Hidden = columnInfo.Hidden == true;
-		
-					column.SortingEnabled = columnInfo.SortOrder != undefined;
-					if (column.SortingEnabled)
-					{
-						column.SortOrder = columnInfo.SortOrder;
-						column.SortPriority = columnInfo.SortPriority;
-					}
-				}
+				column.SortOrder = columnInfo.SortOrder;
+				column.SortPriority = columnInfo.SortPriority;
 			}
 		}
 	}
-	catch(err)
-	{
-		log("Не удалось загрузить настройки легенды из "  + filePath + "\n" + err.message);
-		return false;
-	}
-}
-
-return true;]]>
+}]]>
 		</body>
-		<param access-modifier="private" name="folder" display-name="" uuid="3fb3a75a-009d-45eb-9c5a-1cb617f7327b" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="json" display-name="" uuid="3fb3a75a-009d-45eb-9c5a-1cb617f7327b" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 	</do>
+	<object access-modifier="private" name="pOnDoubleClick" display-name="pOnDoubleClick" uuid="ada502e8-a72f-4a65-9a4d-cf0e67dd670c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
 	<object access-modifier="private" name="pOnMouseRightRelease" display-name="pOnMouseRightRelease" uuid="9370bad8-4ad4-471d-a609-3ad94658962f" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-сonst="true" base-ref="true" ver="5"/>
 	<object access-modifier="private" name="ShowRelativeTag" display-name="Показывать относительный тег" uuid="13f42770-5e16-40d8-931c-d2dd347139f8" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
-	<object access-modifier="private" name="ShowFullDescription" display-name="Показывать полное описание" uuid="f6e58262-b31a-456e-aa88-af757fa2acec" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
 	<object access-modifier="private" name="ShowMilliseconds" display-name="Показывать миллисекунды" uuid="a57193b3-9dfc-4dd5-853f-ad888481c549" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
 	<designed target="Flip" value="0" ver="5"/>
 	<param access-modifier="private" name="init_Theme" display-name="Тема оформления" uuid="aceb0bb2-bc06-44a5-9018-fba9fb89ac8f" base-type="Trends_Theme" base-type-id="3fbfa4c2-c742-4bec-94dc-d1bcb7ef25b6" base-const="true" base-ref="true" ver="5"/>

@@ -431,27 +431,11 @@ TableFilling(); //Считываем параметры сортировки и 
 ]]>
 		</body>
 	</do-on>
-	<object access-modifier="private" name="Alarms_1" display-name="Alarms_1" uuid="0e74bc7d-34c2-453c-9342-1730c4df2a2e" base-type="Alarms_Table" base-type-id="521d4d69-1b32-4210-ae17-099df1125e3c" base-const="true" base-ref="true" ver="2"/>
 	<do access-modifier="private" name="TableFilling" display-name="TableFilling" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 		<body kind="javascript">
 			<![CDATA[//Функция заполнения таблицы сортировки
 var matchCount = 0;
-var Column=[];
 tableFull = false; //Проверка заполненности таблицы
-
-//Если таблица в оперативном режиме, то берем ее параметры, если нет - берем параметры исторической таблицы
-if (Alarms_1.ActiveMode == 0)
-{
-	for (let i = 0; i < Alarms_1.Main_tables_Operative.Table_Operative_mode.Columns.Length; i++)
-		if (Alarms_1.Main_tables_Operative.Table_Operative_mode.Columns[i].Title != "-")//cheat1
-			Column.push(Alarms_1.Main_tables_Operative.Table_Operative_mode.Columns[i]);
-}
-else
-{
-	for (let i = 0; i < Alarms_1.Main_tables_Historical.Table_History_mode.Columns.Length; i++)
-		if (Alarms_1.Main_tables_Historical.Table_History_mode.Columns[i].Title != "-")//cheat1
-			Column.push(Alarms_1.Main_tables_Historical.Table_History_mode.Columns[i]);
-}
 
 TempTable_1.AddColumn("Use", "", "", "", "bool", false, true);
 TempTable_1.AddColumn("Field", "", "", "", "string", false, true);
@@ -459,22 +443,26 @@ TempTable_1.AddColumn("Direction", "", "", "", "string", false, true);
 Table_1.TableModel.AddColumn("Priority", "", "", "", "string", false, true);
 Table_1.TableModel.AddColumn("Field", "", "", "", "string", false, true);
 Table_1.TableModel.AddColumn("Direction", "", "", "", "string", false, true);
-for (let i = 0; i < Column.length; i++)
+
+var n=-1;
+for (let i = 0; i < pConfig.TableView.Columns.Length; i++)
+if (pConfig.TableView.Columns[i].guiFlag)
 {
+	n++;
 	//Заполняем промежуточную таблицу
 	TempTable_1.AddRow();
-	TempTable_1.SetCellData(i,0,Column[i].SortingEnabled);
-	TempTable_1.SetCellData(i,1,Column[i].Title);
-	if (Column[i].SortOrder == 0 || !Column[i].SortingEnabled) TempTable_1.SetCellData(i,2,"По возрастанию (от А до Я)");
-	else TempTable_1.SetCellData(i,2,"По убыванию (от Я до А)");
+	TempTable_1.SetCellData(n,0,pConfig.TableView.Columns[i].SortingEnabled);
+	TempTable_1.SetCellData(n,1,pConfig.TableView.Columns[i].Title);
+	if (pConfig.TableView.Columns[i].SortOrder == 0 || !pConfig.TableView.Columns[i].SortingEnabled) TempTable_1.SetCellData(n,2,"По возрастанию (от А до Я)");
+	else TempTable_1.SetCellData(n,2,"По убыванию (от Я до А)");
 
 	//Выводим параметры сортировки в видимую таблицу, если они есть
-	if (Column[i].SortingEnabled)
+	if (pConfig.TableView.Columns[i].SortingEnabled)
 	{
 		Table_1.TableModel.AddRow();
-		Table_1.TableModel.SetCellData(Table_1.TableModel.GetRowCount()-1, 0, Column[i].SortPriority);
-		Table_1.TableModel.SetCellData(Table_1.TableModel.GetRowCount()-1, 1, Column[i].Title);
-		if (Column[i].SortOrder == 0) Table_1.TableModel.SetCellData(Table_1.TableModel.GetRowCount()-1, 2,"По возрастанию (от А до Я)");
+		Table_1.TableModel.SetCellData(Table_1.TableModel.GetRowCount()-1, 0, pConfig.TableView.Columns[i].SortPriority);
+		Table_1.TableModel.SetCellData(Table_1.TableModel.GetRowCount()-1, 1, pConfig.TableView.Columns[i].Title);
+		if (pConfig.TableView.Columns[i].SortOrder == 0) Table_1.TableModel.SetCellData(Table_1.TableModel.GetRowCount()-1, 2,"По возрастанию (от А до Я)");
 		else Table_1.TableModel.SetCellData(Table_1.TableModel.GetRowCount()-1, 2,"По убыванию (от Я до А)");
 	}
 }
@@ -528,8 +516,6 @@ for (let i = 0; i < TempTable_1.GetRowCount(); i++)
 		}
 	}
 }
-
-
 ]]>
 		</body>
 	</do>
@@ -545,37 +531,20 @@ if (vi==75) Close();
 	<designed target="Opacity" value="1" ver="3"/>
 	<do access-modifier="private" name="ApplySort" display-name="ApplySort" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 		<body kind="javascript">
-			<![CDATA[var Column=[];
-var table;
-var sortArray = [];
-
-//Если таблица в оперативном режиме, то берем ее параметры, если нет - берем параметры исторической таблицы
-if (Alarms_1.ActiveMode == 0)
-{
-	for (let i = 0; i < Alarms_1.Main_tables_Operative.Table_Operative_mode.Columns.Length; i++)
-		if (Alarms_1.Main_tables_Operative.Table_Operative_mode.Columns[i].Title != "-")//cheat1
-			Column.push(Alarms_1.Main_tables_Operative.Table_Operative_mode.Columns[i]);
-	table = Alarms_1.Main_tables_Operative.Table_Operative_mode;
-}
-else
-{
-	for (let i = 0; i < Alarms_1.Main_tables_Historical.Table_History_mode.Columns.Length; i++)
-		if (Alarms_1.Main_tables_Historical.Table_History_mode.Columns[i].Title != "-")//cheat1
-			Column.push(Alarms_1.Main_tables_Historical.Table_History_mode.Columns[i]);
-	table = Alarms_1.Main_tables_Historical.Table_History_mode;
-}
+			<![CDATA[var sortArray = [];
 
 //Формирование массива с параметрами сортировки
 for (let i = 0; i < Table_1.TableModel.GetRowCount(); i++)
 {
-	for (let j = 0; j < Column.length; j++)
-		if (Column[j].Title == Table_1.TableModel.GetCellData(i,1)) var id = Column[j].Id;
+	for (let j = 0; j < pConfig.TableView.Columns.Length; j++)
+	if (pConfig.TableView.Columns[j].guiFlag)
+		if (pConfig.TableView.Columns[j].Title == Table_1.TableModel.GetCellData(i,1)) var id = pConfig.TableView.Columns[j].Id;
 	
 	var sortPriority = Table_1.TableModel.GetRowCount() - i;
 	var sortOrder = (Table_1.TableModel.GetCellData(i,2) == "По возрастанию (от А до Я)")?(0):(1)
 	sortArray.push({'Id':id, 'SortOrder': sortOrder, 'SortPriority':sortPriority});
 }
-Alarms_1.Main_panel.private.TableView.SetSorting(JSON.stringify(sortArray));]]>
+pConfig.TableView.SetSorting(JSON.stringify(sortArray));]]>
 		</body>
 	</do>
 	<object access-modifier="private" name="Table_1" display-name="Table_1" uuid="b13223bb-b814-46a2-9443-93dbb64aeccd" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="2">
@@ -961,5 +930,6 @@ Buttons.Button_Apply.Focus = true; //Переводим Focus на форму д
 ]]>
 		</body>
 	</do-on>
+	<object access-modifier="private" name="pConfig" display-name="pConfig" uuid="653cfee3-cf61-4c86-a66d-2f6e9045a09d" base-type="Alarms_Config" base-type-id="cac958c3-d08c-4b7b-8345-d70ccc130514" base-const="true" base-ref="true" ver="5" description=""/>
 </type>
 

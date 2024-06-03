@@ -32,7 +32,7 @@
 	<designed target="WindowCloseMode" value="0" ver="5"/>
 	<object access-modifier="private" name="private" display-name="private" uuid="d43f8670-8c2c-4cee-a671-4f5f1e83fb21" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
 		<object access-modifier="private" name="count" display-name="count" uuid="46dd13b0-610b-43ba-9aaa-f3f7de63c1f5" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5"/>
-		<object access-modifier="private" name="pResult" display-name="pResult" uuid="fbd9418f-9a8b-4a48-9017-e50069884ea9" base-type="ChangedRightsResult" base-type-id="3efb0823-a348-4b39-a762-64290867ccb6" base-const="true" base-ref="true" ver="5"/>
+		<object access-modifier="private" name="pResult" display-name="pResult" uuid="fbd9418f-9a8b-4a48-9017-e50069884ea9" base-type="ChangeRightResult" base-type-id="3efb0823-a348-4b39-a762-64290867ccb6" base-const="true" base-ref="true" ver="5"/>
 		<object access-modifier="private" name="pTheme" display-name="pTheme" uuid="8c5115c5-38f4-461a-893d-af6b0c0e9b2c" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
 		<init target="pTheme" ver="5" ref="init_Theme"/>
 		<init target="pResult" ver="5" ref="init_ChangedRightsResult"/>
@@ -265,7 +265,7 @@ else if (event.KeyCode == 75) // Escape
 			<![CDATA[private.pTheme.BackgroundColor]]>
 		</body>
 	</do-trace>
-	<param access-modifier="private" name="init_ChangedRightsResult" display-name="Результат" uuid="170fb57f-206c-4330-baa6-dcb4a4a4332a" base-type="ChangedRightsResult" base-type-id="3efb0823-a348-4b39-a762-64290867ccb6" base-const="true" base-ref="true" ver="5" description=""/>
+	<param access-modifier="private" name="init_ChangedRightsResult" display-name="Результат" uuid="170fb57f-206c-4330-baa6-dcb4a4a4332a" base-type="ChangeRightResult" base-type-id="3efb0823-a348-4b39-a762-64290867ccb6" base-const="true" base-ref="true" ver="5" description=""/>
 	<param access-modifier="private" name="init_Theme" display-name="Тема оформления" uuid="abca314a-fe9f-4cf3-bfc5-b38731911133" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
 </type>
 

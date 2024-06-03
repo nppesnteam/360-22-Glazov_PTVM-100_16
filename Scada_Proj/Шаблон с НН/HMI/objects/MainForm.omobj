@@ -1,4 +1,4 @@
-<type access-modifier="private" name="MainForm" display-name="MainForm" uuid="c9cad641-8960-46db-9523-43c92084d4a1" base-type="" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+<type access-modifier="private" name="MainForm" display-name="MainForm" uuid="c9cad641-8960-46db-9523-43c92084d4a1" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="Rotation" value="0" ver="5"/>
@@ -47,8 +47,8 @@
 		<designed target="PenColor" value="4278190080" ver="5"/>
 		<designed target="PenStyle" value="1" ver="5"/>
 		<designed target="PenWidth" value="1" ver="5"/>
-		<designed target="BrushColor" value="4278190080" ver="5"/>
-		<designed target="BrushStyle" value="0" ver="5"/>
+		<designed target="BrushColor" value="0xff4d4d4d" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
 		<designed target="OverrideScaling" value="false" ver="5"/>
 		<designed target="ShowScrollBars" value="true" ver="5"/>
 		<designed target="MoveByMouse" value="false" ver="5"/>
@@ -79,6 +79,32 @@
 		<designed target="OverrideScaling" value="false" ver="5"/>
 		<designed target="ShowScrollBars" value="true" ver="5"/>
 		<designed target="MoveByMouse" value="false" ver="5"/>
+		<object access-modifier="private" name="Alarms_1" display-name="Alarms_1" uuid="24b863d5-bb38-45ac-9f8e-36d5186d6ab1" base-type="Alarms" base-type-id="e8a9dba0-e07f-4bfe-95f9-b75887e3f21b" ver="5" description="" cardinal="1">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Width" value="1404" ver="5"/>
+			<designed target="Height" value="100" ver="5"/>
+			<do-trace access-modifier="private" target="IsFullAccessAllowed" ver="5">
+				<body>
+					<![CDATA[unit.Security.AllowSettingsChange.Value]]>
+				</body>
+			</do-trace>
+			<init target="ShowMilliseconds" ver="5" value="false"/>
+			<do-trace access-modifier="private" target="GUIModificationAvailable" ver="5">
+				<body>
+					<![CDATA[unit.Security.AllowSettingsChange.Value]]>
+				</body>
+			</do-trace>
+			<init target="NotAckOtherEvents" ver="5" value="true"/>
+			<init target="DisplayToolbar" ver="5" value="false"/>
+			<init target="ClearSoundQueryTag " ver="5" value="GVL.OutbReset"/>
+			<init target="DisplayStatePanel" ver="5" value="false"/>
+			<init target="DisplayToolbarAtStartup" ver="5" value="false"/>
+			<init target="DisplayStatePanelAtStartup" ver="5" value="false"/>
+			<init target="IsFullAccessAllowed" ver="5" value="false"/>
+			<init target="init_ApSource" ver="5" ref="unit.Connections.ApSource"/>
+		</object>
 		<object access-modifier="private" name="frameCurrentMainFrame" display-name="frameCurrentMainFrame" uuid="bbfd1447-763c-4f97-b820-10f2de42dfcc" base-type="Frame" base-type-id="71f78e19-ef99-4133-a029-2968b14f02b6" ver="5">
 			<designed target="X" value="0" ver="5"/>
 			<designed target="Y" value="100" ver="5"/>
@@ -111,10 +137,16 @@
 				<designed target="Tooltip" value="" ver="5"/>
 				<designed target="Width" value="690" ver="5"/>
 				<designed target="Height" value="20" ver="5"/>
-				<designed target="Text" value="Автозаводская ТЭЦ. Котел ПТВМ-100, ст. №1В" ver="5"/>
+				<designed target="Text" value="Автозаводская ТЭЦ. Котел ПТВМ-100, ст. №1В, ARM" ver="5"/>
 				<designed target="Font" value="Arial,12,-1,5,75,1,0,0,0,0,Полужирный Курсив" ver="5"/>
 				<designed target="FontColor" value="0xffffffff" ver="5"/>
 				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<init target="Text" ver="5">
+					<expr>
+						<![CDATA["Автозаводская ТЭЦ. Котел ПТВМ-100, ст. №1В, " + unit.Global.Network.ComputerName]]>
+					</expr>
+				</init>
 			</object>
 			<object access-modifier="private" name="txtWorkFrame" display-name="txtWorkFrame" uuid="a77e65d1-488c-460a-8432-7adf34e4e1ca" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
 				<designed target="X" value="1025" ver="5"/>
@@ -137,7 +169,9 @@
 						<![CDATA[unit.Global.ActiveMainFrame]]>
 					</body>
 				</do-trace>
+				<designed target="Flip" value="0" ver="5"/>
 			</object>
+			<designed target="Flip" value="0" ver="5"/>
 		</object>
 		<object access-modifier="private" name="frameTime" display-name="frameTime" uuid="44565e32-d113-450f-9b16-e972a2a760e3" base-type="Frame" base-type-id="71f78e19-ef99-4133-a029-2968b14f02b6" ver="5">
 			<designed target="X" value="1630" ver="5"/>
@@ -322,6 +356,7 @@
 					</do-trace>
 				</object>
 			</object>
+			<designed target="Flip" value="0" ver="5"/>
 		</object>
 		<object access-modifier="private" name="frameSettings" display-name="frameSettings" uuid="a7658e83-0cf1-4ea0-8e23-e7880a32acfd" base-type="Frame" base-type-id="71f78e19-ef99-4133-a029-2968b14f02b6" ver="5">
 			<designed target="X" value="1530" ver="5"/>
@@ -517,6 +552,7 @@
 					</body>
 				</do-trace>
 			</object>
+			<designed target="Flip" value="0" ver="5"/>
 		</object>
 		<object access-modifier="private" name="frameCurrentUser" display-name="frameCurrentUser" uuid="fc66d2ff-6993-481f-9121-a40ed0df5208" base-type="Frame" base-type-id="71f78e19-ef99-4133-a029-2968b14f02b6" ver="5">
 			<designed target="X" value="1720" ver="5"/>
@@ -560,6 +596,7 @@
 					</body>
 				</do-trace>
 			</object>
+			<designed target="Flip" value="0" ver="5"/>
 		</object>
 		<object access-modifier="private" name="Reset" display-name="Reset" uuid="f8f9ddbd-c05b-4011-aba1-d6feddb04de2" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
 			<designed target="X" value="1415" ver="5"/>
@@ -602,29 +639,31 @@
 			<designed target="DisabledPenColor" value="4288716960" ver="5"/>
 			<designed target="DisabledPenStyle" value="1" ver="5"/>
 			<designed target="DisabledPenWidth" value="1" ver="5"/>
-			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseRelease">
+			<designed target="Flip" value="0" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
 				<body kind="om">
-					<![CDATA[InReset=false;]]>
-				</body>
-			</do-on>
-			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
-				<body kind="om">
-					<![CDATA[InReset=true;]]>
-				</body>
-			</do-on>
-			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseLeave">
-				<body kind="om">
-					<![CDATA[InReset=false;]]>
+					<![CDATA[cmdReset.Invoke();
+Alarms_1.ClearSoundQueue();]]>
 				</body>
 			</do-on>
 		</object>
 		<object access-modifier="private" name="OutReset" display-name="OutReset" uuid="359c675d-5bd2-446e-b1ec-9c57e1aea7d3" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
 			<init target="Source" ver="5" ref="unit.Connections.ApSource"/>
-			<init target="Path" ver="5" value="ROOT.BOILER.OutReset"/>
+			<init target="Path" ver="5" value="GVL.OutbReset"/>
 		</object>
 		<object access-modifier="private" name="InReset" display-name="InReset" uuid="ccf1fb88-42d3-422a-9303-c3204cd783f6" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
 			<init target="Source" ver="5" ref="unit.Connections.ApSource"/>
-			<init target="Path" ver="5" value="ROOT.BOILER.InReset"/>
+			<init target="Path" ver="5" value="GVLInbReset"/>
+		</object>
+		<designed target="Flip" value="0" ver="5"/>
+		<object access-modifier="private" name="cmdReset" display-name="cmdReset" uuid="b7eef7db-4ea8-4f1a-bc64-af14bbc76776" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[InReset = true;]]>
+				</body>
+			</do-on>
 		</object>
 	</object>
 	<object access-modifier="private" name="RightPanel" display-name="RightPanel" uuid="c5ea021a-4e80-4443-9018-e9d4289b7414" base-type="Frame" base-type-id="71f78e19-ef99-4133-a029-2968b14f02b6" ver="5">
@@ -732,13 +771,13 @@
 						<init target="ChoosedRack" ver="5" value="1"/>
 					</object>
 				</do-on>
+				<designed target="Checked" value="false" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
 				<do-trace access-modifier="private" target="Enabled" ver="5">
 					<body>
 						<![CDATA[unit.Global.AuthOK]]>
 					</body>
 				</do-trace>
-				<designed target="Checked" value="false" ver="5"/>
-				<designed target="Flip" value="0" ver="5"/>
 			</object>
 			<object access-modifier="private" name="btnGasFrame" display-name="btnGasFrame" uuid="b23c531c-e52b-40af-b5a6-5a45ccd94302" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
 				<designed target="X" value="5" ver="5"/>
@@ -781,7 +820,7 @@
 				<designed target="DisabledPenStyle" value="1" ver="5"/>
 				<designed target="DisabledPenWidth" value="1" ver="5"/>
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick" form-by-id="false" frame-link="here.MainFrame" form-action="open-in-frame">
-					<object access-modifier="private" uuid="d437977b-fdd7-448c-9a4e-024011eea16c" base-type="Газ" base-type-id="f51061bd-0db8-43c4-a53c-77c2e4c09e04" ver="5">
+					<object access-modifier="private" uuid="d437977b-fdd7-448c-9a4e-024011eea16c" base-type="Общая мнемосхема" base-type-id="f51061bd-0db8-43c4-a53c-77c2e4c09e04" ver="5">
 						<designed target="WindowPosition" value="0" ver="5"/>
 						<init target="linkMain" ver="5" ref="here"/>
 					</object>
@@ -932,10 +971,10 @@ OpenTrendsWindow.Invoke();]]>
 				<designed target="BrushColor" value="0xffffffff" ver="5"/>
 				<designed target="BrushStyle" value="1" ver="5"/>
 			</object>
-			<object access-modifier="private" name="mX" display-name="mX" uuid="6224bdf2-5166-40ad-a001-a44fe2463c97" base-type="float4" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
-			<object access-modifier="private" name="mY" display-name="mY" uuid="3ba634af-bbba-4e4f-92f3-e33864ad4517" base-type="float4" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
-			<object access-modifier="private" name="posX" display-name="posX" uuid="202d3e8a-81c8-4c92-a8bc-f4ff19d65ce0" base-type="float4" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
-			<object access-modifier="private" name="posY" display-name="posY" uuid="c6f64f3e-34f1-4d25-b7cf-47191a24c381" base-type="float4" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+			<object access-modifier="private" name="mX" display-name="mX" uuid="6224bdf2-5166-40ad-a001-a44fe2463c97" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+			<object access-modifier="private" name="mY" display-name="mY" uuid="3ba634af-bbba-4e4f-92f3-e33864ad4517" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+			<object access-modifier="private" name="posX" display-name="posX" uuid="202d3e8a-81c8-4c92-a8bc-f4ff19d65ce0" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+			<object access-modifier="private" name="posY" display-name="posY" uuid="c6f64f3e-34f1-4d25-b7cf-47191a24c381" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
 			<object access-modifier="private" name="OpenTrendsWindow" display-name="OpenTrendsWindow" uuid="d24841dd-36e2-45d1-b365-ef596e4ee51f" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" cardinal="1">
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="InvokeTrigger" value="false" ver="5"/>
@@ -1047,19 +1086,21 @@ OpenTrendsWindow.Invoke();]]>
 					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
 						<body kind="om">
 							<![CDATA[unit.Global.OpenedGroup = Group;
-OpenGroup.Invoke();]]>
+unit.Global.ActiveMainFrame = "Растопочная группа №" + Str.ToString(Group);
+if (!unit.Global.isGroupOpened) OpenGroup.Invoke();]]>
 						</body>
 					</do-on>
+					<designed target="Checked" value="false" ver="5"/>
+					<designed target="Flip" value="0" ver="5"/>
 					<do-trace access-modifier="private" target="Enabled" ver="5">
 						<body>
 							<![CDATA[unit.Global.AuthOK]]>
 						</body>
 					</do-trace>
-					<designed target="Checked" value="false" ver="5"/>
-					<designed target="Flip" value="0" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Group" display-name="Group" uuid="635dab8a-e348-4faf-8d5b-6bb30a447b58" base-type="notifying_int1" base-type-id="cc2bf8ea-3898-4228-bc8f-71a7738f0c62" ver="5"/>
 				<init target="Group" ver="5" value="1"/>
+				<designed target="Flip" value="0" ver="5"/>
 			</object>
 			<object access-modifier="private" name="IgnitionGroup2" display-name="IgnitionGroup2" uuid="055a666e-4656-4eac-9784-d77ae45e6c4d" base-type="Frame" base-type-id="71f78e19-ef99-4133-a029-2968b14f02b6" ver="5">
 				<designed target="X" value="5" ver="5"/>
@@ -1125,7 +1166,8 @@ OpenGroup.Invoke();]]>
 					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
 						<body kind="om">
 							<![CDATA[unit.Global.OpenedGroup = Group;
-OpenGroup.Invoke();]]>
+unit.Global.ActiveMainFrame = "Растопочная группа №" + Str.ToString(Group);
+if (!unit.Global.isGroupOpened) OpenGroup.Invoke();]]>
 						</body>
 					</do-on>
 					<do-trace access-modifier="private" target="Enabled" ver="5">
@@ -1134,9 +1176,11 @@ OpenGroup.Invoke();]]>
 						</body>
 					</do-trace>
 					<designed target="Checked" value="false" ver="5"/>
+					<designed target="Flip" value="0" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Group" display-name="Group" uuid="9f967f6c-f92b-4711-963e-8fe6373e118b" base-type="notifying_int1" base-type-id="cc2bf8ea-3898-4228-bc8f-71a7738f0c62" ver="5"/>
 				<init target="Group" ver="5" value="2"/>
+				<designed target="Flip" value="0" ver="5"/>
 			</object>
 			<object access-modifier="private" name="IgnitionGroup3" display-name="IgnitionGroup3" uuid="33804266-2150-48bd-9b15-236aa0eefee3" base-type="Frame" base-type-id="71f78e19-ef99-4133-a029-2968b14f02b6" ver="5">
 				<designed target="X" value="5" ver="5"/>
@@ -1202,7 +1246,8 @@ OpenGroup.Invoke();]]>
 					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
 						<body kind="om">
 							<![CDATA[unit.Global.OpenedGroup = Group;
-OpenGroup.Invoke();]]>
+unit.Global.ActiveMainFrame = "Растопочная группа №" + Str.ToString(Group);
+if (!unit.Global.isGroupOpened) OpenGroup.Invoke();]]>
 						</body>
 					</do-on>
 					<do-trace access-modifier="private" target="Enabled" ver="5">
@@ -1211,9 +1256,11 @@ OpenGroup.Invoke();]]>
 						</body>
 					</do-trace>
 					<designed target="Checked" value="false" ver="5"/>
+					<designed target="Flip" value="0" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Group" display-name="Group" uuid="af0abda6-1ce8-468c-a0e7-61a330ae5d38" base-type="notifying_int1" base-type-id="cc2bf8ea-3898-4228-bc8f-71a7738f0c62" ver="5"/>
 				<init target="Group" ver="5" value="3"/>
+				<designed target="Flip" value="0" ver="5"/>
 			</object>
 			<object access-modifier="private" name="IgnitionGroup4" display-name="IgnitionGroup4" uuid="f165c9e8-d254-4c34-a1a2-454561023ca9" base-type="Frame" base-type-id="71f78e19-ef99-4133-a029-2968b14f02b6" ver="5">
 				<designed target="X" value="5" ver="5"/>
@@ -1279,7 +1326,8 @@ OpenGroup.Invoke();]]>
 					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
 						<body kind="om">
 							<![CDATA[unit.Global.OpenedGroup = Group;
-OpenGroup.Invoke();]]>
+unit.Global.ActiveMainFrame = "Растопочная группа №" + Str.ToString(Group);
+if (!unit.Global.isGroupOpened) OpenGroup.Invoke();]]>
 						</body>
 					</do-on>
 					<do-trace access-modifier="private" target="Enabled" ver="5">
@@ -1288,9 +1336,11 @@ OpenGroup.Invoke();]]>
 						</body>
 					</do-trace>
 					<designed target="Checked" value="false" ver="5"/>
+					<designed target="Flip" value="0" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Group" display-name="Group" uuid="50964cd6-d898-4c5d-ada4-9c9b7327a878" base-type="notifying_int1" base-type-id="cc2bf8ea-3898-4228-bc8f-71a7738f0c62" ver="5"/>
 				<init target="Group" ver="5" value="4"/>
+				<designed target="Flip" value="0" ver="5"/>
 			</object>
 			<object access-modifier="private" name="divider1" display-name="divider1" uuid="8048dec0-093a-4d42-8ab4-8bb3a0584978" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 				<designed target="X" value="5" ver="5"/>
@@ -1310,6 +1360,7 @@ OpenGroup.Invoke();]]>
 				<designed target="PenWidth" value="1" ver="5"/>
 				<designed target="BrushColor" value="0xffffffff" ver="5"/>
 				<designed target="BrushStyle" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
 			</object>
 			<object access-modifier="private" name="divider2" display-name="divider2" uuid="6a422162-4d42-4d24-99ac-344cc0bd7d06" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 				<designed target="X" value="5" ver="5"/>
@@ -1329,6 +1380,7 @@ OpenGroup.Invoke();]]>
 				<designed target="PenWidth" value="1" ver="5"/>
 				<designed target="BrushColor" value="0xffffffff" ver="5"/>
 				<designed target="BrushStyle" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
 			</object>
 			<object access-modifier="private" name="divider3" display-name="divider3" uuid="f2e8df16-b8ce-4aaf-a44b-9fe6009d97bc" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 				<designed target="X" value="5" ver="5"/>
@@ -1348,6 +1400,7 @@ OpenGroup.Invoke();]]>
 				<designed target="PenWidth" value="1" ver="5"/>
 				<designed target="BrushColor" value="0xffffffff" ver="5"/>
 				<designed target="BrushStyle" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
 			</object>
 			<object access-modifier="private" name="divider4" display-name="divider4" uuid="a8cc39a5-cb96-4baa-b710-4b65e18d83fc" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 				<designed target="X" value="5" ver="5"/>
@@ -1367,6 +1420,7 @@ OpenGroup.Invoke();]]>
 				<designed target="PenWidth" value="1" ver="5"/>
 				<designed target="BrushColor" value="0xffffffff" ver="5"/>
 				<designed target="BrushStyle" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
 			</object>
 			<object access-modifier="private" name="divider5" display-name="divider5" uuid="9ee352c4-caf6-457a-a3dc-91b508f704bc" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 				<designed target="X" value="5" ver="5"/>
@@ -1386,6 +1440,7 @@ OpenGroup.Invoke();]]>
 				<designed target="PenWidth" value="1" ver="5"/>
 				<designed target="BrushColor" value="0xffffffff" ver="5"/>
 				<designed target="BrushStyle" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
 			</object>
 			<designed target="Flip" value="0" ver="5"/>
 		</object>
@@ -1401,17 +1456,18 @@ OpenGroup.Invoke();]]>
 		</do-on>
 	</object>
 	<object access-modifier="private" name="TimeStamp" display-name="TimeStamp" uuid="bd6b9ce3-6202-4c33-88bf-72a9d81c5a99" base-type="notifying_timestamp" base-type-id="fb54ffc6-3bfa-4c71-8ae4-fc5d62558895" ver="5"/>
-	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Opened">
-		<body kind="om">
-			<![CDATA[unit.Security.SecurityContextHMI.Logout();
-TimeStamp = DateTime.Now();]]>
-		</body>
-	</do-on>
 	<object access-modifier="private" name="OpenGroup" display-name="OpenGroup" uuid="e6f7f532-b28f-44ea-9741-af42cbe2b0d3" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
 		<designed target="Enabled" value="true" ver="5"/>
 		<designed target="InvokeTrigger" value="false" ver="5"/>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" frame-link="MainFrame" form-action="open-in-frame" form-by-id="false">
-			<object access-modifier="private" uuid="7e94e084-e12e-45ad-a190-4dd430a79260" base-type="Растопочная группа" base-type-id="d3f1f963-b301-412f-98d0-b5913d770cf5" ver="5"/>
+			<object access-modifier="private" uuid="7e94e084-e12e-45ad-a190-4dd430a79260" base-type="Растопочная группа" base-type-id="d3f1f963-b301-412f-98d0-b5913d770cf5" ver="5">
+				<init target="MainForm" ver="5" ref="here"/>
+				<do-trace access-modifier="private" target="Group" ver="5">
+					<body>
+						<![CDATA[unit.Global.OpenedGroup]]>
+					</body>
+				</do-trace>
+			</object>
 		</do-on>
 	</object>
 	<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="Closed">
@@ -1425,7 +1481,7 @@ TimeStamp = DateTime.Now();]]>
 				<![CDATA[if ((me.Value == "Оператор")||(me.Value == "Администратор")||(me.Value == "Разработчик"))
 {
 	unit.Global.AuthOK = true;
-	AuthOk.Invoke();
+	//AuthOk.Invoke();
 }
 else
 {
@@ -1439,18 +1495,6 @@ else
 			<![CDATA[unit.Global.CurrentUser]]>
 		</body>
 	</do-trace>
-	<object access-modifier="private" name="AuthOk" display-name="AuthOk" uuid="f31a79ec-8a1d-4d8d-92d0-e54550e38085" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
-		<designed target="Enabled" value="true" ver="5"/>
-		<designed target="InvokeTrigger" value="false" ver="5"/>
-		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Invoked" frame-link="MainFrame" form-action="open-in-frame" form-by-id="false">
-			<object access-modifier="private" uuid="e0c883d1-4989-4195-8157-fc5394b9fd54" base-type="Газ" base-type-id="f51061bd-0db8-43c4-a53c-77c2e4c09e04" ver="5">
-				<init target="linkMain" ver="5" ref="here"/>
-			</object>
-		</do-on>
-		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="Invoked" frame-link="TopPanel" form-action="open-in-frame" form-by-id="false">
-			<object access-modifier="private" uuid="27d2e2e7-ef39-4b52-a17b-71d6bc8cce4c" base-type="Алармы" base-type-id="578ca24a-7ad0-4c4b-a4b9-79f340804e42" ver="5"/>
-		</do-on>
-	</object>
 	<object access-modifier="private" name="CloseApp" display-name="CloseApp" uuid="90090286-45dd-4a9c-b4b8-83d107e9c8db" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
 		<designed target="Enabled" value="true" ver="5"/>
 		<designed target="InvokeTrigger" value="false" ver="5"/>
@@ -1459,6 +1503,7 @@ else
 				<init target="refMain" ver="5" ref="here"/>
 				<designed target="WindowX" value="835" ver="5"/>
 				<designed target="WindowY" value="502" ver="5"/>
+				<designed target="WindowPosition" value="2" ver="5"/>
 			</object>
 		</do-on>
 	</object>
@@ -1470,5 +1515,21 @@ else
 	</do-on>
 	<designed target="Flip" value="0" ver="5"/>
 	<designed target="WindowIconPath" value="" ver="5"/>
+	<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="AboutToOpen">
+		<body kind="om">
+			<![CDATA[unit.Security.SecurityContextHMI.Logout();
+TimeStamp = DateTime.Now();
+AuthOk.Invoke();]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="AuthOk" display-name="AuthOk" uuid="02b62786-8c3a-4617-8645-84c379662f2c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Invoked" frame-link="MainFrame" form-action="open-in-frame" form-by-id="false">
+			<object access-modifier="private" uuid="20374f8a-7a12-4aa9-8f10-3e3179d88de5" base-type="Общая мнемосхема" base-type-id="f51061bd-0db8-43c4-a53c-77c2e4c09e04" ver="5">
+				<init target="linkMain" ver="5" ref="here"/>
+			</object>
+		</do-on>
+	</object>
 </type>
 

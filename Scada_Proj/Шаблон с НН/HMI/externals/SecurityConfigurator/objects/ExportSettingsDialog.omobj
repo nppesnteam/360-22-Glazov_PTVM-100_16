@@ -10,7 +10,7 @@
 	<designed target="Enabled" value="true" ver="5"/>
 	<designed target="Tooltip" value="" ver="5"/>
 	<designed target="Width" value="400" ver="5"/>
-	<designed target="Height" value="230" ver="5"/>
+	<designed target="Height" value="210" ver="5"/>
 	<designed target="PenColor" value="4278190080" ver="5"/>
 	<designed target="PenStyle" value="0" ver="5"/>
 	<designed target="PenWidth" value="1" ver="5"/>
@@ -19,8 +19,8 @@
 	<designed target="WindowX" value="0" ver="5"/>
 	<designed target="WindowY" value="0" ver="5"/>
 	<designed target="WindowWidth" value="400" ver="5"/>
-	<designed target="WindowHeight" value="230" ver="5"/>
-	<designed target="WindowCaption" value="Настройки экспорта" ver="5"/>
+	<designed target="WindowHeight" value="210" ver="5"/>
+	<designed target="WindowCaption" value="Экспорт" ver="5"/>
 	<designed target="ShowWindowCaption" value="true" ver="5"/>
 	<designed target="ShowWindowMinimize" value="false" ver="5"/>
 	<designed target="ShowWindowMaximize" value="false" ver="5"/>
@@ -99,20 +99,22 @@
 				<object access-modifier="private" uuid="152280e5-73ca-4507-86a4-d6f3d62f5ef0" base-type="SelectFolderDialog" base-type-id="5b99010a-629a-4d7b-b1cf-a388ef2395c3" ver="5">
 					<init target="pTheme" ver="5" ref="here.private.pTheme"/>
 					<init target="OnComplete" ver="5" ref="FolderSelected"/>
-					<init target="Result" ver="5" ref="here.private.SelectedFolderResult"/>
+					<init target="Result" ver="5" ref="DialogResult"/>
 					<init target="DefaultPath" ver="5">
 						<expr>
-							<![CDATA[here.private.SelectedFolderResult.Value]]>
+							<![CDATA[Folder.Text]]>
 						</expr>
 					</init>
 				</object>
 			</do-on>
+			<object access-modifier="private" name="DialogResult" display-name="DialogResult" uuid="f6edd013-471a-41fb-bfed-dc3c5e4a2915" base-type="FolderDialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" ver="5" description="" cardinal="1"/>
 			<object access-modifier="private" name="FolderSelected" display-name="FolderSelected" uuid="d791fd57-ec41-49d6-8a9b-dd2a93d18a7b" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="InvokeTrigger" value="false" ver="5"/>
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
 					<body kind="om">
-						<![CDATA[SelectedFolderPath.Text = private.SelectedFolderResult.Value;]]>
+						<![CDATA[Folder.Text = private.Files.ToNative(DialogResult.FolderPath);
+private.FolderContentModel.Browse(DialogResult.FolderPath);]]>
 					</body>
 				</do-on>
 			</object>
@@ -149,7 +151,7 @@
 			</do-trace>
 		</object>
 		<object access-modifier="private" name="PathLabel" display-name="PathLabel" uuid="f471d00f-809d-49ba-a393-9e601b0485ad" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
-			<designed target="X" value="10" ver="5"/>
+			<designed target="X" value="5" ver="5"/>
 			<designed target="Y" value="10" ver="5"/>
 			<designed target="ZValue" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
@@ -159,21 +161,21 @@
 			<designed target="Opacity" value="1" ver="5"/>
 			<designed target="Enabled" value="true" ver="5"/>
 			<designed target="Tooltip" value="" ver="5"/>
-			<designed target="Width" value="245" ver="5"/>
+			<designed target="Width" value="40" ver="5"/>
 			<designed target="Height" value="25" ver="5"/>
-			<designed target="Text" value="Путь экспорта:" ver="5"/>
+			<designed target="Text" value="Путь:" ver="5"/>
 			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
 			<designed target="FontColor" value="4278190080" ver="5"/>
-			<designed target="TextAlignment" value="129" ver="5"/>
+			<designed target="TextAlignment" value="130" ver="5"/>
 			<do-trace access-modifier="private" target="FontColor" ver="5">
 				<body>
 					<![CDATA[private.pTheme.ForegroundColor]]>
 				</body>
 			</do-trace>
 		</object>
-		<object access-modifier="private" name="SelectedFolderPath" display-name="SelectedFolderPath" uuid="18d4533a-a6d3-477b-8a19-8111c690a425" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
-			<designed target="X" value="9" ver="5"/>
-			<designed target="Y" value="35" ver="5"/>
+		<object access-modifier="private" name="Folder" display-name="Folder" uuid="18d4533a-a6d3-477b-8a19-8111c690a425" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5" description="" cardinal="1">
+			<designed target="X" value="50" ver="5"/>
+			<designed target="Y" value="10" ver="5"/>
 			<designed target="ZValue" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Scale" value="1" ver="5"/>
@@ -182,26 +184,19 @@
 			<designed target="Opacity" value="1" ver="5"/>
 			<designed target="Enabled" value="true" ver="5"/>
 			<designed target="Tooltip" value="" ver="5"/>
-			<designed target="Width" value="380" ver="5"/>
+			<designed target="Width" value="310" ver="5"/>
 			<designed target="Height" value="25" ver="5"/>
 			<designed target="Text" value="" ver="5"/>
-			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
 			<designed target="FontColor" value="4278190080" ver="5"/>
 			<designed target="TextAlignment" value="129" ver="5"/>
-			<do-trace access-modifier="private" target="FontColor" ver="5">
-				<body>
-					<![CDATA[private.pTheme.ForegroundColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="Text" ver="5">
-				<body>
-					<![CDATA[private.SelectedFolderResult.Value]]>
-				</body>
-			</do-trace>
+			<designed target="HideInput" value="false" ver="5"/>
+			<designed target="PlaceholderText" value="" ver="5"/>
+			<designed target="ReadOnly" value="true" ver="5"/>
 		</object>
 		<object access-modifier="private" name="FileNameLabel" display-name="FileNameLabel" uuid="ba84c0ca-fd94-419b-a497-3bbbfb1048da" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
 			<designed target="X" value="0" ver="5"/>
-			<designed target="Y" value="95" ver="5"/>
+			<designed target="Y" value="80" ver="5"/>
 			<designed target="ZValue" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Scale" value="1" ver="5"/>
@@ -223,8 +218,8 @@
 			</do-trace>
 		</object>
 		<object access-modifier="private" name="NameErrorFrame" display-name="NameErrorFrame" uuid="b4c66c15-28a5-45c7-8605-67435a6747e2" base-type="ErrorFrame" base-type-id="360a528b-50b0-4a9d-a198-5e2f73fe204c" ver="5" description="" cardinal="1">
-			<designed target="X" value="109" ver="5"/>
-			<designed target="Y" value="95" ver="5"/>
+			<designed target="X" value="110" ver="5"/>
+			<designed target="Y" value="80" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Width" value="280" ver="5"/>
 			<designed target="Height" value="25" ver="5"/>
@@ -235,8 +230,8 @@
 			</do-trace>
 		</object>
 		<object access-modifier="private" name="FileName" display-name="FileName" uuid="d4176c58-d22d-43a7-94d9-3bfea855e0e8" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5" description="" cardinal="1">
-			<designed target="X" value="109" ver="5"/>
-			<designed target="Y" value="95" ver="5"/>
+			<designed target="X" value="110" ver="5"/>
+			<designed target="Y" value="80" ver="5"/>
 			<designed target="ZValue" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Scale" value="1" ver="5"/>
@@ -274,7 +269,7 @@
 		</object>
 		<object access-modifier="private" name="TypeLabel" display-name="TypeLabel" uuid="6110f1a6-7a1c-493d-b1ff-ae0588e94270" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
 			<designed target="X" value="0" ver="5"/>
-			<designed target="Y" value="125" ver="5"/>
+			<designed target="Y" value="110" ver="5"/>
 			<designed target="ZValue" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Scale" value="1" ver="5"/>
@@ -296,8 +291,8 @@
 			</do-trace>
 		</object>
 		<object access-modifier="private" name="SelectedFileType" display-name="SelectedFileType" uuid="529965e7-2263-48b8-8b80-79d1f7a6fcdb" base-type="ComboBox" base-type-id="3495bcd2-01f2-4709-b7f4-e9cf6f3a00bc" ver="5" description="" cardinal="1">
-			<designed target="X" value="109" ver="5"/>
-			<designed target="Y" value="125" ver="5"/>
+			<designed target="X" value="110" ver="5"/>
+			<designed target="Y" value="110" ver="5"/>
 			<designed target="ZValue" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Scale" value="1" ver="5"/>
@@ -332,7 +327,7 @@
 	
 	
 	//сохраняем параметры
-	pSettingsResult.FileType = SelectedIndex;
+	pResult.FileType = SelectedIndex;
 	oldValue = SelectedIndex;
 }
 else
@@ -365,8 +360,8 @@ if (value != "")
 			<object access-modifier="private" name="selectedExt" display-name="selectedExt" uuid="ee5f1e29-b0c0-4d36-bedc-524c94b775ea" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
 		</object>
 		<object access-modifier="private" name="cbExportUserRigthts" display-name="cbExportUserRigthts" uuid="c52f2bb7-0f9b-4a44-a66f-6766237f541e" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="5" description="" cardinal="1">
-			<designed target="X" value="9" ver="5"/>
-			<designed target="Y" value="155" ver="5"/>
+			<designed target="X" value="10" ver="5"/>
+			<designed target="Y" value="140" ver="5"/>
 			<designed target="ZValue" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Scale" value="1" ver="5"/>
@@ -386,23 +381,13 @@ if (value != "")
 					<![CDATA[private.pTheme.ForegroundColor]]>
 				</body>
 			</do-trace>
-			<object access-modifier="private" name="oldValue" display-name="oldValue" uuid="e51f27be-92bd-40a2-9d22-f17da69151cb" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
-			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="StateChanged">
-				<body kind="om">
-					<![CDATA[if (state != oldValue)
-{
-	pExportUserRightsResult.Value = String.ToString(state);
-	oldValue = state;
-}]]>
-				</body>
-			</do-on>
 		</object>
 		<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="4014121d-e284-4c96-9c9c-cbb4eeb757e9" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5" description="" cardinal="1">
 			<designed target="Weight" value="1000" ver="5"/>
 		</object>
 		<object access-modifier="private" name="FileExistWarning" display-name="FileExistWarning" uuid="a385b969-b738-4de9-aed2-649efd3dc220" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
-			<designed target="X" value="9" ver="5"/>
-			<designed target="Y" value="60" ver="5"/>
+			<designed target="X" value="10" ver="5"/>
+			<designed target="Y" value="45" ver="5"/>
 			<designed target="ZValue" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Scale" value="1" ver="5"/>
@@ -486,7 +471,7 @@ if (value != "")
 				<![CDATA[interval: double = 5;
 
 //корректируем окно и положение элементов если FileExistWarning отображается
-updatedPosY: double = (FileExistWarning.Visible)?(FileExistWarning.Y + FileExistWarning.Height):(SelectedFolderPath.Y + SelectedFolderPath.Height);
+updatedPosY: double = FileExistWarning.Visible ? FileExistWarning.Y + FileExistWarning.Height : Folder.Y + Folder.Height;
 
 FileNameLabel.Y = updatedPosY + interval;
 NameErrorFrame.Y = FileNameLabel.Y;
@@ -497,9 +482,8 @@ SelectedFileType.Y = TypeLabel.Y;
 	
 cbExportUserRigthts.Y = TypeLabel.Y + TypeLabel.Height + interval;
 
-
 btnChoseFolder.X = Width - btnChoseFolder.Width - 10;
-SelectedFolderPath.Width = Width - SelectedFolderPath.X - 10;
+Folder.Width = Width - Folder.X - 10 - (btnChoseFolder.Visible ? btnChoseFolder.Width : 0);
 
 FileExistWarning.Width = Width - FileExistWarning.X - 10;
 
@@ -597,11 +581,12 @@ if (selectedExt != "" && !private.HasExtension(fileName, selectedExt))
 	OptionsPanel.FileName.Text = fileName;
 }
 
-pSettingsResult.FolderPath = private.SelectedFolderResult.Value;
-pSettingsResult.FileName = OptionsPanel.FileName.Text;
-pSettingsResult.FilePath = private.Files.ToNative(private.Files.AbsolutePath(private.Files.CombinePath(pSettingsResult.FolderPath, pSettingsResult.FileName)));
+pResult.FolderPath = OptionsPanel.Folder.Text;
+pResult.FileName = OptionsPanel.FileName.Text;
+pResult.FilePath = private.Files.ToNative(private.Files.CombinePath(pResult.FolderPath, pResult.FileName));
+pResult.ExportUserRights = OptionsPanel.cbExportUserRigthts.State;
 
-pApplySettings.Invoke();
+pOnComplete.Invoke();
 Close();]]>
 				</body>
 			</do-on>
@@ -678,20 +663,6 @@ btnOk.X = Width - btnCancel.Width - btnOk.Width - 20;]]>
 	<object access-modifier="private" name="private" display-name="private" uuid="be2db9fb-b315-4080-8aed-8ef1db9fcb12" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
 		<object access-modifier="private" name="pTheme" display-name="pTheme" uuid="336ef62e-0a80-4ec7-a168-4e400e347412" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
 		<init target="pTheme" ver="5" ref="Init_Theme"/>
-		<object access-modifier="private" name="SelectedFolderResult" display-name="SelectedFolderResult" uuid="f6edd013-471a-41fb-bfed-dc3c5e4a2915" base-type="DialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" ver="5" description="" cardinal="1">
-			<object access-modifier="private" name="folderPathCnaged" display-name="folderPathCnaged" uuid="e240e82a-9429-423b-ba73-779985e2dcde" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1">
-				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
-					<body kind="om">
-						<![CDATA[private.FolderContentModel.Browse(value);]]>
-					</body>
-				</do-on>
-			</object>
-			<do-trace access-modifier="private" target="folderPathCnaged" ver="5">
-				<body>
-					<![CDATA[SelectedFolderResult.Value]]>
-				</body>
-			</do-trace>
-		</object>
 		<do access-modifier="private" name="CoerseFileName" display-name="CoerseFileName" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
 			<body kind="om">
 				<![CDATA[if (fileName != "")
@@ -831,20 +802,20 @@ BeginReadAsync();]]>
 		</object>
 	</object>
 	<object access-modifier="private" name="FileTypeFilter" display-name="Фильтр типа файлов" uuid="c5f459aa-763a-4097-b056-fb1dfdf18a1b" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
-	<object access-modifier="private" name="pSettingsResult" display-name="Результат" uuid="3ffd7bd2-e6e4-4995-b443-ac9354e03095" base-type="FileDialogResult" base-type-id="602926f1-7d01-4d50-a5c0-d8fd35eadc74" base-const="true" ver="5" description="" base-ref="true"/>
-	<object access-modifier="private" name="pExportUserRightsResult" display-name="Результат: экспорт прав пользователей " uuid="fde00ff1-59eb-4c74-a27d-14336a7a878c" base-type="DialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" base-const="true" ver="5" description="" base-ref="true"/>
-	<object access-modifier="private" name="pApplySettings" display-name="Применить" uuid="918ccff7-0326-4900-b977-56d6197ec9eb" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="pOnComplete" display-name="pOnComplete" uuid="918ccff7-0326-4900-b977-56d6197ec9eb" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description=""/>
 	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="AboutToOpen">
 		<body kind="om">
-			<![CDATA[private.SelectedFolderResult.Value.Value = (pSettingsResult.FolderPath != "") ? (pSettingsResult.FolderPath):(DefaultFolderPath);
-OptionsPanel.FileName.Text = (pSettingsResult.FileName != "") ? (pSettingsResult.FileName):(DefaultFileName);
-OptionsPanel.cbExportUserRigthts.State = String.ToBool(pExportUserRightsResult.Value, DefaultExportUserRights, false);]]>
+			<![CDATA[OptionsPanel.Folder.Text = private.Files.ToNative(pResult.FolderPath != "" ? pResult.FolderPath : DefaultFolderPath);
+private.FolderContentModel.Browse(OptionsPanel.Folder.Text);
+OptionsPanel.btnChoseFolder.Visible = pPermissions.FileSystemAccess;
+OptionsPanel.FileName.Text = private.Files.ToNative(pResult.FileName != "" ? pResult.FileName : DefaultFileName);
+OptionsPanel.cbExportUserRigthts.State = pResult.ExportUserRights;]]>
 		</body>
 	</do-on>
+	<object access-modifier="private" name="pPermissions" display-name="pPermissions" uuid="af7256d7-92a6-4491-a741-1241cb8026ce" base-type="SecurityConfigurator_Permissions" base-type-id="a6a67dc7-2872-46c8-a397-13aa48ddb4e7" base-const="true" base-ref="true" ver="5" description=""/>
 	<object access-modifier="private" name="DefaultFolderPath" display-name="Каталог по умолчанию" uuid="5ac68e52-f2f1-4160-b4bd-821497e7aa86" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
 	<object access-modifier="private" name="DefaultFileName" display-name="Имя по умолчанию" uuid="c54e3589-09bd-41af-a53d-1c2d63121038" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
 	<object access-modifier="private" name="DefaultFileType" display-name="Тип файла по умолчанию" uuid="0b63e542-3296-4cbf-bfb7-b18ae007426b" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
-	<object access-modifier="private" name="DefaultExportUserRights" display-name="Экспортировать права пользователей по умолчанию" uuid="1bd535b5-6165-469a-a49e-82451ec5737d" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
 	<do-trace access-modifier="private" target="BrushColor" ver="5">
 		<body>
 			<![CDATA[private.pTheme.BackgroundColor]]>
@@ -874,5 +845,6 @@ OptionsPanel.UpdateLayout();
 ButtonsPanel.UpdateLayout();]]>
 		</body>
 	</do>
+	<object access-modifier="private" name="pResult" display-name="Результат" uuid="3ffd7bd2-e6e4-4995-b443-ac9354e03095" base-type="ExportSettingsResult" base-type-id="75c6ad0a-e6d8-4bbe-afb1-ede4c5a88b39" base-const="true" ver="5" description="" base-ref="true"/>
 </type>
 

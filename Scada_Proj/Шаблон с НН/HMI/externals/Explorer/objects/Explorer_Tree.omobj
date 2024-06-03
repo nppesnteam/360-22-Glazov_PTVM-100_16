@@ -351,13 +351,11 @@ if (sourceIndex > -1)
 			<body kind="javascript">
 				<![CDATA[SetItemIcon(itemId, true);
 
-var childrenJson = EnumChildrenJSON(itemId);
-if (childrenJson != "")
+if (ChildCount(itemId) != 0)
 {
-	var children = JSON.parse(childrenJson);
+	var children = JSON.parse(EnumChildrenJSON(itemId));
 	if (children.length == 1 && GetItemText(children[0], 0) == "")
 	{
-		// это фиктивный узел, мы его удаляем и запускаем просмотр
 		RemoveChildren(itemId);
 		BrowseNode(itemId);
 	}

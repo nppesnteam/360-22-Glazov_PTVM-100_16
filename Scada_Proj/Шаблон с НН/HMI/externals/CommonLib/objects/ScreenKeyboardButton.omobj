@@ -1,4 +1,4 @@
-<type access-modifier="public" name="ScreenKeyboardButton" display-name="ScreenKeyboardButton" uuid="e7774fc7-d5aa-4318-b97c-99203dbd1671" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5" description="">
+<type access-modifier="public" name="ScreenKeyboardButton" display-name="Кнопка вызова экранной клавиатуры" uuid="e7774fc7-d5aa-4318-b97c-99203dbd1671" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5" description="">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="ZValue" value="0" ver="5"/>
@@ -40,7 +40,7 @@
 	<designed target="DisabledPenWidth" value="1" ver="5"/>
 	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
 		<body kind="om">
-			<![CDATA[Process.Run();]]>
+			<![CDATA[private.StartProcess();]]>
 		</body>
 	</do-on>
 	<do-trace access-modifier="private" target="OnClickPenColor" ver="5">
@@ -89,6 +89,70 @@ return result;]]>
 				<![CDATA[CoerseProgramPath(pOptions.ProgramPath)]]>
 			</body>
 		</do-trace>
+		<object access-modifier="private" name="Process_1" display-name="Process_1" uuid="238f9e4f-19d0-4a43-b2d4-43dbfc941eaf" base-type="Process" base-type-id="413902ad-0af3-4a98-92e6-0f9e361e9eaf" ver="5" description="" cardinal="1">
+			<designed target="ShowWindow" value="true" ver="5"/>
+			<designed target="Path" value="" ver="5"/>
+			<designed target="Arguments" value="" ver="5"/>
+			<designed target="Encoding" value="" ver="5"/>
+			<designed target="AccumulateStdout" value="false" ver="5"/>
+			<designed target="AccumulateStderr" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="StartFailed">
+				<body kind="om">
+					<![CDATA[if (State != 2)
+	Debug.Log("Process " + ExecutablePath + " start filed: "+ error);]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Arguments" ver="5">
+				<body>
+					<![CDATA[private.pOptions.Arguments]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="Path" ver="5">
+				<body>
+					<![CDATA[private.ProgramPath]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="Process_2" display-name="Process_2" uuid="991bfa8e-5e49-4ff9-aff4-77e29fe046ec" base-type="Process" base-type-id="413902ad-0af3-4a98-92e6-0f9e361e9eaf" ver="5" description="" cardinal="1">
+			<designed target="ShowWindow" value="true" ver="5"/>
+			<designed target="Path" value="" ver="5"/>
+			<designed target="Arguments" value="" ver="5"/>
+			<designed target="Encoding" value="" ver="5"/>
+			<designed target="AccumulateStdout" value="false" ver="5"/>
+			<designed target="AccumulateStderr" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="StartFailed">
+				<body kind="om">
+					<![CDATA[if (State != 2)
+	Debug.Log("Process " + ExecutablePath + " start filed: "+ error);]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Arguments" ver="5">
+				<body>
+					<![CDATA[private.pOptions.Arguments]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="Path" ver="5">
+				<body>
+					<![CDATA[private.ProgramPath]]>
+				</body>
+			</do-trace>
+		</object>
+		<do access-modifier="private" name="StartProcess" display-name="StartProcess" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[// если процесс уже запущен, то закрываем его и запускаем другой такой же процесс
+// это позволит решить проблему с активацией минимизированной клавиатуры
+if (Process_1.State == 2)
+{
+	Process_1.Terminate();
+	Process_2.Run();
+}
+else 
+{
+	Process_2.Terminate();
+	Process_1.Run();
+}]]>
+			</body>
+		</do>
 	</object>
 	<object access-modifier="private" name="Debug" display-name="Debug" uuid="9c04fd89-d639-4462-9e67-27179447349f" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
 	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="2c4d444d-eccf-4b5b-a603-9b0e68bbfb66" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
@@ -122,30 +186,6 @@ return result;]]>
 		<designed target="MaxHeight" value="25" ver="5"/>
 	</object>
 	<param access-modifier="private" name="init_Options" display-name="Параметры запуска" uuid="06b1becb-f1e4-4ee7-966a-df6608989866" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
-	<object access-modifier="private" name="Process" display-name="Process" uuid="238f9e4f-19d0-4a43-b2d4-43dbfc941eaf" base-type="Process" base-type-id="413902ad-0af3-4a98-92e6-0f9e361e9eaf" ver="5" description="" cardinal="1">
-		<designed target="ShowWindow" value="true" ver="5"/>
-		<designed target="Path" value="" ver="5"/>
-		<designed target="Arguments" value="" ver="5"/>
-		<designed target="Encoding" value="" ver="5"/>
-		<designed target="AccumulateStdout" value="false" ver="5"/>
-		<designed target="AccumulateStderr" value="false" ver="5"/>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="StartFailed">
-			<body kind="om">
-				<![CDATA[if (State != 2)
-	Debug.Log("Process " + ExecutablePath + " start filed: "+ error);]]>
-			</body>
-		</do-on>
-		<do-trace access-modifier="private" target="Arguments" ver="5">
-			<body>
-				<![CDATA[private.pOptions.Arguments]]>
-			</body>
-		</do-trace>
-		<do-trace access-modifier="private" target="Path" ver="5">
-			<body>
-				<![CDATA[private.ProgramPath]]>
-			</body>
-		</do-trace>
-	</object>
 	<do-trace access-modifier="private" target="Visible" ver="5">
 		<body>
 			<![CDATA[private.pOptions.Enabled &&

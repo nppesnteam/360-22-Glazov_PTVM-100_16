@@ -279,7 +279,7 @@ GroupName.Error.Value = errorText;]]>
 			<designed target="Y" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Width" value="220" ver="5"/>
-			<designed target="Height" value="22" ver="5"/>
+			<designed target="Height" value="23" ver="5"/>
 			<object access-modifier="private" name="PatternChanged" display-name="PatternChanged" uuid="4bebe8b5-0aff-4016-85bb-aaf6c21c1000" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="InvokeTrigger" value="false" ver="5"/>
@@ -290,6 +290,7 @@ GroupName.Error.Value = errorText;]]>
 				</do-on>
 			</object>
 			<init target="pPatternChanged" ver="5" ref="PatternChanged"/>
+			<init target="init_Theme" ver="5" ref="here.init_Theme"/>
 		</object>
 		<object access-modifier="private" name="GroupTree" display-name="GroupTree" uuid="9f41d111-9edd-49b1-839e-ff92ab5e85e0" base-type="GroupTree" base-type-id="bcc64033-73ca-444c-bcfa-84efc86a9c4a" ver="5" description="" cardinal="1">
 			<designed target="X" value="0" ver="5"/>
@@ -402,7 +403,7 @@ return JSON.stringify(items);]]>
 							</expr>
 						</init>
 						<init target="pAction" ver="5" ref="OnClick"/>
-						<init target="pTheme" ver="5" ref="here.private.pTheme"/>
+						<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
 					</object>
 				</do-on>
 			</object>
@@ -413,9 +414,12 @@ return JSON.stringify(items);]]>
 			</do-on>
 			<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseRightClick">
 				<body kind="om">
-					<![CDATA[ShowTreeContextMenu.initX = TypeConvert.ToInt4(ScreenX(MouseX, MouseY));
-ShowTreeContextMenu.initY = TypeConvert.ToInt4(ScreenY(MouseX, MouseY));
-ShowTreeContextMenu.Invoke();]]>
+					<![CDATA[if (pConfigurationAccess.Value)
+{
+	ShowTreeContextMenu.initX = TypeConvert.ToInt4(ScreenX(MouseX, MouseY));
+	ShowTreeContextMenu.initY = TypeConvert.ToInt4(ScreenY(MouseX, MouseY));
+	ShowTreeContextMenu.Invoke();
+}]]>
 				</body>
 			</do-on>
 			<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="CurrentItemChanged">
@@ -451,92 +455,32 @@ if (isExistsId && currentGroupId != Group.GroupID)
 			<designed target="MinHeight" value="0" ver="5"/>
 			<designed target="MaxWidth" value="220" ver="5"/>
 			<designed target="MaxHeight" value="16777215" ver="5"/>
+			<do-trace access-modifier="private" target="MinWidth" ver="5">
+				<body>
+					<![CDATA[Splitter.Position]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="MaxWidth" ver="5">
+				<body>
+					<![CDATA[Splitter.Position]]>
+				</body>
+			</do-trace>
 		</object>
 	</object>
-	<object access-modifier="private" name="Slider" display-name="Slider" uuid="7691e4c4-ce0c-40cc-9d82-0bf1a0991476" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+	<object access-modifier="private" name="Splitter" display-name="Splitter" uuid="d4662c2e-efbc-4af4-a19d-668783f9ff7d" base-type="HorizontalSplitter" base-type-id="9f2e11a5-219a-4c9b-bceb-928724b2f965" ver="5" description="" cardinal="1">
 		<designed target="X" value="220" ver="5"/>
 		<designed target="Y" value="0" ver="5"/>
-		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
-		<designed target="Scale" value="1" ver="5"/>
-		<designed target="Visible" value="true" ver="5"/>
-		<designed target="Opacity" value="1" ver="5"/>
-		<designed target="Enabled" value="true" ver="5"/>
-		<designed target="Tooltip" value="" ver="5"/>
 		<designed target="Width" value="4" ver="5"/>
 		<designed target="Height" value="400" ver="5"/>
-		<designed target="RoundingRadius" value="0" ver="5"/>
-		<designed target="PenColor" value="0xff808080" ver="5"/>
-		<designed target="PenStyle" value="1" ver="5"/>
-		<designed target="PenWidth" value="1" ver="5"/>
-		<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
-		<designed target="BrushStyle" value="1" ver="5"/>
-		<object access-modifier="private" name="bPressed" display-name="bPressed" uuid="41bf520c-b446-4f8a-ae85-e39e44b7df03" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
-		<object access-modifier="private" name="MouseIsOver" display-name="MouseIsOver" uuid="15bf72bb-91eb-4541-8d93-60a2f8681008" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseMove">
+		<init target="Position" ver="5" value="220"/>
+		<init target="Minimum" ver="5" value="30"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseRelease">
 			<body kind="om">
-				<![CDATA[if (bPressed)
-{
-	distance: double = Distance + event.X;
-	
-	min: double = 30;
-	if (distance < min)
-		distance = min;
-		
-	max: double = parent.Width - 30;
-	if (distance > max)
-		distance = max;
-	
-	if (Distance != distance)
-	{
-		Distance = distance;
-		TreePanel.SizeLimits.MinWidth = Distance;
-		TreePanel.SizeLimits.MaxWidth = Distance;
-		private.SaveViewSettings();
-	}
-}]]>
+				<![CDATA[here.private.SaveViewSettings();]]>
 			</body>
 		</do-on>
-		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MousePress">
-			<body kind="om">
-				<![CDATA[bPressed = true;]]>
-			</body>
-		</do-on>
-		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseRelease">
-			<body kind="om">
-				<![CDATA[bPressed = false;]]>
-			</body>
-		</do-on>
-		<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="MouseEnter">
-			<body kind="om">
-				<![CDATA[MouseIsOver = true;]]>
-			</body>
-		</do-on>
-		<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="MouseLeave">
-			<body kind="om">
-				<![CDATA[MouseIsOver = false;
-bPressed = false;]]>
-			</body>
-		</do-on>
-		<do-trace access-modifier="private" target="BrushColor" ver="5">
-			<body>
-				<![CDATA[MouseIsOver ? here.private.pTheme.SelectionColor : here.private.pTheme.BackgroundColor]]>
-			</body>
-		</do-trace>
-		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="7a39e608-b4ea-4b1f-8ead-db15561b15f1" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
-			<designed target="MinWidth" value="4" ver="5"/>
-			<designed target="MinHeight" value="0" ver="5"/>
-			<designed target="MaxWidth" value="4" ver="5"/>
-			<designed target="MaxHeight" value="16777215" ver="5"/>
-		</object>
-		<object access-modifier="private" name="Distance" display-name="Distance" uuid="252e8b76-a4e6-4037-aaa2-9f53819099db" base-type="double" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="5" description="" cardinal="1"/>
-		<init target="Distance" ver="5" value="220"/>
-		<designed target="Flip" value="0" ver="5"/>
-		<do-trace access-modifier="private" target="PenColor" ver="5">
-			<body>
-				<![CDATA[here.private.pTheme.BorderColor]]>
-			</body>
-		</do-trace>
+		<init target="init_Theme" ver="5" ref="here.init_Theme"/>
 	</object>
 	<object access-modifier="private" name="LoadedGroupData" display-name="LoadedGroupData" uuid="66e5096d-3482-4da8-a4c6-359f11fc4837" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 		<designed target="X" value="230" ver="5"/>
@@ -663,7 +607,7 @@ bPressed = false;]]>
 			<designed target="Width" value="620" ver="5"/>
 			<designed target="Height" value="375" ver="5"/>
 			<designed target="SelectionBehavior" value="1" ver="5"/>
-			<designed target="SelectionMode" value="1" ver="5"/>
+			<designed target="SelectionMode" value="3" ver="5"/>
 			<object access-modifier="private" name="Column" display-name="Column" uuid="67a1dbc2-3cf9-4bd2-87f5-da77a635881f" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="5" cardinal="2">
 				<designed target="Title" value="" ver="5"/>
 				<designed target="Description" value="" ver="5"/>
@@ -778,7 +722,7 @@ if (Column[Index].Id == "name")
 			<designed target="RowOrder" value="0" ver="5"/>
 			<designed target="LatestRowTracking" value="false" ver="5"/>
 			<init target="TableModel" ver="5" ref="Model"/>
-			<designed target="SelectionOverlayEnabled" value="true" ver="5"/>
+			<designed target="SelectionOverlayEnabled" value="false" ver="5"/>
 			<designed target="DelayedSortingEnabled" value="false" ver="5"/>
 			<designed target="HorizontalScrollMode" value="0" ver="5"/>
 			<designed target="VerticalScrollMode" value="0" ver="5"/>
@@ -809,6 +753,8 @@ Column[1].Title = "Члены группы";
 Column[1].Hidden = false;
 Column[1].Width = 250;
 
+Decorator.JsonDecorator = GetJsonDecorator(selectionColor);
+
 Model.Reset();
 Model.AddColumn("id","","","","string",false,true);
 Model.AddColumn("type","","","","int4",false,true);
@@ -830,6 +776,40 @@ Model.AddColumn("name","","","","string",false,true);]]>
 					<![CDATA[here.private.pTheme.DisabledBorderColor]]>
 				</body>
 			</do-trace>
+			<object access-modifier="private" name="selectionColor" display-name="selectionColor" uuid="e16662f9-bbe6-478d-8afe-82111310d881" base-type="notifying_uint8" base-type-id="2e6d6c20-2489-49e1-9d5f-fe68a21b43df" ver="5" description="" cardinal="1"/>
+			<designed target="RowHeightResizeMode" value="3" ver="5"/>
+			<do-trace access-modifier="private" target="selectionColor" ver="5">
+				<body>
+					<![CDATA[private.pTheme.SelectionColor]]>
+				</body>
+			</do-trace>
+			<object access-modifier="private" name="Decorator" display-name="Decorator" uuid="bafcfa4f-c4d7-4ef7-8c61-8f616e698725" base-type="TableDecorator" base-type-id="2ff6a2d7-9573-4060-bfea-29c63d61b079" ver="5" description="" cardinal="1">
+				<designed target="JsonDecorator" value="" ver="5"/>
+			</object>
+			<do access-modifier="private" name="GetJsonDecorator" display-name="GetJsonDecorator" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+				<body kind="javascript">
+					<![CDATA[var decorator = {};
+
+decorator.StyleDictionary = [
+	{
+		'style_name': "selected_style",
+		'style': { 'background_color': `#${selectionColor.toString(16)}` }
+	}
+];
+
+decorator.Decorating = [
+	{
+		'decoration_rule_name': "selected_rule", 
+		'decoration_rule': { 'row:isSelected': true },
+		'rowstyle': "selected_style"
+	}
+
+];
+
+return JSON.stringify(decorator);]]>
+				</body>
+				<param access-modifier="private" name="selectionColor" display-name="" uuid="a6458896-6e81-42fa-818f-c2bb44a1d6d7" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5"/>
+			</do>
 		</object>
 		<do access-modifier="private" name="UpdateView" display-name="UpdateView" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 			<body kind="javascript">
@@ -996,6 +976,7 @@ else
 			</body>
 		</do>
 	</object>
+	<object access-modifier="private" name="pConfigurationAccess" display-name="Разрешить редактирование" uuid="8b396498-45a8-4711-ad2d-d6aa5af203ae" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" base-const="true" base-ref="true" ver="5" description=""/>
 	<object access-modifier="private" name="Commands" display-name="Commands" uuid="5d47b2bd-6dd5-4f05-9ce9-0281abb4c0db" base-type="ListCommands" base-type-id="d481f36c-0b94-4338-a60e-3e31bf7df8a1" base-const="true" base-ref="true" ver="5"/>
 	<object access-modifier="private" name="SystemCommands" display-name="SystemCommands" uuid="aa9c148c-89b7-4035-a2cf-0a52edd01fa7" base-type="SystemCommands" base-type-id="0b754dab-38c6-43db-a050-37201965421c" base-const="true" base-ref="true" ver="5"/>
 	<designed target="WindowIconPath" value="" ver="5"/>
@@ -1006,7 +987,7 @@ else
 var settings = 
 	{
 		"Layout" : {
-			"TreePanel": TreePanel.SizeLimits.MinWidth,
+			"TreePanel": Splitter.Position.Value,
 		},
 		"MembersTable" : {
 			"Columns":{}
@@ -1044,10 +1025,8 @@ var membersView = LoadedGroupData.MembersView;
 if (content.Layout != undefined){
 	var layout = content.Layout;
 	
-	TreePanel.SizeLimits.MinWidth = layout.TreePanel;
+	Splitter.Position = layout.TreePanel;
 }
-
-
 
 if (content.MembersTable != undefined) {
 	var membersTable = content.MembersTable;

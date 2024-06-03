@@ -1,4 +1,4 @@
-<type access-modifier="public" name="IntervalEditor" display-name="IntervalEditor" uuid="ef4b0474-0376-4b1d-844c-682e26880a1e" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="">
+<type access-modifier="public" name="IntervalEditor" display-name="Редактор интервала времени" uuid="ef4b0474-0376-4b1d-844c-682e26880a1e" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="ZValue" value="0" ver="5"/>
@@ -35,7 +35,7 @@
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Width" value="18" ver="5"/>
 		<designed target="Height" value="18" ver="5"/>
-		<init target="pTheme" ver="5" ref="here.pTheme"/>
+		<init target="init_Theme" ver="5" ref="here.init_Theme"/>
 	</object>
 	<object access-modifier="private" name="fromDateEditor" display-name="fromDateEditor" uuid="6765cd8a-965e-4ae5-84b9-7cd716601c53" base-type="DateEditor" base-type-id="69318eaa-4b1e-41d3-a9ef-5126cded808c" ver="5" description="" cardinal="1">
 		<do-trace access-modifier="private" target="Error" ver="5">
@@ -50,11 +50,17 @@
 		</do-trace>
 		<init target="pValueChanged" ver="5" ref="here.private.DateTimeChanged"/>
 		<designed target="X" value="20" ver="5"/>
-		<designed target="Y" value="2.5" ver="5"/>
+		<designed target="Y" value="2" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Width" value="85" ver="5"/>
-		<designed target="Height" value="25" ver="5"/>
-		<init target="pTheme" ver="5" ref="here.pTheme"/>
+		<designed target="Height" value="26" ver="5"/>
+		<init target="pTheme" ver="5" ref="here.init_Theme"/>
+		<object access-modifier="private" name="Margins" display-name="Margins" uuid="4988ed29-c1fa-46b5-8261-fc221bcbbe49" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+			<designed target="Top" value="2" ver="5"/>
+			<designed target="Bottom" value="2" ver="5"/>
+			<designed target="Left" value="0" ver="5"/>
+			<designed target="Right" value="0" ver="5"/>
+		</object>
 	</object>
 	<object access-modifier="private" name="fromTimeEditor" display-name="fromTimeEditor" uuid="fd8d6d96-6464-4c21-80de-30106079ca63" base-type="TimeEditor" base-type-id="d0247632-ed97-46ad-b054-1da38b54f7b7" ver="5" description="" cardinal="1">
 		<do-trace access-modifier="private" target="Error" ver="5">
@@ -69,14 +75,20 @@
 		</do-trace>
 		<init target="pValueChanged" ver="5" ref="here.private.DateTimeChanged"/>
 		<designed target="X" value="105" ver="5"/>
-		<designed target="Y" value="2.5" ver="5"/>
+		<designed target="Y" value="2" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
-		<designed target="Width" value="75" ver="5"/>
-		<designed target="Height" value="25" ver="5"/>
-		<init target="pTheme" ver="5" ref="here.pTheme"/>
+		<designed target="Width" value="85" ver="5"/>
+		<designed target="Height" value="26" ver="5"/>
+		<init target="pTheme" ver="5" ref="here.init_Theme"/>
+		<object access-modifier="private" name="Margins" display-name="Margins" uuid="4572c8f3-47e4-4d8b-b0ce-e6c6b4360e1c" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+			<designed target="Top" value="2" ver="5"/>
+			<designed target="Bottom" value="2" ver="5"/>
+			<designed target="Left" value="0" ver="5"/>
+			<designed target="Right" value="0" ver="5"/>
+		</object>
 	</object>
 	<object access-modifier="private" name="Separator" display-name="Separator" uuid="a9ed6fca-ea7f-4c3d-94c5-5b3c34ce1548" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
-		<designed target="X" value="180" ver="5"/>
+		<designed target="X" value="190" ver="5"/>
 		<designed target="Y" value="0" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
@@ -100,7 +112,12 @@
 		</object>
 		<do-trace access-modifier="private" target="FontColor" ver="5">
 			<body>
-				<![CDATA[private.theme.ForegroundColor]]>
+				<![CDATA[private.pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Font" ver="5">
+			<body>
+				<![CDATA[private.pTheme.Font]]>
 			</body>
 		</do-trace>
 	</object>
@@ -116,12 +133,18 @@
 			</body>
 		</do-trace>
 		<init target="pValueChanged" ver="5" ref="here.private.DateTimeChanged"/>
-		<designed target="X" value="190" ver="5"/>
-		<designed target="Y" value="2.5" ver="5"/>
+		<designed target="X" value="200" ver="5"/>
+		<designed target="Y" value="2" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Width" value="85" ver="5"/>
-		<designed target="Height" value="25" ver="5"/>
-		<init target="pTheme" ver="5" ref="here.pTheme"/>
+		<designed target="Height" value="26" ver="5"/>
+		<init target="pTheme" ver="5" ref="here.init_Theme"/>
+		<object access-modifier="private" name="Margins" display-name="Margins" uuid="a88503bb-5e72-4172-baef-dfe4fb3c5ab7" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+			<designed target="Top" value="2" ver="5"/>
+			<designed target="Bottom" value="2" ver="5"/>
+			<designed target="Left" value="0" ver="5"/>
+			<designed target="Right" value="0" ver="5"/>
+		</object>
 	</object>
 	<object access-modifier="private" name="toTimeEditor" display-name="toTimeEditor" uuid="49e97be0-4e9f-42ae-be29-057aac817081" base-type="TimeEditor" base-type-id="d0247632-ed97-46ad-b054-1da38b54f7b7" ver="5" description="" cardinal="1">
 		<do-trace access-modifier="private" target="Error" ver="5">
@@ -135,12 +158,18 @@
 			</body>
 		</do-trace>
 		<init target="pValueChanged" ver="5" ref="here.private.DateTimeChanged"/>
-		<designed target="X" value="275" ver="5"/>
-		<designed target="Y" value="2.5" ver="5"/>
+		<designed target="X" value="285" ver="5"/>
+		<designed target="Y" value="2" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
-		<designed target="Width" value="75" ver="5"/>
-		<designed target="Height" value="25" ver="5"/>
-		<init target="pTheme" ver="5" ref="here.pTheme"/>
+		<designed target="Width" value="85" ver="5"/>
+		<designed target="Height" value="26" ver="5"/>
+		<init target="pTheme" ver="5" ref="here.init_Theme"/>
+		<object access-modifier="private" name="Margins" display-name="Margins" uuid="b219d6d6-1a63-41ac-bcaa-6cea88293359" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+			<designed target="Top" value="2" ver="5"/>
+			<designed target="Bottom" value="2" ver="5"/>
+			<designed target="Left" value="0" ver="5"/>
+			<designed target="Right" value="0" ver="5"/>
+		</object>
 	</object>
 	<object access-modifier="private" name="btnNextPeriod" display-name="btnNextPeriod" uuid="038b1395-1669-443b-8037-cbd250d14788" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5" description="" cardinal="1">
 		<init target="IconFile" ver="5" value="CommonLib_Icons/Next24.png"/>
@@ -155,66 +184,15 @@
 				<![CDATA[Error == ""]]>
 			</body>
 		</do-trace>
-		<designed target="X" value="351" ver="5"/>
+		<designed target="X" value="371" ver="5"/>
 		<designed target="Y" value="6" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Width" value="18" ver="5"/>
 		<designed target="Height" value="18" ver="5"/>
-		<init target="pTheme" ver="5" ref="here.pTheme"/>
+		<init target="init_Theme" ver="5" ref="here.init_Theme"/>
 	</object>
 	<object access-modifier="private" name="private" display-name="private" uuid="3e209489-ac5c-4fa8-8524-714a23a120a4" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
-		<object access-modifier="private" name="theme" display-name="theme" uuid="b36dff24-ff15-410b-8265-a231317d266c" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5" base-ref="true">
-			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
-				<body>
-					<![CDATA[here.pTheme.BackgroundColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
-				<body>
-					<![CDATA[here.pTheme.ForegroundColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="DisabledFontColor" ver="5">
-				<body>
-					<![CDATA[here.pTheme.DisabledFontColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="EditorBrushColor" ver="5">
-				<body>
-					<![CDATA[here.pTheme.EditorBrushColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="EditorFontColor" ver="5">
-				<body>
-					<![CDATA[here.pTheme.EditorFontColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="SelectionColor" ver="5">
-				<body>
-					<![CDATA[here.pTheme.SelectionColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="BorderColor" ver="5">
-				<body>
-					<![CDATA[here.pTheme.BorderColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="DisabledBorderColor" ver="5">
-				<body>
-					<![CDATA[here.pTheme.DisabledBorderColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="Font" ver="5">
-				<body>
-					<![CDATA[here.pTheme.Font]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="TitleFont" ver="5">
-				<body>
-					<![CDATA[here.pTheme.TitleFont]]>
-				</body>
-			</do-trace>
-		</object>
+		<object access-modifier="private" name="pTheme" display-name="pTheme" uuid="b36dff24-ff15-410b-8265-a231317d266c" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5" base-ref="true"/>
 		<do access-modifier="private" name="GetBegin" display-name="GetBegin" ver="5" type="uint8" type-id="c8ff7701-da6e-4d53-888a-81fa680ff561">
 			<body kind="om">
 				<![CDATA[dateTime: uint8 = DateTime.Create(DateTime.Year(fromDateEditor.Value), 
@@ -285,36 +263,9 @@ else
 			<param access-modifier="private" name="begin" display-name="" uuid="61738b1b-a860-4d7e-a320-f0b677e1ab77" base-type="timestamp" base-type-id="27c3d64b-a025-4ed3-8f63-d47e43a496aa" ver="5"/>
 			<param access-modifier="private" name="end" display-name="" uuid="24a627d6-783c-4567-8b36-c76a8e3ac289" base-type="timestamp" base-type-id="27c3d64b-a025-4ed3-8f63-d47e43a496aa" ver="5"/>
 		</do>
-		<init target="theme" ver="5" ref="here.pTheme"/>
+		<init target="pTheme" ver="5" ref="here.init_Theme"/>
 	</object>
 	<object access-modifier="private" name="Debug" display-name="Debug" uuid="a3126ffd-3d57-4181-8361-a28a0c6c8556" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5" description="" cardinal="1"/>
-	<object access-modifier="private" name="IsVisible" display-name="IsVisible" uuid="1820e53b-87b4-4fc6-aa88-86ec30a77c7d" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
-		<object access-modifier="private" name="oldValue" display-name="oldValue" uuid="78e79a68-bb56-4c0e-9b1f-318e960d07b1" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
-		<init target="oldValue" ver="5" value="true"/>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
-			<body kind="om">
-				<![CDATA[if (oldValue != Value)
-{
-	oldValue = Value;
-	
-	if	(Value)
-	{
-		SizeLimits.MaxWidth = 390;
-	}
-	else
-	{
-		SizeLimits.MaxWidth = 0;
-	}
-}]]>
-			</body>
-		</do-on>
-	</object>
-	<do-trace access-modifier="private" target="Visible" ver="5">
-		<body>
-			<![CDATA[IsVisible]]>
-		</body>
-	</do-trace>
-	<init target="IsVisible" ver="5" value="true"/>
 	<object access-modifier="private" name="Begin" display-name="Begin" uuid="6a5f2718-bca9-47ed-8f22-a1fe99d28d41" base-type="notifying_timestamp" base-type-id="fb54ffc6-3bfa-4c71-8ae4-fc5d62558895" ver="5" description="" cardinal="1">
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
 			<body kind="om">
@@ -342,31 +293,31 @@ else
 	<object access-modifier="private" name="Error" display-name="Error" uuid="5fda9eec-dee1-4174-9c3c-7110c36ca7a7" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1">
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
 			<body kind="om">
-				<![CDATA[if (value != "")
+				<![CDATA[if (oldValue != value)
 {
-	private.ToolTip.Text = value;
-	private.ToolTip.X = fromDateEditor.ScreenX(0, 0);
-	private.ToolTip.Y = fromDateEditor.ScreenY(0, fromDateEditor.Height - 10);
-	private.ToolTip.Show();
-}
-else
-	private.ToolTip.Hide();]]>
+	oldValue = value;
+
+	if (value != "")
+	{
+		private.ToolTip.Text = value;
+		private.ToolTip.X = fromDateEditor.ScreenX(0, 0);
+		private.ToolTip.Y = fromDateEditor.ScreenY(0, fromDateEditor.Height - 10);
+		private.ToolTip.Show();
+	}
+	else
+		private.ToolTip.Hide();
+}]]>
 			</body>
 		</do-on>
+		<object access-modifier="private" name="oldValue" display-name="oldValue" uuid="09b391d9-c321-40ba-800a-568b11a37f0f" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
 	</object>
 	<object access-modifier="private" name="pIntervalChanged" display-name="pIntervalChanged" uuid="51e4c2c4-db22-49a2-a419-942289f2f370" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description=""/>
 	<object access-modifier="private" name="Layout" display-name="Layout" uuid="2b7614d5-07a2-45b7-a06f-e3949cebc296" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
 		<designed target="Orientation" value="1" ver="5"/>
 		<designed target="Gap" value="0" ver="5"/>
 	</object>
-	<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="b0713390-fa08-4534-ac32-08f22d3e5a9f" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
-		<designed target="MinWidth" value="0" ver="5"/>
-		<designed target="MinHeight" value="0" ver="5"/>
-		<designed target="MaxWidth" value="390" ver="5"/>
-		<designed target="MaxHeight" value="30" ver="5"/>
-	</object>
-	<param access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="b6487e8c-3f89-4eb5-a7c5-6c4c1a7d1d83" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
-	<init target="pTheme" ver="5">
+	<param access-modifier="private" name="init_Theme" display-name="Тема оформления" uuid="b6487e8c-3f89-4eb5-a7c5-6c4c1a7d1d83" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
+	<init target="init_Theme" ver="5">
 		<object access-modifier="private" uuid="db783981-a587-4c10-a921-94b0a6a118c6" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5"/>
 	</init>
 </type>

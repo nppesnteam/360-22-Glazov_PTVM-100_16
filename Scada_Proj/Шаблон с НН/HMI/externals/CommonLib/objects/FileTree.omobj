@@ -13,14 +13,9 @@
 	<object access-modifier="private" name="Debug" display-name="Debug" uuid="69419f62-0b9d-4ce2-9c3f-09b70f106b8b" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
 	<object access-modifier="private" name="Files" display-name="Files" uuid="4e2de93a-37c4-421c-9410-47e1ec0a6b89" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5">
 		<designed target="RootPath" value="/" ver="5"/>
-		<do-trace access-modifier="private" target="RootPath" ver="5">
-			<body>
-				<![CDATA[here.RootPath]]>
-			</body>
-		</do-trace>
+		<init target="RootPath" ver="5" ref="here.RootPath"/>
 	</object>
 	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="918068c5-93af-4286-86e4-517e98ae30d5" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
-	<object access-modifier="private" name="RootPath" display-name="Корневой путь" uuid="8a9aa4c1-3b63-425d-bc4b-9a030d23d057" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
 	<object access-modifier="private" name="ShowFiles" display-name="Показывать файлы" uuid="8f6b981b-a4e0-448f-8ed5-5c70a9904050" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
 	<object access-modifier="private" name="SelectedPath" display-name="Выделенный путь" uuid="44536105-1d77-42c2-9835-cc69aeef09b4" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
 	<designed target="RoundingRadius" value="0" ver="5"/>
@@ -376,5 +371,6 @@ else
 		</body>
 	</do-trace>
 	<designed target="Flip" value="0" ver="5"/>
+	<param access-modifier="private" name="RootPath" display-name="Корневой путь" uuid="8a9aa4c1-3b63-425d-bc4b-9a030d23d057" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 </type>
 

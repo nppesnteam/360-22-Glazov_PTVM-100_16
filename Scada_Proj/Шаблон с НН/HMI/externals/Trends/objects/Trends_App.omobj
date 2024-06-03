@@ -6,7 +6,7 @@
 	<designed target="Visible" value="true" ver="5"/>
 	<designed target="Enabled" value="true" ver="5"/>
 	<designed target="Tooltip" value="" ver="5"/>
-	<designed target="Width" value="1250" ver="5"/>
+	<designed target="Width" value="1100" ver="5"/>
 	<designed target="Height" value="650" ver="5"/>
 	<designed target="PenColor" value="0xff000000" ver="5"/>
 	<designed target="PenStyle" value="0" ver="5"/>
@@ -36,7 +36,7 @@
 				<![CDATA[var filePath = GetSessionFilePath();
 if (Files.Exists(filePath))
 {
-//	log("Загрузка настроек вида из файла "  + filePath);
+	//log("Загрузка настроек вида из файла "  + filePath);
 	try
 	{
 		var json = Files.ReadTextFile(filePath);
@@ -51,19 +51,50 @@ if (Files.Exists(filePath))
 			WindowHeight = window.Height;
 			WindowState = window.State;
 		}
-		
-		var theme = session.Theme;
-		if (theme != undefined)
-			Theme.UpdateView(JSON.stringify(theme));
 
-		Trends.ShowSources = session.ShowSources;
-		Trends.ShowToolbar = session.ShowToolbar;
-		Trends.ShowLegend = session.ShowLegend;
-		Trends.ShowStatus = session.ShowStatus;
-		Trends.WS.RS.Chart.ShowMiniTrends = session.ShowMiniTrends;
-		Trends.WS.RS.Chart.ShowDataPoints = session.ShowDataPoints;
-		Trends.WS.RS.Chart.ZoomXEnable = session.ZoomXEnable != false;
-		Trends.WS.RS.Chart.ZoomYEnable = session.ZoomYEnable != false;
+		var connection = session.Connection;
+		if (connection != undefined)
+		{
+			AP_main.SetCredentials(connection.Credentials == undefined ? "" : JSON.stringify(connection.Credentials));
+			AP_main.Connect(connection.Location, connection.Port, connection.HistoryPort);
+			
+			var recentlyConnections = connection.RecentlyConnections;
+			if (recentlyConnections != undefined)
+				RecentlyConnections = JSON.stringify(recentlyConnections);
+		}
+		
+		var itemsTree = session.ItemsTree;
+		if (itemsTree != undefined)
+		{
+			WS.Splitter.Position = itemsTree.Width;
+			ToolbarPanel.ToolBar.ShowSources = itemsTree.Visible;
+		}
+
+		var chart = session.Chart;
+		if (chart != undefined)
+		{
+			WS.Chart.ShowLegend = chart.ShowLegend;
+			WS.Chart.ShowMiniTrends = chart.ShowMiniTrends;
+			WS.Chart.ShowDataPoints = chart.ShowDataPoints;
+			WS.Chart.ZoomXEnable = chart.ZoomXEnable;
+			WS.Chart.ZoomYEnable = chart.ZoomYEnable;
+			
+			var legend = chart.Legend;
+			if (legend != undefined)
+				WS.Chart.Legend.UpdateView(JSON.stringify(legend));
+		}
+		
+		var dataTable = session.DataTable;
+		if (dataTable != undefined)
+			WS.Chart.OpenDataTable.Settings = JSON.stringify(dataTable);
+			
+		var file = session.File;
+		if (file != undefined)
+		{
+			WS.Chart.ShowOpenDialog.FileType = file.OpenFileType; 
+			WS.Chart.ShowSaveDialog.FileType = file.SaveFileType;
+			WS.Chart.ShowExportDialog.FileType = file.ExportFileType;
+		}
 	}
 	catch(err)
 	{
@@ -86,16 +117,39 @@ try
 			"Height": WindowHeight,
 			"State": WindowState
 		},		
-		"Theme": JSON.parse(Theme.GetViewSettings()),
-		"ShowSources": Trends.ShowSources.Value,
-		"ShowLegend": Trends.ShowLegend.Value,
-		"ShowStatus": Trends.ShowStatus.Value,
-		"ShowToolbar": Trends.ShowToolbar.Value,
-		"ShowMiniTrends": Trends.WS.RS.Chart.ShowMiniTrends.Value,
-		"ShowDataPoints": Trends.WS.RS.Chart.ShowDataPoints.Value,
-		"ZoomXEnable": Trends.WS.RS.Chart.ZoomXEnable.Value,
-		"ZoomYEnable": Trends.WS.RS.Chart.ZoomYEnable.Value
+		"Connection": {
+			"Location": AP_main.Location,
+			"Port": AP_main.Port,
+			"HistoryPort": AP_main.HistoryPort
+		},
+		'ItemsTree': {
+			'Visible': ToolbarPanel.ToolBar.ShowSources.Value,
+			'Width': WS.Splitter.Position.Value
+		},
+		'Chart': {		
+			'ShowLegend': WS.Chart.ShowLegend.Value,
+			'ShowMiniTrends': WS.Chart.ShowMiniTrends.Value,
+			'ShowDataPoints': WS.Chart.ShowDataPoints.Value,
+			'ZoomXEnable': WS.Chart.ZoomXEnable.Value,
+			'ZoomYEnable': WS.Chart.ZoomYEnable.Value,
+			'Legend': JSON.parse(WS.Chart.Legend.GetViewSettings())
+		},
+		'File': {
+			'OpenFileType': WS.Chart.ShowOpenDialog.FileType,
+			'SaveFileType': WS.Chart.ShowSaveDialog.FileType,
+			'ExportFileType': WS.Chart.ShowExportDialog.FileType
+		}
 	}
+
+	if (private.Credentials.current != "")
+		session.Connection.Credentials = JSON.parse(Credentials.current);
+	
+	var recentlyConnections = private.RecentlyConnections.Value;
+	if (recentlyConnections != "")
+		session.Connection.RecentlyConnections = JSON.parse(recentlyConnections);
+		
+	if (WS.Chart.OpenDataTable.Settings != "")
+		session.DataTable = JSON.parse(WS.Chart.OpenDataTable.Settings);
 	
 	var folder = Files.ParentPath(filePath);
 	Files.CreateRecursiveFolder(folder);
@@ -111,47 +165,235 @@ catch(err)
 		<do access-modifier="private" name="GetSessionFilePath" display-name="GetSessionFilePath" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
 			<body kind="om">
 				<![CDATA[folderPath: string = unit.ProductInfo.GetUserDataFolder();
-return Files.CombinePath(folderPath, "session.json");]]>
+return Files.CombinePath(folderPath, "app_session.json");]]>
 			</body>
 		</do>
-		<do access-modifier="private" name="LoadSettings" display-name="LoadSettings" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<do access-modifier="private" name="LoadSettings" display-name="Load_AppSettings" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 			<body kind="javascript">
 				<![CDATA[var filePath = GetSettingsFilePath();
 if (Files.Exists(filePath))
 {
-//	log("Загрузка настроек приложения из файла "  + filePath);
+	//log("Загрузка настроек из файла "  + filePath);
 	try
 	{
-		var json = Files.ReadTextFile(filePath);
+		var json = Files.ReadTextFile(filePath);		
+		Settings.FromJSON(json);
+	}
+	catch(err)
+	{
+		log("Не удалось загрузить настройки из "  + filePath + "\n" + err.message);
+	}
+}
+else
+	SaveSettings();]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="SaveSettings" display-name="Save_AppSettings" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[var filePath = GetSettingsFilePath();
+//log("Сохранение настроек в файл "  + filePath);
+try
+{
+	var settings = JSON.parse(Settings.ToJSON());
+	
+	var folder = Files.ParentPath(filePath);
+	Files.CreateRecursiveFolder(folder);
+
+	Files.WriteTextFile(filePath, JSON.stringify(settings, 0, 2));
+}
+catch(err)
+{
+	log("Не удалось сохранить настройки в "  + filePath + "\n" + err.message);
+}]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="GetSettingsFilePath" display-name="GetSettingsFilePath" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[folderPath: string = unit.ProductInfo.GetProgramDataFolder();
+return Files.CombinePath(folderPath, "settings.json");]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="EditSettings" display-name="EditSettings" uuid="933ac11f-bf0a-4844-a248-ebfdd66ba766" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="4602a279-55b7-4101-9740-1ed4d4c7fe03" base-type="Trends_SettingsMain" base-type-id="73f343c2-cdfc-4c21-b5ea-f00c75151521" ver="5">
+					<init target="pTheme" ver="5" ref="Theme"/>
+					<init target="pToolBar" ver="5" ref="ToolbarPanel.ToolBar"/>
+					<init target="pSaveSettings" ver="5" ref="AppSettingsChanged"/>
+				</object>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="ShowComplete" display-name="ShowComplete" uuid="3ad48a29-4407-4558-aa98-895383cf80bb" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="138f4ca4-7c2f-4c88-9f35-93a0789fda4f" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="5">
+					<init target="Icon" ver="5" value="0"/>
+					<init target="Buttons" ver="5" value="0"/>
+					<init target="Message" ver="5">
+						<expr>
+							<![CDATA[message]]>
+						</expr>
+					</init>
+					<init target="pTheme" ver="5" ref="Theme"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="message" display-name="message" uuid="837b22b5-9958-4ba5-9b6b-1fa427b0a920" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</object>
+		<object access-modifier="private" name="ShowError" display-name="ShowError" uuid="f0d37981-77be-478b-b333-1e39559580f0" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="e3a16c95-fc2b-4996-94b5-91b727fe419e" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="5">
+					<init target="Icon" ver="5" value="2"/>
+					<init target="Buttons" ver="5" value="0"/>
+					<init target="Message" ver="5">
+						<expr>
+							<![CDATA[message]]>
+						</expr>
+					</init>
+					<designed target="WindowCaption" value="Внимание" ver="5"/>
+					<init target="pTheme" ver="5" ref="Theme"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="message" display-name="message" uuid="ced74fdd-b925-4b78-96fb-c6bec22d8a2d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</object>
+		<object access-modifier="private" name="SettingsChanged" display-name="SettingsChanged" uuid="03f075d3-7ee2-475b-b21a-f591d32f700c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[SaveSettings();]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="AppSettingsChanged" display-name="AppSettingsChanged" uuid="51f387f0-7810-45b5-a1f0-ac1868167c4a" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[SaveAppSettings();]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="RecentlyConnections" display-name="RecentlyConnections" uuid="b71184f6-9e31-4680-9002-4624ff3edd71" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1">
+			<do access-modifier="private" name="UpdateList" display-name="UpdateList" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="javascript">
+					<![CDATA[var newItem = JSON.parse(item);
+var list = [];
+if (this.Value != "")
+	list = JSON.parse(this.Value);
+
+// удаляем элемент, если он уже есть в списке
+if (list.length > 0)
+{
+	var index = list.findIndex(s => (s.Location == newItem.Location && s.Port == newItem.Port));
+	if (index > -1 && index < list.length)
+	{
+		if (newItem.Title == "" && list[index].Title != "")
+			newItem.Title = list[index].Title;
+	}
+	if (index > -1)
+		list.splice(index, 1);
+}
+
+// добавляем в начало списка
+list.unshift(newItem);
+
+// ограничиваем список десятью элементами
+if (list.length > 10)
+	list.splice(10);
+
+this.Value = JSON.stringify(list);]]>
+				</body>
+				<param access-modifier="private" name="item" display-name="" uuid="a1e2bd56-941e-4736-b7fa-e144224441fe" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			</do>
+		</object>
+		<object access-modifier="private" name="Credentials" display-name="Credentials" uuid="2a334c06-5760-4559-8907-865551ebb4c4" base-type="ApCredentials" base-type-id="fef70643-767d-4533-98e9-412948317273" ver="5" description="" cardinal="1">
+			<designed target="FilePath" value="" ver="5"/>
+			<object access-modifier="private" name="current" display-name="current" uuid="9d74324b-0381-4065-8194-b1078dad513e" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+			<do access-modifier="private" name="FromJSON" display-name="FromJSON" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[//Debug.Log("Credentials FromJSON: "+credentials);
+if (credentials != "")
+{
+	folder: string = ProductInfo.GetUserDataFolder();
+	Files.CreateRecursiveFolder(folder);
+		
+	FilePath = Files.CombinePath(folder, String.ToString(DateTime.UtcNow()));
+	Files.WriteTextFile(FilePath, credentials);
+	if (!Load())
+		Debug.Log(GetLastError());
+	Files.RemoveRecursive(FilePath);
+}
+else
+{
+	FilePath = "";
+	SetPassword("");
+}]]>
+				</body>
+				<param access-modifier="private" name="credentials" display-name="" uuid="8642933b-9df7-4527-ba7d-8275c3b151d8" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			</do>
+		</object>
+		<object access-modifier="private" name="Settings" display-name="Settings" uuid="addb9524-cd8f-41ba-90dc-4f5f4cbc464e" base-type="Trends_Settings" base-type-id="91daec58-54a8-4900-9b93-be8602b98694" ver="5" description="" cardinal="1">
+			<init target="HeaderTextAlignment" ver="5" value="132"/>
+			<init target="FooterTextAlignment" ver="5" value="129"/>
+		</object>
+		<object access-modifier="private" name="Templates" display-name="Templates" uuid="cf097c2b-5854-440d-b8a2-43c067cffd63" base-type="Templates" base-type-id="020ae0f1-0abb-4c52-9c0e-0152917830ed" ver="5" description="" cardinal="1"/>
+		<do access-modifier="private" name="LoadAppSettings" display-name="LoadAppSettings" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[var filePath = GetAppSettingsFilePath();
+if (Files.Exists(filePath))
+{
+	//log("Загрузка настроек приложения из файла "  + filePath);
+	try
+	{
+		var json = Files.ReadTextFile(filePath);		
 		var settings = JSON.parse(json);
+
+		var theme = settings.Theme;
+		if (theme != undefined)
+			Theme.UpdateView(JSON.stringify(theme));
+		
+		var toolbar = settings.ToolBar;
+		if (toolbar != undefined)
+			ToolbarPanel.ToolBar.UpdateView(JSON.stringify(toolbar));
 
 		var screenKeyboard = settings.ScreenKeyboard;
 		if (screenKeyboard != undefined)
 			ScreenKeyboard.FromJSON(JSON.stringify(screenKeyboard));
-			
+
 		var permissions = settings.Permissions;
 		if (permissions != undefined)
 			Permissions.UseSecurity = permissions.UseSecurity;
+
+		var templates = settings.Templates;
+		if (templates != undefined)
+			Templates.FromJSON(JSON.stringify(templates));
 	}
 	catch(err)
 	{
 		log("Не удалось загрузить настройки приложения из "  + filePath + "\n" + err.message);
 	}
-}]]>
+}
+else
+	SaveAppSettings();]]>
 			</body>
 		</do>
-		<do access-modifier="private" name="SaveSettings" display-name="SaveSettings" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<do access-modifier="private" name="SaveAppSettings" display-name="SaveAppSettings" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 			<body kind="javascript">
-				<![CDATA[var filePath = GetSettingsFilePath();
+				<![CDATA[var filePath = GetAppSettingsFilePath();
 //log("Сохранение настроек приложения в файл "  + filePath);
 try
 {
 	var settings = {
+		'Theme': JSON.parse(Theme.GetViewSettings()),
+		'ToolBar': JSON.parse(ToolbarPanel.ToolBar.GetViewSettings()),
 		'ScreenKeyboard': JSON.parse(ScreenKeyboard.ToJSON()),
-		'Permissions': {
-			'UseSecurity': Permissions.UseSecurity.Value
-		}
-	}
+		'Templates': JSON.parse(Templates.ToJSON()),
+		'Permissions': { 'UseSecurity': Permissions.UseSecurity.Value }
+	};
 	
 	var folder = Files.ParentPath(filePath);
 	Files.CreateRecursiveFolder(folder);
@@ -164,7 +406,7 @@ catch(err)
 }]]>
 			</body>
 		</do>
-		<do access-modifier="private" name="GetSettingsFilePath" display-name="GetSettingsFilePath" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<do access-modifier="private" name="GetAppSettingsFilePath" display-name="GetAppSettingsFilePath" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
 			<body kind="om">
 				<![CDATA[folderPath: string = unit.ProductInfo.GetProgramDataFolder();
 return Files.CombinePath(folderPath, "app_settings.json");]]>
@@ -175,12 +417,14 @@ return Files.CombinePath(folderPath, "app_settings.json");]]>
 	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="WindowSizeChanged">
 		<body kind="om">
 			<![CDATA[Width = WindowWidth;
-Height = WindowHeight;]]>
+Height = WindowHeight;
+
+WS.Splitter.Maximum = Width - 30;]]>
 		</body>
 	</do-on>
 	<designed target="ZValue" value="0" ver="5"/>
 	<object access-modifier="private" name="AP_main" display-name="AP_main" uuid="8cf14f66-296d-4a82-8e6c-7f9ee89820ed" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
-		<designed target="Active" value="true" ver="5"/>
+		<designed target="Active" value="false" ver="5"/>
 		<init target="Timeout" ver="5" value="1000"/>
 		<init target="ConnectionEstablishTimeout" ver="5" value="1000"/>
 		<init target="MaxBufferPoolSize" ver="5" value="1000000"/>
@@ -191,35 +435,46 @@ Height = WindowHeight;]]>
 		<designed target="HistoryPort" value="4950" ver="5"/>
 		<designed target="ClientDisplayName" value="HMI" ver="5"/>
 		<designed target="ClientId" value="HMI" ver="5"/>
+		<do access-modifier="private" name="Connect" display-name="Connect" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[//Debug.Log("AP_main.Connect: "+location);
+Active = false;
+Location = location;
+Port = port;
+HistoryPort = historyPort;
+Active = true;
+]]>
+			</body>
+			<param access-modifier="private" name="location" display-name="" uuid="8c755ba5-c87c-41c9-95b9-93db2acc1713" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<param access-modifier="private" name="port" display-name="" uuid="018ffa0e-1682-41fe-8b7a-c7a1239aca82" base-type="uint2" base-type-id="ae923ad8-8b75-4813-8121-36efe3cc8c12" ver="5"/>
+			<param access-modifier="private" name="historyPort" display-name="" uuid="906abe94-8218-42b0-84ae-469d1c80557e" base-type="uint2" base-type-id="ae923ad8-8b75-4813-8121-36efe3cc8c12" ver="5"/>
+		</do>
+		<do access-modifier="private" name="SetCredentials" display-name="SetCredentials" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (private.Credentials.current != credentials)
+{
+//	Debug.Log("Set credentials: " + credentials);
+	private.Credentials.FromJSON(credentials);
+	private.Credentials.current = credentials;
+	
+	// активируем источник, если ранее было подключение
+	if (Active)
+	{
+		Active = false;
+		Active = true;
+	}
+}]]>
+			</body>
+			<param access-modifier="private" name="credentials" display-name="" uuid="6ecda66c-a26c-4e92-bbbf-8a5f4fa00700" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+		<do access-modifier="private" name="GetCredentials" display-name="GetCredentials" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[return private.Credentials.current;]]>
+			</body>
+		</do>
+		<init target="Credentials" ver="5" ref="private.Credentials"/>
 	</object>
 	<designed target="Opacity" value="1" ver="5"/>
-	<object access-modifier="private" name="Trends" display-name="Trends" uuid="1c12c121-04ec-4945-8ee9-541ebf1c9f7a" base-type="Trends" base-type-id="81673f92-ac48-4244-bfe3-ddbdcc98167a" ver="5">
-		<designed target="X" value="0" ver="5"/>
-		<designed target="Y" value="0" ver="5"/>
-		<designed target="Rotation" value="0" ver="5"/>
-		<designed target="Width" value="1250" ver="5"/>
-		<designed target="Height" value="650" ver="5"/>
-		<init target="int_AP" ver="5" ref="AP_main"/>
-		<init target="YAxisPrecision" ver="5" value="1"/>
-		<init target="GlobalRanges" ver="5" value="true"/>
-		<init target="UseRedLine" ver="5" value="true"/>
-		<init target="InterpolationLine" ver="5" value="true"/>
-		<init target="TreeFindEnable" ver="5" value="true"/>
-		<init target="OperativeStoredInterval" ver="5" value="30"/>
-		<init target="ExportImportFolderPath" ver="5" value=""/>
-		<init target="ModeTimeSourceServer" ver="5" value="0"/>
-		<init target="SynchronizeColor" ver="5" value="true"/>
-		<init target="UseServerTime" ver="5" value="false"/>
-		<init target="SynchroColorMarker" ver="5" value="false"/>
-		<init target="OperativeDisplayedInterval" ver="5" value="10"/>
-		<init target="init_Theme" ver="5" ref="here.Theme"/>
-		<init target="ShowSources" ver="5" value="true"/>
-		<init target="ShowMarkerLabels" ver="5" value="true"/>
-		<init target="ShowDataPoints" ver="5" value="false"/>
-		<init target="ShowMiniTrends" ver="5" value="true"/>
-		<init target="init_Permissions" ver="5" ref="here.Permissions"/>
-		<init target="init_ScreenKeyboard" ver="5" ref="here.ScreenKeyboard"/>
-	</object>
 	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="Opened">
 		<body kind="om">
 			<![CDATA[WindowUtils.CorrectPosition();]]>
@@ -227,12 +482,21 @@ Height = WindowHeight;]]>
 	</do-on>
 	<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="AboutToOpen">
 		<body kind="om">
-			<![CDATA[private.LoadSettings();
+			<![CDATA[private.LoadAppSettings();
+private.LoadSettings();
 private.LoadSession();]]>
 		</body>
 	</do-on>
 	<object access-modifier="private" name="Files" display-name="Files" uuid="21fd7d6b-78dc-4788-bcba-6c0b9274787e" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5">
 		<designed target="RootPath" value="/" ver="5"/>
+		<object access-modifier="private" name="error" display-name="error" uuid="3f795f0f-ab16-415b-af2b-5c9a589577c6" base-type="FileSystemError" base-type-id="38147fa1-a364-43d4-bd0b-07ee8556c2f2" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Occured">
+				<body kind="om">
+					<![CDATA[Debug.Log(Text);]]>
+				</body>
+			</do-on>
+		</object>
+		<init target="Error" ver="5" ref="error"/>
 	</object>
 	<designed target="WindowIconPath" value="Trends_Icons/Trends.ico" ver="5"/>
 	<object access-modifier="private" name="Theme" display-name="Theme" uuid="1530ce42-362c-4086-a615-b59a3245fac1" base-type="Trends_Theme" base-type-id="3fbfa4c2-c742-4bec-94dc-d1bcb7ef25b6" ver="5" description="" cardinal="1">
@@ -254,14 +518,960 @@ Close();]]>
 	<object access-modifier="private" name="ScreenKeyboard" display-name="ScreenKeyboard" uuid="c9cf80fd-dd57-45e7-90a0-9107fe3e84b6" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" ver="5" description="" cardinal="1">
 		<init target="Enabled" ver="5" value="false"/>
 	</object>
-	<do-on access-modifier="private" name="Handler_7" display-name="Handler_7" ver="5" event="Closed">
-		<body kind="om">
-			<![CDATA[private.SaveSettings();]]>
-		</body>
-	</do-on>
 	<object access-modifier="private" name="Layout" display-name="Layout" uuid="e5c0fb51-f3e6-48be-9c59-a97e8c1a8cb8" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
 		<designed target="Orientation" value="2" ver="5"/>
 		<designed target="Gap" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="ToolbarPanel" display-name="ToolbarPanel" uuid="feddd535-95c0-47b3-9966-de3f61e0084a" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="1100" ver="5"/>
+		<designed target="Height" value="35" ver="5"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<designed target="PenColor" value="0xff808080" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<object access-modifier="private" name="btnConnect" display-name="btnConnect" uuid="6912e537-c89d-48e5-a93d-d5751bb6cc0e" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5" description="" cardinal="1">
+			<designed target="X" value="1" ver="5"/>
+			<designed target="Y" value="8.5" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Width" value="18" ver="5"/>
+			<designed target="Height" value="18" ver="5"/>
+			<init target="IconFile" ver="5" value="Trends_Icons/Connect24.png"/>
+			<init target="TitleText" ver="5" value="Подключиться к серверу..."/>
+			<init target="pDropDown" ver="5" ref="btnConnectExt"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[ShowConnectDialog.DialogResult.Location = AP_main.Location;
+ShowConnectDialog.DialogResult.Port = AP_main.Port;
+ShowConnectDialog.DialogResult.HistoryPort = AP_main.HistoryPort;
+ShowConnectDialog.Invoke();]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="ShowConnectDialog" display-name="ShowConnectDialog" uuid="fa4c2c02-e4ac-402a-8311-e915b0fe79e3" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="4a76e52a-1d78-4d43-b8b1-f5cffa9f043e" base-type="ConnectDialog" base-type-id="7ef11704-9e99-4515-a010-013b1fe1012f" ver="5">
+						<init target="pResult" ver="5" ref="DialogResult"/>
+						<init target="SpecifyHistoryPort" ver="5" value="true"/>
+						<init target="init_Theme" ver="5" ref="here.Theme"/>
+						<init target="SpecifyTitle" ver="5" value="true"/>
+						<init target="OkAction" ver="5" ref="HostConnect"/>
+					</object>
+				</do-on>
+				<object access-modifier="private" name="DialogResult" display-name="DialogResult" uuid="667cf6f4-e61a-43c9-aec0-b7d3259fd0b0" base-type="ConnectDialogResult" base-type-id="d594d8ef-50a0-48fe-8a09-acb33eda25ec" ver="5" description="" cardinal="1">
+					<init target="Location" ver="5" value="127.0.0.1"/>
+					<init target="Port" ver="5" value="4388"/>
+					<init target="HistoryPort" ver="5" value="4950"/>
+				</object>
+				<object access-modifier="private" name="HostConnect" display-name="HostConnect" uuid="b72ad621-9284-4472-9b82-21ae9b71b25f" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+					<designed target="Enabled" value="true" ver="5"/>
+					<designed target="InvokeTrigger" value="false" ver="5"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="javascript">
+							<![CDATA[AP_main.SetCredentials(DialogResult.Credentials);
+AP_main.Connect(DialogResult.Location, DialogResult.Port, DialogResult.HistoryPort);
+
+var connection = {
+	'Title': DialogResult.Title,
+	'Location': DialogResult.Location,
+	'Port': DialogResult.Port,
+	'HistoryPort': DialogResult.HistoryPort,
+};
+
+
+if (DialogResult.Credentials != "")
+	connection.credentials = JSON.parse(DialogResult.Credentials);
+
+here.private.RecentlyConnections.UpdateList(JSON.stringify(connection));]]>
+						</body>
+					</do-on>
+				</object>
+			</object>
+			<init target="init_Theme" ver="5" ref="ToolBar.private.theme"/>
+			<designed target="Tooltip" value="Подключиться к серверу..." ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnConnectExt" display-name="btnConnectExt" uuid="e7f95e89-4387-4790-af74-8175510e0692" base-type="ToolbarDropDown" base-type-id="0e258e56-d922-4a8f-b8c3-7d577d177609" ver="5" description="" cardinal="1">
+			<designed target="X" value="19" ver="5"/>
+			<designed target="Y" value="8.5" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Width" value="11" ver="5"/>
+			<designed target="Height" value="18" ver="5"/>
+			<object access-modifier="private" name="MenuClick" display-name="MenuClick" uuid="ebcf25e9-d973-445e-92af-355f4270eaed" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="javascript">
+						<![CDATA[if (MenuResult.Id == "ClearList")
+{
+	here.private.RecentlyConnections = "";
+}
+else
+{
+	let connection = JSON.parse(MenuResult.Id);
+	if (connection.Location != undefined && connection.Port != undefined)
+	{
+		var credentials = connection.Credentials == undefined ? "" : JSON.stringify(connection.Credentials);
+		AP_main.SetCredentials(credentials);
+		AP_main.Connect(connection.Location, connection.Port, connection.HistoryPort);
+		here.private.RecentlyConnections.UpdateList(MenuResult.Id);
+	}
+}]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="MenuClosed" display-name="MenuClosed" uuid="f29bac69-2f5f-4757-bdf0-48d49c43bda6" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[btnConnect.Checked = false;
+btnConnectExt.Checked = false;]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="MenuResult" display-name="MenuResult" uuid="9efe6059-5c8e-42a4-8d0b-9e7ec1ade5fa" base-type="MenuResult" base-type-id="0fe7658c-92f4-4af7-b038-3594414ac651" ver="5"/>
+			<do access-modifier="private" name="GetMenuItems" display-name="GetMenuItems" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+				<body kind="javascript">
+					<![CDATA[var items = [];
+
+var connectList = JSON.parse(here.private.RecentlyConnections);
+for (var i = 0; i < connectList.length; i++)
+{
+	var title = connectList[i].Location + ":" + connectList[i].Port + ":" + connectList[i].HistoryPort;
+	if (connectList[i].Title != undefined && connectList[i].Title != "")
+		title = connectList[i].Title +" - " + title;
+	items.push({ 'id': JSON.stringify(connectList[i]), 'title': title });
+}
+
+items.push({'title': "-" });
+items.push({'id': "ClearList", 'title': "Очистить" });
+
+return JSON.stringify(items);]]>
+				</body>
+			</do>
+			<init target="pButton" ver="5" ref="btnConnect"/>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick" form-action="open-new" form-by-id="false">
+				<object access-modifier="private" uuid="15d5c21d-79ee-4e2e-836a-a56f5f66bd1e" base-type="Menu" base-type-id="07bb4545-980a-4140-bbaa-4d1397447864" ver="5">
+					<init target="pResult" ver="5" ref="MenuResult"/>
+					<init target="pAction" ver="5" ref="MenuClick"/>
+					<init target="pOnClosed" ver="5" ref="MenuClosed"/>
+					<init target="WindowX" ver="5">
+						<expr>
+							<![CDATA[btnConnect.ScreenX(0,0)]]>
+						</expr>
+					</init>
+					<init target="WindowY" ver="5">
+						<expr>
+							<![CDATA[btnConnect.ScreenY(0, btnConnect.Height)]]>
+						</expr>
+					</init>
+					<init target="Items" ver="5">
+						<expr>
+							<![CDATA[GetMenuItems()]]>
+						</expr>
+					</init>
+				</object>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[btnConnect.Checked = true;
+btnConnectExt.Checked = true;]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[here.private.RecentlyConnections != ""]]>
+				</body>
+			</do-trace>
+			<init target="init_Theme" ver="5" ref="ToolBar.private.theme"/>
+			<designed target="Tooltip" value="Подключиться к серверу..." ver="5"/>
+		</object>
+		<object access-modifier="private" name="Separator_1" display-name="Separator_1" uuid="7a29c1a3-fd3f-40b2-a8c6-dfa4435aeee4" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5" description="" cardinal="1">
+			<designed target="X" value="31" ver="5"/>
+			<designed target="Y" value="8.5" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Width" value="8" ver="5"/>
+			<designed target="Height" value="18" ver="5"/>
+			<init target="init_Theme" ver="5" ref="ToolBar.private.theme"/>
+		</object>
+		<object access-modifier="private" name="ToolBar" display-name="ToolBar" uuid="ad4f6a06-48d3-4824-9493-0ffc6b500fb3" base-type="Trends_ToolBar" base-type-id="c5a94cf9-44f5-45cc-b455-7d86479be8ca" ver="5">
+			<designed target="X" value="39" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="OnClickTreeVisible" ver="5" ref="WS.ItemsTree.SwitchVisible"/>
+			<designed target="Height" value="35" ver="5"/>
+			<designed target="Width" value="1061" ver="5"/>
+			<init target="pEditSettings" ver="5" ref="here.private.EditSettings"/>
+			<init target="pChart" ver="5" ref="WS.Chart"/>
+			<init target="init_Theme" ver="5" ref="Theme"/>
+			<init target="init_Permissions" ver="5" ref="Permissions"/>
+			<init target="ShowSources" ver="5" value="true"/>
+		</object>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="78f0be8b-36e9-4acc-afd8-cfa1d100b9b9" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="0" ver="5"/>
+			<designed target="MinHeight" value="35" ver="5"/>
+			<designed target="MaxWidth" value="16777215" ver="5"/>
+			<designed target="MaxHeight" value="35" ver="5"/>
+		</object>
+		<do-trace access-modifier="private" target="BrushColor" ver="5">
+			<body>
+				<![CDATA[Theme.ToolbarBrushColor]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="Layout" display-name="Layout" uuid="63a1507b-d394-4f6c-a1dc-a171a6124db9" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
+			<designed target="Orientation" value="1" ver="5"/>
+			<designed target="Gap" value="0" ver="5"/>
+		</object>
+	</object>
+	<object access-modifier="private" name="WS" display-name="WS" uuid="ec08fdc8-49e2-470f-bf44-39917bbd34ae" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="35" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="1250" ver="5"/>
+		<designed target="Height" value="615" ver="5"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="4278190080" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<object access-modifier="private" name="ItemsTree" display-name="ItemsTree" uuid="45a29483-1210-48a0-aba0-18e32060c43f" base-type="Trends_ItemsTree" base-type-id="2d934a44-5181-41f0-94db-e0e63af54d68" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Width" value="250" ver="5"/>
+			<designed target="Height" value="590" ver="5"/>
+			<object access-modifier="private" name="DoOnDoubleClick" display-name="DoOnDoubleClick" uuid="bf480044-922f-4b8a-8c9a-8f98e9395f50" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="javascript">
+						<![CDATA[//Debug.Log("DoOnSelectItem");
+Chart.private.ItemsAddByJson(SelectedItem, -1);]]>
+					</body>
+				</do-on>
+			</object>
+			<init target="pOnDoubleClick" ver="5" ref="DoOnDoubleClick"/>
+			<object access-modifier="private" name="SwitchVisible" display-name="SwitchVisible" uuid="2b51cd59-8805-4912-b572-ca440f716f4f" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[ToolbarPanel.ToolBar.ShowSources = !ToolbarPanel.ToolBar.ShowSources;
+]]>
+					</body>
+				</do-on>
+			</object>
+			<do-trace access-modifier="private" target="SearchBarVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarPanel.ToolBar.ShowSources]]>
+				</body>
+			</do-trace>
+			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="34739b17-d876-48f5-bf5e-0f7ca00e370e" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+				<designed target="MinWidth" value="250" ver="5"/>
+				<designed target="MinHeight" value="0" ver="5"/>
+				<designed target="MaxWidth" value="250" ver="5"/>
+				<designed target="MaxHeight" value="16777215" ver="5"/>
+				<do-trace access-modifier="private" target="MinWidth" ver="5">
+					<body>
+						<![CDATA[Splitter.Position]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="MaxWidth" ver="5">
+					<body>
+						<![CDATA[Splitter.Position]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="ShowMenu" display-name="ShowMenu" uuid="3a0d1608-fc7d-4b69-972b-f36091b7a261" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="4f4d3b01-0c35-4335-b88f-d33d579d253c" base-type="Menu" base-type-id="07bb4545-980a-4140-bbaa-4d1397447864" ver="5">
+						<init target="pResult" ver="5" ref="MenuResult"/>
+						<init target="pAction" ver="5" ref="OnMenuClick"/>
+						<init target="Items" ver="5">
+							<expr>
+								<![CDATA[GetMenuItems()]]>
+							</expr>
+						</init>
+						<init target="WindowX" ver="5">
+							<expr>
+								<![CDATA[MouseRightClickX]]>
+							</expr>
+						</init>
+						<init target="WindowY" ver="5">
+							<expr>
+								<![CDATA[MouseRightClickY]]>
+							</expr>
+						</init>
+						<init target="init_Theme" ver="5" ref="here.Theme"/>
+					</object>
+				</do-on>
+				<object access-modifier="private" name="MenuResult" display-name="MenuResult" uuid="d3ad04b6-7694-456b-8a1b-5812e71b76e8" base-type="MenuResult" base-type-id="0fe7658c-92f4-4af7-b038-3594414ac651" ver="5"/>
+				<object access-modifier="private" name="OnMenuClick" display-name="OnMenuClick" uuid="8b65c313-4778-4864-9271-1a68a7495fda" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+					<designed target="Enabled" value="true" ver="5"/>
+					<designed target="InvokeTrigger" value="false" ver="5"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="javascript">
+							<![CDATA[var cmd = MenuResult.Id;
+var info = JSON.parse(SelectedItem).data[0];
+
+if (cmd == "add")
+{
+	if (Chart.Params.TagIsUse(info.tag))
+	{
+		var itemIndex = Chart.Params.GetIndexByPath(info.tag);
+		Chart.Lines.SetVisible(itemIndex, true);
+		Chart.Lines.SetSelect(itemIndex);
+		Chart.Legend.SelectItem(itemIndex);
+	}
+	else
+	{
+		Chart.private.ItemsAddByJson(SelectedItem, -1);
+	}
+}
+else if (cmd.substr(0, 6) == "chart_")
+{
+	var newChart = cmd.substr(6);
+	var nChart = (newChart == "new") ? Chart.Params.Charts.GetFree() : newChart;
+	if (Chart.Params.TagIsUse(info.tag))
+	{
+		var itemIndex = Chart.Params.GetIndexByPath(info.tag);
+		Chart.Lines.SetChart(itemIndex, nChart);
+	}
+	else
+	{
+		Chart.private.ItemsAddByJson(SelectedItem, nChart);
+	}
+	Chart.Axis.LinkUpdate(Chart.GlobalRanges);
+	Chart.UpdateYRanges(Chart.AutoRange);
+} ]]>
+						</body>
+					</do-on>
+				</object>
+				<do access-modifier="private" name="GetMenuItems" display-name="GetMenuItems" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+					<body kind="javascript">
+						<![CDATA[// Определяем тэг выделенного элемента
+// это свойство должно содержать данные в виде массива из одного элемента
+var info = JSON.parse(SelectedItem).data[0];
+var selItem = Chart.Params.GetIndexByPath(info.tag);
+// Определяем поле графика, если график уже добавлен
+var ownChart = selItem>0 ? Chart.Params.Lines[selItem].nChart : -1;
+
+var items = [];
+
+items.push({'id':"add", 'title':"Показать график сигнала", 'icon': "Trends_Icons/Add16.png"});
+
+var chartsItem = { 'id': 9, 'title': "Разместить график на поле" };
+chartsItem.items = [];
+chartsItem.items.push({ 'id': "chart_new", 'title': "Новое поле" });
+chartsItem.items.push({ 'title': "-" });
+var i = 0;
+var n = 0;
+while (i < Chart.Params.Charts.Length)
+{
+	if (Chart.Params.Charts[i].bVisible)
+	{
+		n += 1;
+		chartsItem.items.push({ 'id': "chart_"+i, 'title': n, 'active': i!=ownChart});
+	}
+	i += 1;
+}
+items.push(chartsItem);
+
+return JSON.stringify(items);]]>
+					</body>
+				</do>
+			</object>
+			<init target="pOnRightClick" ver="5" ref="ShowMenu"/>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[ToolbarPanel.ToolBar.ShowSources]]>
+				</body>
+			</do-trace>
+			<init target="ApSource" ver="5" ref="AP_main"/>
+			<init target="init_Theme" ver="5" ref="Theme"/>
+		</object>
+		<object access-modifier="private" name="Splitter" display-name="Splitter" uuid="f9bc32ad-9f5e-4e70-8f66-7fbc3265ec40" base-type="HorizontalSplitter" base-type-id="9f2e11a5-219a-4c9b-bceb-928724b2f965" ver="5" description="" cardinal="1">
+			<designed target="X" value="1096" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Width" value="4" ver="5"/>
+			<designed target="Height" value="590" ver="5"/>
+			<init target="Position" ver="5" value="250"/>
+			<init target="Minimum" ver="5" value="30"/>
+			<init target="init_Theme" ver="5" ref="here.Theme"/>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[ToolbarPanel.ToolBar.ShowSources]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="Chart" display-name="Chart" uuid="986e68e7-d02c-4a11-9dc2-48d2d10cfe12" base-type="Trends_Chart" base-type-id="659f73ba-7fa5-4aa4-ac4d-623541275829" ver="5">
+			<designed target="X" value="254" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Width" value="846" ver="5"/>
+			<designed target="Height" value="590" ver="5"/>
+			<init target="ActiveMode" ver="5" value="0"/>
+			<do-trace access-modifier="private" target="ShowRedLine" ver="5">
+				<body>
+					<![CDATA[this.ActiveMode==unit.Const.amOPERATIVE]]>
+				</body>
+			</do-trace>
+			<object access-modifier="private" name="ShowContextMenu" display-name="ShowContextMenu" uuid="acc74658-30ed-4b6c-9c74-d8611266de82" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="bf167976-1684-44d8-9e1b-5d8de1fa17b4" base-type="Menu" base-type-id="07bb4545-980a-4140-bbaa-4d1397447864" ver="5">
+						<init target="pResult" ver="5" ref="MenuResult"/>
+						<init target="pAction" ver="5" ref="OnMenuClick"/>
+						<init target="WindowX" ver="5">
+							<expr>
+								<![CDATA[String.ToInt4(GetEventParam(0), 0)]]>
+							</expr>
+						</init>
+						<init target="WindowY" ver="5">
+							<expr>
+								<![CDATA[String.ToInt4(GetEventParam(1), 0)]]>
+							</expr>
+						</init>
+						<init target="Items" ver="5">
+							<expr>
+								<![CDATA[GetMenuItems()]]>
+							</expr>
+						</init>
+						<init target="init_Theme" ver="5" ref="here.Theme"/>
+					</object>
+				</do-on>
+				<object access-modifier="private" name="OnMenuClick" display-name="OnMenuClick" uuid="d06fe443-b43f-4940-9913-aff3803da2b8" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+					<designed target="Enabled" value="true" ver="5"/>
+					<designed target="InvokeTrigger" value="false" ver="5"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[cmd: string = MenuResult.Id;
+
+if (cmd == "PAUSE")
+{
+	SetPause(true);
+}
+else if (cmd == "PLAY")
+{
+	SetPause(false);
+}
+else if (cmd == "TREE")
+{
+	ItemsTree.SwitchVisible.Invoke();
+}
+else if (cmd == "TOOLBAR")
+{
+	ToolbarPanel.Visible = !ToolbarPanel.Visible;
+}
+else if (cmd == "LEGEND")
+{
+	WS.Chart.ShowLegend = !WS.Chart.ShowLegend;
+}
+else if (cmd == "ONLY")
+{
+	shownOnlyChart: bool = !ToolbarPanel.Visible && !WS.Chart.ShowLegend && !ToolbarPanel.ToolBar.ShowSources;
+	// если отображаются только графики, то показываем все панели, иначе скрываем их
+	ToolbarPanel.Visible = shownOnlyChart;
+	WS.Chart.ShowLegend = shownOnlyChart;
+	ToolbarPanel.ToolBar.ShowSources = shownOnlyChart;
+}
+else if (cmd == "REMOVE")
+{
+	selectChart: int4 = SelectedChart;
+	Chart[selectChart].SetVisible(false);
+	i:int4 = 1;
+	while (i <= unit.Const.MAX_LINES)
+	{
+		if (Params.Lines[i].Used && Params.Lines[i].nChart==selectChart)
+		{
+			Lines.SetChart(i, Chart.GetFirst());
+			Lines.SetVisible(i, false);
+		}
+		i += 1;
+	}
+}
+else if (cmd == "SCREENSHOT")
+{
+	SaveScreenshot.Invoke();
+}
+else if (cmd == "OPTIONS")
+{
+	here.private.EditSettings.Invoke();
+}]]>
+						</body>
+					</do-on>
+				</object>
+				<do access-modifier="private" name="GetMenuItems" display-name="GetMenuItems" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+					<body kind="javascript">
+						<![CDATA[var items = [];
+
+if (ActiveMode == unit.Const.amOPERATIVE)
+{
+	if (private.bPlayStatus.Value)
+		items.push({'id':"PAUSE", 'title':"Приостановить", 'icon': "Trends_Icons/Pause16.png"});
+	else	items.push({'id':"PLAY", 'title':"Продолжить", 'icon': "Trends_Icons/Play16.png"});
+	items.push({'title':"-"});
+}
+
+var viewItem = {'id':"VIEW", 'title':"Вид"};
+viewItem.items = [];
+viewItem.items.push({'id':"TREE", 		'title':"Дерево сигналов", 		'checked':ToolbarPanel.ToolBar.ShowSources.Value});
+viewItem.items.push({'id':"TOOLBAR",	'title':"Панель инструментов",	'checked':ToolbarPanel.Visible});
+viewItem.items.push({'id':"LEGEND",	'title':"Легенда", 					'checked':WS.Chart.ShowLegend.Value});
+items.push(viewItem);
+
+var shownOnlyChart = !ToolbarPanel.Visible && !WS.Chart.ShowLegend.Value && !ToolbarPanel.ToolBar.ShowSources.Value;
+items.push({'id':"ONLY", 'title':"Отобразить только графики", 'checked':shownOnlyChart});
+
+var i = 0;
+var countCharts = 0
+while (i < Params.Charts.Length)
+{
+	if (Params.Charts[i].bVisible) countCharts += 1;
+	i += 1;
+}
+items.push({'id':"REMOVE", 'title':"Удалить трендовое поле", 'active':countCharts>1 });
+
+if (here.Permissions.Export.Value)
+{
+	if (ToolbarPanel.ToolBar.Runtime.WorkMode==unit.Const.rwmDESKTOP)
+	{
+		items.push({'title':"-"});
+		items.push({'id':"SCREENSHOT", 'title':"Сохранить текущее изображение в файл...", 'icon': "Trends_Icons/Camera16.png" });
+	}
+}
+
+if (Permissions.EditSettings.Value)
+{
+	items.push({'title':"-"});
+	items.push({'id':"OPTIONS", 'title':"Параметры...", 'icon': "Trends_Icons/Options16.png" });
+}
+
+return JSON.stringify(items);]]>
+					</body>
+				</do>
+				<object access-modifier="private" name="MenuResult" display-name="MenuResult" uuid="1e849d5c-b6b9-44ee-b587-b5b40589d10f" base-type="MenuResult" base-type-id="0fe7658c-92f4-4af7-b038-3594414ac651" ver="5"/>
+			</object>
+			<init target="pOnMouseRightRelease" ver="5" ref="ShowContextMenu"/>
+			<object access-modifier="private" name="ShowLegendMenu" display-name="ShowLegendMenu" uuid="892cebb7-68ce-43d8-b04a-f69c682ea56f" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="cb5d2c34-dd90-4736-a1bc-3b872d5b1890" base-type="Menu" base-type-id="07bb4545-980a-4140-bbaa-4d1397447864" ver="5">
+						<init target="pResult" ver="5" ref="MenuResult"/>
+						<init target="pAction" ver="5" ref="OnMenuClick"/>
+						<init target="WindowX" ver="5">
+							<expr>
+								<![CDATA[String.ToInt4(GetEventParam(0), 0)]]>
+							</expr>
+						</init>
+						<init target="WindowY" ver="5">
+							<expr>
+								<![CDATA[String.ToInt4(GetEventParam(1), 0)]]>
+							</expr>
+						</init>
+						<init target="Items" ver="5">
+							<expr>
+								<![CDATA[GetMenuItems()]]>
+							</expr>
+						</init>
+						<init target="init_Theme" ver="5" ref="here.Theme"/>
+					</object>
+				</do-on>
+				<object access-modifier="private" name="MenuResult" display-name="MenuResult" uuid="6e3670da-d2bf-4f94-b2ed-799b99ccc2ac" base-type="MenuResult" base-type-id="0fe7658c-92f4-4af7-b038-3594414ac651" ver="5"/>
+				<object access-modifier="private" name="OnMenuClick" display-name="OnMenuClick" uuid="3a35a66c-54dd-4fe9-9d93-ec2a47103771" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+					<designed target="Enabled" value="true" ver="5"/>
+					<designed target="InvokeTrigger" value="false" ver="5"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="javascript">
+							<![CDATA[var cmd = MenuResult.Id;
+
+// Получаем массив индексов графиков из массива выделенных строк
+var i = 0;
+var selItems = [];
+var sel = JSON.parse(Legend.View.GetSelectedRows());
+while (i < sel.length)
+{
+	selItems[i] = Legend.iItemInLegend[sel[i]];
+	i += 1;
+}
+
+i = 0;
+if (cmd == "1")
+{
+	// Значение видимости применяется для всех графиков одинаково по последнему выделенному графику
+	var showMarkers = Params.Lines[selItems[0]].bShowMarkerLabels;
+	while (i < sel.length)
+	{
+		private.SetMarkerLabelVisible(selItems[i], !showMarkers);
+		i += 1;
+	}
+}
+else if (cmd == "2")
+{
+	// Значение видимости применяется для всех графиков одинаково по последнему выделенному графику
+	var lineVisible = Params.Lines[selItems[0]].bVisible;
+	while (i < sel.length)
+	{
+		Lines.SetVisible(selItems[i], !lineVisible);
+		i += 1;
+	}
+	Axis.LinkUpdate(GlobalRanges);
+	UpdateYRanges(AutoRange);
+	Axis.WidthUpdate();
+}
+else if (cmd.substr(0, 6) == "chart_")
+{
+	var newChart = cmd.substr(6);
+	var nChart = (newChart == "new") ? Params.Charts.GetFree() : newChart;
+	while (i < sel.length)
+	{
+		Lines.SetChart(selItems[i], nChart);
+		i += 1;
+	}
+	Axis.LinkUpdate(GlobalRanges);
+	UpdateYRanges(AutoRange);
+} 
+else if (cmd.substr(0, 4) == "tag_")
+{
+	var tag = cmd.substr(4);
+	while (i < sel.length)
+	{
+		SetGraphicAxis(selItems[i], tag);
+		i += 1;
+	}
+} 
+else if (cmd == "5" || cmd == "6")
+{
+	while (i < sel.length)
+	{
+		var itemIndex = selItems[i];
+		var path = Params.Lines[itemIndex].Tag;
+		var EU = Params.Lines[itemIndex].Unit;
+		var description = Params.Lines[itemIndex].Description;
+		var nChart = Params.Lines[itemIndex].nChart;
+		var nXColumn = Params.Lines[itemIndex].nXColumn;
+		// Добавляем график с нужным временем, если оно не такое как требуется
+		if (cmd == "5" && nXColumn != unit.Const.tmSOURCE)
+			private.ItemsAdd(path, EU, description, unit.Const.tmSOURCE, unit.Const.tgMAIN_GRAPH, nChart);
+		else if (cmd == "6" && nXColumn != unit.Const.tmSERVER)
+			private.ItemsAdd(path, EU, description, unit.Const.tmSERVER, unit.Const.tgMAIN_GRAPH, nChart);
+		i += 1;
+	}
+	Legend.Update();
+}
+else if (cmd == "7")
+{
+	while (i < sel.length)
+	{
+		RemoveItemByIndex(selItems[i]);
+		i += 1;
+	}
+}
+else if (cmd == "8")
+{
+	Clear();
+}
+else if (cmd.substr(0, 7) == "column_")
+{
+	var columnId = cmd.substr(7);
+	Legend.View.Columns.ChangeColumnVisibility(columnId);
+}
+else if (cmd.substr(0, 8) == "convert_")
+{
+	let altUnit = cmd.substr(8);
+	ConvertUnits(altUnit, JSON.stringify(selItems));
+}]]>
+						</body>
+					</do-on>
+				</object>
+				<do access-modifier="private" name="GetMenuItems" display-name="GetMenuItems" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+					<body kind="javascript">
+						<![CDATA[// Получаем массив индексов графиков из массива выделенных строк
+var i = 0;
+var selItems = [];
+var sel = JSON.parse(Legend.View.GetSelectedRows());
+while (i < sel.length)
+{
+	selItems[i] = Legend.iItemInLegend[sel[i]];
+	i += 1;
+}
+
+var items = [];
+
+items.push({ 'id': 1, 'title': "Выноски реперов", 'active': selItems.length > 0, 'checked': selItems.length > 0 && Params.Lines[selItems[0]].bShowMarkerLabels });
+items.push({ 'id': 2, 'title': "Видимость графика", 'active': selItems.length > 0, 'checked': selItems.length > 0 && Params.Lines[selItems[0]].bVisible });
+
+items.push({ 'title': "-" });
+var chartsItem = { 'id': 9, 'title': "Разместить график на поле", 'active': selItems.length > 0 };
+chartsItem.items = [];
+chartsItem.items.push({ 'id': "chart_new", 'title': "Новое поле" });
+chartsItem.items.push({ 'title': "-" });
+var i = 0;
+var n = 0;
+while (i < Params.Charts.Length)
+{
+	if (Params.Charts[i].bVisible)
+	{
+		n += 1;
+		chartsItem.items.push({ 'id': "chart_"+i, 'title': n, 'active': selItems.some((ii) => i != Params.Lines[ii].nChart) });
+	}
+	i += 1;
+}
+items.push(chartsItem);
+
+if (!GlobalRanges.Value && selItems.length > 0)
+{
+	var tagList = GetListTags(selItems[0]);
+	if (tagList != "")
+	{
+		var axesItem = { 'id': 4, 'title': "Разместить график на шкале" };
+		axesItem.items = [];
+		var i = 0;
+		var tags = tagList.split(",");
+		while (i < tags.length)
+		{
+			axesItem.items.push({ 'id': "tag_" + tags[i], 'title': tags[i] });
+			i += 1;
+		}
+		items.push(axesItem);		
+	}
+}
+
+items.push({ 'title': "-" });
+if (ActiveMode.Value == unit.Const.amHISTORY && UseServerTime)
+{
+	var someNotSource = false; // среди выделенных нет какого-либо сигнала с временем источника
+	var someNotServer = false; // среди выделенных нет какого-либо сигнала с временем сервера
+	for (var ii in selItems)
+	{
+		var itemIndex = selItems[ii];
+		var selItemTag = Params.Lines[itemIndex].Tag;
+		var selXColumn = Params.Lines[itemIndex].nXColumn;
+		
+		var bPara = false;  // признак существования пары графиков
+		var i = 1;
+		while (i <= unit.Const.MAX_LINES)
+		{
+			if (i != itemIndex && Params.Lines[i].Used && 
+				Params.Lines[i].Tag == selItemTag && 
+				Params.Lines[i].nXColumn != selXColumn)
+			{
+				bPara = true;
+				break;
+			}
+			i += 1;
+		}
+		
+		if (!bPara)
+		{
+			// если у нет пары, то отмечаем какого времени не хватает
+			if (selXColumn == unit.Const.tmSERVER)
+				someNotSource = true;
+			else if (selXColumn == unit.Const.tmSOURCE)
+				someNotServer = true;
+		}
+		
+		// при отсутствии обоих вариантов ремени нет смысла проверть другие графики
+		if (someNotSource && someNotServer)
+			break;
+	}
+
+	items.push({ 'id': 5, 'title': "Добавить график по времени источника", 'icon': "Trends_Icons/Add16.png", 'active': someNotSource });
+	items.push({ 'id': 6, 'title': "Добавить график по времени сервера", 'icon': "Trends_Icons/Add16.png", 'active': someNotServer });
+}
+
+items.push({ 'id': 7, 'title': "Удалить", 'icon': "Trends_Icons/Remove16.png", 'active': selItems.length > 0 });
+items.push({ 'id': 8, 'title': "Удалить все", 'active': Params.LinesCount > 0 });
+
+items.push({ 'title': "-" });
+items.push({ 'id': "columns", 'title': "Столбцы", 'items': JSON.parse(Legend.View.ShowContextMenu.GetMenuItems()) });
+
+let convertItem = { 'id': "convert", 'title': "Изменить единицы измерения"};
+convertItem.items = JSON.parse(ConvertUnitsMenu.Get(JSON.stringify(selItems)));
+
+if (convertItem.items.length > 0)
+{
+	items.push({ 'title': "-" });
+	items.push(convertItem);
+}
+
+return JSON.stringify(items);]]>
+					</body>
+				</do>
+				<do access-modifier="private" name="GetListTags" display-name="GetListTags" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+					<body kind="om">
+						<![CDATA[// Формирование списка элементов из тэгов сигналов доступных для переключения осей в режиме индивидуальных осей
+sItems:string = "";
+
+i:int4 = 0;
+j:int4 = 1;
+if (Params.Lines[index].numAxis != index)	// Если выбранный график находится не на своей шкале
+{
+	sItems = "Отдельная шкала,";		// добавляем пункт для возвращения на свою шкалу
+	i += 1;
+}
+else
+{
+	while (j <= unit.Const.MAX_LINES && String.Length(sItems)==0)			// Перебираем графики 
+	{
+		if (Params.Lines[j].Used && j!=index)
+		{
+			// Если есть сигналы подключенные к шкале выбранного сигнала
+			if (WS.Chart.Params.Lines[j].numAxis == index )
+				sItems = "Отдельная шкала,";		// добавляем пункт для освобождения своей шкалы
+		}
+		j += 1;
+	}
+}
+
+j = 1;
+while (j <= unit.Const.MAX_LINES)			// Перебираем графики
+{
+	if (Params.Lines[j].Used && j!=index && Params.Lines[j].nChart == Params.Lines[index].nChart)
+	{																				// Если найден сигнал отличный от текущего добавляем его в список
+		// Добавляем графики которые привязаны к своим осям и к которым не привязан выбранный график
+		if (Params.Lines[j].numAxis == j && Params.Lines[index].numAxis !=j )
+		{
+			sItems += WS.Chart.Params.Lines[j].Tag + ",";
+			i += 1;
+		}
+	}
+	j += 1;
+}
+
+if (String.EndsWith(sItems, ",")) 
+	sItems = String.SubString(sItems, 0, String.Length(sItems)-1);
+
+return sItems;]]>
+					</body>
+					<param access-modifier="private" name="index" display-name="" uuid="a4126dc3-0ac2-486e-86d1-c2cb7357d653" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+				</do>
+				<do access-modifier="private" name="SetGraphicAxis" display-name="SetGraphicAxis" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+					<body kind="om">
+						<![CDATA[if (newScaleTag != "")
+{																// Замена шкалы выбранного графика
+	tag:string = Params.Lines[index].Tag;
+
+	if (newScaleTag == "Отдельная шкала")
+	{
+		if (Params.Lines[index].numAxis == index)			//	Освобождение от других графиков
+		{
+			j:int4 = 1;
+			n1:int4 = 0;
+			while (j <= unit.Const.MAX_LINES && n1==0)			// Перебираем cписok подключенных сигналов
+			{
+				if (Params.Lines[j].Used && j!=index)
+				{																				// Ищем первый сигнал подключенный к шкале выбранного сигнала
+					if (Params.Lines[j].numAxis == index)
+						n1 = j;		// Запоминаем индекс первого сигнала подключенного к выбранной шкале
+				}
+				j += 1;
+			}																								
+			Axis.CopysParams(index, n1, Params.Lines[index].nChart);		// Настройки шкалы копируем на новую шкалу
+			tag = Params.Lines[n1].Tag;
+			newScaleTag = tag;
+			j = 1;
+			while (j <= unit.Const.MAX_LINES)			// Перебираем cписok подключенных сигналов
+			{
+				if (Params.Lines[j].Used && j!=index)
+				{																				// Все сигналы подключенные к выбранной шкале переключаем на шкалу первого подключенного сигнала
+					if (Params.Lines[j].numAxis == index)
+						WS.Chart.SetGraphicAxis(Params.Lines[j].Tag, tag);
+				}
+				j += 1;
+			}
+		}
+		else
+		{
+			newScaleTag = tag;	// Возвращение на свою ось
+		}
+	}
+	WS.Chart.SetGraphicAxis(tag, newScaleTag);  // устанавливаем новую шкалу для выбранного графика
+}]]>
+					</body>
+					<param access-modifier="private" name="index" display-name="" uuid="58af86ce-95ed-4f1b-9d99-17f935a5f90a" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+					<param access-modifier="private" name="newScaleTag" display-name="" uuid="d5bc05f4-8a93-48c5-85d3-d53a7b2d3407" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+				</do>
+			</object>
+			<object access-modifier="private" name="ErrorOccurred" display-name="ErrorOccurred" uuid="6fee1438-909d-4167-97ce-bebddfcc551e" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[here.private.ShowError.message = parent.GetEventParam(0);
+here.private.ShowError.Invoke();
+]]>
+					</body>
+				</do-on>
+			</object>
+			<init target="pOnError" ver="5" ref="ErrorOccurred"/>
+			<init target="pOnLegendMouseRightRelease" ver="5" ref="ShowLegendMenu"/>
+			<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="263d0baa-9540-4b8c-bf33-83a15c062ba7" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5">
+				<designed target="Weight" value="10000" ver="5"/>
+			</object>
+			<init target="init_Theme" ver="5" ref="Theme"/>
+			<init target="init_ScreenKeyboard" ver="5" ref="ScreenKeyboard"/>
+			<init target="init_Permissions" ver="5" ref="Permissions"/>
+			<init target="initApSource" ver="5" ref="AP_main"/>
+			<init target="CursorMode" ver="5" value="2"/>
+			<init target="pOnSettingsChanged" ver="5" ref="here.private.SettingsChanged"/>
+			<init target="OperativeStoredInterval" ver="5" value="20"/>
+			<init target="init_Settings" ver="5" ref="here.private.Settings"/>
+			<init target="init_Templates" ver="5" ref="here.private.Templates"/>
+			<init target="ShowLegend" ver="5" value="false"/>
+		</object>
+		<object access-modifier="private" name="Layout" display-name="Layout" uuid="e8524c65-646d-4f13-a8ce-033a1228c145" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5">
+			<designed target="Orientation" value="1" ver="5"/>
+			<designed target="Gap" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="6fc0fbaa-e759-47ac-bda8-86fbef6a3221" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5" description="" cardinal="1">
+			<designed target="Weight" value="1000" ver="5"/>
+		</object>
+		<designed target="Flip" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="Status" display-name="Status" uuid="6feda925-6d3b-4cd4-87a0-9969fadf01fb" base-type="Trends_Statusbar" base-type-id="60ec2e95-2b2d-4f82-9cbe-d981c7cd7032" ver="5">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="625" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="1250" ver="5"/>
+		<designed target="Height" value="25" ver="5"/>
+		<do-trace access-modifier="private" target="Warnings" ver="5">
+			<body>
+				<![CDATA[WS.Chart.AdviseWarnings]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="UseSecurity" ver="5">
+			<body>
+				<![CDATA[Permissions.UseSecurity]]>
+			</body>
+		</do-trace>
+		<init target="init_ApSource" ver="5" ref="AP_main"/>
+		<init target="init_Theme" ver="5" ref="Theme"/>
+		<init target="init_ScreenKeyboard" ver="5" ref="ScreenKeyboard"/>
 	</object>
 </type>
 

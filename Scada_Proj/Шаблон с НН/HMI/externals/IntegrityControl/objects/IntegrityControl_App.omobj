@@ -220,7 +220,6 @@ return Files.CombinePath(folderPath, "app_settings.json");]]>
 			</do-on>
 			<designed target="Width" value="18" ver="5"/>
 			<designed target="Height" value="18" ver="5"/>
-			<init target="pTheme" ver="5" ref="here.Theme"/>
 			<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="1ee9dd10-8c01-4e85-8806-7ebf2d5889a1" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="InvokeTrigger" value="false" ver="5"/>
@@ -231,15 +230,16 @@ return Files.CombinePath(folderPath, "app_settings.json");]]>
 				</do-on>
 			</object>
 			<object access-modifier="private" name="DialogResut" display-name="DialogResut" uuid="1394ffdb-d6dc-498b-9c45-409a2d8a637c" base-type="InputDialogResult" base-type-id="cdcda119-652b-45ed-bfc4-8cc21b98730d" ver="5"/>
+			<init target="init_Theme" ver="5" ref="Toolbar.private.theme"/>
 		</object>
 		<object access-modifier="private" name="Separator_0" display-name="Separator_0" uuid="674394b9-c453-418e-82a1-b6fe653864e0" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5">
 			<designed target="X" value="20" ver="5"/>
-			<designed target="Y" value="10" ver="5"/>
+			<designed target="Y" value="8.5" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<init target="IsVisible" ver="5" value="true"/>
 			<designed target="Width" value="8" ver="5"/>
 			<designed target="Height" value="18" ver="5"/>
-			<init target="pTheme" ver="5" ref="here.Theme"/>
+			<init target="init_Theme" ver="5" ref="Toolbar.private.theme"/>
 		</object>
 		<object access-modifier="private" name="Toolbar" display-name="Toolbar" uuid="d4b69cfb-688f-40ed-9820-3f07e36b96cc" base-type="Toolbar" base-type-id="5635ccab-cc02-401b-99fa-4b2de84c29dd" ver="5">
 			<designed target="X" value="28" ver="5"/>
@@ -256,7 +256,7 @@ return Files.CombinePath(folderPath, "app_settings.json");]]>
 		</object>
 		<do-trace access-modifier="private" target="BrushColor" ver="5">
 			<body>
-				<![CDATA[here.Theme.BackgroundColor]]>
+				<![CDATA[here.Theme.ToolbarBrushColor]]>
 			</body>
 		</do-trace>
 	</object>

@@ -371,7 +371,7 @@ else Error = "";]]>
 				<![CDATA[if (SelectedIndex == -1) return;//мэджик - здесь мы отфильтровываем ложные события со старта которые формируются при AddItem
 
 var id = this.GetItem(SelectedIndex)
-var spec =JSON.parse(pSettingsView.pSettingsForm.pAlarms.Main_tables_Operative.TableModel_1.GetColumnSpecAsJson());
+var spec =JSON.parse(pSettingsView.pSettingsForm.pConfig.TableView.GetColumnSpecAsJson());
 for (let i = 0; i < spec.columns.length; i++)
 if (spec.columns[i].name == id)
 {
@@ -440,7 +440,7 @@ var existed = [];
 for (let i = 0; i < pSettingsView.ColumnsTable.TableModel.GetRowCount(); i++)
 	existed.push( pSettingsView.ColumnsTable.TableModel.GetCellData(i,6) );
 
-var spec =JSON.parse(pSettingsView.pSettingsForm.pAlarms.Main_tables_Operative.TableModel_1.GetColumnSpecAsJson());
+var spec =JSON.parse(pSettingsView.pSettingsForm.pConfig.TableView.GetColumnSpecAsJson());
 for (let i = 0; i < spec.columns.length; i++)
 if (!existed.includes(spec.columns[i].name/*id*/) || ItsModify && spec.columns[i].name/*id*/==modifiedId)
 	TextId.AddItem(spec.columns[i].name);

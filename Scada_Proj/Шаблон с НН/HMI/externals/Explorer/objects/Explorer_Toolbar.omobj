@@ -19,7 +19,7 @@
 	<object access-modifier="private" name="pExplorer" display-name="pExplorer" uuid="d4756211-b4f9-4f54-88ff-7300b86d4dc6" base-type="Explorer" base-type-id="9013d06f-00da-4a39-a352-02b02f4a6679" base-const="true" base-ref="true" ver="5" description=""/>
 	<object access-modifier="private" name="pLogView" display-name="pLogView" uuid="b04e0982-5e44-48d8-a4e2-ea967bc22b76" base-type="LogView" base-type-id="493c7166-bdbb-4717-8f49-2906ed88e930" base-const="true" base-ref="true" ver="5" description=""/>
 	<object access-modifier="private" name="btnTreeVisible" display-name="btnTreeVisible" uuid="8da0f01c-118d-4686-b5a2-9f8d8864a823" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
-		<designed target="X" value="196" ver="5"/>
+		<designed target="X" value="1" ver="5"/>
 		<designed target="Y" value="6" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<init target="IconFile" ver="5" value="Explorer_Icons/ItemTree24.png"/>
@@ -32,15 +32,15 @@
 		<init target="IsVisible" ver="5" value="true"/>
 		<designed target="Width" value="18" ver="5"/>
 		<designed target="Height" value="18" ver="5"/>
-		<init target="pTheme" ver="5" ref="here.private.theme"/>
 		<do-trace access-modifier="private" target="Checked" ver="5">
 			<body>
 				<![CDATA[pExplorer.TreeVisible]]>
 			</body>
 		</do-trace>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
 	</object>
 	<object access-modifier="private" name="btnLogView" display-name="btnLogView" uuid="0c78ca69-08bb-41ff-a2e9-b4730d428b10" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
-		<designed target="X" value="139" ver="5"/>
+		<designed target="X" value="21" ver="5"/>
 		<designed target="Y" value="6" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<init target="IconFile" ver="5" value="Explorer_Icons/Log24.png"/>
@@ -53,7 +53,6 @@
 		<init target="IsVisible" ver="5" value="true"/>
 		<designed target="Width" value="18" ver="5"/>
 		<designed target="Height" value="18" ver="5"/>
-		<init target="pTheme" ver="5" ref="here.private.theme"/>
 		<do-trace access-modifier="private" target="Checked" ver="5">
 			<body>
 				<![CDATA[pLogView.IsVisible]]>
@@ -64,14 +63,15 @@
 				<![CDATA[Checked ? "Скрыть журнал" : "Показать журнал"]]>
 			</body>
 		</do-trace>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
 	</object>
 	<object access-modifier="private" name="seaprator_2" display-name="seaprator_2" uuid="8c1a8499-b4c7-4a6c-9ce0-44ab64e05627" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5">
-		<designed target="X" value="260" ver="5"/>
-		<designed target="Y" value="0" ver="5"/>
+		<designed target="X" value="40" ver="5"/>
+		<designed target="Y" value="6" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
-		<designed target="Width" value="6" ver="5"/>
-		<designed target="Height" value="28" ver="5"/>
-		<init target="pTheme" ver="5" ref="here.private.theme"/>
+		<designed target="Width" value="8" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
 	</object>
 	<object access-modifier="private" name="btnAddSignal" display-name="btnAddSignal" uuid="fe981b75-80f1-4bf8-9289-4c1433dce27c" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
 		<designed target="X" value="49" ver="5"/>
@@ -92,10 +92,10 @@
 		<init target="IsVisible" ver="5" value="true"/>
 		<designed target="Width" value="18" ver="5"/>
 		<designed target="Height" value="18" ver="5"/>
-		<init target="pTheme" ver="5" ref="here.private.theme"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
 	</object>
 	<object access-modifier="private" name="btnRemoveSignal" display-name="btnRemoveSignal" uuid="c9ad181b-0f3d-4287-8d4e-535fa14b8abf" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
-		<designed target="X" value="167" ver="5"/>
+		<designed target="X" value="69" ver="5"/>
 		<designed target="Y" value="6" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
@@ -113,10 +113,10 @@
 		<init target="IsVisible" ver="5" value="true"/>
 		<designed target="Width" value="18" ver="5"/>
 		<designed target="Height" value="18" ver="5"/>
-		<init target="pTheme" ver="5" ref="here.private.theme"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
 	</object>
 	<object access-modifier="private" name="btnFilterSignal" display-name="btnFilterSignal" uuid="ef6fc574-4084-400f-a77d-b6e9a681ffc7" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
-		<designed target="X" value="187" ver="5"/>
+		<designed target="X" value="89" ver="5"/>
 		<designed target="Y" value="6" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<init target="IconFile" ver="5" value="Explorer_Icons/Filter24.png"/>
@@ -134,15 +134,15 @@
 		<init target="IsVisible" ver="5" value="true"/>
 		<designed target="Width" value="18" ver="5"/>
 		<designed target="Height" value="18" ver="5"/>
-		<init target="pTheme" ver="5" ref="here.private.theme"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
 	</object>
 	<object access-modifier="private" name="seaprator_3" display-name="seaprator_3" uuid="5fe02be3-654b-4e67-9c5c-ed926edd1e00" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5">
-		<designed target="X" value="215" ver="5"/>
+		<designed target="X" value="108" ver="5"/>
 		<designed target="Y" value="6" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Width" value="8" ver="5"/>
 		<designed target="Height" value="18" ver="5"/>
-		<init target="pTheme" ver="5" ref="here.private.theme"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
 	</object>
 	<object access-modifier="private" name="btnClearList" display-name="btnClearList" uuid="5065b4ad-7fca-430f-974f-47dbe778cb50" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
 		<designed target="X" value="117" ver="5"/>
@@ -163,51 +163,9 @@
 		</do-trace>
 		<designed target="Width" value="18" ver="5"/>
 		<designed target="Height" value="18" ver="5"/>
-		<init target="pTheme" ver="5" ref="here.private.theme"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
 	</object>
 	<object access-modifier="private" name="private" display-name="private" uuid="c968b6a6-7cc9-478c-9692-a880f8641b30" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
-		<object access-modifier="private" name="theme" display-name="theme" uuid="197e9489-fbfa-45fd-8565-0f03ed0f36aa" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5">
-			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
-				<body>
-					<![CDATA[here.pTheme.BackgroundColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
-				<body>
-					<![CDATA[here.pTheme.ForegroundColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="DisabledFontColor" ver="5">
-				<body>
-					<![CDATA[here.pTheme.DisabledFontColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="EditorBrushColor" ver="5">
-				<body>
-					<![CDATA[here.pTheme.EditorBrushColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="EditorFontColor" ver="5">
-				<body>
-					<![CDATA[here.pTheme.EditorFontColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="SelectionColor" ver="5">
-				<body>
-					<![CDATA[here.pTheme.SelectionColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="BorderColor" ver="5">
-				<body>
-					<![CDATA[here.pTheme.BorderColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="DisabledBorderColor" ver="5">
-				<body>
-					<![CDATA[here.pTheme.DisabledBorderColor]]>
-				</body>
-			</do-trace>
-		</object>
 		<object access-modifier="private" name="DefaultFolder" display-name="DefaultFolder" uuid="df66a2e2-5a03-47e6-9826-2ceee93f56ce" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
 		<object access-modifier="private" name="RecentlyFiles" display-name="RecentlyFiles" uuid="9fef9fd5-8e25-4300-b0cd-667d2bb83c34" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
 		<do access-modifier="private" name="UpdateRecentlyFiles" display-name="UpdateRecentlyFiles" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
@@ -263,11 +221,13 @@ RecentlyServers = JSON.stringify(recentlyServers);]]>
 				<![CDATA[unit.ProductInfo.GetProgramDataFolder()]]>
 			</expr>
 		</init>
+		<object access-modifier="private" name="theme" display-name="theme" uuid="af9f2278-651a-4231-98e7-f0b855726d21" base-type="ToolbarTheme" base-type-id="a7287382-701b-4e63-a794-2f3ce4c48f31" ver="5" description="" cardinal="1">
+			<init target="init_Theme" ver="5" ref="here.init_Theme"/>
+		</object>
 	</object>
-	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="6eebe014-b999-4fd0-8607-ab1b2a19dfad" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
 	<do-trace access-modifier="private" target="BrushColor" ver="5">
 		<body>
-			<![CDATA[pTheme.BackgroundColor]]>
+			<![CDATA[private.theme.ToolbarBrushColor]]>
 		</body>
 	</do-trace>
 	<object access-modifier="private" name="Layout" display-name="Layout" uuid="572ba2f4-51cc-423e-983e-26a6999c35d7" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
@@ -275,5 +235,6 @@ RecentlyServers = JSON.stringify(recentlyServers);]]>
 		<designed target="Gap" value="0" ver="5"/>
 	</object>
 	<designed target="Flip" value="0" ver="5"/>
+	<param access-modifier="private" name="init_Theme" display-name="Тема оформления" uuid="6eebe014-b999-4fd0-8607-ab1b2a19dfad" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
 </type>
 

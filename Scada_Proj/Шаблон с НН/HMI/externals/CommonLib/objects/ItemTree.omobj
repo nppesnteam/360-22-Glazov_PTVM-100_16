@@ -1,4 +1,4 @@
-<type access-modifier="public" name="ItemTree" display-name="ItemTree" uuid="c334bfb4-cb34-44c9-8ba1-4961a2834b3b" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="">
+<type access-modifier="public" name="ItemTree" display-name="Дерево сигналов" uuid="c334bfb4-cb34-44c9-8ba1-4961a2834b3b" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="ZValue" value="0" ver="5"/>
@@ -201,7 +201,8 @@ if (ChildCount(itemId) == 0)
 		</do-trace>
 		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="ItemDoubleClicked">
 			<body kind="om">
-				<![CDATA[pDoubleClicked.Invoke();]]>
+				<![CDATA[pDoubleClicked.Args.Push(GetCurrentItemInfo());
+pDoubleClicked.Invoke();]]>
 			</body>
 		</do-on>
 		<do-on access-modifier="private" name="Handler_8" display-name="Handler_8" ver="5" event="ItemPressed">
@@ -252,6 +253,7 @@ else return "";]]>
 				<![CDATA[if (itemIsPressed)
 {
 	itemIsPressed = false;
+	pDragStarted.Args.Push(GetCurrentItemInfo());
 	pDragStarted.Invoke();
 }]]>
 			</body>
@@ -336,8 +338,8 @@ else return "";]]>
 			<![CDATA[pTheme.BorderColor]]>
 		</body>
 	</do-trace>
-	<object access-modifier="private" name="pDragStarted" display-name="pDragStarted" uuid="1261df0b-5461-4f36-a14a-ba1200f6ba7e" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description=""/>
-	<object access-modifier="private" name="pDoubleClicked" display-name="pDoubleClicked" uuid="510065d0-862a-4008-b898-7def56fc73fc" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="pDragStarted" display-name="pDragStarted" uuid="1261df0b-5461-4f36-a14a-ba1200f6ba7e" base-type="EventHandler" base-type-id="c01b71c2-42e8-4333-b70e-cc35fdf96f7e" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="pDoubleClicked" display-name="pDoubleClicked" uuid="510065d0-862a-4008-b898-7def56fc73fc" base-type="EventHandler" base-type-id="c01b71c2-42e8-4333-b70e-cc35fdf96f7e" base-const="true" base-ref="true" ver="5" description=""/>
 	<do access-modifier="private" name="GetCurrentItemInfo" display-name="GetCurrentItemInfo" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
 		<body kind="om">
 			<![CDATA[return Tree.GetItemInfo(Tree.CurrentItem);]]>

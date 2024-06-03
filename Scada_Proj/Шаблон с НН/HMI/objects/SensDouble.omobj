@@ -267,11 +267,11 @@
 		<init target="Path" ver="5" value="ALIAS"/>
 		<init target="Source" ver="5" ref="hereApSource"/>
 	</object>
-	<object access-modifier="private" name="VALUE_1" display-name="VALUE_1" uuid="18370f32-5508-45f9-8de7-3ae97a5f571e" base-type="ApItemFloat4" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+	<object access-modifier="private" name="VALUE_1" display-name="VALUE_1" uuid="18370f32-5508-45f9-8de7-3ae97a5f571e" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 		<init target="Path" ver="5" value="VALUE1"/>
 		<init target="Source" ver="5" ref="hereApSource"/>
 	</object>
-	<object access-modifier="private" name="VALUE_2" display-name="VALUE_2" uuid="eb0a01bc-4960-4d99-859a-568fc94c9c0f" base-type="ApItemFloat4" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+	<object access-modifier="private" name="VALUE_2" display-name="VALUE_2" uuid="eb0a01bc-4960-4d99-859a-568fc94c9c0f" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 		<init target="Path" ver="5" value="VALUE2"/>
 		<init target="Source" ver="5" ref="hereApSource"/>
 	</object>
@@ -359,7 +359,6 @@ else
 	</object>
 	<object access-modifier="private" name="hereApSource" display-name="hereApSource" uuid="8ff934c9-cc62-4c59-9875-2e486d5b2ccf" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
 		<designed target="Active" value="false" ver="5"/>
-		<designed target="UpdateRate" value="0" ver="5"/>
 		<designed target="ReAdvise" value="0" ver="5"/>
 		<init target="ParentSource" ver="5" ref="initApSource"/>
 		<init target="Path" ver="5" ref="initPath"/>
@@ -368,7 +367,7 @@ else
 		<designed target="Enabled" value="true" ver="5"/>
 		<designed target="InvokeTrigger" value="false" ver="5"/>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
-			<object access-modifier="private" uuid="763678e6-8e58-48e8-9472-72d65f2ef461" base-type="Контекстное меню (заслонка)" base-type-id="7ff8281a-41b3-4ac6-807c-e1adac92357d" ver="5">
+			<object access-modifier="private" uuid="763678e6-8e58-48e8-9472-72d65f2ef461" base-type="Контекстное меню (2 датчика)" base-type-id="7ff8281a-41b3-4ac6-807c-e1adac92357d" ver="5">
 				<init target="refData" ver="5" ref="here"/>
 				<init target="WindowX" ver="5">
 					<expr>
@@ -385,10 +384,10 @@ else
 	</object>
 	<object access-modifier="private" name="isOpenedTrends" display-name="isOpenedTrends" uuid="c78f0e41-471a-4a3c-82e4-e9a51aca190e" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
 	<object access-modifier="private" name="isOpenedHistory" display-name="isOpenedHistory" uuid="f0c833f6-0b05-4b34-a107-d90ecdb57499" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
-	<object access-modifier="private" name="mX" display-name="mX" uuid="69293606-a0be-4bd0-a845-500111f6afdf" base-type="float4" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
-	<object access-modifier="private" name="mY" display-name="mY" uuid="5c29f705-56c2-4262-a916-4d1a47cb5e9a" base-type="float4" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
-	<object access-modifier="private" name="posX" display-name="posX" uuid="968650dc-b0b3-4429-a6a8-90a76993779d" base-type="float4" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
-	<object access-modifier="private" name="posY" display-name="posY" uuid="38fb3832-7dc2-4bef-8313-ce769562d561" base-type="float4" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+	<object access-modifier="private" name="mX" display-name="mX" uuid="69293606-a0be-4bd0-a845-500111f6afdf" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+	<object access-modifier="private" name="mY" display-name="mY" uuid="5c29f705-56c2-4262-a916-4d1a47cb5e9a" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+	<object access-modifier="private" name="posX" display-name="posX" uuid="968650dc-b0b3-4429-a6a8-90a76993779d" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+	<object access-modifier="private" name="posY" display-name="posY" uuid="38fb3832-7dc2-4bef-8313-ce769562d561" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
 	<object access-modifier="private" name="isOpenedSettings" display-name="isOpenedSettings" uuid="1eabcef9-5c3a-40af-98f9-e3d5726c4b3f" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
 	<object access-modifier="private" name="OpenTrendsWindow" display-name="OpenTrendsWindow" uuid="b69c4281-3a04-49f0-81cf-ef0a4d426081" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" cardinal="1">
 		<designed target="Enabled" value="true" ver="5"/>
@@ -587,21 +586,22 @@ OpenModuleWindow.Invoke();]]>
 		<init target="Source" ver="5" ref="hereApSource"/>
 		<init target="Path" ver="5" value="DIGITS"/>
 	</object>
-	<object access-modifier="private" name="VALUE" display-name="VALUE" uuid="0e13a963-5ed4-4d20-b54c-e19cec83f468" base-type="notifying_float4" base-type-id="bb7d05ee-cbf0-4c44-8740-1905239c8ead" ver="5"/>
-	<object access-modifier="private" name="OutValue" display-name="OutValue" uuid="29e48386-ca34-4f83-a83a-54bef885e34c" base-type="ApItemFloat4" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+	<object access-modifier="private" name="VALUE" display-name="VALUE" uuid="0e13a963-5ed4-4d20-b54c-e19cec83f468" base-type="notifying_float" base-type-id="bb7d05ee-cbf0-4c44-8740-1905239c8ead" ver="5"/>
+	<object access-modifier="private" name="OutValue" display-name="OutValue" uuid="29e48386-ca34-4f83-a83a-54bef885e34c" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 		<init target="Source" ver="5" ref="hereApSource"/>
 		<init target="Path" ver="5" value="OutValue"/>
 	</object>
-	<object access-modifier="private" name="InAllowDiff" display-name="InAllowDiff" uuid="4a03e855-f9e4-40b0-b75c-d5c558bf128a" base-type="ApItemFloat4" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+	<object access-modifier="private" name="InAllowDiff" display-name="InAllowDiff" uuid="4a03e855-f9e4-40b0-b75c-d5c558bf128a" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 		<init target="Source" ver="5" ref="hereApSource"/>
 		<init target="Path" ver="5" value="InAllowDiff"/>
 	</object>
-	<object access-modifier="private" name="OutAllowDiff" display-name="OutAllowDiff" uuid="44889025-e68e-4844-8e0e-566cd46c7147" base-type="ApItemFloat4" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+	<object access-modifier="private" name="OutAllowDiff" display-name="OutAllowDiff" uuid="44889025-e68e-4844-8e0e-566cd46c7147" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 		<init target="Source" ver="5" ref="hereApSource"/>
 		<init target="Path" ver="5" value="OutAllowDiff"/>
 	</object>
 	<designed target="Flip" value="0" ver="5"/>
-	<object access-modifier="private" name="ProtectL" display-name="ProtectL" uuid="4b911bf0-f4df-48c4-b758-17f1c6b5f5e9" base-type="notifying_float4" base-type-id="bb7d05ee-cbf0-4c44-8740-1905239c8ead" ver="5"/>
-	<object access-modifier="private" name="ProtectH" display-name="ProtectH" uuid="88df0c2e-e965-4d91-98cb-863891e3e212" base-type="notifying_float4" base-type-id="bb7d05ee-cbf0-4c44-8740-1905239c8ead" ver="5"/>
+	<object access-modifier="private" name="ProtectL" display-name="ProtectL" uuid="4b911bf0-f4df-48c4-b758-17f1c6b5f5e9" base-type="notifying_float" base-type-id="bb7d05ee-cbf0-4c44-8740-1905239c8ead" ver="5"/>
+	<object access-modifier="private" name="ProtectH" display-name="ProtectH" uuid="88df0c2e-e965-4d91-98cb-863891e3e212" base-type="notifying_float" base-type-id="bb7d05ee-cbf0-4c44-8740-1905239c8ead" ver="5"/>
+	<param access-modifier="private" name="Color" display-name="Color" uuid="72823e26-570e-4d70-9dcb-69600a7a5277" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description=""/>
 </type>
 

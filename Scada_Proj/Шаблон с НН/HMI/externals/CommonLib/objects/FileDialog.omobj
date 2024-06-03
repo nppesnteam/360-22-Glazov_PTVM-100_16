@@ -38,11 +38,6 @@
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Width" value="550" ver="5"/>
 		<designed target="Height" value="45" ver="5"/>
-		<do-trace access-modifier="private" target="RootPath" ver="5">
-			<body>
-				<![CDATA[here.RootPath]]>
-			</body>
-		</do-trace>
 		<do-trace access-modifier="private" target="FolderPath" ver="5">
 			<body>
 				<![CDATA[BrowsePanel.FileList.BrowsedPath]]>
@@ -57,7 +52,6 @@ if (value != oldValue)
 	//Debug.Log("FolderPath changed: " + value);
 	oldValue = value;	
 	BrowsePanel.FileList.BrowsedPath = value;
-	Result.FolderPath = Files.ToNative(Files.AbsolutePath(value));
 }]]>
 				</body>
 			</do-on>
@@ -92,6 +86,7 @@ BrowsePanel.FileTree.Refresh("");]]>
 			</body>
 		</do-trace>
 		<init target="pTheme" ver="5" ref="here.init_Theme"/>
+		<init target="RootPath" ver="5" ref="here.RootPath"/>
 	</object>
 	<object access-modifier="private" name="BrowsePanel" display-name="BrowsePanel" uuid="78d8d77b-0189-4ed4-b76f-e88c5906c858" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 		<designed target="X" value="0" ver="5"/>
@@ -117,11 +112,6 @@ BrowsePanel.FileTree.Refresh("");]]>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Width" value="198" ver="5"/>
 			<designed target="Height" value="220" ver="5"/>
-			<do-trace access-modifier="private" target="RootPath" ver="5">
-				<body>
-					<![CDATA[here.RootPath]]>
-				</body>
-			</do-trace>
 			<object access-modifier="private" name="browsedPath" display-name="browsedPath" uuid="d1cc359a-2016-4fb1-a0c6-67b994c19d37" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5">
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
 					<body kind="om">
@@ -141,6 +131,7 @@ BrowsePanel.FileTree.Refresh("");]]>
 				</body>
 			</do-trace>
 			<init target="pTheme" ver="5" ref="here.init_Theme"/>
+			<init target="RootPath" ver="5" ref="here.RootPath"/>
 		</object>
 		<object access-modifier="private" name="Separator" display-name="Separator" uuid="37ecef5a-de82-4c5d-9d6c-0117c75b3359" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 			<designed target="X" value="200" ver="5"/>
@@ -217,11 +208,6 @@ isPressed = false;]]>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Width" value="344" ver="5"/>
 			<designed target="Height" value="220" ver="5"/>
-			<do-trace access-modifier="private" target="RootPath" ver="5">
-				<body>
-					<![CDATA[here.RootPath]]>
-				</body>
-			</do-trace>
 			<init target="OnPathChosen" ver="5" ref="here.OnPathChosen"/>
 			<do-trace access-modifier="private" target="ChangeFolderAllowed" ver="5">
 				<body>
@@ -234,6 +220,7 @@ isPressed = false;]]>
 				</body>
 			</do-trace>
 			<init target="pTheme" ver="5" ref="here.init_Theme"/>
+			<init target="RootPath" ver="5" ref="here.RootPath"/>
 		</object>
 		<do access-modifier="private" name="UpdateLayout" display-name="UpdateLayout" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 			<body kind="om">
@@ -336,7 +323,7 @@ return fileName;]]>
 		<do access-modifier="private" name="ValidateFileName" display-name="ValidateFileName" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
 			<body kind="om">
 				<![CDATA[if (fileName == "" || fileName == ".")
-	return "Имя файла не может быть пустым";
+	return "Укажите имя файла";
 	
 if (private.System.Family == "windows")
 {
@@ -428,16 +415,12 @@ if (DefaultPath != "")
 		</do-on>
 	</object>
 	<object access-modifier="private" name="Debug" display-name="Debug" uuid="5210dde2-20ff-4ac6-b69d-2a0224adbe63" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<param access-modifier="private" name="RootPath" display-name="Корневой путь" uuid="0bf55493-eb35-4528-a193-142fa3c10aa1" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 	<param access-modifier="private" name="OnPathChosen" display-name="OnPathChosen" uuid="489e4214-7f3d-4c74-a322-525451d94489" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
 	<object access-modifier="private" name="Files" display-name="Files" uuid="c104929d-377c-461b-b5be-4c4ae7f5f3f1" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5">
 		<designed target="RootPath" value="/" ver="5"/>
-		<do-trace access-modifier="private" target="RootPath" ver="5">
-			<body>
-				<![CDATA[here.RootPath]]>
-			</body>
-		</do-trace>
+		<init target="RootPath" ver="5" ref="here.RootPath"/>
 	</object>
-	<object access-modifier="private" name="RootPath" display-name="Корневой путь" uuid="0bf55493-eb35-4528-a193-142fa3c10aa1" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
 	<object access-modifier="private" name="DefaultPath" display-name="Путь по умолчанию" uuid="b10b8e60-8613-44b1-8503-c813152dbbcb" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="WindowSizeChanged">
 		<body kind="om">
@@ -539,5 +522,6 @@ return Files.ToNative(folder);]]>
 	<init target="init_Theme" ver="5">
 		<object access-modifier="private" uuid="d565414b-a9df-4a02-8f30-1fc1b25d000e" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5"/>
 	</init>
+	<init target="RootPath" ver="5" value="/"/>
 </type>
 

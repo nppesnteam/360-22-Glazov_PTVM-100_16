@@ -1,4 +1,4 @@
-<type access-modifier="public" name="KeyboardLayoutButton" display-name="KeyboardLayoutButton" uuid="658542d3-e1f2-4bcc-a4e3-52ea4ca129e9" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5" description="">
+<type access-modifier="public" name="KeyboardLayoutButton" display-name="Кнопка смены раскладки клавиатуры" uuid="658542d3-e1f2-4bcc-a4e3-52ea4ca129e9" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5" description="">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="ZValue" value="0" ver="5"/>
@@ -105,5 +105,10 @@ Tooltip = LocalizedLanguageName(Locale);]]>
 		<designed target="MaxWidth" value="25" ver="5"/>
 		<designed target="MaxHeight" value="25" ver="5"/>
 	</object>
+	<do-trace access-modifier="private" target="Font" ver="5">
+		<body>
+			<![CDATA[pTheme.Font]]>
+		</body>
+	</do-trace>
 </type>
 

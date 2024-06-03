@@ -54,7 +54,7 @@
 		</do-trace>
 		<do-trace access-modifier="private" target="FontColor" ver="5">
 			<body>
-				<![CDATA[pTheme.ForegroundColor]]>
+				<![CDATA[private.pTheme.ForegroundColor]]>
 			</body>
 		</do-trace>
 	</object>
@@ -113,7 +113,7 @@
 			</do-trace>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="TextChanged">
 				<body kind="om">
-					<![CDATA[filter: string = Link_Alarms.Main_panel.private.JSONstringForFilter(text, "severity", 1, false);
+					<![CDATA[filter: string = Alarms_Tools.JSONstringForFilter(text, "severity", 1, false);
 if (String.StartsWith(filter, "Error: "))
 {
 	Filter = "";
@@ -160,7 +160,7 @@ else
 		</do-trace>
 		<do-trace access-modifier="private" target="FontColor" ver="5">
 			<body>
-				<![CDATA[pTheme.ForegroundColor]]>
+				<![CDATA[private.pTheme.ForegroundColor]]>
 			</body>
 		</do-trace>
 	</object>
@@ -219,7 +219,7 @@ else
 			</do-trace>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="TextChanged">
 				<body kind="om">
-					<![CDATA[filter: string = Link_Alarms.Main_panel.private.JSONstringForFilter(text, "message", 1, false);
+					<![CDATA[filter: string = Alarms_Tools.JSONstringForFilter(text, "message", 1, false);
 if (String.StartsWith(filter, "Error: "))
 {
 	Filter = "";
@@ -266,7 +266,7 @@ else
 		</do-trace>
 		<do-trace access-modifier="private" target="FontColor" ver="5">
 			<body>
-				<![CDATA[pTheme.ForegroundColor]]>
+				<![CDATA[private.pTheme.ForegroundColor]]>
 			</body>
 		</do-trace>
 	</object>
@@ -325,7 +325,7 @@ else
 			</do-trace>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="TextChanged">
 				<body kind="om">
-					<![CDATA[filter: string = Link_Alarms.Main_panel.private.JSONstringForFilter(text, "source", 1, false);
+					<![CDATA[filter: string = Alarms_Tools.JSONstringForFilter(text, "source", 1, false);
 if (String.StartsWith(filter, "Error: "))
 {
 	Filter = "";
@@ -372,7 +372,7 @@ else
 		</do-trace>
 		<do-trace access-modifier="private" target="FontColor" ver="5">
 			<body>
-				<![CDATA[pTheme.ForegroundColor]]>
+				<![CDATA[private.pTheme.ForegroundColor]]>
 			</body>
 		</do-trace>
 	</object>
@@ -416,7 +416,7 @@ else
 AddItem("Неквитированные");
 AddItem("Квитированные");
 
-acknow: string = Link_Alarms.Main_panel.private.RequestFilter.acknow;
+acknow: string = Link_Alarms.private.RequestFilter.acknow;
 if (acknow == "Квитированные") 
 	SelectedIndex = 2;
 else if (acknow == "Неквитированные")
@@ -446,14 +446,14 @@ else Filter = "";]]>
 	</object>
 	<do-on access-modifier="private" name="Handler_AboutToOpen" display-name="Handler_AboutToOpen" ver="5" event="AboutToOpen">
 		<body kind="om">
-			<![CDATA[SeverityLabel.Text = Link_Alarms.Main_panel.private.TableView.Static.Column_Severity.GetTitle();
-MessageLabel.Text = Link_Alarms.Main_panel.private.TableView.Static.Column_Message.GetTitle();
-SourceLabel.Text = Link_Alarms.Main_panel.private.TableView.Static.Column_Source.GetTitle();
-AcknowledgedLabel.Text = Link_Alarms.Main_panel.private.TableView.Static.Column_Ack.GetTitle();
+			<![CDATA[SeverityLabel.Text = Link_Alarms.pConfig.TableView.Static.Severity.GetTitle();
+MessageLabel.Text = Link_Alarms.pConfig.TableView.Static.Message.GetTitle();
+SourceLabel.Text = Link_Alarms.pConfig.TableView.Static.Source.GetTitle();
+AcknowledgedLabel.Text = Link_Alarms.pConfig.TableView.Static.Ack.GetTitle();
 
-Severity.Editor.Text = Link_Alarms.Main_panel.private.RequestFilter.severity;
-Message.Editor.Text = Link_Alarms.Main_panel.private.RequestFilter.message;
-Source.Editor.Text = Link_Alarms.Main_panel.private.RequestFilter.source;
+Severity.Editor.Text = Link_Alarms.private.RequestFilter.severity;
+Message.Editor.Text = Link_Alarms.private.RequestFilter.message;
+Source.Editor.Text = Link_Alarms.private.RequestFilter.source;
 Acknowledged.Editor.Initialize();
 
 UpdateLayout();
@@ -522,23 +522,23 @@ else jsonFilter = JSON.stringify(filter['AND'][0]);
 // Выполняем запрос данных с учетом фильтра
 try
 {
-	Link_Alarms.Main_tables_Historical.SetRequestFilter(jsonFilter);
-	Link_Alarms.Main_panel.private.LoadHistory();
+	Link_Alarms.TableOne.SetRequestFilter(jsonFilter);
+	Link_Alarms.ReloadHistory();
 	applyError = "";
 }
 catch(err)
 {
-	Link_Alarms.Main_tables_Historical.SetRequestFilter("");
+	Link_Alarms.TableOne.SetRequestFilter("");
 	applyError = err.toString();
 }
 
 if (applyError == "")
 {
 	// запоминаем поля фильтра
-	Link_Alarms.Main_panel.private.RequestFilter.severity = Severity.Editor.Text;
-	Link_Alarms.Main_panel.private.RequestFilter.message = Message.Editor.Text;
-	Link_Alarms.Main_panel.private.RequestFilter.source = Source.Editor.Text;
-	Link_Alarms.Main_panel.private.RequestFilter.acknow = Acknowledged.Editor.GetItem(Acknowledged.Editor.SelectedIndex);
+	Link_Alarms.private.RequestFilter.severity = Severity.Editor.Text;
+	Link_Alarms.private.RequestFilter.message = Message.Editor.Text;
+	Link_Alarms.private.RequestFilter.source = Source.Editor.Text;
+	Link_Alarms.private.RequestFilter.acknow = Acknowledged.Editor.GetItem(Acknowledged.Editor.SelectedIndex);
 	
 	Close();
 }
@@ -593,7 +593,7 @@ Source.Error == ""]]>
 							<![CDATA[applyError]]>
 						</expr>
 					</init>
-					<init target="pTheme" ver="5" ref="here.pTheme"/>
+					<init target="pTheme" ver="5" ref="here.private.pTheme"/>
 				</object>
 			</do-on>
 		</object>
@@ -661,10 +661,9 @@ ApplyButton.X = CancelButton.X - ApplyButton.Width - 10;]]>
 		</body>
 	</do>
 	<object access-modifier="private" name="labelWidth" display-name="labelWidth" uuid="d1219af1-daa7-407b-8377-944bb37a2ee1" base-type="notifying_double" base-type-id="3f905fb7-7738-4619-b402-5a91f136d4bd" ver="4"/>
-	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="f9d53a20-cc54-4cf7-acf2-55b8acbc436a" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
 	<do-trace access-modifier="private" target="BrushColor" ver="5">
 		<body>
-			<![CDATA[pTheme.BackgroundColor]]>
+			<![CDATA[private.pTheme.BackgroundColor]]>
 		</body>
 	</do-trace>
 	<designed target="WindowIconPath" value="Alarms_Icons/Filter16.png" ver="5"/>
@@ -687,5 +686,9 @@ Severity.Editor.Focus = true;
 		<init target="pTheme" ver="5" ref="here.init_Theme"/>
 	</object>
 	<param access-modifier="private" name="init_Theme" display-name="init_Theme" uuid="fa08fbab-7c14-49c8-b31f-e08640bc7756" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="private" display-name="private" uuid="eb2367e2-53a1-4d2f-bda5-670e28bc9b00" base-type="" base-type-id="" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="f9d53a20-cc54-4cf7-acf2-55b8acbc436a" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+		<init target="pTheme" ver="5" ref="init_Theme"/>
+	</object>
 </type>
 

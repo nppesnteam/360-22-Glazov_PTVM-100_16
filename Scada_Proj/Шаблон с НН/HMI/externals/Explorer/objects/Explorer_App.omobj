@@ -121,7 +121,7 @@ try
 		"Layout":	{
 			"LogView": {
 				"Visible": LogView.IsVisible.Value,
-				"Height": Splitter.Distance
+				"Height": Splitter.Position.Value
 			}
 		},
 		"FilePaths": {
@@ -180,7 +180,7 @@ if (Files.Exists(filePath))
 		if (layout != undefined)
 		{
 			LogView.IsVisible.Value = layout.LogView.Visible == true;
-			Splitter.Distance = layout.LogView.Height;
+			Splitter.Position = layout.LogView.Height;
 		}
 		
 		var connection = session.Connection;
@@ -188,7 +188,14 @@ if (Files.Exists(filePath))
 		{
 			var recentlyConnections = connection.RecentlyServers;
 			if (recentlyConnections != undefined)
+			{
 				private.RecentlyConnections = JSON.stringify(recentlyConnections);
+				
+				var connection = recentlyConnections[0];
+				ConnectToServer.DialogResult.Title = connection.title;
+				ConnectToServer.DialogResult.Location = connection.location;
+				ConnectToServer.DialogResult.Port = connection.port;
+			}
 		}
 		
 		var filePaths = session.FilePaths;
@@ -278,7 +285,8 @@ return Files.CombinePath(folderPath, "app_settings.json");]]>
 		<body kind="om">
 			<![CDATA[Width = WindowWidth;
 Height = WindowHeight;
-UpdateLayout();]]>
+
+Splitter.Maximum = Height - 30;]]>
 		</body>
 	</do-on>
 	<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="Opened">
@@ -301,8 +309,8 @@ UpdateLayout();]]>
 		<designed target="Opacity" value="1" ver="5"/>
 		<designed target="Enabled" value="true" ver="5"/>
 		<designed target="Tooltip" value="" ver="5"/>
-		<designed target="Width" value="239" ver="5"/>
-		<designed target="Height" value="30" ver="5"/>
+		<designed target="Width" value="1000" ver="5"/>
+		<designed target="Height" value="35" ver="5"/>
 		<designed target="RoundingRadius" value="0" ver="5"/>
 		<designed target="PenColor" value="4278190080" ver="5"/>
 		<designed target="PenStyle" value="0" ver="5"/>
@@ -311,7 +319,7 @@ UpdateLayout();]]>
 		<designed target="BrushStyle" value="1" ver="5"/>
 		<object access-modifier="private" name="btnConnect" display-name="btnConnect" uuid="a6125990-f323-4678-8d3c-d3987a7e45b5" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
 			<designed target="X" value="1" ver="5"/>
-			<designed target="Y" value="6" ver="5"/>
+			<designed target="Y" value="8.5" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<init target="IconFile" ver="5" value="Explorer_Icons/Connect24.png"/>
 			<designed target="Tooltip" value="Подключиться к серверу" ver="5"/>
@@ -320,15 +328,15 @@ UpdateLayout();]]>
 			<designed target="Height" value="18" ver="5"/>
 			<init target="pDropDown" ver="5" ref="btnConnectExt"/>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
-				<body kind="om">
+				<body kind="javascript">
 					<![CDATA[ConnectToServer.Invoke();]]>
 				</body>
 			</do-on>
-			<init target="pTheme" ver="5" ref="here.Theme"/>
+			<init target="init_Theme" ver="5" ref="Toolbar.private.theme"/>
 		</object>
 		<object access-modifier="private" name="btnConnectExt" display-name="btnConnectExt" uuid="6ebcb837-13db-47a8-b576-7efa6859d665" base-type="ToolbarDropDown" base-type-id="0e258e56-d922-4a8f-b8c3-7d577d177609" ver="5" description="" cardinal="1">
 			<designed target="X" value="19" ver="5"/>
-			<designed target="Y" value="6" ver="5"/>
+			<designed target="Y" value="8.5" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Width" value="11" ver="5"/>
 			<designed target="Height" value="18" ver="5"/>
@@ -393,7 +401,7 @@ return JSON.stringify(items);]]>
 						</expr>
 					</init>
 					<init target="pOnClosed" ver="5" ref="MenuClosed"/>
-					<init target="pTheme" ver="5" ref="here.Theme"/>
+					<init target="init_Theme" ver="5" ref="Toolbar.private.theme"/>
 				</object>
 			</do-on>
 			<object access-modifier="private" name="MenuClosed" display-name="MenuClosed" uuid="af323643-ea48-46e9-b36a-560809cd7a31" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
@@ -412,24 +420,24 @@ btnConnectExt.Checked = false;]]>
 btnConnectExt.Checked = true;]]>
 				</body>
 			</do-on>
-			<init target="pTheme" ver="5" ref="here.Theme"/>
 			<do-trace access-modifier="private" target="Active" ver="5">
 				<body>
 					<![CDATA[here.private.RecentlyConnections != ""]]>
 				</body>
 			</do-trace>
+			<init target="init_Theme" ver="5" ref="Toolbar.private.theme"/>
 		</object>
 		<object access-modifier="private" name="separator_1" display-name="separator_1" uuid="e47642fe-ac38-4a7b-a5c6-69710fb5d491" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5">
-			<designed target="X" value="218" ver="5"/>
-			<designed target="Y" value="6" ver="5"/>
+			<designed target="X" value="31" ver="5"/>
+			<designed target="Y" value="8.5" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Width" value="8" ver="5"/>
 			<designed target="Height" value="18" ver="5"/>
-			<init target="pTheme" ver="5" ref="here.Theme"/>
+			<init target="init_Theme" ver="5" ref="Toolbar.private.theme"/>
 		</object>
 		<object access-modifier="private" name="btnOpenSignalFile" display-name="btnOpenSignalFile" uuid="962d6c4f-f444-451e-8698-e8bee4c1cf9b" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
 			<designed target="X" value="40" ver="5"/>
-			<designed target="Y" value="6" ver="5"/>
+			<designed target="Y" value="8.5" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<init target="IconFile" ver="5" value="Explorer_Icons/OpenFile24.png"/>
 			<designed target="Tooltip" value="Загрузить список сигналов из файла" ver="5"/>
@@ -437,16 +445,16 @@ btnConnectExt.Checked = true;]]>
 			<designed target="Width" value="18" ver="5"/>
 			<designed target="Height" value="18" ver="5"/>
 			<init target="pDropDown" ver="5" ref="btnOpenSignalFileExt"/>
-			<init target="pTheme" ver="5" ref="here.Theme"/>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
 				<body kind="om">
 					<![CDATA[OpenSignalsList.Invoke();]]>
 				</body>
 			</do-on>
+			<init target="init_Theme" ver="5" ref="Toolbar.private.theme"/>
 		</object>
 		<object access-modifier="private" name="btnOpenSignalFileExt" display-name="btnOpenSignalFileExt" uuid="4a0f5b19-da16-41ba-98dd-a0c9185bacb9" base-type="ToolbarDropDown" base-type-id="0e258e56-d922-4a8f-b8c3-7d577d177609" ver="5">
-			<designed target="X" value="54.799999999999997" ver="5"/>
-			<designed target="Y" value="6" ver="5"/>
+			<designed target="X" value="58" ver="5"/>
+			<designed target="Y" value="8.5" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<init target="IsVisible" ver="5" value="true"/>
 			<designed target="Width" value="11" ver="5"/>
@@ -471,7 +479,7 @@ btnConnectExt.Checked = true;]]>
 							<![CDATA[GetMenuItems()]]>
 						</expr>
 					</init>
-					<init target="pTheme" ver="5" ref="here.Theme"/>
+					<init target="init_Theme" ver="5" ref="Toolbar.private.theme"/>
 				</object>
 			</do-on>
 			<object access-modifier="private" name="MenuResult" display-name="MenuResult" uuid="fc7b825b-2ecb-452d-8d03-fcc0376a7c37" base-type="MenuResult" base-type-id="0fe7658c-92f4-4af7-b038-3594414ac651" ver="5" description="" cardinal="1"/>
@@ -529,11 +537,11 @@ btnOpenSignalFileExt.Checked = true;]]>
 					<![CDATA[here.private.RecentlyFiles != ""]]>
 				</body>
 			</do-trace>
-			<init target="pTheme" ver="5" ref="here.Theme"/>
+			<init target="init_Theme" ver="5" ref="Toolbar.private.theme"/>
 		</object>
 		<object access-modifier="private" name="btnSaveSignalFile" display-name="btnSaveSignalFile" uuid="62c6fbcd-e3b0-4ec5-876a-5712ede2a11c" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
 			<designed target="X" value="71" ver="5"/>
-			<designed target="Y" value="6" ver="5"/>
+			<designed target="Y" value="8.5" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<init target="IconFile" ver="5" value="Explorer_Icons/SaveFile24.png"/>
 			<designed target="Tooltip" value="Сохранить список сигналов в файл" ver="5"/>
@@ -545,35 +553,30 @@ btnOpenSignalFileExt.Checked = true;]]>
 					<![CDATA[SaveSignalsList.Invoke();]]>
 				</body>
 			</do-on>
-			<init target="pTheme" ver="5" ref="here.Theme"/>
 			<do-trace access-modifier="private" target="Active" ver="5">
 				<body>
 					<![CDATA[SaveSignalsList.Enabled]]>
 				</body>
 			</do-trace>
+			<init target="init_Theme" ver="5" ref="Toolbar.private.theme"/>
 		</object>
 		<object access-modifier="private" name="separator_2" display-name="separator_2" uuid="0c7234e5-92fa-4f4c-9f24-3078eb1e4686" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5">
-			<designed target="X" value="231" ver="5"/>
-			<designed target="Y" value="6" ver="5"/>
+			<designed target="X" value="90" ver="5"/>
+			<designed target="Y" value="8.5" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Width" value="8" ver="5"/>
 			<designed target="Height" value="18" ver="5"/>
-			<init target="pTheme" ver="5" ref="here.Theme"/>
+			<init target="init_Theme" ver="5" ref="Toolbar.private.theme"/>
 		</object>
 		<object access-modifier="private" name="Toolbar" display-name="Toolbar" uuid="0174d1b8-7939-4854-8783-83172a89f703" base-type="Explorer_Toolbar" base-type-id="74dee441-5cf6-417f-a39e-ba83d9220167" ver="5" description="" cardinal="1">
 			<designed target="X" value="98" ver="5"/>
 			<designed target="Y" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
-			<designed target="Width" value="141" ver="5"/>
-			<designed target="Height" value="30" ver="5"/>
+			<designed target="Width" value="902" ver="5"/>
+			<designed target="Height" value="35" ver="5"/>
 			<init target="pExplorer" ver="5" ref="Explorer"/>
 			<init target="pLogView" ver="5" ref="LogView"/>
-			<init target="pTheme" ver="5" ref="here.Theme"/>
-			<do-trace access-modifier="private" target="BrushColor" ver="5">
-				<body kind="om">
-					<![CDATA[pTheme.BackgroundColor]]>
-				</body>
-			</do-trace>
+			<init target="init_Theme" ver="5" ref="here.Theme"/>
 		</object>
 		<object access-modifier="private" name="Layout" display-name="Layout" uuid="1c18a415-abc1-43de-8b15-7e7a70ce9a19" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
 			<designed target="Orientation" value="1" ver="5"/>
@@ -581,124 +584,48 @@ btnOpenSignalFileExt.Checked = true;]]>
 		</object>
 		<do-trace access-modifier="private" target="BrushColor" ver="5">
 			<body>
-				<![CDATA[here.Theme.BackgroundColor]]>
+				<![CDATA[here.Theme.ToolbarBrushColor]]>
 			</body>
 		</do-trace>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="e5398e4f-8c27-49c5-865e-246f5b8ef03f" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="0" ver="5"/>
+			<designed target="MinHeight" value="35" ver="5"/>
+			<designed target="MaxWidth" value="16777215" ver="5"/>
+			<designed target="MaxHeight" value="35" ver="5"/>
+		</object>
 	</object>
 	<object access-modifier="private" name="Explorer" display-name="Explorer" uuid="c0c6ff2e-f8d1-4a4c-ab5e-9feb39e5c9f0" base-type="Explorer" base-type-id="9013d06f-00da-4a39-a352-02b02f4a6679" ver="5" description="" cardinal="1">
 		<designed target="X" value="0" ver="5"/>
-		<designed target="Y" value="30" ver="5"/>
+		<designed target="Y" value="35" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Width" value="1000" ver="5"/>
-		<designed target="Height" value="410" ver="5"/>
+		<designed target="Height" value="405" ver="5"/>
 		<init target="init_LogView" ver="5" ref="LogView"/>
 		<init target="init_ScreenKeyboard" ver="5" ref="ScreenKeyboard"/>
 		<init target="init_Theme" ver="5" ref="here.Theme"/>
 	</object>
-	<object access-modifier="private" name="Theme" display-name="Theme" uuid="1a3f5495-2155-4a10-9da9-8028d1a5d892" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5" description="" cardinal="1"/>
-	<object access-modifier="private" name="Splitter" display-name="Splitter" uuid="3a1dfd8c-1616-4bbb-adc4-57123028f692" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+	<object access-modifier="private" name="Splitter" display-name="Splitter" uuid="75027ad7-5430-4d61-b5d1-48358d946682" base-type="VerticalSplitter" base-type-id="f7b3175e-374e-46fc-bdf9-e8330c5fa171" ver="5" description="" cardinal="1">
 		<designed target="X" value="0" ver="5"/>
-		<designed target="Y" value="440" ver="5"/>
+		<designed target="Y" value="441" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
-		<designed target="Scale" value="1" ver="5"/>
-		<designed target="Visible" value="true" ver="5"/>
-		<designed target="Enabled" value="true" ver="5"/>
-		<designed target="Tooltip" value="" ver="5"/>
 		<designed target="Width" value="1000" ver="5"/>
 		<designed target="Height" value="4" ver="5"/>
-		<designed target="RoundingRadius" value="0" ver="5"/>
-		<designed target="PenColor" value="0xff808080" ver="5"/>
-		<designed target="PenStyle" value="1" ver="5"/>
-		<designed target="PenWidth" value="1" ver="5"/>
-		<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
-		<designed target="BrushStyle" value="1" ver="5"/>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseEnter">
-			<body kind="om">
-				<![CDATA[MouseIsOver = true;]]>
-			</body>
-		</do-on>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseLeave">
-			<body kind="om">
-				<![CDATA[MouseIsOver = false;
-bPressed = false;]]>
-			</body>
-		</do-on>
-		<object access-modifier="private" name="bPressed" display-name="bPressed" uuid="c50d122b-ca1c-480b-b750-942cc09055f2" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
-		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MousePress">
-			<body kind="om">
-				<![CDATA[bPressed = true;]]>
-			</body>
-		</do-on>
-		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseRelease">
-			<body kind="om">
-				<![CDATA[bPressed = false;]]>
-			</body>
-		</do-on>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseMove">
-			<body kind="om">
-				<![CDATA[if (bPressed)
-{
-	Distance -= event.Y;
-	
-	min: double = Statusbar.Height + 30;
-	if (Distance < min)
-		Distance = min;
-		
-	max: double = parent.Height - ToolbalPanel.Height - 30;
-	if (Distance > max)
-		Distance = max;
-	
-	// изменяем высоту и смещение соседних элементов
-	LogView.Height = Distance;
-	LogView.Y = Statusbar.Y - LogView.Height;
-	Explorer.Height = LogView.Y - Explorer.Y;
-	
-	// смещаем разделитель
-	Y = LogView.Y - Height;
-}]]>
-			</body>
-		</do-on>
-		<designed target="ZValue" value="0" ver="5"/>
-		<designed target="Opacity" value="1" ver="5"/>
-		<object access-modifier="private" name="MouseIsOver" display-name="MouseIsOver" uuid="cef1571d-00e4-435f-aba2-6aa7d15e6208" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
-		<do-trace access-modifier="private" target="PenColor" ver="5">
-			<body>
-				<![CDATA[Theme.BorderColor]]>
-			</body>
-		</do-trace>
-		<do-trace access-modifier="private" target="BrushColor" ver="5">
-			<body>
-				<![CDATA[MouseIsOver ? Theme.SelectionColor : Theme.BackgroundColor]]>
-			</body>
-		</do-trace>
+		<init target="Position" ver="5" value="130"/>
+		<init target="Minimum" ver="5" value="30"/>
 		<do-trace access-modifier="private" target="Visible" ver="5">
 			<body>
 				<![CDATA[LogView.IsVisible]]>
 			</body>
 		</do-trace>
-		<object access-modifier="private" name="Distance" display-name="Distance" uuid="37806be4-221b-437c-a01b-ed817f20796d" base-type="double" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="5" description="" cardinal="1"/>
-		<init target="Distance" ver="5" value="130"/>
-		<designed target="Flip" value="0" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.Theme"/>
 	</object>
+	<object access-modifier="private" name="Theme" display-name="Theme" uuid="1a3f5495-2155-4a10-9da9-8028d1a5d892" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5" description="" cardinal="1"/>
 	<object access-modifier="private" name="LogView" display-name="LogView" uuid="71c4f79d-0f10-4f0a-bce7-ca278f3671a7" base-type="LogView" base-type-id="493c7166-bdbb-4717-8f49-2906ed88e930" ver="5">
 		<designed target="X" value="0" ver="5"/>
 		<designed target="Y" value="445" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Width" value="1000" ver="5"/>
 		<designed target="Height" value="130" ver="5"/>
-		<init target="pTheme" ver="5" ref="Theme"/>
-		<object access-modifier="private" name="isVisible" display-name="isVisible" uuid="d3a97e69-4306-4979-8066-f73352992fde" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
-			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
-				<body kind="om">
-					<![CDATA[here.UpdateLayout();]]>
-				</body>
-			</do-on>
-		</object>
-		<do-trace access-modifier="private" target="isVisible" ver="5">
-			<body>
-				<![CDATA[this.IsVisible]]>
-			</body>
-		</do-trace>
 		<init target="AdditionalColumns" ver="5" value='[{"id":"source","title":"Источник"}]'/>
 		<object access-modifier="private" name="ConnectionState" display-name="ConnectionState" uuid="803e7aba-b273-450a-86ed-33381d35a036" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" cardinal="10">
 			<object access-modifier="private" name="StateInfo" display-name="StateInfo" uuid="1b14d668-38f6-4279-a872-656ce2a6ce0b" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1">
@@ -730,6 +657,23 @@ bPressed = false;]]>
 			</do-trace>
 			<object access-modifier="private" name="SourceTitle" display-name="SourceTitle" uuid="b2164502-f557-4535-8841-005fbc36557c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
 		</object>
+		<init target="init_Theme" ver="5" ref="here.Theme"/>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="e5956775-e7e4-4752-a581-e61b6eb89392" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="0" ver="5"/>
+			<designed target="MinHeight" value="130" ver="5"/>
+			<designed target="MaxWidth" value="16777215" ver="5"/>
+			<designed target="MaxHeight" value="130" ver="5"/>
+			<do-trace access-modifier="private" target="MinHeight" ver="5">
+				<body>
+					<![CDATA[Splitter.Position]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="MaxHeight" ver="5">
+				<body>
+					<![CDATA[Splitter.Position]]>
+				</body>
+			</do-trace>
+		</object>
 	</object>
 	<object access-modifier="private" name="Statusbar" display-name="Statusbar" uuid="23fb164c-71b0-405d-8b42-442bcaa158ca" base-type="Explorer_Statusbar" base-type-id="6ceba724-f999-4d1e-97ba-44d1c0788a88" ver="5">
 		<designed target="X" value="0" ver="5"/>
@@ -737,26 +681,16 @@ bPressed = false;]]>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Width" value="1000" ver="5"/>
 		<designed target="Height" value="25" ver="5"/>
-		<designed target="PenWidth" value="1" ver="5"/>
 		<init target="init_Theme" ver="5" ref="Theme"/>
 		<init target="init_LogView" ver="5" ref="LogView"/>
 		<init target="init_ScreenKeyboard" ver="5" ref="ScreenKeyboard"/>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="4db3b5bb-24de-405e-8da6-b714d40cffd6" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="0" ver="5"/>
+			<designed target="MinHeight" value="25" ver="5"/>
+			<designed target="MaxWidth" value="16777215" ver="5"/>
+			<designed target="MaxHeight" value="25" ver="5"/>
+		</object>
 	</object>
-	<do access-modifier="private" name="UpdateLayout" display-name="UpdateLayout" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
-		<body kind="om">
-			<![CDATA[ToolbalPanel.Width = Width;
-Explorer.Width = Width;
-Splitter.Width = Width;
-LogView.Width = Width;
-Statusbar.Width = Width;
-
-Statusbar.Y = Height - Statusbar.Height;
-LogView.Height = LogView.IsVisible ? Splitter.Distance : 0;
-LogView.Y = Statusbar.Y - LogView.Height;
-Splitter.Y = LogView.Y - Splitter.Height;
-Explorer.Height = (LogView.IsVisible ? Splitter.Y : Statusbar.Y) - Explorer.Y;]]>
-		</body>
-	</do>
 	<designed target="Flip" value="0" ver="5"/>
 	<do-on access-modifier="private" name="Handler_7" display-name="Handler_7" ver="5" event="CloseRequested">
 		<body kind="om">
@@ -884,5 +818,9 @@ Explorer.OpenSignalsList(DialogResult.FilePath);]]>
 			<![CDATA[private.SaveSettings();]]>
 		</body>
 	</do-on>
+	<object access-modifier="private" name="Layout" display-name="Layout" uuid="56bab60a-2bb0-4c61-a77b-5bc9a9eac700" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
+		<designed target="Orientation" value="2" ver="5"/>
+		<designed target="Gap" value="0" ver="5"/>
+	</object>
 </type>
 

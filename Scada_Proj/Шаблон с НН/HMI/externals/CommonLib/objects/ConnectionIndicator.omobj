@@ -1,4 +1,4 @@
-<type access-modifier="public" name="ConnectionIndicator" display-name="ConnectionIndicator" uuid="931aa326-7fd9-496c-acaa-61370986249f" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="">
+<type access-modifier="public" name="ConnectionIndicator" display-name="Индикатор подключения к серверу" uuid="931aa326-7fd9-496c-acaa-61370986249f" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="ZValue" value="0" ver="5"/>
@@ -205,7 +205,7 @@ if (description != "" && here.Tooltip != description)
 {
 	here.Tooltip = description;
 	StateInfo.Update(importance, description);
-	
+
 	if (importance == "error")
 	{
 		ToolTip.Text = description;

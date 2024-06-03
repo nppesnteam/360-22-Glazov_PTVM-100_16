@@ -67,6 +67,13 @@
 			<object access-modifier="private" name="OnInterupted" display-name="OnInterupted" uuid="799d84d4-81cc-4ab2-8880-350a3a3aeeac" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[//если была команда на закрытие
+if (SendedCloseRequest)
+	Close();]]>
+					</body>
+				</do-on>
 			</object>
 			<init target="pFinished" ver="5" ref="OnFinished"/>
 			<init target="pStoped" ver="5" ref="OnInterupted"/>
@@ -125,11 +132,7 @@ LoadAppQueue.Init(appCount);]]>
 			<init target="SecurityManager" ver="5" ref="Manager"/>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="LoadComplete">
 				<body kind="javascript">
-					<![CDATA[//проверка на прерывание
-if (SendCloseRequest)
-	Close();
-
-//получаем список ролей
+					<![CDATA[//получаем список ролей
 let roleList = JSON.parse(GetRolesList()).data;
 
 //если список ролей не пустой
@@ -174,7 +177,7 @@ LoadAppQueue.IsCompleted();]]>
 				</body>
 			</do-on>
 		</object>
-		<object access-modifier="private" name="SendCloseRequest" display-name="SendCloseRequest" uuid="a234cba9-5954-414c-9c94-70acaf4b4131" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="SendedCloseRequest" display-name="SendedCloseRequest" uuid="a234cba9-5954-414c-9c94-70acaf4b4131" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
 		<do access-modifier="private" name="LoadCurrentRoles" display-name="LoadCurrentRoles" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 			<body kind="javascript">
 				<![CDATA[//подготовка массива назначенных ролей для вывода в дерево
@@ -221,12 +224,13 @@ ViewTree.LoadData(JSON.stringify(summaryRolesData));]]>
 				<![CDATA[selectedRoleId: string = Variant.ToString(ViewTree.GetItemData(ViewTree.CurrentItem, 2), "");
 if (selectedRoleId != "")
 {
-	pSelectedRoles.Value = selectedRoleId;
+	pResult.Value = selectedRoleId;
 	pApplyChanges.Invoke();
 	Close();
 }]]>
 			</body>
 		</do>
+		<do access-modifier="private" name="SendingCLoseRequest" display-name="SendingCLoseRequest" ver="5" form-action="close" type=""/>
 	</object>
 	<object access-modifier="private" name="ViewTree" display-name="ViewTree" uuid="f8d6b7d2-311e-4945-b11b-bd88e07dfaa2" base-type="Tree" base-type-id="bebad81f-83c4-4dc1-8ac4-e7fe7b6ee966" ver="5">
 		<designed target="X" value="0" ver="5"/>
@@ -330,7 +334,7 @@ ButtonsPanel.btnAction.Enabled = (roleId != "");]]>
 	</object>
 	<object access-modifier="private" name="pApplyChanges" display-name="Применить изменения" uuid="5fbe4976-b5f7-4ec9-ac35-2d1ec481fd53" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
 	<object access-modifier="private" name="CurrentRoles" display-name="Вход: список назначенных ролей" uuid="8676e02e-c34c-4f83-9278-94ba72dd591d" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
-	<object access-modifier="private" name="pSelectedRoles" display-name="Результат: выбранная роль" uuid="6dd754d6-385d-4e6a-9f30-806d62a954e1" base-type="DialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="pResult" display-name="Результат: выбранная роль" uuid="6dd754d6-385d-4e6a-9f30-806d62a954e1" base-type="EditDialogResult" base-type-id="ce8af278-7358-4aa7-897d-e37d5d49460e" base-const="true" base-ref="true" ver="5"/>
 	<designed target="WindowIconPath" value="Security_Icons/RoleEdit16.png" ver="5"/>
 	<object access-modifier="private" name="ButtonsPanel" display-name="ButtonsPanel" uuid="b00d37d0-bc42-4f5e-b1de-efc7be949ca8" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
 		<designed target="X" value="0" ver="5"/>
@@ -352,7 +356,7 @@ ButtonsPanel.btnAction.Enabled = (roleId != "");]]>
 		<designed target="BrushStyle" value="0" ver="5"/>
 		<object access-modifier="private" name="btnAction" display-name="btnAction" uuid="8ccd2984-eaac-49c5-9c4a-14aab1b58034" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
 			<designed target="X" value="100" ver="5"/>
-			<designed target="Y" value="15" ver="5"/>
+			<designed target="Y" value="10" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Scale" value="1" ver="5"/>
 			<designed target="Visible" value="true" ver="5"/>
@@ -367,11 +371,6 @@ ButtonsPanel.btnAction.Enabled = (roleId != "");]]>
 			<designed target="ZValue" value="0" ver="5"/>
 			<designed target="Opacity" value="1" ver="5"/>
 			<designed target="Checked" value="false" ver="5"/>
-			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
-				<body kind="om">
-					<![CDATA[private.ApplySelected();]]>
-				</body>
-			</do-on>
 			<designed target="TextAlignment" value="132" ver="5"/>
 			<designed target="OnClickFontColor" value="0xff000000" ver="5"/>
 			<designed target="OnHoverFontColor" value="0xff000000" ver="5"/>
@@ -398,10 +397,15 @@ ButtonsPanel.btnAction.Enabled = (roleId != "");]]>
 			<designed target="DisabledPenWidth" value="1" ver="5"/>
 			<designed target="Flip" value="0" ver="5"/>
 			<init target="Enabled" ver="5" value="false"/>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseRelease">
+				<body kind="om">
+					<![CDATA[private.ApplySelected();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="btnCancel" display-name="btnCancel" uuid="49c79b49-b10f-4415-80da-5b4dc3643168" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
 			<designed target="X" value="200" ver="5"/>
-			<designed target="Y" value="15" ver="5"/>
+			<designed target="Y" value="10" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Scale" value="1" ver="5"/>
 			<designed target="Visible" value="true" ver="5"/>
@@ -415,7 +419,6 @@ ButtonsPanel.btnAction.Enabled = (roleId != "");]]>
 			<designed target="ZValue" value="0" ver="5"/>
 			<designed target="Opacity" value="1" ver="5"/>
 			<designed target="Checkable" value="false" ver="5"/>
-			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="close"/>
 			<designed target="Checked" value="false" ver="5"/>
 			<designed target="TextAlignment" value="132" ver="5"/>
 			<designed target="OnClickFontColor" value="4278190080" ver="5"/>
@@ -442,6 +445,11 @@ ButtonsPanel.btnAction.Enabled = (roleId != "");]]>
 			<designed target="DisabledPenStyle" value="1" ver="5"/>
 			<designed target="DisabledPenWidth" value="1" ver="5"/>
 			<designed target="Flip" value="0" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseRelease">
+				<body kind="om">
+					<![CDATA[private.SendingCLoseRequest();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="003752f7-182e-4e46-9f14-0fab1845c3fe" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
 			<designed target="MinWidth" value="0" ver="5"/>
@@ -449,6 +457,12 @@ ButtonsPanel.btnAction.Enabled = (roleId != "");]]>
 			<designed target="MaxWidth" value="16777215" ver="5"/>
 			<designed target="MaxHeight" value="45" ver="5"/>
 		</object>
+		<do access-modifier="private" name="UpdateLayout" display-name="UpdateLayout" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[btnCancel.X = Width - btnCancel.Width - 10;
+btnAction.X = Width - btnCancel.Width - btnAction.Width - 20;]]>
+			</body>
+		</do>
 	</object>
 	<object access-modifier="private" name="Layout" display-name="Layout" uuid="a7f3b564-ee39-43a5-bda3-2b62bf579292" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
 		<designed target="Orientation" value="2" ver="5"/>
@@ -457,7 +471,8 @@ ButtonsPanel.btnAction.Enabled = (roleId != "");]]>
 	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="WindowSizeChanged">
 		<body kind="om">
 			<![CDATA[Width = width;
-Height = height;]]>
+Height = height;
+ButtonsPanel.UpdateLayout();]]>
 		</body>
 	</do-on>
 	<designed target="Flip" value="0" ver="5"/>
@@ -466,7 +481,7 @@ Height = height;]]>
 			<![CDATA[if (event.KeyCode == 82) // Enter
 	ButtonsPanel.btnAction.Click();
 else if (event.KeyCode == 75) // Escape
-	private.SendCloseRequest = true;]]>
+	private.SendingCLoseRequest();]]>
 		</body>
 	</do-on>
 	<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="WindowActivationChanged">
@@ -496,9 +511,11 @@ else
 	</do-on>
 	<do-on access-modifier="private" name="Handler_7" display-name="Handler_7" ver="5" event="CloseRequested">
 		<body kind="om">
-			<![CDATA[private.SendCloseRequest = true;
-if (private.IsDeleteMode() || private.LoadAppQueue.IsEnd())
-	Close();]]>
+			<![CDATA[private.SendedCloseRequest = true;
+if (private.IsDeleteMode() || private.LoadAppQueue.IsEnd() || private.LoadAppQueue.IsStoped())
+	Close();
+else if (!private.LoadAppQueue.IsEnd())
+	private.LoadAppQueue.Stop();]]>
 		</body>
 	</do-on>
 </type>

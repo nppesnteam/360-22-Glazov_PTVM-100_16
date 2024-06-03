@@ -1,0 +1,753 @@
+<type access-modifier="private" name="Alarms_Sounds" display-name="Alarms_Sounds" uuid="fcbcf76d-36fe-4b76-b406-d0e75410f562" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="">
+	<object access-modifier="private" name="private" display-name="private" uuid="6390183e-8c33-44e8-ba78-cdb4510b55bb" base-type="" base-type-id="" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="SeverityGroups" display-name="SeverityGroups" uuid="3dfbe8da-7a98-46af-bec2-4169c9bf9418" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[
+Alarms_Query_1.QueueCritJsonFilter = pConfig.SeverityGroups.Range1.Severity;
+
+ApAlarmQueue_1.JsonFilter = pConfig.SeverityGroups.Range1.Severity;
+ApAlarmQueue_2.JsonFilter = pConfig.SeverityGroups.Range2.Severity;
+ApAlarmQueue_3.JsonFilter = pConfig.SeverityGroups.Range3.Severity;
+ApAlarmQueue_4.JsonFilter = pConfig.SeverityGroups.Range4.Severity;
+
+ApAlarmQueue_1.severityArray = pConfig.SeverityGroups.GapToArray(Alarms_Tools.SeverityJSONtoString(pConfig.SeverityGroups.Range1.Severity));
+ApAlarmQueue_2.severityArray = pConfig.SeverityGroups.GapToArray(Alarms_Tools.SeverityJSONtoString(pConfig.SeverityGroups.Range2.Severity));
+ApAlarmQueue_3.severityArray = pConfig.SeverityGroups.GapToArray(Alarms_Tools.SeverityJSONtoString(pConfig.SeverityGroups.Range3.Severity));
+ApAlarmQueue_4.severityArray = pConfig.SeverityGroups.GapToArray(Alarms_Tools.SeverityJSONtoString(pConfig.SeverityGroups.Range4.Severity));
+]]>
+				</body>
+			</do-on>
+		</object>
+		<do-trace access-modifier="private" target="SeverityGroups" ver="5">
+			<body>
+				<![CDATA[pConfig.SeverityGroups.Version]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="Sound" display-name="Sound" uuid="f7d1682b-d9bf-45f3-8abc-7721c20c2f1d" base-type="Sound" base-type-id="e4bc00dd-3f63-4719-874d-83420bce71b5" ver="2">
+			<designed target="LoopCount" value="1" ver="2"/>
+			<designed target="Volume" value="0.80000000000000004" ver="2"/>
+			<designed target="Path" value="" ver="2"/>
+			<designed target="Active" value="false" ver="2"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="AllLoopsPlayed">
+				<body kind="om">
+					<![CDATA[//DebugTool_1.Log(this.Path + " is played");
+Active = false;
+PlayNextSound.Invoke();
+
+// сообщаем о завершении проигрывания звука
+OnSoundPlayed.Args.Push(this.Path);
+OnSoundPlayed.Invoke();]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="SoundPhrase" display-name="SoundPhrase" uuid="a46b8ae7-46be-4ecf-9d19-51f3d075219c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<object access-modifier="private" name="SoundPhraseInfo" display-name="SoundPhraseInfo" uuid="3bc0c2c4-7c6b-4321-a415-8c86f59c4079" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="isPlayingSounds" display-name="isPlayingSounds" uuid="0ef2adc9-b412-4d38-81f8-4ee7dbf3df54" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value != oldValue)
+{
+	oldValue = value;
+	
+	if (value)
+		OnPlayingSounds.Invoke();
+	else OnFinishedPlayingSounds.Invoke();
+}]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="oldValue" display-name="oldValue" uuid="6cdba218-b2e6-418c-8769-31ed2095aa27" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4"/>
+		</object>
+		<object access-modifier="private" name="PlayNextSound" display-name="PlayNextSound" uuid="2a620d09-630b-419c-af9d-f7e672977328" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="javascript">
+					<![CDATA[// Воспроизведение следующего звука в очереди
+if (private.SoundPhrase != "")
+{
+	//log("Play next sound from SoundQueue: " + SoundQueue)
+	
+	//Преобразуем очередь звуков в элементы массива	
+	let sounds = private.SoundPhrase.split(","); 
+	
+	var fileName = sounds[0]+".wav";
+	var soundPath = Alarms_Tools.File.CombinePath(pConfig.ConfigurationFolder.soundFolder, fileName);
+	
+	// если звукового файла нет, то заменяем его на звук по умолчанию
+	var soundPathAbs = Alarms_Tools.File.CombinePath(pConfig.ConfigurationFolder.soundFolderPath, fileName);
+	if (!Alarms_Tools.File.Exists(soundPathAbs))
+	{
+		soundPath = Alarms_Tools.File.CombinePath(pConfig.ConfigurationFolder.soundFolder, "default.wav");
+		soundPathAbs = Alarms_Tools.File.CombinePath(pConfig.ConfigurationFolder.soundFolderPath, "default.wav");
+	}
+	
+	sounds.shift();// Удаляем первый элемент
+	private.SoundPhrase = sounds.toString();// Обновляем очередь воспроизведения
+	
+	private.Sound.Path = soundPath;
+	private.Sound.Active = true;
+	// После запуска проигрывания звука выходим из функции. По окончании проигрывания звука эта функция будет вызвана снова.
+}
+else
+{
+	// Если больше звуков в очереди нет, то пробуем играть звук следующего события
+	PlaySoundForNextAlarm();
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="QueueChangedTimer" display-name="QueueChangedTimer" uuid="a54a08ab-260c-453b-b2bc-e6b85a2f7b78" base-type="Timer" base-type-id="72ba7cd4-549e-41f2-923c-2431b91f349a" ver="3">
+			<designed target="Period" value="1000" ver="3"/>
+			<designed target="Active" value="false" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnTimer">
+				<body kind="om">
+					<![CDATA[Active = false;
+OnQueueChanged();]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="ClearSoundQueryItem" display-name="ClearSoundQueryItem" uuid="fdd9ad74-6ef3-4623-be8a-43401da2ffa9" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="3">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnAdviseStateChanged">
+				<body kind="om">
+					<![CDATA[ //инициализируем флаг для пропуска первого значения после подписки
+if (adviseState != 2)
+	initStart = false;
+
+if (adviseState == 4) // ошибка подписки
+	adviseError = "Сигнал очистки очереди звуков: " + Tag + "\n" + AdviseStateString;
+else adviseError = "";]]>
+				</body>
+			</do-on>
+			<init target="Source" ver="5" ref="ApSource"/>
+			<object access-modifier="private" name="initStart" display-name="initStart" uuid="6c3e5ff0-06de-4a5d-abea-379b2202b95a" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="3"/>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnValueChanged">
+				<body kind="om">
+					<![CDATA[if (Quality >= 192 && value && initStart)
+	ClearSQ();
+
+if (AdviseState == 2)
+	initStart = true;]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="adviseError" display-name="adviseError" uuid="c23cc08e-ae81-415b-b928-d8d3d02dcd22" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+			<init target="Path" ver="5" ref="ClearSoundQueryTag"/>
+		</object>
+		<do access-modifier="private" name="InitSoundQueue" display-name="InitSoundQueue" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[// Инициализация моделей очереди активных алармов
+if (ApAlarmQueue_1.QueueModel.GetColumnCount() > 0) return;
+
+ApAlarmQueue_1.QueueModel.AddColumn("alarmInfo", "", "", "", "string", false, true);
+ApAlarmQueue_1.QueueModel.AddColumn("sound", "", "", "", "string", false, true);
+ApAlarmQueue_1.QueueModel.AddColumn("repeats", "", "", "", "int2", false, true);
+ApAlarmQueue_1.QueueModel.AddColumn("isPlayed", "", "", "", "bool", false, true);
+
+ApAlarmQueue_2.QueueModel.AddColumn("alarmInfo", "", "", "", "string", false, true);
+ApAlarmQueue_2.QueueModel.AddColumn("sound", "", "", "", "string", false, true);
+ApAlarmQueue_2.QueueModel.AddColumn("repeats", "", "", "", "int2", false, true);
+ApAlarmQueue_2.QueueModel.AddColumn("isPlayed", "", "", "", "bool", false, true);
+
+ApAlarmQueue_3.QueueModel.AddColumn("alarmInfo", "", "", "", "string", false, true);
+ApAlarmQueue_3.QueueModel.AddColumn("sound", "", "", "", "string", false, true);
+ApAlarmQueue_3.QueueModel.AddColumn("repeats", "", "", "", "int2", false, true);
+ApAlarmQueue_3.QueueModel.AddColumn("isPlayed", "", "", "", "bool", false, true);
+
+ApAlarmQueue_4.QueueModel.AddColumn("alarmInfo", "", "", "", "string", false, true);
+ApAlarmQueue_4.QueueModel.AddColumn("sound", "", "", "", "string", false, true);
+ApAlarmQueue_4.QueueModel.AddColumn("repeats", "", "", "", "int2", false, true);
+ApAlarmQueue_4.QueueModel.AddColumn("isPlayed", "", "", "", "bool", false, true);]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="UpdateSoundQueueModel" display-name="UpdateSoundQueueModel" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[InitSoundQueue();
+//var start = Date.now();
+//var queueLength = 0;
+
+// обрабатываем очереди активных алармов
+var alarmQueue = [];
+alarmQueue[0] = ApAlarmQueue_1;
+alarmQueue[1] = ApAlarmQueue_2;
+alarmQueue[2] = ApAlarmQueue_3;
+alarmQueue[3] = ApAlarmQueue_4;
+
+var queueModel = [];
+queueModel[0] = ApAlarmQueue_1.QueueModel;
+queueModel[1] = ApAlarmQueue_2.QueueModel;
+queueModel[2] = ApAlarmQueue_3.QueueModel;
+queueModel[3] = ApAlarmQueue_4.QueueModel;
+
+var queueSettings = [];
+queueSettings[0] = pConfig.SeverityGroups.Range1;
+queueSettings[1] = pConfig.SeverityGroups.Range2;
+queueSettings[2] = pConfig.SeverityGroups.Range3;
+queueSettings[3] = pConfig.SeverityGroups.Range4;
+
+// наличие звукового файла по умолчанию
+var defaultSoundExists = Alarms_Tools.File.Exists(Alarms_Tools.File.CombinePath(pConfig.ConfigurationFolder.soundFolderPath, "default.wav"));
+//log("Файл default.wav в папке " + pConfig.ConfigurationFolder.soundFolderPath + " " + (defaultSoundExists ? "имеется" : "отсутствует"));
+
+for (let i = 0; i < alarmQueue.length; i++)
+{	
+	if (alarmQueue[i].Length == 0)
+	{
+		queueModel[i].Clear();	
+	}
+	else
+	{
+		var rowCount = queueModel[i].GetRowCount();
+		var soundRepeats = queueSettings[i].nSoundRepeats;
+		
+		// переносим события из очереди в модель
+		alarmQueue[i].MoveFirst();
+		var row = 0;
+		while(true)
+		{
+			// описание аларма из очереди
+			var alarmInfoStr = alarmQueue[i].CurrentAlarm();
+			var alarmInfo = JSON.parse(alarmInfoStr);
+			var soundString = alarmInfo.sound;
+			
+			// удаляем все записи в модели, пока не дойдем до записи, соответствующей очереди
+			var isExists = false;
+			var canIncRow = true;
+			while (row < rowCount)
+			{
+				var _alarmInfo = queueModel[i].GetCellData(row, 0);
+				if (soundString == "" || soundString == ";"/*#27644*/)
+				{//#27855 переходим к следующей строке если этот звук не должен был быть добавлен
+					isExists = true;
+					canIncRow = false;
+					break;
+				}
+				else if (alarmInfoStr == _alarmInfo)
+				{
+					isExists = true;
+					break;
+				}
+				else
+				{
+					queueModel[i].RemoveRow(row);
+					//log("removed: " + _alarmInfo);
+					rowCount -=1;
+				}
+			}
+			
+			// если такой записи еще нет, то добавляем ее в модель
+			if (!isExists)
+			{
+				// добавляем запись в модель
+				if (soundString != "" && soundString != ";"/*#27644*/)
+				{
+					// подготавливаем строку со звуками
+					var sSounds = [];
+					var soundsArray = soundString.replace(/;+/g, ",").split(",");
+					for (let si = 0; si < soundsArray.length; si++)
+					{
+						var snd = soundsArray[si];
+
+						//	 удаляем лишние пробелы и расширение звукового файла
+						snd = snd.trim();
+						if (/(.wav)/g.test(snd))
+							snd = snd.replace(/(.wav)/g,"");
+						
+						if (snd != "")
+						{
+							// проверяем наличие звукового файла
+							var soundFile = snd + ".wav";
+							var soundPathAbs = Alarms_Tools.File.CombinePath(pConfig.ConfigurationFolder.soundFolderPath, soundFile);
+							if (Alarms_Tools.File.Exists(soundPathAbs))
+							{
+								sSounds.push(snd);
+							}
+							else
+							{
+								// если звукового файла нет, то заменяем его на звук по умолчанию
+								if (defaultSoundExists)
+								{
+									sSounds.push("default");
+									log("Не найден звуковой файл " +  soundFile + " для события от источника " + alarmInfo.source);
+								}
+								else
+									log("Не найден звуковой файл " +  soundFile + " для события от источника " + alarmInfo.source + " (файл default.wav тоже отсутствует)");
+							}
+						}
+					}
+					soundString = sSounds.toString();
+				}
+				
+				// Если звук не назначен и группа НЕ "Прочие", то назначаем файл по умолчанию		
+				if (soundString == "" && i < 3)
+				{
+					if (defaultSoundExists)
+						soundString = "default";
+					else log("Не найден звуковой файл default.wav для события от источника " + alarmInfo.source);
+				}
+
+				// добавляем в очередь звук, только если файл существует
+				if (soundString != "" && soundString != ";"/*#27644*/)
+				{
+					queueModel[i].AddRow();
+					var _row = queueModel[i].GetRowCount()-1;
+					queueModel[i].SetCellData(_row, 0, alarmInfoStr);
+					queueModel[i].SetCellData(_row, 1, soundString);
+					queueModel[i].SetCellData(_row, 2, soundRepeats);
+					//log("added: " +  alarmInfoStr);
+				}
+			}
+			
+			// переходим к следующей строке
+			if (canIncRow)
+				row += 1;
+			
+			if (!alarmQueue[i].MoveNext())
+				break;
+		}
+		
+		// удаляем все остальные записи
+		while (row < rowCount)
+		{
+			//log("remove: " + queueModel[i].GetCellData(row, 0));
+			queueModel[i].RemoveRow(row);
+			rowCount -=1;
+		}
+		
+		//queueLength += queueModel[i].GetRowCount();
+	}
+}
+//log("UpdateSoundQueueModel: " + (Date.now() - start) + ", sounds in queue: " + queueLength);]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="OnQueueChanged" display-name="OnQueueChanged" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[// Обновление очереди звуков
+UpdateSoundQueueModel();
+
+// Запускаем проигрывание следущего звука
+if (!private.Sound.Active)
+	private.PlayNextSound.Invoke();]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="PlaySoundForNextAlarm" display-name="PlaySoundForNextAlarm" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[InitSoundQueue();
+
+// Массив моделей очередей звуков
+var queueModel = [];
+queueModel[0] = ApAlarmQueue_1.QueueModel;
+queueModel[1] = ApAlarmQueue_2.QueueModel;
+queueModel[2] = ApAlarmQueue_3.QueueModel;
+queueModel[3] = ApAlarmQueue_4.QueueModel;
+
+// Массив модельных итераторов
+var modelIterator = [];
+modelIterator[0] = ApAlarmQueue_1.QueueModel.TableIterator_1;
+modelIterator[1] = ApAlarmQueue_2.QueueModel.TableIterator_1;
+modelIterator[2] = ApAlarmQueue_3.QueueModel.TableIterator_1;
+modelIterator[3] = ApAlarmQueue_4.QueueModel.TableIterator_1;
+
+// Массив параметров
+var queueSettings = [];
+queueSettings[0] = pConfig.SeverityGroups.Range1;
+queueSettings[1] = pConfig.SeverityGroups.Range2;
+queueSettings[2] = pConfig.SeverityGroups.Range3;
+queueSettings[3] = pConfig.SeverityGroups.Range4;
+
+/*
+	Порядок проигрывания звуков определяется группой: Особо важные, Важные, Значительные, Прочие.
+	Количество повторов одного звука настраивается. Особо важные всегда проигрываются циклически.
+	Если у группы задан приоритет, то к циклическому проигрыванию звуков добавляется проигрывание
+	приоритетного звука после каждых P циклических звуков, где P - приоритет проигрывания.
+*/
+
+for (let i = 0; i < queueSettings.length; i++)
+{
+	// пропускаем группы с отключенным звуком
+	if (pConfig.NotAckOtherEvents.Value && i==3 || !queueSettings[i].SoundEnable)
+		continue;
+		
+	// пропускаем пустые группы
+	if (queueModel[i].GetRowCount() == 0)
+		continue;
+		
+	// Флаг циклического проигрывания (при этом не учитывается количество повторов)
+	var cycleGroup = queueSettings[i].nSoundRepeats == 0;
+		
+	// предположим, что есть звук для проигрывания
+	var soundExists = true;
+	
+	// звуки циклической группы должны быть пропущены, если еще есть звуки в группах с приоритетом
+	if (cycleGroup)
+	{
+		for (let j = i+1; j < queueSettings.length; j++)
+		{
+			if (queueSettings[j].SoundPriority > 0 && queueModel[j].GetRowCount() > 0)
+			{
+				//	признак того, что в следующей группе есть звуки для проигрывания
+				var needPlaySound = false;
+				modelIterator[j].FirstSelected();
+				while (!modelIterator[j].End())
+				{
+					// если есть непроигранный звук или его требуется повторить
+					if (!queueModel[j].GetCellData(modelIterator[j].CurrentRow, 3) || queueModel[j].GetCellData(modelIterator[j].CurrentRow, 2) > 0)
+					{
+						needPlaySound = true;
+						break;
+					}
+					modelIterator[j].Next();
+				}
+				if (needPlaySound)
+				{
+					//log("есть звуки в группе " + j + " с приоритетом " + queueSettings[j].SoundPriority);
+					// не будем пропускать циклические звуки, пока не увеличим счетчик до приоритета
+					if (queueSettings[j].PriorityCount >= queueSettings[j].SoundPriority)
+					{
+						// после повторений, равных приоритету следующей группы, пропустим циклическую
+						// сбросив флаг наличия звуков, что приведет к началу проигрывания следующей группы
+						//log("пропуск группы " + i + " из-за группы " + j);
+						queueSettings[j].PriorityCount = 0;
+						soundExists = false;
+						break;
+					}
+					else
+						queueSettings[j].PriorityCount += 1;
+				}
+			}
+		}
+	}
+
+	while(soundExists)
+	{	
+		soundExists = false;
+	
+		modelIterator[i].FirstSelected();
+		while (!modelIterator[i].End())
+		{
+			// Текущая строка итератора
+			var row = modelIterator[i].CurrentRow;
+			
+			// Пропускаем проигравшие звуки
+			if (!queueModel[i].GetCellData(row, 3))
+			{
+				// Если текущая группа циклическая или счётчик повторов больше 0
+				if (cycleGroup || queueModel[i].GetCellData(row, 2) > 0)
+				{
+					// строка звуков
+					var soundString = queueModel[i].GetCellData(row, 1);
+					
+					if (!cycleGroup)
+					{
+						// уменьшаем счётчик повторов
+						var repeatCount = queueModel[i].GetCellData(row, 2) - 1;
+						queueModel[i].SetCellData(row, 2, repeatCount);
+					}
+
+					// устанавливаем флаг того, что звук уже проигрывался
+					// по окончании проигрывания всех звуков одной группы этот признак будет сброшен
+					queueModel[i].SetCellData(row, 3, true);
+
+					// запускаем проигрывание звука и выходим
+					//log("проигрывание звука из группы " + i + ": " + soundString);
+					private.SoundPhrase = soundString;
+					private.SoundPhraseInfo = queueModel[i].GetCellData(row, 0);
+					private.isPlayingSounds = true;
+					private.PlayNextSound.Invoke();
+					return;
+				}
+			}
+		
+			modelIterator[i].Next();
+		}
+
+		// все звуки группы были проиграны, требуется сбросить признак проигрывания для повтора				
+		modelIterator[i].FirstSelected();
+		while (!modelIterator[i].End())
+		{
+			var row = modelIterator[i].CurrentRow;
+
+			// еще раз будем играть циклические и у которых не закончились повторы			
+			if (cycleGroup || queueModel[i].GetCellData(row, 2) > 0)
+			{
+				queueModel[i].SetCellData(row, 3, false);
+				
+				// для повтора взводим флаг наличия звуков
+				//log("нужно повторить звук группы " + i + ": " + queueModel[i].GetCellData(row, 1));
+				soundExists = true;
+			}
+			modelIterator[i].Next();
+		}
+	}
+}
+
+// Если проверили очереди звуков всех групп и не вышли из метода раньше, значит больше не осталось звуков для проигрывания.
+private.isPlayingSounds = false;]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="ClearSQ" display-name="ClearSQ" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[
+private.InitSoundQueue();
+
+//Очистка очередей звука
+ApAlarmQueue_1.Clear();
+ApAlarmQueue_2.Clear();
+ApAlarmQueue_3.Clear();
+ApAlarmQueue_4.Clear();
+
+//Очистка моделей
+ApAlarmQueue_1.QueueModel.Clear();
+ApAlarmQueue_2.QueueModel.Clear();
+ApAlarmQueue_3.QueueModel.Clear();
+ApAlarmQueue_4.QueueModel.Clear();
+
+//Выключаем воспроизведение
+private.SoundPhrase = "";
+private.SoundPhraseInfo = "";
+private.Sound.Active = false;
+private.isPlayingSounds = false;
+]]>
+			</body>
+		</do>
+	</object>
+	<object access-modifier="private" name="Alarms_Query_1" display-name="Alarms_Query_1" uuid="3cb1991d-a2b2-44e2-8fed-52f8ead27750" base-type="Alarms_Query" base-type-id="5b998a45-cbbd-4eb1-b65a-b4b7385c0d69" ver="5" description="" cardinal="1">
+		<init target="ApSource" ver="5" ref="ApSource"/>
+		<do-trace access-modifier="private" target="MaxVisibleEvents" ver="5">
+			<body>
+				<![CDATA[here.MaxVisibleEvents]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="MaxVisibleOrdinaryEvents" ver="5">
+			<body>
+				<![CDATA[here.MaxVisibleOrdinaryEvents]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="StorageDuration" ver="5">
+			<body>
+				<![CDATA[here.StorageDuration]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="ActiveConditionsList" ver="5">
+			<body>
+				<![CDATA[here.ActiveConditionsList]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="SubscriptionAdvancedFilter" ver="5">
+			<body>
+				<![CDATA[here.SubscriptionAdvancedFilter]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="HideAckedEvents" ver="5">
+			<body>
+				<![CDATA[here.HideAckedEvents]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="RequestEventsStart" ver="5">
+			<body>
+				<![CDATA[here.RequestEventsStart]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="_ReloadRequired" display-name="_ReloadRequired" uuid="1e741511-b074-4af7-9395-e86b9cb05674" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="javascript">
+					<![CDATA[if (Value == false) return;
+Alarms_Query_1.ReloadRequired.Check();
+if (!Alarms_Query_1.ReloadRequired.Value) return;
+
+Reload2();
+ReloadSoundQueue();
+]]>
+				</body>
+			</do-on>
+		</object>
+		<do-trace access-modifier="private" target="_ReloadRequired" ver="5">
+			<body>
+				<![CDATA[ReloadRequired]]>
+			</body>
+		</do-trace>
+		<init target="Source" ver="5" ref="here.ApSource"/>
+	</object>
+	<object access-modifier="private" name="ApAlarmQueue_1" display-name="ApAlarmQueue_1" uuid="20d436d3-b3a2-4fa6-94eb-14cb06b3eab6" base-type="ApAlarmQueue" base-type-id="040615c1-78b9-4f5b-8201-607d29656aca" ver="2">
+		<designed target="JsonFilter" value='{"AND":[{"&gt;=":{"severity":667}},{"&lt;=":{"severity":1000}}]}' ver="2"/>
+		<object access-modifier="private" name="QueueModel" display-name="QueueModel" uuid="baeaf755-911b-475a-9ae5-47358447fe2a" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="3">
+			<designed target="Frozen" value="false" ver="3"/>
+			<designed target="MaxRowCount" value="2147483647" ver="3"/>
+			<object access-modifier="private" name="TableIterator_1" display-name="TableIterator_1" uuid="df0c2255-44c0-4cdd-be3e-859923b14725" base-type="TableIterator" base-type-id="b368f2dc-9de9-47fc-b7ae-1d9c28047eba" ver="3">
+				<designed target="CurrentRow" value="0" ver="3"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="severityArray" display-name="severityArray" uuid="672e3d25-86d0-420c-8670-94aee9a28d26" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+		<init target="severityArray" ver="5" value="667,668,669,670,671,672,673,674,675,676,677,678,679,680,681,682,683,684,685,686,687,688,689,690,691,692,693,694,695,696,697,698,699,700,701,702,703,704,705,706,707,708,709,710,711,712,713,714,715,716,717,718,719,720,721,722,723,724,725,726,727,728,729,730,731,732,733,734,735,736,737,738,739,740,741,742,743,744,745,746,747,748,749,750,751,752,753,754,755,756,757,758,759,760,761,762,763,764,765,766,767,768,769,770,771,772,773,774,775,776,777,778,779,780,781,782,783,784,785,786,787,788,789,790,791,792,793,794,795,796,797,798,799,800,801,802,803,804,805,806,807,808,809,810,811,812,813,814,815,816,817,818,819,820,821,822,823,824,825,826,827,828,829,830,831,832,833,834,835,836,837,838,839,840,841,842,843,844,845,846,847,848,849,850,851,852,853,854,855,856,857,858,859,860,861,862,863,864,865,866,867,868,869,870,871,872,873,874,875,876,877,878,879,880,881,882,883,884,885,886,887,888,889,890,891,892,893,894,895,896,897,898,899,900,901,902,903,904,905,906,907,908,909,910,911,912,913,914,915,916,917,918,919,920,921,922,923,924,925,926,927,928,929,930,931,932,933,934,935,936,937,938,939,940,941,942,943,944,945,946,947,948,949,950,951,952,953,954,955,956,957,958,959,960,961,962,963,964,965,966,967,968,969,970,971,972,973,974,975,976,977,978,979,980,981,982,983,984,985,986,987,988,989,990,991,992,993,994,995,996,997,998,999,1000"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnAlarmRemoved">
+			<body kind="om">
+				<![CDATA[if (private.SoundPhraseInfo == alarmAsJson)
+{
+	private.SoundPhrase = "";
+	private.SoundPhraseInfo = "";
+	private.Sound.Active = false;
+	private.UpdateSoundQueueModel();
+}
+if (!private.QueueChangedTimer.Active)
+	private.QueueChangedTimer.Active = true;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnAlarmInserted">
+			<body kind="om">
+				<![CDATA[if (!private.QueueChangedTimer.Active)
+	private.QueueChangedTimer.Active = true;]]>
+			</body>
+		</do-on>
+		<init target="Query" ver="5" ref="Alarms_Query_1"/>
+	</object>
+	<object access-modifier="private" name="ApAlarmQueue_2" display-name="ApAlarmQueue_2" uuid="ed5fcace-937b-43eb-a789-d1296b978b65" base-type="ApAlarmQueue" base-type-id="040615c1-78b9-4f5b-8201-607d29656aca" ver="2" cardinal="1">
+		<designed target="JsonFilter" value='{"AND":[{"&gt;=":{"severity":445}},{"&lt;=":{"severity":666}}]}' ver="2"/>
+		<object access-modifier="private" name="QueueModel" display-name="QueueModel" uuid="2231d945-2f7e-41cd-a7f6-54b6e8dd37d4" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="3">
+			<designed target="Frozen" value="false" ver="3"/>
+			<designed target="MaxRowCount" value="2147483647" ver="3"/>
+			<object access-modifier="private" name="TableIterator_1" display-name="TableIterator_1" uuid="e2167e2e-3039-4a81-8e99-5011a3780c77" base-type="TableIterator" base-type-id="b368f2dc-9de9-47fc-b7ae-1d9c28047eba" ver="3">
+				<designed target="CurrentRow" value="0" ver="3"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="severityArray" display-name="severityArray" uuid="77648c74-044c-4a70-b725-7b62b4128523" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+		<init target="severityArray" ver="5" value="445,446,447,448,449,450,451,452,453,454,455,456,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,479,480,481,482,483,484,485,486,487,488,489,490,491,492,493,494,495,496,497,498,499,500,501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,572,573,574,575,576,577,578,579,580,581,582,583,584,585,586,587,588,589,590,591,592,593,594,595,596,597,598,599,600,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633,634,635,636,637,638,639,640,641,642,643,644,645,646,647,648,649,650,651,652,653,654,655,656,657,658,659,660,661,662,663,664,665,666"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnAlarmRemoved">
+			<body kind="om">
+				<![CDATA[if (private.SoundPhraseInfo == alarmAsJson)
+{
+	private.SoundPhrase = "";
+	private.SoundPhraseInfo = "";
+	private.Sound.Active = false;
+	private.UpdateSoundQueueModel();
+}
+if (!private.QueueChangedTimer.Active)
+	private.QueueChangedTimer.Active = true;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnAlarmInserted">
+			<body kind="om">
+				<![CDATA[if (!private.QueueChangedTimer.Active)
+	private.QueueChangedTimer.Active = true;]]>
+			</body>
+		</do-on>
+		<init target="Query" ver="5" ref="Alarms_Query_1"/>
+	</object>
+	<object access-modifier="private" name="ApAlarmQueue_3" display-name="ApAlarmQueue_3" uuid="5718c9fd-f8b5-4c0b-9811-9344d08d2e03" base-type="ApAlarmQueue" base-type-id="040615c1-78b9-4f5b-8201-607d29656aca" ver="2" cardinal="1">
+		<designed target="JsonFilter" value='{"AND":[{"&gt;=":{"severity":223}},{"&lt;=":{"severity":444}}]}' ver="2"/>
+		<object access-modifier="private" name="QueueModel" display-name="QueueModel" uuid="a1fcb363-e3b3-4acf-9338-04a13ba0b620" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="3">
+			<designed target="Frozen" value="false" ver="3"/>
+			<designed target="MaxRowCount" value="2147483647" ver="3"/>
+			<object access-modifier="private" name="TableIterator_1" display-name="TableIterator_1" uuid="bdf2435e-bc6b-4a3b-a843-6da6094b156b" base-type="TableIterator" base-type-id="b368f2dc-9de9-47fc-b7ae-1d9c28047eba" ver="3">
+				<designed target="CurrentRow" value="0" ver="3"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="severityArray" display-name="severityArray" uuid="e1a23f89-a8b5-4cd1-bd32-e5fdef671504" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+		<init target="severityArray" ver="5" value="223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418,419,420,421,422,423,424,425,426,427,428,429,430,431,432,433,434,435,436,437,438,439,440,441,442,443,444"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnAlarmRemoved">
+			<body kind="om">
+				<![CDATA[if (private.SoundPhraseInfo == alarmAsJson)
+{
+	private.SoundPhrase = "";
+	private.SoundPhraseInfo = "";
+	private.Sound.Active = false;
+	private.UpdateSoundQueueModel();
+}
+if (!private.QueueChangedTimer.Active)
+	private.QueueChangedTimer.Active = true;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnAlarmInserted">
+			<body kind="om">
+				<![CDATA[if (!private.QueueChangedTimer.Active)
+	private.QueueChangedTimer.Active = true;]]>
+			</body>
+		</do-on>
+		<init target="Query" ver="5" ref="Alarms_Query_1"/>
+	</object>
+	<object access-modifier="private" name="ApAlarmQueue_4" display-name="ApAlarmQueue_4" uuid="99ed74a6-4a9d-476e-aa0b-d183570d917b" base-type="ApAlarmQueue" base-type-id="040615c1-78b9-4f5b-8201-607d29656aca" ver="2">
+		<designed target="JsonFilter" value='{"AND":[{"&gt;=":{"severity":1}},{"&lt;=":{"severity":222}}]}' ver="2"/>
+		<object access-modifier="private" name="QueueModel" display-name="QueueModel" uuid="ae878534-bfc2-443f-99b7-e8c90a88d4e4" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="3">
+			<designed target="Frozen" value="false" ver="3"/>
+			<designed target="MaxRowCount" value="2147483647" ver="3"/>
+			<object access-modifier="private" name="TableIterator_1" display-name="TableIterator_1" uuid="3999ff59-f54e-4f1f-93e1-dd9c6e3001b9" base-type="TableIterator" base-type-id="b368f2dc-9de9-47fc-b7ae-1d9c28047eba" ver="3">
+				<designed target="CurrentRow" value="0" ver="3"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="severityArray" display-name="severityArray" uuid="9668a3e4-9fd2-4653-b9c9-9e399b247e80" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+		<init target="severityArray" ver="5" value="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnAlarmRemoved">
+			<body kind="om">
+				<![CDATA[if (private.SoundPhraseInfo == alarmAsJson)
+{
+	private.SoundPhrase = "";
+	private.SoundPhraseInfo = "";
+	private.Sound.Active = false;
+	private.UpdateSoundQueueModel();
+}
+if (!private.QueueChangedTimer.Active)
+	private.QueueChangedTimer.Active = true;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnAlarmInserted">
+			<body kind="om">
+				<![CDATA[if (!private.QueueChangedTimer.Active)
+	private.QueueChangedTimer.Active = true;]]>
+			</body>
+		</do-on>
+		<init target="Query" ver="5" ref="Alarms_Query_1"/>
+	</object>
+	<do access-modifier="private" name="ClearSoundQueue" display-name="ClearSoundQueue" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[if (private.ClearSoundQueryItem.AdviseState == 2)
+{
+	private.ClearSoundQueryItem.TrySetValue(true);//Записываем и сбрасываем тег очистки очереди
+	private.ClearSoundQueryItem.TrySetValue(false);
+	return;
+}
+
+private.ClearSQ();
+]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="ReloadSoundQueue" display-name="ReloadSoundQueue" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[ApAlarmQueue_1.Reload();
+ApAlarmQueue_2.Reload();
+ApAlarmQueue_3.Reload();
+ApAlarmQueue_4.Reload();]]>
+		</body>
+	</do>
+	<param access-modifier="private" name="ApSource" display-name="ApSource" uuid="0aabe754-97ec-4dda-bd38-de6f396668fe" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" base-const="true" base-ref="true" ver="5" description=""/>
+	<param access-modifier="private" name="ClearSoundQueryTag" display-name="ClearSoundQueryTag" uuid="8beba8e8-56c0-4675-b616-2eca30a6261e" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description=""/>
+	<object access-modifier="private" name="OnPlayingSounds" display-name="OnPlayingSounds" uuid="b5db5edc-578f-4052-9503-33adba542a14" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="OnFinishedPlayingSounds" display-name="OnFinishedPlayingSounds" uuid="4209f370-d3f7-41cd-bcfe-6cc6da6843eb" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="OnSoundPlayed" display-name="OnSoundPlayed" uuid="f8cce452-d76b-4935-8def-d3cb3480c780" base-type="EventHandler" base-type-id="c01b71c2-42e8-4333-b70e-cc35fdf96f7e" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="MaxVisibleEvents" display-name="MaxVisibleEvents" uuid="10c18bea-92c0-40db-b4a2-eb652eeb85c5" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="3"/>
+	<init target="MaxVisibleEvents" ver="5" value="4294967295"/>
+	<object access-modifier="private" name="MaxVisibleOrdinaryEvents" display-name="MaxVisibleOrdinaryEvents" uuid="4e14938a-09c9-4998-8e96-8f87e0976c98" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="3"/>
+	<init target="MaxVisibleOrdinaryEvents" ver="5" value="500"/>
+	<object access-modifier="private" name="StorageDuration" display-name="StorageDuration" uuid="10421c55-53f5-4cef-b56c-f6ff369301c3" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="ActiveConditionsList" display-name="ActiveConditionsList" uuid="4518b268-53d5-4e9c-a336-343be09d2e84" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="SubscriptionAdvancedFilter" display-name="SubscriptionAdvancedFilter" uuid="73bf9be6-5604-4488-98f1-fe3253fed198" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="HideAckedEvents" display-name="HideAckedEvents" uuid="2e103e6a-73e6-4788-9405-702157fe7c0a" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="RequestEventsStart" display-name="RequestEventsStart" uuid="1481c118-3f6a-4ac1-a9c0-ed2caa7dae68" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="Mute" display-name="Беззвучный режим включен" uuid="ded1aa53-3b21-4cf6-8190-aedc89087424" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[private.Sound.Volume = Value ? 0 : 0.8;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="pConfig" display-name="pConfig" uuid="d8279480-70d4-4347-ae1d-740ad40e98ea" base-type="Alarms_Config" base-type-id="cac958c3-d08c-4b7b-8345-d70ccc130514" base-const="true" base-ref="true" ver="5" description=""/>
+	<do access-modifier="private" name="SkipCurrentSound" display-name="SkipCurrentSound" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[// Сбрасываем воспроизведение текущего звука
+private.SoundPhrase = "";
+private.SoundPhraseInfo = "";
+private.Sound.Active = false;
+
+// Запускаем проигрывание следующего
+private.PlaySoundForNextAlarm();]]>
+		</body>
+	</do>
+</type>
+

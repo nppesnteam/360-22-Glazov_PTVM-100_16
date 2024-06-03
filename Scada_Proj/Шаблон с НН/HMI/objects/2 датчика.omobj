@@ -148,7 +148,7 @@ refData.isOpened = true;]]>
 		<designed target="FontColor" value="4278190080" ver="5"/>
 		<designed target="TextAlignment" value="130" ver="5"/>
 	</object>
-	<object access-modifier="private" name="refData" display-name="refData" uuid="4954e9d3-dd22-472b-9b81-6f330ce6f6fa" base-type="rectangleWithFooter" base-type-id="f0efb2b9-b2c2-4ae5-9828-4b87079c3c46" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="refData" display-name="refData" uuid="4954e9d3-dd22-472b-9b81-6f330ce6f6fa" base-type="SensDouble" base-type-id="f0efb2b9-b2c2-4ae5-9828-4b87079c3c46" base-const="true" base-ref="true" ver="5"/>
 	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Closed">
 		<body kind="om">
 			<![CDATA[refData.isOpened = false;]]>
@@ -613,10 +613,10 @@ if (refData.outiSel == 1)
 		</do-trace>
 		<designed target="Checked" value="false" ver="5"/>
 	</object>
-	<object access-modifier="private" name="mX" display-name="mX" uuid="545059c6-4c88-47ff-befa-2cf886fb2189" base-type="float4" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
-	<object access-modifier="private" name="mY" display-name="mY" uuid="239f500d-df05-4e29-af51-8e39be2b83a2" base-type="float4" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
-	<object access-modifier="private" name="posX" display-name="posX" uuid="73906ae8-97b1-4c98-a073-785f743f964a" base-type="float4" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
-	<object access-modifier="private" name="posY" display-name="posY" uuid="474113c2-cf7c-4953-bd1f-660755cfc5cd" base-type="float4" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+	<object access-modifier="private" name="mX" display-name="mX" uuid="545059c6-4c88-47ff-befa-2cf886fb2189" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+	<object access-modifier="private" name="mY" display-name="mY" uuid="239f500d-df05-4e29-af51-8e39be2b83a2" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+	<object access-modifier="private" name="posX" display-name="posX" uuid="73906ae8-97b1-4c98-a073-785f743f964a" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+	<object access-modifier="private" name="posY" display-name="posY" uuid="474113c2-cf7c-4953-bd1f-660755cfc5cd" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
 	<object access-modifier="private" name="OpenTrendsWindow" display-name="OpenTrendsWindow" uuid="09471d58-267e-4c20-8da9-771a9ef8f7d8" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" cardinal="1">
 		<designed target="Enabled" value="true" ver="5"/>
 		<designed target="InvokeTrigger" value="false" ver="5"/>
@@ -707,7 +707,7 @@ if (refData.outiSel == 1)
 		<designed target="FontColor" value="4278190080" ver="5"/>
 		<designed target="TextAlignment" value="132" ver="5"/>
 	</object>
-	<object access-modifier="private" name="editAllowDiff" display-name="editAllowDiff" uuid="7a2946a6-9fb6-4f81-88e6-591059437978" base-type="TextEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5">
+	<object access-modifier="private" name="editAllowDiff" display-name="editAllowDiff" uuid="7a2946a6-9fb6-4f81-88e6-591059437978" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5">
 		<designed target="X" value="29" ver="5"/>
 		<designed target="Y" value="196" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
@@ -775,5 +775,7 @@ unit.Global.ShowMSG("Допустимая разница датчиков \""+re
 			</body>
 		</do-trace>
 	</object>
+	<designed target="Flip" value="0" ver="5"/>
+	<designed target="WindowIconPath" value="" ver="5"/>
 </type>
 

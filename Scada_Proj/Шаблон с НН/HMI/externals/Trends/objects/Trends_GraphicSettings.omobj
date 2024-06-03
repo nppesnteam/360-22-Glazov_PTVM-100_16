@@ -7,7 +7,7 @@
 	<designed target="Enabled" value="true" ver="5"/>
 	<designed target="Tooltip" value="" ver="5"/>
 	<designed target="Width" value="350" ver="5"/>
-	<designed target="Height" value="355" ver="5"/>
+	<designed target="Height" value="330" ver="5"/>
 	<designed target="PenColor" value="0xff000000" ver="5"/>
 	<designed target="PenStyle" value="0" ver="5"/>
 	<designed target="PenWidth" value="1" ver="5"/>
@@ -16,7 +16,7 @@
 	<designed target="WindowX" value="0" ver="5"/>
 	<designed target="WindowY" value="0" ver="5"/>
 	<designed target="WindowWidth" value="350" ver="5"/>
-	<designed target="WindowHeight" value="355" ver="5"/>
+	<designed target="WindowHeight" value="330" ver="5"/>
 	<designed target="WindowCaption" value="Настройка графика" ver="5"/>
 	<designed target="ShowWindowCaption" value="true" ver="5"/>
 	<designed target="ShowWindowMinimize" value="false" ver="5"/>
@@ -40,7 +40,9 @@ private.changes = false;
 private.indexItem = pChart.SelectedItem;
 
 LineColorRect.BrushColor = pChart.Params.Lines[private.indexItem].ColorMain;
+LineColorRect.X = pChart.SynchronizeColor ? 65 : 45;
 AxisColorRect.BrushColor = pChart.Params.Axis[private.indexItem].ColorY;
+AxisColorRect.Visible = !pChart.SynchronizeColor;
 recBottom.SyncroColorMarkerLabels.State = pChart.Params.Lines[private.indexItem].bSyncroColorMarkerLabels;
 
 editWidthGood.Text = pChart.private.ValueRound(pChart.Params.Lines[private.indexItem].WidthGood, 1);
@@ -53,8 +55,7 @@ recBottom.cbInterpolation.SelectedIndex = pChart.Params.Lines[private.indexItem]
 recBottom.cbMarker.Text = pChart.Params.Lines[private.indexItem].PointSymbol;
 
 recBottom.editYValue.Text = pChart.private.ValueRound(pChart.Params.Lines[private.indexItem].StringTagYValue, pChart.YAxisPrecision);
-if (pChart.Params.Lines[private.indexItem].ItemCDT != unit.Const.cdt.STRING)
-	recBottom.editYValue.Visible = false;
+recBottom.editYValue.Visible = pChart.Params.Lines[private.indexItem].ItemCDT == unit.Const.cdt.STRING;
 
 recBottom.editHighRangeIndivid.Value = private.GetAxisMax(private.indexItem);
 recBottom.editLowRangeIndivid.Value = private.GetAxisMin(private.indexItem);
@@ -62,8 +63,7 @@ recBottom.editHighRangeIndivid = pChart.private.ValueRound(recBottom.editHighRan
 recBottom.editLowRangeIndivid = pChart.private.ValueRound(recBottom.editLowRangeIndivid.Value, pChart.YAxisPrecision);
 
 here.Height = recDecor.Yposition + recBottom.Height;
-recBottom.Y = recDecor.Yposition;
-]]>
+recBottom.Y = recDecor.Yposition;]]>
 		</body>
 	</do-on>
 	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="WindowActivationChanged">
@@ -179,14 +179,14 @@ recDecor[9].editWidth.bValid
 	<object access-modifier="private" name="Debug" display-name="Debug" uuid="f2ff249a-de14-4f57-bf88-6f3e389dddcd" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
 	<object access-modifier="private" name="pChart" display-name="pChart" uuid="6fb9b974-2b9b-41d0-b41f-59ae6e8011e6" base-type="Trends_Chart" base-type-id="659f73ba-7fa5-4aa4-ac4d-623541275829" base-const="true" base-ref="true" ver="5" description=""/>
 	<object access-modifier="private" name="ColorLabel" display-name="ColorLabel" uuid="380cd702-3259-4466-b833-336ac5ca6c63" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
-		<designed target="X" value="10" ver="5"/>
+		<designed target="X" value="30" ver="5"/>
 		<designed target="Y" value="5" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
 		<designed target="Visible" value="true" ver="5"/>
 		<designed target="Enabled" value="true" ver="5"/>
 		<designed target="Tooltip" value="" ver="5"/>
-		<designed target="Width" value="115" ver="5"/>
+		<designed target="Width" value="95" ver="5"/>
 		<designed target="Height" value="25" ver="5"/>
 		<designed target="Text" value="Цвет" ver="5"/>
 		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
@@ -247,38 +247,9 @@ recDecor[9].editWidth.bValid
 		</do-trace>
 		<designed target="Flip" value="0" ver="5"/>
 	</object>
-	<object access-modifier="private" name="chbTitle" display-name="chbTitle" uuid="e883c0bf-8715-427a-b73c-95d06670179f" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="5" description="" cardinal="1">
-		<designed target="X" value="15" ver="5"/>
-		<designed target="Y" value="30" ver="5"/>
-		<designed target="ZValue" value="0" ver="5"/>
-		<designed target="Rotation" value="0" ver="5"/>
-		<designed target="Scale" value="1" ver="5"/>
-		<designed target="Flip" value="0" ver="5"/>
-		<designed target="Visible" value="true" ver="5"/>
-		<designed target="Opacity" value="1" ver="5"/>
-		<designed target="Enabled" value="true" ver="5"/>
-		<designed target="Tooltip" value="" ver="5"/>
-		<designed target="Width" value="325" ver="5"/>
-		<designed target="Height" value="25" ver="5"/>
-		<designed target="Text" value="Хорошее качество" ver="5"/>
-		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
-		<designed target="FontColor" value="4278190080" ver="5"/>
-		<designed target="State" value="true" ver="5"/>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="StateChanged">
-			<body kind="om">
-				<![CDATA[if (!state)
-	State = true;]]>
-			</body>
-		</do-on>
-		<do-trace access-modifier="private" target="FontColor" ver="5">
-			<body>
-				<![CDATA[private.pTheme.ForegroundColor]]>
-			</body>
-		</do-trace>
-	</object>
 	<object access-modifier="private" name="LineColorRect" display-name="LineColorRect" uuid="44eed47c-7378-4ff5-8ea8-7c18c17612af" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 		<designed target="X" value="45" ver="5"/>
-		<designed target="Y" value="55" ver="5"/>
+		<designed target="Y" value="30" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
@@ -335,7 +306,7 @@ else if (event.KeyCode == 82)
 	<designed target="Opacity" value="1" ver="5"/>
 	<object access-modifier="private" name="AxisColorRect" display-name="AxisColorRect" uuid="0fe60ca7-6651-4ae9-a67d-70db7a0a4646" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 		<designed target="X" value="80" ver="5"/>
-		<designed target="Y" value="55" ver="5"/>
+		<designed target="Y" value="30" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
@@ -378,23 +349,18 @@ else if (event.KeyCode == 82)
 				</body>
 			</do-on>
 		</object>
-		<do-trace access-modifier="private" target="Visible" ver="5">
-			<body>
-				<![CDATA[!pChart.SynchronizeColor]]>
-			</body>
-		</do-trace>
 		<designed target="Flip" value="0" ver="5"/>
 	</object>
 	<object access-modifier="private" name="errWidthGood" display-name="errWidthGood" uuid="2a2f839c-633c-4b9c-95c1-0ad307022842" base-type="ErrorFrame" base-type-id="360a528b-50b0-4a9d-a198-5e2f73fe204c" ver="5" description="" cardinal="1">
 		<designed target="X" value="135" ver="5"/>
-		<designed target="Y" value="55" ver="5"/>
+		<designed target="Y" value="30" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Width" value="55" ver="5"/>
 		<designed target="Height" value="25" ver="5"/>
 	</object>
 	<object access-modifier="private" name="editWidthGood" display-name="editWidthGood" uuid="1699b4dc-626e-4fca-bb4e-ca81fdd6e985" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5">
 		<designed target="X" value="135" ver="5"/>
-		<designed target="Y" value="55" ver="5"/>
+		<designed target="Y" value="30" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
 		<designed target="Visible" value="true" ver="5"/>
@@ -445,7 +411,7 @@ errWidthGood.Error = Tooltip;]]>
 	</object>
 	<object access-modifier="private" name="cbStyleGood" display-name="cbStyleGood" uuid="0ceea091-ffe5-4735-a2c9-4934cc4ee2a7" base-type="ComboBox" base-type-id="3495bcd2-01f2-4709-b7f4-e9cf6f3a00bc" ver="5">
 		<designed target="X" value="225" ver="5"/>
-		<designed target="Y" value="55" ver="5"/>
+		<designed target="Y" value="30" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
@@ -476,7 +442,7 @@ while (i < unit.Const.lst.Count)
 	</object>
 	<object access-modifier="private" name="recDecor" display-name="recDecor" uuid="34576bf4-61c6-4a1e-9cbe-dbc766a708a2" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="10">
 		<designed target="X" value="5" ver="5"/>
-		<designed target="Y" value="80" ver="5"/>
+		<designed target="Y" value="55" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
@@ -533,6 +499,11 @@ while (i < unit.Const.lst.Count)
 			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
 			<designed target="FontColor" value="4278190080" ver="5"/>
 			<designed target="State" value="false" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[private.pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
 		</object>
 		<object access-modifier="private" name="recColor" display-name="recColor" uuid="381ab6b3-97da-4832-bf27-e1daa025878c" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 			<designed target="X" value="60" ver="5"/>
@@ -598,6 +569,11 @@ while (i < unit.Const.lst.Count)
 			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
 			<designed target="FontColor" value="4278190080" ver="5"/>
 			<designed target="State" value="false" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[private.pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
 		</object>
 		<object access-modifier="private" name="errWidth" display-name="errWidth" uuid="9478dbcc-c0a3-45ba-8507-b173811ef847" base-type="ErrorFrame" base-type-id="360a528b-50b0-4a9d-a198-5e2f73fe204c" ver="5" description="" cardinal="1">
 			<designed target="X" value="130" ver="5"/>
@@ -687,6 +663,11 @@ errWidth.Error = Tooltip;]]>
 			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
 			<designed target="FontColor" value="4278190080" ver="5"/>
 			<designed target="State" value="false" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[private.pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
 		</object>
 		<object access-modifier="private" name="cbStyle" display-name="cbStyle" uuid="6243c639-b014-4d53-840b-5a8301a1b8ff" base-type="ComboBox" base-type-id="3495bcd2-01f2-4709-b7f4-e9cf6f3a00bc" ver="5">
 			<designed target="X" value="220" ver="5"/>
@@ -749,8 +730,8 @@ while (i < pChart.Params.Lines.Decor.Style.Length)
 		else
 		{
 			recDecor[j].chbColorEnable.State = false;
-			if (pChart.private.LineDecor.Style[j].Title!="" && pChart.private.LineDecor.Style[j].LineColor!=unit.Const.slUNDEFINED)
-				recDecor[j].recColor.BrushColor = pChart.private.LineDecor.Style[j].LineColor;
+			if (pChart.private.pSettings.LineDecorators.Style[j].Title!="" && pChart.private.pSettings.LineDecorators.Style[j].LineColor!=unit.Const.slUNDEFINED)
+				recDecor[j].recColor.BrushColor = pChart.private.pSettings.LineDecorators.Style[j].LineColor;
 			else
 				recDecor[j].recColor.BrushColor = LineColorRect.BrushColor;		
 		}
@@ -775,8 +756,8 @@ while (i < pChart.Params.Lines.Decor.Style.Length)
 		else
 		{
 			recDecor[j].chbStyleEnable.State = false;
-			if (pChart.private.LineDecor.Style[j].Title!="" && pChart.private.LineDecor.Style[j].LineStyle!=unit.Const.slUNDEFINED)
-				recDecor[j].cbStyle.SelectedIndex = TypeConvert.ToInt4(pChart.private.LineDecor.Style[j].LineStyle);
+			if (pChart.private.pSettings.LineDecorators.Style[j].Title!="" && pChart.private.pSettings.LineDecorators.Style[j].LineStyle!=unit.Const.slUNDEFINED)
+				recDecor[j].cbStyle.SelectedIndex = TypeConvert.ToInt4(pChart.private.pSettings.LineDecorators.Style[j].LineStyle);
 			else
 				recDecor[j].cbStyle.SelectedIndex = cbStyleGood.SelectedIndex;		
 		}
@@ -829,7 +810,7 @@ while (i < recDecor.Length)
 	</param>
 	<object access-modifier="private" name="recBottom" display-name="recBottom" uuid="1175ae22-bf66-4b01-b1ed-d1e18b944ba9" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
 		<designed target="X" value="0" ver="5"/>
-		<designed target="Y" value="155" ver="5"/>
+		<designed target="Y" value="130" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>

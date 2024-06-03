@@ -1,4 +1,4 @@
-<type access-modifier="public" name="EventArgs" display-name="EventArgs" uuid="98c51173-1835-4905-98f5-c4ffadbbf157" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="">
+<type access-modifier="public" name="EventArgs" display-name="Буфер аргументов события" uuid="98c51173-1835-4905-98f5-c4ffadbbf157" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="">
 	<object access-modifier="private" name="private" display-name="private" uuid="feeb3b75-0bee-4847-9b55-e5d423db2dd5" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
 		<object access-modifier="private" name="pushIndex" display-name="pushIndex" uuid="f0f0002c-e1d8-4b02-843e-3f9378c3bfad" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
 		<object access-modifier="private" name="getIndex" display-name="getIndex" uuid="85a88699-05d5-4ee5-9779-9e1b88ce1717" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
@@ -55,7 +55,7 @@ args: string = Variant.ToString(private.Buffer.GetCellData(index, 0), "");
 return args;]]>
 		</body>
 	</do>
-	<param access-modifier="private" name="BufferSize" display-name="BufferSize" uuid="a7cfeb9e-68aa-44f0-9074-167a020c1c14" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description=""/>
+	<param access-modifier="private" name="BufferSize" display-name="Размер буфера" uuid="a7cfeb9e-68aa-44f0-9074-167a020c1c14" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description=""/>
 	<init target="BufferSize" ver="5" value="10"/>
 </type>
 

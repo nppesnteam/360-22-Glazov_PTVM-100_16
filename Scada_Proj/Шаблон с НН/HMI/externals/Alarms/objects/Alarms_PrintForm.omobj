@@ -120,6 +120,7 @@
 				<designed target="Active" value="true" ver="4"/>
 				<designed target="CurrentFrameNumber" value="0" ver="4"/>
 				<designed target="Speed" value="1" ver="4"/>
+				<designed target="Flip" value="0" ver="5"/>
 			</object>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
 				<body kind="om">
@@ -163,8 +164,8 @@ else if (PagesComboBox.SelectedIndex == 1)
 			<object access-modifier="private" name="pagesOverload" display-name="pagesOverload" uuid="6c93efc7-4feb-4911-99ae-4a6870d5479a" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
 			<do-trace access-modifier="private" target="pagesOverload" ver="5">
 				<body>
-					<![CDATA[pAlarms.Main_panel.private.Print.PageLimit>0 &&
-Page.PageCount>pAlarms.Main_panel.private.Print.PageLimit &&
+					<![CDATA[pConfig.Print.PageLimit>0 &&
+Page.PageCount>pConfig.Print.PageLimit &&
 PagesComboBox.SelectedIndex == 0]]>
 				</body>
 			</do-trace>
@@ -176,9 +177,10 @@ PagesComboBox.SelectedIndex == 0]]>
 			</do-trace>
 			<do-trace access-modifier="private" target="hint" ver="5">
 				<body>
-					<![CDATA[PrintButton.pagesOverload ? "Печать отключена. Количество листов превышает максимально допустимое: "+String.ToString(pAlarms.Main_panel.private.Print.PageLimit)+". Измените диапазон печати или фильтр отображения.":"Печать"]]>
+					<![CDATA[PrintButton.pagesOverload ? "Печать отключена. Количество листов превышает максимально допустимое: "+String.ToString(pConfig.Print.PageLimit)+". Измените диапазон печати или фильтр отображения.":"Печать"]]>
 				</body>
 			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
 		</object>
 		<object access-modifier="private" name="PagesComboBox" display-name="PagesComboBox" uuid="2b9cf735-b637-4453-af89-93f7c5ca0f23" base-type="ComboBox" base-type-id="3495bcd2-01f2-4709-b7f4-e9cf6f3a00bc" ver="4">
 			<designed target="X" value="60" ver="4"/>
@@ -265,7 +267,7 @@ UpperTextEdit.X = UpperTextCheckbox.X + UpperTextCheckbox.Width;]]>
 			<designed target="MaxVisibleItems" value="10" ver="5"/>
 			<do-trace access-modifier="private" target="Enabled" ver="5">
 				<body>
-					<![CDATA[pAlarms.Main_panel.private.Permission.FileSystem]]>
+					<![CDATA[pPermissions.Permission.FileSystem]]>
 				</body>
 			</do-trace>
 		</object>
@@ -310,10 +312,8 @@ UpperTextEdit.X = UpperTextCheckbox.X + UpperTextCheckbox.Width;]]>
 			<designed target="DisabledPenWidth" value="1" ver="3"/>
 			<designed target="Opacity" value="1" ver="3"/>
 			<designed target="Checked" value="false" ver="4"/>
-			<object access-modifier="private" name="VisibleColumns" display-name="VisibleColumns" uuid="70efaa4a-f99d-4545-bbdc-86fb05cd467b" base-type="DialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" ver="4"/>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="open-dialog" form-by-id="false">
 				<object access-modifier="private" uuid="b4d469c7-5d27-411d-8d59-8ef759fb97c0" base-type="Alarms_SelectColumns" base-type-id="3b4031c4-d45e-4596-9232-5120026222ce" ver="4">
-					<init target="Result" ver="5" ref="VisibleColumns"/>
 					<init target="OnComplete" ver="5" ref="SetVisibleColumns"/>
 					<init target="CurrentState" ver="5">
 						<expr>
@@ -323,12 +323,10 @@ UpperTextEdit.X = UpperTextCheckbox.X + UpperTextCheckbox.Width;]]>
 					<init target="pTheme" ver="5" ref="here.pTheme"/>
 				</object>
 			</do-on>
-			<object access-modifier="private" name="SetVisibleColumns" display-name="SetVisibleColumns" uuid="d652e42d-6f18-4515-b522-2ef4f0ff5df4" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
-				<designed target="Enabled" value="true" ver="4"/>
-				<designed target="InvokeTrigger" value="false" ver="4"/>
+			<object access-modifier="private" name="SetVisibleColumns" display-name="SetVisibleColumns" uuid="d652e42d-6f18-4515-b522-2ef4f0ff5df4" base-type="EventHandler" base-type-id="c01b71c2-42e8-4333-b70e-cc35fdf96f7e" ver="4">
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
 					<body kind="om">
-						<![CDATA[Page.Center.Table.SetVisibleColumns(VisibleColumns.Value);]]>
+						<![CDATA[Page.Center.Table.SetVisibleColumns(Args.Get());]]>
 					</body>
 				</do-on>
 			</object>
@@ -792,12 +790,12 @@ Page.NextPage();]]>
 	<object access-modifier="private" name="Debug" display-name="Debug" uuid="718750bf-d5d3-49ca-b5a0-a7a442ddb6dc" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="2"/>
 	<do-on access-modifier="private" name="Handler_AboutToOpen" display-name="Handler_AboutToOpen" ver="5" event="AboutToOpen">
 		<body kind="om">
-			<![CDATA[if (pAlarms.ActiveMode==0)
+			<![CDATA[if (pAlarms.ActiveMode == 0)
 {
 	// включаем снапшот перед печатью (#23749)
-	snapshotActivity = pAlarms.Main_panel.ToolBar.SnapshotON;
-	if (!pAlarms.Main_panel.ToolBar.SnapshotON)
-		pAlarms.DisplayCurrentEventsSnapshot();
+	snapshotActivity = pAlarms.SnapshotON;
+	if (!pAlarms.SnapshotON)
+		pAlarms.SnapshotON = true;
 }
 
 Buttons.PagesComboBox.AddItem("Всех страниц");
@@ -808,8 +806,8 @@ Buttons.OrientationComboBox.AddItem("Книжная");
 Buttons.OrientationComboBox.AddItem("Альбомная");
 Buttons.OrientationComboBox.SelectedIndex = 1;
 
-Buttons.UpperTextCheckbox.State = pAlarms.Main_panel.private.Print.HeaderTextUse;
-Buttons.UpperTextEdit.Text = pAlarms.Main_panel.private.Print.HeaderText;
+Buttons.UpperTextCheckbox.State = pConfig.Print.HeaderTextUse;
+Buttons.UpperTextEdit.Text = pConfig.Print.HeaderText;
 
 Page.Initialize();
 Page.Center.Table.GetAvailablePrinters();
@@ -921,7 +919,7 @@ Page.Center.Table.GetAvailablePrinters();
 				<designed target="Height" value="440" ver="2"/>
 				<designed target="SelectionBehavior" value="1" ver="2"/>
 				<designed target="SelectionMode" value="0" ver="2"/>
-				<object access-modifier="private" name="Columns" display-name="Columns" uuid="32ba4492-ac3b-4104-9832-77ca9bc3c0fa" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="2" cardinal="26">
+				<object access-modifier="private" name="Columns" display-name="Columns" uuid="32ba4492-ac3b-4104-9832-77ca9bc3c0fa" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="2" cardinal="27">
 					<designed target="Title" value="" ver="2"/>
 					<designed target="Description" value="" ver="2"/>
 					<designed target="Id" value="" ver="2"/>
@@ -948,9 +946,11 @@ Page.Center.Table.GetAvailablePrinters();
 					<designed target="ColumnOwnId" value="" ver="4"/>
 					<do-trace access-modifier="private" target="TimeFormat" ver="5">
 						<body>
-							<![CDATA[(pAlarms.ShowMilliseconds)?("dd.MM.yyyy hh:mm:ss.zzz"):("dd.MM.yyyy hh:mm:ss")]]>
+							<![CDATA[CustomTimeFormat!="" ? CustomTimeFormat : (pConfig.ShowMilliseconds ? "dd.MM.yyyy hh:mm:ss.zzz" : "dd.MM.yyyy hh:mm:ss")]]>
 						</body>
 					</do-trace>
+					<object access-modifier="private" name="CustomTimeFormat" display-name="CustomTimeFormat" uuid="a98a1d20-0aa5-4689-b27d-85988c1ade31" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+					<object access-modifier="private" name="guiFlag" display-name="guiFlag" uuid="dcb0eb0a-4d49-4b82-b4fb-29af911cd2b6" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
 				</object>
 				<designed target="LatestRowTracking" value="false" ver="2"/>
 				<designed target="HeaderHeight" value="23" ver="3"/>
@@ -967,13 +967,13 @@ Page.Center.Table.GetAvailablePrinters();
 				<designed target="HorizontalScrollBarPolicy" value="0" ver="4"/>
 				<designed target="VerticalScrollBarPolicy" value="0" ver="4"/>
 				<designed target="DelayedSortingEnabled" value="false" ver="4"/>
-				<object access-modifier="private" name="columnWidths" display-name="columnWidths" uuid="6cee0ca9-c3ec-42d4-b6a7-d893cb7cea0c" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4" cardinal="26"/>
+				<object access-modifier="private" name="columnWidths" display-name="columnWidths" uuid="6cee0ca9-c3ec-42d4-b6a7-d893cb7cea0c" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4" cardinal="27"/>
 				<do access-modifier="private" name="GetVisibleColumns" display-name="GetVisibleColumns" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
 					<body kind="javascript">
 						<![CDATA[var columns = [];
 for(let i = 0; i < Columns.Length; i++)
 {
-	if (Columns[i].Title != "")
+	if (Columns[i].guiFlag)
 	{
 		var column = {};
 		column.Index = Columns[i].GetIndex();
@@ -999,6 +999,7 @@ return JSON.stringify(columns);]]>
 					<body kind="javascript">
 						<![CDATA[var columns = JSON.parse(value);
 for(let j = 0; j < Columns.Length; j++)
+if (Columns[j].guiFlag)
 {
 	var column = Columns[j];
 	var hidden = true;
@@ -1115,9 +1116,9 @@ while (true)
 }]]>
 					</body>
 				</do>
-				<object access-modifier="private" name="columnOrigWidths" display-name="columnOrigWidths" uuid="0d0ff34e-1650-4c7c-9b2d-17649fb8caf3" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" cardinal="26"/>
-				<object access-modifier="private" name="columnOrigTitleFont" display-name="columnOrigTitleFont" uuid="e7c19bbd-efc8-4101-988f-33add50951cd" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" cardinal="26"/>
-				<object access-modifier="private" name="columnOrigCellFont" display-name="columnOrigCellFont" uuid="6aa968d3-6fcf-4a79-832c-199bec3f8be8" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" cardinal="26"/>
+				<object access-modifier="private" name="columnOrigWidths" display-name="columnOrigWidths" uuid="0d0ff34e-1650-4c7c-9b2d-17649fb8caf3" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" cardinal="27"/>
+				<object access-modifier="private" name="columnOrigTitleFont" display-name="columnOrigTitleFont" uuid="e7c19bbd-efc8-4101-988f-33add50951cd" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" cardinal="27"/>
+				<object access-modifier="private" name="columnOrigCellFont" display-name="columnOrigCellFont" uuid="6aa968d3-6fcf-4a79-832c-199bec3f8be8" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" cardinal="27"/>
 				<object access-modifier="private" name="scaleNeeded" display-name="scaleNeeded" uuid="a88ee45a-7f05-4f56-bb07-e2a47ee5eb9b" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="PreparePrintStart">
 					<body kind="om">
@@ -1268,58 +1269,36 @@ Table.Height = Height - 100;]]>
 			<body kind="javascript">
 				<![CDATA[TableModel_1.Initialize();
 
-// Определяем заголовки и последовательность столбцов таблицы по активной таблице
-var AlarmColumn=[]
-var ActiveTable;
-var RowTotal = 0;
-
-if (pAlarms.ActiveMode==0)
+// неиспользуемые колонки скрываем и помечаем пустым заголовком
+for (let i = 0; i < Center.Table.Columns.Length; i++)
 {
-	for (let i = 0; i < pAlarms.Main_tables_Operative.Table_Operative_mode.Columns.Length; i++)
-		if (pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i].Title != "-")//cheat1
-			AlarmColumn.push(pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i]);
-	AlarmColumn.push(pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[pAlarms.Main_panel.private.TableView.Static.Column_Subcondition.pos]);
-	ActiveTable = pAlarms.Main_tables_Operative.Table_Operative_mode;
-	RowTotal = pAlarms.Main_tables_Operative.TableModel_1.GetRowCount();
-}
-else
-{
-	for (let i = 0; i < pAlarms.Main_tables_Historical.Table_History_mode.Columns.Length; i++)
-		if (pAlarms.Main_tables_Historical.Table_History_mode.Columns[i].Title != "-")//cheat1
-			AlarmColumn.push(pAlarms.Main_tables_Historical.Table_History_mode.Columns[i]);
-	AlarmColumn.push(pAlarms.Main_tables_Historical.Table_History_mode.Columns[pAlarms.Main_panel.private.TableView.Static.Column_Subcondition.pos]);
-	ActiveTable = pAlarms.Main_tables_Historical.Table_History_mode;
-	RowTotal = pAlarms.Main_tables_Historical.TableModel_1.GetRowCount();
+	Center.Table.Columns[i].Hidden = true;
+	Center.Table.Columns[i].Title = "";
 }
 
 var indexesArray = [];
-for (let i = 0; i < Center.Table.Columns.Length; i++)
+var n=-1;
+for (let i = 0; i < pConfig.TableView.Columns.Length; i++)
+if (pConfig.TableView.Columns[i].guiFlag || i==pConfig.TableView.Static.Subcondition.pos)
 {
-	var column = AlarmColumn[i];
-	if (column != null)
+	n++;
+	var column = pConfig.TableView.Columns[i];
 	{
 		// запоминаем ширину столбца, так как при скрытии она обнуляется
-		Center.Table.columnWidths[i] = column.Width;
-		Center.Table.columnOrigWidths[i] = column.Width;
-		Center.Table.columnOrigTitleFont[i] = column.TitleFont;
-		Center.Table.columnOrigCellFont[i] = column.Font;
+		Center.Table.columnWidths[n] = column.Width;
+		Center.Table.columnOrigWidths[n] = column.Width;
+		Center.Table.columnOrigTitleFont[n] = column.TitleFont;
+		Center.Table.columnOrigCellFont[n] = column.Font;
 		
-		Center.Table.Columns[i].Title = column.Title;
-		Center.Table.Columns[i].Id = column.Id;
-		//Center.Table.Columns[i].ColumnOwnId = column.ColumnOwnId;
-		Center.Table.Columns[i].Hidden = column.Hidden;
-		Center.Table.Columns[i].Width = column.Width;
-		Center.Table.Columns[i].Font = column.Font;
-		Center.Table.Columns[i].TitleFont = column.TitleFont;
-		Center.Table.Columns[i].TimeFormat = column.TimeFormat;
-		indexesArray[column.GetIndex()] = i;
-	}
-	
-	// неиспользуемую колонку скрываем и помечаем пустым заголовком
-	if (column == null || column.Title == "-")//cheat1
-	{
-		Center.Table.Columns[i].Hidden = true;
-		Center.Table.Columns[i].Title = "";
+		Center.Table.Columns[n].Title = column.Title;
+		Center.Table.Columns[n].Id = column.Id;
+		Center.Table.Columns[n].guiFlag = column.guiFlag;
+		Center.Table.Columns[n].Hidden = column.Hidden;
+		Center.Table.Columns[n].Width = column.Width;
+		Center.Table.Columns[n].Font = column.Font;
+		Center.Table.Columns[n].TitleFont = column.TitleFont;
+		Center.Table.Columns[i].CustomTimeFormat = column.CustomTimeFormat;
+		indexesArray[column.GetIndex()] = n;
 	}
 }
 //#25486 расстановка столбцов должна выполняться в порядке их расположения
@@ -1327,12 +1306,15 @@ for (let i = 0; i < indexesArray.length; i++)
 	if (indexesArray[i] != null)
 		Center.Table.MoveColumn(Center.Table.Columns[indexesArray[i]].GetIndex(), i);
 
-RowCount = ActiveTable.GetRowCount();
-MessageCount = RowCount + " " + pAlarms.StatePanel.GetDeclension(RowCount, "сообщение", "сообщения", "сообщений");
+RowCount = pAlarms.TableOne.GetRowCount();
+var RowTotal = pAlarms.TableOne.TableModel_1.GetRowCount();
+MessageCount = RowCount + " " + Alarms_Tools.StringUtils.GetDeclension(RowCount, "сообщение", "сообщения", "сообщений");
 if (RowTotal != RowCount) MessageCount = MessageCount + " из " + RowTotal;
-Center.Table.RowHeight = ActiveTable.RowHeight;
-Center.Table.HeaderHeight = ActiveTable.HeaderHeight;
-Center.Table.TableDecorator_1.JsonDecorator = pAlarms.Main_panel.private.EventSettings.BuildDecorator(pAlarms.ActiveMode == 1, true);
+
+Center.Table.RowHeight = pConfig.TableView.RowHeight.Value;
+Center.Table.HeaderHeight = pConfig.TableView.HeaderHeight.Value;
+
+Center.Table.TableDecorator_1.JsonDecorator = pConfig.EventSettings.BuildDecorator(pAlarms.ActiveMode==1, true, pConfig.NotAckOtherEvents, pAlarms.private.Follow.CurrentFFLE.Value, pConfig.MergeEvents.Value, pAlarms.SnapshotON);
 defaultDecorator = Center.Table.TableDecorator_1.JsonDecorator;
 grayscaleDecorator = DisableDecoratorColor(defaultDecorator);]]>
 			</body>
@@ -1406,7 +1388,7 @@ catch (error)
 				<![CDATA[//Функция заполнения таблицы печати для текущей страницы
 
 //Определяем номер строки в таблице на печать, с которой начинается очередная страница
-var firstRow = getPageIndex() * MaxRowsOnPage;//Определяется как номер текущей страницы на максимальное количество строк в таблице
+var firstRow = PageIndex.Value * MaxRowsOnPage;//Определяется как номер текущей страницы на максимальное количество строк в таблице
 
 TableModel_1.Clear();
 var lastRow = Math.min(firstRow + MaxRowsOnPage - 1, RowCount-1);
@@ -1414,16 +1396,15 @@ var count = lastRow-firstRow+1;
 TableModel_1.InsertRows(0, count);
 
 //Начинаем заполнять таблицу
-if (pAlarms.ActiveMode == 0)
-	{
-		var rowdata = pAlarms.Main_tables_Operative.Table_Operative_mode.GetRowsDataAsJson(firstRow, lastRow, true/*rawData*/);
-		TableModel_1.SetRowsDataAsJson(0,count-1,rowdata);
-	}
-else
-	{
-		var rowdata = pAlarms.Main_tables_Historical.Table_History_mode.GetRowsDataAsJson(firstRow, lastRow, true/*rawData*/);
-		TableModel_1.SetRowsDataAsJson(0,count-1,rowdata);
-	}
+var rowdata = pAlarms.TableOne.GetRowsDataAsJson(firstRow, lastRow, true/*rawData*/);
+try
+{
+	TableModel_1.SetRowsDataAsJson(0,count-1,rowdata);
+}
+catch(error)
+{
+	Debug.Log("Не удалось скопировать данные. Возможно несоответствие типов импортируемых данных и целевых столбцов. Требуется проверить типы столбцов.");
+}
 ]]>
 			</body>
 		</do>
@@ -1449,22 +1430,22 @@ pAlarms.OnPrint.Invoke();]]>
 			<do access-modifier="private" name="Initialize" display-name="Initialize" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 				<body kind="javascript">
 					<![CDATA[//создаём модель по отображаемым столбцам, чтоб позже использовать SetRowsDataAsJson
-for (let n = 0; n < pAlarms.Main_tables_Operative.Table_Operative_mode.Columns.Length; n++)//перебор по номеру нового столбца (индексу)
+for (let n = 0; n < pConfig.TableView.Columns.Length; n++)//перебор по номеру нового столбца (индексу)
 {
 	var added = false;
-	for (let i = 0; i < pAlarms.Main_tables_Operative.Table_Operative_mode.Columns.Length; i++)//перебор по номеру в массиве Columns
+	for (let i = 0; i < pConfig.TableView.Columns.Length; i++)//перебор по номеру в массиве Columns
 	{
-		if (pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i].Id != "" && pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i].GetIndex() == n)
+		if (pConfig.TableView.Columns[i].Id != "" && pConfig.TableView.Columns[i].GetIndex() == n)
 		{
 		//AddColumn(name,displayName,description,units, typeCode, isReadOnly, maybeEmpty);
 			AddColumn(
-				pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i].Id, "", "", "",
-				pAlarms.Main_panel.private.TableView.modelType[i], false, true);
+				pConfig.TableView.Columns[i].Id, "", "", "",
+				pConfig.TableView.Columns[i].modelType, false, true);
 			added = true;
 		}
 	}
 	if (!added)
-		AddColumn("", "", "", "","string", false, true);
+		AddColumn("", "", "", "","variant", false, true);
 }]]>
 				</body>
 			</do>
@@ -1482,11 +1463,6 @@ for (let n = 0; n < pAlarms.Main_tables_Operative.Table_Operative_mode.Columns.L
 				<![CDATA[pTheme.BorderColor]]>
 			</body>
 		</do-trace>
-		<do access-modifier="private" name="getPageIndex" display-name="getPageIndex" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
-			<body kind="om">
-				<![CDATA[return PageIndex;//cheat2 JS не читает уведомляющие поля]]>
-			</body>
-		</do>
 		<do-trace access-modifier="private" target="Enabled" ver="5">
 			<body>
 				<![CDATA[!printBusy]]>
@@ -1509,11 +1485,11 @@ for (let n = 0; n < pAlarms.Main_tables_Operative.Table_Operative_mode.Columns.L
 		<body kind="om">
 			<![CDATA[// возвращаем оперативный режим обратно
 if (pAlarms.ActiveMode == 0 && !snapshotActivity)
-	pAlarms.DisplayCurrentEvents();
+	pAlarms.SnapshotON = false;
 
-pAlarms.Main_panel.private.Print.HeaderTextUse = Buttons.UpperTextCheckbox.State;
-pAlarms.Main_panel.private.Print.HeaderText = Buttons.UpperTextEdit.Text;
-pAlarms.Main_panel.private.Print.SaveSettings();
+pConfig.Print.HeaderTextUse = Buttons.UpperTextCheckbox.State;
+pConfig.Print.HeaderText = Buttons.UpperTextEdit.Text;
+pConfig.Print.SaveSettings();
 ]]>
 		</body>
 	</do-on>
@@ -1556,7 +1532,7 @@ if (Buttons.CurrentUserCheckbox.State)
 {
 	if (header != "")
 		header += "     ";
-	header += pAlarms.Main_panel.private.UserName + " ______________(подпись)";
+	header += pPermissions.Context.UserName + " ______________(подпись)";
 }
 
 if (Buttons.CurrentDateCheckbox.State)
@@ -1586,7 +1562,7 @@ if (Buttons.HistIntervalCheckbox.State)
 	if (pAlarms.ActiveMode == 0)
 		text += "Оперативный";
 	else
-		text += DateTime.ToString(DateTime.ToLocal(pAlarms.Main_tables_Historical.TableModel_1.ApAlarmQuery_1.HistoricalRangeStart)) + " - " + DateTime.ToString(DateTime.ToLocal(pAlarms.Main_tables_Historical.TableModel_1.ApAlarmQuery_1.HistoricalRangeEnd));
+		text += DateTime.ToString(DateTime.ToLocal(pAlarms.TableOne.TableModel_1.ApAlarmQuery_1.HistoricalRangeStart)) + " - " + DateTime.ToString(DateTime.ToLocal(pAlarms.TableOne.TableModel_1.ApAlarmQuery_1.HistoricalRangeEnd));
 }
 
 if (Buttons.MsgCountCheckbox.State)
@@ -1600,14 +1576,14 @@ if (Buttons.FilterCheckbox.State)
 	if (text != "") text += "\n";
 	text += "Фильтр отображения: ";
 	if (pAlarms.StatePanel.ViewFilterON)
-		text += pAlarms.Main_panel.private.ViewFilter.GetDescription();
+		text += pViewFilter.GetDescription();
 }
 if (Buttons.RFCheckbox.State && pAlarms.ActiveMode == 1)
 {
 	if (text != "") text += "\n";
 	text += "Фильтр запроса: ";
 	if (pAlarms.StatePanel.RequestFilterON)
-		text += pAlarms.Main_panel.private.RequestFilter.GetDescription();
+		text += pAlarms.private.RequestFilter.GetDescription();
 }
 
 Page.Center.Footer2.Text = text;]]>
@@ -1685,5 +1661,8 @@ else
 			<param access-modifier="private" name="total" display-name="" uuid="6d92cee9-39a2-43fd-afa3-3aa8e511173d" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
 		</do>
 	</object>
+	<object access-modifier="private" name="pConfig" display-name="pConfig" uuid="c5311ff5-3b8c-4dde-aaf9-0b4a6d817d3d" base-type="Alarms_Config" base-type-id="cac958c3-d08c-4b7b-8345-d70ccc130514" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="pPermissions" display-name="pPermissions" uuid="a3c990da-90ee-48b4-b741-4d2e40a3427d" base-type="Alarms_Permissions" base-type-id="eaa1f2f7-6334-4d05-a44d-ca72425d2f9f" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="pViewFilter" display-name="pViewFilter" uuid="6e9774c1-2887-41f1-98c2-13e48e708fbd" base-type="Alarms_ViewFilter" base-type-id="ab719db0-02af-4b41-b039-70a478bd4e78" base-const="true" base-ref="true" ver="5" description=""/>
 </type>
 

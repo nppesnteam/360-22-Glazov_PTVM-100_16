@@ -278,6 +278,7 @@ function getRightsEntity(rightArrayData)
 	<object access-modifier="private" name="Decorator" display-name="Decorator" uuid="332febcc-9639-45ed-94b8-69fc719a905a" base-type="TableDecorator" base-type-id="2ff6a2d7-9573-4060-bfea-29c63d61b079" ver="5">
 		<designed target="JsonDecorator" value="" ver="5"/>
 	</object>
+	<object access-modifier="private" name="selectionColor" display-name="selectionColor" uuid="9e5b1f31-b1f1-4e43-aace-692263ef0bc4" base-type="notifying_uint8" base-type-id="2e6d6c20-2489-49e1-9d5f-fe68a21b43df" ver="5" description="" cardinal="1"/>
 	<object access-modifier="private" name="private" display-name="private" uuid="72e4d70a-2fae-4c39-ae5e-0980d08b40fa" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
 		<object access-modifier="private" name="Model" display-name="Model" uuid="227349e5-c341-4eb4-97f7-136c9ec436af" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="5" description="" cardinal="1">
 			<designed target="Frozen" value="false" ver="5"/>
@@ -290,9 +291,9 @@ function getRightsEntity(rightArrayData)
 			<designed target="InvokeTrigger" value="false" ver="5"/>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
 				<object access-modifier="private" uuid="8a1c820a-f4ca-4ab1-ae65-1d6390d17546" base-type="ChangePassComplexity" base-type-id="4abb6432-13a9-4d96-8709-c7744af44bd3" ver="5">
-					<init target="init_Theme" ver="5" ref="init_Theme"/>
 					<init target="init_ChangedRightsResult" ver="5" ref="here.private.pChangedRightsResult"/>
 					<init target="pApplyChanges" ver="5" ref="here.pRightValueChanged"/>
+					<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
 				</object>
 			</do-on>
 		</object>
@@ -301,11 +302,11 @@ function getRightsEntity(rightArrayData)
 			<designed target="InvokeTrigger" value="false" ver="5"/>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
 				<object access-modifier="private" uuid="c556d86f-fa5c-4364-8965-edd178e3fbbd" base-type="ChangePasswordAge" base-type-id="65934d41-35eb-4c14-9618-876bc4adc903" ver="5">
-					<init target="init_Theme" ver="5" ref="init_Theme"/>
 					<init target="pApplyChanges" ver="5" ref="here.pRightValueChanged"/>
 					<init target="init_ChangedRightsResult" ver="5" ref="here.private.pChangedRightsResult"/>
 					<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboardOptions"/>
 					<init target="pTokensDefinition" ver="5" ref="TokensDefinition"/>
+					<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
 				</object>
 			</do-on>
 		</object>
@@ -314,10 +315,10 @@ function getRightsEntity(rightArrayData)
 			<designed target="InvokeTrigger" value="false" ver="5"/>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
 				<object access-modifier="private" uuid="19c8e99c-5ffa-42db-8558-508aba0e9a06" base-type="ChangeStringRight" base-type-id="d37d50b1-4ff5-48a2-b5aa-83abfe7acf77" ver="5">
-					<init target="init_Theme" ver="5" ref="init_Theme"/>
 					<init target="pApplyChanges" ver="5" ref="here.pRightValueChanged"/>
 					<init target="init_ChangedRightsResult" ver="5" ref="here.private.pChangedRightsResult"/>
 					<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboardOptions"/>
+					<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
 				</object>
 			</do-on>
 		</object>
@@ -326,18 +327,18 @@ function getRightsEntity(rightArrayData)
 			<designed target="InvokeTrigger" value="false" ver="5"/>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
 				<object access-modifier="private" uuid="f39c4790-6855-476f-a5af-3d414f72bc8f" base-type="ChangeIntegerRight" base-type-id="5e0ef489-c9d3-4f48-8e87-1d1daf3f5bee" ver="5">
-					<init target="init_Theme" ver="5" ref="init_Theme"/>
 					<init target="pApplyChanges" ver="5" ref="here.pRightValueChanged"/>
 					<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboardOptions"/>
 					<init target="pTokensDefinition" ver="5" ref="TokensDefinition"/>
 					<init target="init_ChangedRightsResult" ver="5" ref="here.private.pChangedRightsResult"/>
+					<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
 				</object>
 			</do-on>
 		</object>
 		<object access-modifier="private" name="selectedRow" display-name="selectedRow" uuid="ba458805-1e08-4620-ba06-2fa239854661" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
 		<object access-modifier="private" name="pTheme" display-name="pTheme" uuid="952692a9-33bb-4d03-8e8b-004d2a8ac84b" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
 		<init target="pTheme" ver="5" ref="init_Theme"/>
-		<object access-modifier="private" name="pChangedRightsResult" display-name="pChangedRightsResult" uuid="36fa3745-e54d-4bca-9543-1c221d8017f3" base-type="ChangedRightsResult" base-type-id="3efb0823-a348-4b39-a762-64290867ccb6" base-const="true" base-ref="true" ver="5" description=""/>
+		<object access-modifier="private" name="pChangedRightsResult" display-name="pChangedRightsResult" uuid="36fa3745-e54d-4bca-9543-1c221d8017f3" base-type="ChangeRightResult" base-type-id="3efb0823-a348-4b39-a762-64290867ccb6" base-const="true" base-ref="true" ver="5" description=""/>
 		<init target="pChangedRightsResult" ver="5" ref="init_ChangedRightsResult"/>
 		<object access-modifier="private" name="pScreenKeyboardOptions" display-name="pScreenKeyboardOptions" uuid="c82e6f8b-dfa5-4119-8a98-9457faf007c3" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
 		<init target="pScreenKeyboardOptions" ver="5" ref="init_ScreenKeyboard"/>
@@ -399,146 +400,138 @@ Model.AddColumn("TokenTypeTitle","","","","string",false,true);				//10	- тек
 Model.Clear();
 
 //применить декоратор
-Decorator.JsonDecorator = GetJsonDecorator();]]>
+Decorator.JsonDecorator = GetJsonDecorator(selectionColor);]]>
 			</body>
 		</do>
 		<do access-modifier="private" name="GetJsonDecorator" display-name="GetJsonDecorator" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
 			<body kind="javascript">
-				<![CDATA[var Object = {};
-Object.Formatting = [];
-Object.Decorating = [];
-Object.StyleDictionary = [];
+				<![CDATA[var decorator = {};
+decorator.StyleDictionary = [
+	{
+		'style_name': "selected_style",
+		'style': {'background_color': `#${selectionColor.toString(16)}`}
+	},
+	{
+		'style_name': "appStyle",
+		'style': {'color': '#ff000000', 'background_color': '#ffdcf2f8', 'font': {'font_weight':'bold'}}
+	},
+	{
+		'style_name': "trueStyle",
+		'style': {'color': '#ff000000', 'background_color': '#fface3ac'}
+	},
+	{
+		'style_name': "falseStyle",
+		'style': {'color': '#ff000000', 'background_color': '#ffffa39b'}
+	},
+	{
+		'style_name': "boolStyle",
+		'style': {'color': '#ff000000', 'background_color': '#ffddddff'}
+	},
+	{
+		'style_name': "stringStyle",
+		'style': {'color': '#ff000000', 'background_color': '#fff3d3b4'}
+	},
+	{
+		'style_name': "boolArrayStyle",
+		'style': {'color': '#ff000000', 'background_color': '#ffddddff'}
+	},
+	{
+		'style_name': "Int32ArrayStyle",
+		'style': {'color': '#ff000000', 'background_color': '#ff97d2fd'}
+	},
+	{
+		'style_name': "Int32Style",
+		'style': {'color': '#ff000000', 'background_color': '#ff97d2fd'}
+	}
+];
 
-var tokenType_format = {};
-tokenType_format[`formatting_rule_name`] = "tokenType_format";
-tokenType_format[`formatting_column`] = "TokenTypeTitle";
-tokenType_format[`conditions`] = [];
-tokenType_format[`conditions`].push({'condition':{'data:TokenTypeTitle': 'bool'},'text':'логическое'});
-tokenType_format[`conditions`].push({'condition':{'data:TokenTypeTitle': 'string'},'text':'строковое'});
-tokenType_format[`conditions`].push({'condition':{'data:TokenTypeTitle': 'boolArray'},'text':'битовая \nмаска'});
-tokenType_format[`conditions`].push({'condition':{'data:TokenTypeTitle': 'int32Array'},'text':'диапазон \nчисел'});
-tokenType_format[`conditions`].push({'condition':{'data:TokenTypeTitle': 'int32'},'text':'числовое'});
+decorator.Formatting = [
+	{
+		'formatting_rule_name': "tokenType_format",
+		'formatting_column': "TokenTypeTitle",
+		'conditions': [
+			{'condition': {'data:TokenTypeTitle': 'bool'}, 'text': 'логическое'},
+			{'condition': {'data:TokenTypeTitle': 'string'}, 'text': 'строковое'},
+			{'condition': {'data:TokenTypeTitle': 'boolArray'}, 'text': 'битовая \nмаска'},
+			{'condition': {'data:TokenTypeTitle': 'int32Array'}, 'text': 'диапазон \nчисел'},
+			{'condition': {'data:TokenTypeTitle': 'int32'}, 'text': 'числовое'}
+		]
+	},
+	{
+		'formatting_rule_name': "rightValue_format",
+		'formatting_column': "RightsValue",
+		'conditions' : [
+			{'condition': {'and': [{'data:TokenTypeTitle': 'bool'},{'data:RightsValue': 'TRUE'}]},'text':'Да'},
+			{'condition': {'and': [{'data:TokenTypeTitle': 'bool'},{'data:RightsValue': 'FALSE'}]},'text':'Нет'}
+		]
+	},
+	{
+		'formatting_rule_name': "effectiveRightValue_format",
+		'formatting_column': "EffRightValue",
+		'conditions' : [
+			{'condition': {'and':[{'data:TokenTypeTitle': 'bool'},{'data:EffRightValue': 'TRUE'}]},'text':'Да'},
+			{'condition': {'and':[{'data:TokenTypeTitle': 'bool'},{'data:EffRightValue': 'FALSE'}]},'text':'Нет'}
+		]
+	}
+];
 
-Object.Formatting.push(tokenType_format);
+decorator.Decorating = [
+	{
+		'decoration_rule_name': "appDecorating",
+		'decoration_rule': {'data:TokenTypeTitle': ' '},
+		'rowstyle':  "appStyle"
+	},	
+	{
+		'decoration_rule_name': "string_decorating",
+		'decoration_rule': {'data:TokenTypeTitle': 'string'},
+		'columnstyle': {'TokenTypeTitle': "stringStyle"}
+	},
+	{
+		'decoration_rule_name': "bool_decorating",
+		'decoration_rule': {'data:TokenTypeTitle': 'bool'},
+		'columnstyle': {'TokenTypeTitle': "boolStyle"}
+	},
+	{
+		'decoration_rule_name': "boolArray_decorating",
+		'decoration_rule': {'data:TokenTypeTitle': 'boolArray'},
+		'columnstyle': {'TokenTypeTitle': "boolArrayStyle"}
+	},
+	{
+		'decoration_rule_name': "Int32Array_decorating",
+		'decoration_rule': {'data:TokenTypeTitle': 'Int32Array'},
+		'columnstyle': {'TokenTypeTitle': "Int32ArrayStyle"}
+	},
+	{
+		'decoration_rule_name': "Int32_decorating",
+		'decoration_rule': {'data:TokenTypeTitle': 'Int32'},
+		'columnstyle': {'TokenTypeTitle': "Int32Style"}
+	},
+	{
+		'decoration_rule_name': "valueTrueDecorating",
+		'decoration_rule': {'and': [{'data:TokenTypeTitle': 'bool'}, {'data:RightsValue': 'TRUE'}]},
+		'columnstyle': {'RightsValue': "trueStyle"}
+	},
+	{
+		'decoration_rule_name': "valueFalseDecorating",
+		'decoration_rule': {'and': [{'data:TokenTypeTitle': 'bool'}, {'data:RightsValue': 'FALSE'}]},
+		'columnstyle': {'RightsValue': "falseStyle"}
+	},
+	{
+		'decoration_rule_name': "effectiveValueTrueDecorating",
+		'decoration_rule': {'and': [{'data:TokenTypeTitle': 'bool'}, {'data:EffRightValue': 'TRUE'}]},
+		'columnstyle': {'EffRightValue': "trueStyle"}
+	},
+	{
+		'decoration_rule_name': "effectiveValueFalseDecorating",
+		'decoration_rule': {'and': [{'data:TokenTypeTitle': 'bool'}, {'data:EffRightValue': 'FALSE'}]},
+		'columnstyle': {'EffRightValue': "falseStyle"}
+	}
+];
 
-var rightValue_format = {};
-rightValue_format[`formatting_rule_name`] = "rightValue_format";
-rightValue_format[`formatting_column`] = "RightsValue";
-rightValue_format[`conditions`] = [];
-rightValue_format[`conditions`].push({'condition':{'and':[{'data:TokenTypeTitle': 'bool'},{'data:RightsValue': 'TRUE'}]},'text':'Да'});
-rightValue_format[`conditions`].push({'condition':{'and':[{'data:TokenTypeTitle': 'bool'},{'data:RightsValue': 'FALSE'}]},'text':'Нет'});
-Object.Formatting.push(rightValue_format);
-
-var effectiveRightValue_format = {};
-effectiveRightValue_format[`formatting_rule_name`] = "effectiveRightValue_format";
-effectiveRightValue_format[`formatting_column`] = "EffRightValue";
-effectiveRightValue_format[`conditions`] = [];
-effectiveRightValue_format[`conditions`].push({'condition':{'and':[{'data:TokenTypeTitle': 'bool'},{'data:EffRightValue': 'TRUE'}]},'text':'Да'});
-effectiveRightValue_format[`conditions`].push({'condition':{'and':[{'data:TokenTypeTitle': 'bool'},{'data:EffRightValue': 'FALSE'}]},'text':'Нет'});
-Object.Formatting.push(effectiveRightValue_format);
-
-var stringDecorating = {};
-stringDecorating[`decoration_rule_name`] = "string_decorating";
-stringDecorating[`decoration_rule`] = {'data:TokenTypeTitle': 'string'};
-stringDecorating[`columnstyle`] = {'TokenTypeTitle':"stringStyle"};
-Object.Decorating.push(stringDecorating);
-
-var boolDecorating = {};
-boolDecorating[`decoration_rule_name`] = "bool_decorating";
-boolDecorating[`decoration_rule`] = {'data:TokenTypeTitle': 'bool'};
-boolDecorating[`columnstyle`] = {'TokenTypeTitle':"boolStyle"};
-Object.Decorating.push(boolDecorating);
-
-var boolArrayDecorating = {};
-boolArrayDecorating[`decoration_rule_name`] = "boolArray_decorating";
-boolArrayDecorating[`decoration_rule`] = {'data:TokenTypeTitle': 'boolArray'};
-boolArrayDecorating[`columnstyle`] = {'TokenTypeTitle':"boolArrayStyle"};
-Object.Decorating.push(boolArrayDecorating);
-
-var Int32ArrayDecorating = {};
-Int32ArrayDecorating[`decoration_rule_name`] = "Int32Array_decorating";
-Int32ArrayDecorating[`decoration_rule`] = {'data:TokenTypeTitle': 'Int32Array'};
-Int32ArrayDecorating[`columnstyle`] = {'TokenTypeTitle':"Int32ArrayStyle"};
-Object.Decorating.push(Int32ArrayDecorating);
-
-var Int32Decorating = {};
-Int32Decorating[`decoration_rule_name`] = "Int32_decorating";
-Int32Decorating[`decoration_rule`] = {'data:TokenTypeTitle': 'Int32'};
-Int32Decorating[`columnstyle`] = {'TokenTypeTitle':"Int32Style"};
-Object.Decorating.push(Int32Decorating);
-
-var valueTrueDecorating = {};
-valueTrueDecorating[`decoration_rule_name`] = "valueTrueDecorating";
-valueTrueDecorating[`decoration_rule`] = {'and':[{'data:TokenTypeTitle': 'bool'},{'data:RightsValue': 'TRUE'}]};
-valueTrueDecorating[`columnstyle`] = {'RightsValue':"trueStyle"};
-Object.Decorating.push(valueTrueDecorating);
-
-var valueFalseDecorating = {};
-valueFalseDecorating[`decoration_rule_name`] = "valueFalseDecorating";
-valueFalseDecorating[`decoration_rule`] = {'and':[{'data:TokenTypeTitle': 'bool'},{'data:RightsValue': 'FALSE'}]};
-valueFalseDecorating[`columnstyle`] = {'RightsValue':"falseStyle"};
-Object.Decorating.push(valueFalseDecorating);
-
-var effectiveValueTrueDecorating = {};
-effectiveValueTrueDecorating[`decoration_rule_name`] = "effectiveValueTrueDecorating";
-effectiveValueTrueDecorating[`decoration_rule`] = {'and':[{'data:TokenTypeTitle': 'bool'},{'data:EffRightValue': 'TRUE'}]};
-effectiveValueTrueDecorating[`columnstyle`] = {'EffRightValue':"trueStyle"};
-Object.Decorating.push(effectiveValueTrueDecorating);
-
-var effectiveValueFalseDecorating = {};
-effectiveValueFalseDecorating[`decoration_rule_name`] = "effectiveValueFalseDecorating";
-effectiveValueFalseDecorating[`decoration_rule`] = {'and':[{'data:TokenTypeTitle': 'bool'},{'data:EffRightValue': 'FALSE'}]};
-effectiveValueFalseDecorating[`columnstyle`] = {'EffRightValue':"falseStyle"};
-Object.Decorating.push(effectiveValueFalseDecorating);
-
-var boolStyle = {};
-boolStyle[`style_name`] = "boolStyle";
-boolStyle[`style`] = {'background_color':'#ffddddff'};
-Object.StyleDictionary.push(boolStyle);
-
-var stringStyle = {};
-stringStyle[`style_name`] = "stringStyle";
-stringStyle[`style`] = {'background_color':'#fff3d3b4'};
-Object.StyleDictionary.push(stringStyle);
-
-var boolArrayStyle = {};
-boolArrayStyle[`style_name`] = "boolArrayStyle";
-boolArrayStyle[`style`] = {'background_color':'#ffddddff'};
-Object.StyleDictionary.push(boolArrayStyle);
-
-var Int32ArrayStyle = {};
-Int32ArrayStyle[`style_name`] = "Int32ArrayStyle";
-Int32ArrayStyle[`style`] = {'background_color':'#ff97d2fd'};
-Object.StyleDictionary.push(Int32ArrayStyle);
-
-var Int32Style = {};
-Int32Style[`style_name`] = "Int32Style";
-Int32Style[`style`] = {'background_color':'#ff97d2fd'};	//ff7ab4f4, #ff78c6ff - более темный синий
-Object.StyleDictionary.push(Int32Style);
-
-var trueStyle = {};
-trueStyle[`style_name`] = "trueStyle";
-trueStyle[`style`] = {'background_color':'#fface3ac'};
-Object.StyleDictionary.push(trueStyle);
-
-var falseStyle = {};
-falseStyle[`style_name`] = "falseStyle";
-falseStyle[`style`] = {'background_color':'#ffffa39b'};
-Object.StyleDictionary.push(falseStyle);
-
-var appDecorating = {};
-appDecorating[`decoration_rule_name`] = "appDecorating";
-appDecorating[`decoration_rule`] = {'data:TokenTypeTitle': ' '};
-appDecorating[`rowstyle`] = "appStyle";
-Object.Decorating.push(appDecorating);
-
-var appStyle = {};
-appStyle[`style_name`] = "appStyle";
-appStyle[`style`] = {'background_color':'#ffdcf2f8','font':{'font_weight':'bold'}};
-Object.StyleDictionary.push(appStyle);
-
-return JSON.stringify(Object, null, 2);]]>
+return JSON.stringify(decorator, null, 2);
+]]>
 			</body>
+			<param access-modifier="private" name="selectionColor" display-name="" uuid="b0e14afa-59fe-4bb7-86e7-c1aa9dd56385" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5"/>
 		</do>
 		<object access-modifier="private" name="ScrollToRow" display-name="ScrollToRow" uuid="477fba09-bf41-4398-8eb8-265d1f8404da" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
 			<designed target="Enabled" value="true" ver="5"/>
@@ -617,7 +610,7 @@ if (rightsTable.Columns != undefined)
 }]]>
 		</body>
 	</do>
-	<param access-modifier="private" name="init_ChangedRightsResult" display-name="Результат" uuid="ca98cc91-1b7b-47a1-87d0-c2c8cb8cc4d0" base-type="ChangedRightsResult" base-type-id="3efb0823-a348-4b39-a762-64290867ccb6" base-const="true" base-ref="true" ver="5" description=""/>
+	<param access-modifier="private" name="init_ChangedRightsResult" display-name="Результат" uuid="ca98cc91-1b7b-47a1-87d0-c2c8cb8cc4d0" base-type="ChangeRightResult" base-type-id="3efb0823-a348-4b39-a762-64290867ccb6" base-const="true" base-ref="true" ver="5" description=""/>
 	<param access-modifier="private" name="init_Theme" display-name="Тема оформления" uuid="161afbc0-f739-42ad-93d2-ef7b96ecc118" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
 	<param access-modifier="private" name="init_ScreenKeyboard" display-name="Вызов экранной клавиатуры" uuid="33c9b0cf-e020-49fe-ae1a-a8c5d9e93828" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
 	<object access-modifier="private" name="LinearLayout" display-name="LinearLayout" uuid="8256e69c-2b8f-4ec2-96e8-2d059f814e9d" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5">
@@ -648,5 +641,25 @@ if (rightsTable.Columns != undefined)
 	private.selectedRow = row;]]>
 		</body>
 	</do-on>
+	<do-trace access-modifier="private" target="selectionColor" ver="5">
+		<body>
+			<![CDATA[private.pTheme.SelectionColor]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+		<body>
+			<![CDATA[here.private.pTheme.EditorBrushColor]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="FrameColor" ver="5">
+		<body>
+			<![CDATA[here.private.pTheme.BorderColor]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="GridColor" ver="5">
+		<body>
+			<![CDATA[here.private.pTheme.DisabledBorderColor]]>
+		</body>
+	</do-trace>
 </type>
 

@@ -405,9 +405,7 @@ AlarmManager.total = (bAreas.length==0?0:1) + (bSources.length==0?0:1) + (sAreas
 		<designed target="Gap" value="0" ver="5"/>
 	</object>
 	<object access-modifier="private" name="DropItems" display-name="DropItems" uuid="63889ade-e322-4cfd-a6b1-fb640fd24689" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
-	<param access-modifier="private" name="iAlarms" display-name="iAlarms" uuid="eac8c308-abc4-4f79-9e9f-7b8ed85e3eb3" base-type="Alarms" base-type-id="521d4d69-1b32-4210-ae17-099df1125e3c" base-const="true" base-ref="true" ver="4"/>
 	<object access-modifier="private" name="AlarmManager" display-name="AlarmManager" uuid="991492d1-1bc5-4700-b510-cbad8034b856" base-type="ApAlarmManager" base-type-id="21be7f46-57b1-4213-adc8-6155cc2d5ffc" ver="5" description="" cardinal="1">
-		<init target="Source" ver="5" ref="iAlarms.ApSource"/>
 		<do-on access-modifier="private" name="Handler_SetAreaDisabledFin" display-name="Handler_SetAreaDisabledFin" ver="5" event="SetAreaDisabledFinished">
 			<body kind="om">
 				<![CDATA[returned("При сбросе блокировок зон произошла ошибка: ", resultCode, result);]]>
@@ -453,10 +451,11 @@ total -= 1;
 if (total == 0)
 {
 
-	Result.Value = JSON.stringify({
+	OnComplete.Args.Push( JSON.stringify({
 		icon:(errors.Value=="" ? 0 : 3),
 		text:(errors.Value=="" ? here.WindowCaption + " произведено успешно." : errors.Value)
-	});
+	}) );
+	OnComplete.Invoke();
 	Close();
 }]]>
 			</body>
@@ -465,6 +464,7 @@ if (total == 0)
 			<param access-modifier="private" name="result" display-name="" uuid="1a401f94-d9f1-4afa-8671-c58bf0d2eb33" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 		</do>
 		<object access-modifier="private" name="errors" display-name="errors" uuid="4e3a8b9a-5a8f-4e9e-b76d-544646731713" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		<init target="Source" ver="5" ref="here.iSource"/>
 	</object>
 	<object access-modifier="private" name="Theme" display-name="Theme" uuid="da4fb985-bf8f-4524-9b12-bf72daedabd9" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5" description="" cardinal="1">
 		<do-trace access-modifier="private" target="Font" ver="5">
@@ -518,6 +518,7 @@ if (total == 0)
 			</body>
 		</do-trace>
 	</object>
-	<object access-modifier="private" name="Result" display-name="Result" uuid="69bf1a6a-2039-49b2-9a3a-8c07ba1b1f3a" base-type="DialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" base-const="true" base-ref="true" ver="5" description=""/>
+	<param access-modifier="private" name="iSource" display-name="iSource" uuid="e13f8a7c-b5ae-4b67-8d71-0b591ec93604" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="fad5110c-cec4-429a-ac95-366cd1472c83" base-type="EventHandler" base-type-id="c01b71c2-42e8-4333-b70e-cc35fdf96f7e" base-const="true" base-ref="true" ver="5" description=""/>
 </type>
 

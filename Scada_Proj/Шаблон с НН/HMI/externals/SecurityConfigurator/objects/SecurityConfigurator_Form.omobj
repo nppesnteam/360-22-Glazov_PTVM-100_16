@@ -82,6 +82,7 @@
 		<init target="pClosed" ver="5" ref="Closed"/>
 		<init target="init_Settings" ver="5" ref="here.init_Settings"/>
 		<init target="init_ScreenKeyboard" ver="5" ref="here.init_ScreenKeyboard"/>
+		<init target="init_Permissions" ver="5" ref="here.init_Permissions"/>
 	</object>
 	<object access-modifier="private" name="Layout" display-name="Layout" uuid="07b89183-01c4-480f-8f12-9ec824da1944" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5">
 		<designed target="Orientation" value="2" ver="5"/>
@@ -89,6 +90,7 @@
 	</object>
 	<param access-modifier="private" name="init_Theme" display-name="Тема оформления" uuid="c009a559-80cd-4b8a-8bf7-506903377e63" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
 	<param access-modifier="private" name="init_Settings" display-name="Настройки" uuid="677118b4-ce26-496b-b136-a9a3484cc8d6" base-type="SecurityConfigurator_Settings" base-type-id="a7c582fd-25fb-4cc3-8522-3166d1a63de6" base-const="true" base-ref="true" ver="5" description=""/>
+	<param access-modifier="private" name="init_Permissions" display-name="Разрешения" uuid="dff2ffb8-d598-4f17-8f82-25fadc4f2ff3" base-type="SecurityConfigurator_Permissions" base-type-id="a6a67dc7-2872-46c8-a397-13aa48ddb4e7" base-const="true" base-ref="true" ver="5" description=""/>
 	<param access-modifier="private" name="init_RestoreWindow" display-name="Восстанавливать положение окна" uuid="1d46323a-a682-424b-8771-0714b847b4e0" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description=""/>
 	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="WindowSizeChanged">
 		<body kind="om">

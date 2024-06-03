@@ -371,6 +371,7 @@ if (View.Column[Index].JsonFilter != filter)
 	
 	Column[5].Title = "Время";
 	Column[5].Id = "time";
+	Column[5].TimeFormat = "dd.MM.yyyy hh:mm:ss.zzz";
 	
 	Column[6].Title = "Описание";
 	Column[6].Id = "description";
@@ -523,7 +524,14 @@ return JSON.stringify(decorator);]]>
 		</do-trace>
 		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="SelectionChanged">
 			<body kind="javascript">
-				<![CDATA[private.UpdateViewActions();]]>
+				<![CDATA[//сбрасываем SelectedRow если выделение отсутствует при клике курсором по области 
+var selectedRows = JSON.parse(View.GetSelectedRows());
+if (selectedRows.length > 0)
+	SelectedRow = selectedRows[selectedRows.length-1];
+else
+	SelectedRow = -1;
+
+private.UpdateViewActions();]]>
 			</body>
 		</do-on>
 		<object access-modifier="private" name="Decorator" display-name="Decorator" uuid="98e656e0-2642-4416-960a-c95a617a93d1" base-type="TableDecorator" base-type-id="2ff6a2d7-9573-4060-bfea-29c63d61b079" ver="5" description="" cardinal="1">
@@ -646,7 +654,11 @@ else if (MenuResult.Id == "selectAll")
 else if (MenuResult.Id == "deleteUnselected")
 	DeleteUnselectedRows.Invoke();
 else if (MenuResult.Id == "editValue")
-	ShowEditValueDialog.Invoke();]]>
+	ShowEditValueDialog.Invoke();
+else if (MenuResult.Id == "UpSelectedRow")
+	UpSelectedRow.Invoke();
+else if (MenuResult.Id == "DownSelectedRow")
+	DownSelectedRow.Invoke();]]>
 					</body>
 				</do-on>
 			</object>
@@ -692,11 +704,35 @@ items.push({
 	'active': DeleteUnselectedRows.Enabled
 });
 
+if (!View.Filter.Active.Value && !GetSortingMode())
+{
+	items.push({ 'title': "-" });
+	
+	items.push({
+		'id': 4,
+		'title': "Переместить",
+		'active': UpSelectedRow.Enabled || DownSelectedRow.Enabled,
+		'items': [
+			{
+				'id': "UpSelectedRow",
+				'title': "Вверх",
+				'keyGesture': "Ctrl+Вверх",
+				'active': UpSelectedRow.Enabled
+			},	{
+				'id': "DownSelectedRow",
+				'title': "Вниз",
+				'keyGesture': "Ctrl+Вниз",
+				'active': DownSelectedRow.Enabled
+			}
+		]
+	});
+}
+
 items.push({ 'title': "-" });
 
 items.push({
 	'id': "editValue",
-	'title': "Изменить значение сигнала....",
+	'title': "Изменить значение сигнала...",
 	'keyGesture': "Enter",
 	'active': ShowEditValueDialog.Enabled
 });
@@ -762,7 +798,7 @@ else if (keyCode == 110) // Insert
 else if (keyCode == 82) /*Нажатие клавиши Enter - открытие окна изменения значения для выбранных строк*/
 	ShowEditValueDialog.Invoke();
 	
-/*else if (keyCode == 105) // Вверх
+else if (keyCode == 105) // Вверх
 {
 	if (modifiers == 0x4000000) // Ctrl
 		UpSelectedRow.Invoke();
@@ -771,24 +807,24 @@ else if (keyCode == 107) // Вниз
 {
 	if (modifiers == 0x4000000) // Ctrl
 		DownSelectedRow.Invoke();
-}*/]]>
+}
+else if (keyCode == 10) // "A"
+{
+	if (modifiers == 0x4000000) // Ctrl
+		SelectAllRows.Invoke();
+}]]>
 			</body>
 		</do-on>
 		<init target="TableModel" ver="5" ref="here.Model"/>
-		<object access-modifier="private" name="CurrentRow" display-name="CurrentRow" uuid="5a80d08a-59f0-45f0-88e5-e35b1a09127f" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5"/>
 		<do-on access-modifier="private" name="Handler_8" display-name="Handler_8" ver="5" event="CurrentChanged">
 			<body kind="om">
-				<![CDATA[//Debug.Log("CurrentRow: " + String.ToString(row) + ", CurrentColumn: " + String.ToString(column));
-CurrentRow = row;
-CurrentColumn = column > -1 ? column : 3; // по умолчанию будет столбец с параметром
-
+				<![CDATA[CurrentColumn = column > -1 ? column : 2; // по умолчанию будет столбец с значением
 // обновляем активность команд
 private.UpdateViewActions();]]>
 			</body>
 		</do-on>
-		<object access-modifier="private" name="CurrentColumn" display-name="CurrentColumn" uuid="fcc55ebd-3032-4ffa-9966-179720aff628" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5"/>
-		<init target="CurrentColumn" ver="5" value="-1"/>
-		<init target="CurrentRow" ver="5" value="-1"/>
+		<object access-modifier="private" name="CurrentColumn" display-name="CurrentColumn" uuid="fcc55ebd-3032-4ffa-9966-179720aff628" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<init target="CurrentColumn" ver="5" value="2"/>
 		<object access-modifier="private" name="separatorColor" display-name="separatorColor" uuid="4f3152aa-2c5b-447b-aa2b-a5e05245d3bc" base-type="notifying_uint8" base-type-id="2e6d6c20-2489-49e1-9d5f-fe68a21b43df" ver="5" description="" cardinal="1"/>
 		<object access-modifier="private" name="selectionColor" display-name="selectionColor" uuid="758c0cbb-642a-4dae-910d-2469020d0fa1" base-type="notifying_uint8" base-type-id="2e6d6c20-2489-49e1-9d5f-fe68a21b43df" ver="5" description="" cardinal="1"/>
 		<do-trace access-modifier="private" target="separatorColor" ver="5">
@@ -808,6 +844,64 @@ private.UpdateViewActions();]]>
 				<![CDATA[private.pTheme.DisabledFontColor]]>
 			</body>
 		</do-trace>
+		<designed target="RowHeightResizeMode" value="3" ver="5"/>
+		<do access-modifier="private" name="GetSortingMode" display-name="GetSortingMode" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+			<body kind="om">
+				<![CDATA[c: int4 = 0;
+while (c < Column.Length)
+{
+	if (Column[c].SortingEnabled)
+		return true;
+	c += 1;
+}
+return false;]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="ShiftSelected" display-name="ShiftSelected" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[if (!View.Filter.Active.Value && !GetSortingMode())
+{
+	var viewRows = JSON.parse(GetSelectedRows());
+	
+	var modelRows = [];
+	viewRows.forEach(r => modelRows.push(MapRowToModel(r)));
+	
+	// сортируем номера строк с учетом направления сдвига
+	var sortedRows = modelRows.sort((a, b) => shift*(b-a));
+	
+	var newRows = [];
+	for (let i = 0; i < sortedRows.length; i++)
+	{
+		var row = sortedRows[i];
+		var targetRow = row + shift;	
+		
+		var sourceRowData = Model.GetRowDataAsJson(row);	
+		var targetRowData = Model.GetRowDataAsJson(targetRow);
+	
+		Model.SetRowDataAsJson(row, targetRowData);
+		Model.SetRowDataAsJson(targetRow, sourceRowData);
+	
+		newRows.push(targetRow);
+	}
+	
+	Model.UpdateItemsRowIndex();
+	
+	SetSelectedRows(JSON.stringify(newRows));
+}]]>
+			</body>
+			<param access-modifier="private" name="shift" display-name="" uuid="223ad183-28f5-46a5-8b6d-e738dd9043ac" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		</do>
+		<do access-modifier="private" name="SelectRow" display-name="SelectRow" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[viewRow: int4 = View.MapRowFromModel(row);
+View.SetCurrentCell(viewRow, View.CurrentColumn);
+View.SetSelectedRows("[" + String.ToString(viewRow) + "]");
+View.ScrollTo(viewRow, View.CurrentColumn, 0);]]>
+			</body>
+			<param access-modifier="private" name="row" display-name="" uuid="871dda62-22f9-4b12-9191-902d0a487cce" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		</do>
+		<object access-modifier="private" name="SelectedRow" display-name="SelectedRow" uuid="ad2235b7-fc1c-4207-b587-d13a9a389329" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<init target="SelectedRow" ver="5" value="-1"/>
 	</object>
 	<object access-modifier="private" name="Model" display-name="Model" uuid="76ff2b2f-d3d0-40d2-b2ed-339ff0f65303" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="5">
 		<designed target="Frozen" value="false" ver="5"/>
@@ -841,7 +935,7 @@ Model.AddColumn("signal","","","","string",false,true);
 Model.AddColumn("value","","","","variant",false,true);
 Model.AddColumn("units","","","","string",false,true);
 Model.AddColumn("quality","","","","string",false,true);
-Model.AddColumn("time","","","","string",false,true); // todo
+Model.AddColumn("time","","","","timestamp",false,true);
 Model.AddColumn("description","","","","string",false,true);
 Model.AddColumn("source","","","","string",false,true);
 Model.AddColumn("subscription","","","","string",false,true);
@@ -870,29 +964,29 @@ return -1;]]>
 		</do>
 		<object access-modifier="private" name="SourceIndexColumn" display-name="SourceIndexColumn" uuid="a04fc642-3239-4383-9bc3-7fd00490b147" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
 		<init target="SourceIndexColumn" ver="5" value="11"/>
-		<do access-modifier="private" name="AddSignal" display-name="AddSignal" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<do access-modifier="private" name="InsertSignal" display-name="InsertSignal" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 			<body kind="om">
-				<![CDATA[//Debug.Log("AddInCurrentRow: " + String.ToString(View.CurrentRow));
-rowIndex: int4 = View.CurrentRow + 1;
-if (row == -1)
+				<![CDATA[//Debug.Log("AddInCurrentRow: " + String.ToString(View.SelectedRow) + ", row: " + String.ToString(row));
+
+//проверям был ли ранее добавлен сигнал
+rowIndex: int4 = Model.FindSignal(sourceIndex, path);
+if (rowIndex == -1)
 {
-	rowIndex = GetRowCount();
-	AddRow();
-}
-else
+	rowIndex = row;
 	InsertRow(rowIndex);
 
-View.SetSelectedRows("[" + String.ToString(rowIndex) + "]");
-View.CurrentRow = rowIndex;
-SetCellData(rowIndex, PathColumn, path);
-SetCellData(rowIndex, SourceIndexColumn, sourceIndex);
-SetCellData(rowIndex, SourceColumn, Items[sourceIndex].APSource.GetSourceTitle());
-Items[sourceIndex].Subscribe(rowIndex, path);
-]]>
+	SetCellData(rowIndex, PathColumn, path);
+	SetCellData(rowIndex, SourceIndexColumn, sourceIndex);
+	SetCellData(rowIndex, SourceColumn, Items[sourceIndex].APSource.GetSourceTitle());
+	Items[sourceIndex].Subscribe(rowIndex, path);
+}
+
+// выделяем строку
+View.SelectRow(rowIndex);]]>
 			</body>
 			<param access-modifier="private" name="sourceIndex" display-name="" uuid="a7703143-9c5a-4be1-a340-4b78b09549d3" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
 			<param access-modifier="private" name="path" display-name="" uuid="513f2b8d-ed58-4a53-8c3e-8fe10d7c2919" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
-			<param access-modifier="private" name="row" display-name="" uuid="b49fede1-b133-4aac-ba9b-f640ecf05d24" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<param access-modifier="private" name="row" display-name="" uuid="888781a8-bd4a-4a54-8a7a-f3dbef6c9c4d" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
 		</do>
 		<init target="SourceColumn" ver="5" value="7"/>
 		<do access-modifier="private" name="UpdateItemsRowIndex" display-name="UpdateItemsRowIndex" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
@@ -981,14 +1075,8 @@ if (left < View.Filter.ComboBox.Length && right < View.Filter.ComboBox.Length)
 			<body kind="javascript">
 				<![CDATA[var selectedRows = JSON.parse(View.GetSelectedRows());
 
-if (selectedRows.length == 0)
-	View.CurrentRow = -1;
-else
-	View.CurrentRow = selectedRows[0];
-
 var modelRows = [];
 selectedRows.forEach(r => modelRows.push(View.MapRowToModel(r)));
-
 var rowCount = View.GetRowCount();
 
 SelectAllRows.Enabled = rowCount > 0 && selectedRows.length < rowCount;
@@ -1005,16 +1093,16 @@ if (!sortingEnabled && selectedRows.length > 0)
 	var min = Math.min.apply(Math, modelRows);
 	var max = Math.max.apply(Math, modelRows);
 	//log(min + ".." + max);
-}
-/*
+
 	UpSelectedRow.Enabled = (min - 1 >= 0) && (max - 1 < rowCount);
+	
 	DownSelectedRow.Enabled = (min + 1 >= 0) && (max + 1 < rowCount);
 }
 else
 {
 	UpSelectedRow.Enabled = false;
 	DownSelectedRow.Enabled = false;
-}*/]]>
+}]]>
 			</body>
 		</do>
 		<object access-modifier="private" name="ShowWarning" display-name="ShowWarning" uuid="e741749d-c959-4d87-a5f6-499a5ee81854" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
@@ -1053,28 +1141,11 @@ if (HasActiveSources != hasActiveSources)
 		</object>
 	</object>
 	<object access-modifier="private" name="pLog" display-name="pLog" uuid="49b67526-84be-47f6-aada-ffaf93ce5032" base-type="LogView" base-type-id="493c7166-bdbb-4717-8f49-2906ed88e930" base-const="true" base-ref="true" ver="5"/>
-	<do access-modifier="private" name="Clear" display-name="Clear" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
-		<body kind="om">
-			<![CDATA[Model.Clear();
-View.CurrentRow = -1;
-for (i: int4 = 0; i < Items.Length; i += 1)
-	Items[i].Clear();]]>
-		</body>
-	</do>
 	<do access-modifier="private" name="Add" display-name="Add" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 		<body kind="om">
-			<![CDATA[row: int4 = Model.FindSignal(sourceIndex, path);
-if (row > -1)
-{
-	// выделяем добавленный ранее параметр
-	viewRow: int4 = View.MapRowFromModel(row);
-	View.SetSelectedRows("[" + String.ToString(row) + "]");
-	View.SetCurrentCell(row, View.CurrentColumn);
-	View.ScrollTo(row, View.CurrentColumn, 0);
-}
-else
-	Model.AddSignal(sourceIndex, path, View.CurrentRow);
-//Debug.Log(View.CurrentRow);]]>
+			<![CDATA[row: int4 = Model.GetRowCount();
+Model.InsertSignal(sourceIndex, path, row);
+]]>
 		</body>
 		<param access-modifier="private" name="sourceIndex" display-name="" uuid="3616487a-4e1d-47d1-9051-96eda896dfdf" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
 		<param access-modifier="private" name="path" display-name="" uuid="d7b54d0c-edd1-41a6-adab-2bdd212fa800" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
@@ -1082,33 +1153,6 @@ else
 	<do access-modifier="private" name="InsertSeparator" display-name="InsertSeparator" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 		<body kind="om">
 			<![CDATA[Model.AddRow();]]>
-		</body>
-		<param access-modifier="private" name="index" display-name="" uuid="c67250f5-afcc-4ee8-8c44-a2e586d8c7f8" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
-	</do>
-	<do access-modifier="private" name="GetViewSettings" display-name="GetViewSettings" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
-		<body kind="javascript">
-			<![CDATA[var settings = 
-	{
-		"Columns" : {}
-	};
-
-for (var i = 0; i < View.Column.Length; i++)
-{		
-	var column = View.Column[i];
-	var columnInfo = {
-		"Index": column.Index,
-		"Width": column.Width,
-		"Hidden": column.Hidden
-	};
-	if (column.SortingEnabled != false)
-	{
-		columnInfo.SortOrder = column.SortOrder;
-		columnInfo.SortPriority = column.SortPriority;
-	}
-	settings.Columns[column.Id] = columnInfo;
-}
-
-return JSON.stringify(settings);]]>
 		</body>
 	</do>
 	<do access-modifier="private" name="UpdateView" display-name="UpdateView" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
@@ -1137,6 +1181,40 @@ if (signalTable.Columns != undefined)
 }]]>
 		</body>
 	</do>
+	<do access-modifier="private" name="GetViewSettings" display-name="GetViewSettings" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="javascript">
+			<![CDATA[var settings = 
+	{
+		"Columns" : {}
+	};
+
+for (var i = 0; i < View.Column.Length; i++)
+{		
+	var column = View.Column[i];
+	var columnInfo = {
+		"Index": column.Index,
+		"Width": column.Width,
+		"Hidden": column.Hidden
+	};
+	if (column.SortingEnabled != false)
+	{
+		columnInfo.SortOrder = column.SortOrder;
+		columnInfo.SortPriority = column.SortPriority;
+	}
+	settings.Columns[column.Id] = columnInfo;
+}
+
+return JSON.stringify(settings);]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="Clear" display-name="Clear" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[Model.Clear();
+View.SelectedRow = -1;
+for (i: int4 = 0; i < Items.Length; i += 1)
+	Items[i].Clear();]]>
+		</body>
+	</do>
 	<object access-modifier="private" name="ShowAddDialog" display-name="ShowAddDialog" uuid="c0553c4b-7fe5-48f8-a3df-f0b5c45844de" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
 		<designed target="Enabled" value="true" ver="5"/>
 		<designed target="InvokeTrigger" value="false" ver="5"/>
@@ -1145,10 +1223,14 @@ if (signalTable.Columns != undefined)
 			<designed target="InvokeTrigger" value="false" ver="5"/>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
 				<body kind="om">
-					<![CDATA[//Debug.Log("DialogResultPath: " + NewStat.Path);
+					<![CDATA[//Debug.Log("DialogResultPath: " + DialogResult.Path + ", SelectedRow: " + String.ToString(View.SelectedRow));
 if (DialogResult.Path != "")
 {
-	Add(DialogResult.SourceIndex, DialogResult.Path);
+	
+	if (View.SelectedRow > -1 && !View.Filter.Active && !View.GetSortingMode())
+		Model.InsertSignal(DialogResult.SourceIndex, DialogResult.Path, View.MapRowToModel(View.SelectedRow) + 1); // смещаем индекс для добавления после выделения
+	else
+		Add(DialogResult.SourceIndex, DialogResult.Path);
 }]]>
 				</body>
 			</do-on>
@@ -1166,9 +1248,9 @@ if (DialogResult.Path != "")
 		<object access-modifier="private" name="DialogResult" display-name="DialogResult" uuid="bb37a883-8285-4663-959b-9e08d9523fa6" base-type="Explorer_AddDialogResult" base-type-id="a32af535-13a1-4fdd-9c3a-f3d3aec2b027" ver="5" description="" cardinal="1"/>
 		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="Invoked">
 			<body kind="om">
-				<![CDATA[if (View.CurrentRow > -1)
+				<![CDATA[if (View.SelectedRow > -1)
 {
-	row: int4 = View.MapRowToModel(View.CurrentRow);
+	row: int4 = View.MapRowToModel(View.SelectedRow);
 	DialogResult.SourceIndex = Variant.ToInt4(Model.GetCellData(row, Model.SourceIndexColumn), -1);
 	if (DialogResult.SourceIndex > -1)
 	{
@@ -1189,26 +1271,16 @@ if (DialogResult.Path != "")
 		<designed target="InvokeTrigger" value="false" ver="5"/>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
 			<body kind="om">
-				<![CDATA[modelRow: int4;
-if (View.CurrentRow > -1)
-{
-	//Debug.Log("InsertSeparator after " + String.ToString(View.CurrentRow) + " row");
-	modelRow = View.MapRowToModel(View.CurrentRow) + 1;
-	Model.InsertRow(modelRow);
-	Model.UpdateItemsRowIndex();
-	
-}
-else
-{
-	//Debug.Log("Add separator");
-	modelRow = Model.GetRowCount();
-	Model.AddRow();
-}
+				<![CDATA[modelRow: int4 = Model.GetRowCount();
 
-row: int4 = View.MapRowFromModel(modelRow);
-View.SetSelectedRows("[" + String.ToString(row) + "]");
-View.SetCurrentCell(row, View.CurrentColumn);
-View.ScrollTo(row, View.CurrentColumn, 0);]]>
+if (View.SelectedRow > -1)
+	modelRow = View.MapRowToModel(View.SelectedRow) + 1;
+Model.InsertRow(modelRow);
+
+if (View.SelectedRow > -1)
+	Model.UpdateItemsRowIndex();
+
+View.SelectRow(modelRow);]]>
 			</body>
 		</do-on>
 	</object>
@@ -1242,9 +1314,7 @@ var rowCount = View.GetRowCount();
 if (row >= rowCount)
 	row = rowCount - 1;
 
-View.SetSelectedRows("[" + row + "]");
-View.SetCurrentCell(row, View.CurrentColumn);
-View.ScrollTo(row, View.CurrentColumn, 0);]]>
+View.SelectRow(row);]]>
 			</body>
 		</do-on>
 	</object>
@@ -1261,6 +1331,24 @@ for (let row = 0; row < Model.GetRowCount(); row++)
 		modelRows.push(row);
 }
 Model.RemoveParameters(JSON.stringify(modelRows));]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="UpSelectedRow" display-name="UpSelectedRow" uuid="bbdf2b02-48b2-4df7-8334-ee1ce2309a78" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+		<designed target="Enabled" value="false" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+			<body kind="javascript">
+				<![CDATA[View.ShiftSelected(-1);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="DownSelectedRow" display-name="DownSelectedRow" uuid="b949c941-1f38-478f-8009-68b3d5bafccf" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+		<designed target="Enabled" value="false" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+			<body kind="javascript">
+				<![CDATA[View.ShiftSelected(1);]]>
 			</body>
 		</do-on>
 	</object>
@@ -1493,11 +1581,13 @@ if (args.changeType == "quality")
 	Model.SetCellData(Rows[args.index], Model.QualityUint4Column, args.value);
 }
 else if (args.changeType == "timeStamp")
+{
 	ConvertToTimeStamp(Rows[args.index], args.value);
+}
 else if (args.changeType == "value")
 {
 	if (args.value != "")
-	UpdateRowValue(Rows[args.index], args.value, args.dataType);
+		UpdateRowValue(Rows[args.index], args.value, args.dataType);
 }
 else if (args.changeType == "adviseState")
 {
@@ -1510,19 +1600,13 @@ else if (args.changeType == "description")
 else if (args.changeType == "units")
 {
 	Model.SetCellData(Rows[args.index], Model.UnitsColumn, args.value);
-}
-
-
-
-]]>
+}]]>
 				</body>
 			</do-on>
 			<do access-modifier="private" name="ConvertToTimeStamp" display-name="ConvertToTimeStamp" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 				<body kind="om">
-					<![CDATA[//todo не работает через конвертер
-cellValue: variant = DateTime.Parse(time);
-cellValue = Converter.VariantToLocalizedString(cellValue, "timestamp");
-Model.SetCellData(row, Model.TimeColumn, cellValue);]]>
+					<![CDATA[timestamp: uint8 = DateTime.Parse(time);
+Model.SetCellData(row, Model.TimeColumn, timestamp);]]>
 				</body>
 				<param access-modifier="private" name="row" display-name="" uuid="4df3fcab-b6bb-47b0-8137-4c03cbce32c3" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
 				<param access-modifier="private" name="time" display-name="" uuid="73be2bdd-ba64-4a79-a88f-1c829b3b2b0a" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>

@@ -22,9 +22,17 @@
         <Parameter RelativeTag="TEMP_CUR" />
       </Parameters>
     </Type>
+    <Type Name="PTVM:Types.Gas.IOS_View">
+      <Parameters>
+        <Parameter RelativeTag="fEfficiency" Deadband="0.1" MinTime="1000" ServerTime="true" AppendServerTime="false" />
+        <Parameter RelativeTag="fEnergy" Deadband="0.1" MinTime="1000" ServerTime="true" AppendServerTime="false" />
+        <Parameter RelativeTag="fFGas" Deadband="10" MinTime="1000" ServerTime="true" AppendServerTime="false" />
+      </Parameters>
+    </Type>
     <Type Name="PTVM:Types.AI1.IOS_View">
       <Parameters>
-        <Parameter RelativeTag="fNormValue" MinTime="1000" ServerTime="true" />
+        <Parameter RelativeTag="fNormValue" Deadband="0.1" MinTime="1000" ServerTime="true" AppendServerTime="false" />
+        <Parameter RelativeTag="fElectroValue" Deadband="0.1" MinTime="1000" ServerTime="true" AppendServerTime="false" />
       </Parameters>
     </Type>
     <Type Name="PTVM:Types.AI2.IOS_View">
@@ -33,13 +41,19 @@
         <Parameter RelativeTag="fNormValue2" MinTime="1000" ServerTime="true" />
       </Parameters>
     </Type>
+    <Type Name="PTVM:Types.Water.IOS_View">
+      <Parameters>
+        <Parameter RelativeTag="fEnergy" Deadband="0.1" MinTime="1000" ServerTime="true" AppendServerTime="false" />
+        <Parameter RelativeTag="fF" Deadband="10" MinTime="1000" ServerTime="true" AppendServerTime="false" />
+      </Parameters>
+    </Type>
   </Types>
   <Objects>
     <Object Tag="DIAGNOSTICS.SERVER1" Description="COMPUTER - Компьютер" Type="PsDiagn:COMPUTER.IOS_View" />
     <Object Tag="DIAGNOSTICS.SERVER2" Description="COMPUTER - Компьютер" Type="PsDiagn:COMPUTER.IOS_View" />
-    <Object Tag="DIAGNOSTICS.STATION" Description="COMPUTER - Компьютер" Type="PsDiagn:COMPUTER.IOS_View" />
     <Object Tag="DIAGNOSTICS.REGUL_R500_A.CU_00_071" Description="REGUL_R500_A" Type="PsDiagn:REGUL.R500.MODULES.CU.CU_XX_XXX.IOS_View" />
     <Object Tag="DIAGNOSTICS.REGUL_R500_B.CU_00_071" Description="REGUL_R500_B" Type="PsDiagn:REGUL.R500.MODULES.CU.CU_XX_XXX.IOS_View" />
+    <Object Tag="Application.Gas" Type="PTVM:Types.Gas.IOS_View" />
     <Object Tag="Application.Gas.PD" Description="PDг на котёл" Type="PTVM:Types.AI1.IOS_View" />
     <Object Tag="Application.Gas.T" Description="Тг за диафрагмой" Type="PTVM:Types.AI1.IOS_View" />
     <Object Tag="Application.Gas.P" Description="Pг за диафрагмой" Type="PTVM:Types.AI2.IOS_View" />
@@ -58,6 +72,7 @@
     <Object Tag="Application.Smoke.O2" Description="Содержание О²" Type="PTVM:Types.AI1.IOS_View" />
     <Object Tag="Application.Smoke.T" Description="Т уходящих газов" Type="PTVM:Types.AI1.IOS_View" />
     <Object Tag="Application.Smoke.PVac" Description="Разрежение" Type="PTVM:Types.AI2.IOS_View" />
+    <Object Tag="Application.Water" Type="PTVM:Types.Water.IOS_View" />
     <Object Tag="Application.Water.PD" Description="PDсв на входе" Type="PTVM:Types.AI1.IOS_View" />
     <Object Tag="Application.Water.PIn" Description="Рсв на входе" Type="PTVM:Types.AI1.IOS_View" />
     <Object Tag="Application.Water.TIn" Description="Тсв на входе" Type="PTVM:Types.AI1.IOS_View" />

@@ -30,7 +30,7 @@
 	<designed target="MonitorNumber" value="0" ver="2"/>
 	<designed target="WindowPosition" value="2" ver="2"/>
 	<designed target="WindowCloseMode" value="0" ver="2"/>
-	<object access-modifier="private" name="pSettingsForm" display-name="pSettingsForm" uuid="5ea847b5-934d-45ba-a1be-b05a0440c910" base-type="SettingsForm" base-type-id="82dc7618-130c-486c-840d-5d302f40306b" base-const="true" base-ref="true" ver="2"/>
+	<object access-modifier="private" name="pSettingsForm" display-name="pSettingsForm" uuid="5ea847b5-934d-45ba-a1be-b05a0440c910" base-type="Alarms_SettingsForm" base-type-id="82dc7618-130c-486c-840d-5d302f40306b" base-const="true" base-ref="true" ver="2"/>
 	<do-on access-modifier="private" name="Handler_AboutToOpen" display-name="Handler_AboutToOpen" ver="5" event="AboutToOpen">
 		<body kind="javascript">
 			<![CDATA[// Определяем положение элементов массивов
@@ -306,7 +306,7 @@ bInit = true;
 				</body>
 			</do-trace>
 		</object>
-		<object access-modifier="private" name="ValueEdit" display-name="ValueEdit" uuid="8bb4cfae-f8b7-4edb-a240-a5a3c95fafca" base-type="TextEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="3">
+		<object access-modifier="private" name="ValueEdit" display-name="ValueEdit" uuid="8bb4cfae-f8b7-4edb-a240-a5a3c95fafca" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="3">
 			<designed target="X" value="10" ver="3"/>
 			<designed target="Y" value="30" ver="3"/>
 			<designed target="ZValue" value="0" ver="3"/>
@@ -386,7 +386,7 @@ ValueEdit.Focus = true;]]>
 			</body>
 			<param access-modifier="private" name="row" display-name="" uuid="70c872b1-78a5-48c4-a6fb-e63517fc4691" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
 			<param access-modifier="private" name="column" display-name="" uuid="faf1fdb9-6574-4633-9a42-9584b7d27d3c" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
-			<param access-modifier="private" name="columnX" display-name="" uuid="d6d51c7f-4a9b-413c-9629-cf397ebc9be1" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="4"/>
+			<param access-modifier="private" name="columnX" display-name="" uuid="d6d51c7f-4a9b-413c-9629-cf397ebc9be1" base-type="double" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="4"/>
 			<param access-modifier="private" name="columnWidth" display-name="" uuid="8d02ed1c-6f95-4dc8-a8ba-b06bdb4783c0" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
 		</do>
 		<do access-modifier="private" name="FinishEditing" display-name="FinishEditing" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">

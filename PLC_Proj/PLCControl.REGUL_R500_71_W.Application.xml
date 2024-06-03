@@ -2,7 +2,7 @@
 <Symbolconfiguration xmlns="http://www.3s-software.com/schemas/Symbolconfiguration.xsd">
   <Header>
     <Version>3.5.14.0</Version>
-    <SymbolConfigObject version="4.0.0.0" runtimeid="11.7.1.10" libversion="3.5.17.0" compiler="3.5.17.30" lmm="3.5.17.0" profile="Astra.IDE_V1.7+" settings="SupportOPCUA, LayoutCalculator=OptimizedClientSideLayoutCalculator" />
+    <SymbolConfigObject version="4.0.0.0" runtimeid="11.7.1.20" libversion="3.5.17.0" compiler="3.5.17.30" lmm="3.5.17.0" profile="Astra.IDE_V1.7+" settings="SupportOPCUA, LayoutCalculator=OptimizedClientSideLayoutCalculator" />
     <ProjectInfo name="PLCControl" devicename="REGUL_R500_71_W" appname="Application" />
   </Header>
   <TypeList>
@@ -27,10 +27,6 @@
     <TypeArray name="T_ARRAY__1__320__OF_BOOL" size="320" nativesize="320" typeclass="Array" iecname="ARRAY [1..320] OF BOOL" basetype="T_BOOL">
       <ArrayDim minrange="1" maxrange="320" />
     </TypeArray>
-    <TypeUserDef name="T_CHANNEL_AI" size="5" nativesize="8" typeclass="Userdef" pouclass="STRUCTURE" iecname="CHANNEL_AI">
-      <UserDefElement iecname="VALUE" type="T_REAL" byteoffset="0" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="STATUS" type="T_BYTE" byteoffset="4" vartype="VAR" access="ReadWrite" />
-    </TypeUserDef>
     <TypeUserDef name="T_FB_DoubleSensor" size="8" nativesize="56" typeclass="Userdef" pouclass="FUNCTION_BLOCK" iecname="FB_DoubleSensor">
       <UserDefElement iecname="fOutValue" type="T_REAL" byteoffset="0" vartype="VAR_OUTPUT" access="ReadWrite" />
       <UserDefElement iecname="bErrFirstSens" type="T_BOOL" byteoffset="4" vartype="VAR_OUTPUT" access="ReadWrite" />
@@ -764,7 +760,7 @@
       <UserDefElement iecname="Reserv_bDI352" type="T_BOOL" byteoffset="351" vartype="VAR" access="ReadWrite" />
     </TypeUserDef>
     <TypeUserDef name="T_stDoAll" size="320" nativesize="320" typeclass="Userdef" pouclass="STRUCTURE" iecname="stDoAll">
-      <UserDefElement iecname="Gas_Gate_bClose" type="T_BOOL" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Reserv_bDO16" type="T_BOOL" byteoffset="0" vartype="VAR" access="ReadWrite" />
       <UserDefElement iecname="Gas_Gate_bOpen" type="T_BOOL" byteoffset="1" vartype="VAR" access="ReadWrite" />
       <UserDefElement iecname="Gas_Gate_bStop" type="T_BOOL" byteoffset="2" vartype="VAR" access="ReadWrite" />
       <UserDefElement iecname="Water_GateIn_bClose" type="T_BOOL" byteoffset="3" vartype="VAR" access="ReadWrite" />
@@ -779,7 +775,7 @@
       <UserDefElement iecname="Other_Gate17_bClose" type="T_BOOL" byteoffset="12" vartype="VAR" access="ReadWrite" />
       <UserDefElement iecname="Other_Gate17_bOpen" type="T_BOOL" byteoffset="13" vartype="VAR" access="ReadWrite" />
       <UserDefElement iecname="Other_Gate17_bStop" type="T_BOOL" byteoffset="14" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="Reserv_bDO16" type="T_BOOL" byteoffset="15" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Gas_Gate_bClose" type="T_BOOL" byteoffset="15" vartype="VAR" access="ReadWrite" />
       <UserDefElement iecname="Other_GateMC213_bClose" type="T_BOOL" byteoffset="16" vartype="VAR" access="ReadWrite" />
       <UserDefElement iecname="Other_GateMC213_bOpen" type="T_BOOL" byteoffset="17" vartype="VAR" access="ReadWrite" />
       <UserDefElement iecname="Other_GateMC213_bStop" type="T_BOOL" byteoffset="18" vartype="VAR" access="ReadWrite" />
@@ -1240,26 +1236,10 @@
     <TypeArray name="T_ARRAY__1__6__OF_stTaskGasAir" size="48" nativesize="48" typeclass="Array" iecname="ARRAY [1..6] OF stTaskGasAir" basetype="T_stTaskGasAir">
       <ArrayDim minrange="1" maxrange="6" />
     </TypeArray>
-    <TypeUserDef name="T_MODULE_AI_16_011" size="137" nativesize="140" typeclass="Userdef" pouclass="STRUCTURE" iecname="MODULE_AI_16_011" basetype="T_MODULE">
+    <TypeUserDef name="T_MODULE_CH" size="9" nativesize="12" typeclass="Userdef" pouclass="STRUCTURE" iecname="MODULE_CH" basetype="T_MODULE">
       <UserDefElement iecname="FW_VERSION" type="T_DWORD" byteoffset="0" vartype="VAR" inherited_from="T_MODULE" access="ReadWrite" />
       <UserDefElement iecname="FW_VERSION_MIN" type="T_DWORD" byteoffset="4" vartype="VAR" inherited_from="T_MODULE" access="ReadWrite" />
       <UserDefElement iecname="HwError" type="T_BOOL" byteoffset="8" vartype="VAR" inherited_from="T_MODULE" access="ReadWrite" />
-      <UserDefElement iecname="CH01" type="T_CHANNEL_AI" byteoffset="12" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="CH02" type="T_CHANNEL_AI" byteoffset="20" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="CH03" type="T_CHANNEL_AI" byteoffset="28" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="CH04" type="T_CHANNEL_AI" byteoffset="36" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="CH05" type="T_CHANNEL_AI" byteoffset="44" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="CH06" type="T_CHANNEL_AI" byteoffset="52" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="CH07" type="T_CHANNEL_AI" byteoffset="60" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="CH08" type="T_CHANNEL_AI" byteoffset="68" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="CH09" type="T_CHANNEL_AI" byteoffset="76" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="CH10" type="T_CHANNEL_AI" byteoffset="84" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="CH11" type="T_CHANNEL_AI" byteoffset="92" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="CH12" type="T_CHANNEL_AI" byteoffset="100" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="CH13" type="T_CHANNEL_AI" byteoffset="108" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="CH14" type="T_CHANNEL_AI" byteoffset="116" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="CH15" type="T_CHANNEL_AI" byteoffset="124" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="CH16" type="T_CHANNEL_AI" byteoffset="132" vartype="VAR" access="ReadWrite" />
     </TypeUserDef>
     <TypeUserDef name="T_MODULE_CU_XX_XXX" size="720" nativesize="720" typeclass="Userdef" pouclass="STRUCTURE" iecname="MODULE_CU_XX_XXX">
       <UserDefElement iecname="VERSION" type="T_STRING" byteoffset="0" vartype="VAR" access="ReadWrite" />
@@ -2223,8 +2203,8 @@
         <Node name="IS_CPU_B" type="T_BOOL" access="ReadWrite" />
         <Node name="MODULE_A0_11" type="T_MODULE_CU_XX_XXX" access="ReadWrite" />
         <Node name="MODULE_A0_12" type="T_MODULE_CU_XX_XXX" access="ReadWrite" />
-        <Node name="MODULE_A0_21" type="T_MODULE_AI_16_011" access="ReadWrite" />
-        <Node name="MODULE_A0_22" type="T_MODULE_AI_16_011" access="ReadWrite" />
+        <Node name="MODULE_A0_21" type="T_MODULE_CH" access="ReadWrite" />
+        <Node name="MODULE_A0_22" type="T_MODULE_CH" access="ReadWrite" />
         <Node name="MODULE_A0_23" type="T_MODULE_DI_32_011" access="ReadWrite" />
         <Node name="MODULE_A0_24" type="T_MODULE_DI_32_011" access="ReadWrite" />
         <Node name="MODULE_A0_25" type="T_MODULE_DI_32_011" access="ReadWrite" />
@@ -2234,32 +2214,32 @@
         <Node name="MODULE_A0_32" type="T_MODULE_ST_XX_X2X" access="ReadWrite" />
         <Node name="MODULE_A0_33" type="T_MODULE_ST_XX_X1X" access="ReadWrite" />
         <Node name="MODULE_A0_34" type="T_MODULE_ST_XX_X2X" access="ReadWrite" />
-        <Node name="MODULE_A1_21" type="T_MODULE_AI_16_011" access="ReadWrite" />
-        <Node name="MODULE_A1_22" type="T_MODULE_AI_16_011" access="ReadWrite" />
+        <Node name="MODULE_A1_21" type="T_MODULE_CH" access="ReadWrite" />
+        <Node name="MODULE_A1_22" type="T_MODULE_CH" access="ReadWrite" />
         <Node name="MODULE_A1_23" type="T_MODULE_DI_32_011" access="ReadWrite" />
         <Node name="MODULE_A1_24" type="T_MODULE_DI_32_011" access="ReadWrite" />
         <Node name="MODULE_A1_25" type="T_MODULE_DO_32_012" access="ReadWrite" />
         <Node name="MODULE_A1_26" type="T_MODULE_DO_32_012" access="ReadWrite" />
         <Node name="MODULE_A1_31" type="T_MODULE_ST_XX_X1X" access="ReadWrite" />
         <Node name="MODULE_A1_32" type="T_MODULE_ST_XX_X2X" access="ReadWrite" />
-        <Node name="MODULE_A2_21" type="T_MODULE_AI_16_011" access="ReadWrite" />
-        <Node name="MODULE_A2_22" type="T_MODULE_AI_16_011" access="ReadWrite" />
+        <Node name="MODULE_A2_21" type="T_MODULE_CH" access="ReadWrite" />
+        <Node name="MODULE_A2_22" type="T_MODULE_CH" access="ReadWrite" />
         <Node name="MODULE_A2_23" type="T_MODULE_DI_32_011" access="ReadWrite" />
         <Node name="MODULE_A2_24" type="T_MODULE_DI_32_011" access="ReadWrite" />
         <Node name="MODULE_A2_25" type="T_MODULE_DO_32_012" access="ReadWrite" />
         <Node name="MODULE_A2_26" type="T_MODULE_DO_32_012" access="ReadWrite" />
         <Node name="MODULE_A2_31" type="T_MODULE_ST_XX_X1X" access="ReadWrite" />
         <Node name="MODULE_A2_32" type="T_MODULE_ST_XX_X2X" access="ReadWrite" />
-        <Node name="MODULE_A3_21" type="T_MODULE_AI_16_011" access="ReadWrite" />
-        <Node name="MODULE_A3_22" type="T_MODULE_AI_16_011" access="ReadWrite" />
+        <Node name="MODULE_A3_21" type="T_MODULE_CH" access="ReadWrite" />
+        <Node name="MODULE_A3_22" type="T_MODULE_CH" access="ReadWrite" />
         <Node name="MODULE_A3_23" type="T_MODULE_DI_32_011" access="ReadWrite" />
         <Node name="MODULE_A3_24" type="T_MODULE_DI_32_011" access="ReadWrite" />
         <Node name="MODULE_A3_25" type="T_MODULE_DO_32_012" access="ReadWrite" />
         <Node name="MODULE_A3_26" type="T_MODULE_DO_32_012" access="ReadWrite" />
         <Node name="MODULE_A3_31" type="T_MODULE_ST_XX_X1X" access="ReadWrite" />
         <Node name="MODULE_A3_32" type="T_MODULE_ST_XX_X2X" access="ReadWrite" />
-        <Node name="MODULE_A4_21" type="T_MODULE_AI_16_011" access="ReadWrite" />
-        <Node name="MODULE_A4_22" type="T_MODULE_AI_16_011" access="ReadWrite" />
+        <Node name="MODULE_A4_21" type="T_MODULE_CH" access="ReadWrite" />
+        <Node name="MODULE_A4_22" type="T_MODULE_CH" access="ReadWrite" />
         <Node name="MODULE_A4_23" type="T_MODULE_DI_32_011" access="ReadWrite" />
         <Node name="MODULE_A4_24" type="T_MODULE_DI_32_011" access="ReadWrite" />
         <Node name="MODULE_A4_25" type="T_MODULE_DO_32_012" access="ReadWrite" />

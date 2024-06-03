@@ -47,7 +47,7 @@
 			</do-trace>
 			<do-trace access-modifier="private" target="FontColor" ver="5">
 				<body>
-					<![CDATA[ppTheme.ForegroundColor]]>
+					<![CDATA[pTheme.ForegroundColor]]>
 				</body>
 			</do-trace>
 		</object>
@@ -121,7 +121,7 @@
 				<body kind="om">
 					<![CDATA[if (filterSource!="")
 {
-	filter: string = pVFControl.pAlarms.Main_panel.private.JSONstringForFilter(text, filterSource, 0, filterFormatted);
+	filter: string = Alarms_Tools.JSONstringForFilter(text, filterSource, 0, filterFormatted);
 	if (String.StartsWith(filter, "Error: "))
 	{
 		Filter = "";
@@ -129,7 +129,7 @@
 	}
 	else
 	{
-		Error = pVFControl.TestTable.CheckJSON(filter);
+		Error = Alarms_Tools.TestTable.CheckJSON(filter);
 		Filter = Error == "" ? filter : "";
 	}
 }
@@ -201,25 +201,21 @@ pVFControl.ChangedInvoke(columnId);]]>
 			</do-trace>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="open-dialog" form-by-id="false">
 				<object access-modifier="private" uuid="b18c2281-3c1e-4dc3-b45f-4df739a5473f" base-type="Alarms_DateTimeMaster" base-type-id="f96a0b08-2d2f-4b62-9ef8-c936672be75f" ver="5">
-					<init target="pTheme" ver="5" ref="ppTheme"/>
-					<init target="pDialogResult" ver="5" ref="_DialogResult"/>
-					<init target="pDialogEvent" ver="5" ref="_DialogEvent"/>
+					<init target="OnComplete" ver="5" ref="DoOnComplete"/>
+					<init target="pTheme" ver="5" ref="here.pTheme"/>
 				</object>
 			</do-on>
-			<object access-modifier="private" name="_DialogResult" display-name="_DialogResult" uuid="f2a71fed-6938-4dc5-bad4-fd00fdea2455" base-type="DialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" ver="5" description="" cardinal="1"/>
-			<object access-modifier="private" name="_DialogEvent" display-name="_DialogEvent" uuid="f1fd8d02-e140-4cae-8e7d-c2e27aae4657" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
-				<designed target="Enabled" value="true" ver="5"/>
-				<designed target="InvokeTrigger" value="false" ver="5"/>
+			<object access-modifier="private" name="DoOnComplete" display-name="DoOnComplete" uuid="f1fd8d02-e140-4cae-8e7d-c2e27aae4657" base-type="EventHandler" base-type-id="c01b71c2-42e8-4333-b70e-cc35fdf96f7e" ver="5" description="" cardinal="1">
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
 					<body kind="om">
-						<![CDATA[Editor.Text += _DialogResult.Value;
+						<![CDATA[Editor.Text += Args.Get();
 Editor.Focus = true;//#37174 для удобства переводим фокус в поле ввода (по умолчанию он останется на кнопке)]]>
 					</body>
 				</do-on>
 			</object>
 		</object>
 	</object>
-	<object access-modifier="private" name="ppTheme" display-name="ppTheme" uuid="f47756ed-8ab6-4c8a-baba-eadddc5d5c29" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="pTheme" display-name="pTheme" uuid="f47756ed-8ab6-4c8a-baba-eadddc5d5c29" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
 	<do access-modifier="private" name="SetWidth" display-name="SetWidth" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 		<body kind="om">
 			<![CDATA[Rect.labelWidth = wLabel;

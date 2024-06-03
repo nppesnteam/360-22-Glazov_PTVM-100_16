@@ -1,4 +1,4 @@
-<type access-modifier="public" name="MenuItem" display-name="MenuItem" uuid="064f06d5-fe3b-471e-a8d5-8914807aa060" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+<type access-modifier="public" name="MenuItem" display-name="Элемент меню" uuid="064f06d5-fe3b-471e-a8d5-8914807aa060" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="ZValue" value="0" ver="5"/>
@@ -35,14 +35,7 @@
 		<init target="selectionColor" ver="5" value="0xffb4d4f4"/>
 		<do-trace access-modifier="private" target="selectionColor" ver="5">
 			<body>
-				<![CDATA[pTheme.SelectionColor]]>
-			</body>
-		</do-trace>
-		<object access-modifier="private" name="borderColor" display-name="borderColor" uuid="fa090ed2-d985-42ff-bbac-c63438b11006" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5"/>
-		<init target="borderColor" ver="5" value="0xffa0a0a0"/>
-		<do-trace access-modifier="private" target="borderColor" ver="5">
-			<body>
-				<![CDATA[pTheme.DisabledBorderColor]]>
+				<![CDATA[pTheme.MenuSelectionColor]]>
 			</body>
 		</do-trace>
 		<do-trace access-modifier="private" target="PenStyle" ver="5">
@@ -133,12 +126,12 @@
 		<object access-modifier="private" name="disabledFontColor" display-name="disabledFontColor" uuid="0103871d-bca0-418f-9ee6-9c141b505a95" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5"/>
 		<do-trace access-modifier="private" target="enabledFontColor" ver="5">
 			<body>
-				<![CDATA[pTheme.ForegroundColor]]>
+				<![CDATA[pTheme.MenuFontColor]]>
 			</body>
 		</do-trace>
 		<do-trace access-modifier="private" target="disabledFontColor" ver="5">
 			<body>
-				<![CDATA[pTheme.DisabledFontColor]]>
+				<![CDATA[pTheme.MenuDisabledFontColor]]>
 			</body>
 		</do-trace>
 		<init target="enabledFontColor" ver="5" value="0xff000000"/>
@@ -208,12 +201,12 @@
 		</object>
 		<do-trace access-modifier="private" target="PenColor" ver="5">
 			<body>
-				<![CDATA[pTheme.ForegroundColor]]>
+				<![CDATA[pTheme.MenuFontColor]]>
 			</body>
 		</do-trace>
 		<do-trace access-modifier="private" target="BrushColor" ver="5">
 			<body>
-				<![CDATA[pTheme.ForegroundColor]]>
+				<![CDATA[pTheme.MenuFontColor]]>
 			</body>
 		</do-trace>
 		<do-trace access-modifier="private" target="Visible" ver="5">

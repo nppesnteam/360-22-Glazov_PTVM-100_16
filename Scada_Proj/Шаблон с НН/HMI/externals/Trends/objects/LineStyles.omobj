@@ -1,5 +1,5 @@
 <type access-modifier="private" name="LineStyles" display-name="LineStyles" uuid="ff917acc-0401-4101-b467-5752cc64518c" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="">
-	<do access-modifier="private" name="GetStyle" display-name="GetStyle" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+	<do access-modifier="private" name="ToJSON" display-name="ToJSON" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
 		<body kind="javascript">
 			<![CDATA[let columns = ["value", "quality"];
 let configStyles = [];
@@ -18,12 +18,16 @@ for (let i=0; i<Style.Length; i++)
 			},
 			"style": {}
 		}
+		
 		if (Style[i].LineColor != unit.Const.slUNDEFINED)
 			itemStyle.style.color = "0x" + Style[i].LineColor.toString(16);
+			
 		if (Style[i].LineWidth != unit.Const.slUNDEFINED)
 			itemStyle.style.lineWidth = Style[i].LineWidth;
+			
 		if (Style[i].LineStyle != unit.Const.slUNDEFINED)
 			itemStyle.style.lineStyle = Style[i].LineStyle;
+			
 		configStyles.push(itemStyle);
 	}
 }
@@ -31,9 +35,9 @@ return  JSON.stringify(configStyles, null, 2);
 ]]>
 		</body>
 	</do>
-	<do access-modifier="private" name="SetStyle" display-name="SetStyle" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+	<do access-modifier="private" name="FromJSON" display-name="FromJSON" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
 		<body kind="javascript">
-			<![CDATA[let lineDecorator = JSON.parse(config);
+			<![CDATA[let lineDecorator = JSON.parse(json);
 
 for (let i in lineDecorator)
 {
@@ -86,7 +90,7 @@ for (let i in lineDecorator)
 }
 return "";]]>
 		</body>
-		<param access-modifier="private" name="config" display-name="" uuid="b36872dc-0e31-40b4-a78b-505be7468c7d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="json" display-name="" uuid="b36872dc-0e31-40b4-a78b-505be7468c7d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 	</do>
 	<object access-modifier="private" name="Style" display-name="Style" uuid="9ca6b464-b424-478a-8bc4-ecbb556e789d" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" cardinal="10">
 		<object access-modifier="private" name="Title" display-name="Title" uuid="e80fd370-2016-42e3-a589-c100ab9ea061" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
@@ -120,15 +124,17 @@ Style[1].LineColor = 0xff00bfff;
 ]]>
 		</body>
 	</do>
-	<do access-modifier="private" name="Clear" display-name="Clear" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+	<do access-modifier="private" name="GetIndexByTitle" display-name="GetIndexByTitle" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
 		<body kind="om">
-			<![CDATA[i:int4 = 0;
+			<![CDATA[i:int4;
 while (i < Style.Length)
 {
-	Style[i].Title = "";
+	if (Style[i].Title == title) return i;
 	i += 1;
-}]]>
+}
+return -1;]]>
 		</body>
+		<param access-modifier="private" name="title" display-name="" uuid="18cb0691-55ee-42a5-bd68-5766c6b3e831" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 	</do>
 </type>
 

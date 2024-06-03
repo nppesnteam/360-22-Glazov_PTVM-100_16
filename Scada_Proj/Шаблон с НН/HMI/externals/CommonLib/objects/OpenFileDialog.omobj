@@ -1,4 +1,4 @@
-<type access-modifier="public" name="OpenFileDialog" display-name="OpenFileDialog" uuid="41505bc5-e0a8-4d93-b1a9-de842aaf215b" base-type="FileDialog" base-type-id="29986250-295b-4615-96f2-ca366bec24d1" ver="5">
+<type access-modifier="public" name="OpenFileDialog" display-name="Диалог открытия файла" uuid="41505bc5-e0a8-4d93-b1a9-de842aaf215b" base-type="FileDialog" base-type-id="29986250-295b-4615-96f2-ca366bec24d1" ver="5">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="ZValue" value="0" ver="5"/>
@@ -390,14 +390,16 @@ if (BottomPanel.FileType.selectedExt != "" && !private.HasExtension(fileName, Bo
 }
 
 // формируем результат и закрываем диалог
-Result.FilePath = Files.ToNative(Files.AbsolutePath(Files.CombinePath(FolderPanel.FolderEdit.Text, BottomPanel.FileEdit.Text)));
+Result.FolderPath = Files.ToNative(Files.AbsolutePath(FolderPanel.FolderEdit.Text));
+Result.FilePath = Files.ToNative(Files.CombinePath(Result.FolderPath, BottomPanel.FileEdit.Text));
 OnComplete.Invoke();
 Close();]]>
 				</body>
 			</do-on>
 			<do-trace access-modifier="private" target="Enabled" ver="5">
 				<body>
-					<![CDATA[FileFrame.Error == ""]]>
+					<![CDATA[FolderPanel.FolderFrame.Error == "" &&
+FileFrame.Error == ""]]>
 				</body>
 			</do-trace>
 		</object>

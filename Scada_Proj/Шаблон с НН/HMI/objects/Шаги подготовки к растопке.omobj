@@ -131,7 +131,7 @@ here.Height=320;]]>
 			</body>
 		</do-trace>
 		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Invoked" frame-link="Frame_Germ" form-action="open-in-frame" form-by-id="false">
-			<object access-modifier="private" uuid="3d837e3e-2c33-431b-a120-8280cc5f1977" base-type="Шаги проверки задвижки" base-type-id="e9387ae5-4c63-4801-ae88-e7bc36035f9c" ver="5">
+			<object access-modifier="private" uuid="3d837e3e-2c33-431b-a120-8280cc5f1977" base-type="Шаги проверки задвижки газа" base-type-id="e9387ae5-4c63-4801-ae88-e7bc36035f9c" ver="5">
 				<designed target="WindowBorderStyle" value="0" ver="5"/>
 			</object>
 		</do-on>
@@ -142,7 +142,7 @@ here.Height=240;]]>
 			</body>
 		</do-on>
 	</object>
-	<object access-modifier="private" name="refGas" display-name="refGas" uuid="e2d90798-9f32-4978-ad2d-7d090f16d187" base-type="Газ" base-type-id="f51061bd-0db8-43c4-a53c-77c2e4c09e04" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="refGas" display-name="refGas" uuid="e2d90798-9f32-4978-ad2d-7d090f16d187" base-type="Общая мнемосхема" base-type-id="f51061bd-0db8-43c4-a53c-77c2e4c09e04" base-const="true" base-ref="true" ver="5"/>
 	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Opened">
 		<body kind="om">
 			<![CDATA[refGas.FGU.isOpenedSteps=true;]]>
@@ -175,5 +175,7 @@ here.Height=240;]]>
 		<init target="Source" ver="5" ref="unit.Connections.ApSource"/>
 		<init target="Path" ver="5" value="ROOT.BOILER.OutSelOil"/>
 	</object>
+	<designed target="Flip" value="0" ver="5"/>
+	<designed target="WindowIconPath" value="" ver="5"/>
 </type>
 

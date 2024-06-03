@@ -17,66 +17,33 @@
 	<designed target="BrushColor" value="4278190080" ver="5"/>
 	<designed target="BrushStyle" value="0" ver="5"/>
 	<object access-modifier="private" name="private" display-name="private" uuid="6d8a4d9f-93f4-4c56-9b10-0ae63f1989ac" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
-		<object access-modifier="private" name="theme" display-name="theme" uuid="6ceae5a4-ff22-4f68-863e-5c0f6180334c" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5" base-ref="true">
-			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
-				<body>
-					<![CDATA[here.pTheme.BackgroundColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
-				<body>
-					<![CDATA[here.pTheme.ForegroundColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="DisabledFontColor" ver="5">
-				<body>
-					<![CDATA[here.pTheme.DisabledFontColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="EditorBrushColor" ver="5">
-				<body>
-					<![CDATA[here.pTheme.EditorBrushColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="EditorFontColor" ver="5">
-				<body>
-					<![CDATA[here.pTheme.EditorFontColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="BorderColor" ver="5">
-				<body>
-					<![CDATA[here.pTheme.BorderColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="SelectionColor" ver="5">
-				<body>
-					<![CDATA[here.pTheme.SelectionColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="DisabledBorderColor" ver="5">
-				<body>
-					<![CDATA[here.pTheme.DisabledBorderColor]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="TitleFont" ver="5">
-				<body>
-					<![CDATA[here.pTheme.TitleFont]]>
-				</body>
-			</do-trace>
-			<do-trace access-modifier="private" target="Font" ver="5">
-				<body>
-					<![CDATA[here.pTheme.Font]]>
-				</body>
-			</do-trace>
+		<object access-modifier="private" name="pTheme" display-name="pTheme" uuid="6ceae5a4-ff22-4f68-863e-5c0f6180334c" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5" base-ref="true"/>
+		<init target="pTheme" ver="5" ref="here.init_Theme"/>
+		<object access-modifier="private" name="ShowError" display-name="ShowError" uuid="1284b1eb-3839-4870-ae6c-d2f07f9657c3" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="3d51b052-f8de-40ff-ace1-66768191b58f" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="5">
+					<init target="Icon" ver="5" value="2"/>
+					<init target="Buttons" ver="5" value="0"/>
+					<init target="Message" ver="5">
+						<expr>
+							<![CDATA[message]]>
+						</expr>
+					</init>
+					<designed target="WindowCaption" value="Внимание" ver="5"/>
+					<init target="pTheme" ver="5" ref="here.private.pTheme"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="message" display-name="message" uuid="659f1703-86fa-4e57-9a98-b9730ab8c29d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 		</object>
-		<init target="theme" ver="5" ref="here.pTheme"/>
 	</object>
 	<object access-modifier="private" name="Debug" display-name="Debug" uuid="d9fec41d-6c06-48b6-821d-d7df820f6be1" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
 	<object access-modifier="private" name="Files" display-name="Files" uuid="59de2e7c-5a61-42ed-b21e-69497ecb3862" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5">
 		<designed target="RootPath" value="/" ver="5"/>
 	</object>
 	<object access-modifier="private" name="SearchBarVisible" display-name="Показывать панель поиска" uuid="21c29efa-65d2-40ad-82e5-46dff44a3353" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
-	<param access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="0871ba54-b695-4c14-a163-0566b6909c33" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
+	<param access-modifier="private" name="init_Theme" display-name="Тема оформления" uuid="0871ba54-b695-4c14-a163-0566b6909c33" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
 	<param access-modifier="private" name="ApSource" display-name="ApSource" uuid="38da6bb1-ef21-461c-b394-5cb86c22cecd" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" base-const="true" base-ref="true" ver="5"/>
 	<object access-modifier="private" name="DescriptionPreferred" display-name="DescriptionPreferred" uuid="5b6b316b-2422-4c94-b007-4205d44b8ab0" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
@@ -187,7 +154,8 @@ else
 			</body>
 		</do-trace>
 		<init target="pPatternChanged" ver="5" ref="OnPatternChanged"/>
-		<designed target="Height" value="22" ver="5"/>
+		<designed target="Height" value="23" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.init_Theme"/>
 	</object>
 	<object access-modifier="private" name="TreePanel" display-name="TreePanel" uuid="7a2945d1-bdc7-45d2-8e2e-3d6e8e4db0bf" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 		<designed target="X" value="0" ver="5"/>
@@ -212,15 +180,15 @@ else
 			<designed target="Y" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Width" value="200" ver="5"/>
-			<designed target="Height" value="278" ver="5"/>
+			<designed target="Height" value="277" ver="5"/>
 			<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="32aa3660-1fe9-445c-be5e-0fca97735963" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5" description="" cardinal="1">
 				<designed target="Weight" value="1" ver="5"/>
 			</object>
 			<init target="init_ApSource" ver="5" ref="ApSource"/>
-			<object access-modifier="private" name="DragStarted" display-name="DragStarted" uuid="d0f02137-f60c-4279-85dc-70b13af64834" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<object access-modifier="private" name="DragStarted" display-name="DragStarted" uuid="d0f02137-f60c-4279-85dc-70b13af64834" base-type="EventHandler" base-type-id="c01b71c2-42e8-4333-b70e-cc35fdf96f7e" ver="5" description="" cardinal="1">
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
 					<body kind="om">
-						<![CDATA[info: string = GetCurrentItemInfo();
+						<![CDATA[info: string = Args.Get();
 if (info != "")
 {
 	Drag.Image = Tree.GetItemIconPath(Tree.CurrentItem, false);
@@ -230,10 +198,10 @@ if (info != "")
 					</body>
 				</do-on>
 			</object>
-			<object access-modifier="private" name="DoOnDoubleClicked" display-name="DoOnDoubleClicked" uuid="6266c30b-76dc-41a9-918a-bc6b23b86894" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<object access-modifier="private" name="DoOnDoubleClicked" display-name="DoOnDoubleClicked" uuid="6266c30b-76dc-41a9-918a-bc6b23b86894" base-type="EventHandler" base-type-id="c01b71c2-42e8-4333-b70e-cc35fdf96f7e" ver="5" description="" cardinal="1">
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
 					<body kind="om">
-						<![CDATA[info: string = GetCurrentItemInfo();
+						<![CDATA[info: string = Args.Get();
 if (info != "")
 {
 	SelectedItem = "{\"data\":[" + info + "]}";
@@ -261,7 +229,7 @@ else SelectedItem = "";]]>
 				</do-on>
 			</object>
 			<init target="pMouseRightClicked" ver="5" ref="DoOnMouseRightClicked"/>
-			<init target="pTheme" ver="5" ref="here.pTheme"/>
+			<init target="pTheme" ver="5" ref="here.init_Theme"/>
 		</object>
 		<object access-modifier="private" name="SearchResultsTree" display-name="SearchResultsTree" uuid="d7469835-fa6b-4681-bd58-3e596d79e889" base-type="Tree" base-type-id="bebad81f-83c4-4dc1-8ac4-e7fe7b6ee966" ver="5">
 			<designed target="X" value="198" ver="5"/>
@@ -337,7 +305,7 @@ SetColumnHidden(5, true);]]>
 					</body>
 				</do-on>
 			</object>
-			<do access-modifier="private" name="SetChildrenIcons" display-name="SetChildrenIcons" ver="5" type="" type-id="">
+			<do access-modifier="private" name="SetChildrenIcons" display-name="SetChildrenIcons" ver="5" type="void" type-id="">
 				<body kind="javascript">
 					<![CDATA[// Обработка элементов узла
 var childrenJson = EnumChildrenJSON(parentId);
@@ -352,7 +320,7 @@ if (childrenJson != "")
 				</body>
 				<param access-modifier="private" name="parentId" display-name="" uuid="2a0f1de4-05c4-483f-952a-95997d1107a4" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
 			</do>
-			<do access-modifier="private" name="SetItemIcon" display-name="SetItemIcon" ver="5" type="" type-id="">
+			<do access-modifier="private" name="SetItemIcon" display-name="SetItemIcon" ver="5" type="void" type-id="">
 				<body kind="om">
 					<![CDATA[icon: string = GetItemIconPath(itemId, isExpanded);
 SetItemIconPath(itemId, icon, 0);]]>
@@ -436,12 +404,12 @@ if (ChildCount(itemId) == 0)
 			</do-on>
 			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
 				<body>
-					<![CDATA[private.theme.EditorBrushColor]]>
+					<![CDATA[private.pTheme.EditorBrushColor]]>
 				</body>
 			</do-trace>
 			<do-trace access-modifier="private" target="FontColor" ver="5">
 				<body>
-					<![CDATA[private.theme.EditorFontColor]]>
+					<![CDATA[private.pTheme.EditorFontColor]]>
 				</body>
 			</do-trace>
 			<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="7dcaabbf-6b79-4f3a-9407-68d2f4a659f8" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5" description="" cardinal="1">
@@ -505,7 +473,7 @@ else
 			</do-on>
 			<do-trace access-modifier="private" target="Font" ver="5">
 				<body>
-					<![CDATA[private.theme.Font]]>
+					<![CDATA[private.pTheme.Font]]>
 				</body>
 			</do-trace>
 			<designed target="Flip" value="0" ver="5"/>
@@ -526,7 +494,7 @@ else
 			<designed target="FontColor" value="4278190080" ver="5"/>
 			<designed target="BackgroundColor" value="0xffffffff" ver="5"/>
 			<designed target="FrameVisible" value="true" ver="5"/>
-			<designed target="ColumnCount" value="8" ver="5"/>
+			<designed target="ColumnCount" value="10" ver="5"/>
 			<do access-modifier="private" name="LoadFromFile" display-name="LoadFromFile" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
 				<body kind="javascript">
 					<![CDATA[if (ChildCount("") > 0)
@@ -538,34 +506,38 @@ else
 if (Files.Exists(filePath))
 {
 	// Загрузка файла
-//	var t0 = new Date();
 	let curContent = Files.ReadTextFile(filePath);	
-	var ut = JSON.parse(curContent);
-//	var t1 = new Date();
-	
-	// формирвание иерархии из js объектов
-	let i = 0;	
-	var myTree = [];
-	while (i < ut.UserTree.length)
+	try
 	{
-		let sName = ut.UserTree[i].Signal.UserTree;
-		let path = sName.split(/(?<![\\])\//);
-		MyTreeAdd(myTree, path, 0, i);
-		i += 1;
-	}	
-//	var t2 = new Date();
+		var ut = JSON.parse(curContent);
+
+		// формирвание иерархии из js объектов
+		let i = 0;	
+		var myTree = [];
+		while (i < ut.UserTree.length)
+		{
+			let sName = ut.UserTree[i].Signal.UserTree;
+			let path = sName.split(/(?<![\\])\//);
+			MyTreeAdd(myTree, path, 0, i);
+			i += 1;
+		}	
+	}
+	catch(err)
+	{
+		private.ShowError.message = "Ошибка в структуре пользовательского дерева: " + err.message;
+		private.ShowError.Invoke();
+		return false;
+	}
 
 	// Перенос иерархии в дерево
 	AddTreeItem("", "", myTree);
 	SetChildrenIcons("");
-//	var t4 = new Date();
-//	Debug.Log("Сигналов: " + ut.UserTree.length + ", Загрузка файла: "+(t1-t0)+", Формирование иерархии: "+(t2-t1)
-//	 + ", Перенос в дерево: "+(t4-t2));
-//	let k = (t4-t0)/6.87;		// Вычисление сравнения с контрольным файлом
-//	Debug.Log("Полное время: "+(t4-t0)+", Оптимизация до: "+ k.toFixed()+"%");
 }
 else
-	Debug.Log("Не найден файл " + filePath);
+{
+	private.ShowError.message = "Не найден файл " + filePath;
+	private.ShowError.Invoke();
+}	
 	
 
 // Рекурсивная функция добавления элементов в промежуточную структуру 
@@ -633,6 +605,8 @@ function AddTreeItem(parentId, parentPath, branch)
 			SetDataType(itemId, signal.DataType);
 			SetItemText(itemId, signal.EUnit, 5);
 			SetItemText(itemId, path, 6);
+			SetItemText(itemId, signal.LowRange, 8);
+			SetItemText(itemId, signal.HighRange, 9);
 		}
 		else
 		{
@@ -711,7 +685,7 @@ if (descriptionPreferred != showDescriptions)
 				</body>
 				<param access-modifier="private" name="showDescriptions" display-name="" uuid="60e6eec5-f71d-4c8f-9f0e-71d7afd3311d" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
 			</do>
-			<do access-modifier="private" name="SetDataType" display-name="SetDataType" ver="5" type="" type-id="">
+			<do access-modifier="private" name="SetDataType" display-name="SetDataType" ver="5" type="void" type-id="">
 				<body kind="om">
 					<![CDATA[cdt: uint4;
 
@@ -834,7 +808,9 @@ CustomTree.SetColumnHidden(3, true); // description
 CustomTree.SetColumnHidden(4, true); // dataType
 CustomTree.SetColumnHidden(5, true); // eUnit
 CustomTree.SetColumnHidden(6, true); // itemPath
-CustomTree.SetColumnHidden(7, true); // isUpdated]]>
+CustomTree.SetColumnHidden(7, true); // isUpdated
+CustomTree.SetColumnHidden(8, true); // LowRange
+CustomTree.SetColumnHidden(9, true); // HighRange]]>
 					</body>
 				</do-on>
 			</object>
@@ -853,12 +829,12 @@ if (ChildCount(itemId) > 0)
 			<object access-modifier="private" name="descriptionPreferred" display-name="descriptionPreferred" uuid="8e05666d-7abe-4e2b-a206-4c318277c460" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
 			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
 				<body>
-					<![CDATA[private.theme.EditorBrushColor]]>
+					<![CDATA[private.pTheme.EditorBrushColor]]>
 				</body>
 			</do-trace>
 			<do-trace access-modifier="private" target="FontColor" ver="5">
 				<body>
-					<![CDATA[private.theme.EditorFontColor]]>
+					<![CDATA[private.pTheme.EditorFontColor]]>
 				</body>
 			</do-trace>
 			<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="ef309214-bbb3-4d05-8e0a-44f091eb3fd7" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5" description="" cardinal="1">
@@ -880,6 +856,12 @@ if (cdt > 0)
 	var eunits = GetItemText(itemId, 5);
 	if (eunits != "")
 		info.eunits = eunits;
+	var value = GetItemText(itemId, 8);
+	if (value != "")
+		info.LowRange = value;
+	value = GetItemText(itemId, 9);
+	if (value != "")
+		info.HighRange = value;
 		
 	return JSON.stringify(info);
 }
@@ -931,7 +913,7 @@ else
 			</do-on>
 			<do-trace access-modifier="private" target="Font" ver="5">
 				<body>
-					<![CDATA[private.theme.Font]]>
+					<![CDATA[private.pTheme.Font]]>
 				</body>
 			</do-trace>
 			<designed target="Flip" value="0" ver="5"/>
@@ -979,7 +961,7 @@ SelectedTree = index;]]>
 	<object access-modifier="private" name="pOnRightClick" display-name="pOnRightClick" uuid="321add00-b030-4e48-b3b6-600e11ff83ba" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
 	<do-trace access-modifier="private" target="PenColor" ver="5">
 		<body>
-			<![CDATA[private.theme.BorderColor]]>
+			<![CDATA[private.pTheme.BorderColor]]>
 		</body>
 	</do-trace>
 	<designed target="Flip" value="0" ver="5"/>

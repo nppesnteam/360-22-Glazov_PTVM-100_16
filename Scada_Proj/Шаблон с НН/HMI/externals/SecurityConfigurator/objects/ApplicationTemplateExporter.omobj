@@ -14,7 +14,7 @@
 
 
 let tokenList = [];
-//let rolesData = [];
+let rolesData = [];
 
 for (let token of JSON.parse(private.pApplication.GetTokensList()).data )
 {
@@ -24,8 +24,7 @@ for (let token of JSON.parse(private.pApplication.GetTokensList()).data )
 		'Description': token.tokenDescription
 	});
 }
-//Экспорт ролей приложения отключен до решения #34973
-/*
+
 for (let role of JSON.parse(private.pApplication.GetRolesList()).data )
 {
 	let roleRights = [];
@@ -45,15 +44,15 @@ for (let role of JSON.parse(private.pApplication.GetRolesList()).data )
 	});
 
 }
-*/	
+
 //Описание приложения
 let appDescription = {};
 appDescription.Name = private.pApplication.ApplicationName;
 appDescription.Tokens = tokenList;
-/*
+
 if (rolesData.length > 0)
 	appDescription.Roles = rolesData;
-*/
+
 return JSON.stringify(appDescription, null, 2);
 
 

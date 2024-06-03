@@ -2,6 +2,15 @@
 	<object access-modifier="private" name="private" display-name="private" uuid="f6acfaf5-7109-4e2d-9f54-76742e517cf6" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
 		<object access-modifier="private" name="targetFilePath" display-name="targetFilePath" uuid="5e7019f8-9118-4d3b-9708-873debec3b64" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
 		<object access-modifier="private" name="EventParams" display-name="EventParams" uuid="19a855fb-0b3c-4a92-8daf-689ce7fc2c51" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" cardinal="2"/>
+		<do access-modifier="private" name="NotifyResult" display-name="NotifyResult" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[EventParams[0] = filePath;
+EventParams[1] = error;
+pExportFinished.Invoke();]]>
+			</body>
+			<param access-modifier="private" name="filePath" display-name="" uuid="04b8d276-9e6c-4360-bb0a-5ae2de990b94" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<param access-modifier="private" name="error" display-name="" uuid="94ddeef9-5bce-4b86-bb4d-17658f7f968c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
 	</object>
 	<object access-modifier="private" name="Debug" display-name="Debug" uuid="8139c637-8fb4-4f30-93e2-667acd52693e" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5" description="" cardinal="1"/>
 	<object access-modifier="private" name="Files" display-name="Files" uuid="bf7beec6-2687-4922-b1ba-4141f11eb415" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5" description="" cardinal="1">
@@ -17,10 +26,7 @@
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="DataExportFailed">
 				<body kind="om">
 					<![CDATA[if (errorMessage != "")
-{
-	private.EventParams[0] = errorMessage;	
-	pOnError.Invoke();
-}]]>
+	private.NotifyResult(private.targetFilePath, errorMessage);]]>
 				</body>
 			</do-on>
 			<init target="Chart" ver="5" ref="init_Chart"/>
@@ -59,23 +65,30 @@ BeginReadAsync();	]]>
 			</body>
 		</do>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ReadFinished">
-			<body kind="om">
+			<body kind="javascript">
 				<![CDATA[// подготавливаем папку для сохранения
-folder: string = Files.ParentPath(private.targetFilePath);
-if (!Files.Exists(folder))
-	Files.CreateRecursiveFolder(folder);
+var folder = Files.ParentPath(private.targetFilePath);
+Files.CreateRecursiveFolder(folder);
 
 // формат файла определяем по расширению
-format: string = String.SubString(Files.Extension(private.targetFilePath), 1);
+var format = Files.Extension(private.targetFilePath).substring(1);
 
 // выполняем сохранение
-Table_1.Save(private.targetFilePath, format);
+var error = "";
+try
+{	
+	Table_1.Save(private.targetFilePath, format);
+}
+catch(err)
+{
+	error = err.message;
+}
 
 // уведомляем о том, что сохранение выполнено
-private.EventParams[0] = private.targetFilePath;
-pExportFinished.Invoke();]]>
+private.NotifyResult(private.targetFilePath, error);]]>
 			</body>
 		</do-on>
+		<designed target="OptOfProcessingEvents" value="0" ver="5"/>
 	</object>
 	<object access-modifier="private" name="Table_1" display-name="Table_1" uuid="3f857e09-d493-475f-a5cc-897b4ee6924d" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="5">
 		<designed target="X" value="0" ver="5"/>
@@ -247,6 +260,5 @@ else return "";]]>
 		<param access-modifier="private" name="numParam" display-name="" uuid="8e28aaf1-1ae0-4652-adc3-0ef7587dd2c5" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
 	</do>
 	<object access-modifier="private" name="pExportFinished" display-name="pExportFinished" uuid="e16ffd06-b6d3-44c7-9cef-9ecc80b5c42c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description=""/>
-	<object access-modifier="private" name="pOnError" display-name="pOnError" uuid="3658e95f-61f4-41d9-bf92-5448052d091c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
 </type>
 

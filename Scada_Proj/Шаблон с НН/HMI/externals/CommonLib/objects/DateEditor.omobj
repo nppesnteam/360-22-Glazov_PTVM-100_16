@@ -1,4 +1,4 @@
-<type access-modifier="public" name="DateEditor" display-name="DateEditor" uuid="69318eaa-4b1e-41d3-a9ef-5126cded808c" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="">
+<type access-modifier="public" name="DateEditor" display-name="Редактор даты" uuid="69318eaa-4b1e-41d3-a9ef-5126cded808c" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="ZValue" value="0" ver="5"/>
@@ -64,43 +64,27 @@
 			</do-trace>
 		</object>
 		<init target="theme" ver="5" ref="here.pTheme"/>
+		<object access-modifier="private" name="Initializer" display-name="Initializer" uuid="f885ea3b-3882-4f95-b666-0cc98a3560e5" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Initialized">
+				<body kind="om">
+					<![CDATA[// вместо незаданного значения используем текущее время
+if (Value == 0)
+	Value = DateTime.Now();]]>
+				</body>
+			</do-on>
+		</object>
 	</object>
 	<object access-modifier="private" name="Debug" display-name="Debug" uuid="f01c0ed5-92e1-4345-88bb-34cebeab34b6" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
-	<object access-modifier="private" name="IsVisible" display-name="IsVisible" uuid="c69ad60b-5d87-4fa5-8a90-99bfd54f1ea4" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
-			<body kind="om">
-				<![CDATA[if (oldValue != Value)
-{
-	oldValue = Value;
-	
-	if	(Value)
-	{
-		Fields.Margins.Left = 1;
-		Fields.Margins.Right = 1;
-		SizeLimits.MaxWidth = 85;
-	}
-	else
-	{
-		Fields.Margins.Left = 0;
-		Fields.Margins.Right = 0;
-		SizeLimits.MaxWidth = 0;
-	}
-}]]>
-			</body>
-		</do-on>
-		<object access-modifier="private" name="oldValue" display-name="oldValue" uuid="1832bdeb-1a4c-484c-9b5a-d9aa8153c582" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
-		<init target="oldValue" ver="5" value="true"/>
-	</object>
 	<object access-modifier="private" name="Value" display-name="Значение" uuid="bc4a48f5-574d-4510-85bd-105141bba7b6" base-type="notifying_timestamp" base-type-id="fb54ffc6-3bfa-4c71-8ae4-fc5d62558895" ver="5">
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
 			<body kind="om">
 				<![CDATA[if (!Editor.Focus)
 {
 	// отображаем значение даты
-	Fields.Day.Value = DateTime.Day(Value);
-	Fields.Month.Value = DateTime.Month(Value);
-	Fields.Year.Value = DateTime.Year(Value);
-	//Debug.Log("DateEditor show " + DateTime.ToString(Value));
+	Fields.Day.Value = DateTime.Day(value);
+	Fields.Month.Value = DateTime.Month(value);
+	Fields.Year.Value = DateTime.Year(value);
+	//Debug.Log("DateEditor show " + DateTime.ToString(value));
 }]]>
 			</body>
 		</do-on>
@@ -226,12 +210,6 @@ Text = "";]]>
 		</do-on>
 		<object access-modifier="private" name="isFocused" display-name="isFocused" uuid="5c10f703-9683-4498-b7d4-5fec653f5615" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
 	</object>
-	<init target="IsVisible" ver="5" value="true"/>
-	<do-trace access-modifier="private" target="Visible" ver="5">
-		<body>
-			<![CDATA[IsVisible]]>
-		</body>
-	</do-trace>
 	<object access-modifier="private" name="Fields" display-name="Fields" uuid="d5224c66-bfc6-4133-9771-686f56626600" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
 		<designed target="X" value="2" ver="5"/>
 		<designed target="Y" value="1" ver="5"/>
@@ -305,6 +283,11 @@ Text = "";]]>
 					</body>
 				</do-trace>
 				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="Font" ver="5">
+					<body>
+						<![CDATA[private.theme.Font]]>
+					</body>
+				</do-trace>
 			</object>
 			<object access-modifier="private" name="Layout" display-name="Layout" uuid="492ff708-d0c1-4cda-bb52-57a6fe4dd095" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
 				<designed target="Orientation" value="1" ver="5"/>
@@ -366,6 +349,11 @@ Text = "";]]>
 				<designed target="Right" value="0" ver="5"/>
 			</object>
 			<designed target="Flip" value="0" ver="5"/>
+			<do-trace access-modifier="private" target="Font" ver="5">
+				<body>
+					<![CDATA[private.theme.Font]]>
+				</body>
+			</do-trace>
 		</object>
 		<object access-modifier="private" name="Month" display-name="Month" uuid="ad969c03-06a0-4783-89c1-10886a00881e" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
 			<designed target="X" value="20" ver="5"/>
@@ -412,6 +400,11 @@ Text = "";]]>
 					</body>
 				</do-trace>
 				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="Font" ver="5">
+					<body>
+						<![CDATA[private.theme.Font]]>
+					</body>
+				</do-trace>
 			</object>
 			<object access-modifier="private" name="Layout" display-name="Layout" uuid="f6c29da6-b4f9-4963-806f-29867a4ae66f" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
 				<designed target="Orientation" value="1" ver="5"/>
@@ -473,6 +466,11 @@ Text = "";]]>
 				<designed target="Right" value="0" ver="5"/>
 			</object>
 			<designed target="Flip" value="0" ver="5"/>
+			<do-trace access-modifier="private" target="Font" ver="5">
+				<body>
+					<![CDATA[private.theme.Font]]>
+				</body>
+			</do-trace>
 		</object>
 		<object access-modifier="private" name="Year" display-name="Year" uuid="10c0bd84-dc96-4be7-bd66-1d4787b58615" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
 			<designed target="X" value="40" ver="5"/>
@@ -519,6 +517,11 @@ Text = "";]]>
 					</body>
 				</do-trace>
 				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="Font" ver="5">
+					<body>
+						<![CDATA[private.theme.Font]]>
+					</body>
+				</do-trace>
 			</object>
 			<object access-modifier="private" name="Layout" display-name="Layout" uuid="735e4f9b-bc47-4761-960d-fbe3bcfe7612" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
 				<designed target="Orientation" value="1" ver="5"/>
@@ -569,51 +572,6 @@ Text = "";]]>
 				<designed target="MinHeight" value="0" ver="5"/>
 				<designed target="MaxWidth" value="12" ver="5"/>
 				<designed target="MaxHeight" value="16777215" ver="5"/>
-			</object>
-			<object access-modifier="private" name="Arrow" display-name="Arrow" uuid="d6c75035-c4c6-470c-8019-6ff6666fbca8" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
-				<designed target="X" value="1" ver="5"/>
-				<designed target="Y" value="10" ver="5"/>
-				<designed target="ZValue" value="0" ver="5"/>
-				<designed target="Rotation" value="0" ver="5"/>
-				<designed target="Scale" value="1" ver="5"/>
-				<designed target="Visible" value="true" ver="5"/>
-				<designed target="Opacity" value="1" ver="5"/>
-				<designed target="Enabled" value="true" ver="5"/>
-				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="8" ver="5"/>
-				<designed target="Height" value="4" ver="5"/>
-				<designed target="PenColor" value="0xff000000" ver="5"/>
-				<designed target="PenStyle" value="1" ver="5"/>
-				<designed target="PenWidth" value="0.5" ver="5"/>
-				<designed target="BrushColor" value="0xff000000" ver="5"/>
-				<designed target="BrushStyle" value="1" ver="5"/>
-				<object access-modifier="private" name="Point_1" display-name="Point_1" uuid="ff7f30c6-8e5d-4a50-b758-72b3b7d19ac0" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="4" ver="5"/>
-					<designed target="Y" value="4" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_2" display-name="Point_2" uuid="5b8256e2-069e-4bfc-bbf5-732976e0460e" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="8" ver="5"/>
-					<designed target="Y" value="0" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_3" display-name="Point_3" uuid="b7e58ff3-4cff-4fe3-88f9-73b51880d187" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="0" ver="5"/>
-					<designed target="Y" value="0" ver="5"/>
-				</object>
-				<do-trace access-modifier="private" target="PenColor" ver="5">
-					<body>
-						<![CDATA[private.theme.ForegroundColor]]>
-					</body>
-				</do-trace>
-				<do-trace access-modifier="private" target="BrushColor" ver="5">
-					<body>
-						<![CDATA[private.theme.ForegroundColor]]>
-					</body>
-				</do-trace>
-				<object access-modifier="private" name="Point_4" display-name="Point_4" uuid="2d6513e7-5643-4f98-9ff2-7d1badcad758" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="4" ver="5"/>
-					<designed target="Y" value="4" ver="5"/>
-				</object>
-				<designed target="Flip" value="0" ver="5"/>
 			</object>
 			<object access-modifier="private" name="MouseIsOver" display-name="MouseIsOver" uuid="8897f10b-59df-4c84-8f8f-1221d7fbfa72" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseEnter">
@@ -678,7 +636,7 @@ Value.Update();]]>
 							<![CDATA[Fields.ScreenY(0, Fields.Height)]]>
 						</expr>
 					</init>
-					<init target="pTheme" ver="5" ref="here.private.theme"/>
+					<init target="init_Theme" ver="5" ref="here.private.theme"/>
 				</object>
 			</do-on>
 			<do-trace access-modifier="private" target="BrushColor" ver="5">
@@ -717,6 +675,71 @@ Value.Update();]]>
 				</do-on>
 			</object>
 			<designed target="Flip" value="0" ver="5"/>
+			<object access-modifier="private" name="Layout" display-name="Layout" uuid="1373a8e4-cbfe-4757-a4b6-48e000f5922b" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
+				<designed target="Orientation" value="1" ver="5"/>
+				<designed target="Gap" value="0" ver="5"/>
+			</object>
+			<object access-modifier="private" name="Arrow" display-name="Arrow" uuid="d6c75035-c4c6-470c-8019-6ff6666fbca8" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
+				<designed target="X" value="1" ver="5"/>
+				<designed target="Y" value="10" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="8" ver="5"/>
+				<designed target="Height" value="4" ver="5"/>
+				<designed target="PenColor" value="0xff000000" ver="5"/>
+				<designed target="PenStyle" value="1" ver="5"/>
+				<designed target="PenWidth" value="0.5" ver="5"/>
+				<designed target="BrushColor" value="0xff000000" ver="5"/>
+				<designed target="BrushStyle" value="1" ver="5"/>
+				<object access-modifier="private" name="Point_1" display-name="Point_1" uuid="ff7f30c6-8e5d-4a50-b758-72b3b7d19ac0" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="4" ver="5"/>
+					<designed target="Y" value="4" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_2" display-name="Point_2" uuid="5b8256e2-069e-4bfc-bbf5-732976e0460e" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="8" ver="5"/>
+					<designed target="Y" value="0" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_3" display-name="Point_3" uuid="b7e58ff3-4cff-4fe3-88f9-73b51880d187" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="0" ver="5"/>
+					<designed target="Y" value="0" ver="5"/>
+				</object>
+				<do-trace access-modifier="private" target="PenColor" ver="5">
+					<body>
+						<![CDATA[private.theme.ForegroundColor]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="BrushColor" ver="5">
+					<body>
+						<![CDATA[private.theme.ForegroundColor]]>
+					</body>
+				</do-trace>
+				<object access-modifier="private" name="Point_4" display-name="Point_4" uuid="2d6513e7-5643-4f98-9ff2-7d1badcad758" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="4" ver="5"/>
+					<designed target="Y" value="4" ver="5"/>
+				</object>
+				<designed target="Flip" value="0" ver="5"/>
+				<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="a5cdaa87-badc-464d-931c-fce7024c7c6e" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+					<designed target="MinWidth" value="0" ver="5"/>
+					<designed target="MinHeight" value="0" ver="5"/>
+					<designed target="MaxWidth" value="8" ver="5"/>
+					<designed target="MaxHeight" value="4" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Alignment" display-name="Alignment" uuid="7151dac3-f385-48b8-9899-b02c1695eca0" base-type="LayoutAlignment" base-type-id="cb30d8f3-1816-4ca2-87ec-f9a3c4b4e7b4" ver="5" description="" cardinal="1">
+					<designed target="HorizontalAlignment" value="1" ver="5"/>
+					<designed target="VerticalAlignment" value="1" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Margins" display-name="Margins" uuid="07197d68-79ba-4c9d-bda3-2e36144b3624" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+					<designed target="Top" value="2" ver="5"/>
+					<designed target="Bottom" value="2" ver="5"/>
+					<designed target="Left" value="2" ver="5"/>
+					<designed target="Right" value="2" ver="5"/>
+				</object>
+			</object>
 		</object>
 		<do-trace access-modifier="private" target="PenColor" ver="5">
 			<body>
@@ -905,12 +928,6 @@ return false;]]>
 			</body>
 		</do-trace>
 		<designed target="Flip" value="0" ver="5"/>
-	</object>
-	<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="91831a3f-35f2-492d-8d15-0ec076b4881c" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
-		<designed target="MinWidth" value="0" ver="5"/>
-		<designed target="MinHeight" value="22" ver="5"/>
-		<designed target="MaxWidth" value="85" ver="5"/>
-		<designed target="MaxHeight" value="25" ver="5"/>
 	</object>
 	<object access-modifier="private" name="Error" display-name="Описание ошибки" uuid="4531cefd-c660-468b-b0c2-ce18c33e9256" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
 	<designed target="Flip" value="0" ver="5"/>

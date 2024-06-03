@@ -9,8 +9,8 @@
 	<designed target="Enabled" value="true" ver="5"/>
 	<designed target="Tooltip" value="" ver="5"/>
 	<object access-modifier="private" name="Line_1" display-name="Line_1" uuid="87466c48-d1f1-4abc-8554-cc45db6e203c" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
-		<designed target="X" value="8" ver="5"/>
-		<designed target="Y" value="-3" ver="5"/>
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="-13" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
@@ -43,10 +43,11 @@
 			</body>
 		</do-trace>
 		<init target="Visible" ver="5" value="false"/>
+		<designed target="Flip" value="0" ver="5"/>
 	</object>
 	<object access-modifier="private" name="Line_2" display-name="Line_2" uuid="9c418e16-eab0-48ad-b932-ccbe4140ca8b" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
-		<designed target="X" value="12" ver="5"/>
-		<designed target="Y" value="-3" ver="5"/>
+		<designed target="X" value="6" ver="5"/>
+		<designed target="Y" value="-13" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
@@ -79,10 +80,11 @@
 			</body>
 		</do-trace>
 		<init target="Visible" ver="5" value="false"/>
+		<designed target="Flip" value="0" ver="5"/>
 	</object>
 	<object access-modifier="private" name="Line_3" display-name="Line_3" uuid="37c28f51-b1ad-41d4-8500-3a0660718645" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
-		<designed target="X" value="8" ver="5"/>
-		<designed target="Y" value="20" ver="5"/>
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="30" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
@@ -118,8 +120,8 @@
 		<designed target="Flip" value="0" ver="5"/>
 	</object>
 	<object access-modifier="private" name="Line_4" display-name="Line_4" uuid="5dd1f9e7-caeb-42b7-abc4-2577decba650" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
-		<designed target="X" value="12" ver="5"/>
-		<designed target="Y" value="20" ver="5"/>
+		<designed target="X" value="6" ver="5"/>
+		<designed target="Y" value="30" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
@@ -175,8 +177,8 @@
 		<designed target="Flip" value="0" ver="5"/>
 	</object>
 	<object access-modifier="private" name="triangleTop" display-name="triangleTop" uuid="8063eb4f-d6b7-4f0b-b4d0-f8e8fd85cb97" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5" cardinal="1">
-		<designed target="X" value="0" ver="5"/>
-		<designed target="Y" value="0" ver="5"/>
+		<designed target="X" value="-7" ver="5"/>
+		<designed target="Y" value="-10" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
@@ -185,7 +187,7 @@
 		<designed target="Enabled" value="true" ver="5"/>
 		<designed target="Tooltip" value="" ver="5"/>
 		<designed target="Width" value="20" ver="5"/>
-		<designed target="Height" value="10" ver="5"/>
+		<designed target="Height" value="20" ver="5"/>
 		<designed target="PenColor" value="0xff888888" ver="5"/>
 		<designed target="PenStyle" value="1" ver="5"/>
 		<designed target="PenWidth" value="1" ver="5"/>
@@ -201,7 +203,7 @@
 		</object>
 		<object access-modifier="private" name="Point_3" display-name="Point_3" uuid="b12fafd9-2388-4241-8b5d-03c3be80df3c" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
 			<designed target="X" value="10" ver="5"/>
-			<designed target="Y" value="10" ver="5"/>
+			<designed target="Y" value="20" ver="5"/>
 		</object>
 		<object access-modifier="private" name="Point_4" display-name="Point_4" uuid="29b701f1-fb2b-4053-9e35-30f679a553cb" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
 			<designed target="X" value="0" ver="5"/>
@@ -210,7 +212,7 @@
 		<do-trace access-modifier="private" target="BrushColor" ver="5">
 			<conditional-expr>
 				<condition>
-					<![CDATA[FillTop == true]]>
+					<![CDATA[bH]]>
 				</condition>
 				<expr>
 					<![CDATA[Color]]>
@@ -224,7 +226,7 @@
 		</do-trace>
 		<do-trace access-modifier="private" target="PenColor" ver="5">
 			<body>
-				<![CDATA[Color]]>
+				<![CDATA[ColorPen]]>
 			</body>
 		</do-trace>
 		<object access-modifier="private" name="Blinker_1" display-name="Blinker_1" uuid="de85a4f1-cb37-468d-bf91-17200c14072d" base-type="Blinker" base-type-id="de67e797-c7fd-4703-9e0a-c04ac4022006" ver="5">
@@ -235,14 +237,19 @@
 			<designed target="FontColor" value="4278190080" ver="5"/>
 			<do-trace access-modifier="private" target="Active" ver="5">
 				<body>
-					<![CDATA[Alarm]]>
+					<![CDATA[Alarm||!(bH.Quality>=192)]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="PenColor" ver="5">
+				<body>
+					<![CDATA[ColorPen]]>
 				</body>
 			</do-trace>
 		</object>
 		<designed target="Flip" value="0" ver="5"/>
 	</object>
 	<object access-modifier="private" name="triangleBot" display-name="triangleBot" uuid="59e94edc-7718-4eac-b287-5e480c1fcc54" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
-		<designed target="X" value="0" ver="5"/>
+		<designed target="X" value="-7" ver="5"/>
 		<designed target="Y" value="10" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="180" ver="5"/>
@@ -252,7 +259,7 @@
 		<designed target="Enabled" value="true" ver="5"/>
 		<designed target="Tooltip" value="" ver="5"/>
 		<designed target="Width" value="20" ver="5"/>
-		<designed target="Height" value="10" ver="5"/>
+		<designed target="Height" value="20" ver="5"/>
 		<designed target="PenColor" value="0xff888888" ver="5"/>
 		<designed target="PenStyle" value="1" ver="5"/>
 		<designed target="PenWidth" value="1" ver="5"/>
@@ -268,7 +275,7 @@
 		</object>
 		<object access-modifier="private" name="Point_3" display-name="Point_3" uuid="a77dfdfc-680a-4b86-98fa-a8b83bd89e28" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
 			<designed target="X" value="10" ver="5"/>
-			<designed target="Y" value="10" ver="5"/>
+			<designed target="Y" value="20" ver="5"/>
 		</object>
 		<object access-modifier="private" name="Point_4" display-name="Point_4" uuid="5e7b0bf8-db25-4bf5-8311-d9cea9d6abcf" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
 			<designed target="X" value="0" ver="5"/>
@@ -277,7 +284,7 @@
 		<do-trace access-modifier="private" target="BrushColor" ver="5">
 			<conditional-expr>
 				<condition>
-					<![CDATA[FillBot == true]]>
+					<![CDATA[!bL]]>
 				</condition>
 				<expr>
 					<![CDATA[Color]]>
@@ -291,7 +298,7 @@
 		</do-trace>
 		<do-trace access-modifier="private" target="PenColor" ver="5">
 			<body>
-				<![CDATA[Color]]>
+				<![CDATA[ColorPen]]>
 			</body>
 		</do-trace>
 		<object access-modifier="private" name="Blinker_1" display-name="Blinker_1" uuid="f97344c6-fb5a-4918-bf32-165d96d583a5" base-type="Blinker" base-type-id="de67e797-c7fd-4703-9e0a-c04ac4022006" ver="5">
@@ -302,14 +309,18 @@
 			<designed target="FontColor" value="4278190080" ver="5"/>
 			<do-trace access-modifier="private" target="Active" ver="5">
 				<body>
-					<![CDATA[Alarm]]>
+					<![CDATA[Alarm||!(bL.Quality >= 192)]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="PenColor" ver="5">
+				<body>
+					<![CDATA[ColorPen]]>
 				</body>
 			</do-trace>
 		</object>
+		<designed target="Flip" value="0" ver="5"/>
 	</object>
-	<object access-modifier="private" name="FillTop" display-name="FillTop" uuid="e7231460-1a66-444c-b509-80070b9430bd" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
 	<object access-modifier="private" name="Color" display-name="Color" uuid="e226b047-4032-4080-88a7-c57ff99d75c2" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5"/>
-	<object access-modifier="private" name="FillBot" display-name="FillBot" uuid="61459a4e-e654-4752-a05c-fea5bc40f89f" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
 	<object access-modifier="private" name="Alarm" display-name="Alarm" uuid="29962d0b-bc75-4683-a40c-48d305413a34" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
 	<designed target="Flip" value="0" ver="5"/>
 	<object access-modifier="private" name="isOpenedModule" display-name="isOpenedModule" uuid="c325d7c8-015b-480e-bc6f-252c412a6823" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
@@ -331,27 +342,155 @@
 		</default-expr>
 	</do-trace>
 	<object access-modifier="private" name="KKS" display-name="KKS" uuid="302feb5f-4ee0-4b4c-9292-95b8e9fbac06" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5">
-		<init target="Source" ver="5" ref="hereApSource"/>
+		<init target="Source" ver="5" ref="craneApSource"/>
 		<init target="Path" ver="5" value="KKS"/>
 	</object>
 	<object access-modifier="private" name="NAME" display-name="NAME" uuid="12f247a7-850a-43f9-ab38-e0eccab9667e" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5">
-		<init target="Source" ver="5" ref="hereApSource"/>
+		<init target="Source" ver="5" ref="craneApSource"/>
 		<init target="Path" ver="5" value="NAME"/>
 	</object>
-	<object access-modifier="private" name="hereApSource" display-name="hereApSource" uuid="46764369-642b-43c6-b2e8-02f97c78f8ab" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
+	<object access-modifier="private" name="craneApSource" display-name="craneApSource" uuid="46764369-642b-43c6-b2e8-02f97c78f8ab" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
 		<designed target="Active" value="false" ver="5"/>
-		<designed target="UpdateRate" value="0" ver="5"/>
 		<designed target="ReAdvise" value="0" ver="5"/>
 		<init target="ParentSource" ver="5" ref="initApSource"/>
-		<init target="Path" ver="5" ref="initPath"/>
 		<designed target="Location" value="" ver="5"/>
 		<designed target="Port" value="4388" ver="5"/>
 		<designed target="HistoryPort" value="4950" ver="5"/>
 		<designed target="Path" value="" ver="5"/>
 		<designed target="ClientDisplayName" value="HMI" ver="5"/>
 		<designed target="ClientId" value="HMI" ver="5"/>
+		<init target="Path" ver="5" ref="initPath"/>
 	</object>
 	<param access-modifier="private" name="initApSource" display-name="initApSource" uuid="20e62ce2-c639-48b8-9996-13d668ba61ff" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="bL" display-name="bL" uuid="31db647a-9a17-447a-baa8-2aa7a681de0a" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Path" ver="5" value="bL"/>
+		<init target="Source" ver="5" ref="craneApSource"/>
+	</object>
+	<object access-modifier="private" name="bH" display-name="bH" uuid="0f51ad02-d731-4fb4-8352-46b09e1ae971" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Path" ver="5" value="bH"/>
+		<init target="Source" ver="5" ref="craneApSource"/>
+	</object>
 	<param access-modifier="private" name="initPath" display-name="initPath" uuid="ba6cf531-2725-45ca-a639-9b0ef6880044" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	<do-trace access-modifier="private" target="Tooltip" ver="5">
+		<body>
+			<![CDATA[NameExtended]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="mX" display-name="mX" uuid="4ea8ff6c-31e6-486d-9593-9e9587ae43b0" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+	<object access-modifier="private" name="mY" display-name="mY" uuid="7a2c6a62-cdc2-48b6-a605-83828ce052d0" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+	<object access-modifier="private" name="posX" display-name="posX" uuid="aa457370-899a-4b76-adc1-3c9f2522c524" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+	<object access-modifier="private" name="posY" display-name="posY" uuid="58214196-b426-4ec8-9cb0-f7742a2cbfa9" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+	<object access-modifier="private" name="bOpen" display-name="bOpen" uuid="b6e4dc10-b9de-49dd-a31d-11f8d05e4d50" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Path" ver="5" value="bOpen"/>
+		<init target="Source" ver="5" ref="craneApSource"/>
+	</object>
+	<object access-modifier="private" name="bClose" display-name="bClose" uuid="fabda0fb-e067-430c-a57d-383abaaaa042" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Path" ver="5" value="bClose"/>
+		<init target="Source" ver="5" ref="craneApSource"/>
+	</object>
+	<object access-modifier="private" name="bErrorEndCaps" display-name="bErrorEndCaps" uuid="c681dc32-2b59-4401-8cd0-420fcefc6012" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Path" ver="5" value="bErrorEndCaps"/>
+		<init target="Source" ver="5" ref="craneApSource"/>
+	</object>
+	<object access-modifier="private" name="bOpenManual" display-name="bOpenManual" uuid="65a08f2c-64ac-407c-ae5a-06b3f3820412" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Path" ver="5" value="bOpenManual"/>
+		<init target="Source" ver="5" ref="craneApSource"/>
+	</object>
+	<object access-modifier="private" name="bCloseManual" display-name="bCloseManual" uuid="afeb70e1-1f92-4a2e-b2df-b57cf48b1e7b" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Path" ver="5" value="bCloseManual"/>
+		<init target="Source" ver="5" ref="craneApSource"/>
+	</object>
+	<object access-modifier="private" name="bStopManual" display-name="bStopManual" uuid="4772f00c-e540-4e4e-8cfd-ee9b8e3c1f7b" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Path" ver="5" value="bStopManual"/>
+		<init target="Source" ver="5" ref="craneApSource"/>
+	</object>
+	<object access-modifier="private" name="bBlockClose" display-name="bBlockClose" uuid="6a002e74-3e60-457d-a3d1-88aa28a414eb" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Path" ver="5" value="bBlockCloseOut"/>
+		<init target="Source" ver="5" ref="craneApSource"/>
+	</object>
+	<object access-modifier="private" name="bBlockOpen" display-name="bBlockOpen" uuid="8c8bcf68-79ea-421b-9efc-41c64b4c8af1" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Path" ver="5" value="bBlockOpenOut"/>
+		<init target="Source" ver="5" ref="craneApSource"/>
+	</object>
+	<object access-modifier="private" name="bErrorCantCtrl" display-name="bErrorCantCtrl" uuid="dee7ccc7-809f-43a7-87ac-b4b736ed88a4" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Path" ver="5" value="bErrorCantCtrl"/>
+		<init target="Source" ver="5" ref="craneApSource"/>
+	</object>
+	<object access-modifier="private" name="InbAuto" display-name="InbAuto" uuid="51af0efc-c6d4-4951-98eb-9d23d55ad5da" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Path" ver="5" value="InbAuto"/>
+		<init target="Source" ver="5" ref="craneApSource"/>
+	</object>
+	<object access-modifier="private" name="OutbAuto" display-name="OutbAuto" uuid="577652f1-9a0c-4753-9f7f-3e94745d2dae" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Path" ver="5" value="OutbAuto"/>
+		<init target="Source" ver="5" ref="craneApSource"/>
+	</object>
+	<object access-modifier="private" name="Open" display-name="Open" uuid="7464370f-c159-4253-8f72-a6edc97dadd1" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" ver="5" description="">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[!bBlockOpen]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[bCloseManual = false;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[bStopManual = false;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[bOpenManual = true;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Close" display-name="Close" uuid="63d35e98-e251-4c67-839b-3094e0559946" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" ver="5" description="">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[!bBlockClose]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[bOpenManual = false;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[bStopManual = false;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[bCloseManual = true;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Stop" display-name="Stop" uuid="05b9d02f-d0be-4c76-a5c6-3c3be74cab5d" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" ver="5" description="">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[bOpenManual = false;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[bCloseManual = false;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[bStopManual = true;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="ColorPen" display-name="ColorPen" uuid="9bc34011-84c8-483e-a656-cea68a26b9ac" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5"/>
 </type>
 

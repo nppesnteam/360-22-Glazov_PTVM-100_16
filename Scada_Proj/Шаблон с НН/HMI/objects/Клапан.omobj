@@ -30,7 +30,7 @@
 	<designed target="WindowState" value="0" ver="5"/>
 	<designed target="WindowScalingMode" value="0" ver="5"/>
 	<designed target="MonitorNumber" value="0" ver="5"/>
-	<designed target="WindowPosition" value="0" ver="5"/>
+	<designed target="WindowPosition" value="1" ver="5"/>
 	<designed target="WindowCloseMode" value="0" ver="5"/>
 	<object access-modifier="private" name="refData" display-name="refData" uuid="387c45f0-7a5b-449d-b3c1-962b69ea5bba" base-type="Valve" base-type-id="98113973-9854-4dd1-9221-2cfccad5aaa0" base-const="true" base-ref="true" ver="5"/>
 	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Opened">
@@ -203,23 +203,23 @@
 		<designed target="DisabledPenColor" value="4288716960" ver="5"/>
 		<designed target="DisabledPenStyle" value="1" ver="5"/>
 		<designed target="DisabledPenWidth" value="0.5" ver="5"/>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MousePress">
-			<body kind="om">
-				<![CDATA[refData.bCloseManual = true;]]>
-			</body>
-		</do-on>
-		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MousePress">
-			<body kind="om">
-				<![CDATA[unit.Global.ShowMSG("Нажатие на кнопку \""+me.Text+"\" объекта \""+refData.NAME+"\".", 2);]]>
-			</body>
-		</do-on>
 		<designed target="Checked" value="false" ver="5"/>
 		<designed target="Flip" value="0" ver="5"/>
 		<do-trace access-modifier="private" target="Enabled" ver="5">
 			<body>
-				<![CDATA[refData.bBlockClose]]>
+				<![CDATA[!refData.bBlockClose]]>
 			</body>
 		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="ButtonPressed">
+			<body kind="om">
+				<![CDATA[unit.Global.ShowMSG("Нажатие на кнопку \""+me.Text+"\" объекта \""+refData.NAME+"\".", 2);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="ButtonPressed">
+			<body kind="om">
+				<![CDATA[refData.Close.Invoke();]]>
+			</body>
+		</do-on>
 	</object>
 	<object access-modifier="private" name="btnOpen" display-name="btnOpen" uuid="7eccab7f-e5d9-4178-aad9-57a233ec8c4c" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
 		<designed target="X" value="138" ver="5"/>
@@ -261,23 +261,23 @@
 		<designed target="DisabledPenColor" value="4288716960" ver="5"/>
 		<designed target="DisabledPenStyle" value="1" ver="5"/>
 		<designed target="DisabledPenWidth" value="0.5" ver="5"/>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MousePress">
-			<body kind="om">
-				<![CDATA[refData.bOpenManual = true;]]>
-			</body>
-		</do-on>
-		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MousePress">
-			<body kind="om">
-				<![CDATA[unit.Global.ShowMSG("Нажатие на кнопку \""+me.Text+"\" объекта \""+refData.NAME+"\".", 2);]]>
-			</body>
-		</do-on>
 		<designed target="Checked" value="false" ver="5"/>
 		<designed target="Flip" value="0" ver="5"/>
 		<do-trace access-modifier="private" target="Enabled" ver="5">
 			<body>
-				<![CDATA[refData.bBlockOpen]]>
+				<![CDATA[!refData.bBlockOpen]]>
 			</body>
 		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="ButtonPressed">
+			<body kind="om">
+				<![CDATA[unit.Global.ShowMSG("Нажатие на кнопку \""+me.Text+"\" объекта \""+refData.NAME+"\".", 2);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="ButtonPressed">
+			<body kind="om">
+				<![CDATA[refData.Open.Invoke();]]>
+			</body>
+		</do-on>
 	</object>
 	<object access-modifier="private" name="indicClose" display-name="indicClose" uuid="7c25a10b-911f-4e1a-9402-85c662ccb2db" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 		<designed target="X" value="30" ver="5"/>

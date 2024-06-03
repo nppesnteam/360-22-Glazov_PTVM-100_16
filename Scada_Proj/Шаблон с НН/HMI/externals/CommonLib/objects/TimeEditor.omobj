@@ -1,4 +1,4 @@
-<type access-modifier="public" name="TimeEditor" display-name="TimeEditor" uuid="d0247632-ed97-46ad-b054-1da38b54f7b7" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="">
+<type access-modifier="public" name="TimeEditor" display-name="Редактор времени" uuid="d0247632-ed97-46ad-b054-1da38b54f7b7" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="ZValue" value="0" ver="5"/>
@@ -64,43 +64,27 @@
 			</do-trace>
 		</object>
 		<init target="theme" ver="5" ref="here.pTheme"/>
+		<object access-modifier="private" name="Initializer" display-name="Initializer" uuid="30aee2ea-bfdb-4a2f-8b65-e30d1f0db89a" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Initialized">
+				<body kind="om">
+					<![CDATA[// вместо незаданного значения используем текущее время
+if (Value == 0)
+	Value = DateTime.Now();]]>
+				</body>
+			</do-on>
+		</object>
 	</object>
 	<object access-modifier="private" name="Debug" display-name="Debug" uuid="0eb3a6d8-9846-4410-8c39-68e0d12fb9a8" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
-	<object access-modifier="private" name="IsVisible" display-name="IsVisible" uuid="4a13676b-9abf-4d3b-a570-5f01a33da0dc" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
-			<body kind="om">
-				<![CDATA[if (oldValue != Value)
-{
-	oldValue = Value;
-	
-	if	(Value)
-	{
-		Fields.Margins.Left = 1;
-		Fields.Margins.Right = 1;
-		SizeLimits.MaxWidth = 75;
-	}
-	else
-	{
-		Fields.Margins.Left = 0;
-		Fields.Margins.Right = 0;
-		SizeLimits.MaxWidth = 0;
-	}
-}]]>
-			</body>
-		</do-on>
-		<object access-modifier="private" name="oldValue" display-name="oldValue" uuid="8d0ca185-03df-4206-910d-dadc62a5c041" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
-		<init target="oldValue" ver="5" value="true"/>
-	</object>
 	<object access-modifier="private" name="Value" display-name="Значение" uuid="92c3e4b5-46fd-466a-a397-8f57a6d2d062" base-type="notifying_timestamp" base-type-id="fb54ffc6-3bfa-4c71-8ae4-fc5d62558895" ver="5">
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
 			<body kind="om">
 				<![CDATA[if (!Editor.Focus)
 {
 	// отображаем значение даты
-	Fields.Hour.Value = DateTime.Hour(Value);
-	Fields.Minute.Value = DateTime.Minute(Value);
-	Fields.Second.Value = DateTime.Second(Value);
-	//Debug.Log("TimeEditor show " + DateTime.ToString(Value));
+	Fields.Hour.Value = DateTime.Hour(value);
+	Fields.Minute.Value = DateTime.Minute(value);
+	Fields.Second.Value = DateTime.Second(value);
+	//Debug.Log("TimeEditor show " + DateTime.ToString(value));
 }]]>
 			</body>
 		</do-on>
@@ -225,12 +209,6 @@ Text = "";]]>
 		</do-on>
 		<object access-modifier="private" name="isFocused" display-name="isFocused" uuid="1a9f7a2d-c42d-4380-a698-99c8c21b57c8" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
 	</object>
-	<init target="IsVisible" ver="5" value="true"/>
-	<do-trace access-modifier="private" target="Visible" ver="5">
-		<body>
-			<![CDATA[IsVisible]]>
-		</body>
-	</do-trace>
 	<object access-modifier="private" name="Fields" display-name="Fields" uuid="a5d6f58c-473d-4fac-afe7-bfb821baf6f9" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
 		<designed target="X" value="2" ver="5"/>
 		<designed target="Y" value="1" ver="5"/>
@@ -304,6 +282,11 @@ Text = "";]]>
 					</body>
 				</do-trace>
 				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="Font" ver="5">
+					<body>
+						<![CDATA[private.theme.Font]]>
+					</body>
+				</do-trace>
 			</object>
 			<object access-modifier="private" name="Layout" display-name="Layout" uuid="07f6d31e-34c2-4858-b7eb-ad9744f1a626" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
 				<designed target="Orientation" value="1" ver="5"/>
@@ -362,6 +345,11 @@ Text = "";]]>
 				<designed target="Right" value="0" ver="5"/>
 			</object>
 			<designed target="Flip" value="0" ver="5"/>
+			<do-trace access-modifier="private" target="Font" ver="5">
+				<body>
+					<![CDATA[private.theme.Font]]>
+				</body>
+			</do-trace>
 		</object>
 		<object access-modifier="private" name="Minute" display-name="Minute" uuid="ffcf03bc-a653-4241-9bc8-d3a600b02bea" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
 			<designed target="X" value="20.666666666666668" ver="5"/>
@@ -408,6 +396,11 @@ Text = "";]]>
 					</body>
 				</do-trace>
 				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="Font" ver="5">
+					<body>
+						<![CDATA[private.theme.Font]]>
+					</body>
+				</do-trace>
 			</object>
 			<object access-modifier="private" name="Layout" display-name="Layout" uuid="cd9bb44e-6a38-4563-9320-4227d0e546fb" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
 				<designed target="Orientation" value="1" ver="5"/>
@@ -466,6 +459,11 @@ Text = "";]]>
 				<designed target="Right" value="0" ver="5"/>
 			</object>
 			<designed target="Flip" value="0" ver="5"/>
+			<do-trace access-modifier="private" target="Font" ver="5">
+				<body>
+					<![CDATA[private.theme.Font]]>
+				</body>
+			</do-trace>
 		</object>
 		<object access-modifier="private" name="Second" display-name="Second" uuid="89dc9fcb-9673-4c9a-af00-87f64ba40f35" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
 			<designed target="X" value="41.333333333333336" ver="5"/>
@@ -512,6 +510,11 @@ Text = "";]]>
 					</body>
 				</do-trace>
 				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="Font" ver="5">
+					<body>
+						<![CDATA[private.theme.Font]]>
+					</body>
+				</do-trace>
 			</object>
 			<object access-modifier="private" name="Layout" display-name="Layout" uuid="38a8e604-6e7a-407e-9df8-19af7436889c" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
 				<designed target="Orientation" value="1" ver="5"/>
@@ -681,7 +684,7 @@ Select(field);]]>
 				<designed target="Tooltip" value="" ver="5"/>
 				<designed target="Width" value="14" ver="5"/>
 				<designed target="Height" value="11.5" ver="5"/>
-				<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+				<designed target="BrushColor" value="0x00000000" ver="5"/>
 				<designed target="BrushStyle" value="1" ver="5"/>
 				<designed target="PenColor" value="0xff808080" ver="5"/>
 				<designed target="PenStyle" value="1" ver="5"/>
@@ -772,9 +775,14 @@ Repeat.Active = false;]]>
 				</do-trace>
 				<object access-modifier="private" name="MouseIsOver" display-name="MouseIsOver" uuid="fd325e1f-4356-453e-a70d-36dfcd3a2b2c" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
 				<do-trace access-modifier="private" target="BrushColor" ver="5">
-					<body>
-						<![CDATA[MouseIsOver ? private.theme.EditorBrushColor : private.theme.BackgroundColor]]>
-					</body>
+					<conditional-expr>
+						<condition>
+							<![CDATA[MouseIsOver]]>
+						</condition>
+						<expr>
+							<![CDATA[private.theme.EditorBrushColor]]>
+						</expr>
+					</conditional-expr>
 				</do-trace>
 				<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseEnter">
 					<body kind="om">
@@ -806,7 +814,7 @@ Repeat.Active = false;]]>
 				<designed target="Tooltip" value="" ver="5"/>
 				<designed target="Width" value="14" ver="5"/>
 				<designed target="Height" value="11.5" ver="5"/>
-				<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+				<designed target="BrushColor" value="0x00000000" ver="5"/>
 				<designed target="BrushStyle" value="1" ver="5"/>
 				<designed target="PenColor" value="0xff808080" ver="5"/>
 				<designed target="PenStyle" value="1" ver="5"/>
@@ -897,9 +905,14 @@ Repeat.Active = false;]]>
 				</do-trace>
 				<object access-modifier="private" name="MouseIsOver" display-name="MouseIsOver" uuid="e6dc9ce4-0fa1-4be3-a231-2ca09c9b3eb0" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
 				<do-trace access-modifier="private" target="BrushColor" ver="5">
-					<body>
-						<![CDATA[MouseIsOver ? private.theme.EditorBrushColor : private.theme.BackgroundColor]]>
-					</body>
+					<conditional-expr>
+						<condition>
+							<![CDATA[MouseIsOver]]>
+						</condition>
+						<expr>
+							<![CDATA[private.theme.EditorBrushColor]]>
+						</expr>
+					</conditional-expr>
 				</do-trace>
 				<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseEnter">
 					<body kind="om">
@@ -943,12 +956,6 @@ Repeat.Active = false;]]>
 			</body>
 		</do-trace>
 		<designed target="Flip" value="0" ver="5"/>
-	</object>
-	<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="4c465b8a-9f49-43ea-9dcb-24d71fa2c58f" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
-		<designed target="MinWidth" value="0" ver="5"/>
-		<designed target="MinHeight" value="22" ver="5"/>
-		<designed target="MaxWidth" value="75" ver="5"/>
-		<designed target="MaxHeight" value="25" ver="5"/>
 	</object>
 	<object access-modifier="private" name="Error" display-name="Описание ошибки" uuid="19cdb937-8fd9-49bb-b5a5-7069d3a98e9d" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
 	<designed target="Flip" value="0" ver="5"/>

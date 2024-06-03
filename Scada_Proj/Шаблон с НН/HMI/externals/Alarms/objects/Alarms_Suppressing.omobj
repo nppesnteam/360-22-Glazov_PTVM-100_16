@@ -57,7 +57,6 @@ Request.Invoke();]]>
 			<![CDATA[pTheme.BackgroundColor]]>
 		</body>
 	</do-trace>
-	<object access-modifier="private" name="pAlarms" display-name="pAlarms" uuid="45a60f57-3011-418f-8473-bfb0cd6b0506" base-type="Alarms" base-type-id="521d4d69-1b32-4210-ae17-099df1125e3c" base-const="true" base-ref="true" ver="4"/>
 	<designed target="WindowIconPath" value="" ver="5"/>
 	<designed target="Flip" value="0" ver="5"/>
 	<do-on access-modifier="private" name="Handler_WindowActivationChanged" display-name="Handler_WindowActivationChanged" ver="5" event="WindowActivationChanged">
@@ -658,7 +657,6 @@ return JSON.stringify(items);]]>
 							<![CDATA[top]]>
 						</expr>
 					</init>
-					<init target="pTheme" ver="5" ref="here.pTheme"/>
 					<init target="Items" ver="5">
 						<expr>
 							<![CDATA[GetMenuItems()]]>
@@ -667,6 +665,7 @@ return JSON.stringify(items);]]>
 					<init target="pResult" ver="5" ref="OpenMenu.MenuResult"/>
 					<init target="pAction" ver="5" ref="MenuClick"/>
 					<designed target="AlwaysOnTop" value="true" ver="5"/>
+					<init target="init_Theme" ver="5" ref="here.pTheme"/>
 				</object>
 			</do-on>
 			<object access-modifier="private" name="left" display-name="left" uuid="108a1ca7-95fd-43d3-a0db-ab8514bd8d96" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
@@ -799,8 +798,8 @@ for (let i = 0; i < rows.length; i++)
 	if (selected_row[3]=="Да") count_s+=1;
 	if (selected_row[2]=="Да") count_b+=2;
 }
-SelectionAllowChangeBlock.Value = pAlarms.Main_panel.private.Suppression.BlockIndefinite.Value && count_b > 0;
-SelectionAllowChangeSuppress.Value = (pAlarms.Main_panel.private.Suppression.SuppressIndefinite.Value || pAlarms.Main_panel.private.Suppression.SuppressInterval.Value) && count_s > 0;
+SelectionAllowChangeBlock.Value = pConfig.Suppression.BlockIndefinite.Value && count_b > 0;
+SelectionAllowChangeSuppress.Value = (pConfig.Suppression.SuppressIndefinite.Value || pConfig.Suppression.SuppressInterval.Value) && count_s > 0;
 ]]>
 			</body>
 		</do-on>
@@ -809,6 +808,7 @@ SelectionAllowChangeSuppress.Value = (pAlarms.Main_panel.private.Suppression.Sup
 		<designed target="Orientation" value="2" ver="5"/>
 		<designed target="Gap" value="0" ver="5"/>
 	</object>
+	<object access-modifier="private" name="pConfig" display-name="pConfig" uuid="856c9e8f-9eeb-42ed-9860-63b591b9fc91" base-type="Alarms_Config" base-type-id="cac958c3-d08c-4b7b-8345-d70ccc130514" base-const="true" base-ref="true" ver="5" description=""/>
 	<object access-modifier="private" name="Action_OpenDrop" display-name="Action_OpenDrop" uuid="924fcefa-3368-4747-9f7a-3a587dd1c6bb" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
 		<designed target="Enabled" value="true" ver="5"/>
 		<designed target="InvokeTrigger" value="false" ver="5"/>
@@ -816,30 +816,25 @@ SelectionAllowChangeSuppress.Value = (pAlarms.Main_panel.private.Suppression.Sup
 			<object access-modifier="private" uuid="9b9221aa-d273-4322-be59-19021864b2d9" base-type="Alarms_SuppressDrop" base-type-id="6155baaf-cada-4127-be8b-c4991556b415" ver="5">
 				<init target="pTheme" ver="5" ref="here.pTheme"/>
 				<init target="DropItems" ver="5" ref="SelItems"/>
-				<init target="iAlarms" ver="5" ref="pAlarms"/>
-				<init target="Result" ver="5" ref="DropResult"/>
+				<init target="iSource" ver="5" ref="here.AlarmManager.Source"/>
+				<init target="OnComplete" ver="5" ref="DoOnComplete"/>
 			</object>
 		</do-on>
 		<object access-modifier="private" name="SelItems" display-name="SelItems" uuid="bda4deda-67fb-40a1-bfa6-6f30c0cd83d3" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
-		<object access-modifier="private" name="DropResult" display-name="DropResult" uuid="f6706f14-ecca-4a88-baeb-37efab1b19a5" base-type="DialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" ver="5" description="" cardinal="1"/>
-		<object access-modifier="private" name="DropResultValue" display-name="DropResultValue" uuid="0bd690fc-f7d5-45da-b17e-98a01837d108" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1">
-			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+		<object access-modifier="private" name="DoOnComplete" display-name="DoOnComplete" uuid="f6706f14-ecca-4a88-baeb-37efab1b19a5" base-type="EventHandler" base-type-id="c01b71c2-42e8-4333-b70e-cc35fdf96f7e" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_Invoked" display-name="Handler_Invoked" ver="5" event="Invoked">
 				<body kind="javascript">
-					<![CDATA[if (value != "")
+					<![CDATA[var result = Args.Get();
+if (result != "")
 {
-	var result = JSON.parse(value);
-	ShowMessage.Open(result.text, result.icon);
-	DropResultValue = "";
+	var obj = JSON.parse(result);
+	ShowMessage.Open(obj.text, obj.icon);
+	result = "";
 	Request.Invoke();
 }]]>
 				</body>
 			</do-on>
 		</object>
-		<do-trace access-modifier="private" target="DropResultValue" ver="5">
-			<body>
-				<![CDATA[DropResult.Value]]>
-			</body>
-		</do-trace>
 	</object>
 	<object access-modifier="private" name="Action_OpenModify" display-name="Action_OpenModify" uuid="9887c8ec-5a0f-4cda-8186-6745f740a3ce" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
 		<designed target="Enabled" value="true" ver="5"/>
@@ -847,11 +842,11 @@ SelectionAllowChangeSuppress.Value = (pAlarms.Main_panel.private.Suppression.Sup
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
 			<object access-modifier="private" uuid="d25b6c36-e6d8-47f4-9159-17f40aece84d" base-type="Alarms_SuppressModify" base-type-id="610a1e7e-fbe2-4faa-8147-a1b96b446eb9" ver="5">
 				<init target="pTheme" ver="5" ref="here.pTheme"/>
-				<init target="pAlarms" ver="5" ref="here.pAlarms"/>
 				<init target="SelectedType" ver="5" ref="SelType"/>
 				<init target="SelectedSource" ver="5" ref="SelSource"/>
-				<init target="iAlarms" ver="5" ref="here.pAlarms"/>
 				<init target="OnReload" ver="5" ref="here.Request"/>
+				<init target="pConfig" ver="5" ref="here.pConfig"/>
+				<init target="iSource" ver="5" ref="here.AlarmManager.Source"/>
 			</object>
 		</do-on>
 		<object access-modifier="private" name="SelSource" display-name="SelSource" uuid="84dddcb0-d5c4-4498-bdf7-8e86b3308b81" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
@@ -901,9 +896,8 @@ else
 }]]>
 			</body>
 		</do-on>
-		<init target="Source" ver="5" ref="iAlarms.ApSource"/>
+		<init target="Source" ver="5" ref="here.iSource"/>
 	</object>
-	<param access-modifier="private" name="iAlarms" display-name="iAlarms" uuid="dbbc67ef-e6fc-4a20-8e92-4950a594be13" base-type="Alarms" base-type-id="521d4d69-1b32-4210-ae17-099df1125e3c" base-const="true" base-ref="true" ver="4"/>
 	<object access-modifier="private" name="Request" display-name="Request" uuid="a085559e-4353-4abe-be6d-d96e89c77a8e" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
 		<designed target="Enabled" value="true" ver="5"/>
 		<designed target="InvokeTrigger" value="false" ver="5"/>
@@ -937,5 +931,6 @@ ShowMessage.Invoke();]]>
 			<param access-modifier="private" name="icon" display-name="" uuid="3b535dc8-4f76-45a2-ae85-886cce8eb896" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
 		</do>
 	</object>
+	<param access-modifier="private" name="iSource" display-name="iSource" uuid="74d33b6b-ea79-496a-9564-498c7a1a34e8" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" base-const="true" base-ref="true" ver="5" description=""/>
 </type>
 

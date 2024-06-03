@@ -70,7 +70,7 @@ while (i<Count)
 		</do-on>
 		<init target="SecurityContext" ver="5" ref="unit.Security.SecurityContextHMI"/>
 	</object>
-	<object access-modifier="private" name="txtPass" display-name="txtPass" uuid="6d934179-d350-4bd1-858f-77c8d39eedae" base-type="TextEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5">
+	<object access-modifier="private" name="txtPass" display-name="txtPass" uuid="6d934179-d350-4bd1-858f-77c8d39eedae" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5">
 		<designed target="X" value="50" ver="5"/>
 		<designed target="Y" value="50" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
@@ -154,9 +154,7 @@ Timer.Active = true;]]>
 Trig=false;]]>
 		</body>
 	</do-on>
-	<object access-modifier="private" name="Keyboard" display-name="Keyboard" uuid="f045d579-428d-4940-ab13-4ef3628a29d2" base-type="Keyboard" base-type-id="9430301f-2693-4c5c-9013-867d8d8f73f4" ver="5">
-		<designed target="Locale" value="en-US" ver="5"/>
-	</object>
+	<object access-modifier="private" name="Keyboard" display-name="Keyboard" uuid="f045d579-428d-4940-ab13-4ef3628a29d2" base-type="Keyboard" base-type-id="9430301f-2693-4c5c-9013-867d8d8f73f4" ver="5"/>
 	<object access-modifier="private" name="btnChngPass" display-name="btnChngPass" uuid="0f046f7b-fa46-474b-be03-9d89ae50b4a4" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
 		<designed target="X" value="50" ver="5"/>
 		<designed target="Y" value="80" ver="5"/>
@@ -354,5 +352,7 @@ OldStateEnt=Keyboard.KeyState(82);
 	</object>
 	<object access-modifier="private" name="OldStateEsc" display-name="OldStateEsc" uuid="dbd369a2-55ab-4da1-8e96-291ddfa3034e" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
 	<object access-modifier="private" name="OldStateEnt" display-name="OldStateEnt" uuid="550a6282-6f10-47cd-a262-1cd2dd30d948" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+	<designed target="Flip" value="0" ver="5"/>
+	<designed target="WindowIconPath" value="" ver="5"/>
 </type>
 

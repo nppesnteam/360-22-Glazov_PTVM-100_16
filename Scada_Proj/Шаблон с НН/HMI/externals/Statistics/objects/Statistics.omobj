@@ -1,0 +1,660 @@
+<type access-modifier="public" name="Statistics" display-name="Statistics" uuid="C11CEEB3-7A14-4701-AF6E-735749D45402" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="800" ver="5"/>
+	<designed target="Height" value="400" ver="5"/>
+	<designed target="RoundingRadius" value="0" ver="5"/>
+	<designed target="PenColor" value="4278190080" ver="5"/>
+	<designed target="PenStyle" value="1" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="4278190080" ver="5"/>
+	<designed target="BrushStyle" value="0" ver="5"/>
+	<object access-modifier="private" name="private" display-name="private" uuid="aa4642ab-de61-4fcf-b373-0289bfcc5383" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+		<object access-modifier="private" name="pTheme" display-name="pTheme" uuid="ea95dc42-e64f-4cc5-9e6d-cd90312cab36" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5" base-ref="true"/>
+		<do access-modifier="private" name="SaveUserSettings" display-name="SaveUserSettings" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[var filePath = GetUserSettingsFilePath();
+try
+{
+	//log("Сохранение пользовательских настроек в файл "  + filePath);
+	var settings = 
+	{
+		'Tree': {
+			'Width': Splitter.Position.Value
+		},
+		'Table': JSON.parse(Table.GetViewSettings())
+	};
+	
+	var folder = Files.ParentPath(filePath);
+	if (!Files.Exists(folder))
+		Files.CreateRecursiveFolder(folder);
+	
+	Files.WriteTextFile(filePath, JSON.stringify(settings, null, 2));
+}
+catch(error)
+{
+	log("Не удалось сохранить пользовательские настройки в "  + filePath + ":\n" + error);
+}]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="LoadUserSettings" display-name="LoadUserSettings" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[var filePath = GetUserSettingsFilePath();
+if (Files.Exists(filePath))
+{	
+	//log("Загрузка пользовательских настроек из файла "  + filePath);
+	try
+	{
+		var json = Files.ReadTextFile(filePath);
+		var settings = JSON.parse(json);
+		
+		var tree = settings.Tree;
+		if (tree != undefined)
+		{
+			Splitter.Position = tree.Width;
+		}
+			
+		var table = settings.Table;
+		if (table != undefined)
+			Table.UpdateView(JSON.stringify(table));
+	}
+	catch(error)
+	{
+		log("Не удалось загрузить пользовательские настройки из "  + filePath + ":\n" + error);
+	}
+}]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="initialized" display-name="initialized" uuid="0c80dd25-8e1b-4602-9923-aa237e713ea7" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+		<do access-modifier="private" name="GetUserSettingsFilePath" display-name="GetUserSettingsFilePath" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[folderPath: string = unit.ProductInfo.GetUserDataFolder();
+return Files.CombinePath(folderPath, "settings.json");]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="ShowInfo" display-name="ShowInfo" uuid="1e91371f-4550-47a7-8d20-44bca15ebeac" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="30932634-21bc-4e7c-acd5-e83a49738e3a" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="5">
+					<init target="WindowCaption" ver="5" ref="title"/>
+					<init target="Icon" ver="5" value="0"/>
+					<init target="Buttons" ver="5" value="0"/>
+					<init target="Message" ver="5" ref="message"/>
+					<init target="CharactersPerLine" ver="5" value="60"/>
+					<init target="pTheme" ver="5" ref="here.private.pTheme"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="title" display-name="title" uuid="5fbe564a-aa12-41a2-85e2-8c9670f8f05d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="message" display-name="message" uuid="bb499960-9641-451c-b8cb-9cc3bb66c955" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+		</object>
+		<object access-modifier="private" name="ShowError" display-name="ShowError" uuid="290eafd0-acb8-45d4-ae0c-5ea6f0ef79e2" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="67cd45d3-ef1f-41a5-88da-9de60f902ef4" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="5">
+					<init target="Icon" ver="5" value="3"/>
+					<init target="Buttons" ver="5" value="0"/>
+					<init target="Message" ver="5" ref="message"/>
+					<init target="CharactersPerLine" ver="5" value="60"/>
+					<designed target="WindowCaption" value="Ошибка" ver="5"/>
+					<init target="pTheme" ver="5" ref="here.private.pTheme"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="message" display-name="message" uuid="152ad3eb-e89d-4cf2-a1aa-afdb2e8f22a9" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+		</object>
+		<object access-modifier="private" name="CreateSnapshot" display-name="CreateSnapshot" uuid="a9194672-3b68-4208-9bce-5330a889f5fd" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="a478851c-939c-4e37-bf45-c9bddf04d176" base-type="SaveFileDialog" base-type-id="d69a91c3-89e9-4e7b-994e-9242dbc5e095" ver="5">
+					<init target="FileTypeFilter" ver="5" value="Файл статистики (*.jstat)|*.jstat"/>
+					<designed target="WindowCaption" value="Сохранить статистику в файл" ver="5"/>
+					<init target="Result" ver="5" ref="DialogResult"/>
+					<init target="OnComplete" ver="5" ref="FileChoosen"/>
+					<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
+					<init target="ChangeFolderAllowed" ver="5">
+						<expr>
+							<![CDATA[here.private.pPermissions.FileSystemAccess]]>
+						</expr>
+					</init>
+					<init target="CreateFolderAllowed" ver="5">
+						<expr>
+							<![CDATA[here.private.pPermissions.FileSystemAccess]]>
+						</expr>
+					</init>
+					<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
+					<init target="DefaultPath" ver="5">
+						<expr>
+							<![CDATA[GetSnapshotFolderPath()]]>
+						</expr>
+					</init>
+					<init target="RootPath" ver="5">
+						<expr>
+							<![CDATA[here.private.pPermissions.FileSystemAccess ? "" : GetSnapshotFolderPath()]]>
+						</expr>
+					</init>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="DialogResult" display-name="DialogResult" uuid="39f852d9-b82c-4df8-aec0-004d0c531a52" base-type="FileDialogResult" base-type-id="602926f1-7d01-4d50-a5c0-d8fd35eadc74" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="FileChoosen" display-name="FileChoosen" uuid="859e2fc9-bbf3-45c5-89c6-eeded6efe4fe" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[Exporter.OutputFilePath = DialogResult.FilePath;
+Exporter.StartExport();
+
+private.pSettings.SnapshotFolder = DialogResult.FolderPath;]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="Exporter" display-name="Exporter" uuid="21dc24de-f908-41a6-b42b-0b0a72d6823e" base-type="Statistics_Exporter" base-type-id="b0d4b771-678f-4550-bb68-6a9519e7cbfc" ver="5" description="" cardinal="1">
+				<init target="pOnComplete" ver="5" ref="OnComplete"/>
+				<init target="pOnError" ver="5" ref="OnError"/>
+				<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="283591f1-9414-4629-b16b-6028e53499e1" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+					<designed target="Enabled" value="true" ver="5"/>
+					<designed target="InvokeTrigger" value="false" ver="5"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[ShowInfo.title = "Сохранить статистику в файл";
+ShowInfo.message = "Статистика сервера " + Location + ":" + String.ToString(Port) + " сохранена в файл:\n" + OutputFilePath;
+ShowInfo.Invoke();]]>
+						</body>
+					</do-on>
+				</object>
+				<object access-modifier="private" name="OnError" display-name="OnError" uuid="505dc529-abda-442f-b24b-b92250fd4829" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+					<designed target="Enabled" value="true" ver="5"/>
+					<designed target="InvokeTrigger" value="false" ver="5"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[ShowError.message = Error;
+ShowError.Invoke();]]>
+						</body>
+					</do-on>
+				</object>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[Files.CreateRecursiveFolder(private.GetSnapshotFolderPath());]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="ChangeCredentials" display-name="ChangeCredentials" uuid="2910a743-bb67-482c-b13d-f9b5a600aa23" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="cd13d622-7ccd-4913-b3da-70e013c8ccea" base-type="CredentialsDialog" base-type-id="312561c8-0874-4534-9316-938390e51d05" ver="5">
+					<init target="OkAction" ver="5" ref="OnComplete"/>
+					<init target="pCredentials" ver="5" ref="Credentials"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="sourceIndex" display-name="sourceIndex" uuid="9edfe713-64ad-418f-9128-de77061f88e8" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="Credentials" display-name="Credentials" uuid="ba8b2569-f52f-4d77-8f0a-8f233380c8ce" base-type="ApCredentials" base-type-id="fef70643-767d-4533-98e9-412948317273" ver="5" description="" cardinal="1">
+				<designed target="FilePath" value="" ver="5"/>
+				<do access-modifier="private" name="ToJSON" display-name="ToJSON" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+					<body kind="om">
+						<![CDATA[if (Assigned)
+{
+	folder: string = ProductInfo.GetUserDataFolder();
+	Files.CreateRecursiveFolder(folder);
+	
+	FilePath = Files.CombinePath(folder, String.ToString(DateTime.UtcNow()));
+	if (Save())
+	{
+		credentials: string = Files.ReadTextFile(FilePath);
+		//Debug.Log("Credentials: " + credentials);
+		Files.RemoveRecursive(FilePath);
+		return credentials;
+	}
+	else
+		Debug.Log(GetLastError());
+}
+
+return "";]]>
+					</body>
+				</do>
+			</object>
+			<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="ad52856e-71d4-488b-9647-c911e9cca9da" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[credentials: string = Credentials.ToJSON();
+Sources.Source[sourceIndex].SetCredentials(credentials);]]>
+					</body>
+				</do-on>
+			</object>
+		</object>
+		<object access-modifier="private" name="UserSettingsChanged" display-name="UserSettingsChanged" uuid="1bd57295-bc3c-47a6-8f02-24e4d0786f38" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<object access-modifier="private" name="Timer" display-name="Timer" uuid="cf17f28f-3276-46ad-8fac-caeaecaf2ade" base-type="Timer" base-type-id="72ba7cd4-549e-41f2-923c-2431b91f349a" ver="5" description="" cardinal="1">
+				<designed target="Period" value="250" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnTimer">
+					<body kind="om">
+						<![CDATA[Active = false;
+SaveUserSettings();]]>
+					</body>
+				</do-on>
+			</object>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[if (initialized)
+	Timer.Active = true;]]>
+				</body>
+			</do-on>
+		</object>
+		<init target="pTheme" ver="5" ref="init_Theme"/>
+		<object access-modifier="private" name="pScreenKeyboard" display-name="pScreenKeyboard" uuid="3d8d35e2-3c4e-49b4-8b0b-3f0fdbe92c8c" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
+		<object access-modifier="private" name="pPermissions" display-name="pPermissions" uuid="e7b06053-f532-4e65-bce8-2691b8ce5e6d" base-type="Statistics_Permissions" base-type-id="cb7a3e0d-75a2-404f-bf4c-763ec4f725c7" base-const="true" base-ref="true" ver="5" description=""/>
+		<init target="pScreenKeyboard" ver="5" ref="init_ScreenKeyboard"/>
+		<init target="pPermissions" ver="5" ref="init_Permissions"/>
+		<do access-modifier="private" name="GetSnapshotFolderPath" display-name="GetSnapshotFolderPath" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[folder: string = private.pSettings.SnapshotFolder;
+
+// Если путь не указан, то используем специальную папку в папке с данными программы
+if (folder == "")
+	folder = Files.CombinePath(unit.ProductInfo.GetProgramDataFolder(), "Shapshots");
+
+return folder;]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="pSettings" display-name="pSettings" uuid="2a6754b7-3685-407b-bb40-3340040f1525" base-type="Statistics_Settings" base-type-id="a8c582fd-25fb-4cc3-8522-3166d1a63de6" base-const="true" base-ref="true" ver="5" description=""/>
+		<init target="pSettings" ver="5" ref="init_Settings"/>
+	</object>
+	<object access-modifier="private" name="Layout" display-name="Layout" uuid="6ffa9fa8-8110-41c6-9071-0ca50bca9131" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
+		<designed target="Orientation" value="1" ver="5"/>
+		<designed target="Gap" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="Tree" display-name="Tree" uuid="46f185a8-b3a1-4e3b-9e4c-98fa496ac236" base-type="Statistics_Tree" base-type-id="5747a4ab-c283-43d3-a75b-7c699c0b8969" ver="5">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="250" ver="5"/>
+		<designed target="Height" value="399" ver="5"/>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="5190d0aa-844b-405f-932b-36128f964c42" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="250" ver="5"/>
+			<designed target="MinHeight" value="0" ver="5"/>
+			<designed target="MaxWidth" value="250" ver="5"/>
+			<designed target="MaxHeight" value="16777215" ver="5"/>
+			<do-trace access-modifier="private" target="MinWidth" ver="5">
+				<body>
+					<![CDATA[Splitter.Position]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="MaxWidth" ver="5">
+				<body>
+					<![CDATA[Splitter.Position]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="DoubleClicked" display-name="DoubleClicked" uuid="5e24b233-7eb3-4009-b34a-bdbcdd2b5ec3" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="javascript">
+					<![CDATA[var itemInfo = GetCurrentItemInfo();
+if (itemInfo != "")
+{
+	var info = JSON.parse(itemInfo);
+
+	// добавляем только параметр (исключаем добавление секций и папок двойным кликом)
+	if (info.type == 3)
+	{
+		var sourceIndex;
+		if (info.source.mode == Const.ServerMode)
+			sourceIndex = Sources.private.FindServer(info.source.location, info.source.port);
+		else if (info.source.mode == Const.SnapshotMode)
+			sourceIndex = Sources.private.FindSnapshot(info.source.filePath);
+
+		if (sourceIndex > -1)
+			Table.Add(sourceIndex, info.path);
+	}
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="MouseRightClicked" display-name="MouseRightClicked" uuid="c66fbdde-fda9-4a01-b529-6105d1468822" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[itemInfo = GetCurrentItemInfo();
+if (itemInfo != "")
+{
+	OpenMenu.mouseX = View.ScreenX(View.MouseX, View.MouseY);
+	OpenMenu.mouseY = View.ScreenY(View.MouseX, View.MouseY);
+	OpenMenu.Invoke();
+}]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="itemInfo" display-name="itemInfo" uuid="d9ba6372-fe54-491b-aba2-d98bb3ddf101" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="OpenMenu" display-name="OpenMenu" uuid="c244d689-7549-45ca-b051-0bdcd216c7d7" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<object access-modifier="private" name="mouseX" display-name="mouseX" uuid="0e09842e-d295-441f-b9ad-b2bd43d4a25e" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+				<object access-modifier="private" name="mouseY" display-name="mouseY" uuid="30d4cead-68db-4a34-803e-113b3dfdebf4" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+				<object access-modifier="private" name="MenuResult" display-name="MenuResult" uuid="4b20af80-b2e4-4c29-980f-3d8326919e19" base-type="MenuResult" base-type-id="0fe7658c-92f4-4af7-b038-3594414ac651" ver="5" description="" cardinal="1"/>
+				<object access-modifier="private" name="OnMenuClick" display-name="OnMenuClick" uuid="8daadf2d-6877-4219-9faf-34e0b2ce39e0" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+					<designed target="Enabled" value="true" ver="5"/>
+					<designed target="InvokeTrigger" value="false" ver="5"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="javascript">
+							<![CDATA[var info = JSON.parse(itemInfo);
+
+if (MenuResult.Id == "refreshNode")
+{
+	RefreshCurrentNode.Invoke();
+}
+else if (MenuResult.Id == "disconnect")
+{
+	if (info.source.mode == Const.ServerMode)
+		Sources.DisconnectFromServer(info.source.location, info.source.port);
+	else if (info.source.mode == Const.SnapshotMode)
+		Sources.DisconnectFromSnapshot(info.source.filePath);
+}
+else if (MenuResult.Id == "set_credentials")
+{
+	here.private.ChangeCredentials.sourceIndex = Sources.private.FindServer(info.source.location, info.source.port);
+	here.private.ChangeCredentials.Invoke();
+}
+else if (MenuResult.Id == "CreateSnapshot")
+{
+	here.private.CreateSnapshot.Exporter.Location = info.source.location;
+	here.private.CreateSnapshot.Exporter.Port = info.source.port;
+	here.private.CreateSnapshot.Invoke();
+}
+else if (MenuResult.Id == "addNodeToTable")
+{
+	var sourceIndex;
+	if (info.source.mode == Const.ServerMode)
+		sourceIndex = Sources.private.FindServer(info.source.location, info.source.port);
+	else if (info.source.mode == Const.SnapshotMode)
+		sourceIndex = Sources.private.FindSnapshot(info.source.filePath);
+
+	if (sourceIndex > -1)
+		Table.Add(sourceIndex, info.path);
+}]]>
+						</body>
+					</do-on>
+				</object>
+				<do access-modifier="private" name="GetMenuItems" display-name="GetMenuItems" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+					<body kind="javascript">
+						<![CDATA[var info = JSON.parse(itemInfo);
+
+var items = [];
+
+if (info.type == 0)
+{
+	items.push({ 'id': "refreshNode", 'title': "Обновить", 'icon': "Statistics_Icons/Refresh16.png", 'active': RefreshCurrentNode.Enabled });
+	items.push({ 'id': "disconnect", 'title': "Отключиться", 'icon': "Statistics_Icons/Disconnect16.png" });
+	if (info.source.mode == Const.ServerMode)
+	{
+		items.push({ 'id': "set_credentials", 'title': "Указать учетные данные..." });
+		items.push({ 'id': "CreateSnapshot", 'title': "Сохранить статистику в файл...", 'active': info.source.connected });
+	}
+}
+else
+{
+	items.push({ 'id': "refreshNode", 'title': "Обновить", 'icon': "Statistics_Icons/Refresh16.png", 'active': RefreshCurrentNode.Enabled });
+	items.push({ 'id': "addNodeToTable", 'title': "Добавить в таблицу", 'icon': "Statistics_Icons/Add16.png" });
+}
+
+return JSON.stringify(items);]]>
+					</body>
+				</do>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-new">
+					<object access-modifier="private" uuid="731f1b98-38e8-4b07-90ff-91c54107e892" base-type="Menu" base-type-id="07bb4545-980a-4140-bbaa-4d1397447864" ver="5">
+						<init target="pResult" ver="5" ref="MenuResult"/>
+						<init target="pAction" ver="5" ref="OnMenuClick"/>
+						<init target="Items" ver="5">
+							<expr>
+								<![CDATA[GetMenuItems()]]>
+							</expr>
+						</init>
+						<init target="WindowX" ver="5" ref="mouseX"/>
+						<init target="WindowY" ver="5" ref="mouseY"/>
+						<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
+					</object>
+				</do-on>
+			</object>
+		</object>
+		<init target="pDoubleClicked" ver="5" ref="DoubleClicked"/>
+		<init target="pMouseRightClicked" ver="5" ref="MouseRightClicked"/>
+		<init target="init_SingleConnection" ver="5" ref="here.init_SingleConnection"/>
+		<init target="init_Sources" ver="5" ref="here.Sources"/>
+		<init target="init_Theme" ver="5" ref="here.init_Theme"/>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[TreeVisible]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Splitter" display-name="Splitter" uuid="e1b8ea97-6868-4e4c-a76e-b0b6ebfac402" base-type="HorizontalSplitter" base-type-id="9f2e11a5-219a-4c9b-bceb-928724b2f965" ver="5" description="" cardinal="1">
+		<designed target="X" value="250" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="4" ver="5"/>
+		<designed target="Height" value="400" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseRelease">
+			<body kind="om">
+				<![CDATA[here.private.UserSettingsChanged.Invoke();]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[TreeVisible]]>
+			</body>
+		</do-trace>
+		<init target="Position" ver="5" value="250"/>
+		<init target="Minimum" ver="5" value="30"/>
+		<init target="init_Theme" ver="5" ref="here.init_Theme"/>
+	</object>
+	<object access-modifier="private" name="Table" display-name="Table" uuid="7da1a09f-e7c4-40ed-91cf-d17e4adff9b4" base-type="Statistics_Table" base-type-id="00427635-2700-4afe-9da5-7b8483bb3c64" ver="5">
+		<designed target="X" value="254" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="546" ver="5"/>
+		<designed target="Height" value="400" ver="5"/>
+		<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="9b0f139b-4a24-44be-8bcb-b445712ec006" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5" description="" cardinal="1">
+			<designed target="Weight" value="10000" ver="5"/>
+		</object>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<init target="pUserSettingsChanged" ver="5" ref="here.private.UserSettingsChanged"/>
+		<init target="init_Sources" ver="5" ref="here.Sources"/>
+		<init target="pSources" ver="5" ref="here.Sources"/>
+		<init target="init_Theme" ver="5" ref="here.init_Theme"/>
+		<init target="init_ScreenKeyboard" ver="5" ref="here.init_ScreenKeyboard"/>
+		<init target="init_Settings" ver="5" ref="here.init_Settings"/>
+		<init target="init_Permissions" ver="5" ref="here.init_Permissions"/>
+	</object>
+	<object access-modifier="private" name="Const" display-name="Const" uuid="26a11f08-d29c-4104-abdc-6311087171d1" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+		<object access-modifier="private" name="ServerMode" display-name="ServerMode" uuid="8e13637c-b867-49f1-a451-d244b2bcce9f" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5" description="" cardinal="1"/>
+		<init target="ServerMode" ver="5" value="0"/>
+		<object access-modifier="private" name="SnapshotMode" display-name="SnapshotMode" uuid="c9f1903b-4962-431c-9dcc-f7bdf9590022" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5" description="" cardinal="1"/>
+		<init target="SnapshotMode" ver="5" value="1"/>
+	</object>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="0cf2ad0e-6554-43b6-bfc3-6e9291b1cb27" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<object access-modifier="private" name="Files" display-name="Files" uuid="d07c4577-7477-43de-9999-52627d4ac502" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5">
+		<designed target="RootPath" value="/" ver="5"/>
+	</object>
+	<object access-modifier="private" name="Sources" display-name="Sources" uuid="48ac3b52-943c-4844-bc30-bc2a474477dd" base-type="Statistics_Sources" base-type-id="339b01a5-f79f-4676-9044-5a3cdb3c76a9" ver="5" description="" cardinal="1"/>
+	<init target="TreeVisible" ver="5" value="true"/>
+	<object access-modifier="private" name="Initializer" display-name="Initializer" uuid="d10e796d-c5e6-4a57-9f08-ee25ba598d56" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="5" description="" cardinal="1">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Initialized">
+			<body kind="om">
+				<![CDATA[private.LoadUserSettings();
+private.initialized = true;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="TreeVisible" display-name="Отображать дерево" uuid="e8c45766-4fb6-4c5f-a36e-c0bfe9a0fefb" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+	<do access-modifier="private" name="SaveParameterList" display-name="SaveParameterList" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[var parameterList = {
+	'Sources': [],
+	'Parameters': []
+};
+
+// формируем список источников
+for (let sourceIndex = 0; sourceIndex < Sources.Source.Length; sourceIndex++)
+{
+	var source = Sources.Source[sourceIndex];
+	if (source.IsUsed())
+	{
+		var sourceInfo = { 'index': sourceIndex, 'mode': source.Mode };
+		if (source.Mode == Const.ServerMode)
+		{
+			sourceInfo.location = source.Location;
+			sourceInfo.port = source.Port;
+			sourceInfo.title = source.Title;
+			
+			var credentials = source.GetCredentials();
+			if (credentials != "")
+				sourceInfo.credentials = JSON.parse(credentials);
+		}
+		else if (source.Mode == Const.SnapshotMode)
+		{
+			sourceInfo.filePath = source.FilePath;
+		}
+		parameterList.Sources.push(sourceInfo);
+	}
+}
+
+// формируем список параметров
+var rowCount = Table.Model.GetRowCount();
+for (let row = 0; row < rowCount; row++)
+{
+	var sourceIndex = Table.Model.GetCellData(row, Table.Model.SourceIndexColumn);
+	if (sourceIndex != undefined && sourceIndex > -1)
+	{
+		// путь до параметра и индекс источника
+		parameterList.Parameters.push({
+			'folder': Table.Model.GetCellData(row, Table.Model.FolderColumn),
+			'section': Table.Model.GetCellData(row, Table.Model.SectionColumn),
+			'parameter': Table.Model.GetCellData(row, Table.Model.ParameterColumn),
+			'path': Table.Model.GetCellData(row, Table.Model.PathColumn),
+			'sourceIndex': Table.Model.GetCellData(row, Table.Model.SourceIndexColumn)
+		});
+	}
+	else
+	{
+		// разделитель
+		parameterList.Parameters.push({});
+	}
+}
+
+// сохраняем список в файл
+var json = JSON.stringify(parameterList, null, 2);
+try
+{
+	Files.WriteTextFile(filePath, json);
+}
+catch(error)
+{
+	private.ShowError.message = "Не удалось сохранить список параметров в "  + filePath + ":\n" + error;
+	private.ShowError.Invoke();
+}]]>
+		</body>
+		<param access-modifier="private" name="filePath" display-name="" uuid="be5e796c-ca16-4442-88c7-3f3de77a2e72" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="OpenParameterList" display-name="OpenParameterList" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[Table.Clear();
+
+// запоминаем активные источники
+var activeSources = new Set();
+for (let si = 0; si < Sources.Source.Length; si++)
+{
+	var source = Sources.Source[si];
+	if (source.IsUsed())
+		activeSources.add(si);
+}
+
+if (Files.Exists(filePath))
+{
+	//log("Загрузка списка параметров из файла " + filePath);
+	try
+	{
+		var parameterList = JSON.parse(Files.ReadTextFile(filePath));
+		
+		// подключение к источникам
+		var sources = new Map();
+		for (let sourceInfo of parameterList.Sources)
+		{
+			var sourceIndex = undefined;
+			if (sourceInfo.mode ==  Const.ServerMode)
+			{
+				var credentials = sourceInfo.credentials == undefined ? "" : JSON.stringify(sourceInfo.credentials);
+				sourceIndex = Sources.ConnectToServer(sourceInfo.location, sourceInfo.port, sourceInfo.title, credentials);
+			}
+			else if (sourceInfo.mode ==  Const.SnapshotMode)
+			{
+				sourceIndex = Sources.ConnectToSnapshot(sourceInfo.filePath);
+			}
+				
+			sources.set(sourceInfo.index, sourceIndex);
+			activeSources.delete(sourceIndex);
+		}
+		
+		// добавление параметров
+		for (let parameterInfo of parameterList.Parameters)
+		{
+			if (parameterInfo.path != undefined)
+			{
+				var sourceIndex = sources.get(parameterInfo.sourceIndex);
+	
+				var row = Table.Model.AddParameter(sourceIndex, parameterInfo.path);
+					
+				if (parameterInfo.folder != undefined && parameterInfo.section != undefined && parameterInfo.parameter != undefined)
+				{
+					// добавляем параметр без разбора пути
+					Table.Model.SetCellData(row, Table.Model.FolderColumn, parameterInfo.folder);
+					Table.Model.SetCellData(row, Table.Model.SectionColumn, parameterInfo.section);
+					Table.Model.SetCellData(row, Table.Model.ParameterColumn, parameterInfo.parameter);
+					Table.Model.SetCellData(row, Table.Model.ResolveStateColumn, Table.Const.ResolveState.Resolved);
+					
+					// подписываемся на получение значений
+					Table.Items[sourceIndex].Subscribe(row, parameterInfo.path);
+				}
+				else
+				{
+					// запускаем разбор пути
+					Table.Browser[sourceIndex].TryResolvePath(row, parameterInfo.path);
+				}
+			}
+			else
+				Table.AddSeparator();
+		}
+	}
+	catch(error)
+	{
+		private.ShowError.message = "Не удалось загрузить список параметров из "  + filePath + ":\n" + error;
+		private.ShowError.Invoke();
+	}
+}
+
+// отключаемся от оставшихся неиспользованных источников
+for(let sourceIndex of activeSources)
+	Sources.Source[sourceIndex].Disconnect();]]>
+		</body>
+		<param access-modifier="private" name="filePath" display-name="" uuid="eb571382-ddf7-4216-b3b6-8cf5c928203a" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<designed target="Flip" value="0" ver="5"/>
+	<param access-modifier="private" name="init_SingleConnection" display-name="Только одно подключение" uuid="fc94c8b3-3baa-4748-aaa8-4af5de7d2b88" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description=""/>
+	<param access-modifier="private" name="init_Theme" display-name="Тема оформления" uuid="fe90862d-8075-4b21-b224-df12b51b680a" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
+	<param access-modifier="private" name="init_ScreenKeyboard" display-name="Вызов экранной клавиатуры" uuid="5bd6930b-fbfb-4fd4-9614-fde690410712" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
+	<param access-modifier="private" name="init_Permissions" display-name="Разрешения" uuid="203db936-622c-4715-b6fe-f0f2a1708ac8" base-type="Statistics_Permissions" base-type-id="cb7a3e0d-75a2-404f-bf4c-763ec4f725c7" base-const="true" base-ref="true" ver="5" description=""/>
+	<param access-modifier="private" name="init_Settings" display-name="Настройки" uuid="312f0993-51d7-447e-acb3-436b902c3602" base-type="Statistics_Settings" base-type-id="a8c582fd-25fb-4cc3-8522-3166d1a63de6" base-const="true" base-ref="true" ver="5" description=""/>
+</type>
+

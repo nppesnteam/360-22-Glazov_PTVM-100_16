@@ -60,16 +60,19 @@
 		<designed target="Enabled" value="true" ver="5"/>
 		<designed target="Tooltip" value="" ver="5"/>
 		<designed target="Width" value="75" ver="5"/>
-		<designed target="Height" value="23" ver="5"/>
+		<designed target="Height" value="24" ver="5"/>
 		<designed target="Checkable" value="false" ver="5"/>
 		<designed target="Text" value="Да" ver="5"/>
 		<designed target="Font" value="Arial,10,-1,5,75,0,0,0,0,0" ver="5"/>
 		<designed target="FontColor" value="4278190080" ver="5"/>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
 			<body kind="om">
-				<![CDATA[refMain.Close();]]>
+				<![CDATA[Close();
+refMain.Close();]]>
 			</body>
 		</do-on>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Checked" value="false" ver="5"/>
 	</object>
 	<object access-modifier="private" name="btnNo" display-name="btnNo" uuid="c372d1e0-10cc-438c-b10d-a0fc217d9526" base-type="SystemButton" base-type-id="22504b6b-d24c-45e5-a9dd-6fb41e3d49c1" ver="5">
 		<designed target="X" value="150" ver="5"/>
@@ -82,7 +85,7 @@
 		<designed target="Enabled" value="true" ver="5"/>
 		<designed target="Tooltip" value="" ver="5"/>
 		<designed target="Width" value="75" ver="5"/>
-		<designed target="Height" value="23" ver="5"/>
+		<designed target="Height" value="24" ver="5"/>
 		<designed target="Checkable" value="false" ver="5"/>
 		<designed target="Text" value="Нет" ver="5"/>
 		<designed target="Font" value="Arial,10,-1,5,75,0,0,0,0,0" ver="5"/>
@@ -92,7 +95,11 @@
 				<![CDATA[here.Close();]]>
 			</body>
 		</do-on>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Checked" value="false" ver="5"/>
 	</object>
 	<object access-modifier="private" name="refMain" display-name="refMain" uuid="108297df-4619-40e6-af3b-72b368b0aebb" base-type="MainForm" base-type-id="c9cad641-8960-46db-9523-43c92084d4a1" base-const="true" base-ref="true" ver="5"/>
+	<designed target="Flip" value="0" ver="5"/>
+	<designed target="WindowIconPath" value="" ver="5"/>
 </type>
 
