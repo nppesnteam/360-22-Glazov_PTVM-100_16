@@ -1,0 +1,192 @@
+<type access-modifier="private" name="Alarms_ViewFilter" display-name="Alarms_ViewFilter" uuid="ab719db0-02af-4b41-b039-70a478bd4e78" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="">
+	<object access-modifier="private" name="pConfig" display-name="Конфигурация" uuid="cd92283f-d7e3-4b53-b877-4efc49635372" base-type="Alarms_Config" base-type-id="cac958c3-d08c-4b7b-8345-d70ccc130514" base-const="true" base-ref="true" ver="5" description=""/>
+	<do access-modifier="private" name="GetDescription" display-name="GetDescription" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="javascript">
+			<![CDATA[var columns = JSON.parse(pConfig.TableView.GetSelectableColumns());
+function MakeDescr(jsonstr)
+{
+	var json = jsonstr == "" ? {} : JSON.parse(jsonstr);
+	var text = "";
+	function AddDescr(title,value)
+	{
+		if (value!=undefined && value.length > 0)
+		{
+			if (text.length>0) text += ", ";
+			text += title + ": " + value;
+		}
+	}
+	for (let c = 0; c < columns.length; c++)
+	{
+		var id = columns[c];
+		var value = json[id];
+		if (id != pConfig.TableView.Static.Ack.Id || value != "Все")
+			AddDescr(pConfig.TableView.Columns[pConfig.TableView.GetColPos(id)].Title, value);
+	}
+	return text;
+}
+
+var descr = "";
+if (used_filters == "")
+	descr = MakeDescr(here.json);
+else
+	descr = MakeDescr(UsedFiltersCombine());
+return descr;]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetAdvancedFilterAsSuperJson" display-name="SetAdvancedFilterAsSuperJson" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[if (superjson == "") superjson = "{}";//установим пустой фильтр
+json = superjson;//сохраним заданный фильтр
+used_filters = filter_key=="" ? ""/*#29355 пользовательский фильтр должен быть в единственном виде для правильной работы логики*/ : JSON.stringify([filter_key]);//сохраним ключ заданного фильтра
+//apply
+var columns = JSON.parse(pConfig.TableView.GetSelectableColumns());
+var filter = JSON.parse(superjson);
+for (let c = 0; c < pConfig.TableView.Columns.Length; c++)//#36676 теперь требуется применять по всем столбцам
+if (pConfig.TableView.Columns[c].guiFlag)
+{
+	var id = pConfig.TableView.Columns[c].Id;
+	var value = filter[id];
+	if (id == pConfig.TableView.Static.Ack.Id)
+		JsonFilters.Set(id, GetAckCondition(value));
+	else
+		JsonFilters.Set(id, Alarms_Tools.BuildJsonFilterFromAdvanced(id, value));
+}]]>
+		</body>
+		<param access-modifier="private" name="superjson" display-name="" uuid="36748f06-7547-4eca-8b2d-112bbea84113" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="filter_key" display-name="" uuid="5567607e-ae96-420e-ab56-1b8bf12b53fd" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="GetAckCondition" display-name="GetAckCondition" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[if (text == "Неквитированные")
+	return "{\"data\":false}";
+else if (text == "Квитированные")
+	return "{\"data\":true}";
+else return "";]]>
+		</body>
+		<param access-modifier="private" name="text" display-name="" uuid="160efe3c-7b69-4c66-a2de-85c73ebf10ad" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	</do>
+	<do access-modifier="private" name="UsedFiltersContainKey" display-name="UsedFiltersContainKey" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<body kind="javascript">
+			<![CDATA[if (used_filters == "") return false;
+var obj = JSON.parse(used_filters);
+if (obj.length<1) return false;
+return obj.includes(key);]]>
+		</body>
+		<param access-modifier="private" name="key" display-name="" uuid="c10d7a96-a5af-4011-9730-d55b2ddb0b7d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="UsedFiltersPreset" display-name="UsedFiltersPreset" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[//read
+var obj = [];
+if (used_filters != "" && used_filters.length>0 && pConfig.PresetFilters.mode>0)
+	obj = JSON.parse(used_filters);
+//add or remove
+if (obj.includes(name))
+	obj = obj.filter(function(_value, _index, _arr){return _value!=name;});
+else
+	obj.push(name);
+//save
+used_filters = obj.length==0 ? "" : JSON.stringify(obj);//для переключения на вариант безфильтра надо устанавливать пустое значение
+
+//apply
+var data = JSON.parse(UsedFiltersCombine());
+var allkeys = JSON.parse(pConfig.TableView.GetSelectableColumns());
+var keys = [];
+for (let i = 0; i < allkeys.length; i++)
+if (data[allkeys[i]] != undefined)
+{
+	keys.push(allkeys[i]);
+	if (allkeys[i] == pConfig.TableView.Static.Ack.Id)
+		JsonFilters.Set(allkeys[i], GetAckCondition(data[allkeys[i]]));
+	else
+		JsonFilters.Set(allkeys[i], Alarms_Tools.BuildJsonFilterFromAdvanced(allkeys[i], data[allkeys[i]]));
+}
+//disable absent conditions
+for (let i = 0; i < allkeys.length; i++)
+	if (keys.includes(allkeys[i])==false)
+		JsonFilters.Set(allkeys[i],"");
+]]>
+		</body>
+		<param access-modifier="private" name="name" display-name="" uuid="fe0850e9-adfa-4e85-88b7-1c2a0d01845e" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="UsedFiltersCombine" display-name="UsedFiltersCombine" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="javascript">
+			<![CDATA[//read
+var used_filters_array = [];
+if (used_filters != "" && used_filters.length>0)
+	used_filters_array = JSON.parse(used_filters);
+var allkeys = JSON.parse(pConfig.TableView.GetSelectableColumns());
+//collect
+var data = {}; var keys = [];
+function DataCollect(key,str)
+{
+	if (str != "")
+		{
+			if (keys.includes(key)==false) keys.push(key);
+			if (data[key]==undefined) data[key] = [];
+			if (data[key].includes(str)==false)
+			{
+				data[key].push(str);
+			}
+		}
+}
+for (let i = 0; i < pConfig.PresetFilters.name.Length; i++)
+if (used_filters_array.includes(pConfig.PresetFilters.name[i]))
+{
+	var sj = pConfig.PresetFilters.json[i]!="" ? JSON.parse(pConfig.PresetFilters.json[i]) : {};
+	for (let j = 0; j < allkeys.length; j++)
+		DataCollect(allkeys[j], sj[allkeys[j]]);
+}
+//modify
+var ackdata = data[pConfig.TableView.Static.Ack.Id];
+if (ackdata != undefined)
+	{
+		//только в случае наличия единственного условия требуется фильтрация по ack
+		var conditions = ackdata.map(function(_value){return GetAckCondition(_value);});
+		if (conditions.includes("") || conditions.length!=1)
+			keys = keys.filter(function(_value){return _value!=pConfig.TableView.Static.Ack.Id;});
+	}
+//result
+var result = {};
+for (let i = 0; i < keys.length; i++)
+	result[keys[i]] = data[keys[i]].length==1 ? data[keys[i]][0] : data[keys[i]].join(" ИЛИ ");
+return JSON.stringify(result);]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="used_filters" display-name="used_filters" uuid="3d9dcd6b-0803-48a0-8b7a-cacaadcfa9be" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	<object access-modifier="private" name="json" display-name="json" uuid="d514ba54-9555-42d1-bc9a-3aefab3627f5" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+	<object access-modifier="private" name="JsonFilters" display-name="JsonFilters" uuid="edbea752-5f5c-45b5-852d-efac7d6b9dd6" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4">
+		<do access-modifier="private" name="Set" display-name="Set" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+			<body kind="javascript">
+				<![CDATA[if (Alarms_Tools.TestTable.CheckJSON(FilterExpr) == "")
+{
+	var filters = JsonFilters.Value==""? {} : JSON.parse(JsonFilters.Value);
+	filters[ColumnID] = FilterExpr;
+	var str = JSON.stringify(filters);
+	if (JsonFilters.Value != str)
+		JsonFilters.Value = str;
+	return true;
+}
+else return false;]]>
+			</body>
+			<param access-modifier="private" name="ColumnID" display-name="" uuid="f6d5c3f1-c725-40eb-a8b6-423365bcbb16" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<param access-modifier="private" name="FilterExpr" display-name="" uuid="fa91b651-70f9-4667-9d55-34fbf4da3fde" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+	</object>
+	<do access-modifier="private" name="UsedFiltersClear" display-name="UsedFiltersClear" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[//установка withoutFilter
+used_filters = "";
+c: int4 = 0;
+while (c < pConfig.TableView.Columns.Length)
+{
+	if (pConfig.TableView.Columns[c].guiFlag)
+		JsonFilters.Set(pConfig.TableView.Columns[c].Id, "");
+	c +=1;
+}
+]]>
+		</body>
+	</do>
+	<init target="JsonFilters" ver="5" value="{}"/>
+</type>
+

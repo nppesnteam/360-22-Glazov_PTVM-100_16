@@ -1,0 +1,1516 @@
+<type access-modifier="private" name="Trends_ToolBar" display-name="Тренды. Панель инструментов" uuid="c5a94cf9-44f5-45cc-b455-7d86479be8ca" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="1000" ver="5"/>
+	<designed target="Height" value="35" ver="5"/>
+	<designed target="RoundingRadius" value="0" ver="5"/>
+	<designed target="PenColor" value="0xff808080" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<object access-modifier="private" name="btnOperMode" display-name="btnOperMode" uuid="d8802de1-4943-4832-9b41-3b3a875aa7d7" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="1" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Tooltip" value="Оперативный режим" ver="5"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="Checked" ver="5">
+			<body>
+				<![CDATA[(pChart.ActiveMode==unit.Const.amOPERATIVE)]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[if (pChart.ActiveMode != unit.Const.amOPERATIVE)
+	pChart.ActiveMode = unit.Const.amOPERATIVE;]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Trends_Icons/Operative24.png"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnHistMode" display-name="btnHistMode" uuid="ddd29496-c6cf-4b91-ad3e-8c1331980069" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="21" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Tooltip" value="Исторический режим" ver="5"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="Checked" ver="5">
+			<body>
+				<![CDATA[(pChart.ActiveMode==unit.Const.amHISTORY)]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[if (pChart.ActiveMode != unit.Const.amHISTORY)
+	pChart.ActiveMode = unit.Const.amHISTORY;]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Trends_Icons/Historical24.png"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="Separator_1" display-name="Separator_1" uuid="e4e2153b-bb6b-4062-b11d-840ff9f470ea" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5">
+		<designed target="X" value="40" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[btnOperMode.IsVisible ||
+btnHistMode.IsVisible]]>
+			</body>
+		</do-trace>
+		<designed target="Width" value="8" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnSettings" display-name="btnSettings" uuid="d5c04e21-3dd6-43fb-90f9-f7b198941913" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="49" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Tooltip" value="Параметры..." ver="5"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pEditSettings.Invoke();
+]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Trends_Icons/Options24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pPermissions.EditSettings]]>
+			</body>
+		</do-trace>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnOpen" display-name="btnOpen" uuid="1596ec24-e2d2-4f6d-90ca-e3008c3a8fff" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="69" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Tooltip" value="Открыть файл..." ver="5"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pChart.ShowOpenDialog.Invoke();]]>
+			</body>
+		</do-on>
+		<init target="pDropDown" ver="5" ref="btnOpenDrop"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Trends_Icons/OpenFile24.png"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[pChart.ShowOpenDialog.Enabled]]>
+			</body>
+		</do-trace>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnOpenDrop" display-name="btnOpenDrop" uuid="7f3d2bc2-54a0-4a37-9519-144b2eeae222" base-type="ToolbarDropDown" base-type-id="0e258e56-d922-4a8f-b8c3-7d577d177609" ver="5">
+		<designed target="X" value="87" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<do access-modifier="private" name="GetMenuItems" display-name="GetMenuItems" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[var items = [
+	{ 'id': "signals", 'title': "Открыть список сигналов..." },
+	{ 'id': "data", 'title': "Открыть графики из файла..." }
+]
+
+return JSON.stringify(items);]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="ShowMenu" display-name="ShowMenu" uuid="71c47070-4027-4e83-b655-fbd0b609faef" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+				<object access-modifier="private" uuid="c1318f87-8735-4d35-9934-c6d44473c3b8" base-type="Menu" base-type-id="07bb4545-980a-4140-bbaa-4d1397447864" ver="5">
+					<init target="PointHeight" ver="5" value="30"/>
+					<init target="Items" ver="5">
+						<expr>
+							<![CDATA[GetMenuItems()]]>
+						</expr>
+					</init>
+					<init target="pResult" ver="5" ref="MenuResult"/>
+					<init target="pAction" ver="5" ref="OnMenuClick"/>
+					<init target="pOnClosed" ver="5" ref="OnMenuClosed"/>
+					<init target="WindowX" ver="5">
+						<expr>
+							<![CDATA[btnOpen.ScreenX(0, 0)]]>
+						</expr>
+					</init>
+					<init target="WindowY" ver="5">
+						<expr>
+							<![CDATA[btnOpen.ScreenY(0, 28)]]>
+						</expr>
+					</init>
+					<init target="init_Theme" ver="5" ref="here.private.theme"/>
+				</object>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="OnMenuClick" display-name="OnMenuClick" uuid="bccc0639-e21b-414a-99f0-7e3a1f765bf7" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[cmd: string = MenuResult.Id;
+
+if (cmd == "signals")
+{
+	pChart.ShowOpenDialog.FileType = unit.Const.ftJTSL;
+	pChart.ShowOpenDialog.Invoke();
+}
+else if (cmd == "data")
+{
+	pChart.ShowOpenDialog.FileType = unit.Const.ftAVZ;
+	pChart.ShowOpenDialog.Invoke();
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="OnMenuClosed" display-name="OnMenuClosed" uuid="fd59c92d-0610-4861-9ce8-700c744655f0" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[Checked = false;]]>
+				</body>
+			</do-on>
+		</object>
+		<init target="pButton" ver="5" ref="btnOpen"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[Checked = true;
+ShowMenu.Invoke();]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="11" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<designed target="Tooltip" value="Открыть файл..." ver="5"/>
+		<object access-modifier="private" name="MenuResult" display-name="MenuResult" uuid="074e15c3-ca92-4f89-9416-82d03e463fd3" base-type="MenuResult" base-type-id="0fe7658c-92f4-4af7-b038-3594414ac651" ver="5"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[pChart.ShowOpenDialog.Enabled]]>
+			</body>
+		</do-trace>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[btnOpen.IsVisible]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="btnSave" display-name="btnSave" uuid="f0b430bf-c80c-4011-a7f8-881eadc37b6e" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="100" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Tooltip" value="Сохранить в файл..." ver="5"/>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pChart.ShowSaveDialog.Invoke();]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[pChart.ShowSaveDialog.Enabled]]>
+			</body>
+		</do-trace>
+		<init target="pDropDown" ver="5" ref="btnSaveDrop"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Trends_Icons/SaveFile24.png"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+		<object access-modifier="private" name="Accessed" display-name="Accessed" uuid="e4b3240f-1d75-4538-be3f-902a7e57982a" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+		<init target="Accessed" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[Accessed && 
+here.private.pPermissions.Export]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="btnSaveDrop" display-name="btnSaveDrop" uuid="9f8e0688-33b6-4960-971a-434ad05495af" base-type="ToolbarDropDown" base-type-id="0e258e56-d922-4a8f-b8c3-7d577d177609" ver="5">
+		<designed target="X" value="118" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[Checked = true;
+ShowMenu.Invoke();]]>
+			</body>
+		</do-on>
+		<init target="pButton" ver="5" ref="btnSave"/>
+		<object access-modifier="private" name="ShowMenu" display-name="ShowMenu" uuid="9b525868-36d1-4c6e-b796-bb270d5a9bf1" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+				<object access-modifier="private" uuid="d84c2224-290b-47cb-b844-7d60720adc31" base-type="Menu" base-type-id="07bb4545-980a-4140-bbaa-4d1397447864" ver="5">
+					<init target="PointHeight" ver="5" value="30"/>
+					<init target="Items" ver="5">
+						<expr>
+							<![CDATA[GetMenuItems()]]>
+						</expr>
+					</init>
+					<init target="pResult" ver="5" ref="MenuResult"/>
+					<init target="pAction" ver="5" ref="OnMenuClick"/>
+					<init target="pOnClosed" ver="5" ref="OnMenuClosed"/>
+					<init target="WindowX" ver="5">
+						<expr>
+							<![CDATA[btnSave.ScreenX(0, 0)]]>
+						</expr>
+					</init>
+					<init target="WindowY" ver="5">
+						<expr>
+							<![CDATA[btnSave.ScreenY(0, 28)]]>
+						</expr>
+					</init>
+					<init target="init_Theme" ver="5" ref="here.private.theme"/>
+				</object>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="OnMenuClick" display-name="OnMenuClick" uuid="b924d17b-c47c-42eb-8644-9013bf25ad74" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[if (MenuResult.Id == "signals")
+{
+	pChart.ShowSaveDialog.FileType = 0;
+	pChart.ShowSaveDialog.Invoke();
+}
+else if (MenuResult.Id == "data")
+{
+	pChart.ShowSaveDialog.FileType = 1;	
+	pChart.ShowSaveDialog.Invoke();
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="OnMenuClosed" display-name="OnMenuClosed" uuid="2fd99c49-360a-4d46-8c13-5601b63aab0d" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[Checked = false;]]>
+				</body>
+			</do-on>
+		</object>
+		<do access-modifier="private" name="GetMenuItems" display-name="GetMenuItems" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[var items = [
+	{ 'id': "signals", 'title': "Сохранить список сигналов..." },
+	{ 'id': "data", 'title': "Сохранить графики в файл..." }
+]
+
+return JSON.stringify(items);]]>
+			</body>
+		</do>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[pChart.ShowSaveDialog.Enabled]]>
+			</body>
+		</do-trace>
+		<designed target="Width" value="11" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<designed target="Tooltip" value="Сохранить в файл..." ver="5"/>
+		<object access-modifier="private" name="MenuResult" display-name="MenuResult" uuid="bfda192c-f72f-4860-878d-4eee156ca652" base-type="MenuResult" base-type-id="0fe7658c-92f4-4af7-b038-3594414ac651" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[btnSave.IsVisible]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="btnExport" display-name="btnExport" uuid="86b2fdb4-28c3-4db9-9811-cc44a0a0fcdc" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="131" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Tooltip" value="Экспорт данных в файл..." ver="5"/>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pChart.OpenDataTable.Invoke();]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[pChart.OpenDataTable.Enabled]]>
+			</body>
+		</do-trace>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Trends_Icons/ExportToFile24.png"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+		<object access-modifier="private" name="Accessed" display-name="Accessed" uuid="c79c2acf-7632-4ef4-b7ef-86dd27667830" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+		<init target="Accessed" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[Accessed && 
+here.private.pPermissions.Export]]>
+			</body>
+		</do-trace>
+		<init target="pDropDown" ver="5" ref="btnExportDrop"/>
+	</object>
+	<object access-modifier="private" name="btnExportDrop" display-name="btnExportDrop" uuid="e19ba0a8-1ede-418f-a31c-d7db9df72258" base-type="ToolbarDropDown" base-type-id="0e258e56-d922-4a8f-b8c3-7d577d177609" ver="5">
+		<designed target="X" value="149" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[pChart.OpenDataTable.Enabled || pChart.ShowExportDialog.Enabled]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Экспорт данных в файл..." ver="5"/>
+		<do access-modifier="private" name="GetMenuItems" display-name="GetMenuItems" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[var items = [
+	{ 'id': "OpenDataTable",	 'title': "Показать таблицу с данными...", 'active': pChart.OpenDataTable.Enabled },
+	{ 'id': "ShowExportDialog", 'title': "Экспортировать таблицу с данными в файл...", 'active': pChart.ShowExportDialog.Enabled },
+]
+
+return JSON.stringify(items);]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="OnMenuClick" display-name="OnMenuClick" uuid="a3617c56-83f4-4510-aea3-3f07304c3e6f" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[if (MenuResult.Id == "OpenDataTable")
+	pChart.OpenDataTable.Invoke();
+else if (MenuResult.Id == "ShowExportDialog")
+	pChart.ShowExportDialog.Invoke();]]>
+				</body>
+			</do-on>
+		</object>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[Checked = true;]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="OnMenuClosed" display-name="OnMenuClosed" uuid="fe498d1c-d3e1-4dd3-97ba-2aec5249c57f" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[Checked = false;]]>
+				</body>
+			</do-on>
+		</object>
+		<designed target="Width" value="11" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="pButton" ver="5" ref="btnExport"/>
+		<object access-modifier="private" name="MenuResult" display-name="MenuResult" uuid="018c52b8-6e5f-4bdb-ba33-aa1f07d6ec97" base-type="MenuResult" base-type-id="0fe7658c-92f4-4af7-b038-3594414ac651" ver="5"/>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick" form-action="open-new" form-by-id="false">
+			<object access-modifier="private" uuid="00aef718-d15b-43a8-b657-d4b3f09efc0b" base-type="Menu" base-type-id="07bb4545-980a-4140-bbaa-4d1397447864" ver="5">
+				<init target="Items" ver="5">
+					<expr>
+						<![CDATA[GetMenuItems()]]>
+					</expr>
+				</init>
+				<init target="pResult" ver="5" ref="MenuResult"/>
+				<init target="pAction" ver="5" ref="OnMenuClick"/>
+				<init target="pOnClosed" ver="5" ref="OnMenuClosed"/>
+				<init target="PointHeight" ver="5" value="30"/>
+				<init target="WindowX" ver="5">
+					<expr>
+						<![CDATA[btnExport.ScreenX(0, 0)]]>
+					</expr>
+				</init>
+				<init target="WindowY" ver="5">
+					<expr>
+						<![CDATA[btnExport.ScreenY(0, 28)]]>
+					</expr>
+				</init>
+				<init target="init_Theme" ver="5" ref="here.private.theme"/>
+			</object>
+		</do-on>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[btnExport.IsVisible]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="btnPrint" display-name="btnPrint" uuid="955c8808-2361-4ca2-995a-af4189daeb46" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="162" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Tooltip" value="Печать..." ver="5"/>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[
+pChart.ShowPrintDialog.Invoke();
+]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[pChart.Params.LinesCount>0]]>
+			</body>
+		</do-trace>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Trends_Icons/Print24.png"/>
+		<init target="pDropDown" ver="5" ref="btnPrintDrop"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+		<object access-modifier="private" name="Accessed" display-name="Accessed" uuid="5a8a3194-29f7-49c4-8f8c-a5a604907fce" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+		<init target="Accessed" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[Accessed && 
+here.private.pPermissions.Printing]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="btnPrintDrop" display-name="btnPrintDrop" uuid="c6693f23-3e69-4ede-8eaa-3e4dc3080ca4" base-type="ToolbarDropDown" base-type-id="0e258e56-d922-4a8f-b8c3-7d577d177609" ver="5">
+		<designed target="X" value="180" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[pChart.Params.LinesCount>0]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Печать..." ver="5"/>
+		<do access-modifier="private" name="GetMenuItems" display-name="GetMenuItems" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[var items = [];
+items.push({ 'id': "dialog",		'title': "Выбрать параметры печати..." });
+if (here.private.pPermissions.PrinterSelecting.Value)
+	items.push({ 'id': "preview",	'title': "Предпросмотр печати..." });
+items.push({ 'id': "print", 		'title': "Распечатать" });
+
+return JSON.stringify(items);]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="ShowMenu" display-name="ShowMenu" uuid="a487c8cb-cefb-47c1-9c46-16c49a67475d" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+				<object access-modifier="private" uuid="9ac40bed-0654-40de-9b39-7881b42d1fae" base-type="Menu" base-type-id="07bb4545-980a-4140-bbaa-4d1397447864" ver="5">
+					<init target="PointHeight" ver="5" value="30"/>
+					<init target="Items" ver="5">
+						<expr>
+							<![CDATA[GetMenuItems()]]>
+						</expr>
+					</init>
+					<init target="pResult" ver="5" ref="MenuResult"/>
+					<init target="pOnClosed" ver="5" ref="OnMenuClosed"/>
+					<init target="WindowX" ver="5">
+						<expr>
+							<![CDATA[btnPrint.ScreenX(0, 0)]]>
+						</expr>
+					</init>
+					<init target="WindowY" ver="5">
+						<expr>
+							<![CDATA[btnPrint.ScreenY(0, 28)]]>
+						</expr>
+					</init>
+					<init target="pAction" ver="5" ref="DoOnMenuClick"/>
+					<init target="init_Theme" ver="5" ref="here.private.theme"/>
+				</object>
+			</do-on>
+		</object>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[Checked = true;
+ShowMenu.Invoke();]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="OnMenuClosed" display-name="OnMenuClosed" uuid="191b79f7-17a6-4e4b-af40-996d6e471bf3" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[Checked = false;]]>
+				</body>
+			</do-on>
+		</object>
+		<designed target="Width" value="11" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="pButton" ver="5" ref="btnPrint"/>
+		<object access-modifier="private" name="MenuResult" display-name="MenuResult" uuid="fa32047c-3269-49bf-828a-b842a669aead" base-type="MenuResult" base-type-id="0fe7658c-92f4-4af7-b038-3594414ac651" ver="5"/>
+		<object access-modifier="private" name="DoOnMenuClick" display-name="DoOnMenuClick" uuid="a69cd8d7-2aff-45a2-b9c0-06b121fa87e2" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[if (MenuResult.Id == "dialog")
+	pChart.ShowPrintDialog.Invoke();
+else if (MenuResult.Id == "preview")
+	pChart.ShowPrintPreview();
+else if (MenuResult.Id == "print")
+	pChart.Print();
+]]>
+				</body>
+			</do-on>
+		</object>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[btnPrint.IsVisible]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="btnScreenshot" display-name="btnScreenshot" uuid="bbc660ed-4582-4af4-8046-b359a138dc63" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="193" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Tooltip" value="Сохранить текущее изображение в файл..." ver="5"/>
+		<init target="IconFile" ver="5" value="Trends_Icons/SaveScreenshot24.png"/>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pChart.SaveScreenshot.Invoke();]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<object access-modifier="private" name="Accessed" display-name="Accessed" uuid="0dd51171-c86b-4503-b030-a068acaf37a7" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[Accessed && 
+here.private.pPermissions.Export &&
+(Runtime.WorkMode==unit.Const.rwmDESKTOP)]]>
+			</body>
+		</do-trace>
+		<init target="Accessed" ver="5" value="true"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="Separator_2" display-name="Separator_2" uuid="e1fd9c58-5a36-4b0f-896e-ee42039910fc" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5">
+		<designed target="X" value="212" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[btnSettings.IsVisible ||
+btnOpen.IsVisible ||
+btnSave.IsVisible ||
+btnExport.IsVisible ||
+btnPrint.IsVisible]]>
+			</body>
+		</do-trace>
+		<designed target="Width" value="8" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnTreeVisible" display-name="btnTreeVisible" uuid="b80a72c4-92b5-4172-8b2e-d2df6ac69a3c" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="221" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Tooltip" value="Показать дерево сигналов" ver="5"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="Checked" ver="5">
+			<body>
+				<![CDATA[ShowSources]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[OnClickTreeVisible.Invoke();
+]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Trends_Icons/ItemTree24.png"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnMiniTrends" display-name="btnMiniTrends" uuid="80fc57db-843a-4c8f-b9e2-a9edaae9864f" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="241" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Tooltip" value="Показать минитренды" ver="5"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="Checked" ver="5">
+			<body>
+				<![CDATA[pChart.ShowMiniTrends]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pChart.ShowMiniTrends = ! pChart.ShowMiniTrends;]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Trends_Icons/Timeline24.png"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnShowLegend" display-name="btnShowLegend" uuid="2b1150f7-6dd4-45a7-8e2c-98b34facefb0" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="261" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Tooltip" value="Показать легенду" ver="5"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="Checked" ver="5">
+			<body>
+				<![CDATA[pChart.ShowLegend]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[
+pChart.ShowLegend = !pChart.ShowLegend;]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Trends_Icons/Legend24.png"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnIndiZoom" display-name="btnIndiZoom" uuid="9073812d-20e8-42bf-9ffb-a701a87b9408" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="281" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Tooltip" value="Индивидуальный масштаб" ver="5"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="Checked" ver="5">
+			<body>
+				<![CDATA[!pChart.GlobalRanges]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pChart.GlobalRanges = ! pChart.GlobalRanges;]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Trends_Icons/IndividualAxes24.png"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnAutoRange" display-name="btnAutoRange" uuid="dd1fe9ec-0000-4e32-9be8-f6027e0f1478" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="301" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Tooltip" value="Фиксированный диапазон значений" ver="5"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="Checked" ver="5">
+			<body>
+				<![CDATA[!pChart.AutoRange]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[// изменяем режим автоподстройки с помощью вызова специального метода
+// поле AutoRange только уведомляет об изменении режима
+pChart.Params.SetUserScale(false);
+pChart.UpdateYRanges(!pChart.AutoRange);]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Trends_Icons/AutoRange24.png"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnChartPoints" display-name="btnChartPoints" uuid="cdf790bb-f7ca-46cb-96de-24046012740e" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="321" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Tooltip" value="Отображать маркеры точек" ver="5"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="Checked" ver="5">
+			<body>
+				<![CDATA[pChart.ShowDataPoints]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pChart.ShowDataPoints = !pChart.ShowDataPoints;]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Trends_Icons/ShowMarkers24.png"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnConvertUnit" display-name="btnConvertUnit" uuid="6986242d-167b-4463-993b-6a7425694038" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="341" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Tooltip" value="Изменить единицы измерения" ver="5"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick" form-action="open-new" form-by-id="false">
+			<object access-modifier="private" uuid="67b508c5-57e9-45e2-a431-a003d8eefba3" base-type="Menu" base-type-id="07bb4545-980a-4140-bbaa-4d1397447864" ver="5">
+				<init target="pResult" ver="5" ref="MenuResult"/>
+				<init target="pAction" ver="5" ref="OnMenuClick"/>
+				<init target="pOnClosed" ver="5" ref="OnMenuClosed"/>
+				<init target="WindowX" ver="5">
+					<expr>
+						<![CDATA[parent.ScreenX(0,0)]]>
+					</expr>
+				</init>
+				<init target="Items" ver="5">
+					<expr>
+						<![CDATA[pChart.ConvertUnitsMenu]]>
+					</expr>
+				</init>
+				<init target="WindowY" ver="5">
+					<expr>
+						<![CDATA[parent.ScreenY(0,28)]]>
+					</expr>
+				</init>
+				<init target="init_Theme" ver="5" ref="here.private.theme"/>
+			</object>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Trends_Icons/ConvertUnits24.png"/>
+		<init target="Active" ver="5" value="false"/>
+		<object access-modifier="private" name="OnMenuClick" display-name="OnMenuClick" uuid="8f9e1367-d61a-4067-9e60-da14a553fcec" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="javascript">
+					<![CDATA[let cmd = MenuResult.Id;
+if (cmd.substr(0, 8) == "convert_")
+{
+	var altUnit = cmd.substr(8);
+	pChart.ConvertUnits(altUnit, "");
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="OnMenuClosed" display-name="OnMenuClosed" uuid="11afb6d5-3594-426b-ba5d-cf0d1f4c2fb4" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="javascript">
+					<![CDATA[btnConvertUnit.Checked = false;]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="MenuResult" display-name="MenuResult" uuid="dd0b5bb5-509c-4c8d-88b7-6f0f24a6f014" base-type="MenuResult" base-type-id="0fe7658c-92f4-4af7-b038-3594414ac651" ver="5"/>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[Checked = true;]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[pChart.ConvertUnitsMenu != "[]"]]>
+			</body>
+		</do-trace>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="Separator_3" display-name="Separator_3" uuid="e28532f7-2cc9-4df8-9fdf-c9a87c4b8e96" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5">
+		<designed target="X" value="360" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[btnTreeVisible.IsVisible ||
+btnMiniTrends.IsVisible ||
+btnShowLegend.IsVisible ||
+btnAutoRange.IsVisible ||
+btnChartPoints.IsVisible]]>
+			</body>
+		</do-trace>
+		<designed target="Width" value="8" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnHand" display-name="btnHand" uuid="f4032a38-4a70-44a6-ab64-2774f71ca6ae" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="369" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Tooltip" value="Позиционирование графиков" ver="5"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="Checked" ver="5">
+			<body>
+				<![CDATA[pChart.CursorMode==unit.Const.cmHAND_MOVE]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[if (Active) pChart.CursorMode = unit.Const.cmHAND_MOVE;]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Trends_Icons/Hand24.png"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnZoom" display-name="btnZoom" uuid="81530527-2447-4351-9857-fca76d012049" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="389" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Tooltip" value="Масштабирование графиков" ver="5"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="Checked" ver="5">
+			<body>
+				<![CDATA[pChart.CursorMode==unit.Const.cmZOOM]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[(pChart.Params.LinesCount>0 && 
+(pChart.ZoomXEnable || pChart.ZoomYEnable))]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[if (Active) pChart.CursorMode = unit.Const.cmZOOM;]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Trends_Icons/ZoomRubberband24.png"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnReperAdd" display-name="btnReperAdd" uuid="cb044fa7-c45b-4f5c-b413-b6bf293f63d7" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="409" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Tooltip" value="Добавить репер" ver="5"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="Checked" ver="5">
+			<body>
+				<![CDATA[pChart.CursorMode==unit.Const.cmADD_REPER]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pChart.CursorMode = (pChart.CursorMode==unit.Const.cmADD_REPER)?(unit.Const.cmHAND_MOVE):(unit.Const.cmADD_REPER);
+]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Trends_Icons/AddReper24.png"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnReperDel" display-name="btnReperDel" uuid="b404697b-f0d7-42a2-abbc-22bfc61c4a3f" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="429" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Tooltip" value="Удаление реперов" ver="5"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pChart.Repers.Remove(pChart.Repers.iActive);
+
+if (pChart.CursorMode == unit.Const.cmADD_REPER)
+	pChart.CursorMode = unit.Const.cmHAND_MOVE;]]>
+			</body>
+		</do-on>
+		<init target="pDropDown" ver="5" ref="btnReperDelDrop"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[pChart.Repers.iLastAdd>0]]>
+			</body>
+		</do-trace>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Trends_Icons/RemoveReper24.png"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnReperDelDrop" display-name="btnReperDelDrop" uuid="9a464b98-024a-4512-9eb6-64aa3b129ed0" base-type="ToolbarDropDown" base-type-id="0e258e56-d922-4a8f-b8c3-7d577d177609" ver="5">
+		<designed target="X" value="447" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[pChart.Repers.iLastAdd>0]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Удаление реперов" ver="5"/>
+		<init target="pButton" ver="5" ref="btnReperDel"/>
+		<do access-modifier="private" name="GetMenuItems" display-name="GetMenuItems" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[var items = [
+	{ 'id': "selected", 'title': "Удалить выбранный репер" },
+	{ 'id': "all", 'title': "Удалить все реперы" },
+]
+
+return JSON.stringify(items);]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="ShowMenu" display-name="ShowMenu" uuid="fc8b6b3f-4721-4a15-ba41-51fce946cff2" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+				<object access-modifier="private" uuid="765e54c3-3d8d-455d-9ca4-3bf2cad0b146" base-type="Menu" base-type-id="07bb4545-980a-4140-bbaa-4d1397447864" ver="5">
+					<init target="PointHeight" ver="5" value="30"/>
+					<init target="Items" ver="5">
+						<expr>
+							<![CDATA[GetMenuItems()]]>
+						</expr>
+					</init>
+					<init target="pResult" ver="5" ref="MenuResult"/>
+					<init target="pAction" ver="5" ref="OnMenuClick"/>
+					<init target="pOnClosed" ver="5" ref="OnMenuClosed"/>
+					<init target="WindowX" ver="5">
+						<expr>
+							<![CDATA[btnReperDel.ScreenX(0, 0)]]>
+						</expr>
+					</init>
+					<init target="WindowY" ver="5">
+						<expr>
+							<![CDATA[btnReperDel.ScreenY(0, 28)]]>
+						</expr>
+					</init>
+					<init target="init_Theme" ver="5" ref="here.private.theme"/>
+				</object>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="OnMenuClick" display-name="OnMenuClick" uuid="d74e77c7-1121-4005-87eb-b4c951d87a69" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[cmd: string = MenuResult.Id;
+
+if (cmd == "selected")
+	pChart.Repers.Remove(pChart.Repers.iActive);
+else if (cmd == "all")
+	pChart.Repers.RemoveAll();
+
+if (pChart.CursorMode == unit.Const.cmADD_REPER)
+	pChart.CursorMode = unit.Const.cmHAND_MOVE;]]>
+				</body>
+			</do-on>
+		</object>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[Checked = true;
+ShowMenu.Invoke();]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="OnMenuClosed" display-name="OnMenuClosed" uuid="dea76136-d3a6-47a9-8ace-beda1f3ea770" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[Checked = false;]]>
+				</body>
+			</do-on>
+		</object>
+		<designed target="Width" value="11" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<object access-modifier="private" name="MenuResult" display-name="MenuResult" uuid="05f97995-6987-4e87-8667-31d51774a91a" base-type="MenuResult" base-type-id="0fe7658c-92f4-4af7-b038-3594414ac651" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[btnReperDel.IsVisible]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Separator_4" display-name="Separator_4" uuid="6002b26a-15fd-4046-9b69-cfeb76014392" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5">
+		<designed target="X" value="459" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[btnReperAdd.IsVisible ||
+btnReperDel.IsVisible ||
+btnReperDelDrop.IsVisible]]>
+			</body>
+		</do-trace>
+		<designed target="Width" value="8" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnHome" display-name="btnHome" uuid="4ac4e2f6-f344-4f52-9c84-745180467512" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="468" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Tooltip" value="Восстановить исходный размер" ver="5"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pChart.FitToScreen();]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Trends_Icons/ZoomFit24.png"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnZoomIn" display-name="btnZoomIn" uuid="e07becd1-75d2-4517-b9c7-86578a446557" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="488" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Tooltip" value="Увеличить масштаб на 10%" ver="5"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[(pChart.ZoomXEnable || pChart.ZoomYEnable)]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pChart.Zoom(1/1.1);]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Trends_Icons/ZoomIn24.png"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnZoomOut" display-name="btnZoomOut" uuid="e1a52282-ab8c-47a3-b3b5-d5abe5544357" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="508" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Tooltip" value="Уменьшить масштаб на 10%" ver="5"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[(pChart.ZoomXEnable || pChart.ZoomYEnable)]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pChart.Zoom(1.1);]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Trends_Icons/ZoomOut24.png"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnXZoom" display-name="btnXZoom" uuid="c907b315-17c6-44d4-ba70-304bec087b88" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="528" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Tooltip" value="Масштабирование по горизонтали" ver="5"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="Checked" ver="5">
+			<body>
+				<![CDATA[pChart.ZoomXEnable]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pChart.ZoomXEnable = !pChart.ZoomXEnable;
+
+]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Trends_Icons/ZoomHorizontal24.png"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnYZoom" display-name="btnYZoom" uuid="782dffff-6b78-49ff-bdd5-b670c9c5342c" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="548" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Tooltip" value="Масштабирование по вертикали" ver="5"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="Checked" ver="5">
+			<body>
+				<![CDATA[pChart.ZoomYEnable]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pChart.ZoomYEnable = !pChart.ZoomYEnable;
+]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Trends_Icons/ZoomVertical24.png"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="Separator_5" display-name="Separator_5" uuid="c918fa80-69f5-48fc-a053-3923426ca62e" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5">
+		<designed target="X" value="567" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[btnHand.IsVisible ||
+btnZoom.IsVisible]]>
+			</body>
+		</do-trace>
+		<designed target="Width" value="8" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnPause" display-name="btnPause" uuid="5a9ff0ea-2d38-47c8-9b43-b4926415f569" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="576" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Tooltip" value="Пауза\Старт" ver="5"/>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="IconFile" ver="5">
+			<body>
+				<![CDATA[pChart.private.bPlayStatus ? 
+"Trends_Icons/Pause24.png" :
+"Trends_Icons/Play24.png"]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[(pChart.ActiveMode==unit.Const.amOPERATIVE 
+&& Accessed)]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="Accessed" display-name="Accessed" uuid="b8fc0602-3a32-4b60-b677-1b0ed8053d50" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[if (pChart.private.bPlayStatus)
+{
+	pChart.SetPause(true);
+}
+else
+{
+	pChart.MoveToNow();
+	pChart.SetPause(false);
+}]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="Accessed" ver="5" value="true"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="IntervalEditor" display-name="IntervalEditor" uuid="4fa5f07e-5b73-44a5-8327-9372ca806359" base-type="IntervalEditor" base-type-id="ef4b0474-0376-4b1d-844c-682e26880a1e" ver="5" description="" cardinal="1">
+		<designed target="X" value="595" ver="5"/>
+		<designed target="Y" value="1" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="374" ver="5"/>
+		<designed target="Height" value="33" ver="5"/>
+		<init target="pIntervalChanged" ver="5" ref="IntervalChanged"/>
+		<do-trace access-modifier="private" target="End" ver="5">
+			<body>
+				<![CDATA[DateTime.ToLocal(pChart.ViewInterval.End)]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Begin" ver="5">
+			<body>
+				<![CDATA[DateTime.ToLocal(pChart.ViewInterval.Begin)]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="IntervalChanged" display-name="IntervalChanged" uuid="2d7bf622-7576-4043-b374-44f195cd64df" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[pChart.SetTimeInterval(DateTime.ToUtc(Begin), DateTime.ToUtc(End));]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="Accessed" display-name="Accessed" uuid="770fab1a-df0b-4e8d-98c7-dedd50187e56" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" cardinal="1"/>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[Accessed && pChart.ActiveMode == unit.Const.amHISTORY]]>
+			</body>
+		</do-trace>
+		<init target="Accessed" ver="5" value="true"/>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="4194b484-6455-4e22-bfa2-b1ce396f8480" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="0" ver="5"/>
+			<designed target="MinHeight" value="0" ver="5"/>
+			<designed target="MaxWidth" value="410" ver="5"/>
+			<designed target="MaxHeight" value="16777215" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Margins" display-name="Margins" uuid="7c771dea-4650-4745-afd2-d78deffb69c7" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+			<designed target="Top" value="1" ver="5"/>
+			<designed target="Bottom" value="1" ver="5"/>
+			<designed target="Left" value="0" ver="5"/>
+			<designed target="Right" value="0" ver="5"/>
+		</object>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="reqFrame" display-name="reqFrame" uuid="dd77bc26-beca-49e5-9dd2-6204a2ec912d" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+		<designed target="X" value="964" ver="5"/>
+		<designed target="Y" value="2.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="36" ver="5"/>
+		<designed target="Height" value="30" ver="5"/>
+		<object access-modifier="private" name="btnRequest" display-name="btnRequest" uuid="a1afab9d-0631-4d2f-8d11-8e5e42ec1f8d" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+			<designed target="X" value="1" ver="5"/>
+			<designed target="Y" value="6" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Tooltip" value="Запрос данных истории" ver="5"/>
+			<do-trace access-modifier="private" target="IconFile" ver="5">
+				<conditional-expr>
+					<condition>
+						<![CDATA[pChart.Lines.HistoryRequestMask > 0]]>
+					</condition>
+					<expr>
+						<![CDATA["Trends_Icons/CancelRrequest24.png"]]>
+					</expr>
+				</conditional-expr>
+				<default-expr>
+					<expr>
+						<![CDATA["Trends_Icons/Request24.png"]]>
+					</expr>
+				</default-expr>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[if (pChart.Lines.HistoryRequestMask == 0)
+	pChart.LoadHistoricalData();
+else pChart.CancelHistoryRequest();]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="18" ver="5"/>
+			<designed target="Height" value="18" ver="5"/>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[IntervalEditor.Error == ""]]>
+				</body>
+			</do-trace>
+			<init target="init_Theme" ver="5" ref="here.private.theme"/>
+			<init target="pDropDown" ver="5" ref="btnRequestDrop"/>
+			<do-trace access-modifier="private" target="Tooltip" ver="5">
+				<body>
+					<![CDATA[pChart.Lines.HistoryRequestMask == 0 ? (pChart.ViewInterval.DifferentFromDataInterval ? "Для отображения всех данных требуется выполнить запрос истории" : "Запрос исторических данных") : "Отменить запрос истории"]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="btnRequestDrop" display-name="btnRequestDrop" uuid="d9adfd38-08fe-413e-8caa-2b03d7f3380a" base-type="ToolbarDropDown" base-type-id="0e258e56-d922-4a8f-b8c3-7d577d177609" ver="5" description="" cardinal="1">
+			<designed target="X" value="19" ver="5"/>
+			<designed target="Y" value="6.5" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Width" value="11" ver="5"/>
+			<designed target="Height" value="18" ver="5"/>
+			<object access-modifier="private" name="ShowMenu" display-name="ShowMenu" uuid="eabc0973-ce4a-439f-97fc-7f837576fb1a" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="c2c56f2f-e512-4bd2-bea0-08fb86fd3d36" base-type="Menu" base-type-id="07bb4545-980a-4140-bbaa-4d1397447864" ver="5">
+						<init target="PointHeight" ver="5" value="30"/>
+						<init target="Items" ver="5">
+							<expr>
+								<![CDATA[GetMenuItems()]]>
+							</expr>
+						</init>
+						<init target="pResult" ver="5" ref="MenuResult"/>
+						<init target="pAction" ver="5" ref="OnMenuClick"/>
+						<init target="pOnClosed" ver="5" ref="OnMenuClosed"/>
+						<init target="WindowX" ver="5">
+							<expr>
+								<![CDATA[btnRequest.ScreenX(0, 0)]]>
+							</expr>
+						</init>
+						<init target="WindowY" ver="5">
+							<expr>
+								<![CDATA[btnRequest.ScreenY(0, 28)]]>
+							</expr>
+						</init>
+						<init target="init_Theme" ver="5" ref="here.private.theme"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="OnMenuClick" display-name="OnMenuClick" uuid="df2488f4-3e17-4599-8cb2-2d63e6e39cca" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[cmd: string = MenuResult.Id;
+
+now: uint8 = DateTime.UtcNow();
+t2: uint8 = DateTime.Create(DateTime.Year(now), DateTime.Month(now), DateTime.Day(now), DateTime.Hour(now), DateTime.Minute(now), DateTime.Second(now));
+
+t1: uint8;
+if (cmd == "10m")
+	t1 = DateTime.AddMinutes(t2, -10); 
+else if (cmd == "30m")
+	t1 = DateTime.AddMinutes(t2, -30);
+else if (cmd == "1h")
+	t1 = DateTime.AddHours(t2, -1);
+else if (cmd == "6h")
+	t1 = DateTime.AddHours(t2, -6);
+else if (cmd == "12h")
+	t1 = DateTime.AddHours(t2, -12);
+else if (cmd == "1d")
+	t1 = DateTime.AddDays(t2, -1);
+	
+if (t1 > 0)
+{
+	pChart.SetTimeInterval(t1, t2);
+	pChart.LoadHistoricalData();
+}]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="OnMenuClosed" display-name="OnMenuClosed" uuid="afa8aead-dfc3-4b9f-a235-0da3cc6bc6c8" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[Checked = false;]]>
+					</body>
+				</do-on>
+			</object>
+			<do access-modifier="private" name="GetMenuItems" display-name="GetMenuItems" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+				<body kind="javascript">
+					<![CDATA[var items = [
+	{ 'id': "10m", 'title': "Последние 10 минут" },
+	{ 'id': "30m", 'title': "Последние 30 минут" },
+	{ 'id': "1h", 'title': "Последний час" },
+	{ 'id': "6h", 'title': "Последние 6 часов" },
+	{ 'id': "12h", 'title': "Последние 12 часов" },
+	{ 'id': "1d", 'title': "Последние сутки" },
+]
+
+return JSON.stringify(items);]]>
+				</body>
+			</do>
+			<init target="pButton" ver="5" ref="btnRequest"/>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[pChart.Lines.HistoryRequestMask == 0]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[Checked = true;
+ShowMenu.Invoke();]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="MenuResult" display-name="MenuResult" uuid="01aa1655-e254-4102-9087-abc103fe90eb" base-type="MenuResult" base-type-id="0fe7658c-92f4-4af7-b038-3594414ac651" ver="5"/>
+			<init target="init_Theme" ver="5" ref="here.private.theme"/>
+		</object>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="0f013c4d-3695-4424-b84e-7957349ab764" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="0" ver="5"/>
+			<designed target="MinHeight" value="0" ver="5"/>
+			<designed target="MaxWidth" value="40" ver="5"/>
+			<designed target="MaxHeight" value="30" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Layout" display-name="Layout" uuid="979696c6-f3b3-4b29-946c-1dcac9cae3cf" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
+			<designed target="Orientation" value="1" ver="5"/>
+			<designed target="Gap" value="0" ver="5"/>
+		</object>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<designed target="PenColor" value="0x00000000" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="0x00000000" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<do-trace access-modifier="private" target="PenColor" ver="5">
+			<body>
+				<![CDATA[pChart.ViewInterval.DifferentFromDataInterval ? 0xffff0000 : 0x0]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="Accessed" display-name="Accessed" uuid="163041bc-568c-42e4-a365-85c435b321ef" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+		<init target="Accessed" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[Accessed && pChart.ActiveMode == unit.Const.amHISTORY]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="BrushColor" ver="5">
+			<body>
+				<![CDATA[pChart.ViewInterval.DifferentFromDataInterval ? here.private.theme.ToolbarEditorColor : 0x0]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Layout" display-name="Layout" uuid="e89ef940-43f9-4a11-8075-6a0f404820f1" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5">
+		<designed target="Orientation" value="1" ver="5"/>
+		<designed target="Gap" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="private" display-name="private" uuid="3147aeab-0a46-47e1-a5a3-3353db413517" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+		<object access-modifier="private" name="pPermissions" display-name="pPermissions" uuid="cf1ff308-cfcf-49a0-9e37-21d27bdb4eb8" base-type="Trends_Permissions" base-type-id="083b63d1-3678-4da0-80a0-9c09d0076a3c" base-const="true" base-ref="true" ver="5" description=""/>
+		<init target="pPermissions" ver="5" ref="here.init_Permissions"/>
+		<object access-modifier="private" name="theme" display-name="theme" uuid="1e0d6d1a-dc48-42b7-9a5c-89ab578d69a4" base-type="ToolbarTheme" base-type-id="a7287382-701b-4e63-a794-2f3ce4c48f31" ver="5" description="" cardinal="1">
+			<init target="init_Theme" ver="5" ref="here.init_Theme"/>
+		</object>
+	</object>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="d703951d-7cb0-4a24-b7be-518489faa904" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<object access-modifier="private" name="Files" display-name="Files" uuid="11e75714-b590-4bf2-8a74-d0ddfba2a214" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5" description="" cardinal="1">
+		<designed target="RootPath" value="/" ver="5"/>
+	</object>
+	<object access-modifier="private" name="Runtime" display-name="Runtime" uuid="8ad269cf-a2a6-4d6c-b6f1-1aaf28c680cc" base-type="Runtime" base-type-id="9031e0ca-e75e-47d6-98eb-cf0e5779cb68" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="OnClickTreeVisible" display-name="OnClickTreeVisible" uuid="8b09e060-f0d7-47d8-8dd8-69064f381f27" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="ShowSources" display-name="ShowSources" uuid="09c50242-6a1d-4615-95eb-baad1f58f3a8" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+	<object access-modifier="private" name="pEditSettings" display-name="pEditSettings" uuid="0621956c-8e9c-420a-b5f5-14c33589aaa7" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[private.theme.ToolbarBrushColor]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="pChart" display-name="pChart" uuid="147f3caa-8ba3-424b-83af-b4601c52d269" base-type="Trends_Chart" base-type-id="659f73ba-7fa5-4aa4-ac4d-623541275829" base-const="true" base-ref="true" ver="5"/>
+	<designed target="Flip" value="0" ver="5"/>
+	<do access-modifier="private" name="GetViewSettings" display-name="GetViewSettings" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="javascript">
+			<![CDATA[var settings =
+{
+	"btnModeVisible": btnOperMode.IsVisible.Value,
+	"btnOpenVisible": btnOpen.IsVisible.Value,
+	"btnSaveVisible": btnSave.Accessed.Value,
+	"btnExportVisible": btnExport.Accessed.Value,
+	"btnPrintVisible": btnPrint.Accessed.Value,
+	"btnScreenshotVisible": btnScreenshot.Accessed.Value,
+	"btnTreeVisible": btnTreeVisible.IsVisible.Value,
+	"btnMiniTrendsVisible": btnMiniTrends.IsVisible.Value,
+	"btnShowLegendVisible": btnShowLegend.IsVisible.Value,
+	"btnIndiZoomVisible": btnIndiZoom.IsVisible.Value,
+	"btnAutoRangeVisible": btnAutoRange.IsVisible.Value,
+	"btnChartPointsVisible": btnChartPoints.IsVisible.Value,
+	"btnConvertUnitVisible": btnConvertUnit.IsVisible.Value,
+	"btnReperVisible": btnReperAdd.IsVisible.Value,
+	"btnHandVisible": btnHand.IsVisible.Value,
+	"btnZoomVisible": btnZoom.IsVisible.Value,
+	"btnHomeVisible": btnHome.IsVisible.Value,
+	"btnZoomInOutVisible": btnZoomIn.IsVisible.Value,
+	"btnXYZoomVisible": btnXZoom.IsVisible.Value,
+	"btnPauseVisible": btnPause.Accessed.Value,
+	"cbxHistInterval": IntervalEditor.Accessed.Value,
+	"btnHistRequestVisible": reqFrame.Accessed.Value
+};
+
+return JSON.stringify(settings, null, 2);]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="UpdateView" display-name="UpdateView" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[var settings = JSON.parse(json);
+
+btnOperMode.IsVisible = settings.btnModeVisible;			// Прямое управление видимостью
+btnHistMode.IsVisible = settings.btnModeVisible;							
+btnChartPoints.IsVisible = settings.btnChartPointsVisible;
+btnConvertUnit.IsVisible = settings.btnConvertUnitVisible != false;
+btnHand.IsVisible = settings.btnHandVisible;
+btnZoom.IsVisible = settings.btnZoomVisible;
+btnReperAdd.IsVisible = settings.btnReperVisible || settings.btnReperAddVisible;
+btnReperDel.IsVisible = settings.btnReperVisible || settings.btnReperDelVisible;
+btnIndiZoom.IsVisible = settings.btnIndiZoomVisible;
+btnAutoRange.IsVisible = settings.btnAutoRangeVisible;
+btnTreeVisible.IsVisible = settings.btnTreeVisible;
+btnMiniTrends.IsVisible = settings.btnMiniTrendsVisible;
+btnOpen.IsVisible = settings.btnOpenVisible;
+btnSave.Accessed = settings.btnSaveVisible != false;
+btnPrint.Accessed = settings.btnPrintVisible != false;
+btnScreenshot.Accessed = settings.btnScreenshotVisible != false;
+btnExport.Accessed = settings.btnExportVisible != false;
+btnHome.IsVisible = settings.btnHomeVisible;
+btnZoomIn.IsVisible = settings.btnZoomInOutVisible;
+btnZoomOut.IsVisible = settings.btnZoomInOutVisible;
+btnShowLegend.IsVisible = settings.btnShowLegendVisible;
+btnXZoom.IsVisible = settings.btnXYZoomVisible;
+btnYZoom.IsVisible = settings.btnXYZoomVisible;
+btnPause.Accessed = settings.btnPauseVisible;	// Управление видимостью через флаг доступности кнопки, если существуют доп.условия
+IntervalEditor.Accessed = settings.cbxHistInterval;
+reqFrame.Accessed = settings.btnHistRequestVisible;]]>
+		</body>
+		<param access-modifier="private" name="json" display-name="" uuid="e21ed89d-2305-445a-9087-bbf5e2843721" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<param access-modifier="private" name="init_Theme" display-name="Тема оформления" uuid="1313313a-a63a-4e85-9ad1-7e84d7d76ba6" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
+	<param access-modifier="private" name="init_Permissions" display-name="Разрешения" uuid="da0da40b-71f7-4106-bd2e-84f6797acfe4" base-type="Trends_Permissions" base-type-id="083b63d1-3678-4da0-80a0-9c09d0076a3c" base-const="true" base-ref="true" ver="5" description=""/>
+</type>
+

@@ -1,0 +1,153 @@
+<type access-modifier="private" name="Fan" display-name="Fan" uuid="31a4e0fb-4e5c-4f68-9026-93a553db7b95" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1.5" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<object access-modifier="private" name="fanApSource" display-name="fanApSource" uuid="b03a33ae-3ea9-49cd-81dd-35b986f199bf" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
+		<designed target="Active" value="false" ver="5"/>
+		<designed target="ReAdvise" value="0" ver="5"/>
+		<init target="ParentSource" ver="5" ref="initApSource"/>
+		<designed target="Location" value="" ver="5"/>
+		<designed target="Port" value="4388" ver="5"/>
+		<designed target="HistoryPort" value="4950" ver="5"/>
+		<designed target="Path" value="" ver="5"/>
+		<designed target="ClientDisplayName" value="HMI" ver="5"/>
+		<designed target="ClientId" value="HMI" ver="5"/>
+		<init target="Path" ver="5" ref="initPath"/>
+	</object>
+	<object access-modifier="private" name="KKS" display-name="KKS" uuid="0966559a-4597-46aa-bab4-66de237c8e10" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5">
+		<init target="Source" ver="5" ref="fanApSource"/>
+		<init target="Path" ver="5" value="KKS"/>
+	</object>
+	<object access-modifier="private" name="NAME" display-name="NAME" uuid="b2e7269f-91bd-471b-93a7-fc51aac9381e" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5">
+		<init target="Source" ver="5" ref="fanApSource"/>
+		<init target="Path" ver="5" value="NAME"/>
+	</object>
+	<object access-modifier="private" name="bOn" display-name="bOn" uuid="4acf0ed9-6e0d-436e-b8bb-f1ce5ef4e016" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Source" ver="5" ref="fanApSource"/>
+		<init target="Path" ver="5" value="bOn"/>
+	</object>
+	<object access-modifier="private" name="bOnManual" display-name="bOnManual" uuid="562477cb-2114-4977-bbee-72eaa38d405c" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Source" ver="5" ref="fanApSource"/>
+		<init target="Path" ver="5" value="bOnManual"/>
+	</object>
+	<param access-modifier="private" name="initApSource" display-name="initApSource" uuid="841e25c8-0a1d-4d85-88de-387ef27db157" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="bErrorCantCtrl" display-name="bErrorCantCtrl" uuid="6f2962d1-fc08-4549-9dcf-c3da743abc4f" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Source" ver="5" ref="fanApSource"/>
+		<init target="Path" ver="5" value="bErrorCantCtrl"/>
+	</object>
+	<object access-modifier="private" name="BurnNumber" display-name="BurnNumber" uuid="0f24bcfe-69db-4927-a530-332efd8841d6" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<designed target="Flip" value="0" ver="5"/>
+	<object access-modifier="private" name="Color" display-name="Color" uuid="4520bd43-0485-4978-8a76-128ba745ef5f" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="bBlockOff" display-name="bBlockOff" uuid="c23cbd92-5a13-46d9-ab11-e17ab0b5dffc" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Source" ver="5" ref="fanApSource"/>
+		<init target="Path" ver="5" value="bBlockOff"/>
+	</object>
+	<object access-modifier="private" name="bBlockOn" display-name="bBlockOn" uuid="93b7dcef-9fc8-4e40-a16f-d00ffdc6baef" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Source" ver="5" ref="fanApSource"/>
+		<init target="Path" ver="5" value="bBlockOn"/>
+	</object>
+	<object access-modifier="private" name="bRemote" display-name="bRemote" uuid="0f19310d-7964-454a-ad4b-3f126a7f9e6d" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Source" ver="5" ref="fanApSource"/>
+		<init target="Path" ver="5" value="bRemote"/>
+	</object>
+	<object access-modifier="private" name="bTurnedOn" display-name="bTurnedOn" uuid="c7789773-37c2-4256-81ac-8d97bd7ac149" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Source" ver="5" ref="fanApSource"/>
+		<init target="Path" ver="5" value="bTurnedOn"/>
+	</object>
+	<object access-modifier="private" name="InbAutoMode" display-name="InbAutoMode" uuid="6dc78f4f-7dde-42fd-841e-e6372fb36eb2" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Source" ver="5" ref="fanApSource"/>
+		<init target="Path" ver="5" value="InbAutoMode"/>
+	</object>
+	<object access-modifier="private" name="OutbAutoMode" display-name="OutbAutoMode" uuid="e0358b6c-4ee0-46b0-bc52-8b13709ad7f5" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Source" ver="5" ref="fanApSource"/>
+		<init target="Path" ver="5" value="OutbAutoMode"/>
+	</object>
+	<object access-modifier="private" name="isOpenedModule" display-name="isOpenedModule" uuid="a260a312-39e1-4c67-996c-f82e0f06cfb7" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+	<object access-modifier="private" name="bOffManual" display-name="bOffManual" uuid="ec7dba7d-7dbf-49a1-b473-3dfc00afade8" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Source" ver="5" ref="fanApSource"/>
+		<init target="Path" ver="5" value="bOnManual"/>
+	</object>
+	<object access-modifier="private" name="bTurnedOff" display-name="bTurnedOff" uuid="99aae445-0e2f-4466-b3ee-2dc7092f9159" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Source" ver="5" ref="fanApSource"/>
+		<init target="Path" ver="5" value="bTurnedOff"/>
+	</object>
+	<object access-modifier="private" name="NameExtended" display-name="NameExtended" uuid="85859cc1-695e-4814-b456-ed9a85c5ca2e" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description=""/>
+	<do-trace access-modifier="private" target="NameExtended" ver="5">
+		<conditional-expr>
+			<condition>
+				<![CDATA[BurnNumber != "0"]]>
+			</condition>
+			<expr>
+				<![CDATA[NAME + " " + BurnNumber]]>
+			</expr>
+		</conditional-expr>
+		<default-expr>
+			<expr>
+				<![CDATA[NAME]]>
+			</expr>
+		</default-expr>
+	</do-trace>
+	<param access-modifier="private" name="initPath" display-name="initPath" uuid="308a8e04-dea0-4532-a59e-13c68364861a" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description=""/>
+	<object access-modifier="private" name="bHorizontal" display-name="bHorizontal" uuid="9f024fe2-6165-4bc7-8394-c2830987fe4e" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+	<do-trace access-modifier="private" target="Tooltip" ver="5">
+		<body>
+			<![CDATA[NameExtended]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="OpenModuleWindow" display-name="OpenModuleWindow" uuid="8778b734-ff00-4fcf-815a-c9a472d6f89e" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" cardinal="1">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[!isOpenedModule]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+			<object access-modifier="private" uuid="648a353e-77c4-4522-abab-86b707c85c99" base-type="Вентилятор" base-type-id="718e197b-0ebb-4bb6-889d-3c7dc6a5aa5f" ver="5">
+				<do-trace access-modifier="private" target="WindowCaption" ver="5">
+					<body kind="om">
+						<![CDATA[refData.NameExtended]]>
+					</body>
+				</do-trace>
+				<designed target="WindowCaption" value="Вентилятор" ver="5"/>
+				<init target="refData" ver="5" ref="here"/>
+				<init target="WindowY" ver="5" ref="posY"/>
+				<init target="WindowX" ver="5" ref="posX"/>
+			</object>
+		</do-on>
+	</object>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+		<body kind="om">
+			<![CDATA[mX = TypeConvert.ToFloat(ScreenX(MouseX, MouseY));
+mY = TypeConvert.ToFloat(ScreenY(MouseX, MouseY));
+if (mX+250>1920)
+{
+	posX=mX-(260-(1920-mX));
+}
+else
+{
+	posX=mX;
+}
+if (mY+160>1080)
+{
+	posY=mY-(160-(1080-mY));
+}
+else
+{
+	posY=mY;
+}
+OpenModuleWindow.Invoke();]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="mX" display-name="mX" uuid="58f80aa2-3b90-46b8-a11f-824648d4edca" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+	<object access-modifier="private" name="mY" display-name="mY" uuid="9f1358f9-7b52-428d-8b46-d381aba84a8c" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+	<object access-modifier="private" name="posX" display-name="posX" uuid="ef3d2962-ceaa-483f-84b4-49556ddbb5c2" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+	<object access-modifier="private" name="posY" display-name="posY" uuid="8a206ad6-61a2-4da6-98ec-c9593fc64a01" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+</type>
+

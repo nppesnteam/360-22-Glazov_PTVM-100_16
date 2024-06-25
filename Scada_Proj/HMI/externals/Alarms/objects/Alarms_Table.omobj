@@ -1,0 +1,2513 @@
+<type ver="2" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" base-type="Rectangle" uuid="521d4d69-1b32-4210-ae17-099df1125e3c" display-name="Alarms_Table" name="Alarms_Table" access-modifier="private">
+	<designed target="X" value="0" ver="2"/>
+	<designed target="Y" value="0" ver="2"/>
+	<designed target="Rotation" value="0" ver="2"/>
+	<designed target="Scale" value="1" ver="2"/>
+	<designed target="Visible" value="true" ver="2"/>
+	<designed target="Enabled" value="true" ver="2"/>
+	<designed target="Tooltip" value="" ver="2"/>
+	<designed target="Width" value="1000" ver="2"/>
+	<designed target="Height" value="600" ver="2"/>
+	<designed target="RoundingRadius" value="0" ver="2"/>
+	<designed target="PenColor" value="0xff5f5f5f" ver="2"/>
+	<designed target="PenStyle" value="1" ver="2"/>
+	<designed target="PenWidth" value="1" ver="2"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="2"/>
+	<designed target="BrushStyle" value="1" ver="2"/>
+	<object access-modifier="private" name="ApSource" display-name="ApSource" uuid="c35bff50-5526-470e-9991-290c195327e5" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="2">
+		<designed target="Active" value="true" ver="2"/>
+		<init target="ParentSource" ver="5" ref="init_ApSource"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnConnectionStateChanged">
+			<body kind="om">
+				<![CDATA[TableOne.TableModel_1.ApAlarmQuery_1.ReloadSmart(false);]]>
+			</body>
+		</do-on>
+		<do access-modifier="private" name="Acknowledge" display-name="Acknowledge" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[//функция квитирования с уменьшенным набором параметров, и временем активации в строковом формате
+activeTime: uint8 = String.ToUint8(time, 0);
+Ack(source, condition, Dialogs.OpenCommentAck.AckComment, pPermissions.Context.UserName, activeTime /*OM only*/, cookie);
+]]>
+			</body>
+			<param access-modifier="private" name="source" display-name="" uuid="ec044e13-061b-4cf0-8dbe-29f15a499798" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<param access-modifier="private" name="condition" display-name="" uuid="738e8f92-fdd5-428d-b0f2-5b090bb265bb" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<param access-modifier="private" name="time" display-name="" uuid="3d097151-6aea-4a88-817e-6d45986eff0d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<param access-modifier="private" name="cookie" display-name="" uuid="10357d28-33cc-4ae7-bb66-5109fd5c4c5e" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
+		</do>
+		<do access-modifier="private" name="AcknowledgeAll" display-name="AcknowledgeAll" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[//квитируем сообщения по одному
+var sources = [];
+var msgs = JSON.parse(messages);
+for (let i = 0; i < msgs.length; i++)
+	ApSource.Acknowledge(msgs[i].Source, msgs[i].Condition, msgs[i].Time, msgs[i].Cookie);
+]]>
+			</body>
+			<param access-modifier="private" name="messages" display-name="" uuid="fd222a78-eb0a-42cb-8a68-7b139a613543" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+	</object>
+	<object access-modifier="private" name="StatePanel" display-name="StatePanel" uuid="f1e1afa8-7f57-4b77-a4c8-4653f1599d23" base-type="" base-type-id="" ver="3">
+		<do access-modifier="private" name="ViewFilterStateChange" display-name="ViewFilterStateChange" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[//Определяем состояние фильтра отображения, формируем строку общего фильтра отображения
+var filter = false; // Флаг установленного фильтра
+var commonFilter = {}; // Общий фильтр для всех столбцов
+commonFilter['AND'] = []; // Все столбца объединяются по И
+var jsonStr = ""; // Фильтр после парсинга
+var columnId = ""; // Текущее название столбца
+
+for (let i = 0; i < pConfig.TableView.Columns.Length; i++)
+if (pConfig.TableView.Columns[i].guiFlag)
+{	
+	jsonStr =  TableOne.Columns[i].JsonFilter;
+	columnId = pConfig.TableView.Columns[i].Id;
+	if (jsonStr != "")
+	{
+		jsonStr  = StatePanel.ParseJSONViewFilter(jsonStr, columnId);
+		// Формирование общей строки фильтра
+		commonFilter['AND'].push(JSON.parse(jsonStr));
+		//commonFilter += (commonFilter == "")?(jsonStr):(") AND (" + jsonStr);
+		filter = true;
+	}
+}
+if (here.pViewFilter.used_filters != "")
+	filter = true;//#26760 даже пустой предустановленный фильтр должен зажигать лампочку в строке состояния
+// если установлен фильтр одного столбца
+if (commonFilter['AND'].length == 1)
+	commonFilter = commonFilter['AND'][0];
+else if (commonFilter['AND'].length == 0)
+	commonFilter = {};
+
+// Наличие фильтра подписки
+SubscriptionFilterON = SubscriptionAdvancedFilter.Value != "";
+
+ViewFilterStr = JSON.stringify(commonFilter);
+ViewFilterON = filter;
+]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="ViewFilterON" display-name="ViewFilterON" uuid="b400aabb-aad7-4641-aa90-6b4fd033626b" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="javascript">
+					<![CDATA[var tooltip = "";
+
+if (SubscriptionFilterON.Value)
+{
+	tooltip = "Фильтр подписки: " + SubscriptionAdvancedFilter.Value;
+}
+
+if (ViewFilterON.Value)
+{
+	if (tooltip != "")
+		tooltip += ", ";
+	if (here.pViewFilter.used_filters != "")
+		tooltip += JSON.parse(here.pViewFilter.used_filters).join(",") + ": ";
+	else
+		tooltip += "Фильтр пользователя: ";
+	tooltip += ViewFilterStr;
+}
+
+ViewFilterTooltip.Value = tooltip;]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="ViewFilterTooltip" display-name="ViewFilterTooltip" uuid="4e03af4d-85e1-486d-bd9e-fdda717ebcdb" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="RequestFilterON" display-name="RequestFilterON" uuid="560b8bf0-fde2-4fd6-b989-313a059b8a51" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value)
+	RequestFilterTooltip = "Фильтр пользователя: " + TableOne.TableModel_1.ApAlarmQuery_1.HistoricalFilter;
+else RequestFilterTooltip = "";
+]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="RequestFilterTooltip" display-name="RequestFilterTooltip" uuid="1e520c99-bfe5-4703-af7a-249b6ce01e6e" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="SubscriptionFilterON" display-name="SubscriptionFilterON" uuid="8a58ea63-f3c9-48e2-b7f7-02939e3f26da" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3"/>
+		<do access-modifier="private" name="ParseJSONViewFilter" display-name="ParseJSONViewFilter" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[//Алгоритм парсинга фильтра столбцов
+
+var signPattern = /([><=]+)/g; // Шаблон операнда (><=)
+var columnName = identifier; // Имя столбца
+
+// Преобразование строки в объект
+try {
+	var jsonObj = JSON.parse(jsonStr); 
+} catch (err) {
+	return "";
+}
+
+// Рекурсивная функция прохода по свойствам объекта. 
+// Если свойство объекта есть конечное значение, то считается, что свойство - идентификатор столбца.
+function setProp(obj) {
+	for (let prop in obj) {
+		if (typeof(obj[prop]) == "object") setProp(obj[prop]);
+		else if (prop == "data" || prop == "text") {
+			obj[`${columnName}`] = obj[prop];
+			delete obj[prop];
+		}
+	}
+	return obj;
+}
+
+jsonStr = JSON.stringify(setProp(jsonObj));
+return jsonStr;]]>
+			</body>
+			<param access-modifier="private" name="jsonStr" display-name="" uuid="3d018398-617c-48dd-8287-2bb17c70e40f" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+			<param access-modifier="private" name="identifier" display-name="" uuid="799c4289-c3cc-4933-8bcb-06e16b6242f4" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+		</do>
+		<object access-modifier="private" name="ViewFilterStr" display-name="ViewFilterStr" uuid="ff1234b3-4d0c-4cc7-a593-cdb34448adeb" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+		<do-trace access-modifier="private" target="RequestFilterON" ver="5">
+			<body>
+				<![CDATA[TableOne.RequestFilter != ""]]>
+			</body>
+		</do-trace>
+		<do access-modifier="private" name="UpdateMessageCount" display-name="UpdateMessageCount" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[count_view: int4 = TableOne.GetRowCount();
+count_total: int4 = TableOne.TableModel_1.GetRowCount();
+
+messageCount: string = String.ToString(count_view) + " " + Alarms_Tools.StringUtils.GetDeclension(TypeConvert.ToInt8(count_view), "сообщение", "сообщения", "сообщений");
+if (count_total != count_view)
+	messageCount = messageCount + " из " + String.ToString(count_total);
+
+if (ActiveMode == 1 && TableOne.TableModel_1.openedFilePath != "")
+	messageCount = messageCount + " (" + TableOne.TableModel_1.openedFilePath + ")";
+
+if (ActiveMode == 1 && DisplaySeverityStatistics)
+	messageCount = messageCount + ". " + GetSeverityStat();	
+
+if (ActiveMode == 0 && TableOne.TableModel_1.ApAlarmQuery_1.ReadingActive)
+	messageCount = "Подготовка данных...";
+
+MessageCountText = messageCount;]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="MessageCountText" display-name="MessageCountText" uuid="125e5dde-0c3a-4551-9cb7-be609e94d57f" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		<do access-modifier="private" name="GetSeverityStat" display-name="GetSeverityStat" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[var text = "";
+if (TableOne.TableModel_1.DataAggregator_1.State>0 && TableOne.TableModel_1.openedFilePath=="")
+{
+	for (let i = 1; i <= 1000; i++)
+	{
+		var stat = parseInt(TableOne.TableModel_1.DataAggregator_1.GetData(i), 0);
+		if (stat > 0)
+		{
+			if (text.length > 0) text += ", ";
+			text += "["+i+": "+stat+"]";
+		}
+	}
+}
+if (text.length > 0) text = "Детально [" + pConfig.TableView.Static.Severity.GetTitle() + ": Количество]: " + text;
+return text;]]>
+			</body>
+		</do>
+	</object>
+	<object access-modifier="private" name="LinearLayout_1" display-name="LinearLayout_1" uuid="abb184c3-7508-4e72-82a7-7b87f9ff2d07" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="2">
+		<designed target="Orientation" value="2" ver="2"/>
+		<designed target="Gap" value="0" ver="2"/>
+	</object>
+	<object access-modifier="private" name="Dialogs" display-name="Dialogs" uuid="68c73811-63b5-41ba-a4ea-a533e0c2f1a9" base-type="" base-type-id="" ver="3">
+		<object access-modifier="private" name="Message" display-name="Message" uuid="6317393d-4966-4b37-b57e-2b43c093c1ea" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<object access-modifier="private" name="message" display-name="message" uuid="4ff7db34-3acc-4f96-a60b-2fd3d181ee5f" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="bfe21869-07b8-4cb8-8863-53417091e194" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="4">
+					<init target="Message" ver="5">
+						<expr>
+							<![CDATA[message]]>
+						</expr>
+					</init>
+					<init target="Buttons" ver="5" value="0"/>
+					<init target="Icon" ver="5">
+						<expr>
+							<![CDATA[icon]]>
+						</expr>
+					</init>
+					<init target="pTheme" ver="5" ref="colortheme"/>
+					<init target="AlwaysOnTop" ver="5">
+						<expr>
+							<![CDATA[topmost]]>
+						</expr>
+					</init>
+					<init target="WindowCaption" ver="5">
+						<expr>
+							<![CDATA[caption]]>
+						</expr>
+					</init>
+				</object>
+			</do-on>
+			<do access-modifier="private" name="Error" display-name="Error" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[Message.icon = 3;
+Message.message = text;
+Message.colortheme.UpdateView(theme);
+Message.topmost = alwaysOnTop;
+Message.caption = "Ошибка";
+Message.Invoke();]]>
+				</body>
+				<param access-modifier="private" name="text" display-name="" uuid="575fcc47-102f-46fc-a02a-f802a29faee2" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+				<param access-modifier="private" name="theme" display-name="" uuid="3fd95b41-c9c4-4119-bb72-8c9065a16975" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+				<param access-modifier="private" name="alwaysOnTop" display-name="" uuid="940f6e3f-c990-4763-8f1e-2c572fd7e779" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+			</do>
+			<do access-modifier="private" name="Info" display-name="Info" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[Message.icon = 0;
+Message.message = text;
+Message.colortheme.UpdateView(theme);
+Message.topmost = alwaysOnTop;
+Message.caption = "Сообщение";
+Message.Invoke();]]>
+				</body>
+				<param access-modifier="private" name="text" display-name="" uuid="1825f5b1-01ff-4657-97dc-d2a79090f673" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+				<param access-modifier="private" name="theme" display-name="" uuid="dee2e6e9-a846-41a2-8219-25b6162d9941" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+				<param access-modifier="private" name="alwaysOnTop" display-name="" uuid="abe46fb9-e4d4-4b15-9153-4ca989f5439b" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+			</do>
+			<object access-modifier="private" name="colortheme" display-name="colortheme" uuid="fcc197cc-d0ff-489c-ae6b-84b034049f41" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="topmost" display-name="topmost" uuid="ecbca8b6-0d99-443b-ad30-c0cc5e0a4b07" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="icon" display-name="icon" uuid="4f94e083-bb8f-4180-8a2e-785c1f1fbd0c" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+			<do access-modifier="private" name="NoPermission" display-name="NoPermission" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[Error("Отсутствует разрешение на выполнение данной операции.", private.pTheme.GetViewSettings(), AlwaysOnTopForm);]]>
+				</body>
+			</do>
+			<do access-modifier="private" name="NoLogOn" display-name="NoLogOn" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[Error("Операция невозможна!\nНеобходима регистрация оператора.", private.pTheme.GetViewSettings(), AlwaysOnTopForm);]]>
+				</body>
+			</do>
+			<object access-modifier="private" name="caption" display-name="caption" uuid="2dbf9177-4eb9-44c1-a0b8-ddf36c064e04" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+		</object>
+		<object access-modifier="private" name="OpenCommentAck" display-name="OpenCommentAck" uuid="380e4f83-55f5-408b-90fb-fb9ceb5b0c66" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="2">
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="InvokeTrigger" value="false" ver="2"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-dialog">
+				<object access-modifier="private" uuid="052df691-6bff-406c-91ae-35b8ffb410ed" base-type="Alarms_CommentAck" base-type-id="849094ab-4a33-4e58-ad4d-5a8e53262f5c" ver="2">
+					<init target="pAlarms" ver="5" ref="here"/>
+					<designed target="WindowPosition" value="3" ver="2"/>
+					<init target="Focus" ver="5" value="true"/>
+					<init target="AlwaysOnTop" ver="5" ref="AlwaysOnTopForm"/>
+					<init target="init_ScreenKeyboard" ver="5" ref="here.pScreenKeyboard"/>
+					<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="AckComment" display-name="AckComment" uuid="bedb456d-a6b4-4eaa-9d92-56885aefba12" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+			<do access-modifier="private" name="AckDataCollect" display-name="AckDataCollect" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="javascript">
+					<![CDATA[// функция построения снимка сообщений (для выполнения квитирования или комментирования)
+//pAlarms.ActiveMode режим работы алармов (0-оперативный, 1-исторический)
+//nAckMode - режим выбора сообщений квитирования (1-выбранные, 2-все, 3-последовательность, 4-комментирование выбранных)
+
+var col6Index = pConfig.TableView.Static.Severity.GetIndex();
+var col7Index = pConfig.TableView.Static.Ack.GetIndex();
+var colSSIndex = pConfig.TableView.Static.SystemSource.GetIndex();
+var colCIndex = pConfig.TableView.Static.Condition.GetIndex();
+var colATIndex = pConfig.TableView.Static.ActiveTime.GetIndex();
+var colCookieIndex = pConfig.TableView.Static.Cookie.GetIndex();
+var colMsgIndex = pConfig.TableView.Static.Message.GetIndex();
+
+var Iterator = TableOne.TablePersistentIterator_1;
+
+var sSelect = [];//массив с полными тегами источников выбранных сообщений
+if (nAckMode == 3)
+{
+	Iterator.FirstSelectedRow();
+	while (true)
+	{
+		if (Iterator.GetStatus() == 0)
+		{
+			//Состояние "Квитировано" в случае, если квитирование не требуется равно EMPTY, если квитировано = true, если неквитировано = false;
+			var Acked = !(Iterator.GetData(col7Index) == false);
+			if (!Acked)
+			{
+				var source = Iterator.GetText(colSSIndex);
+				if (!sSelect.includes(source))
+					sSelect.push(source);
+			}
+		}
+		if (!Iterator.HasNext()) break;
+		Iterator.Next();
+	}
+	Iterator.Close();
+}
+
+if (nAckMode == 1 || nAckMode == 4) Iterator.FirstSelectedRow();
+else if (nAckMode == 3) Iterator.FirstRow();
+else if (AcknowledgmentAllVisible && ActiveMode==0) Iterator.FirstVisibleRow();
+else Iterator.FirstRow();
+var msgs = [];
+while (true)
+{
+	if (Iterator.GetStatus() == 0)
+	{
+		//Состояние "Квитировано" в случае, если квитирование не требуется равно EMPTY, если квитировано = true, если неквитировано = false;
+		var Acked = !(Iterator.GetData(col7Index) == false);
+		var severity = Iterator.GetData(col6Index);
+		if (!Acked && !private.isInformativeEvent(severity) || nAckMode == 4)// Проверка на вхождение в группу важности "Прочие"
+		{
+			var Src = Iterator.GetData(colSSIndex);
+			if (nAckMode == 1 || nAckMode == 2 || nAckMode == 3 && sSelect.includes(Src) || nAckMode == 4)
+			{
+				var ConditionName = Iterator.GetData(colCIndex);
+				var ActiveTime = Iterator.GetDataUint8AsStr(colATIndex);
+				var Cookie = Iterator.GetData(colCookieIndex);
+				var Message = Iterator.GetData(colMsgIndex);
+				msgs.push({'Source':Src, 'Condition':ConditionName, 'Time':ActiveTime, 'Cookie':Cookie, 'Message':Message});
+			}
+		}
+	}
+	if (!Iterator.HasNext()) break;
+	Iterator.Next();
+}
+Iterator.Close();
+
+AckedMsgs = JSON.stringify(msgs);
+]]>
+				</body>
+			</do>
+			<object access-modifier="private" name="nAckMode" display-name="nAckMode" uuid="20d02caa-9683-451c-a1d9-b20e540ddc35" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="2"/>
+			<object access-modifier="private" name="AckedMsgs" display-name="AckedMsgs" uuid="b9b0a920-adf8-4860-805b-01977932c747" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="AckContinue" display-name="AckContinue" uuid="9d27da94-d903-406d-a57d-3d48d7b61716" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="2">
+				<designed target="Enabled" value="true" ver="2"/>
+				<designed target="InvokeTrigger" value="false" ver="2"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="javascript">
+						<![CDATA[//Функция квитирования сообщений в нескольких режимах
+
+// проверка разрешения
+if (!pPermissions.Permission.Acknowledgment.Value) 
+{	
+	if (pPermissions.Permission.Acknowledgment.Result==-1) here.Dialogs.Message.NoLogOn();
+	if (pPermissions.Permission.Acknowledgment.Result==-2) here.Dialogs.Message.NoPermission();
+	return;
+}
+
+if (JSON.parse(AckedMsgs).length == 0)
+	return;
+
+// определяем режим квитирования
+var modeExternal = false;
+try
+{
+	if (here.OnAck.InvokeTrigger) {}
+	modeExternal = true;//внешний
+}
+catch(error)
+{
+	modeExternal = false;//внутренний OPCAE
+}
+
+// квитируем выбранным механизмом
+if (modeExternal)
+{
+	OnAck.Args.Push(AckedMsgs);
+	OnAck.Invoke();
+}
+else
+	ApSource.AcknowledgeAll(AckedMsgs);
+]]>
+					</body>
+				</do-on>
+			</object>
+		</object>
+		<object access-modifier="private" name="OpenColumnsMenu" display-name="OpenColumnsMenu" uuid="4756eb0e-ba3e-4a83-8551-b666cb58cded" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="3">
+			<designed target="Enabled" value="true" ver="3"/>
+			<designed target="InvokeTrigger" value="false" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+				<object access-modifier="private" uuid="4f0d2e17-b8ca-41fe-a750-cce9b33be464" base-type="Menu" base-type-id="07bb4545-980a-4140-bbaa-4d1397447864" ver="5">
+					<init target="WindowX" ver="5">
+						<expr>
+							<![CDATA[left]]>
+						</expr>
+					</init>
+					<init target="WindowY" ver="5">
+						<expr>
+							<![CDATA[top]]>
+						</expr>
+					</init>
+					<init target="Items" ver="5">
+						<expr>
+							<![CDATA[GetMenuItems()]]>
+						</expr>
+					</init>
+					<init target="pResult" ver="5" ref="MenuResult"/>
+					<init target="pAction" ver="5" ref="OnMenuClick"/>
+					<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="left" display-name="left" uuid="42712efb-e08a-4135-9ed7-faa0c86850be" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+			<object access-modifier="private" name="top" display-name="top" uuid="5933d1b7-10c9-4f7b-b1cf-ddee8ca17e7b" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+			<do access-modifier="private" name="GetMenuItems" display-name="GetMenuItems" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+				<body kind="javascript">
+					<![CDATA[// формируем коллекцию элементов меню
+var items = [];
+for (let i = 0; i < pConfig.TableView.Columns.Length; i++)
+	if (pConfig.TableView.Columns[i].guiFlag)
+{
+	// для некоторых столбцов определяем активность команды меню
+	var active = true;
+	if (i == 0) // Colum_1 Column_Time
+		active = !pConfig.TableView.Columns[pConfig.TableView.Static.ActiveTime.pos].Hidden || pConfig.TableView.Columns[pConfig.TableView.Static.Time.pos].Hidden;
+	else if (i == 1) // Colum_2 Column_ActiveTime
+		active = !pConfig.TableView.Columns[pConfig.TableView.Static.Time.pos].Hidden || pConfig.TableView.Columns[pConfig.TableView.Static.ActiveTime.pos].Hidden;
+	else if (i == 3) // Colum_4 Column_Message
+		active = pConfig.TableView.Columns[pConfig.TableView.Static.Message.pos].Hidden;
+	
+	items.push({
+		 'id': pConfig.TableView.Columns[i].GetIndex(),
+		 'title': pConfig.TableView.Columns[i].Title == "" ? pConfig.TableView.Columns[i].Description : pConfig.TableView.Columns[i].Title,
+		 'checked': !pConfig.TableView.Columns[i].Hidden,
+		 'staysOpen': true,
+ 		 'active': active,
+		});
+}
+
+// сортируем элементы меню в соответствии с порядком отображения в таблице
+items = items.sort((a, b) => a.id - b.id);
+
+return JSON.stringify(items);]]>
+				</body>
+			</do>
+			<object access-modifier="private" name="OnMenuClick" display-name="OnMenuClick" uuid="5169e38d-a0c8-458e-a64e-ba4e62f3e80a" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="javascript">
+						<![CDATA[// индекс столбца, видимость которого нужно изменить
+var index = MenuResult.Id;
+
+// изменяем видимость столбца с нужным идентификатором
+for (let i = 0; i < pConfig.TableView.Columns.Length; i++)
+if (pConfig.TableView.Columns[i].guiFlag)
+{
+	if (pConfig.TableView.Columns[i].GetIndex() == index)
+	{
+		var hidden = pConfig.TableView.Columns[i].Hidden == true;
+		pConfig.TableView.Columns[i].Hidden = !hidden;
+
+		// при изменении видимости столбцов со временем обновляем меню
+		if (i == 0 || i == 1)
+			MenuResult.UpdateItems = GetMenuItems();
+			
+		break;
+	}
+}
+
+// сохраняем настройки
+pConfig.TableView.VersionVisible.Inc();
+pConfig.TableView.SaveSettings();]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="MenuResult" display-name="MenuResult" uuid="a74106bd-bb54-406f-90d1-0d4f0e690aa3" base-type="MenuResult" base-type-id="0fe7658c-92f4-4af7-b038-3594414ac651" ver="5"/>
+		</object>
+		<object access-modifier="private" name="ShowSaveDialog" display-name="ShowSaveDialog" uuid="74ab7dfb-12fb-4497-8102-ef3ca7be0b20" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="3">
+			<designed target="Enabled" value="true" ver="3"/>
+			<designed target="InvokeTrigger" value="false" ver="3"/>
+			<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="Invoked" form-by-id="false" form-action="open-dialog">
+				<object access-modifier="private" uuid="8c0c5e97-cbe8-446f-abb1-099b6810fcf2" base-type="SaveFileDialog" base-type-id="d69a91c3-89e9-4e7b-994e-9242dbc5e095" ver="4">
+					<init target="Result" ver="5" ref="FileDialogResult"/>
+					<init target="OnComplete" ver="5" ref="SaveToFile"/>
+					<init target="FileTypeFilter" ver="5" value="Файл AVZ (*.avz)|*.avz"/>
+					<init target="DefaultPath" ver="5">
+						<expr>
+							<![CDATA[pConfig.Export.ExportPath]]>
+						</expr>
+					</init>
+					<init target="init_ScreenKeyboard" ver="5" ref="here.pScreenKeyboard"/>
+					<init target="RootPath" ver="5">
+						<expr>
+							<![CDATA[pPermissions.Permission.FileSystem ? "/"//корневой путь произвольного доступа
+:pConfig.Export.ExportPath//иначе он ограничен этой папкой]]>
+						</expr>
+					</init>
+					<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
+					<init target="BottomPanelHeight" ver="5" value="115"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="SaveToFile" display-name="SaveToFile" uuid="2be43d92-ae32-425c-b8e4-04d13af2e581" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[Save(FileDialogResult.FilePath, true, true);]]>
+					</body>
+				</do-on>
+			</object>
+			<do access-modifier="private" name="Save" display-name="Save" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[packFiles = _packFiles;
+totalPath = path;
+totalError = "";//сбрасываем ошибку
+dialogAllowed = _dialogAllowed;
+datFile: string;
+infFile: string;
+folder: string;
+
+private.LoadSaveBusy.SavingFile = true;
+
+if (packFiles)
+{
+	zipFile = path;
+	zipFolder = path+".alarmstemp";
+	datFile = Alarms_Tools.File.CombinePath(zipFolder, "alarms.json");
+	infFile = Alarms_Tools.File.CombinePath(zipFolder, "alarms.inf");
+	folder = zipFolder;
+	Alarms_Tools.File.CreateRecursiveFolder(folder);
+}
+else
+{
+	zipFile = "";
+	zipFolder = "";
+	datFile = Alarms_Tools.File.CombinePath(path, "alarms.json");
+	infFile = Alarms_Tools.File.CombinePath(path, "alarms.inf");
+	folder = path;
+	Alarms_Tools.File.CreateRecursiveFolder(folder);
+}
+
+if (Alarms_Tools.File.Error.State)
+{
+	totalError = Alarms_Tools.File.Error.Text;
+	Fin();
+}
+else if (!Alarms_Tools.File.Exists(folder))
+{
+	totalError = "Не удалось создать папку "+folder;
+	Fin();
+}
+else
+{
+	saveInf(infFile);
+	TableOne.TableModel_1.savedFilePath = datFile;
+	TableOne.TableModel_1.GetContentAsJson();
+}]]>
+				</body>
+				<param access-modifier="private" name="path" display-name="" uuid="e8c31f6e-51e6-4f9a-9fa2-0ed9874658ef" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+				<param access-modifier="private" name="_packFiles" display-name="" uuid="8ecf5313-6f51-44c2-9e51-6e8cd454d728" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+				<param access-modifier="private" name="_dialogAllowed" display-name="" uuid="d1f3a2a5-ec0a-490d-a375-643e895e79d0" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+			</do>
+			<do access-modifier="private" name="Saved" display-name="Saved" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[if (packFiles)
+{
+	Archiver.AsyncPack(zipFolder, zipFile);
+}
+else
+	Fin();]]>
+				</body>
+			</do>
+			<do access-modifier="private" name="Fin" display-name="Fin" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[if (packFiles && Alarms_Tools.File.Exists(zipFolder))
+	Alarms_Tools.File.RemoveRecursive(zipFolder);
+
+if (totalError != "")
+{
+	if (dialogAllowed)
+	{
+		here.Dialogs.Message.Error(totalError, private.pTheme.GetViewSettings(), AlwaysOnTopForm.Value);
+	}
+	else
+	{
+		OnError.Args.Push(totalError);
+		OnError.Invoke();
+	}
+}
+else if (dialogAllowed)
+{
+	here.Dialogs.Message.Info("События сохранены в файл:\n"  + totalPath, here.private.pTheme.GetViewSettings(), AlwaysOnTopForm.Value);
+}
+private.LoadSaveBusy.SavingFile = false;
+OnSave.Args.Push("{"+Alarms_Tools.JsonParam("Error",totalError)+", "+Alarms_Tools.JsonParam("Path",totalPath)+"}");
+OnSave.Invoke();]]>
+				</body>
+			</do>
+			<object access-modifier="private" name="Archiver" display-name="Archiver" uuid="fac99176-477e-4610-9f2b-c306f805d46b" base-type="Archiver" base-type-id="3d5db667-b706-495b-a916-9785b07dd0ae" ver="5" description="" cardinal="1">
+				<designed target="CompressionLevel" value="0" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="PackFinished">
+					<body kind="om">
+						<![CDATA[if (error != "")
+	totalError = error;
+Fin();]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="packFiles" display-name="packFiles" uuid="bb07a272-6557-4f1d-9ade-c219b00002dc" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="zipFile" display-name="zipFile" uuid="a483a9d1-e06c-44c8-a5d2-0e36ef5952bb" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="zipFolder" display-name="zipFolder" uuid="99b325e6-99e8-4af0-8777-eb22d1df1751" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+			<do access-modifier="private" name="saveInf" display-name="saveInf" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="javascript">
+					<![CDATA[var info = {};
+if (ActiveMode==0)
+{
+	getOperTimes();
+	info.start = _operStart;
+	info.end = _operEnd;
+}
+else
+{
+	info.start = TableOne.TableModel_1.ApAlarmQuery_1.HistoricalRangeStart/*utc*/;
+	info.end = TableOne.TableModel_1.ApAlarmQuery_1.HistoricalRangeEnd/*utc*/;
+}
+try
+{
+	Alarms_Tools.File.WriteTextFile(filePath, JSON.stringify(info, null, 2));
+}
+catch(err)
+{
+	totalError = "Не удалось сохранить "  + filePath + ": " + err.message;
+}]]>
+				</body>
+				<param access-modifier="private" name="filePath" display-name="" uuid="fff57b9b-5d96-4aec-a128-a13b4cc25b06" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			</do>
+			<do access-modifier="private" name="getOperTimes" display-name="getOperTimes" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[// определяем временной диапазон загруженных событий
+activeTimeIndex: int4 = TableOne.MapColumnToModel(pConfig.TableView.Static.ActiveTime.GetIndex());
+t1: uint8 = DateTime.UtcNow();
+t2: uint8 = 0;
+TableOne.TableModel_1.TableIterator_1.FirstSelected();
+while (!TableOne.TableModel_1.TableIterator_1.End())
+{
+	t: uint8 = Variant.ToUint8(TableOne.TableModel_1.GetCellData(TableOne.TableModel_1.TableIterator_1.CurrentRow, activeTimeIndex), 0);
+	if (t < t1)
+		t1 = t;
+	if (t > t2)
+		t2 = t;
+	TableOne.TableModel_1.TableIterator_1.Next();
+}
+//#27530 немного окгругляем время с точностью до секунд
+_operStart = t1/10000000*10000000;//utc
+_operEnd = (t2/10000000+1)*10000000;//utc]]>
+				</body>
+			</do>
+			<object access-modifier="private" name="_operStart" display-name="_operStart" uuid="a2afa577-6af2-4620-b773-3c25c6268235" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="_operEnd" display-name="_operEnd" uuid="b345b189-ac19-4131-906d-010927e522ff" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="totalError" display-name="totalError" uuid="5b90c1cb-0f17-450d-b91f-b46b996d819d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="totalPath" display-name="totalPath" uuid="d272d052-0370-40b5-ab17-b0179bf0f06c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="dialogAllowed" display-name="dialogAllowed" uuid="f6713c15-5e29-4ee2-8a93-db9e51486dc4" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="FileDialogResult" display-name="FileDialogResult" uuid="a09794e2-15f1-43e1-ab27-df83449eab40" base-type="FileDialogResult" base-type-id="602926f1-7d01-4d50-a5c0-d8fd35eadc74" ver="4"/>
+		</object>
+		<object access-modifier="private" name="ShowOpenDialog" display-name="ShowOpenDialog" uuid="b9869b56-79f9-44d2-9a1f-8f25295d3613" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="3">
+			<designed target="Enabled" value="true" ver="3"/>
+			<designed target="InvokeTrigger" value="false" ver="3"/>
+			<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="Invoked" form-by-id="false" form-action="open-dialog">
+				<object access-modifier="private" uuid="dd0ef520-9ef7-4aba-8b18-0fc55eb5933f" base-type="OpenFileDialog" base-type-id="41505bc5-e0a8-4d93-b1a9-de842aaf215b" ver="4">
+					<init target="Result" ver="5" ref="FileDialogResult"/>
+					<init target="OnComplete" ver="5" ref="LoadFromFile"/>
+					<init target="FileTypeFilter" ver="5" value="Файл AVZ (*.avz)|*.avz"/>
+					<init target="DefaultPath" ver="5">
+						<expr>
+							<![CDATA[pConfig.Export.ExportPath]]>
+						</expr>
+					</init>
+					<init target="init_ScreenKeyboard" ver="5" ref="here.pScreenKeyboard"/>
+					<init target="RootPath" ver="5">
+						<expr>
+							<![CDATA[pPermissions.Permission.FileSystem ? "/"//корневой путь произвольного доступа
+:pConfig.Export.ExportPath//иначе он ограничен этой папкой]]>
+						</expr>
+					</init>
+					<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
+					<init target="BottomPanelHeight" ver="5" value="85"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="LoadFromFile" display-name="LoadFromFile" uuid="9f3f0c99-510f-4777-ba3d-fc57bfdfa065" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[Open(FileDialogResult.FilePath, true, true);]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="Archiver" display-name="Archiver" uuid="803d5269-4937-4a66-9cec-d2792057193e" base-type="Archiver" base-type-id="3d5db667-b706-495b-a916-9785b07dd0ae" ver="5" description="" cardinal="1">
+				<designed target="CompressionLevel" value="0" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="UnpackFinished">
+					<body kind="om">
+						<![CDATA[if (error != "")
+{
+	totalError = error;
+	Fin();
+}
+else
+	Unpacked();
+]]>
+					</body>
+				</do-on>
+			</object>
+			<do access-modifier="private" name="Open" display-name="Open" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[unpackFiles = _unpackFiles;
+dialogAllowed = _dialogAllowed;
+totalPath = _path;
+totalError = "";
+
+//#37803 переключаться в исторический режим внутри Alarms_Table нельзя - рассинхронизируем ActiveMode
+if (ActiveMode != 1)
+{
+	totalError = "Загрузка данных допускается только в историческом режиме";
+	Fin();
+	return;
+}
+
+//переключаемся в исторический сразу, и блокируем кнопки
+private.LoadSaveBusy.LoadingFile = true;
+TableOne.TableModel_1.Clear();
+
+if (unpackFiles)
+{
+	zipFolder = _path + ".alarmstemp";
+	Alarms_Tools.File.CreateRecursiveFolder(zipFolder);
+	datFile = Alarms_Tools.File.CombinePath(zipFolder, "alarms.json");
+	infFile = Alarms_Tools.File.CombinePath(zipFolder, "alarms.inf");
+	TableOne.TableModel_1.openedFilePath = _path;
+	Archiver.AsyncUnpack(_path, zipFolder);
+}
+else
+{
+	if (!Alarms_Tools.File.IsDirectory(_path))
+	{
+		totalError = "Отсутствует папка "  + _path;
+		Fin();
+		return;
+	}
+	zipFolder = "";
+	datFile = Alarms_Tools.File.CombinePath(_path, "alarms.json");
+	infFile = Alarms_Tools.File.CombinePath(_path, "alarms.inf");
+	if (!Alarms_Tools.File.IsFile(datFile))
+	{
+		totalError = "Не найден файл " + datFile;
+		Fin();
+		return;
+	}
+	if (!Alarms_Tools.File.IsFile(infFile))
+	{
+		totalError = "Не найден файл " + infFile;
+		Fin();
+		return;
+	}
+	TableOne.TableModel_1.openedFilePath = datFile;
+	Unpacked();
+}]]>
+				</body>
+				<param access-modifier="private" name="_path" display-name="" uuid="37df8a82-891c-4208-943f-992ed35d07cb" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+				<param access-modifier="private" name="_unpackFiles" display-name="" uuid="1793442b-1759-47c3-8cb3-f0cde8f4ca47" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+				<param access-modifier="private" name="_dialogAllowed" display-name="" uuid="acebbd6a-ec5f-4827-b888-b6daa35c7d5d" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+			</do>
+			<object access-modifier="private" name="datFile" display-name="datFile" uuid="989c5c73-bd84-4f65-ad7a-946d5a538805" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="infFile" display-name="infFile" uuid="30e8b4f9-b191-4a73-a91f-e98f627cdc9e" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="zipFolder" display-name="zipFolder" uuid="75767536-ea23-4bd8-a25e-f3f2f7113c74" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+			<do access-modifier="private" name="Unpacked" display-name="Unpacked" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="javascript">
+					<![CDATA[//open info sync first
+try
+{
+	var inf = Alarms_Tools.File.ReadTextFile(infFile);
+	var info = JSON.parse(inf);
+	infStart = info.start;
+	infEnd = info.end;
+}
+catch(err)
+{
+	totalError = "Не удалось загрузить из "  + infFile + ": " + err.message;
+	Fin();
+	return;
+}
+//open data async
+try
+{
+	var data = Alarms_Tools.File.ReadTextFile(datFile);
+	TableOne.TableModel_1.SetContentAsJson(data);
+}
+catch(err)
+{
+	totalError = "Не удалось загрузить из "  + datFile + ": " + err.message;
+	Fin();
+}]]>
+				</body>
+			</do>
+			<do access-modifier="private" name="Fin" display-name="Fin" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[if (unpackFiles && Alarms_Tools.File.Exists(zipFolder))
+	Alarms_Tools.File.RemoveRecursive(zipFolder);
+
+if (totalError != "")
+{
+	if (dialogAllowed)//диалоги показываем только при внутреннем использовании
+	{
+		here.Dialogs.Message.Error(totalError, private.pTheme.GetViewSettings(), AlwaysOnTopForm.Value);
+	}
+	else
+	{
+		OnError.Args.Push(totalError);
+		OnError.Invoke();
+	}
+}
+else
+{
+	TableOne.TableModel_1.ApAlarmQuery_1.HistoricalRangeStart = infStart;
+	TableOne.TableModel_1.ApAlarmQuery_1.HistoricalRangeEnd = infEnd;
+	TableOne.UserInterval.Set(DateTime.ToLocal(infStart), DateTime.ToLocal(infEnd));
+	here.private.TableIsEmpty.Update();
+}
+private.LoadSaveBusy.LoadingFile = false;
+OnLoad.Args.Push("{"+Alarms_Tools.JsonParam("Error",totalError)+", "+Alarms_Tools.JsonParam("Path",totalPath)+"}");
+OnLoad.Invoke();]]>
+				</body>
+			</do>
+			<object access-modifier="private" name="unpackFiles" display-name="unpackFiles" uuid="ef644e0c-fd1a-417e-9d5d-f54d540f0fd4" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="dialogAllowed" display-name="dialogAllowed" uuid="08453f5f-48b2-403f-9481-bc37fdf7fa3f" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="infStart" display-name="infStart" uuid="ff5f566c-c119-444a-abc0-39c6699a9c29" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="infEnd" display-name="infEnd" uuid="77068371-af63-4b26-b68c-89ec05a4a533" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="totalError" display-name="totalError" uuid="5007ce64-c625-41e1-beb7-48b2fec91a95" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="totalPath" display-name="totalPath" uuid="be13f324-df14-4b39-9a91-809be688c888" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="FileDialogResult" display-name="FileDialogResult" uuid="9b66973c-fbf0-4eaa-89f4-0270a0d610ec" base-type="FileDialogResult" base-type-id="602926f1-7d01-4d50-a5c0-d8fd35eadc74" ver="4"/>
+		</object>
+	</object>
+	<object access-modifier="private" name="System_Start" display-name="System_Start" uuid="cd136ffd-157d-4fb0-82df-a83516c89e15" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Initialized">
+			<body kind="om">
+				<![CDATA[//Функция инициализации
+private.InitComplete = true;
+
+TableOne.TableModel_1.ApAlarmQuery_1.ReloadSmart(false);
+]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Network_1" display-name="Network_1" uuid="8c4569f7-a646-4d03-9d75-f26c01bb950b" base-type="Network" base-type-id="aa841b9c-0610-4150-8495-3bfad7484a73" ver="3"/>
+	<object access-modifier="private" name="DebugTool_1" display-name="DebugTool_1" uuid="8d1f6e6d-0691-4fd2-8cd4-bd86d32b7a08" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="2"/>
+	<object access-modifier="private" name="private" display-name="private" uuid="bf22065b-d601-464a-ad65-6ad8c54bf672" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="3">
+		<object access-modifier="private" name="EventSettings" display-name="EventSettings" uuid="95d91105-fb4f-4417-88df-c117f23fe6de" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[ResetDecorators();
+StatePanel.UpdateMessageCount();//#27571 при изменении декорирования может измениться и результат фильтрации]]>
+				</body>
+			</do-on>
+		</object>
+		<do-trace access-modifier="private" target="EventSettings" ver="5">
+			<body>
+				<![CDATA[pConfig.EventSettings.Version]]>
+			</body>
+		</do-trace>
+		<do access-modifier="private" name="ResetDecorators" display-name="ResetDecorators" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[TableOne.TableDecorator_1.JsonDecorator = pConfig.EventSettings.BuildDecorator(ActiveMode==1, false, pConfig.NotAckOtherEvents, here.private.Follow.CurrentFFLE, pConfig.MergeEvents, here.SnapshotON);]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="QueryProcessing" display-name="QueryProcessing" uuid="733b5b6c-0e01-4b23-9fac-cb40e198441c" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[TableOne.TableModel_1.ApAlarmQuery_1.ReloadSmart(false);]]>
+				</body>
+			</do-on>
+		</object>
+		<do-trace access-modifier="private" target="QueryProcessing" ver="5">
+			<body>
+				<![CDATA[pConfig.QueryProcessing.Version]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="SeverityGroups" display-name="SeverityGroups" uuid="561aaa45-0c6d-458a-b94c-5c62c76f1182" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[
+here.private.NotAckOtherEvents.Apply();
+
+TableOne.TableModel_1.ApAlarmQuery_1.ReloadSmart(false);
+]]>
+				</body>
+			</do-on>
+		</object>
+		<do-trace access-modifier="private" target="SeverityGroups" ver="5">
+			<body>
+				<![CDATA[pConfig.SeverityGroups.Version]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="TableView_Columns" display-name="TableView_Columns" uuid="9b2d06e5-d474-4b04-8e57-e205ea7418b3" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="javascript">
+					<![CDATA[//#23414 для устранения путаницы с размерами, перемещать столбцы надо раньше чем их настраивать
+//#25486 Применение порядка столбцов
+var indexesArray = [];
+for (let i = 0; i < TableOne.Columns.Length; i++)
+	indexesArray[pConfig.TableView.Columns[i].GetIndex()] = i/*colNumber*/;
+for (let i = 0; i < indexesArray.length; i++)
+	if (indexesArray[i] != null)
+		TableOne.MoveColumn(TableOne.Columns[indexesArray[i]].GetIndex(), i);
+
+//копируем настройки столбцов
+for (let i = 0; i < TableOne.Columns.Length; i++)
+{
+	TableOne.Columns[i].Id = pConfig.TableView.Columns[i].Id;
+	TableOne.Columns[i].Title = pConfig.TableView.Columns[i].Title;
+	TableOne.Columns[i].Description = pConfig.TableView.Columns[i].Description;
+	TableOne.Columns[i].SortMode = pConfig.TableView.Columns[i].SortMode;
+	TableOne.Columns[i].Hidden = pConfig.TableView.Columns[i].Hidden;
+	TableOne.Columns[i].CustomTimeFormat.Value = pConfig.TableView.Columns[i].CustomTimeFormat;
+	TableOne.Columns[i].Font = pConfig.TableView.Columns[i].Font;
+	TableOne.Columns[i].TitleFont = pConfig.TableView.Columns[i].TitleFont;
+}
+
+AdvancedFilters.ApplyAll();
+
+//настраиваем атрибуты в провайдерах
+if (TableOne.TableModel_1.ApAlarmQuery_1.AdditionalAttributes.Value != pConfig.TableView.CustomAttributes)
+{
+	TableOne.TableModel_1.ApAlarmQuery_1.AdditionalAttributes.Value = pConfig.TableView.CustomAttributes;
+	//перезапускаем
+	if (ActiveMode == 0)
+		TableOne.TableModel_1.ApAlarmQuery_1.ReloadSmart(false);
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="TableView_Sort" display-name="TableView_Sort" uuid="586a9b97-687d-40a5-a0ec-b6ffa28a4b69" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="javascript">
+					<![CDATA[//Применяем сортировку к активной таблице
+for (let i = 0; i < pConfig.TableView.Columns.Length; i++)
+if (pConfig.TableView.Columns[i].guiFlag)
+{
+	TableOne.Columns[i].SortPriority = pConfig.TableView.Columns[i].SortPriority;
+	TableOne.Columns[i].SortOrder = pConfig.TableView.Columns[i].SortOrder;
+	TableOne.Columns[i].SortingEnabled = pConfig.TableView.Columns[i].SortingEnabled;
+	TableOne.Columns[i].SortMode = pConfig.TableView.Columns[i].SortMode;
+}
+
+TableOne.ApplySort();
+]]>
+				</body>
+			</do-on>
+		</object>
+		<do-trace access-modifier="private" target="TableView_Sort" ver="5">
+			<body>
+				<![CDATA[pConfig.TableView.VersionSort]]>
+			</body>
+		</do-trace>
+		<do access-modifier="private" name="SwitchSorting" display-name="SwitchSorting" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (EnableSortingOnGridHeader == false) return;
+if (pPermissions.Permission.EventTableSort == false) return; //#20781
+pConfig.TableView.SwitchSorting(ColumnId, SortingEnabled, SortOrder);]]>
+			</body>
+			<param access-modifier="private" name="ColumnId" display-name="" uuid="aa8475ef-df76-4e41-b16f-9f72f8475fc8" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+			<param access-modifier="private" name="SortingEnabled" display-name="" uuid="7aff1bac-80e8-4e49-885e-3f2d690a5aaf" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4"/>
+			<param access-modifier="private" name="SortOrder" display-name="" uuid="b10af393-aa04-44e8-963b-46b69f467521" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="4"/>
+		</do>
+		<do-trace access-modifier="private" target="TableView_Columns" ver="5">
+			<body>
+				<![CDATA[pConfig.TableView.VersionColumns]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="TableView_Visible" display-name="TableView_Visible" uuid="d8fb707e-af81-48bd-ba07-fea734f798ea" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="javascript">
+					<![CDATA[//копируем новую видимость в столбцы
+for (let i = 0; i < pConfig.TableView.Columns.Length; i++)
+	TableOne.Columns[i].Hidden = pConfig.TableView.Columns[i].Hidden;
+]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="TableView_Width" display-name="TableView_Width" uuid="6130f27c-51c9-4b27-8f15-81d993eb574f" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="javascript">
+					<![CDATA[//копируем новую ширину в столбцы
+for (let i = 0; i < pConfig.TableView.Columns.Length; i++)
+	if (pConfig.TableView.Columns[i].guiFlag)
+	{
+		if (TableOne.Columns[i].Width != pConfig.TableView.Columns[i].Width)
+			TableOne.Columns[i].Width = pConfig.TableView.Columns[i].Width;
+		if (TableOne.Columns[i].WidthResizeMode != pConfig.TableView.Columns[i].WidthResizeMode)
+			TableOne.Columns[i].WidthResizeMode = pConfig.TableView.Columns[i].WidthResizeMode;
+	}
+]]>
+				</body>
+			</do-on>
+		</object>
+		<do-trace access-modifier="private" target="TableView_Width" ver="5">
+			<body>
+				<![CDATA[pConfig.TableView.VersionWidth]]>
+			</body>
+		</do-trace>
+		<do access-modifier="private" name="UpdateConfigWidth" display-name="UpdateConfigWidth" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+			<body kind="javascript">
+				<![CDATA[//копируем новую ширину в настройки
+var changed = false;
+for (let i = 0; i < pConfig.TableView.Columns.Length; i++)
+	if (pConfig.TableView.Columns[i].guiFlag)
+	{
+		if (pConfig.TableView.Columns[i].Width != TableOne.Columns[i].Width)
+		if (TableOne.Columns[i].Hidden == false)//#37584 таблица зануляет ширину столбца при его скрытии. такие значения мы не должны сохранять
+		{
+			pConfig.TableView.Columns[i].Width = TableOne.Columns[i].Width;
+			changed = true;
+		}
+		if (pConfig.TableView.Columns[i].WidthResizeMode != TableOne.Columns[i].WidthResizeMode)
+		{
+			pConfig.TableView.Columns[i].WidthResizeMode = TableOne.Columns[i].WidthResizeMode;
+			changed = true;
+		}
+	}
+return changed;]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="WidthChanged" display-name="WidthChanged" uuid="6a8b8e2c-3386-4feb-bd06-498bad17b75f" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (Value)
+	WidthSaveTimer.Active = true;]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="WidthSaveTimer" display-name="WidthSaveTimer" uuid="d5326be5-c62f-4c7a-93ba-c46cfc30291f" base-type="Timer" base-type-id="72ba7cd4-549e-41f2-923c-2431b91f349a" ver="4">
+			<designed target="Period" value="500" ver="4"/>
+			<designed target="Active" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnTimer">
+				<body kind="om">
+					<![CDATA[Active = false;
+if (here.private.UpdateConfigWidth())
+{
+	pConfig.TableView.SaveSettings();
+	pConfig.TableView.VersionWidth.Inc();
+}
+WidthChanged = false;]]>
+				</body>
+			</do-on>
+		</object>
+		<do-trace access-modifier="private" target="TableView_Visible" ver="5">
+			<body>
+				<![CDATA[pConfig.TableView.VersionVisible]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="AdvancedFilters" display-name="AdvancedFilters" uuid="a56db270-87a9-4ec1-9951-fa7e5e455422" base-type="" base-type-id="" ver="5" description="" cardinal="1">
+			<do access-modifier="private" name="ApplyAll" display-name="ApplyAll" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="javascript">
+					<![CDATA[
+var filters = AdvancedFilters.Value.Value == "" ? {} : JSON.parse(AdvancedFilters.Value.Value);
+for (let i = 0; i < pConfig.TableView.Columns.Length; i++)
+{
+	var jf = "";
+	if (pConfig.TableView.Columns[i].guiFlag)
+	{
+		var f = filters[pConfig.TableView.Columns[i].Id];
+		if (f == undefined) f = "";
+		jf = f;
+	}
+	if (TableOne.Columns[i].JsonFilter != jf)
+		TableOne.Columns[i].JsonFilter = jf;
+}
+
+// Выделение строки
+if (JSON.parse(TableOne.GetSelectedRows()) == "")
+	TableOne.SetSelectedRows("[0]");
+
+// Меняем состояние фильтра в статусной строке
+StatePanel.ViewFilterStateChange();
+if (ActiveMode == 1)
+	TableOne.TableModel_1.DataAggregator_1.CheckForRun(false);
+StatePanel.UpdateMessageCount();
+]]>
+				</body>
+			</do>
+			<object access-modifier="private" name="Value" display-name="Value" uuid="d1988c04-0249-4342-9425-a1a3ad608463" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1">
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+					<body kind="om">
+						<![CDATA[ApplyAll();]]>
+					</body>
+				</do-on>
+			</object>
+			<do-trace access-modifier="private" target="Value" ver="5">
+				<body>
+					<![CDATA[pViewFilter.JsonFilters]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="NotAckOtherEvents" display-name="NotAckOtherEvents" uuid="26ae491e-f220-4db4-84aa-34af9844d81c" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[Apply();]]>
+				</body>
+			</do-on>
+			<do access-modifier="private" name="Apply" display-name="Apply" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[private.ResetDecorators();
+]]>
+				</body>
+			</do>
+		</object>
+		<do-trace access-modifier="private" target="NotAckOtherEvents" ver="5">
+			<body>
+				<![CDATA[pConfig.NotAckOtherEvents]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="MergeEvents" display-name="MergeEvents" uuid="af9e75f3-f12b-4d80-b16d-c6f9cec74827" base-type="notifying_uint1" base-type-id="fed14c54-414c-56bd-549a-8d761c4d6200" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[private.ResetDecorators();]]>
+				</body>
+			</do-on>
+		</object>
+		<do-trace access-modifier="private" target="MergeEvents" ver="5">
+			<body>
+				<![CDATA[pConfig.MergeEvents]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="TableIsEmpty" display-name="TableIsEmpty" uuid="a2cc420a-1e8d-46e7-995e-5c96e07ab736" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+			<do access-modifier="private" name="Update" display-name="Update" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[TableIsEmpty = TableOne.GetRowCount() == 0;]]>
+				</body>
+			</do>
+		</object>
+		<object access-modifier="private" name="Permission" display-name="Permission" uuid="828bc50b-cd6c-4597-9eb0-12c0b8e6c8fb" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
+			<object access-modifier="private" name="cFileSystem" display-name="cFileSystem" uuid="5b15b262-2291-4e2a-8fe8-111f4e263437" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+					<body kind="om">
+						<![CDATA[// требуется обновить, так как значение корневого пути экспорта зависит от этого ограничения
+pConfig.Export.ExportPath.Update(pConfig.Export.ExportPath.Value);]]>
+					</body>
+				</do-on>
+			</object>
+			<do-trace access-modifier="private" target="cFileSystem" ver="5">
+				<body>
+					<![CDATA[pPermissions.Permission.FileSystem]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="Follow" display-name="Follow" uuid="9c5e5e88-9bcc-4a70-8ebc-c0b1c731319f" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
+			<object access-modifier="private" name="CurrentFFLE" display-name="Current Force Follow Latest Event" uuid="0fe5102b-827a-44a8-b57b-034d1434bbcc" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+					<body kind="om">
+						<![CDATA[//включение снапшота выключает слежение, и требуется сброс селекта
+if (SnapshotON && pConfig.ForceFollowLatestEvent && !value)
+	TableOne.SetSelectedRows("[]");
+//и смену декоратора
+ResetDecorators();]]>
+					</body>
+				</do-on>
+			</object>
+			<do-trace access-modifier="private" target="CurrentFFLE" ver="5">
+				<body>
+					<![CDATA[pConfig.ForceFollowLatestEvent && !SnapshotON]]>
+				</body>
+			</do-trace>
+			<object access-modifier="private" name="SelectedLookableRow" display-name="SelectedLookableRow" uuid="0bcbfef5-3241-4b5b-b1cf-c28e228b6b7a" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+		</object>
+		<do access-modifier="private" name="isInformativeEvent" display-name="isInformativeEvent" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+			<body kind="javascript">
+				<![CDATA[// Функция возвращает true, если элемент относится к группе важности "Прочие"
+
+if (!pConfig.NotAckOtherEvents.Value) return false
+
+var severityArray = pConfig.SeverityGroups.Range4.severityArray.split(",").map(function(value){
+    return parseInt(value, 10);
+});
+
+if (severityArray.indexOf(severity) == -1) return false
+
+return true]]>
+			</body>
+			<param access-modifier="private" name="severity" display-name="" uuid="883395fe-5169-470c-852b-1d365951a69e" base-type="uint2" base-type-id="ae923ad8-8b75-4813-8121-36efe3cc8c12" ver="3"/>
+		</do>
+		<do access-modifier="private" name="SourceDataCollect" display-name="SourceDataCollect" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[var colSSIndex = pConfig.TableView.Static.SystemSource.GetIndex();
+var Iterator = TableOne.TablePersistentIterator_1;
+var sSelect = [];//массив с полными тегами источников выбранных сообщений
+{
+	Iterator.FirstSelectedRow();
+	while (true)
+	{
+		if (Iterator.GetStatus() == 0)
+		{
+			var source = Iterator.GetText(colSSIndex);
+			if (!sSelect.includes(source))
+				sSelect.push(source);
+		}
+		if (!Iterator.HasNext()) break;
+		Iterator.Next();
+	}
+	Iterator.Close();
+}
+return JSON.stringify(sSelect);
+]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="FormDataCollect" display-name="FormDataCollect" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[var colSSIndex = pConfig.TableView.Static.SystemSource.GetIndex();
+var colIDIndex = pConfig.TableView.Static.ObjectId.GetIndex();
+var Iterator = TableOne.TablePersistentIterator_1;
+var sData = {};
+Iterator.FirstSelectedRow();
+if (Iterator.GetStatus() == 0)
+{
+	sData.Source = Iterator.GetData(colSSIndex);
+	sData.ObjectId = Iterator.GetData(colIDIndex);
+}
+Iterator.Close();
+
+return JSON.stringify(sData);
+]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="pTheme" display-name="pTheme" uuid="aa3440cb-326e-4465-9b11-114d36586553" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
+		<init target="pTheme" ver="5" ref="iTheme"/>
+		<object access-modifier="private" name="LoadSaveBusy" display-name="LoadSaveBusy" uuid="6c1f3bff-96b7-4866-985a-7e102af36050" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+			<object access-modifier="private" name="LoadingHistory" display-name="LoadingHistory" uuid="a957d3d6-585d-4d24-acd5-7930bf9c9125" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+					<body kind="om">
+						<![CDATA[if (oldValue != value)
+{
+	// если до этого выполнялась загрузка истории, то уведомляем об ее окончании
+	if (oldValue)
+		OnHistoryLoaded.Invoke();
+
+	// запоминаем новое значение
+	oldValue = value;	
+	
+	ProgressBar.SetVisible();
+}]]>
+					</body>
+				</do-on>
+				<object access-modifier="private" name="oldValue" display-name="oldValue" uuid="7ccb7a62-3f1d-4b93-b435-1872994a862c" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+			</object>
+			<object access-modifier="private" name="LoadingFile" display-name="LoadingFile" uuid="aba96a70-3071-48f9-a213-058ab899b526" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="SavingFile" display-name="SavingFile" uuid="e1df3dea-7034-4478-a7d6-32b9f232d7ce" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+		</object>
+		<do-trace access-modifier="private" target="LoadSaveBusy" ver="5">
+			<body>
+				<![CDATA[LoadSaveBusy.LoadingHistory || LoadSaveBusy.LoadingFile || LoadSaveBusy.SavingFile]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="InitComplete" display-name="InitComplete" uuid="37a29976-7090-4388-b2f7-a82d29a8933b" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3"/>
+		<object access-modifier="private" name="ComputerName" display-name="ComputerName" uuid="40c62753-7dd5-40df-a952-414afdf09d86" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+		<object access-modifier="private" name="RequestFilter" display-name="RequestFilter" uuid="7fccd401-262b-4652-827c-a6aa992f9d01" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="3">
+			<object access-modifier="private" name="severity" display-name="severity" uuid="bda6135a-2142-4ec4-88e9-d36944b2412f" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+			<object access-modifier="private" name="message" display-name="message" uuid="9847b393-e080-423e-8f59-05ae9c97baa3" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+			<object access-modifier="private" name="source" display-name="source" uuid="eb7480a7-636a-498e-8dc7-d7350c3afd2b" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+			<object access-modifier="private" name="acknow" display-name="acknow" uuid="4f36346b-7b43-4855-bc50-c157f0671833" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+			<do access-modifier="private" name="GetDescription" display-name="GetDescription" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+				<body kind="javascript">
+					<![CDATA[var text = "";
+function AddDescr(title,value)
+{
+	if (value!=undefined && value.length > 0)
+	{
+		if (text.length>0) text += ", ";
+		text += title + ": " + value;
+	}
+}
+
+AddDescr(pConfig.TableView.Static.Severity.GetTitle(), severity);
+AddDescr(pConfig.TableView.Static.Message.GetTitle(), message);
+AddDescr(pConfig.TableView.Static.Source.GetTitle(), source);
+if (acknow != "Все")
+	AddDescr(pConfig.TableView.Static.Ack.GetTitle(), acknow);
+
+return text;
+]]>
+				</body>
+			</do>
+		</object>
+	</object>
+	<object access-modifier="private" name="AcknowledgmentDoubleClick" display-name="Квитировать события повторным кликом по выделенной строке" uuid="2eae8ae4-70e1-4ecd-ad66-0256c0670895" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="2"/>
+	<object access-modifier="private" name="AcknowledgmentAllVisible" display-name="Квитировать только видимые" uuid="4f1272fb-67af-4cdc-883c-b0495956a889" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="2"/>
+	<object access-modifier="private" name="AllowAckSequence" display-name="Квитировать последовательность событий" uuid="57db8f18-5f0f-496c-a305-aee08bf19011" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3"/>
+	<object access-modifier="private" name="RequestAcknowledgmentComment" display-name="Запрашивать комментарий при квитировании" uuid="07f21067-1b6e-42eb-a103-c1bc96bdf292" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="2"/>
+	<object access-modifier="private" name="AllowAddComment" display-name="Разрешить добавлять комментарий" uuid="0c2d2d1f-924e-4e11-922b-a16844611e17" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3"/>
+	<object access-modifier="private" name="WriteComputerNameToComment" display-name="Дописывать название АРМ в комментарий квитирования" uuid="590e27e4-997f-47aa-adad-b613ba08e769" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (value) private.ComputerName = Network_1.ComputerName;
+else private.ComputerName = "";]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="AllowActionInSourceColumn" display-name="Разрешить действия в столбце источник события" uuid="f5f921cb-ae01-4cb1-81a6-c32e7ef6bced" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if(!AllowActionInSourceColumn)
+{
+	OnActionInSourceColumn.Args.Push("0");
+	OnActionInSourceColumn.Invoke();//вызов оставлен для полной идентичности старой версии
+}]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="RequestEventsStart" display-name="Запрашивать активные события при запуске" uuid="886faca8-162a-4a6f-82aa-22c0fa304ac2" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[TableOne.TableModel_1.ApAlarmQuery_1.ReloadSmart(false);]]>
+			</body>
+		</do-on>
+	</object>
+	<do access-modifier="private" name="AckSelected" display-name="AckSelected" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255" form-by-id="true">
+		<body kind="om">
+			<![CDATA[if (!private.InitComplete) return -1;
+
+// Функция работает только в оперативном режиме
+if (ActiveMode != 0)
+	return -1; 
+
+// При принудительном слежении функция работает только в режиме снимка
+if (here.private.Follow.CurrentFFLE && !here.SnapshotON)
+	return -1;
+	
+if (!pPermissions.Permission.Acknowledgment)
+{	
+	if (pPermissions.Permission.Acknowledgment.Result ==-1)
+		here.Dialogs.Message.NoLogOn();
+	else if (pPermissions.Permission.Acknowledgment.Result ==-2)
+		here.Dialogs.Message.NoPermission();
+	return -2;
+}
+
+if (AllowAckSequence)
+	Dialogs.OpenCommentAck.nAckMode = 3; // Устанавливаем режим квитирования последовательности
+else Dialogs.OpenCommentAck.nAckMode = 1;  // Устанавливаем режим квитирования выбранных сообщений
+
+Dialogs.OpenCommentAck.AckDataCollect();
+if (Dialogs.OpenCommentAck.AckedMsgs == "[]")
+	return 0;// Если квитировать нечего, то возвращаем 0
+
+Dialogs.OpenCommentAck.AckComment = private.ComputerName; // Комментарий квитирования по умолчанию
+if (RequestAcknowledgmentComment)
+	Dialogs.OpenCommentAck.Invoke(); // Если требуется ввод комментария квитирования, то открываем окно ввода
+else
+	Dialogs.OpenCommentAck.AckContinue.Invoke();
+return -3;]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="AckAll" display-name="AckAll" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255" form-by-id="true">
+		<body kind="om">
+			<![CDATA[if (!private.InitComplete) return -1;
+
+// Функция работает только в оперативном режиме
+if (ActiveMode != 0)
+	return -1; 
+
+if (!pPermissions.Permission.Acknowledgment) 
+{	
+	if (pPermissions.Permission.Acknowledgment.Result == -1)
+		here.Dialogs.Message.NoLogOn();
+	else if (pPermissions.Permission.Acknowledgment.Result == -2)
+		here.Dialogs.Message.NoPermission();
+	return -2;
+}
+
+Dialogs.OpenCommentAck.nAckMode = 2;// Устанавливаем режим квитирования всех сообщений
+
+Dialogs.OpenCommentAck.AckDataCollect();
+if (Dialogs.OpenCommentAck.AckedMsgs == "[]")
+	return 0;// Если квитировать нечего, то возвращаем 0
+
+Dialogs.OpenCommentAck.AckComment = private.ComputerName;// Комментарий квитирования по умолчанию
+if (RequestAcknowledgmentComment)
+	Dialogs.OpenCommentAck.Invoke(); // Если требуется ввод комментария квитирования, то открываем окно ввода
+else
+	Dialogs.OpenCommentAck.AckContinue.Invoke();
+return -4;]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="AddComment" display-name="AddComment" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[Dialogs.OpenCommentAck.nAckMode = 4;// Режим ввода комментария выбранным сообщениям
+Dialogs.OpenCommentAck.AckDataCollect();
+Dialogs.OpenCommentAck.AckComment = private.ComputerName; // Комментарий квитирования по умолчанию
+Dialogs.OpenCommentAck.Invoke();]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="ClearOperativeEventList" display-name="ClearOperativeEventList" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+		<body kind="om">
+			<![CDATA[if (!private.InitComplete) return -1;
+
+// Функция работает только в оперативном режиме и не в режиме снимка
+if (ActiveMode != 0 || here.SnapshotON)
+	return -1;
+
+if (!pPermissions.Permission.ClearingCurrentEvents)
+{	
+	if (pPermissions.Permission.ClearingCurrentEvents.Result == -1)
+		here.Dialogs.Message.NoLogOn();
+	else if (pPermissions.Permission.ClearingCurrentEvents.Result == -2)
+		here.Dialogs.Message.NoPermission();
+	return -2;
+}
+
+rowsCount:int4 = TableOne.TableModel_1.GetRowCount();
+TableOne.TableModel_1.ApAlarmQuery_1.ClearSmart();
+return rowsCount;]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="ClearAcknowledgedEvents" display-name="ClearAcknowledgedEvents" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255" form-by-id="true">
+		<body kind="om">
+			<![CDATA[if (!private.InitComplete) return -1;
+
+// Функция работает только в оперативном режиме и не в режиме снимка
+if (ActiveMode != 0 || here.SnapshotON)
+	return -1;
+
+if (!pPermissions.Permission.ClearingCurrentEvents)
+{	
+	if (pPermissions.Permission.ClearingCurrentEvents.Result == -1)
+		here.Dialogs.Message.NoLogOn();
+	else if (pPermissions.Permission.ClearingCurrentEvents.Result == -2)
+		here.Dialogs.Message.NoPermission();
+	return -2;
+}
+
+currentRow:int4;
+removedRows:int4 = 0; // Количество удаленных строк
+AckSost:variant; // Статус квитирования в variant
+severity:uint2; // Значение важности
+
+col6index:var = TableOne.MapColumnToModel(pConfig.TableView.Static.Severity.GetIndex());
+col7index:var = TableOne.MapColumnToModel(pConfig.TableView.Static.Ack.GetIndex());
+TableOne.TableModel_1.TableIterator_1.FirstSelected();
+while (!TableOne.TableModel_1.TableIterator_1.End())
+{
+	currentRow = TableOne.MapRowToModel(TableOne.TableModel_1.TableIterator_1.CurrentRow);
+	
+	// Состояние "Квитировано" в случае, если квитирование не требуется равно EMPTY, если квитировано = true, если неквитировано = false;	
+	AckSost = TableOne.TableModel_1.GetCellData(currentRow, col7index);
+
+	//Если поле "Квитировано" не пустое (требуется квитирование) то смотрим на статус квитирования, и важность если флаг установлен
+	removeit:bool = false;
+	if (Variant.IsEmpty(AckSost))
+		removeit = true;
+	else
+	{
+		if (Variant.ToBool(AckSost,false))
+			removeit = true;
+		else if(pConfig.NotAckOtherEvents.Value)
+		{
+			severity = Variant.ToUint2( TableOne.TableModel_1.GetCellData(currentRow, col6index) ,0);
+			if (private.isInformativeEvent(severity))
+				removeit = true;
+		}
+	}
+	
+	if (removeit)
+	{
+		TableOne.TableModel.RemoveRow(currentRow);
+		removedRows += 1;
+		// при удалении строки, переход к следующей происходит автоматически
+	}
+	else
+		TableOne.TableModel_1.TableIterator_1.Next();
+}
+return removedRows;]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="LookLatestEvent" display-name="Слежение за последним поступившим событием" uuid="6e8118f5-77d8-4e2b-848f-d19ae7cc44f7" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[private.Follow.SelectedLookableRow = value;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="ActiveConditionsList" display-name="Список активных условий" uuid="869ea3ea-cd27-43d7-8010-b5d9b8dc413d" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[TableOne.TableModel_1.ApAlarmQuery_1.ReloadSmart(false);]]>
+			</body>
+		</do-on>
+	</object>
+	<do access-modifier="private" name="SetAdvancedRequestFilterAsJson" display-name="SetAdvancedRequestFilterAsJson" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<param access-modifier="private" name="StringJSON" display-name="" uuid="0ddefd86-7ef5-4858-a6b9-cb1cffb75e3a" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<body kind="javascript">
+			<![CDATA[//Функция устанавливает расширенный фильтр запроса по заданным условиям фильтрации. В случае неверного задания JSON-строки возвращает false
+try
+{
+	TableOne.SetRequestFilter(StringJSON);
+	TableOne.TableModel_1.ApAlarmQuery_1.Reload();
+	return true;
+} 
+catch
+{
+	TableOne.SetRequestFilter("");
+	return false;
+}]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetHistoricalInterval" display-name="SetHistoricalInterval" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<param access-modifier="private" name="t1" display-name="" uuid="4aee0b78-ec8a-4ecb-9d2d-ef98a54d0671" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="2"/>
+		<param access-modifier="private" name="t2" display-name="" uuid="df9c6271-5e3f-4796-b875-be7331b9d414" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="2"/>
+		<body kind="om">
+			<![CDATA[// Проверяем корректность ввода дат запроса
+if (t1 == 0 || t2 == 0 || t2 <= t1)
+	return false;
+
+TableOne.TableModel_1.Clear();
+TableOne.TableModel_1.openedFilePath = "";
+TableOne.TableModel_1.ApAlarmQuery_1.HistoricalRangeStart = DateTime.ToUtc(t1);
+TableOne.TableModel_1.ApAlarmQuery_1.HistoricalRangeEnd = DateTime.ToUtc(t2);
+TableOne.TableModel_1.ApAlarmQuery_1.Reload();
+TableOne.TableModel_1.BeginReadAsync();
+private.LoadSaveBusy.LoadingHistory = true;
+
+TableOne.UserInterval.Set(t1, t2);
+return true;]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="RequestRecentEvents" display-name="RequestRecentEvents" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[// Подгрузка исторических события в таблицу оперативного режима
+
+var AND = [];
+if (onlyNotAcked)
+	AND.push({"NOT":{"AND":[{"acked":true},{"ack_required":true}]}});
+
+// Если задан JSON-фильтр, то формируем массив вместе с условием квитирования
+if (requestAdvancedFilterAsJson.length > 2)
+	AND.push(JSON.parse(requestAdvancedFilterAsJson));
+
+var jsonString = "";
+if (AND.length == 1)
+	jsonString = JSON.stringify(AND[0]);
+else if (AND.length > 1)
+	jsonString = JSON.stringify({AND});
+
+TableOne.TableModel_1.ApAlarmQuery_1.HistoricalFilter = jsonString;
+TableOne.TableModel_1.ApAlarmQuery_1.HistoryPreloadInterval = intervalDuration * 3600; // Устанавливаем интервал в секундах
+TableOne.TableModel_1.ApAlarmQuery_1.ReloadSmart(true);
+]]>
+		</body>
+		<param access-modifier="private" name="intervalDuration" display-name="" uuid="328e2977-8e6b-41a9-92af-749a50e274d4" base-type="double" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="3"/>
+		<param access-modifier="private" name="onlyNotAcked" display-name="" uuid="97998d45-24d1-4a37-96e6-8a954d6cb24d" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="3"/>
+		<param access-modifier="private" name="requestAdvancedFilterAsJson" display-name="" uuid="ebcb9a78-385d-4fe9-9fb1-f11bcc831967" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+	</do>
+	<param access-modifier="private" name="init_ApSource" display-name="Ссылка на источник AP" uuid="55afd295-c048-4522-88c5-184b60aa1dc8" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" base-const="true" base-ref="true" ver="3"/>
+	<do access-modifier="private" name="SetSize" display-name="SetSize" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[ProgressBar.SetVisible();]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="HideColumnTitle" display-name="Скрыть заголовки столбцов" uuid="faf31b16-8145-4ccf-95c5-dde50f180a4c" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3"/>
+	<object access-modifier="private" name="AlwaysOnTopForm" display-name="Поверх всех окон" uuid="c3b6675a-cb2a-4075-a8ff-e5ef19abf862" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3"/>
+	<object access-modifier="private" name="HideAckedEvents" display-name="Не отображать неактивные квитированные события" uuid="baa5d648-783b-4506-a953-ad1efa180445" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[TableOne.TableModel_1.ApAlarmQuery_1.ReloadSmart(false);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="SubscriptionAdvancedFilter" display-name="Фильтр подписки" uuid="7576fb62-1a32-4f91-9c6f-eff1953b2709" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[TableOne.TableModel_1.ApAlarmQuery_1.ReloadSmart(false);
+StatePanel.ViewFilterStateChange();]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="EnableSortingOnGridHeader" display-name="Доступность сортировки по заголовкам столбцов таблицы" uuid="61395604-3551-4f0b-acd1-b7243a2d63c2" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3"/>
+	<object access-modifier="private" name="GUIModificationAvailable" display-name="Возможность изменения вида пользовательского интерфейса" uuid="a3f9e3ba-92d4-405b-9871-d6707c31709e" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3"/>
+	<object access-modifier="private" name="MultiSelectAvailable" display-name="Доступность выбора нескольких строк в таблице" uuid="4dcaf975-4e0d-42f5-953f-5aba94f1a913" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="Mode" display-name="Mode" uuid="035d1a20-a291-49fb-8d04-e72bc37130f8" base-type="notifying_uint1" base-type-id="fed14c54-414c-56bd-549a-8d761c4d6200" ver="5" description="" cardinal="1"/>
+		<do-trace access-modifier="private" target="Mode" ver="5">
+			<body>
+				<![CDATA[TypeConvert.ToUint1(here.private.Follow.CurrentFFLE && ActiveMode==0 ? 0 : (MultiSelectAvailable ? 3 : 1))]]>
+			</body>
+		</do-trace>
+		<init target="Mode" ver="5" value="3"/>
+	</object>
+	<init target="AcknowledgmentDoubleClick" ver="5" value="true"/>
+	<init target="AllowAckSequence" ver="5" value="false"/>
+	<init target="RequestAcknowledgmentComment" ver="5" value="true"/>
+	<init target="AllowAddComment" ver="5" value="true"/>
+	<init target="WriteComputerNameToComment" ver="5" value="true"/>
+	<init target="AllowActionInSourceColumn" ver="5" value="true"/>
+	<init target="RequestEventsStart" ver="5" value="true"/>
+	<init target="ActiveConditionsList" ver="5" value="false"/>
+	<init target="HideColumnTitle" ver="5" value="false"/>
+	<init target="AlwaysOnTopForm" ver="5" value="true"/>
+	<init target="LookLatestEvent" ver="5" value="true"/>
+	<object access-modifier="private" name="ActiveMode" display-name="Активный режим работы (0-оперативный, 1-исторический)" uuid="f22ad0e6-96f0-4a46-b71d-dfe71975bacd" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[//проверяем какое значение было применено, чтоб отсеять лишние запуски
+if (oldValue == Value)
+	return;
+oldValue = Value;
+
+if (Value == 0)
+{
+	// Оперативный режим
+	//DebugTool_1.Log("Operative mode");
+	TableOne.TableModel_1.ApAlarmQuery_1.ReloadSmart(true);
+	private.TableIsEmpty.Update();
+}
+else 
+{
+	// Исторический режим
+	//DebugTool_1.Log("Historical mode");
+	if (!private.LoadSaveBusy.LoadingHistory && TableOne.UserInterval.TimeStart.Value == 0) 
+	{
+		timeLocal: uint8 = DateTime.ToLocal(DateTime.UtcNow()); // Местное время
+		timeStart: uint8 = DateTime.AddHours(timeLocal, - DefaultHistoricalInterval); // Время для начала диапазона
+		TableOne.UserInterval.Set(timeStart, timeLocal);
+	}
+	
+	if (TableOne.TableModel_1.ApAlarmQuery_1.HistoricalRangeStart > 0)
+		ReloadHistory();
+	else
+		TableOne.TableModel_1.Clear();
+	private.TableIsEmpty.Update();
+}
+
+// Обновляем веса разметки для смены таблиц
+SetSize();
+
+// Обновляем статистику
+StatePanel.UpdateMessageCount();
+
+//и декоратор
+private.ResetDecorators();
+]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="oldValue" display-name="oldValue" uuid="9e7a3179-bd9a-4b80-9218-c7c7f727d84e" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+		<init target="oldValue" ver="5" value="-1"/>
+	</object>
+	<object access-modifier="private" name="MaxVisibleOrdinaryEvents" display-name="Максимальное количество обычных событий" uuid="644e1c29-d417-4e7e-80e4-a59af163c492" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="3"/>
+	<init target="MaxVisibleOrdinaryEvents" ver="5" value="500"/>
+	<designed target="ZValue" value="0" ver="3"/>
+	<init target="HideAckedEvents" ver="5" value="false"/>
+	<init target="SubscriptionAdvancedFilter" ver="5" value=""/>
+	<designed target="Opacity" value="1" ver="3"/>
+	<do access-modifier="private" name="CancelHistoryQuery" display-name="CancelHistoryQuery" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[TableOne.TableModel_1.CancelReadAsync();]]>
+		</body>
+	</do>
+	<init target="EnableSortingOnGridHeader" ver="5" value="true"/>
+	<init target="GUIModificationAvailable" ver="5" value="true"/>
+	<object access-modifier="private" name="MaxVisibleEvents" display-name="Максимальное количество событий" uuid="c52d85ee-3ff0-4052-8fad-fa5a7e021e24" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="3"/>
+	<object access-modifier="private" name="DefaultHistoricalInterval" display-name="Интервал запроса истории по умолчанию, час" uuid="b7ea75ef-5d2e-4e7b-a27a-0ad2bb4ddca7" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="3"/>
+	<init target="DefaultHistoricalInterval" ver="5" value="24"/>
+	<object access-modifier="private" name="ExtensionInterval" display-name="Расширяющий интервал (час)" uuid="6345ab4e-493c-4ff1-b075-5f154094ded6" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="EventsChronology" display-name="Хронология исторических событий" uuid="5ec66e05-b4eb-470d-acce-5fa454f6ea1a" base-type="notifying_uint1" base-type-id="fed14c54-414c-56bd-549a-8d761c4d6200" ver="3"/>
+	<init target="EventsChronology" ver="5" value="0"/>
+	<object access-modifier="private" name="HorizontalScrollBarPolicy" display-name="Режим отображения полосы горизонтальной прокрутки" uuid="b969e892-d231-4319-a5b3-a0867d0e4b9c" base-type="notifying_uint1" base-type-id="fed14c54-414c-56bd-549a-8d761c4d6200" ver="3"/>
+	<object access-modifier="private" name="VerticalScrollBarPolicy" display-name="Режим отображения полосы вертикальной прокрутки" uuid="ef32a49b-1e2e-417e-bde2-5f7ae494d415" base-type="notifying_uint1" base-type-id="fed14c54-414c-56bd-549a-8d761c4d6200" ver="3"/>
+	<object access-modifier="private" name="DisplaySeverityStatistics" display-name="Отображать детальную статистику по важности" uuid="79ef954f-99ea-46bd-ba8e-eb8ff0e15935" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[StatePanel.UpdateMessageCount();]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="SnapshotON" display-name="Активность режима снимка" uuid="12927314-49eb-4bc4-8e23-1136bd708085" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[private.ResetDecorators();]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="OnPrint" display-name="OnPrint" uuid="04c090c2-7ad9-4a89-8d1d-6c3c13d28eec" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<do-trace access-modifier="private" target="PenColor" ver="5">
+		<body>
+			<![CDATA[private.pTheme.BorderColor]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[private.pTheme.BackgroundColor]]>
+		</body>
+	</do-trace>
+	<do access-modifier="private" name="ReloadHistory" display-name="ReloadHistory" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[if (ActiveMode == 1)
+{
+	if (ApSource.ConnectionState != 2)
+	{
+		Dialogs.Message.Error("Отсутствует соединение с историей", private.pTheme.GetViewSettings(), AlwaysOnTopForm.Value);
+		return;
+	}
+	// Если даты некорректны, то выводим сообщение об ошибке
+	if (!SetHistoricalInterval(TableOne.UserInterval.TimeStart, TableOne.UserInterval.TimeEnd))
+		Dialogs.Message.Error("Недопустимое значение границ интервала запроса истории", private.pTheme.GetViewSettings(), AlwaysOnTopForm.Value);
+}]]>
+		</body>
+	</do>
+	<init target="AcknowledgmentAllVisible" ver="5" value="false"/>
+	<object access-modifier="private" name="OnSave" display-name="OnSave" uuid="a3b1d9cf-d814-468e-9fbb-11ffcee61e58" base-type="EventHandler" base-type-id="c01b71c2-42e8-4333-b70e-cc35fdf96f7e" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="OnLoad" display-name="OnLoad" uuid="6299c717-0503-4c81-9c02-0eff68b1d9ba" base-type="EventHandler" base-type-id="c01b71c2-42e8-4333-b70e-cc35fdf96f7e" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="OnAck" display-name="OnAck" uuid="a1fd600f-796a-4d6a-bbe4-4d32e377b168" base-type="EventHandler" base-type-id="c01b71c2-42e8-4333-b70e-cc35fdf96f7e" base-const="true" base-ref="true" ver="4"/>
+	<init target="MultiSelectAvailable" ver="5" value="true"/>
+	<init target="HorizontalScrollBarPolicy" ver="5" value="0"/>
+	<init target="VerticalScrollBarPolicy" ver="5" value="0"/>
+	<init target="ExtensionInterval" ver="5" value="0"/>
+	<init target="DisplaySeverityStatistics" ver="5" value="false"/>
+	<object access-modifier="private" name="OnMouseRightRelease" display-name="OnMouseRightRelease" uuid="35f8d7c3-3513-4c79-8d06-fe36271874a7" base-type="EventHandler" base-type-id="c01b71c2-42e8-4333-b70e-cc35fdf96f7e" base-const="true" base-ref="true" ver="4"/>
+	<designed target="Flip" value="0" ver="5"/>
+	<do access-modifier="private" name="SaveToFile" display-name="SaveToFile" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[Dialogs.ShowSaveDialog.Save(filePath, true, false);]]>
+		</body>
+		<param access-modifier="private" name="filePath" display-name="" uuid="8f0b3ebd-ca26-453d-b038-2022e660c24f" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="SaveToFolder" display-name="SaveToFolder" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[Dialogs.ShowSaveDialog.Save(folderPath, false, false);]]>
+		</body>
+		<param access-modifier="private" name="folderPath" display-name="" uuid="cdb84420-e197-4acd-a738-57c55b3bc558" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="LoadFromFile" display-name="LoadFromFile" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[Dialogs.ShowOpenDialog.Open(filePath, true, false);]]>
+		</body>
+		<param access-modifier="private" name="filePath" display-name="" uuid="dba08744-9d37-4ec8-993c-5d93f209fee4" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="LoadFromFolder" display-name="LoadFromFolder" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<param access-modifier="private" name="folderPath" display-name="" uuid="f89bc550-7350-4548-bfbf-a6ad432f9c85" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<body kind="om">
+			<![CDATA[Dialogs.ShowOpenDialog.Open(folderPath, false, false);]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="OnHistoryLoaded" display-name="OnHistoryLoaded" uuid="a9201f89-775d-40a4-a655-2825b5c271b0" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="OnError" display-name="OnError" uuid="0d6ef6aa-b73f-473b-8f76-16d8dfde311d" base-type="EventHandler" base-type-id="c01b71c2-42e8-4333-b70e-cc35fdf96f7e" base-const="true" base-ref="true" ver="5" description=""/>
+	<init target="MaxVisibleEvents" ver="5" value="4294967295"/>
+	<object access-modifier="private" name="OnActionInSourceColumn" display-name="OnActionInSourceColumn" uuid="89d5d9b1-7278-4be5-afb3-a03a35a3d591" base-type="EventHandler" base-type-id="c01b71c2-42e8-4333-b70e-cc35fdf96f7e" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="pScreenKeyboard" display-name="Параметры экранной клавиатуры" uuid="5ec0cbf5-0900-4303-9793-26d2b25613a6" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="pPermissions" display-name="Разрешения пользователя" uuid="514caf0a-c077-4ba1-8f8f-72ebfa7d6f87" base-type="Alarms_Permissions" base-type-id="eaa1f2f7-6334-4d05-a44d-ca72425d2f9f" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="pConfig" display-name="Конфигурация" uuid="750ed530-b659-4c56-b0fe-92e0f4ec2e02" base-type="Alarms_Config" base-type-id="cac958c3-d08c-4b7b-8345-d70ccc130514" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="ProgressBar" display-name="ProgressBar" uuid="52ece463-c447-4331-b214-539188b2ab50" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="3">
+		<designed target="X" value="-1" ver="3"/>
+		<designed target="Y" value="0" ver="3"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Rotation" value="0" ver="3"/>
+		<designed target="Scale" value="1" ver="3"/>
+		<designed target="Visible" value="false" ver="3"/>
+		<designed target="Opacity" value="1" ver="3"/>
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="Tooltip" value="" ver="3"/>
+		<designed target="Width" value="1000" ver="3"/>
+		<designed target="Height" value="21.226400000000002" ver="3"/>
+		<designed target="RoundingRadius" value="0" ver="3"/>
+		<designed target="PenColor" value="4278190080" ver="3"/>
+		<designed target="PenStyle" value="1" ver="3"/>
+		<designed target="PenWidth" value="1" ver="3"/>
+		<designed target="BrushColor" value="0xff00ff7f" ver="3"/>
+		<designed target="BrushStyle" value="1" ver="3"/>
+		<object access-modifier="private" name="LayoutWeight_1" display-name="LayoutWeight_1" uuid="615e86a3-a9d4-4d42-ba7f-c61f6d42ab15" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="2">
+			<designed target="Weight" value="0" ver="2"/>
+		</object>
+		<object access-modifier="private" name="Message" display-name="Message" uuid="e1d9b8ae-737d-4ea5-a30a-921a056fb60c" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="3">
+			<designed target="X" value="10" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<designed target="Scale" value="1" ver="3"/>
+			<designed target="Visible" value="true" ver="3"/>
+			<designed target="Opacity" value="1" ver="3"/>
+			<designed target="Enabled" value="true" ver="3"/>
+			<designed target="Tooltip" value="" ver="3"/>
+			<designed target="Width" value="1000" ver="3"/>
+			<designed target="Height" value="21.2264" ver="3"/>
+			<designed target="Text" value="Подготовка данных..." ver="3"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="3"/>
+			<designed target="FontColor" value="4278190080" ver="3"/>
+			<designed target="TextAlignment" value="129" ver="3"/>
+		</object>
+		<object access-modifier="private" name="LinearLayout_1" display-name="LinearLayout_1" uuid="85f6f60a-2663-4231-8e51-42614d430631" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="3">
+			<designed target="Orientation" value="1" ver="3"/>
+			<designed target="Gap" value="5" ver="3"/>
+		</object>
+		<object access-modifier="private" name="Loading" display-name="Loading" uuid="a75e2349-d6cf-4129-9b44-9317152099b8" base-type="Timer" base-type-id="72ba7cd4-549e-41f2-923c-2431b91f349a" ver="3">
+			<designed target="Period" value="500" ver="3"/>
+			<designed target="Active" value="false" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnTimer">
+				<body kind="javascript">
+					<![CDATA[// Формирование текста "Подготовка данных..."
+var text = Message.Text;
+
+var endStr = text.slice(text.length - 3, text.length);
+
+if (endStr == "...") text = text.slice(0, text.length - 3);
+else text += ".";
+
+Message.Text = text;]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[private.LoadSaveBusy.LoadingHistory]]>
+				</body>
+			</do-trace>
+		</object>
+		<do access-modifier="private" name="SetVisible" display-name="SetVisible" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[// Задание размера и видимости статус-бара
+if (!private.LoadSaveBusy.LoadingHistory || ActiveMode == 0)
+	ProgressBar.LayoutWeight_1.Weight = 0;
+else
+	ProgressBar.LayoutWeight_1.Weight = Math.Ceil(20/TableOne.Height*100);
+
+TableOne.LayoutWeight_1.Weight = 100 - ProgressBar.LayoutWeight_1.Weight;
+]]>
+			</body>
+		</do>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[private.LoadSaveBusy.LoadingHistory]]>
+			</body>
+		</do-trace>
+		<designed target="Flip" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="TableOne" display-name="TableOne" uuid="c56d7c34-32bb-41c4-b30c-b28ab6fbd1f6" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Width" value="1000" ver="5"/>
+		<designed target="Height" value="1.1090573012939002" ver="5"/>
+		<designed target="BackgroundColor" value="0xffffffff" ver="5"/>
+		<designed target="FrameColor" value="0xff5f5f5f" ver="5"/>
+		<designed target="GridColor" value="0xffd8d8d8" ver="5"/>
+		<designed target="HeaderHeight" value="23" ver="5"/>
+		<designed target="HeaderVisible" value="false" ver="5"/>
+		<designed target="RowHeight" value="23" ver="5"/>
+		<designed target="RowOrder" value="1" ver="5"/>
+		<designed target="SelectionBehavior" value="1" ver="5"/>
+		<designed target="SelectionMode" value="3" ver="5"/>
+		<designed target="SelectionOverlayEnabled" value="false" ver="5"/>
+		<designed target="LatestRowTracking" value="false" ver="5"/>
+		<designed target="DelayedSortingEnabled" value="false" ver="5"/>
+		<designed target="HorizontalScrollMode" value="0" ver="5"/>
+		<designed target="VerticalScrollMode" value="0" ver="5"/>
+		<designed target="HorizontalScrollBarPolicy" value="0" ver="5"/>
+		<designed target="VerticalScrollBarPolicy" value="0" ver="5"/>
+		<designed target="RowHeightResizeMode" value="3" ver="5"/>
+		<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+			<body>
+				<![CDATA[private.pTheme.EditorBrushColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="FrameColor" ver="5">
+			<body>
+				<![CDATA[private.pTheme.BorderColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="HeaderHeight" ver="5">
+			<body>
+				<![CDATA[pConfig.TableView.HeaderHeight]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="HeaderVisible" ver="5">
+			<body>
+				<![CDATA[!HideColumnTitle]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="RowHeight" ver="5">
+			<body>
+				<![CDATA[pConfig.TableView.RowHeight]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="SelectionMode" ver="5">
+			<body>
+				<![CDATA[MultiSelectAvailable.Mode]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="HorizontalScrollBarPolicy" ver="5">
+			<body>
+				<![CDATA[here.HorizontalScrollBarPolicy]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="VerticalScrollBarPolicy" ver="5">
+			<body>
+				<![CDATA[here.VerticalScrollBarPolicy]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_MousePress" display-name="Handler_MousePress" ver="5" event="MousePress">
+			<body kind="om">
+				<![CDATA[mousePress = true;
+selectedRow = row;
+selectedColumn = column;
+SelectionMode = MultiSelectAvailable.Mode; // Режим выделения нескольких строк]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_MouseRelease" display-name="Handler_MouseRelease" ver="5" event="MouseRelease">
+			<body kind="om">
+				<![CDATA[mousePress = false;
+
+if (button == 2) // правая клавиша мыши
+{
+	OnMouseRightRelease.Args.Push("{" + Alarms_Tools.JsonParam("X",String.ToString(ScreenX(MouseX, MouseY))) + "," + Alarms_Tools.JsonParam("Y",String.ToString(ScreenY(MouseX, MouseY))) + "}");
+	OnMouseRightRelease.Invoke();
+}]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_MouseMove" display-name="Handler_MouseMove" ver="5" event="MouseMove">
+			<body kind="javascript">
+				<![CDATA[//Drag&Drop. Формирование JSON-строки формата {"data":[{"tag":"some.tag1"},{"tag":"some.tag2"}]}
+//На данном этапе только для 1 тега
+var sendObj = {};
+var end;
+sendObj.data = [];
+
+if (mousePress && selectedColumn == pConfig.TableView.Static.Source.GetIndex()) {
+	SelectionMode = 1; // Режим выделения только одной строки
+	if (Math.abs(diffX - mouseX) > 1 || Math.abs(diffY - mouseY) > 1) {
+		TablePersistentIterator_1.FirstSelectedRow();
+		while	(!end) {
+			if (TablePersistentIterator_1.GetStatus() == 0 && TablePersistentIterator_1.GetRow() == selectedRow) {
+				sendObj.data.push({"tag":TablePersistentIterator_1.GetData(pConfig.TableView.Static.SystemSource.GetIndex())});
+				DragNDrop_1.SetText(JSON.stringify(sendObj));
+				DragNDrop_1.DoDragDrop();
+			}
+			end = !TablePersistentIterator_1.HasNext();
+			TablePersistentIterator_1.Next();
+		}
+		TablePersistentIterator_1.Close();	
+		mousePress = false;
+	}
+} else {
+	diffX = mouseX;
+	diffY = mouseY;
+}
+]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_SelectionChanged" display-name="Handler_SelectionChanged" ver="5" event="SelectionChanged">
+			<body kind="javascript">
+				<![CDATA[if (ActiveMode == 0)
+{
+	//Механизм остановки прокрутки списка (учитывается только при выключенном состоянии FollowLastEvent)
+	var rowIndex = JSON.parse(GetSelectedRows());
+	var lastRowIndex = pConfig.TableView.followRow == "bottom" ? GetRowCount()-1 : 0;
+
+	//Выбираем первую строку, если ничего не выбрано
+	if (rowIndex == "" && !here.SnapshotON.Value) SetSelectedRows("[0]");
+
+	//Выключаем слежение, если выбрано более одной строки или выбрана не последняя поступившая строка
+	if (rowIndex.length > 1 || rowIndex.length == 1 && rowIndex[0] != lastRowIndex) private.Follow.SelectedLookableRow = false;
+	else if (rowIndex[0] == lastRowIndex) private.Follow.SelectedLookableRow = true;
+
+	//Если таблица пустая - скрываем кнопки
+	private.TableIsEmpty.Update();
+
+	//#35397 после внедрения механизма CustomRowTracking приходится руками менять активную ячейку
+	if (rowIndex.length == 1) SetCurrentCell(rowIndex[0], 0);
+}
+else
+{
+	//Выделение строки
+	if (JSON.parse(GetSelectedRows()) == "") SetSelectedRows("[0]");
+
+	//Если таблица пустая - скрываем кнопки
+	private.TableIsEmpty.Update();
+}]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="DragNDrop_1" display-name="DragNDrop_1" uuid="0b1879c0-60d3-4a52-8ab1-5ca53ed84991" base-type="DragNDrop" base-type-id="c4ddb32f-3653-44c8-be57-3a595e10c2fb" ver="3">
+			<designed target="DragEnabled" value="true" ver="3"/>
+			<designed target="DropEnabled" value="true" ver="3"/>
+			<designed target="Image" value="." ver="3"/>
+		</object>
+		<object access-modifier="private" name="Columns" display-name="Columns" uuid="a026bdd4-d3bb-4497-9dd3-76134adba9b8" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="2" cardinal="31">
+			<designed target="Title" value="" ver="2"/>
+			<designed target="Description" value="" ver="2"/>
+			<designed target="Id" value="" ver="2"/>
+			<designed target="BackgroundColor" value="0xffffffff" ver="2"/>
+			<designed target="ForegroundColor" value="0xff000000" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="TitleBackgroundColor" value="0xffffffff" ver="2"/>
+			<designed target="TitleForegroundColor" value="0xff000000" ver="2"/>
+			<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="Width" value="145" ver="2"/>
+			<designed target="WidthResizeMode" value="0" ver="2"/>
+			<designed target="Hidden" value="false" ver="2"/>
+			<designed target="NumberFormat" value="%d" ver="2"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="2"/>
+			<designed target="Emptiable" value="true" ver="2"/>
+			<do-on access-modifier="private" name="Handler_MouseDoubleClick" display-name="Handler_MouseDoubleClick" ver="5" event="MouseDoubleClick">
+				<body kind="om">
+					<![CDATA[if (ActiveMode != 0) return;
+if (Id == pConfig.TableView.Static.AckRequired.Id) return;
+selectedRow = row;
+
+//Квитирование двойным нажатием
+ackSost: variant;
+ackRequest: variant;
+end: bool = false;
+acked: bool = false;
+needToAck: bool = false;
+
+if (AcknowledgmentDoubleClick && !here.private.Follow.CurrentFFLE)
+{
+	TableOne.TablePersistentIterator_1.FirstSelectedRow();
+	while (!end)
+	{
+		if (TableOne.TablePersistentIterator_1.GetStatus() == 0 && TableOne.TablePersistentIterator_1.GetRow() == selectedRow)
+		{
+			ackSost = TableOne.TablePersistentIterator_1.GetData(pConfig.TableView.Static.Ack.GetIndex()); //Состояние квитирования
+			ackRequest = TableOne.TablePersistentIterator_1.GetData(pConfig.TableView.Static.AckRequired.GetIndex()); //Признак квитирования
+			if (!Variant.IsEmpty(ackSost)) acked = Variant.ToBool(ackSost,false); else acked = true;
+			if (!Variant.IsEmpty(ackRequest)) needToAck = Variant.ToBool(ackRequest,false); else needToAck = false;
+			if (!acked && needToAck) AckSelected();
+			break;
+		}
+		end = !TableOne.TablePersistentIterator_1.HasNext();
+		TableOne.TablePersistentIterator_1.Next();
+	}
+	TableOne.TablePersistentIterator_1.Close();
+}
+]]>
+				</body>
+			</do-on>
+			<designed target="TextAlignment" value="129" ver="2"/>
+			<designed target="JsonFilter" value="" ver="2"/>
+			<designed target="SortingEnabled" value="false" ver="2"/>
+			<designed target="SortOrder" value="0" ver="2"/>
+			<designed target="SortPriority" value="0" ver="2"/>
+			<designed target="WordWrap" value="true" ver="3"/>
+			<do-on access-modifier="private" name="Handler_WidthChanged" display-name="Handler_WidthChanged" ver="5" event="WidthChanged">
+				<body kind="om">
+					<![CDATA[private.WidthChanged = true;]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="WordWrap" ver="5">
+				<body>
+					<![CDATA[pConfig.LineTransfer]]>
+				</body>
+			</do-trace>
+			<designed target="TitleTextAlignment" value="132" ver="3"/>
+			<do-trace access-modifier="private" target="TimeFormat" ver="5">
+				<body>
+					<![CDATA[CustomTimeFormat!="" ? CustomTimeFormat : (pConfig.ShowMilliseconds ? "dd.MM.yyyy hh:mm:ss.zzz" : "dd.MM.yyyy hh:mm:ss")]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_MouseTitleClick" display-name="Handler_MouseTitleClick" ver="5" event="MouseTitleClick">
+				<body kind="om">
+					<![CDATA[private.SwitchSorting(Id, SortingEnabled, SortOrder);]]>
+				</body>
+			</do-on>
+			<designed target="SortMode" value="0" ver="4"/>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+			<do-trace access-modifier="private" target="TitleBackgroundColor" ver="5">
+				<body>
+					<![CDATA[private.pTheme.BackgroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="TitleForegroundColor" ver="5">
+				<body>
+					<![CDATA[private.pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_MouseRightTitleClick" display-name="Handler_MouseRightTitleClick" ver="5" event="MouseRightTitleClick">
+				<body kind="om">
+					<![CDATA[if (GUIModificationAvailable && pPermissions.IsFullAccessAllowed/*#20781*/)
+{
+	Dialogs.OpenColumnsMenu.left = ScreenX(MouseX, MouseY);
+	Dialogs.OpenColumnsMenu.top = ScreenY(MouseX, MouseY);
+	Dialogs.OpenColumnsMenu.Invoke();
+}]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_MouseClick" display-name="Handler_MouseClick" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[if (Id == pConfig.TableView.Static.Source.Id)
+{
+	//Запрос objectId
+	end: bool = false;
+	if (AllowActionInSourceColumn)
+	{
+		TablePersistentIterator_1.FirstSelectedRow();
+		while (!end)
+		{
+			if (TablePersistentIterator_1.GetStatus() == 0)
+			{
+				OnActionInSourceColumn.Args.Push(String.ToString(Variant.ToUint4(TablePersistentIterator_1.GetData(pConfig.TableView.Static.ObjectId.GetIndex()),0)));
+				OnActionInSourceColumn.Invoke();
+			}
+			end = !TablePersistentIterator_1.HasNext();
+			TablePersistentIterator_1.Next();
+		}
+		TablePersistentIterator_1.Close();
+	}
+}
+
+if (Id == pConfig.TableView.Static.AckRequired.Id && ActiveMode == 0)
+{
+	//#28911 Если квитировать нечего, выходим молча чтоб небыло ошибок
+	Dialogs.OpenCommentAck.nAckMode = 1;  // Устанавливаем режим квитирования выбранных сообщений
+	Dialogs.OpenCommentAck.AckDataCollect();
+	//DebugTool_1.Log("MC AckedMsgs="+Main_panel.private.AckedMsgs);
+	if (Dialogs.OpenCommentAck.AckedMsgs == "[]")
+		return;
+
+	selectedRow = row;
+	if (!here.private.Follow.CurrentFFLE) AckSelected();
+}]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="CustomTimeFormat" display-name="CustomTimeFormat" uuid="dbdb661e-d514-4cf4-8548-b54ed3e35150" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		</object>
+		<object access-modifier="private" name="TablePersistentIterator_1" display-name="TablePersistentIterator_1" uuid="cb087f10-f0d5-44e0-a25e-6faeca6ed510" base-type="TablePersistentIterator" base-type-id="3daa2363-e163-4d9c-ad69-cbcf416d89bf" ver="3">
+			<do access-modifier="private" name="GetDataUint8AsStr" display-name="GetDataUint8AsStr" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+				<body kind="om">
+					<![CDATA[return String.ToString(Variant.ToUint8(GetData(col), 0));]]>
+				</body>
+				<param access-modifier="private" name="col" display-name="" uuid="86393da3-e46d-4527-bb6f-251ef3634c26" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			</do>
+		</object>
+		<object access-modifier="private" name="TableDecorator_1" display-name="TableDecorator_1" uuid="3bf39411-b5df-4751-8e24-c9ed39071cd7" base-type="TableDecorator" base-type-id="2ff6a2d7-9573-4060-bfea-29c63d61b079" ver="3">
+			<designed target="JsonDecorator" value="" ver="3"/>
+		</object>
+		<object access-modifier="private" name="CustomRowTracking" display-name="CustomRowTracking" uuid="2695f057-c42d-41d2-9c32-2cb4d27ad6d6" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+			<do access-modifier="private" name="Run" display-name="Run" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="javascript">
+					<![CDATA[var rowIndex = JSON.parse(GetSelectedRows());
+if (CustomRowTracking.Value)
+{
+	if (pConfig.TableView.followRow == "top")
+	{
+		//Выбираем первую строку, если ничего не выбрано
+		if (rowIndex == "" && !here.SnapshotON.Value) SetSelectedRows("[0]");
+		//выбираем верхнюю строку
+		if (rowIndex.length == 1)
+		{
+			TableOne.SetSelectedRows("[0]");
+			TableOne.ScrollToTop();
+		}
+	}
+	else 	if (pConfig.TableView.followRow == "bottom")
+	{
+		var rows = TableOne.GetRowCount();
+		var row = "["+(rows-1).toString()+"]";
+		//Выбираем нижнюю строку, если ничего не выбрано
+		if (rowIndex == "" && !here.SnapshotON.Value) SetSelectedRows(row);
+		//выбираем верхнюю строку
+		if (rowIndex.length == 1)
+		{
+			TableOne.SetSelectedRows(row);
+			TableOne.ScrollToBottom();
+		}
+	}
+}]]>
+				</body>
+			</do>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[Run();]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="TableModel_1" display-name="TableModel_1" uuid="90ab3483-f95a-47eb-9361-dc4ab93ab8bd" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="3">
+			<designed target="Frozen" value="false" ver="3"/>
+			<designed target="MaxRowCount" value="2147483647" ver="3"/>
+			<object access-modifier="private" name="ApAlarmQuery_1" display-name="ApAlarmQuery_1" uuid="9d1594b0-0e4b-4767-a3b8-b9ae5577c11f" base-type="Alarms_Query" base-type-id="5b998a45-cbbd-4eb1-b65a-b4b7385c0d69" ver="5" description="" cardinal="1">
+				<object access-modifier="private" name="_OnStatusChanged" display-name="_OnStatusChanged" uuid="92937354-afa8-4db4-a3a1-e49db53fad43" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" ver="5" description="">
+					<designed target="Enabled" value="true" ver="5"/>
+					<designed target="InvokeTrigger" value="false" ver="5"/>
+					<do-on access-modifier="private" name="Handler_Invoked" display-name="Handler_Invoked" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[if (ApAlarmQuery_1.OnStatusChanged_StatusCode == 2 /*#28668.HistoricalAlarmsRequestFinished*/ && ApAlarmQuery_1.OnStatusChanged_Message != "" && ApAlarmQuery_1.OnStatusChanged_Message!="Unexpected error"/*#29132*/)
+{
+	here.Dialogs.Message.Error("Ошибка подгрузки исторических сообщений: " + ApAlarmQuery_1.OnStatusChanged_Message, here.private.pTheme.GetViewSettings(), AlwaysOnTopForm.Value);
+}]]>
+						</body>
+					</do-on>
+				</object>
+				<init target="OnStatusChanged" ver="5" ref="_OnStatusChanged"/>
+				<object access-modifier="private" name="_ReadingActive" display-name="_ReadingActive" uuid="5d56448a-e8b4-46dc-95b3-5661dcc55682" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+						<body kind="om">
+							<![CDATA[StatePanel.UpdateMessageCount();]]>
+						</body>
+					</do-on>
+				</object>
+				<do-trace access-modifier="private" target="_ReadingActive" ver="5">
+					<body>
+						<![CDATA[ApAlarmQuery_1.ReadingActive]]>
+					</body>
+				</do-trace>
+				<do access-modifier="private" name="ReloadSmart" display-name="ReloadSmart" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+					<body kind="om">
+						<![CDATA[// так увеличатся шансы нормально выполнить запрос, а не в пустоту (c) author
+if (here.ApSource.ConnectionState != 2 || here.private.InitComplete == false) return;
+// отсеиваем лишние вызовы
+ApAlarmQuery_1.MaxVisibleOrdinaryEvents = here.MaxVisibleOrdinaryEvents;
+ApAlarmQuery_1.MaxVisibleEvents = here.MaxVisibleEvents;
+ApAlarmQuery_1.StorageDuration = pConfig.QueryProcessing.StorageDuration;
+ApAlarmQuery_1.ActiveConditionsList = here.ActiveConditionsList;
+ApAlarmQuery_1.QueueCritJsonFilter = pConfig.SeverityGroups.Range1.Severity;
+ApAlarmQuery_1.SubscriptionAdvancedFilter = here.SubscriptionAdvancedFilter;
+ApAlarmQuery_1.ActiveConditionsList = here.ActiveConditionsList;
+ApAlarmQuery_1.HideAckedEvents = here.HideAckedEvents;
+ApAlarmQuery_1.RequestEventsStart = here.RequestEventsStart;
+ApAlarmQuery_1.ReloadRequired.Check();//по событиям полей расчёт выполнится асинхронно, а нам надо сейчас
+if (!ApAlarmQuery_1.ReloadRequired && !forceReload) return;
+
+if (ActiveMode==1) return;//иначе не работают исторические запросы
+
+// reload magic algorithm
+TableModel_1.CancelReadAsync();//не обязательно (c) author //всегда делай (c) another author
+
+//#27048-45 принудительная очистка обусловлена тем что нельзя чистить модель отдельно от провайдера, иначе провайдер будет неверно уведомлять таблицу и у нас могут быть лишние сообщения или не отобразиться нужные
+TableModel_1.Clear();//всегда делай (c) another author
+ApAlarmQuery_1.Reload2();// Запрос для вывода сообщений в таблицу
+
+TableModel_1.BeginReadAsync();
+]]>
+					</body>
+					<param access-modifier="private" name="forceReload" display-name="" uuid="b3eb3c28-5fc6-4352-baca-fdad09de5775" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+				</do>
+				<init target="ApSource" ver="5" ref="here.ApSource"/>
+				<do-trace access-modifier="private" target="Mode" ver="5">
+					<body>
+						<![CDATA[TypeConvert.ToUint1(ActiveMode==0 ? 2 : 3)]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="HistoryExpandInterval" ver="5">
+					<body>
+						<![CDATA[ExtensionInterval + 1]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="HistoricalEventsChronology" ver="5">
+					<body>
+						<![CDATA[EventsChronology]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="MergeMode" ver="5">
+					<body>
+						<![CDATA[TypeConvert.ToUint1(pConfig.MergeEvents==0 || ActiveMode==0 ? 0 : 1)]]>
+					</body>
+				</do-trace>
+				<do-on access-modifier="private" name="Handler_StatusChanged" display-name="Handler_StatusChanged" ver="5" event="StatusChanged">
+					<body kind="om">
+						<![CDATA[status = statusCode;]]>
+					</body>
+				</do-on>
+				<object access-modifier="private" name="status" display-name="status" uuid="c1dacfea-5b62-4971-9fc9-3c43eb1b1985" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5" description="" cardinal="1"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_RowsInserted" display-name="Handler_RowsInserted" ver="5" event="RowsInserted">
+				<body kind="om">
+					<![CDATA[//DebugTool_1.Log("Rows inserted from " + String.ToString(first) + " to " + String.ToString(last));
+if (ActiveMode == 0)
+{
+	// Выделение первого сообщения после очистки
+	if (TableOne.GetSelectedRows() == "[]" && !here.SnapshotON.Value)
+		TableOne.SetSelectedRows("[0]");
+
+	CustomRowTracking.Run();
+
+	// Взводим таймер обновления
+	if (!TableChangedTimer.Active)
+		TableChangedTimer.Active = true;
+}
+else
+{
+	StatePanel.UpdateMessageCount();
+}]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="TableIterator_1" display-name="TableIterator_1" uuid="c06aa766-0275-41e6-833b-6b69dc69d10a" base-type="TableIterator" base-type-id="b368f2dc-9de9-47fc-b7ae-1d9c28047eba" ver="3">
+				<designed target="CurrentRow" value="0" ver="3"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_DataChanged" display-name="Handler_DataChanged" ver="5" event="DataChanged">
+				<body kind="om">
+					<![CDATA[if (ActiveMode != 0) return;
+CustomRowTracking.Run();
+if (!TableChangedTimer.Active)
+	TableChangedTimer.Active = true;]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_RowsRemoved" display-name="Handler_RowsRemoved" ver="5" event="RowsRemoved">
+				<body kind="om">
+					<![CDATA[//DebugTool_1.Log("Rows removed from " + String.ToString(first) + " to " + String.ToString(last));
+if (ActiveMode == 0)
+{
+	if (!TableChangedTimer.Active)
+		TableChangedTimer.Active = true;
+}
+else
+	StatePanel.UpdateMessageCount();]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="savedFilePath" display-name="savedFilePath" uuid="267d0823-f377-4e54-9d6e-c1a1a41348c0" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+			<do-on access-modifier="private" name="Handler_GetContentAsJsonFinished" display-name="Handler_GetContentAsJsonFinished" ver="5" event="GetContentAsJsonFinished">
+				<body kind="javascript">
+					<![CDATA[try
+{
+	Alarms_Tools.File.WriteTextFile(savedFilePath, data);
+	Dialogs.ShowSaveDialog.Saved();
+}
+catch(err)
+{
+	Dialogs.ShowSaveDialog.totalError = "Не удалось сохранить файл:\n"  + savedFilePath + "\n" + err.message;
+	Dialogs.ShowSaveDialog.Saved();
+}]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_GetContentAsJsonFailed" display-name="Handler_GetContentAsJsonFailed" ver="5" event="GetContentAsJsonFailed">
+				<body kind="om">
+					<![CDATA[Dialogs.ShowSaveDialog.totalError = "Не удалось получить содержимое таблицы";
+Dialogs.ShowSaveDialog.Fin();]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_ReadFinished" display-name="Handler_ReadFinished" ver="5" event="ReadFinished">
+				<body kind="om">
+					<![CDATA[if (ActiveMode == 0)
+{
+	ApAlarmQuery_1.ReadingActive = false;
+}
+else
+{
+	TableOne.SetSelectedRows("[0]");
+	private.LoadSaveBusy.LoadingHistory = false;
+	DataAggregator_1.CheckForRun(true);
+	if (resultCode != 0 && resultMessage != "")
+	{
+		OnError.Args.Push(resultMessage);
+		OnError.Invoke();
+	}
+}]]>
+				</body>
+			</do-on>
+			<designed target="OptOfProcessingEvents" value="0" ver="5"/>
+			<do-on access-modifier="private" name="Handler_SetContentAsJsonFinished" display-name="Handler_SetContentAsJsonFinished" ver="5" event="SetContentAsJsonFinished">
+				<body kind="om">
+					<![CDATA[if (ActiveMode != 1) return;
+Dialogs.ShowOpenDialog.Fin();]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_SetContentAsJsonFailed" display-name="Handler_SetContentAsJsonFailed" ver="5" event="SetContentAsJsonFailed">
+				<body kind="om">
+					<![CDATA[if (ActiveMode != 1) return;
+Dialogs.ShowOpenDialog.totalError = "Не удалось загрузить содержимое таблицы";
+Dialogs.ShowOpenDialog.Fin();]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="openedFilePath" display-name="openedFilePath" uuid="773658fd-355e-4544-a5c1-be0e5434332b" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="DataAggregator_1" display-name="DataAggregator_1" uuid="c93ead9b-edb5-4c02-91c9-33a2c97d9b2c" base-type="DataAggregator" base-type-id="7d485f82-e1cb-4cab-8a7c-6cc9febb2948" ver="5" description="" cardinal="1">
+				<designed target="Query" value="" ver="5"/>
+				<designed target="NotificationInterval" value="1000" ver="5"/>
+				<designed target="FilterUpdateInterval" value="1000" ver="5"/>
+				<init target="InputRowsetProvider" ver="5" ref="ApAlarmQuery_1"/>
+				<object access-modifier="private" name="State" display-name="State" uuid="509b094d-2167-4cb6-bddb-074a100dcc47" base-type="int1" base-type-id="756a0a23-7e63-4a13-8a35-e8a38909e5ed" ver="5" description="" cardinal="1"/>
+				<object access-modifier="private" name="LastFilterStr" display-name="LastFilterStr" uuid="9b2bab6f-4cfb-489e-99c9-8f46e45e93d5" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+				<do access-modifier="private" name="CheckForRun" display-name="CheckForRun" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+					<body kind="javascript">
+						<![CDATA[var filter = StatePanel.ViewFilterON.Value ? StatePanel.ViewFilterStr : "";
+if (DisplaySeverityStatistics==false)
+	DataAggregator_1.Reset();
+if (isRequest==false && LastFilterStr==filter || DisplaySeverityStatistics==false)
+	return;
+LastFilterStr = filter;
+DataAggregator_1.Reset();
+if (openedFilePath!="")
+	return;
+{//init query
+	var query = {aggregate:[]}
+	for (let i = 1; i <= 1000; i++)
+		query.aggregate.push(JSON.parse("{\""+i+"\":{\"count\":{\"condition\":{\"severity\":"+i+"}}}}"));
+	if (filter != "")
+		query.condition = JSON.parse(filter);
+	DataAggregator_1.Query = JSON.stringify(query);
+}
+if (ApAlarmQuery_1.status>0)//#29355 агрегатор ругается если предварительно не сделан запрос
+	DataAggregator_1.Execute();]]>
+					</body>
+					<param access-modifier="private" name="isRequest" display-name="" uuid="3c2fdca6-05ae-4bd8-b579-5868549b9a7e" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+				</do>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnStateChanged">
+					<body kind="om">
+						<![CDATA[State = state;]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnDataChanged">
+					<body kind="om">
+						<![CDATA[StatePanel.UpdateMessageCount();]]>
+					</body>
+				</do-on>
+			</object>
+			<do-trace access-modifier="private" target="Frozen" ver="5">
+				<body>
+					<![CDATA[ActiveMode == 0 && SnapshotON]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="diffX" display-name="diffX" uuid="25d0605b-c6a0-4186-b657-21430aafeef4" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="3"/>
+		<object access-modifier="private" name="diffY" display-name="diffY" uuid="c396c9d4-5ad5-48c3-b4e8-ab9ba2ed5251" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="3"/>
+		<init target="TableModel" ver="5" ref="TableModel_1"/>
+		<object access-modifier="private" name="mousePress" display-name="mousePress" uuid="db21bf50-6cb8-46f6-9bb2-818288c64c1a" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="3"/>
+		<object access-modifier="private" name="selectedRow" display-name="selectedRow" uuid="0c01594a-dd15-4a95-bf05-579b9d04bd4d" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="3"/>
+		<object access-modifier="private" name="selectedColumn" display-name="selectedColumn" uuid="b4c56791-3117-4443-bb6e-0e879c22decc" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="3"/>
+		<object access-modifier="private" name="TableChangedTimer" display-name="TableChangedTimer" uuid="e6e0b63d-1eea-491a-a090-79b67c8d87c7" base-type="Timer" base-type-id="72ba7cd4-549e-41f2-923c-2431b91f349a" ver="3">
+			<designed target="Period" value="1000" ver="3"/>
+			<designed target="Active" value="false" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnTimer">
+				<body kind="om">
+					<![CDATA[Active = false;
+// Обновление статистики
+StatePanel.UpdateMessageCount();]]>
+				</body>
+			</do-on>
+		</object>
+		<do-trace access-modifier="private" target="HorizontalScrollMode" ver="5">
+			<body>
+				<![CDATA[TypeConvert.ToUint1(ActiveMode==0 ? 0 : 1)]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="LayoutWeight_1" display-name="LayoutWeight_1" uuid="5cc320a3-6fd0-4632-89a1-877826353ede" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="3" cardinal="1">
+			<designed target="Weight" value="100" ver="3"/>
+		</object>
+		<object access-modifier="private" name="RequestFilter" display-name="RequestFilter" uuid="0ee9aeda-c1c7-41fb-b16b-7dccb1c55de5" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4"/>
+		<object access-modifier="private" name="UserInterval" display-name="UserInterval" uuid="eaf4e8ab-b0a8-4552-8f91-8a1f108b9463" base-type="" base-type-id="" ver="5" description="" cardinal="1">
+			<object access-modifier="private" name="TimeStart" display-name="TimeStart" uuid="707f2cae-acb9-483c-849a-a9334d34896a" base-type="notifying_uint8" base-type-id="2e6d6c20-2489-49e1-9d5f-fe68a21b43df" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="TimeEnd" display-name="TimeEnd" uuid="b2813c1b-7fa1-429c-a8ea-984e83529472" base-type="notifying_uint8" base-type-id="2e6d6c20-2489-49e1-9d5f-fe68a21b43df" ver="5" description="" cardinal="1"/>
+			<do access-modifier="private" name="Set" display-name="Set" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<param access-modifier="private" name="timeStart" display-name="" uuid="091fb0f1-5c29-4651-896e-214dbadbc810" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5"/>
+				<param access-modifier="private" name="timeEnd" display-name="" uuid="9d1fd1ba-166a-43d1-bd35-16c0ff0e7dd0" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5"/>
+				<body kind="om">
+					<![CDATA[//позволяем задавать и неверные интервалы, для отображения ошибки на панели инструментов
+if (TimeStart != timeStart)//проверка нужна для устранения зацикливания
+	TimeStart = timeStart;
+if (TimeEnd != timeEnd)
+	TimeEnd = timeEnd;
+]]>
+				</body>
+			</do>
+		</object>
+		<do access-modifier="private" name="SetRequestFilter" display-name="SetRequestFilter" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<param access-modifier="private" name="filter" display-name="" uuid="eacd77d6-11b7-4a4e-a1f7-2d9378f188f3" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+			<body kind="om">
+				<![CDATA[TableModel_1.ApAlarmQuery_1.HistoricalFilter = filter;
+RequestFilter = filter;]]>
+			</body>
+		</do>
+		<do-trace access-modifier="private" target="CustomRowTracking" ver="5">
+			<body>
+				<![CDATA[ActiveMode==0 && (private.Follow.CurrentFFLE || (LookLatestEvent && private.Follow.SelectedLookableRow)) ? true : false]]>
+			</body>
+		</do-trace>
+	</object>
+	<init target="ActiveMode" ver="5" value="0"/>
+	<object access-modifier="private" name="pViewFilter" display-name="Фильтр отображения" uuid="2a23d13f-b824-495c-b0d3-4820c520c585" base-type="Alarms_ViewFilter" base-type-id="ab719db0-02af-4b41-b039-70a478bd4e78" base-const="true" base-ref="true" ver="5" description=""/>
+	<init target="SnapshotON" ver="5" value="false"/>
+	<do access-modifier="private" name="GetSelectedSource" display-name="GetSelectedSource" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="javascript">
+			<![CDATA[var sources = private.SourceDataCollect();
+if (sources == "[]")
+	return "";
+else
+{
+	var sources = JSON.parse(sources);
+	return sources[0];
+}]]>
+		</body>
+	</do>
+	<param access-modifier="private" name="iTheme" display-name="Тема оформления" uuid="56b08bdb-b656-42ca-a768-d98e9bab15e6" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+</type>
+

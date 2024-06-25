@@ -1,0 +1,103 @@
+<type access-modifier="private" name="Explorer_Statusbar" display-name="Explorer_Statusbar" uuid="6ceba724-f999-4d1e-97ba-44d1c0788a88" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="800" ver="5"/>
+	<designed target="Height" value="25" ver="5"/>
+	<designed target="RoundingRadius" value="0" ver="5"/>
+	<designed target="PenColor" value="0xff808080" ver="5"/>
+	<designed target="PenStyle" value="1" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="e790235d-b2b1-4c48-87ed-69f968937bf6" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<object access-modifier="private" name="ScreenKeyboardButton" display-name="ScreenKeyboardButton" uuid="ee42a051-3922-41ef-b3af-290e4aacafbc" base-type="ScreenKeyboardButton" base-type-id="e7774fc7-d5aa-4318-b97c-99203dbd1671" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="25" ver="5"/>
+		<designed target="Height" value="25" ver="5"/>
+		<init target="pTheme" ver="5" ref="here.init_Theme"/>
+		<init target="init_Options" ver="5" ref="here.init_ScreenKeyboard"/>
+	</object>
+	<object access-modifier="private" name="LogViewButton" display-name="LogViewButton" uuid="f30ce22e-5812-456d-8397-37ea3af559c7" base-type="LogViewButton" base-type-id="f441f6b3-2f00-4d56-b3d1-eaf11905bf72" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="1" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="65" ver="5"/>
+		<designed target="Height" value="24" ver="5"/>
+		<init target="ButtonHeight" ver="5" value="22"/>
+		<init target="pLogView" ver="5" ref="init_LogView"/>
+		<init target="pTheme" ver="5" ref="here.init_Theme"/>
+	</object>
+	<object access-modifier="private" name="Layout" display-name="Layout" uuid="1b1f4c80-6012-4f57-a9b3-0e7be3449f5b" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5">
+		<designed target="Orientation" value="1" ver="5"/>
+		<designed target="Gap" value="0" ver="5"/>
+	</object>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[private.pTheme.BackgroundColor]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="PenColor" ver="5">
+		<body>
+			<![CDATA[private.pTheme.BorderColor]]>
+		</body>
+	</do-trace>
+	<param access-modifier="private" name="init_LogView" display-name="init_LogView" uuid="b038fcec-39fe-4d56-af0b-8d47d4849ff7" base-type="LogView" base-type-id="493c7166-bdbb-4717-8f49-2906ed88e930" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="private" display-name="private" uuid="f58fff6f-c999-4a75-a8b7-a4b7580154d1" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+		<object access-modifier="private" name="pTheme" display-name="pTheme" uuid="6ab4bc8b-6bcd-491c-8508-df9b1ceecdf7" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5" base-ref="true">
+			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+				<body>
+					<![CDATA[here.pTheme.BackgroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
+				<body>
+					<![CDATA[here.pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="DisabledFontColor" ver="5">
+				<body>
+					<![CDATA[here.pTheme.DisabledFontColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="EditorBrushColor" ver="5">
+				<body>
+					<![CDATA[here.pTheme.EditorBrushColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="EditorFontColor" ver="5">
+				<body>
+					<![CDATA[here.pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="SelectionColor" ver="5">
+				<body>
+					<![CDATA[here.pTheme.SelectionColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="BorderColor" ver="5">
+				<body>
+					<![CDATA[here.pTheme.BorderColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="DisabledBorderColor" ver="5">
+				<body>
+					<![CDATA[here.pTheme.DisabledBorderColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<init target="pTheme" ver="5" ref="init_Theme"/>
+	</object>
+	<designed target="Flip" value="0" ver="5"/>
+	<param access-modifier="private" name="init_ScreenKeyboard" display-name="Вызов экранной клавиатуры" uuid="28606bb5-034e-4790-875f-931fb86c50a3" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" ver="5" description="" cardinal="1" base-ref="true"/>
+	<param access-modifier="private" name="init_Theme" display-name="Тема оформления" uuid="2b1f999c-81c6-4246-8100-5fcfc9dffb33" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
+</type>
+

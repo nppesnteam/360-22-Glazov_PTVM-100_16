@@ -1,0 +1,129 @@
+<type access-modifier="private" name="Statistics_Sources" display-name="Statistics_Sources" uuid="339b01a5-f79f-4676-9044-5a3cdb3c76a9" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="">
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="6b57c1c2-4d55-4cc4-8f13-b1d36c102eda" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<object access-modifier="private" name="Source" display-name="Source" uuid="92caa353-3824-470c-be8c-53db2f6616b9" base-type="Statistics_Source" base-type-id="159f04e7-927b-436a-833f-953d0fcd7f97" ver="5" description="" cardinal="10"/>
+	<object access-modifier="private" name="private" display-name="private" uuid="ea7bdef3-85d7-4606-85d4-84422f26b156" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+		<do access-modifier="private" name="FindServer" display-name="FindServer" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+			<body kind="om">
+				<![CDATA[for (i: int4 = 0; i < Source.Length; i += 1)
+{
+	if (Source[i].Mode == 0 && Source[i].Location == location && Source[i].Port == port)
+		return i;
+}
+return -1;]]>
+			</body>
+			<param access-modifier="private" name="location" display-name="" uuid="229daf2c-a348-422c-a049-b1fb1852d22f" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<param access-modifier="private" name="port" display-name="" uuid="b1b0c5d5-e64f-4b23-9b23-25794ced2e1e" base-type="uint2" base-type-id="ae923ad8-8b75-4813-8121-36efe3cc8c12" ver="5"/>
+		</do>
+		<do access-modifier="private" name="FindSnapshot" display-name="FindSnapshot" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+			<body kind="om">
+				<![CDATA[for (i: int4 = 0; i < Source.Length; i += 1)
+{
+	if (Source[i].Mode == 1 && Source[i].FilePath == filePath)
+		return i;
+}
+return -1;]]>
+			</body>
+			<param access-modifier="private" name="filePath" display-name="" uuid="abb14739-f266-43a7-b515-617001e92ccb" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+		<do access-modifier="private" name="GetFreeSourceIndex" display-name="GetFreeSourceIndex" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+			<body kind="om">
+				<![CDATA[for (i: int4 = 0; i < Source.Length; i += 1)
+{
+	if (!Source[i].IsUsed())
+		return i;
+}
+return -1;]]>
+			</body>
+		</do>
+	</object>
+	<do access-modifier="private" name="ConnectToServer" display-name="ConnectToServer" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+		<body kind="om">
+			<![CDATA[sourceIndex: int4 = private.FindServer(location, port);
+if (sourceIndex == -1)
+{	
+	sourceIndex = private.GetFreeSourceIndex();
+	if (sourceIndex > -1)
+	{
+		Source[sourceIndex].Title = title;			
+		Source[sourceIndex].Location = location;
+		Source[sourceIndex].Port = port;
+		Source[sourceIndex].Mode = 0;
+	}
+	else
+		Debug.Log("Количество подключений к источникам не может быть более " + String.ToString(Source.Length));
+}
+
+if (sourceIndex > -1)
+{
+	//Debug.Log("Connect to " + location + ":" + String.ToString(port) + ",sourceIndex: " + String.ToString(sourceIndex));
+	Source[sourceIndex].SetCredentials(credentials);
+	Source[sourceIndex].Connect();
+}
+
+return sourceIndex;]]>
+		</body>
+		<param access-modifier="private" name="location" display-name="" uuid="1bc7a76b-4026-4ec8-9cf8-51e0fa077cba" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="port" display-name="" uuid="c68a9ca6-e143-41fd-8365-74c513629c7e" base-type="uint2" base-type-id="ae923ad8-8b75-4813-8121-36efe3cc8c12" ver="5"/>
+		<param access-modifier="private" name="title" display-name="" uuid="22fdf21a-2838-47ed-9f6c-1cca274768d8" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="credentials" display-name="" uuid="ecc90d3d-c125-40df-85b5-fe0f625bd164" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="ConnectToSnapshot" display-name="ConnectToSnapshot" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+		<param access-modifier="private" name="filePath" display-name="" uuid="5406db39-d002-4abd-9dbb-660799e959c4" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<body kind="om">
+			<![CDATA[sourceIndex: int4 = private.FindSnapshot(filePath);
+if (sourceIndex == -1)
+{
+	sourceIndex = private.GetFreeSourceIndex();
+	if (sourceIndex > -1)
+	{
+		Source[sourceIndex].FilePath = filePath;
+		Source[sourceIndex].Mode = 1;
+		Source[sourceIndex].SnapshotFormat = Source[sourceIndex].Files.Extension(filePath) == ".stat" ? "xml" : "json";
+	}
+	else
+		Debug.Log("Количество подключений к источникам не может быть более " + String.ToString(Source.Length));
+}
+
+if (sourceIndex > -1)
+{
+	//Debug.Log("Connect to " + filePath + ", sourceIndex: " + String.ToString(sourceIndex));
+	Source[sourceIndex].Connect();
+}
+
+return sourceIndex;]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="DisconnectFromServer" display-name="DisconnectFromServer" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[sourceIndex: int4 = private.FindServer(location, port);
+if (sourceIndex > -1)
+{
+	//Debug.Log("Disconnect from " + location + ":" + String.ToString(port));
+	Source[sourceIndex].Disconnect();
+}]]>
+		</body>
+		<param access-modifier="private" name="location" display-name="" uuid="e93df48c-fd96-47cf-9146-d1ccfbe24930" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="port" display-name="" uuid="0270a631-2116-426b-98b8-9ed28d3a176d" base-type="uint2" base-type-id="ae923ad8-8b75-4813-8121-36efe3cc8c12" ver="5"/>
+	</do>
+	<do access-modifier="private" name="DisconnectFromSnapshot" display-name="DisconnectFromSnapshot" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[sourceIndex: int4 = private.FindSnapshot(filePath);
+if (sourceIndex > -1)
+{
+	//Debug.Log("Disconnect from " + filePath);
+	Source[sourceIndex].Disconnect();
+}]]>
+		</body>
+		<param access-modifier="private" name="filePath" display-name="" uuid="c5811c8a-cc86-419a-8464-55cac6b3a6c0" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="DisconnectAll" display-name="DisconnectAll" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[for (i: int4 = 0; i < Source.Length; i += 1)
+{
+	if (Source[i].Active)
+		Source[i].Disconnect();
+}]]>
+		</body>
+	</do>
+</type>
+

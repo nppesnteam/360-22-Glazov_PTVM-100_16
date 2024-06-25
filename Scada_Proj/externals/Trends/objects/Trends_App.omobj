@@ -1,0 +1,267 @@
+<type access-modifier="public" name="Trends_App" display-name="Trends_App" uuid="ca01f9c2-25ba-4948-b34b-4b6c540074ad" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="1250" ver="5"/>
+	<designed target="Height" value="650" ver="5"/>
+	<designed target="PenColor" value="0xff000000" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<designed target="WindowX" value="0" ver="5"/>
+	<designed target="WindowY" value="0" ver="5"/>
+	<designed target="WindowWidth" value="1250" ver="5"/>
+	<designed target="WindowHeight" value="650" ver="5"/>
+	<designed target="WindowCaption" value="Trends" ver="5"/>
+	<designed target="ShowWindowCaption" value="true" ver="5"/>
+	<designed target="ShowWindowMinimize" value="true" ver="5"/>
+	<designed target="ShowWindowMaximize" value="true" ver="5"/>
+	<designed target="ShowWindowClose" value="true" ver="5"/>
+	<designed target="AlwaysOnTop" value="false" ver="5"/>
+	<designed target="WindowSizeMode" value="0" ver="5"/>
+	<designed target="WindowBorderStyle" value="1" ver="5"/>
+	<designed target="WindowState" value="0" ver="5"/>
+	<designed target="WindowScalingMode" value="0" ver="5"/>
+	<designed target="MonitorNumber" value="0" ver="5"/>
+	<designed target="WindowPosition" value="0" ver="5"/>
+	<designed target="WindowCloseMode" value="1" ver="5"/>
+	<object access-modifier="private" name="private" display-name="private" uuid="3007fd98-91da-422b-b9c6-89d54e93da10" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
+		<do access-modifier="private" name="LoadSession" display-name="LoadSession" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[var filePath = GetSessionFilePath();
+if (Files.Exists(filePath))
+{
+//	log("Загрузка настроек вида из файла "  + filePath);
+	try
+	{
+		var json = Files.ReadTextFile(filePath);
+		var session = JSON.parse(json);
+		
+		var window = session.Window;
+		if (window != undefined)
+		{
+			WindowX = window.X;
+			WindowY = window.Y;
+			WindowWidth = window.Width;
+			WindowHeight = window.Height;
+			WindowState = window.State;
+		}
+		
+		var theme = session.Theme;
+		if (theme != undefined)
+			Theme.UpdateView(JSON.stringify(theme));
+
+		Trends.ShowSources = session.ShowSources;
+		Trends.ShowToolbar = session.ShowToolbar;
+		Trends.ShowLegend = session.ShowLegend;
+		Trends.ShowStatus = session.ShowStatus;
+		Trends.WS.RS.Chart.ShowMiniTrends = session.ShowMiniTrends;
+		Trends.WS.RS.Chart.ShowDataPoints = session.ShowDataPoints;
+		Trends.WS.RS.Chart.ZoomXEnable = session.ZoomXEnable != false;
+		Trends.WS.RS.Chart.ZoomYEnable = session.ZoomYEnable != false;
+	}
+	catch(err)
+	{
+		log("Не удалось загрузить настройки вида из "  + filePath + "\n" + err.message);
+	}
+}]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="SaveSession" display-name="SaveSession" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[var filePath = GetSessionFilePath();
+//log("Сохранение настроек вида в файл "  + filePath);
+try
+{
+	var session = {
+		"Window": {
+			"X": WindowX,
+			"Y": WindowY,
+			"Width": WindowWidth,
+			"Height": WindowHeight,
+			"State": WindowState
+		},		
+		"Theme": JSON.parse(Theme.GetViewSettings()),
+		"ShowSources": Trends.ShowSources.Value,
+		"ShowLegend": Trends.ShowLegend.Value,
+		"ShowStatus": Trends.ShowStatus.Value,
+		"ShowToolbar": Trends.ShowToolbar.Value,
+		"ShowMiniTrends": Trends.WS.RS.Chart.ShowMiniTrends.Value,
+		"ShowDataPoints": Trends.WS.RS.Chart.ShowDataPoints.Value,
+		"ZoomXEnable": Trends.WS.RS.Chart.ZoomXEnable.Value,
+		"ZoomYEnable": Trends.WS.RS.Chart.ZoomYEnable.Value
+	}
+	
+	var folder = Files.ParentPath(filePath);
+	Files.CreateRecursiveFolder(folder);
+
+	Files.WriteTextFile(filePath, JSON.stringify(session, 0, 2));
+}
+catch(err)
+{
+	log("Не удалось сохранить настройки вида в "  + filePath + "\n" + err.message);
+}]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="GetSessionFilePath" display-name="GetSessionFilePath" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[folderPath: string = unit.ProductInfo.GetUserDataFolder();
+return Files.CombinePath(folderPath, "session.json");]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="LoadSettings" display-name="LoadSettings" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[var filePath = GetSettingsFilePath();
+if (Files.Exists(filePath))
+{
+//	log("Загрузка настроек приложения из файла "  + filePath);
+	try
+	{
+		var json = Files.ReadTextFile(filePath);
+		var settings = JSON.parse(json);
+
+		var screenKeyboard = settings.ScreenKeyboard;
+		if (screenKeyboard != undefined)
+			ScreenKeyboard.FromJSON(JSON.stringify(screenKeyboard));
+			
+		var permissions = settings.Permissions;
+		if (permissions != undefined)
+			Permissions.UseSecurity = permissions.UseSecurity;
+	}
+	catch(err)
+	{
+		log("Не удалось загрузить настройки приложения из "  + filePath + "\n" + err.message);
+	}
+}]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="SaveSettings" display-name="SaveSettings" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[var filePath = GetSettingsFilePath();
+//log("Сохранение настроек приложения в файл "  + filePath);
+try
+{
+	var settings = {
+		'ScreenKeyboard': JSON.parse(ScreenKeyboard.ToJSON()),
+		'Permissions': {
+			'UseSecurity': Permissions.UseSecurity.Value
+		}
+	}
+	
+	var folder = Files.ParentPath(filePath);
+	Files.CreateRecursiveFolder(folder);
+
+	Files.WriteTextFile(filePath, JSON.stringify(settings, 0, 2));
+}
+catch(err)
+{
+	log("Не удалось сохранить настройки приложения в "  + filePath + "\n" + err.message);
+}]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="GetSettingsFilePath" display-name="GetSettingsFilePath" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[folderPath: string = unit.ProductInfo.GetProgramDataFolder();
+return Files.CombinePath(folderPath, "app_settings.json");]]>
+			</body>
+		</do>
+	</object>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="c412fb6c-df5c-475e-aa91-8423e6c29b02" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="WindowSizeChanged">
+		<body kind="om">
+			<![CDATA[Width = WindowWidth;
+Height = WindowHeight;]]>
+		</body>
+	</do-on>
+	<designed target="ZValue" value="0" ver="5"/>
+	<object access-modifier="private" name="AP_main" display-name="AP_main" uuid="8cf14f66-296d-4a82-8e6c-7f9ee89820ed" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
+		<designed target="Active" value="true" ver="5"/>
+		<init target="Timeout" ver="5" value="1000"/>
+		<init target="ConnectionEstablishTimeout" ver="5" value="1000"/>
+		<init target="MaxBufferPoolSize" ver="5" value="1000000"/>
+		<designed target="ReAdvise" value="0" ver="5"/>
+		<designed target="Path" value="" ver="5"/>
+		<designed target="Location" value="127.0.0.1" ver="5"/>
+		<designed target="Port" value="4388" ver="5"/>
+		<designed target="HistoryPort" value="4950" ver="5"/>
+		<designed target="ClientDisplayName" value="HMI" ver="5"/>
+		<designed target="ClientId" value="HMI" ver="5"/>
+	</object>
+	<designed target="Opacity" value="1" ver="5"/>
+	<object access-modifier="private" name="Trends" display-name="Trends" uuid="1c12c121-04ec-4945-8ee9-541ebf1c9f7a" base-type="Trends" base-type-id="81673f92-ac48-4244-bfe3-ddbdcc98167a" ver="5">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="1250" ver="5"/>
+		<designed target="Height" value="650" ver="5"/>
+		<init target="int_AP" ver="5" ref="AP_main"/>
+		<init target="YAxisPrecision" ver="5" value="1"/>
+		<init target="GlobalRanges" ver="5" value="true"/>
+		<init target="UseRedLine" ver="5" value="true"/>
+		<init target="InterpolationLine" ver="5" value="true"/>
+		<init target="TreeFindEnable" ver="5" value="true"/>
+		<init target="OperativeStoredInterval" ver="5" value="30"/>
+		<init target="ExportImportFolderPath" ver="5" value=""/>
+		<init target="ModeTimeSourceServer" ver="5" value="0"/>
+		<init target="SynchronizeColor" ver="5" value="true"/>
+		<init target="UseServerTime" ver="5" value="false"/>
+		<init target="SynchroColorMarker" ver="5" value="false"/>
+		<init target="OperativeDisplayedInterval" ver="5" value="10"/>
+		<init target="init_Theme" ver="5" ref="here.Theme"/>
+		<init target="ShowSources" ver="5" value="true"/>
+		<init target="ShowMarkerLabels" ver="5" value="true"/>
+		<init target="ShowDataPoints" ver="5" value="false"/>
+		<init target="ShowMiniTrends" ver="5" value="true"/>
+		<init target="init_Permissions" ver="5" ref="here.Permissions"/>
+		<init target="init_ScreenKeyboard" ver="5" ref="here.ScreenKeyboard"/>
+	</object>
+	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[WindowUtils.CorrectPosition();]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="AboutToOpen">
+		<body kind="om">
+			<![CDATA[private.LoadSettings();
+private.LoadSession();]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="Files" display-name="Files" uuid="21fd7d6b-78dc-4788-bcba-6c0b9274787e" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5">
+		<designed target="RootPath" value="/" ver="5"/>
+	</object>
+	<designed target="WindowIconPath" value="Trends_Icons/Trends.ico" ver="5"/>
+	<object access-modifier="private" name="Theme" display-name="Theme" uuid="1530ce42-362c-4086-a615-b59a3245fac1" base-type="Trends_Theme" base-type-id="3fbfa4c2-c742-4bec-94dc-d1bcb7ef25b6" ver="5" description="" cardinal="1">
+		<init target="DisabledFontColor" ver="5" value="0xffa0a0a0"/>
+		<init target="ForegroundColor" ver="5" value="0xff000000"/>
+		<init target="EditorBrushColor" ver="5" value="0xffffffff"/>
+	</object>
+	<object access-modifier="private" name="Permissions" display-name="Permissions" uuid="d2db18ae-3755-463a-9676-9609e4cbe30b" base-type="Trends_Permissions" base-type-id="083b63d1-3678-4da0-80a0-9c09d0076a3c" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="WindowUtils" display-name="WindowUtils" uuid="378aba7c-1f2c-4fe5-834b-7f08c38f1543" base-type="WindowUtils" base-type-id="4a818ada-44b1-4070-9b9d-c28dc3447ece" ver="5" description="" cardinal="1">
+		<init target="pForm" ver="5" ref="here"/>
+	</object>
+	<designed target="Flip" value="0" ver="5"/>
+	<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="CloseRequested">
+		<body kind="om">
+			<![CDATA[private.SaveSession();
+Close();]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="ScreenKeyboard" display-name="ScreenKeyboard" uuid="c9cf80fd-dd57-45e7-90a0-9107fe3e84b6" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" ver="5" description="" cardinal="1">
+		<init target="Enabled" ver="5" value="false"/>
+	</object>
+	<do-on access-modifier="private" name="Handler_7" display-name="Handler_7" ver="5" event="Closed">
+		<body kind="om">
+			<![CDATA[private.SaveSettings();]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="Layout" display-name="Layout" uuid="e5c0fb51-f3e6-48be-9c59-a97e8c1a8cb8" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
+		<designed target="Orientation" value="2" ver="5"/>
+		<designed target="Gap" value="0" ver="5"/>
+	</object>
+</type>
+

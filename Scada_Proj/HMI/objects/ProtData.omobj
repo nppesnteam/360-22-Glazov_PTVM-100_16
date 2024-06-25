@@ -1,0 +1,82 @@
+<type access-modifier="private" name="ProtData" display-name="ProtData" uuid="9c826d5c-1976-4f54-a35a-bb8180d89ee8" base-type="Object" base-type-id="fd8e30b0-0814-4e73-96f9-8d08bd303ed8" ver="5" description="">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<object access-modifier="private" name="wsMessage" display-name="wsMessage" uuid="4776eea0-4cd2-46cc-a025-8647f62ab8fa" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" base-const="true" ver="5" description="">
+		<init target="Source" ver="5" ref="init_Source"/>
+		<init target="Path" ver="5" value="NAME"/>
+	</object>
+	<object access-modifier="private" name="InbCheck" display-name="InbCheck" uuid="bfb9f981-9b32-445f-9d99-6d167e4b097a" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" base-const="true" ver="5" description="">
+		<init target="Source" ver="5" ref="init_Source"/>
+		<init target="Path" ver="5" value="InbCheck"/>
+	</object>
+	<object access-modifier="private" name="OutbCheck" display-name="OutbCheck" uuid="716d4e06-07a6-45ac-bd2d-cfc2c1004825" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" base-const="true" ver="5" description="">
+		<init target="Source" ver="5" ref="init_Source"/>
+		<init target="Path" ver="5" value="OutbCheck"/>
+	</object>
+	<object access-modifier="private" name="bCtrl" display-name="bCtrl" uuid="29c6abf3-75c7-46b4-8115-6691223ceb2d" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" base-const="true" ver="5" description="">
+		<init target="Source" ver="5" ref="init_Source"/>
+		<init target="Path" ver="5" value="bCtrl"/>
+	</object>
+	<object access-modifier="private" name="InbCtrlOn" display-name="InbCtrlOn" uuid="19956494-6c21-4535-9f20-d90c1d8360e1" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" base-const="true" ver="5" description="">
+		<init target="Source" ver="5" ref="init_Source"/>
+		<init target="Path" ver="5" value="InbCtrlOn"/>
+	</object>
+	<object access-modifier="private" name="OutbCtrlOn" display-name="OutbCtrlOn" uuid="d43ab4d1-17f5-4f86-8d39-380cd3242ddb" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" base-const="true" ver="5" description="">
+		<init target="Source" ver="5" ref="init_Source"/>
+		<init target="Path" ver="5" value="OutbCtrlOn"/>
+	</object>
+	<object access-modifier="private" name="bInWork" display-name="bInWork" uuid="4cced8c6-d162-4ae5-b4c4-449bc3c880f7" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" base-const="true" ver="5" description="">
+		<init target="Source" ver="5" ref="init_Source"/>
+		<init target="Path" ver="5" value="bInWork"/>
+	</object>
+	<object access-modifier="private" name="InbOff" display-name="InbOff" uuid="e48b65f6-65c2-4d79-8611-2c95de930b11" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" base-const="true" ver="5" description="">
+		<init target="Source" ver="5" ref="init_Source"/>
+		<init target="Path" ver="5" value="InbOff"/>
+	</object>
+	<object access-modifier="private" name="OutbOff" display-name="OutbOff" uuid="9b681508-09f7-4cdf-a988-8190f6903c2d" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" base-const="true" ver="5" description="">
+		<init target="Source" ver="5" ref="init_Source"/>
+		<init target="Path" ver="5" value="OutbOff"/>
+	</object>
+	<object access-modifier="private" name="InbSoundOn" display-name="InbSoundOn" uuid="4adcf014-95cb-4b4e-983b-3459dc31446d" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" base-const="true" ver="5" description="">
+		<init target="Source" ver="5" ref="init_Source"/>
+		<init target="Path" ver="5" value="InbSoundOn"/>
+	</object>
+	<object access-modifier="private" name="OutbSoundOn" display-name="OutbSoundOn" uuid="7200f503-bca1-4908-ad30-a2df5fba79e1" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" base-const="true" ver="5" description="">
+		<init target="Source" ver="5" ref="init_Source"/>
+		<init target="Path" ver="5" value="OutbSoundOn"/>
+	</object>
+	<object access-modifier="private" name="fCountdown" display-name="fCountdown" uuid="9a5b2956-d0da-4ab1-9567-3c2bfe69a4dd" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" base-const="true" ver="5" description="">
+		<init target="Source" ver="5" ref="init_Source"/>
+		<init target="Path" ver="5" value="fCountdown"/>
+	</object>
+	<object access-modifier="private" name="bUseValue" display-name="bUseValue" uuid="dbc651ee-1900-464f-9cc7-0ac22d54a2d9" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" base-const="true" ver="5" description="">
+		<init target="Path" ver="5" value="OutSettings.bUseValue"/>
+		<init target="Source" ver="5" ref="init_Source"/>
+	</object>
+	<object access-modifier="private" name="IneDoubleSens" display-name="IneDoubleSens" uuid="d7694a54-a2ce-4a9c-8f67-09fa84ab2fbc" base-type="ApItemInt2" base-type-id="46c29e2c-cf0c-4e96-ad30-6d7ae4e2ae8c" base-const="true" ver="5" description="">
+		<init target="Path" ver="5" value="InSettings.eDoubleSens"/>
+		<init target="Source" ver="5" ref="init_Source"/>
+	</object>
+	<object access-modifier="private" name="OuteDoubleSens" display-name="OuteDoubleSens" uuid="17be22a3-ebae-4bc6-b381-47fde468b6dd" base-type="ApItemInt2" base-type-id="46c29e2c-cf0c-4e96-ad30-6d7ae4e2ae8c" base-const="true" ver="5" description="">
+		<init target="Path" ver="5" value="OutSettings.eDoubleSens"/>
+		<init target="Source" ver="5" ref="init_Source"/>
+	</object>
+	<object access-modifier="private" name="InfResponseTime" display-name="InfResponseTime" uuid="c099bbd3-b482-45c3-b4d4-78954eef7f71" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" base-const="true" ver="5" description="">
+		<init target="Path" ver="5" value="InSettings.fResponseTime"/>
+		<init target="Source" ver="5" ref="init_Source"/>
+	</object>
+	<object access-modifier="private" name="OutfResponseTime" display-name="OutfResponseTime" uuid="7cd78ca9-0de9-4f54-8d0f-47dcefb84913" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" base-const="true" ver="5" description="">
+		<init target="Path" ver="5" value="OutSettings.fResponseTime"/>
+		<init target="Source" ver="5" ref="init_Source"/>
+	</object>
+	<object access-modifier="private" name="InfValue" display-name="InfValue" uuid="d50df465-bfd8-4668-b634-48aa7858d501" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" base-const="true" ver="5" description="">
+		<init target="Path" ver="5" value="InSettings.fValue"/>
+		<init target="Source" ver="5" ref="init_Source"/>
+	</object>
+	<object access-modifier="private" name="OutfValue" display-name="OutfValue" uuid="ad571de2-f4ad-44df-8415-487ef8bed7cd" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" base-const="true" ver="5" description="">
+		<init target="Path" ver="5" value="OutSettings.fValue"/>
+		<init target="Source" ver="5" ref="init_Source"/>
+	</object>
+</type>
+

@@ -1,0 +1,1481 @@
+<type access-modifier="private" name="Диагностика ПТК" display-name="Диагностика ПТК" uuid="369800d6-99a4-4dd7-83f3-3a25a146fda7" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="1720" ver="5"/>
+	<designed target="Height" value="960" ver="5"/>
+	<designed target="PenColor" value="4278190080" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="0xff4d4d4d" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<designed target="WindowX" value="0" ver="5"/>
+	<designed target="WindowY" value="0" ver="5"/>
+	<designed target="WindowWidth" value="1720" ver="5"/>
+	<designed target="WindowHeight" value="960" ver="5"/>
+	<designed target="WindowCaption" value="DiagForm" ver="5"/>
+	<designed target="ShowWindowCaption" value="true" ver="5"/>
+	<designed target="ShowWindowMinimize" value="false" ver="5"/>
+	<designed target="ShowWindowMaximize" value="false" ver="5"/>
+	<designed target="ShowWindowClose" value="false" ver="5"/>
+	<designed target="AlwaysOnTop" value="false" ver="5"/>
+	<designed target="WindowSizeMode" value="0" ver="5"/>
+	<designed target="WindowBorderStyle" value="0" ver="5"/>
+	<designed target="WindowState" value="0" ver="5"/>
+	<designed target="WindowScalingMode" value="0" ver="5"/>
+	<designed target="MonitorNumber" value="0" ver="5"/>
+	<designed target="WindowPosition" value="0" ver="5"/>
+	<designed target="WindowCloseMode" value="0" ver="5"/>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[unit.Global.ActiveMainFrame = "Диагностика";
+here.btnMain_1.Visible = false;
+here.btnMain_2.Visible = false;
+ChoosedRack = 0;]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="AVR" display-name="AVR" uuid="32e32430-71c6-45cc-a0d7-b7c0c43b53a0" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+		<designed target="X" value="1465" ver="5"/>
+		<designed target="Y" value="95" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="210.5" ver="5"/>
+		<designed target="Height" value="138.5" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="5" ver="5"/>
+		<designed target="BrushColor" value="4278190080" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<designed target="OverrideScaling" value="false" ver="5"/>
+		<designed target="ShowScrollBars" value="true" ver="5"/>
+		<designed target="MoveByMouse" value="false" ver="5"/>
+		<object access-modifier="private" name="txtAVR" display-name="txtAVR" uuid="8695f17f-980b-428b-99b4-7f0f50174ea8" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+			<designed target="X" value="8.5" ver="5"/>
+			<designed target="Y" value="7" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="196" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="Text" value="ШКАФ АВР" ver="5"/>
+			<designed target="Font" value="Arial,20,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
+			<designed target="FontColor" value="0xff000000" ver="5"/>
+			<designed target="TextAlignment" value="132" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Vvod_1" display-name="Vvod_1" uuid="660182ad-6cc4-4160-9dd3-1d979d1b8e32" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+			<designed target="X" value="14" ver="5"/>
+			<designed target="Y" value="40" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="80" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="txt" display-name="txt" uuid="84235a05-79f0-4bdc-b606-7ea394ada3fa" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="80" ver="5"/>
+				<designed target="Height" value="30" ver="5"/>
+				<designed target="Text" value="ВВОД 1
+В НОРМЕ" ver="5"/>
+				<designed target="Font" value="Arial,10,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
+				<designed target="FontColor" value="0xff000000" ver="5"/>
+				<designed target="TextAlignment" value="132" ver="5"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<conditional-expr>
+						<condition>
+							<![CDATA[Vvod1OK.Value]]>
+						</condition>
+						<expr>
+							<![CDATA[0xff00ff00]]>
+						</expr>
+					</conditional-expr>
+					<default-expr>
+						<expr>
+							<![CDATA[0xff000000]]>
+						</expr>
+					</default-expr>
+				</do-trace>
+			</object>
+			<do-trace access-modifier="private" target="PenColor" ver="5">
+				<conditional-expr>
+					<condition>
+						<![CDATA[Vvod1OK.Value]]>
+					</condition>
+					<expr>
+						<![CDATA[0xff00ff00]]>
+					</expr>
+				</conditional-expr>
+				<conditional-expr>
+					<condition>
+						<![CDATA[!Vvod1OK.Value]]>
+					</condition>
+					<expr>
+						<![CDATA[0xffff0000]]>
+					</expr>
+				</conditional-expr>
+				<default-expr>
+					<expr>
+						<![CDATA[0xff000000]]>
+					</expr>
+				</default-expr>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="hereApSource" display-name="hereApSource" uuid="dc1b6269-db82-44f8-9e4c-af72549af2d1" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
+			<designed target="Active" value="false" ver="5"/>
+			<designed target="ReAdvise" value="0" ver="5"/>
+			<init target="ParentSource" ver="5" ref="unit.Connections.ApSource"/>
+			<init target="Path" ver="5" value="ROOT.Diag.Main.DI.Module2"/>
+		</object>
+		<object access-modifier="private" name="Vvod1OK" display-name="Vvod1OK" uuid="b63344b1-e373-4bc5-9684-de0cf80550cd" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Source" ver="5" ref="hereApSource"/>
+			<init target="Path" ver="5" value="Channel12.HProg"/>
+		</object>
+		<object access-modifier="private" name="Vvod2OK" display-name="Vvod2OK" uuid="f228677f-5405-48ff-9be4-60314a434760" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Source" ver="5" ref="hereApSource"/>
+			<init target="Path" ver="5" value="Channel13.HProg"/>
+		</object>
+		<object access-modifier="private" name="TypeAuto" display-name="TypeAuto" uuid="99caf4aa-f200-4c62-959e-0b51e1c07151" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Source" ver="5" ref="hereApSource"/>
+			<init target="Path" ver="5" value="Channel14.HProg"/>
+		</object>
+		<object access-modifier="private" name="Vvod2Work" display-name="Vvod2Work" uuid="fc72ae64-3cfa-4a12-a1e9-39cfbfa4951e" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Source" ver="5" ref="hereApSource"/>
+			<init target="Path" ver="5" value="Channel15.HProg"/>
+		</object>
+		<object access-modifier="private" name="Vvod_2" display-name="Vvod_2" uuid="e4162274-58e4-4a36-a3d9-af4bb4bfe51f" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+			<designed target="X" value="117" ver="5"/>
+			<designed target="Y" value="40.5" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="80" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="txt" display-name="txt" uuid="7c9e41d0-1a48-4d72-9c1f-383a2c545d86" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="80" ver="5"/>
+				<designed target="Height" value="30" ver="5"/>
+				<designed target="Text" value="ВВОД 2
+В НОРМЕ" ver="5"/>
+				<designed target="Font" value="Arial,10,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
+				<designed target="FontColor" value="0xff000000" ver="5"/>
+				<designed target="TextAlignment" value="132" ver="5"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<conditional-expr>
+						<condition>
+							<![CDATA[Vvod2OK.Value]]>
+						</condition>
+						<expr>
+							<![CDATA[0xff00ff00]]>
+						</expr>
+					</conditional-expr>
+					<default-expr>
+						<expr>
+							<![CDATA[0xff000000]]>
+						</expr>
+					</default-expr>
+				</do-trace>
+			</object>
+			<do-trace access-modifier="private" target="PenColor" ver="5">
+				<conditional-expr>
+					<condition>
+						<![CDATA[Vvod2OK.Value]]>
+					</condition>
+					<expr>
+						<![CDATA[0xff00ff00]]>
+					</expr>
+				</conditional-expr>
+				<conditional-expr>
+					<condition>
+						<![CDATA[!Vvod2OK.Value]]>
+					</condition>
+					<expr>
+						<![CDATA[0xffff0000]]>
+					</expr>
+				</conditional-expr>
+				<default-expr>
+					<expr>
+						<![CDATA[0xff000000]]>
+					</expr>
+				</default-expr>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="txtInWork" display-name="txtInWork" uuid="66361cfe-b993-4c08-87c5-793e399c2dd3" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+			<designed target="X" value="64.5" ver="5"/>
+			<designed target="Y" value="75" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="80" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="Text" value="Ввод в работе" ver="5"/>
+			<designed target="Font" value="Arial,10,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
+			<designed target="FontColor" value="0xff000000" ver="5"/>
+			<designed target="TextAlignment" value="132" ver="5"/>
+		</object>
+		<object access-modifier="private" name="txtTypeWork" display-name="txtTypeWork" uuid="c45456f6-4f88-46b0-815e-5f7ca95c8293" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+			<designed target="X" value="14" ver="5"/>
+			<designed target="Y" value="105.5" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="183.5" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="Text" value="Режим работы:" ver="5"/>
+			<designed target="Font" value="Arial,10,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
+			<designed target="FontColor" value="0xff000000" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<do-trace access-modifier="private" target="Text" ver="5">
+				<conditional-expr>
+					<condition>
+						<![CDATA[TypeAuto]]>
+					</condition>
+					<expr>
+						<![CDATA["Режим работы: автомат"]]>
+					</expr>
+				</conditional-expr>
+				<default-expr>
+					<expr>
+						<![CDATA["Режим работы: ручной"]]>
+					</expr>
+				</default-expr>
+			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="ellWork_1" display-name="ellWork_1" uuid="c2dd2339-0f26-4939-9a5a-ba0eb623fce6" base-type="Ellipse" base-type-id="7f9e9b77-5d97-45c4-89c1-0f67adb636cd" ver="5">
+			<designed target="X" value="41.7273" ver="5"/>
+			<designed target="Y" value="77.7272" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="24.5455" ver="5"/>
+			<designed target="Height" value="24.5455" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="0xff00ff00" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<designed target="PieAngle" value="360" ver="5"/>
+			<designed target="PieAngleStart" value="360" ver="5"/>
+			<designed target="HoleSize" value="0" ver="5"/>
+			<do-trace access-modifier="private" target="BrushStyle" ver="5">
+				<conditional-expr>
+					<condition>
+						<![CDATA[!Vvod2Work.Value&&Vvod1OK.Value]]>
+					</condition>
+					<expr>
+						<![CDATA[1]]>
+					</expr>
+				</conditional-expr>
+				<default-expr>
+					<expr>
+						<![CDATA[0]]>
+					</expr>
+				</default-expr>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="ellWork_2" display-name="ellWork_2" uuid="72a13a53-1e25-4f76-a42e-dde6950b9404" base-type="Ellipse" base-type-id="7f9e9b77-5d97-45c4-89c1-0f67adb636cd" ver="5">
+			<designed target="X" value="144.727" ver="5"/>
+			<designed target="Y" value="77.7272" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="24.5455" ver="5"/>
+			<designed target="Height" value="24.5455" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="0xff00ff00" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<designed target="PieAngle" value="360" ver="5"/>
+			<designed target="PieAngleStart" value="360" ver="5"/>
+			<designed target="HoleSize" value="0" ver="5"/>
+			<do-trace access-modifier="private" target="BrushStyle" ver="5">
+				<conditional-expr>
+					<condition>
+						<![CDATA[Vvod2Work.Value&&Vvod2OK.Value]]>
+					</condition>
+					<expr>
+						<![CDATA[1]]>
+					</expr>
+				</conditional-expr>
+				<default-expr>
+					<expr>
+						<![CDATA[0]]>
+					</expr>
+				</default-expr>
+			</do-trace>
+		</object>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="btnMain" display-name="btnMain" uuid="0b03708b-9d5e-4b8a-b69b-0ab5c9f29f33" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
+		<designed target="X" value="75" ver="5"/>
+		<designed target="Y" value="565" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="125" ver="5"/>
+		<designed target="Height" value="50" ver="5"/>
+		<designed target="Text" value="ШУК" ver="5"/>
+		<designed target="Font" value="Arial,20,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
+		<designed target="FontColor" value="0xff000000" ver="5"/>
+		<designed target="TextAlignment" value="132" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.btnMain_1.Visible = !here.btnMain_1.Visible;
+here.btnMain_2.Visible = !here.btnMain_2.Visible;]]>
+			</body>
+		</do-on>
+		<designed target="Checkable" value="false" ver="5"/>
+		<designed target="Checked" value="false" ver="5"/>
+		<designed target="OnClickFontColor" value="4278190080" ver="5"/>
+		<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
+		<designed target="DisabledFontColor" value="4278190080" ver="5"/>
+		<designed target="BrushColor" value="4293980400" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<designed target="OnClickBrushColor" value="4288716960" ver="5"/>
+		<designed target="OnClickBrushStyle" value="1" ver="5"/>
+		<designed target="OnHoverBrushColor" value="4294967295" ver="5"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="5"/>
+		<designed target="DisabledBrushColor" value="4288716960" ver="5"/>
+		<designed target="DisabledBrushStyle" value="1" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="OnClickPenColor" value="0xff000000" ver="5"/>
+		<designed target="OnClickPenStyle" value="1" ver="5"/>
+		<designed target="OnClickPenWidth" value="1" ver="5"/>
+		<designed target="OnHoverPenColor" value="4278190080" ver="5"/>
+		<designed target="OnHoverPenStyle" value="1" ver="5"/>
+		<designed target="OnHoverPenWidth" value="1" ver="5"/>
+		<designed target="DisabledPenColor" value="4288716960" ver="5"/>
+		<designed target="DisabledPenStyle" value="1" ver="5"/>
+		<designed target="DisabledPenWidth" value="1" ver="5"/>
+		<do-trace access-modifier="private" target="BrushColor" ver="5">
+			<conditional-expr>
+				<condition>
+					<![CDATA[ChoosedRack == 0]]>
+				</condition>
+				<expr>
+					<![CDATA[0xff00ff00]]>
+				</expr>
+			</conditional-expr>
+			<default-expr>
+				<expr>
+					<![CDATA[0xfff0f0f0]]>
+				</expr>
+			</default-expr>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="txtGroup_4" display-name="txtGroup_4" uuid="4adb839a-0bd2-4450-83ba-2f2998cd6770" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
+		<designed target="X" value="75" ver="5"/>
+		<designed target="Y" value="849" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="125" ver="5"/>
+		<designed target="Height" value="50" ver="5"/>
+		<designed target="Text" value="ШУГ 4" ver="5"/>
+		<designed target="Font" value="Arial,20,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
+		<designed target="FontColor" value="0xff000000" ver="5"/>
+		<designed target="TextAlignment" value="132" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Checkable" value="false" ver="5"/>
+		<designed target="Checked" value="false" ver="5"/>
+		<designed target="OnClickFontColor" value="4278190080" ver="5"/>
+		<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
+		<designed target="DisabledFontColor" value="4278190080" ver="5"/>
+		<designed target="BrushColor" value="4293980400" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<designed target="OnClickBrushColor" value="4288716960" ver="5"/>
+		<designed target="OnClickBrushStyle" value="1" ver="5"/>
+		<designed target="OnHoverBrushColor" value="4294967295" ver="5"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="5"/>
+		<designed target="DisabledBrushColor" value="4288716960" ver="5"/>
+		<designed target="DisabledBrushStyle" value="1" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="OnClickPenColor" value="0xff000000" ver="5"/>
+		<designed target="OnClickPenStyle" value="1" ver="5"/>
+		<designed target="OnClickPenWidth" value="1" ver="5"/>
+		<designed target="OnHoverPenColor" value="4278190080" ver="5"/>
+		<designed target="OnHoverPenStyle" value="1" ver="5"/>
+		<designed target="OnHoverPenWidth" value="1" ver="5"/>
+		<designed target="DisabledPenColor" value="4288716960" ver="5"/>
+		<designed target="DisabledPenStyle" value="1" ver="5"/>
+		<designed target="DisabledPenWidth" value="1" ver="5"/>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[ChoosedRack = 4;]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="BrushColor" ver="5">
+			<conditional-expr>
+				<condition>
+					<![CDATA[ChoosedRack == 4]]>
+				</condition>
+				<expr>
+					<![CDATA[0xff00ff00]]>
+				</expr>
+			</conditional-expr>
+			<default-expr>
+				<expr>
+					<![CDATA[0xfff0f0f0]]>
+				</expr>
+			</default-expr>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="btnGroup_2" display-name="btnGroup_2" uuid="c519344d-aef1-4e6c-a4b2-e8026a9b5eee" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
+		<designed target="X" value="75" ver="5"/>
+		<designed target="Y" value="707" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="125" ver="5"/>
+		<designed target="Height" value="50" ver="5"/>
+		<designed target="Text" value="ШУГ 2" ver="5"/>
+		<designed target="Font" value="Arial,20,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
+		<designed target="FontColor" value="0xff000000" ver="5"/>
+		<designed target="TextAlignment" value="132" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Checkable" value="false" ver="5"/>
+		<designed target="Checked" value="false" ver="5"/>
+		<designed target="OnClickFontColor" value="4278190080" ver="5"/>
+		<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
+		<designed target="DisabledFontColor" value="4278190080" ver="5"/>
+		<designed target="BrushColor" value="4293980400" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<designed target="OnClickBrushColor" value="4288716960" ver="5"/>
+		<designed target="OnClickBrushStyle" value="1" ver="5"/>
+		<designed target="OnHoverBrushColor" value="4294967295" ver="5"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="5"/>
+		<designed target="DisabledBrushColor" value="4288716960" ver="5"/>
+		<designed target="DisabledBrushStyle" value="1" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="OnClickPenColor" value="0xff000000" ver="5"/>
+		<designed target="OnClickPenStyle" value="1" ver="5"/>
+		<designed target="OnClickPenWidth" value="1" ver="5"/>
+		<designed target="OnHoverPenColor" value="4278190080" ver="5"/>
+		<designed target="OnHoverPenStyle" value="1" ver="5"/>
+		<designed target="OnHoverPenWidth" value="1" ver="5"/>
+		<designed target="DisabledPenColor" value="4288716960" ver="5"/>
+		<designed target="DisabledPenStyle" value="1" ver="5"/>
+		<designed target="DisabledPenWidth" value="1" ver="5"/>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[ChoosedRack = 2;]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="BrushColor" ver="5">
+			<conditional-expr>
+				<condition>
+					<![CDATA[ChoosedRack == 2]]>
+				</condition>
+				<expr>
+					<![CDATA[0xff00ff00]]>
+				</expr>
+			</conditional-expr>
+			<default-expr>
+				<expr>
+					<![CDATA[0xfff0f0f0]]>
+				</expr>
+			</default-expr>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="btnGroup_3" display-name="btnGroup_3" uuid="038fc07e-d249-470e-b43a-5582e97225a0" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
+		<designed target="X" value="75" ver="5"/>
+		<designed target="Y" value="778" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="125" ver="5"/>
+		<designed target="Height" value="50" ver="5"/>
+		<designed target="Text" value="ШУГ 3" ver="5"/>
+		<designed target="Font" value="Arial,20,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
+		<designed target="FontColor" value="0xff000000" ver="5"/>
+		<designed target="TextAlignment" value="132" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Checkable" value="false" ver="5"/>
+		<designed target="Checked" value="false" ver="5"/>
+		<designed target="OnClickFontColor" value="4278190080" ver="5"/>
+		<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
+		<designed target="DisabledFontColor" value="4278190080" ver="5"/>
+		<designed target="BrushColor" value="4293980400" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<designed target="OnClickBrushColor" value="4288716960" ver="5"/>
+		<designed target="OnClickBrushStyle" value="1" ver="5"/>
+		<designed target="OnHoverBrushColor" value="4294967295" ver="5"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="5"/>
+		<designed target="DisabledBrushColor" value="4288716960" ver="5"/>
+		<designed target="DisabledBrushStyle" value="1" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="OnClickPenColor" value="0xff000000" ver="5"/>
+		<designed target="OnClickPenStyle" value="1" ver="5"/>
+		<designed target="OnClickPenWidth" value="1" ver="5"/>
+		<designed target="OnHoverPenColor" value="4278190080" ver="5"/>
+		<designed target="OnHoverPenStyle" value="1" ver="5"/>
+		<designed target="OnHoverPenWidth" value="1" ver="5"/>
+		<designed target="DisabledPenColor" value="4288716960" ver="5"/>
+		<designed target="DisabledPenStyle" value="1" ver="5"/>
+		<designed target="DisabledPenWidth" value="1" ver="5"/>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[ChoosedRack = 3;]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="BrushColor" ver="5">
+			<conditional-expr>
+				<condition>
+					<![CDATA[ChoosedRack == 3]]>
+				</condition>
+				<expr>
+					<![CDATA[0xff00ff00]]>
+				</expr>
+			</conditional-expr>
+			<default-expr>
+				<expr>
+					<![CDATA[0xfff0f0f0]]>
+				</expr>
+			</default-expr>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="btnGroup_1" display-name="btnGroup_1" uuid="2df4f494-3d0f-4363-9d37-8da0f923e834" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
+		<designed target="X" value="75" ver="5"/>
+		<designed target="Y" value="636" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="125" ver="5"/>
+		<designed target="Height" value="50" ver="5"/>
+		<designed target="Text" value="ШУГ 1" ver="5"/>
+		<designed target="Font" value="Arial,20,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
+		<designed target="FontColor" value="0xff000000" ver="5"/>
+		<designed target="TextAlignment" value="132" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Checkable" value="false" ver="5"/>
+		<designed target="Checked" value="false" ver="5"/>
+		<designed target="OnClickFontColor" value="4278190080" ver="5"/>
+		<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
+		<designed target="DisabledFontColor" value="4278190080" ver="5"/>
+		<designed target="BrushColor" value="4293980400" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<designed target="OnClickBrushColor" value="4288716960" ver="5"/>
+		<designed target="OnClickBrushStyle" value="1" ver="5"/>
+		<designed target="OnHoverBrushColor" value="4294967295" ver="5"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="5"/>
+		<designed target="DisabledBrushColor" value="4288716960" ver="5"/>
+		<designed target="DisabledBrushStyle" value="1" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="OnClickPenColor" value="0xff000000" ver="5"/>
+		<designed target="OnClickPenStyle" value="1" ver="5"/>
+		<designed target="OnClickPenWidth" value="1" ver="5"/>
+		<designed target="OnHoverPenColor" value="4278190080" ver="5"/>
+		<designed target="OnHoverPenStyle" value="1" ver="5"/>
+		<designed target="OnHoverPenWidth" value="1" ver="5"/>
+		<designed target="DisabledPenColor" value="4288716960" ver="5"/>
+		<designed target="DisabledPenStyle" value="1" ver="5"/>
+		<designed target="DisabledPenWidth" value="1" ver="5"/>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[ChoosedRack = 1;]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="BrushColor" ver="5">
+			<conditional-expr>
+				<condition>
+					<![CDATA[ChoosedRack == 1]]>
+				</condition>
+				<expr>
+					<![CDATA[0xff00ff00]]>
+				</expr>
+			</conditional-expr>
+			<default-expr>
+				<expr>
+					<![CDATA[0xfff0f0f0]]>
+				</expr>
+			</default-expr>
+		</do-trace>
+	</object>
+	<designed target="Flip" value="0" ver="5"/>
+	<designed target="WindowIconPath" value="" ver="5"/>
+	<object access-modifier="private" name="btnMain_1" display-name="btnMain_1" uuid="cfa55409-822f-4468-8070-d4b2ffc3a0e5" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
+		<designed target="X" value="220" ver="5"/>
+		<designed target="Y" value="535" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="false" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="75" ver="5"/>
+		<designed target="Height" value="50" ver="5"/>
+		<designed target="Text" value="1" ver="5"/>
+		<designed target="Font" value="Arial,20,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
+		<designed target="FontColor" value="0xff000000" ver="5"/>
+		<designed target="TextAlignment" value="132" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Checkable" value="false" ver="5"/>
+		<designed target="Checked" value="false" ver="5"/>
+		<designed target="OnClickFontColor" value="4278190080" ver="5"/>
+		<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
+		<designed target="DisabledFontColor" value="4278190080" ver="5"/>
+		<designed target="BrushColor" value="4293980400" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<designed target="OnClickBrushColor" value="4288716960" ver="5"/>
+		<designed target="OnClickBrushStyle" value="1" ver="5"/>
+		<designed target="OnHoverBrushColor" value="4294967295" ver="5"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="5"/>
+		<designed target="DisabledBrushColor" value="4288716960" ver="5"/>
+		<designed target="DisabledBrushStyle" value="1" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="OnClickPenColor" value="4278190080" ver="5"/>
+		<designed target="OnClickPenStyle" value="1" ver="5"/>
+		<designed target="OnClickPenWidth" value="1" ver="5"/>
+		<designed target="OnHoverPenColor" value="4278190080" ver="5"/>
+		<designed target="OnHoverPenStyle" value="1" ver="5"/>
+		<designed target="OnHoverPenWidth" value="1" ver="5"/>
+		<designed target="DisabledPenColor" value="4288716960" ver="5"/>
+		<designed target="DisabledPenStyle" value="1" ver="5"/>
+		<designed target="DisabledPenWidth" value="1" ver="5"/>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.btnMain_1.Visible = !here.btnMain_1.Visible;
+here.btnMain_2.Visible = !here.btnMain_2.Visible;
+ChoosedRack = 0;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="btnMain_2" display-name="btnMain_2" uuid="49e6b566-a27a-46a3-96a6-cb3befaf8bf0" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
+		<designed target="X" value="220" ver="5"/>
+		<designed target="Y" value="595" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="false" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="75" ver="5"/>
+		<designed target="Height" value="50" ver="5"/>
+		<designed target="Text" value="2" ver="5"/>
+		<designed target="Font" value="Arial,20,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
+		<designed target="FontColor" value="0xff000000" ver="5"/>
+		<designed target="TextAlignment" value="132" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Checkable" value="false" ver="5"/>
+		<designed target="Checked" value="false" ver="5"/>
+		<designed target="OnClickFontColor" value="4278190080" ver="5"/>
+		<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
+		<designed target="DisabledFontColor" value="4278190080" ver="5"/>
+		<designed target="BrushColor" value="4293980400" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<designed target="OnClickBrushColor" value="4288716960" ver="5"/>
+		<designed target="OnClickBrushStyle" value="1" ver="5"/>
+		<designed target="OnHoverBrushColor" value="4294967295" ver="5"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="5"/>
+		<designed target="DisabledBrushColor" value="4288716960" ver="5"/>
+		<designed target="DisabledBrushStyle" value="1" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="OnClickPenColor" value="4278190080" ver="5"/>
+		<designed target="OnClickPenStyle" value="1" ver="5"/>
+		<designed target="OnClickPenWidth" value="1" ver="5"/>
+		<designed target="OnHoverPenColor" value="4278190080" ver="5"/>
+		<designed target="OnHoverPenStyle" value="1" ver="5"/>
+		<designed target="OnHoverPenWidth" value="1" ver="5"/>
+		<designed target="DisabledPenColor" value="4288716960" ver="5"/>
+		<designed target="DisabledPenStyle" value="1" ver="5"/>
+		<designed target="DisabledPenWidth" value="1" ver="5"/>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.btnMain_1.Visible = !here.btnMain_1.Visible;
+here.btnMain_2.Visible = !here.btnMain_2.Visible;
+ChoosedRack = 5;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="ChoosedRack" display-name="ChoosedRack" uuid="9324aeef-6353-4467-b10b-a43a67a3f601" base-type="notifying_uint1" base-type-id="fed14c54-414c-56bd-549a-8d761c4d6200" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="РЕЗЕРВИРОВАННАЯ ПАРА СЕРВЕРОВ_1" display-name="РЕЗЕРВИРОВАННАЯ ПАРА СЕРВЕРОВ_1" uuid="06e26f91-fdaa-4ec2-a7f5-dd972573ec35" base-type="РЕЗЕРВИРОВАННАЯ ПАРА СЕРВЕРОВ" base-type-id="ed2726dd-382b-49b3-9318-57c564593e59" ver="5" description="" cardinal="1">
+		<designed target="X" value="650" ver="5"/>
+		<designed target="Y" value="50" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="init_Source_Server1_main" ver="5" ref="unit.Connections.DiagSource"/>
+		<init target="init_Path_Server1" ver="5" value="SERVER1"/>
+		<init target="init_Path_Server2" ver="5" value="SERVER2"/>
+		<init target="init_Source_Server1_reserv" ver="5" ref="unit.Connections.DiagSource"/>
+		<init target="init_Source_Server2_main" ver="5" ref="unit.Connections.DiagSource"/>
+		<init target="init_Source_Server2_reserv" ver="5" ref="unit.Connections.DiagSource"/>
+	</object>
+	<object access-modifier="private" name="АРМ ИНЖЕНЕРА АСУ ТП_1" display-name="АРМ ИНЖЕНЕРА АСУ ТП_1" uuid="849a2885-438e-4fc6-9753-39f44b3b3627" base-type="АРМ ИНЖЕНЕРА АСУ ТП" base-type-id="b8077156-b5ee-4e74-904e-c2259e4746ff" ver="5" description="" cardinal="1">
+		<designed target="X" value="145" ver="5"/>
+		<designed target="Y" value="65" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+		<init target="init_Path" ver="5" value="STATION"/>
+	</object>
+	<object access-modifier="private" name="R500" display-name="R500" uuid="7e76cb0d-e673-4a88-a460-da2605a40ab8" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+		<designed target="X" value="712.5" ver="5"/>
+		<designed target="Y" value="450" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1.5" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="false" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="760" ver="5"/>
+		<designed target="Height" value="355" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="4278190080" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<designed target="OverrideScaling" value="false" ver="5"/>
+		<designed target="ShowScrollBars" value="true" ver="5"/>
+		<designed target="MoveByMouse" value="false" ver="5"/>
+		<object access-modifier="private" name="R500_ST_02_012" display-name="R500_ST_02_012" uuid="0cf5e547-6802-4658-afee-1ef9a381cefa" base-type="R500_ST_XX_X1X" base-type-id="6482c557-8e24-4474-97a6-60023a3ff147" ver="5" description="" cardinal="1">
+			<designed target="X" value="-125" ver="5"/>
+			<designed target="Y" value="-340" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.R500_.ST_02_012"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.R500_.ST_02_012"/>
+		</object>
+		<object access-modifier="private" name="R500_PP_00_011_1" display-name="R500_PP_00_011_1" uuid="afc1de1e-2452-4e9d-9ffd-2c0acdf4c23d" base-type="R500_PP_00_XXX" base-type-id="6f040ed8-e128-4e0c-b238-a2b139ffb594" ver="5" description="" cardinal="1">
+			<designed target="X" value="-14.999999999999986" ver="5"/>
+			<designed target="Y" value="-359.99999999999994" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.R500_.PP_00_011_1"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.R500_.PP_00_011_1"/>
+		</object>
+		<object access-modifier="private" name="R500_CU_00_071_A" display-name="R500_CU_00_071_A" uuid="dddb52d3-3940-4210-9d3b-9c4a653e841f" base-type="R500_CU_00_071" base-type-id="3a964fb6-6b8a-4622-bc31-4891614a3b34" ver="5" description="" cardinal="1">
+			<designed target="X" value="-14.999999999999915" ver="5"/>
+			<designed target="Y" value="-360.49999999999994" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="init_Path" ver="5" value="REGUL_R500_A.CU_00_071"/>
+		</object>
+		<object access-modifier="private" name="R500_CU_00_071_B" display-name="R500_CU_00_071_B" uuid="239810b0-7dbb-4bb8-8754-3d6f4e95d527" base-type="R500_CU_00_071" base-type-id="3a964fb6-6b8a-4622-bc31-4891614a3b34" ver="5" description="" cardinal="1">
+			<designed target="X" value="140.00000000000014" ver="5"/>
+			<designed target="Y" value="-360.49999999999994" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="init_Path" ver="5" value="REGUL_R500_B.CU_00_071"/>
+		</object>
+		<object access-modifier="private" name="R500_AI_16_012_1" display-name="R500_AI_16_012_1" uuid="0558de43-6aa0-4ea3-8466-ae3ff43cf57a" base-type="R500_AI_16_012" base-type-id="35c8b257-ebca-45f7-b0ad-cc7e7b218f82" ver="5" description="" cardinal="1">
+			<designed target="X" value="375" ver="5"/>
+			<designed target="Y" value="-359.99999999999994" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.R500_.AI_16_012_1"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.R500_.AI_16_012_1"/>
+		</object>
+		<object access-modifier="private" name="R500_AI_16_012_2" display-name="R500_AI_16_012_2" uuid="80daa85e-9628-4897-a67f-296564468348" base-type="R500_AI_16_012" base-type-id="35c8b257-ebca-45f7-b0ad-cc7e7b218f82" ver="5" description="" cardinal="1">
+			<designed target="X" value="455" ver="5"/>
+			<designed target="Y" value="-359.99999999999994" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.R500_.AI_16_012_2"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.R500_.AI_16_012_2"/>
+			<init target="SAFETY" ver="5" value="true"/>
+		</object>
+		<object access-modifier="private" name="R500_PP_00_011_2" display-name="R500_PP_00_011_2" uuid="01088ecb-c4b4-442d-a2c0-68a2684c04fd" base-type="R500_PP_00_XXX" base-type-id="6f040ed8-e128-4e0c-b238-a2b139ffb594" ver="5" description="" cardinal="1">
+			<designed target="X" value="535" ver="5"/>
+			<designed target="Y" value="-359.99999999999994" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.R500_.PP_00_011_2"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.R500_.PP_00_011_2"/>
+		</object>
+		<object access-modifier="private" name="R500_ST_02_022" display-name="R500_ST_02_022" uuid="dbec5439-965e-435c-b941-65d4549c85e7" base-type="R500_ST_XX_X2X" base-type-id="9338deb7-7bdd-4efc-b54f-fe3cde6078b4" ver="5" description="" cardinal="1">
+			<designed target="X" value="570" ver="5"/>
+			<designed target="Y" value="-340" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.R500_.ST_02_022"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.R500_.ST_02_022"/>
+		</object>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[ChoosedRack == 0]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Crate" display-name="Crate" uuid="072e8087-3bc3-492a-ba7f-3c09734b3f4e" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+		<designed target="X" value="695" ver="5"/>
+		<designed target="Y" value="450" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1.5" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="false" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="690" ver="5"/>
+		<designed target="Height" value="355" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="4278190080" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<designed target="OverrideScaling" value="false" ver="5"/>
+		<designed target="ShowScrollBars" value="true" ver="5"/>
+		<designed target="MoveByMouse" value="false" ver="5"/>
+		<object access-modifier="private" name="R500_ST_02_012" display-name="R500_ST_02_012" uuid="a5a19861-294c-4a07-b437-f49b381ce9f6" base-type="R500_ST_XX_X1X" base-type-id="6482c557-8e24-4474-97a6-60023a3ff147" ver="5" description="" cardinal="1">
+			<designed target="X" value="-125" ver="5"/>
+			<designed target="Y" value="-340" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate.ST_02_012"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate.ST_02_012"/>
+		</object>
+		<object access-modifier="private" name="R500_PP_00_011_1" display-name="R500_PP_00_011_1" uuid="672eac62-35d8-4b27-932b-35d7c3494a73" base-type="R500_PP_00_XXX" base-type-id="6f040ed8-e128-4e0c-b238-a2b139ffb594" ver="5" description="" cardinal="1">
+			<designed target="X" value="-14.999999999999915" ver="5"/>
+			<designed target="Y" value="-360" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate.PP_00_011_1"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate.PP_00_011_1"/>
+		</object>
+		<object access-modifier="private" name="R500_DI_32_011_1" display-name="R500_DI_32_011_1" uuid="42542c53-a589-4bea-88fc-af63232077be" base-type="R500_DI_32_011" base-type-id="9493d980-0778-4a7e-99d6-9fa1f68f60f4" ver="5" description="" cardinal="1">
+			<designed target="X" value="65.000000000000014" ver="5"/>
+			<designed target="Y" value="-360.00000000000006" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate.DI_32_011_1"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate.DI_32_011_1"/>
+		</object>
+		<object access-modifier="private" name="R500_DI_32_011_2" display-name="R500_DI_32_011_2" uuid="884af4d6-b783-4cd1-81b4-336fed5c9c45" base-type="R500_DI_32_011" base-type-id="9493d980-0778-4a7e-99d6-9fa1f68f60f4" ver="5" description="" cardinal="1">
+			<designed target="X" value="145" ver="5"/>
+			<designed target="Y" value="-360.00000000000006" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate.DI_32_011_2"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate.DI_32_011_2"/>
+		</object>
+		<object access-modifier="private" name="R500_DI_32_011_3" display-name="R500_DI_32_011_3" uuid="eb3cd9e2-f693-47a3-8fb1-c90901392c18" base-type="R500_DI_32_011" base-type-id="9493d980-0778-4a7e-99d6-9fa1f68f60f4" ver="5" description="" cardinal="1">
+			<designed target="X" value="225" ver="5"/>
+			<designed target="Y" value="-360.00000000000006" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate.DI_32_011_3"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate.DI_32_011_3"/>
+		</object>
+		<object access-modifier="private" name="R500_DO_32_012_1" display-name="R500_DO_32_012_1" uuid="3757c2ea-a0ad-48af-b869-bfe150ffcb20" base-type="R500_DO_32_012" base-type-id="f95ebf48-c8a1-4156-82b8-c6de6c5938fd" ver="5" description="" cardinal="1">
+			<designed target="X" value="305.00000000000011" ver="5"/>
+			<designed target="Y" value="-360" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate.DO_32_012_1"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate.DO_32_012_1"/>
+		</object>
+		<object access-modifier="private" name="R500_DO_32_012_2" display-name="R500_DO_32_012_2" uuid="c039435b-a3a4-4e8b-9dcf-9f4b6a91b0f3" base-type="R500_DO_32_012" base-type-id="f95ebf48-c8a1-4156-82b8-c6de6c5938fd" ver="5" description="" cardinal="1">
+			<designed target="X" value="384.99999999999994" ver="5"/>
+			<designed target="Y" value="-359.99999999999994" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate.DO_32_012_2"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate.DO_32_012_2"/>
+		</object>
+		<object access-modifier="private" name="R500_PP_00_011_2" display-name="R500_PP_00_011_2" uuid="2335f769-03d2-4abe-8317-5be0f76beb11" base-type="R500_PP_00_XXX" base-type-id="6f040ed8-e128-4e0c-b238-a2b139ffb594" ver="5" description="" cardinal="1">
+			<designed target="X" value="464.99999999999977" ver="5"/>
+			<designed target="Y" value="-360" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate.PP_00_011_2"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate.PP_00_011_2"/>
+		</object>
+		<object access-modifier="private" name="R500_ST_02_022" display-name="R500_ST_02_022" uuid="0971d7cc-8ab3-4a6b-aea1-f59ac9504158" base-type="R500_ST_XX_X2X" base-type-id="9338deb7-7bdd-4efc-b54f-fe3cde6078b4" ver="5" description="" cardinal="1">
+			<designed target="X" value="500" ver="5"/>
+			<designed target="Y" value="-340" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate.ST_02_022"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate.ST_02_022"/>
+		</object>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[ChoosedRack == 5]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Crate_1" display-name="Crate_1" uuid="32328191-c201-4db8-a7e0-ed28bd5f9ff4" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+		<designed target="X" value="715" ver="5"/>
+		<designed target="Y" value="450" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1.5" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="false" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="770" ver="5"/>
+		<designed target="Height" value="355" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="4278190080" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<designed target="OverrideScaling" value="false" ver="5"/>
+		<designed target="ShowScrollBars" value="true" ver="5"/>
+		<designed target="MoveByMouse" value="false" ver="5"/>
+		<object access-modifier="private" name="R500_ST_02_012" display-name="R500_ST_02_012" uuid="d83dc847-8e8d-400e-9b69-8e885becfb25" base-type="R500_ST_XX_X1X" base-type-id="6482c557-8e24-4474-97a6-60023a3ff147" ver="5" description="" cardinal="1">
+			<designed target="X" value="-125" ver="5"/>
+			<designed target="Y" value="-340" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_1.ST_02_012"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_1.ST_02_012"/>
+		</object>
+		<object access-modifier="private" name="R500_PP_00_011_1" display-name="R500_PP_00_011_1" uuid="838fc925-b584-4798-aef2-347d6efc5ca2" base-type="R500_PP_00_XXX" base-type-id="6f040ed8-e128-4e0c-b238-a2b139ffb594" ver="5" description="" cardinal="1">
+			<designed target="X" value="-15" ver="5"/>
+			<designed target="Y" value="-360" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_1.PP_00_011_1"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_1.PP_00_011_1"/>
+		</object>
+		<object access-modifier="private" name="R500_AI_16_012_1" display-name="R500_AI_16_012_1" uuid="36574470-d386-4e83-8dd4-4a7af89e1526" base-type="R500_AI_16_012" base-type-id="35c8b257-ebca-45f7-b0ad-cc7e7b218f82" ver="5" description="" cardinal="1">
+			<designed target="X" value="65.000000000000114" ver="5"/>
+			<designed target="Y" value="-360" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_1.AI_16_012_1"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_1.AI_16_012_1"/>
+		</object>
+		<object access-modifier="private" name="R500_AI_16_012_2" display-name="R500_AI_16_012_2" uuid="3ec3d928-0995-4650-90d1-3fc014203420" base-type="R500_AI_16_012" base-type-id="35c8b257-ebca-45f7-b0ad-cc7e7b218f82" ver="5" description="" cardinal="1">
+			<designed target="X" value="145" ver="5"/>
+			<designed target="Y" value="-360" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_1.AI_16_012_2"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_1.AI_16_012_2"/>
+		</object>
+		<object access-modifier="private" name="R500_DI_32_011_1" display-name="R500_DI_32_011_1" uuid="36099fd4-2e82-4814-9cde-953187ced5f8" base-type="R500_DI_32_011" base-type-id="9493d980-0778-4a7e-99d6-9fa1f68f60f4" ver="5" description="" cardinal="1">
+			<designed target="X" value="225.00000000000003" ver="5"/>
+			<designed target="Y" value="-360.00000000000011" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_1.DI_32_011_1"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_1.DI_32_011_1"/>
+		</object>
+		<object access-modifier="private" name="R500_DI_32_011_2" display-name="R500_DI_32_011_2" uuid="29011cb0-a836-46fd-a36f-8734510ef03c" base-type="R500_DI_32_011" base-type-id="9493d980-0778-4a7e-99d6-9fa1f68f60f4" ver="5" description="" cardinal="1">
+			<designed target="X" value="305" ver="5"/>
+			<designed target="Y" value="-359.99999999999983" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_1.DI_32_011_2"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_1.DI_32_011_2"/>
+		</object>
+		<object access-modifier="private" name="R500_DO_32_012_1" display-name="R500_DO_32_012_1" uuid="4c16ae16-89a4-4e05-8f24-62857c1561f5" base-type="R500_DO_32_012" base-type-id="f95ebf48-c8a1-4156-82b8-c6de6c5938fd" ver="5" description="" cardinal="1">
+			<designed target="X" value="385.00000000000011" ver="5"/>
+			<designed target="Y" value="-359.99999999999983" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_1.DO_32_012_1"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_1.DO_32_012_1"/>
+		</object>
+		<object access-modifier="private" name="R500_DO_32_012_2" display-name="R500_DO_32_012_2" uuid="c19d7efb-cbeb-4207-8d49-63971b7c658f" base-type="R500_DO_32_012" base-type-id="f95ebf48-c8a1-4156-82b8-c6de6c5938fd" ver="5" description="" cardinal="1">
+			<designed target="X" value="465" ver="5"/>
+			<designed target="Y" value="-360" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_1.DO_32_012_2"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_1.DO_32_012_2"/>
+		</object>
+		<object access-modifier="private" name="R500_PP_00_011_2" display-name="R500_PP_00_011_2" uuid="7f7d40ea-b0f2-476e-9c7e-7e3dffbabc34" base-type="R500_PP_00_XXX" base-type-id="6f040ed8-e128-4e0c-b238-a2b139ffb594" ver="5" description="" cardinal="1">
+			<designed target="X" value="545" ver="5"/>
+			<designed target="Y" value="-360" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_1.PP_00_011_2"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_1.PP_00_011_2"/>
+		</object>
+		<object access-modifier="private" name="R500_ST_02_022" display-name="R500_ST_02_022" uuid="42628aa8-0c2c-4420-924e-37618bcfa61e" base-type="R500_ST_XX_X2X" base-type-id="9338deb7-7bdd-4efc-b54f-fe3cde6078b4" ver="5" description="" cardinal="1">
+			<designed target="X" value="580" ver="5"/>
+			<designed target="Y" value="-340" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_1.ST_02_022"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_1.ST_02_022"/>
+		</object>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[ChoosedRack == 1]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Crate_2" display-name="Crate_2" uuid="a630f6f0-ed6c-4789-bd22-1a1635562626" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+		<designed target="X" value="715" ver="5"/>
+		<designed target="Y" value="450" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1.5" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="false" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="770" ver="5"/>
+		<designed target="Height" value="355" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="4278190080" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<designed target="OverrideScaling" value="false" ver="5"/>
+		<designed target="ShowScrollBars" value="true" ver="5"/>
+		<designed target="MoveByMouse" value="false" ver="5"/>
+		<object access-modifier="private" name="R500_ST_02_012" display-name="R500_ST_02_012" uuid="a5a3f730-2c7f-4476-9448-2533d4b05aee" base-type="R500_ST_XX_X1X" base-type-id="6482c557-8e24-4474-97a6-60023a3ff147" ver="5" description="" cardinal="1">
+			<designed target="X" value="-125" ver="5"/>
+			<designed target="Y" value="-340" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_2.ST_02_012"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_2.ST_02_012"/>
+		</object>
+		<object access-modifier="private" name="R500_PP_00_011_1" display-name="R500_PP_00_011_1" uuid="9d7c75ea-5696-4651-8b27-57df855a0ba7" base-type="R500_PP_00_XXX" base-type-id="6f040ed8-e128-4e0c-b238-a2b139ffb594" ver="5" description="" cardinal="1">
+			<designed target="X" value="-15" ver="5"/>
+			<designed target="Y" value="-360" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_2.PP_00_011_1"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_2.PP_00_011_1"/>
+		</object>
+		<object access-modifier="private" name="R500_AI_16_012_1" display-name="R500_AI_16_012_1" uuid="505d7654-5480-4e5b-b965-082bebbe01ff" base-type="R500_AI_16_012" base-type-id="35c8b257-ebca-45f7-b0ad-cc7e7b218f82" ver="5" description="" cardinal="1">
+			<designed target="X" value="65.000000000000114" ver="5"/>
+			<designed target="Y" value="-360" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_2.AI_16_012_1"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_2.AI_16_012_1"/>
+		</object>
+		<object access-modifier="private" name="R500_AI_16_012_2" display-name="R500_AI_16_012_2" uuid="b9dd6b58-b0a3-4a4c-87a1-2349beb2be3b" base-type="R500_AI_16_012" base-type-id="35c8b257-ebca-45f7-b0ad-cc7e7b218f82" ver="5" description="" cardinal="1">
+			<designed target="X" value="145" ver="5"/>
+			<designed target="Y" value="-360" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_2.AI_16_012_2"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_2.AI_16_012_2"/>
+		</object>
+		<object access-modifier="private" name="R500_DI_32_011_1" display-name="R500_DI_32_011_1" uuid="83e4719b-6e29-4ae9-b204-53a384930ec7" base-type="R500_DI_32_011" base-type-id="9493d980-0778-4a7e-99d6-9fa1f68f60f4" ver="5" description="" cardinal="1">
+			<designed target="X" value="225.00000000000003" ver="5"/>
+			<designed target="Y" value="-360.00000000000011" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_2.DI_32_011_1"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_2.DI_32_011_1"/>
+		</object>
+		<object access-modifier="private" name="R500_DI_32_011_2" display-name="R500_DI_32_011_2" uuid="31199469-4f57-44d0-a765-08deb0a422a7" base-type="R500_DI_32_011" base-type-id="9493d980-0778-4a7e-99d6-9fa1f68f60f4" ver="5" description="" cardinal="1">
+			<designed target="X" value="305" ver="5"/>
+			<designed target="Y" value="-359.99999999999983" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_2.DI_32_011_2"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_2.DI_32_011_2"/>
+		</object>
+		<object access-modifier="private" name="R500_DO_32_012_1" display-name="R500_DO_32_012_1" uuid="42d1a319-432d-4892-9775-a24c201cc237" base-type="R500_DO_32_012" base-type-id="f95ebf48-c8a1-4156-82b8-c6de6c5938fd" ver="5" description="" cardinal="1">
+			<designed target="X" value="385.00000000000011" ver="5"/>
+			<designed target="Y" value="-359.99999999999983" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_2.DO_32_012_1"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_2.DO_32_012_1"/>
+		</object>
+		<object access-modifier="private" name="R500_DO_32_012_2" display-name="R500_DO_32_012_2" uuid="93d40654-c7a2-46fd-8be8-d4be5bf2dd29" base-type="R500_DO_32_012" base-type-id="f95ebf48-c8a1-4156-82b8-c6de6c5938fd" ver="5" description="" cardinal="1">
+			<designed target="X" value="465" ver="5"/>
+			<designed target="Y" value="-360" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_2.DO_32_012_2"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_2.DO_32_012_2"/>
+		</object>
+		<object access-modifier="private" name="R500_PP_00_011_2" display-name="R500_PP_00_011_2" uuid="74fb9679-b0d8-4038-b52b-9899f50dcf16" base-type="R500_PP_00_XXX" base-type-id="6f040ed8-e128-4e0c-b238-a2b139ffb594" ver="5" description="" cardinal="1">
+			<designed target="X" value="545" ver="5"/>
+			<designed target="Y" value="-360" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_2.PP_00_011_2"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_2.PP_00_011_2"/>
+		</object>
+		<object access-modifier="private" name="R500_ST_02_022" display-name="R500_ST_02_022" uuid="93c5a735-48bc-43bf-8c17-eda5f990e8ef" base-type="R500_ST_XX_X2X" base-type-id="9338deb7-7bdd-4efc-b54f-fe3cde6078b4" ver="5" description="" cardinal="1">
+			<designed target="X" value="580" ver="5"/>
+			<designed target="Y" value="-340" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_2.ST_02_022"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_2.ST_02_022"/>
+		</object>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[ChoosedRack == 2]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Crate_3" display-name="Crate_3" uuid="484eba4e-869f-4bc8-9336-c39179f9c593" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+		<designed target="X" value="715" ver="5"/>
+		<designed target="Y" value="450" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1.5" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="false" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="770" ver="5"/>
+		<designed target="Height" value="355" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="4278190080" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<designed target="OverrideScaling" value="false" ver="5"/>
+		<designed target="ShowScrollBars" value="true" ver="5"/>
+		<designed target="MoveByMouse" value="false" ver="5"/>
+		<object access-modifier="private" name="R500_ST_02_012" display-name="R500_ST_02_012" uuid="994d1dc7-ff09-4e41-9cb3-56be9fac83de" base-type="R500_ST_XX_X1X" base-type-id="6482c557-8e24-4474-97a6-60023a3ff147" ver="5" description="" cardinal="1">
+			<designed target="X" value="-125" ver="5"/>
+			<designed target="Y" value="-340" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_3.ST_02_012"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_3.ST_02_012"/>
+		</object>
+		<object access-modifier="private" name="R500_PP_00_011_1" display-name="R500_PP_00_011_1" uuid="5d991c61-9de2-4aed-8445-5b1b4cd6cb2e" base-type="R500_PP_00_XXX" base-type-id="6f040ed8-e128-4e0c-b238-a2b139ffb594" ver="5" description="" cardinal="1">
+			<designed target="X" value="-15" ver="5"/>
+			<designed target="Y" value="-360" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_3.PP_00_011_1"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_3.PP_00_011_1"/>
+		</object>
+		<object access-modifier="private" name="R500_AI_16_012_1" display-name="R500_AI_16_012_1" uuid="efe9fcba-bd55-486f-b747-76b207c1a915" base-type="R500_AI_16_012" base-type-id="35c8b257-ebca-45f7-b0ad-cc7e7b218f82" ver="5" description="" cardinal="1">
+			<designed target="X" value="65.000000000000114" ver="5"/>
+			<designed target="Y" value="-360" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_3.AI_16_012_1"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_3.AI_16_012_1"/>
+		</object>
+		<object access-modifier="private" name="R500_AI_16_012_2" display-name="R500_AI_16_012_2" uuid="cba99ba1-db58-41da-8b03-1c5e45a0d977" base-type="R500_AI_16_012" base-type-id="35c8b257-ebca-45f7-b0ad-cc7e7b218f82" ver="5" description="" cardinal="1">
+			<designed target="X" value="145" ver="5"/>
+			<designed target="Y" value="-360" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_3.AI_16_012_2"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_3.AI_16_012_2"/>
+		</object>
+		<object access-modifier="private" name="R500_DI_32_011_1" display-name="R500_DI_32_011_1" uuid="83e68aaa-02b8-49de-b593-7954b3fa5d93" base-type="R500_DI_32_011" base-type-id="9493d980-0778-4a7e-99d6-9fa1f68f60f4" ver="5" description="" cardinal="1">
+			<designed target="X" value="225.00000000000003" ver="5"/>
+			<designed target="Y" value="-360.00000000000011" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_3.DI_32_011_1"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_3.DI_32_011_1"/>
+		</object>
+		<object access-modifier="private" name="R500_DI_32_011_2" display-name="R500_DI_32_011_2" uuid="3671aab5-f3e6-4545-bda6-523fb73c855b" base-type="R500_DI_32_011" base-type-id="9493d980-0778-4a7e-99d6-9fa1f68f60f4" ver="5" description="" cardinal="1">
+			<designed target="X" value="305" ver="5"/>
+			<designed target="Y" value="-359.99999999999983" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_3.DI_32_011_2"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_3.DI_32_011_2"/>
+		</object>
+		<object access-modifier="private" name="R500_DO_32_012_1" display-name="R500_DO_32_012_1" uuid="2dcd3db0-d73b-4ab4-afe8-9fe918624868" base-type="R500_DO_32_012" base-type-id="f95ebf48-c8a1-4156-82b8-c6de6c5938fd" ver="5" description="" cardinal="1">
+			<designed target="X" value="385.00000000000011" ver="5"/>
+			<designed target="Y" value="-359.99999999999983" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_3.DO_32_012_1"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_3.DO_32_012_1"/>
+		</object>
+		<object access-modifier="private" name="R500_DO_32_012_2" display-name="R500_DO_32_012_2" uuid="183f862b-ccda-48fe-b302-bd3f592fef1a" base-type="R500_DO_32_012" base-type-id="f95ebf48-c8a1-4156-82b8-c6de6c5938fd" ver="5" description="" cardinal="1">
+			<designed target="X" value="465" ver="5"/>
+			<designed target="Y" value="-360" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_3.DO_32_012_2"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_3.DO_32_012_2"/>
+		</object>
+		<object access-modifier="private" name="R500_PP_00_011_2" display-name="R500_PP_00_011_2" uuid="c89dbebc-1a9b-4a0a-ba3c-d2303d648d0c" base-type="R500_PP_00_XXX" base-type-id="6f040ed8-e128-4e0c-b238-a2b139ffb594" ver="5" description="" cardinal="1">
+			<designed target="X" value="545" ver="5"/>
+			<designed target="Y" value="-360" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_3.PP_00_011_2"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_3.PP_00_011_2"/>
+		</object>
+		<object access-modifier="private" name="R500_ST_02_022" display-name="R500_ST_02_022" uuid="93f1c014-c1a4-4cc4-862b-f45d03619487" base-type="R500_ST_XX_X2X" base-type-id="9338deb7-7bdd-4efc-b54f-fe3cde6078b4" ver="5" description="" cardinal="1">
+			<designed target="X" value="580" ver="5"/>
+			<designed target="Y" value="-340" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_3.ST_02_022"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_3.ST_02_022"/>
+		</object>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[ChoosedRack == 3]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Crate_4" display-name="Crate_4" uuid="f634904d-aa44-4384-bf9f-f9059fedfb9e" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+		<designed target="X" value="715" ver="5"/>
+		<designed target="Y" value="450" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1.5" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="false" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="770" ver="5"/>
+		<designed target="Height" value="355" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="4278190080" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<designed target="OverrideScaling" value="false" ver="5"/>
+		<designed target="ShowScrollBars" value="true" ver="5"/>
+		<designed target="MoveByMouse" value="false" ver="5"/>
+		<object access-modifier="private" name="R500_ST_02_012" display-name="R500_ST_02_012" uuid="62302b56-e68d-4983-b9dd-90301eb3cdb2" base-type="R500_ST_XX_X1X" base-type-id="6482c557-8e24-4474-97a6-60023a3ff147" ver="5" description="" cardinal="1">
+			<designed target="X" value="-125" ver="5"/>
+			<designed target="Y" value="-340" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_4.ST_02_012"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_4.ST_02_012"/>
+		</object>
+		<object access-modifier="private" name="R500_PP_00_011_1" display-name="R500_PP_00_011_1" uuid="530a97a8-ec8c-4336-86d6-24cc22d9e401" base-type="R500_PP_00_XXX" base-type-id="6f040ed8-e128-4e0c-b238-a2b139ffb594" ver="5" description="" cardinal="1">
+			<designed target="X" value="-15" ver="5"/>
+			<designed target="Y" value="-360" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_4.PP_00_011_1"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_4.PP_00_011_1"/>
+		</object>
+		<object access-modifier="private" name="R500_AI_16_012_1" display-name="R500_AI_16_012_1" uuid="2ea91c0b-4baf-4737-a5ec-9a3b4c835565" base-type="R500_AI_16_012" base-type-id="35c8b257-ebca-45f7-b0ad-cc7e7b218f82" ver="5" description="" cardinal="1">
+			<designed target="X" value="65.000000000000114" ver="5"/>
+			<designed target="Y" value="-360" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_4.AI_16_012_1"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_4.AI_16_012_1"/>
+		</object>
+		<object access-modifier="private" name="R500_AI_16_012_2" display-name="R500_AI_16_012_2" uuid="06388367-5aad-4de3-838c-40ae744ae103" base-type="R500_AI_16_012" base-type-id="35c8b257-ebca-45f7-b0ad-cc7e7b218f82" ver="5" description="" cardinal="1">
+			<designed target="X" value="145" ver="5"/>
+			<designed target="Y" value="-360" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_4.AI_16_012_2"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_4.AI_16_012_2"/>
+		</object>
+		<object access-modifier="private" name="R500_DI_32_011_1" display-name="R500_DI_32_011_1" uuid="630307c2-03c0-44f1-85a3-15b9bae110f4" base-type="R500_DI_32_011" base-type-id="9493d980-0778-4a7e-99d6-9fa1f68f60f4" ver="5" description="" cardinal="1">
+			<designed target="X" value="225.00000000000003" ver="5"/>
+			<designed target="Y" value="-360.00000000000011" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_4.DI_32_011_1"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_4.DI_32_011_1"/>
+		</object>
+		<object access-modifier="private" name="R500_DI_32_011_2" display-name="R500_DI_32_011_2" uuid="10f50f3d-bbc6-4467-b648-dbf2ca0e1b31" base-type="R500_DI_32_011" base-type-id="9493d980-0778-4a7e-99d6-9fa1f68f60f4" ver="5" description="" cardinal="1">
+			<designed target="X" value="305" ver="5"/>
+			<designed target="Y" value="-359.99999999999983" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_4.DI_32_011_2"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_4.DI_32_011_2"/>
+		</object>
+		<object access-modifier="private" name="R500_DO_32_012_1" display-name="R500_DO_32_012_1" uuid="4b4d1796-6b19-48ce-9620-7ad52b284d67" base-type="R500_DO_32_012" base-type-id="f95ebf48-c8a1-4156-82b8-c6de6c5938fd" ver="5" description="" cardinal="1">
+			<designed target="X" value="385.00000000000011" ver="5"/>
+			<designed target="Y" value="-359.99999999999983" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_4.DO_32_012_1"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_4.DO_32_012_1"/>
+		</object>
+		<object access-modifier="private" name="R500_DO_32_012_2" display-name="R500_DO_32_012_2" uuid="3408cc6d-74f3-4b8f-83d1-610c95563cb1" base-type="R500_DO_32_012" base-type-id="f95ebf48-c8a1-4156-82b8-c6de6c5938fd" ver="5" description="" cardinal="1">
+			<designed target="X" value="465" ver="5"/>
+			<designed target="Y" value="-360" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_4.DO_32_012_2"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_4.DO_32_012_2"/>
+		</object>
+		<object access-modifier="private" name="R500_PP_00_011_2" display-name="R500_PP_00_011_2" uuid="295950ea-ef7b-45c6-b3a9-87b7001260ce" base-type="R500_PP_00_XXX" base-type-id="6f040ed8-e128-4e0c-b238-a2b139ffb594" ver="5" description="" cardinal="1">
+			<designed target="X" value="545" ver="5"/>
+			<designed target="Y" value="-360" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="SAFETY" ver="5" value="true"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_4.PP_00_011_2"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_4.PP_00_011_2"/>
+		</object>
+		<object access-modifier="private" name="R500_ST_02_022" display-name="R500_ST_02_022" uuid="67d0da69-0be4-4a0b-9be1-828ce64cf16c" base-type="R500_ST_XX_X2X" base-type-id="9338deb7-7bdd-4efc-b54f-fe3cde6078b4" ver="5" description="" cardinal="1">
+			<designed target="X" value="580" ver="5"/>
+			<designed target="Y" value="-340" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_4.ST_02_022"/>
+			<init target="init_Source" ver="5" ref="unit.Connections.DiagSource"/>
+			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_4.ST_02_022"/>
+		</object>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[ChoosedRack == 4]]>
+			</body>
+		</do-trace>
+	</object>
+</type>
+

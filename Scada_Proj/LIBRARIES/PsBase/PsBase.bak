@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<omx xmlns="system" migration="28" xmlns:a="automation" xmlns:ct="automation.control" xmlns:r="automation.reference">
+  <link-unit name="System" uuid="cb0110cf-a840-498d-8acd-a13e61ed0b44" target="Om.System" />
+  <link-unit name="Server" uuid="0e522eeb-6d9c-4cb4-b5e6-48642a7cd0aa" target="Om.Server" />
+  <link-unit name="PLC" uuid="e76a9232-c252-4b8b-a1bd-a3c96dd90df1" target="Om.PLC" />
+  <namespace name="Types" uuid="94e134fe-97e1-4f8a-8d92-5ceb0cf6f02d">
+    <namespace name="BASETYPE" uuid="267453eb-af1c-44d3-bace-ec2573be9892">
+      <ct:type name="PLC_BaseView" aspect="Aspects.PLC_Aspect" uuid="746dfd29-8b98-4e6a-9336-cbaabb85efa7">
+        <attribute type="unit.System.Attributes.Comment" value="Базовое представление на уровне ПЛК" />
+        <attribute type="unit.System.Attributes.Title" value="Название алгоритма или KKS" />
+        <attribute type="unit.System.Attributes.Description" value="Описание алгоритма" />
+        <attribute type="Attributes.EU" value="ед. изм." />
+        <attribute type="Attributes.ALIAS" value="Об" />
+        <attribute type="Attributes.DIGIT" value="2" />
+      </ct:type>
+      <ct:type name="IOS_BaseView" aspect="Aspects.IOS_Aspect" original="PLC_BaseView" uuid="3e55e6b4-a1c1-4050-90fb-51df609bc452">
+        <r:ref name="_PLC_BaseView" type="PLC_BaseView" aspected="true" const-access="false" uuid="2874c37b-bc90-407f-99c6-e099a78377d0">
+          <attribute type="unit.System.Attributes.Comment" value="Базовое представление на уровне ПЛК" />
+        </r:ref>
+        <attribute type="unit.System.Attributes.Comment" value="Базовое представление на уровне сервера ввода/вывода" />
+        <ct:parameter name="NAME" type="string" direction="out" uuid="247b9caf-cbca-42ce-954d-6e95fdf60b06">
+          <attribute type="unit.System.Attributes.InitialValue" value="@(object:System.Attributes.Title)" />
+          <attribute type="unit.System.Attributes.Comment" value="Название/KKS" />
+        </ct:parameter>
+        <ct:parameter name="DESCRIPTION" type="string" direction="out" uuid="aa0fd07f-2e85-4d08-8921-265cb5434d87">
+          <attribute type="unit.System.Attributes.InitialValue" value="@(object:System.Attributes.Description)" />
+          <attribute type="unit.System.Attributes.Comment" value="Описание" />
+        </ct:parameter>
+        <ct:object name="Agg_Alarm" base-type="Aggregators.Agg_Alarm" uuid="40f722ae-f7de-4767-912a-fea39d61a55c" />
+        <ct:object name="Agg_Fault" base-type="Aggregators.Agg_Fault" uuid="b1fd9a20-187b-4ee3-8bd2-1726886b02fb" />
+        <ct:object name="Agg_Info" base-type="Aggregators.Agg_Info" uuid="76e3be8f-86f5-4f73-9fc0-93f250cefeed" />
+        <ct:object name="Agg_Warn" base-type="Aggregators.Agg_Warn" uuid="ac0da6ef-8177-48f8-84c8-14c9853822e7" />
+        <ct:parameter name="ALIAS" type="string" direction="out" uuid="3e736e1a-4a4d-4c88-98f2-549ff3ff3f62">
+          <attribute type="unit.System.Attributes.InitialValue" value="@(object:PsBase.Attributes.ALIAS)" />
+          <attribute type="unit.System.Attributes.Comment" value="Обозначение" />
+        </ct:parameter>
+        <ct:parameter name="EU" type="string" direction="out" uuid="eeadaa53-66bd-4449-8ee2-592d61e8ea54">
+          <attribute type="unit.System.Attributes.InitialValue" value="@(object:PsBase.Attributes.EU)" />
+          <attribute type="unit.System.Attributes.Comment" value="Единицы измерения" />
+        </ct:parameter>
+        <ct:parameter name="DIGIT" type="uint8" direction="out" uuid="e160512a-2268-4c5c-a34f-dd48dc876030">
+          <attribute type="unit.System.Attributes.InitialValue" value="@(object:PsBase.Attributes.DIGIT)" />
+          <attribute type="unit.System.Attributes.Comment" value="Количество знаков после запятой" />
+          <attribute type="unit.Server.Attributes.InitialQuality" value="192" />
+        </ct:parameter>
+        <ct:parameter name="MSG" type="string" direction="out" uuid="651bff55-ee4c-4415-a8cb-30e59f4ea2ef">
+          <attribute type="unit.Server.Attributes.Alarm">
+            <property name="value">{"Condition":{"IsEnabled":"true","Subconditions":[{"AckStrategy":0,"IsEnabled":true,"Severity":100,"Type":"Dynamic"}],"Type":"Dynamic"}}</property>
+          </attribute>
+          <attribute type="unit.System.Attributes.Comment" value="Сообщение" />
+        </ct:parameter>
+      </ct:type>
+    </namespace>
+    <namespace name="DATA" uuid="81807de3-9f58-43cf-85c8-45d883bb2d27">
+      <ct:type name="PLC_View" aspect="Aspects.PLC_Aspect" uuid="e3dbd767-31ef-4f4e-8638-3573f9c1b550">
+        <attribute type="unit.System.Attributes.Comment" value="Представление на уровне ПЛК" />
+        <attribute type="unit.System.Attributes.Title" value="SET_SP" />
+        <attribute type="unit.System.Attributes.Description" value="SET_SP - Задатчик уставки" />
+        <attribute type="Attributes.DIGIT" value="2" />
+        <attribute type="Attributes.EU" value="ед.изм." />
+        <ct:parameter name="VAR_BOOL" type="bool" direction="out" uuid="1ce88143-a79f-4629-9958-5d36b6b0660f" />
+        <ct:parameter name="VAR_INT1" type="int8" direction="out" uuid="38c2b237-2957-4c29-8fe5-88d9d779b132" />
+        <ct:parameter name="VAR_UINT1" type="uint8" direction="out" uuid="007e279b-e80d-4fde-af9b-ea6b727697f1" />
+        <ct:parameter name="VAR_INT2" type="int16" direction="out" uuid="05d0ec58-ea0b-40a8-a1cf-07d677e29ae3" />
+        <ct:parameter name="VAR_UINT2" type="uint16" direction="out" uuid="fd55ae03-7089-4964-9cef-be7bdb8afb8e" />
+        <ct:parameter name="VAR_INT4" type="int32" direction="out" uuid="be0b397b-9021-4252-ab61-9c893a5c90c4" />
+        <ct:parameter name="VAR_UINT4" type="uint32" direction="out" uuid="8b67cf21-063f-4f44-b96e-171f1a4c2062" />
+        <ct:parameter name="VAR_INT8" type="int64" direction="out" uuid="bec487dd-6f57-4524-9adb-53f627d0f046" />
+        <ct:parameter name="VAR_UINT8" type="uint64" direction="out" uuid="e040a0b4-29aa-4d40-afab-f6fef2240b27" />
+        <ct:parameter name="VAR_FLOAT" type="float32" direction="out" uuid="33f747f6-7a3d-460e-9106-d42b6c5a1596" />
+        <ct:parameter name="VAR_DOUBLE" type="float64" direction="out" uuid="50d6424a-620d-4525-90d9-212f1d8a1d53" />
+        <ct:parameter name="VAR_STRING" type="string" direction="out" uuid="d9a95b20-4629-4aa5-868a-c18110c54bf6" />
+      </ct:type>
+      <ct:type name="IOS_View" aspect="Aspects.IOS_Aspect" original="PLC_View" uuid="afacfefe-a5cd-4c47-a25f-e684d9cbf1bd">
+        <r:ref name="_PLC_View" type="PLC_View" aspected="true" uuid="0c9d076b-3c25-45c8-af2e-d99f7c9f499d">
+          <attribute type="unit.System.Attributes.Comment" value="Представление на уровне ПЛК" />
+        </r:ref>
+        <attribute type="unit.System.Attributes.Comment" value="Представление на уровне сервера ввода/вывода" />
+        <ct:parameter name="VAR_BOOL" direction="out" type="bool" uuid="59ce2cfa-15fd-4d47-85a7-7292ffca1f7d">
+          <attribute type="unit.Server.Attributes.History" value="Enable=&quot;True&quot; ServerTime=&quot;False&quot;" />
+          <attribute type="Attributes.DBT" value="500" />
+        </ct:parameter>
+        <ct:bind source="_PLC_View.VAR_BOOL" target="VAR_BOOL" />
+        <ct:parameter name="VAR_INT1" direction="out" type="int8" uuid="a9227b2b-8c7b-43ac-9c76-d1a32550d9a9">
+          <attribute type="unit.Server.Attributes.History" value="Enable=&quot;True&quot; ServerTime=&quot;False&quot;" />
+          <attribute type="Attributes.DBT" value="500" />
+        </ct:parameter>
+        <ct:bind source="_PLC_View.VAR_INT1" target="VAR_INT1" />
+        <ct:parameter name="VAR_UINT1" direction="out" type="uint8" uuid="a256cae3-4e50-4bbc-a2ab-03093a2b3551">
+          <attribute type="unit.Server.Attributes.History" value="Enable=&quot;True&quot; ServerTime=&quot;False&quot;" />
+          <attribute type="Attributes.DBT" value="500" />
+        </ct:parameter>
+        <ct:bind source="_PLC_View.VAR_UINT1" target="VAR_UINT1" />
+        <ct:parameter name="VAR_INT2" direction="out" type="int16" uuid="2f95a62c-2de5-422b-bf21-86801e915b93">
+          <attribute type="unit.Server.Attributes.History" value="Enable=&quot;True&quot; ServerTime=&quot;False&quot;" />
+          <attribute type="Attributes.DBT" value="500" />
+        </ct:parameter>
+        <ct:bind source="_PLC_View.VAR_INT2" target="VAR_INT2" />
+        <ct:parameter name="VAR_UINT2" direction="out" type="uint16" uuid="513d0f2b-330c-44e3-8166-5ed6a8d643f6">
+          <attribute type="unit.Server.Attributes.History" value="Enable=&quot;True&quot; ServerTime=&quot;False&quot;" />
+          <attribute type="Attributes.DBT" value="500" />
+        </ct:parameter>
+        <ct:bind source="_PLC_View.VAR_UINT2" target="VAR_UINT2" />
+        <ct:parameter name="VAR_INT4" direction="out" type="int32" uuid="b238e3bb-07c0-4c66-b2ff-aa8fbc887b0b">
+          <attribute type="unit.Server.Attributes.History" value="Enable=&quot;True&quot; ServerTime=&quot;False&quot;" />
+          <attribute type="Attributes.DBT" value="500" />
+        </ct:parameter>
+        <ct:bind source="_PLC_View.VAR_INT4" target="VAR_INT4" />
+        <ct:parameter name="VAR_UINT4" direction="out" type="uint32" uuid="39bb3592-3866-45be-946b-b36aa7f0e410">
+          <attribute type="unit.Server.Attributes.History" value="Enable=&quot;True&quot; ServerTime=&quot;False&quot;" />
+          <attribute type="Attributes.DBT" value="500" />
+        </ct:parameter>
+        <ct:bind source="_PLC_View.VAR_UINT4" target="VAR_UINT4" />
+        <ct:parameter name="VAR_INT8" direction="out" type="int64" uuid="a30b3a58-a5e3-4aee-ae5c-9cfdfee5728a">
+          <attribute type="unit.Server.Attributes.History" value="Enable=&quot;True&quot; ServerTime=&quot;False&quot;" />
+          <attribute type="Attributes.DBT" value="500" />
+        </ct:parameter>
+        <ct:bind source="_PLC_View.VAR_INT8" target="VAR_INT8" />
+        <ct:parameter name="VAR_UINT8" direction="out" type="uint64" uuid="8cba66da-bdfe-4351-9c79-db63650ff823">
+          <attribute type="unit.Server.Attributes.History" value="Enable=&quot;True&quot; ServerTime=&quot;False&quot;" />
+          <attribute type="Attributes.DBT" value="500" />
+        </ct:parameter>
+        <ct:bind source="_PLC_View.VAR_UINT8" target="VAR_UINT8" />
+        <ct:parameter name="VAR_FLOAT" direction="out" type="float32" uuid="c70b45e0-0f76-4f64-a05b-5d6da2e6af4a">
+          <attribute type="unit.Server.Attributes.History" value="Enable=&quot;True&quot; ServerTime=&quot;False&quot;" />
+          <attribute type="Attributes.DBT" value="500" />
+        </ct:parameter>
+        <ct:bind source="_PLC_View.VAR_FLOAT" target="VAR_FLOAT" />
+        <ct:parameter name="VAR_DOUBLE" direction="out" type="float64" uuid="181f7d8a-2f64-4c63-bee2-5b8d4c902642">
+          <attribute type="unit.Server.Attributes.History" value="Enable=&quot;True&quot; ServerTime=&quot;False&quot;" />
+          <attribute type="Attributes.DBT" value="500" />
+        </ct:parameter>
+        <ct:bind source="_PLC_View.VAR_DOUBLE" target="VAR_DOUBLE" />
+        <ct:parameter name="VAR_STRING" direction="out" type="string" uuid="fbc3bf9b-5d7d-4984-a9ca-fe3a37eab9a3">
+          <attribute type="unit.Server.Attributes.History" value="Enable=&quot;True&quot; ServerTime=&quot;False&quot;" />
+          <attribute type="Attributes.DBT" value="500" />
+        </ct:parameter>
+        <ct:bind source="_PLC_View.VAR_STRING" target="VAR_STRING" />
+      </ct:type>
+    </namespace>
+  </namespace>
+  <namespace name="Aspects" uuid="9646fc1a-3e72-42bc-b163-71fc28583bdb">
+    <a:aspect name="PLC_Aspect" uuid="ead002a0-3ee2-4104-8da1-4f5d32a303c0">
+      <attribute type="unit.System.Attributes.Comment" value="Аспект уровня сервера ввода/вывода" />
+    </a:aspect>
+    <a:aspect name="IOS_Aspect" uuid="18f264dc-6474-4b08-9621-4bda7109fd3a">
+      <attribute type="unit.System.Attributes.Comment" value="Аспект уровня ПЛК" />
+    </a:aspect>
+  </namespace>
+  <namespace name="Attributes" uuid="1ca05054-1539-4adf-8a0e-2d6701616abc">
+    <attribute-type name="EU" type="string" title="Единицы измерения" description="Единицы измерения" default-value="ед.изм." uuid="a74228a2-ad70-4aae-b115-179cd01c99f4" />
+    <attribute-type name="ALIAS" type="string" title="Обозначение" description="Обозначение" default-value="Об" uuid="c14fbd4d-636c-46fd-850b-729667e99fc9" />
+    <attribute-type name="DIGIT" type="uint8" title="Количество знаков после запятой" description="Количество знаков после запятой" default-value="2" allow-multiple="true" uuid="74a886b9-a0f3-47a2-a64d-bdd6853ca94c" />
+    <attribute type="unit.System.Attributes.Comment" value="Атрибуты" />
+    <attribute-type name="DBV" type="float32" title="Зона нечувствительности по значению" default-value="0.0001" description="Зона нечувствительности по значению" uuid="f02043a9-a3a2-4e8a-be8c-992ec2d636c9" />
+    <attribute-type name="DBT" type="uint16" title="Зона нечувствительности по времени, мс" default-value="1000" description="Зона нечувствительности по времени, мс" uuid="d37272ec-16c6-470f-97c3-7ce8abcf0af9" />
+  </namespace>
+  <namespace name="Aggregators" uuid="f2eb0c7c-dc51-42d1-9fab-361698b5eeaf">
+    <ct:type name="Agg_Alarm" uuid="4c97128b-a35d-4749-8295-4a4c62982428">
+      <ct:parameter name="Active" type="bool" direction="out" uuid="2ea7909b-b404-489f-add4-cbc1fbb396d2">
+        <attribute type="unit.System.Attributes.Comment" value="Наличие активных событий" />
+        <attribute type="unit.Server.Attributes.Alarm" value="{&quot;Parameter&quot;:{}}" />
+      </ct:parameter>
+      <attribute type="unit.Server.Attributes.Alarm">
+        <property name="value">{"Aggregator":{"IsEnabled":true,"Severity":{"Ranges":[{"High":20,"Low":11}]}}}</property>
+      </attribute>
+      <ct:parameter name="Ack" direction="out" type="bool" uuid="2aeb3b69-a29b-43d6-b495-e5af9b30c4fd">
+        <attribute type="unit.Server.Attributes.Alarm" value="{&quot;Parameter&quot;:{&quot;Type&quot;:4}}" />
+        <attribute type="unit.System.Attributes.Comment" value="Квитирование событий" />
+      </ct:parameter>
+      <attribute type="unit.System.Attributes.Comment" value="Агрегатор аварийных сообщений" />
+    </ct:type>
+    <ct:type name="Agg_Warn" uuid="3fd26334-f439-4451-8926-b3e89cb84547">
+      <attribute type="unit.Server.Attributes.Alarm">
+        <property name="value">{"Aggregator":{"IsEnabled":true,"Severity":{"Ranges":[{"High":30,"Low":21}]}}}</property>
+      </attribute>
+      <ct:parameter name="Active" type="bool" direction="out" uuid="66ffa52b-35bf-4721-99de-17ecfa6500aa">
+        <attribute type="unit.Server.Attributes.Alarm" value="{&quot;Parameter&quot;:{}}" />
+        <attribute type="unit.System.Attributes.Comment" value="Наличие активных событий" />
+      </ct:parameter>
+      <ct:parameter name="Ack" direction="out" type="bool" uuid="890c13b1-72d4-43db-b91e-147ef45d2eb9">
+        <attribute type="unit.Server.Attributes.Alarm" value="{&quot;Parameter&quot;:{&quot;Type&quot;:4}}" />
+        <attribute type="unit.System.Attributes.Comment" value="Квитирование событий" />
+      </ct:parameter>
+      <attribute type="unit.System.Attributes.Comment" value="Агрегатор предупредительных сообщений" />
+    </ct:type>
+    <ct:type name="Agg_Fault" uuid="76c69a9e-db07-4d21-b1d0-2cc3b266613b">
+      <attribute type="unit.Server.Attributes.Alarm">
+        <property name="value">{"Aggregator":{"IsEnabled":true,"Severity":{"Ranges":[{"High":10,"Low":1}]}}}</property>
+      </attribute>
+      <ct:parameter name="Active" type="bool" direction="out" uuid="f1511c99-06cd-4936-a380-71ac678aec40">
+        <attribute type="unit.Server.Attributes.Alarm" value="{&quot;Parameter&quot;:{}}" />
+        <attribute type="unit.System.Attributes.Comment" value="Наличие активных событий" />
+      </ct:parameter>
+      <ct:parameter name="Ack" direction="out" type="bool" uuid="d6632286-779e-47ae-82d0-30273225f013">
+        <attribute type="unit.Server.Attributes.Alarm" value="{&quot;Parameter&quot;:{&quot;Type&quot;:4}}" />
+        <attribute type="unit.System.Attributes.Comment" value="Квитирование событий" />
+      </ct:parameter>
+      <attribute type="unit.System.Attributes.Comment" value="Агрегатор отказов" />
+    </ct:type>
+    <ct:type name="Agg_Info" uuid="496b1226-e4a9-4a51-9ea5-df9c30bd4a6f">
+      <attribute type="unit.Server.Attributes.Alarm">
+        <property name="value">{"Aggregator":{"IsEnabled":true,"Severity":{"Ranges":[{"High":40,"Low":31}]}}}</property>
+      </attribute>
+      <ct:parameter name="Active" type="bool" direction="out" uuid="87b4e773-488c-44a0-a9de-c852dbeeb051">
+        <attribute type="unit.Server.Attributes.Alarm" value="{&quot;Parameter&quot;:{}}" />
+        <attribute type="unit.System.Attributes.Comment" value="Наличие активных событий" />
+      </ct:parameter>
+      <ct:parameter name="Ack" direction="out" type="bool" uuid="2eeec828-1e62-46fd-b094-3eed66285234">
+        <attribute type="unit.Server.Attributes.Alarm" value="{&quot;Parameter&quot;:{&quot;Type&quot;:4}}" />
+        <attribute type="unit.System.Attributes.Comment" value="Квитирование событий" />
+      </ct:parameter>
+      <attribute type="unit.System.Attributes.Comment" value="Агрегатор информационных сообщений" />
+    </ct:type>
+    <attribute type="unit.System.Attributes.Comment" value="Агрегаторы" />
+    <ct:type name="Agg_Syslog" uuid="7d5ac9db-3303-4b90-ab69-c2f8fdf5780f">
+      <attribute type="unit.Server.Attributes.Alarm">
+        <property name="value">{"Aggregator":{"IsEnabled":true,"Severity":{"Ranges":[{"High":101,"Low":101}]}}}</property>
+      </attribute>
+      <ct:parameter name="Active" type="bool" direction="out" uuid="670fa665-cdbc-4064-950b-5aee2925edc9">
+        <attribute type="unit.Server.Attributes.Alarm" value="{&quot;Parameter&quot;:{}}" />
+        <attribute type="unit.System.Attributes.Comment" value="Наличие активных событий" />
+      </ct:parameter>
+      <ct:parameter name="Ack" direction="out" type="bool" uuid="e9bc7b09-9d72-4bfb-96a5-545e8712d675">
+        <attribute type="unit.Server.Attributes.Alarm" value="{&quot;Parameter&quot;:{&quot;Type&quot;:4}}" />
+        <attribute type="unit.System.Attributes.Comment" value="Квитирование событий" />
+      </ct:parameter>
+      <attribute type="unit.System.Attributes.Comment" value="Агрегатор сообщений Syslog" />
+    </ct:type>
+  </namespace>
+</omx>
