@@ -1,0 +1,1591 @@
+<type access-modifier="private" name="AppList" display-name="AppList" uuid="add8f88a-c401-4600-8c5c-d86a83bf8913" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="845" ver="5"/>
+	<designed target="Height" value="350" ver="5"/>
+	<designed target="PenColor" value="4278190080" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="4293980400" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<designed target="WindowX" value="0" ver="5"/>
+	<designed target="WindowY" value="0" ver="5"/>
+	<designed target="WindowWidth" value="845" ver="5"/>
+	<designed target="WindowHeight" value="976" ver="5"/>
+	<designed target="WindowCaption" value="MainForm" ver="5"/>
+	<designed target="ShowWindowCaption" value="true" ver="5"/>
+	<designed target="ShowWindowMinimize" value="true" ver="5"/>
+	<designed target="ShowWindowMaximize" value="true" ver="5"/>
+	<designed target="ShowWindowClose" value="true" ver="5"/>
+	<designed target="AlwaysOnTop" value="false" ver="5"/>
+	<designed target="WindowSizeMode" value="0" ver="5"/>
+	<designed target="WindowBorderStyle" value="1" ver="5"/>
+	<designed target="WindowState" value="0" ver="5"/>
+	<designed target="WindowScalingMode" value="0" ver="5"/>
+	<designed target="MonitorNumber" value="0" ver="5"/>
+	<designed target="WindowPosition" value="0" ver="5"/>
+	<designed target="WindowCloseMode" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<object access-modifier="private" name="private" display-name="private" uuid="32c434ad-7728-4cc2-8fdf-993c7f27e7fd" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+		<object access-modifier="private" name="pTheme" display-name="pTheme" uuid="79e654a5-3ea6-4856-bac6-e66713dd90d7" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
+		<object access-modifier="private" name="pScreenKeyboard" display-name="pScreenKeyboard" uuid="caed8a76-5292-421d-9bec-d71633974e71" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
+		<object access-modifier="private" name="CreateNewApp" display-name="CreateNewApp" uuid="41c5165f-6ffa-4585-8dcb-e08a549ad335" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+			<object access-modifier="private" name="ShowCreateAppDialog" display-name="ShowCreateAppDialog" uuid="2bc4ae22-e193-4c3c-8625-bb475232d9d3" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="94b1daa3-51f3-4d51-bd44-1051c772938c" base-type="InputDialog" base-type-id="eb80f6e6-d9d7-4ca5-a3e9-34863ab130d2" ver="5">
+						<init target="OkAction" ver="5" ref="Create"/>
+						<designed target="WindowCaption" value="Создать приложение" ver="5"/>
+						<init target="Result" ver="5" ref="AppNameResult"/>
+						<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
+						<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
+					</object>
+				</do-on>
+				<object access-modifier="private" name="AppNameResult" display-name="AppNameResult" uuid="cc47d722-eacb-47a3-8f58-054130d5ece1" base-type="InputDialogResult" base-type-id="cdcda119-652b-45ed-bfc4-8cc21b98730d" ver="5">
+					<object access-modifier="private" name="IsChanged" display-name="IsChanged" uuid="a1d21133-c98b-429c-b0d5-8e441d2498f8" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5">
+						<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+							<body kind="javascript">
+								<![CDATA[const errorText = AppNameResult.Error;
+var appList;
+var newAppName = AppNameResult.InputText.Value.trim();
+
+try
+{
+	appList = JSON.parse(SecurityManager.ActualAppList).data;
+}
+catch
+{
+	appList = [];
+}
+
+
+errorText.Value = "";
+
+if (newAppName != "")
+{
+	// Проверка дублирования имён
+	for (let app of appList)
+	{	
+		if (app.applicationName.toLowerCase() == newAppName.toLowerCase())
+		{
+			errorText.Value = "Повторяющиеся имена недопустимы";
+			break;
+		}
+	}
+}
+else
+{
+	errorText.Value  = "Имя не может быть пустым";
+}]]>
+							</body>
+						</do-on>
+					</object>
+					<do-trace access-modifier="private" target="IsChanged" ver="5">
+						<body>
+							<![CDATA[InputText]]>
+						</body>
+					</do-trace>
+				</object>
+				<object access-modifier="private" name="Create" display-name="Create" uuid="a9b4cd5b-348a-441d-b08d-fd192985084a" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+					<designed target="Enabled" value="true" ver="5"/>
+					<designed target="InvokeTrigger" value="false" ver="5"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[if (AppNameResult.Error == "" && Commands.DoCreate.CanExecute)
+{
+	Application.New();
+	Application.ApplicationName = String.Trim(AppNameResult.Value);
+	Application.Save();
+	Commands.DoCreate.CanExecute = false;
+	SystemCommands.GoTo.doBlockingControll();
+}]]>
+						</body>
+					</do-on>
+				</object>
+			</object>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value && Commands.DoCreate.CanExecute)
+{
+	Commands.DoCreate = false;
+	ShowCreateAppDialog.Invoke();
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="EditSelectedApp" display-name="EditSelectedApp" uuid="1ed5e099-c547-41e4-b7ed-f2ed930d2165" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value && Commands.DoEdit.CanExecute)
+{
+	Commands.DoEdit = false;
+	
+	SystemCommands.GoTo.sendData = AppsView.GetSelectedAppId();
+	SystemCommands.GoTo.frameCode = SystemCommands.Forms.AppEdit;
+	SystemCommands.GoTo = true;
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="RemoveSelectedApp" display-name="RemoveSelectedApp" uuid="572d15b4-3ef9-40c1-a549-b832c68a4b66" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value && Commands.DoRemoveSelected.CanExecute)
+{
+	Commands.DoRemoveSelected = false;
+	
+	ShowRemoveDialog.message = "Вы действительно хотите удалить приложение '" + AppsView.GetSelectedAppId() + "'?";
+	ShowRemoveDialog.Invoke();
+}]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="ShowRemoveDialog" display-name="ShowRemoveDialog" uuid="01b07a3a-c69a-42c5-8e6f-2e7b58dd82e6" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="d6d02274-561e-41d2-b8a6-a827aa12046c" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="5">
+						<init target="OkAction" ver="5" ref="RemoveApp"/>
+						<init target="Icon" ver="5" value="1"/>
+						<init target="Buttons" ver="5" value="1"/>
+						<designed target="WindowCaption" value="Удалить приложение" ver="5"/>
+						<init target="Message" ver="5" ref="message"/>
+						<init target="pTheme" ver="5" ref="here.private.pTheme"/>
+					</object>
+				</do-on>
+				<object access-modifier="private" name="message" display-name="message" uuid="6f2df85c-3bb8-4366-80a9-695ce8d972d2" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+				<object access-modifier="private" name="RemoveApp" display-name="RemoveApp" uuid="abd904e1-ad69-4f48-aa0c-2a30bc4a4940" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+					<designed target="Enabled" value="true" ver="5"/>
+					<designed target="InvokeTrigger" value="false" ver="5"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[SecurityManager.DeleteApplication(AppsView.GetSelectedAppId());
+SystemCommands.GoTo.doBlockingControll();]]>
+						</body>
+					</do-on>
+				</object>
+			</object>
+		</object>
+		<object access-modifier="private" name="ImportFromFile" display-name="ImportFromFile" uuid="e78b8a11-0293-41da-b4d2-964ee8c5ece0" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+			<object access-modifier="private" name="ShowFileImportDialog" display-name="ShowFileImportDialog" uuid="0aba1e83-e532-42bb-bb33-a8a1e5a0fc71" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="7892b74f-e930-47e6-9d2f-188988164263" base-type="OpenFileDialog" base-type-id="41505bc5-e0a8-4d93-b1a9-de842aaf215b" ver="5">
+						<init target="Result" ver="5" ref="DialogResult"/>
+						<init target="OnComplete" ver="5" ref="Import"/>
+						<init target="FileTypeFilter" ver="5" value="Шаблон приложения (*.json)|*.json"/>
+						<init target="RootPath" ver="5" value=""/>
+						<init target="DefaultPath" ver="5" ref="ImportPath"/>
+						<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
+						<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
+						<init target="DefaultFileType" ver="5" ref="FileType"/>
+					</object>
+				</do-on>
+				<object access-modifier="private" name="DialogResult" display-name="DialogResult" uuid="b9009fee-46fd-4eb5-bd7a-954d7b98aae9" base-type="FileDialogResult" base-type-id="602926f1-7d01-4d50-a5c0-d8fd35eadc74" ver="5"/>
+				<object access-modifier="private" name="ImportPath" display-name="ImportPath" uuid="01d5f845-435a-482a-80b7-bc108b1a22bc" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+				<object access-modifier="private" name="FileType" display-name="FileType" uuid="296bd8be-baed-4dc2-9bad-d48a26ff5d69" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+				<object access-modifier="private" name="Import" display-name="Import" uuid="6915e8ce-dfb8-43fc-8dd3-2ce81e0ae601" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+					<designed target="Enabled" value="true" ver="5"/>
+					<designed target="InvokeTrigger" value="false" ver="5"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="javascript">
+							<![CDATA[if (DialogResult.FileType != 0 || DialogResult.FilePath == "" || !Files.Exists(DialogResult.FilePath))
+	return;
+	
+try
+{
+	try
+	{
+		var appDescription = JSON.parse(Files.ReadTextFile(DialogResult.FilePath));
+	}
+	catch (error)
+	{
+		throw new Error("Ошибка чтения файла:\n"+error.message);
+	}
+	
+	try
+	{
+		var appList = JSON.parse(SecurityManager.ActualAppList).data;
+	}
+	catch (error)
+	{
+		throw new Error("Ошибка парсинга списка приложений:\n"+error.message);
+	}
+}
+catch (error)
+{
+	ShowError.message = error.message;
+	ShowError.Invoke();
+	return;
+}
+	
+//разбор шаблона приложение
+//формирование имени приложения, при совпадении, к имени добавить порядковый номер 
+let AppName = appDescription.Name;
+let numberCopy = 1; 
+for (let app of appList)
+{
+	if (app.applicationName == AppName)
+	{
+		AppName = appDescription.Name + numberCopy;
+		numberCopy++;
+	}
+}
+
+Application.New();
+Application.ApplicationName = AppName;
+
+//проверить наличие блока токенов
+let tokens = appDescription.Tokens;
+if (tokens != undefined)
+{
+	for (let token of tokens)
+	{
+		Application.CreateToken(getTypeCode(token.Type), token.Name, token.Description);
+	}
+}
+
+//проверить наличие блока ролей
+let roles = appDescription.Roles;
+if (roles != undefined)
+{
+	for (let role of roles)
+	{
+		Application.CreateRole(role.Name, Application.ApplicationName);
+		let roleId = getRoleIdByName(role.Name);
+		let rightsList = role.Rights;
+		for (let right of rightsList)
+		{
+			Application.RoleAddRight(Application.ApplicationName, roleId, right.Name, getTypeCode(right.Type), right.ValueAllow, right.ValueDeny);
+		}
+	}
+}
+
+Application.Save();
+SystemCommands.GoTo.doBlockingControll();
+	
+// запоминаем выбор как значение по умолчанию
+ImportPath = DialogResult.FolderPath;
+private.SaveViewSettings();
+	
+// уведомляем о том, что импорт выполнен
+private.ShowComplete.message = "Шаблон приложения "+Application.ApplicationName+" успешно импортирвоан из файла\n" + DialogResult.FilePath;
+private.ShowComplete.Invoke();
+
+
+//-----------------------------------------
+function getRoleIdByName(name)
+{
+	let roleList = JSON.parse(Application.GetRolesList()).data;
+	
+	for (let role of roleList)
+	{
+		if (role.roleName == name)
+		{
+			return role.roleID;
+		}
+	}
+}
+
+function getTypeCode(typeTitle)
+{
+	return typeTitle == "Boolean" ? 1 : 0;
+}]]>
+						</body>
+					</do-on>
+				</object>
+			</object>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value && SystemCommands.DoImport.CanExecute)
+{
+	SystemCommands.DoImport = false;
+	
+	importPath: string;
+	if (pSettings.AppTemplatesPath != "")
+		importPath = pSettings.AppTemplatesPath;
+	else if (ShowFileImportDialog.ImportPath != "")
+		importPath = ShowFileImportDialog.ImportPath;
+	else
+		importPath = Files.ToNative(Files.CombinePath(Files.ProjectFolder, Files.CombinePath("resources", "Security_Templates")));	
+	
+	ShowFileImportDialog.ImportPath = importPath;
+	ShowFileImportDialog.Invoke();
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<do access-modifier="private" name="LoadAppListToTable" display-name="LoadAppListToTable" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[try
+{
+	var appList = JSON.parse(InputAppList).data;
+}
+catch (error)
+{
+	log("Не удалось загрузить список приложений\n"+error.message);
+	return;
+}
+
+const pAppsViewModel = AppsView.TableModel;
+pAppsViewModel.Clear();
+
+appList = appList.filter(a => a.applicationType != "SystemApp");
+
+if (appList.length == 0)
+	return;
+
+pAppsViewModel.InsertRows(0, appList.length);
+for (let [row, app] of appList.entries())
+{
+	pAppsViewModel.SetCellData(row, 0, app.applicationType);
+	pAppsViewModel.SetCellData(row, 1, app.applicationName);
+}]]>
+			</body>
+			<param access-modifier="private" name="InputAppList" display-name="" uuid="c9014847-ece4-4df2-bab4-3ff7d5fa7fcf" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+		<object access-modifier="private" name="ExportToFile" display-name="ExportToFile" uuid="59675d3e-bada-4dc5-a4ba-1c7fe6afd27e" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value && SystemCommands.DoExportToFile.CanExecute)
+{
+	SystemCommands.DoExportToFile = false;
+	
+	selectedAppId: string = AppsView.GetSelectedAppId();
+	if (selectedAppId != Application.ApplicationID)
+	{
+		Application.LoadSelectedApplication(selectedAppId);
+		HoldExecute = true;
+	}
+	else
+	{	
+		ShowSaveDialog.Invoke();
+	}
+}]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="ShowSaveDialog" display-name="ShowSaveDialog" uuid="e000e873-f691-4ae4-976e-be85b840c51b" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<object access-modifier="private" name="Folder" display-name="Folder" uuid="6858f873-e135-4fa0-9601-6b6a9603cfcd" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+				<object access-modifier="private" name="FileType" display-name="FileType" uuid="e96509e3-6b88-44e7-9207-0d141b0d760f" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+				<object access-modifier="private" name="DialogResult" display-name="DialogResult" uuid="9dd5ddf2-791c-41b1-bdaf-f18543631ff2" base-type="FileDialogResult" base-type-id="602926f1-7d01-4d50-a5c0-d8fd35eadc74" ver="5" description="" cardinal="1"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="784ec33a-bc30-4188-ae1f-a0e30b978a94" base-type="SaveFileDialog" base-type-id="d69a91c3-89e9-4e7b-994e-9242dbc5e095" ver="5">
+						<init target="Result" ver="5" ref="DialogResult"/>
+						<init target="OnComplete" ver="5" ref="Export"/>
+						<init target="DefaultFileName" ver="5" ref="Application.ApplicationName"/>
+						<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
+						<init target="init_ScreenKeyboard" ver="5" ref="here.private.pScreenKeyboard"/>
+						<init target="FileTypeFilter" ver="5" value="Шаблон приложения (*.json)|*.json|Книга Excel (*.xlsx)|*.xlsx|Текстовый файл (*.csv)|*.csv"/>
+						<init target="DefaultPath" ver="5">
+							<expr>
+								<![CDATA[GetExportFolderPath()]]>
+							</expr>
+						</init>
+						<init target="RootPath" ver="5">
+							<expr>
+								<![CDATA[pPermissions.FileSystemAccess ? "" : GetExportFolderPath()]]>
+							</expr>
+						</init>
+						<init target="ChangeFolderAllowed" ver="5">
+							<expr>
+								<![CDATA[pPermissions.FileSystemAccess]]>
+							</expr>
+						</init>
+						<init target="CreateFolderAllowed" ver="5">
+							<expr>
+								<![CDATA[pPermissions.FileSystemAccess]]>
+							</expr>
+						</init>
+					</object>
+				</do-on>
+				<object access-modifier="private" name="Export" display-name="Export" uuid="593725b2-d73d-4d7a-adbe-c77dfe010f90" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+					<designed target="Enabled" value="true" ver="5"/>
+					<designed target="InvokeTrigger" value="false" ver="5"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[messagePrefix: string = "";
+
+if (DialogResult.FileType == 0)
+{
+	messagePrefix = "Шаблон приложения";
+	ApplicationTemplateExporter.SaveTemplate(DialogResult.FilePath);
+}
+else
+{
+	format: string;
+	if (DialogResult.FileType == 1)
+		format = "xlsx";
+	else if (DialogResult.FileType == 2)
+		format = "csv";
+
+	RightsView.Save(DialogResult.FilePath, format);
+	messagePrefix = "Список прав и их значений для приложения";
+}
+
+// запоминаем выбор как значение по умолчанию
+Folder = DialogResult.FolderPath;
+FileType = DialogResult.FileType;
+SaveViewSettings();
+
+// если есть доступ к файловой системе, то запоминаем выбор в настройках
+if (pPermissions.FileSystemAccess)
+	pSettings.ExportFolder = DialogResult.FolderPath;
+
+// уведомляем о том, что сохранение выполнено
+ShowComplete.message = messagePrefix + " '" + Application.ApplicationName + "' сохранен в файл\n" + DialogResult.FilePath;
+ShowComplete.Invoke();]]>
+						</body>
+					</do-on>
+				</object>
+				<do access-modifier="private" name="GetExportFolderPath" display-name="GetExportFolderPath" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+					<body kind="om">
+						<![CDATA[// Если есть доступ к файловой системе, то используем последнюю использованную, иначе разрешенную папку
+folder: string = pPermissions.FileSystemAccess ? Folder : pSettings.ExportFolder;
+
+// Если путь не указан, то используем Export в папке с данными программы
+if (folder == "")
+	folder = Files.CombinePath(unit.ProductInfo.GetProgramDataFolder(), "Export");
+
+return folder;]]>
+					</body>
+				</do>
+				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[folder: string = GetExportFolderPath();
+Files.CreateRecursiveFolder(folder);]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="HoldExecute" display-name="HoldExecute" uuid="518781aa-0298-4c60-9b39-048ef265f544" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+		</object>
+		<do-trace access-modifier="private" target="CreateNewApp" ver="5">
+			<body>
+				<![CDATA[Commands.DoCreate]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="RemoveSelectedApp" ver="5">
+			<body>
+				<![CDATA[Commands.DoRemoveSelected]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="ImportFromFile" ver="5">
+			<body>
+				<![CDATA[SystemCommands.DoImport]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="ac37a5dd-5042-4624-9c91-9efe1c67f24c" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5">
+			<designed target="Weight" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="ShowError" display-name="ShowError" uuid="0f1351cd-b030-4b8a-8034-cdde8177d98a" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="c0467f5e-f870-49e1-860d-1315a3799fe1" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="5">
+					<init target="Message" ver="5" ref="message"/>
+					<init target="Buttons" ver="5" value="0"/>
+					<init target="Icon" ver="5" value="3"/>
+					<designed target="WindowCaption" value="Ошибка" ver="5"/>
+					<init target="pTheme" ver="5" ref="here.private.pTheme"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="message" display-name="message" uuid="a77ca2d4-c6d0-409b-8545-d32f0dd24302" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</object>
+		<object access-modifier="private" name="ShowComplete" display-name="ShowComplete" uuid="59f16e0d-789a-4227-8573-0e75a54e377b" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="411efbf1-bff5-481c-ae83-40171c84f8bf" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="5">
+					<init target="Message" ver="5" ref="message"/>
+					<init target="Buttons" ver="5" value="0"/>
+					<init target="Icon" ver="5" value="0"/>
+					<init target="pTheme" ver="5" ref="here.private.pTheme"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="message" display-name="message" uuid="1419fabf-d245-4b02-a413-5e6d97287231" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Files" display-name="Files" uuid="28330874-878c-4021-b4b4-fd523307ccca" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5">
+			<designed target="RootPath" value="/" ver="5"/>
+		</object>
+		<do access-modifier="private" name="LoadAppRightsToTable" display-name="LoadAppRightsToTable" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[try
+{
+	var tokenList = JSON.parse(tokensDataJSON).data;
+}
+catch (error)
+{
+	log(`Не удалось загрузить права приложения: '${Application.ApplicationName}'\n${error.message}`);
+	return;
+}
+//Перечисление столбцов модели
+const columns = {"TYPE": 0, "TYPEVIEW": 1, "NAME": 2, "DESC": 3, "ALLOW": 4, "DENY": 5, "ROLE": 6, "GROUP": 7, "USER": 8};
+const pRigthsModel = RightsView.Model;
+var tokensCount = tokenList.length;
+
+pRigthsModel.Clear();
+
+//если список пуст, то завершаем
+if (tokensCount == 0)
+	return;
+
+
+var rows = [];
+
+//перебор токенов
+for (let token of tokenList)
+{
+	let rowData = [];
+	let type = token.tokenType;
+	rowData[columns.TYPE] = type;
+	rowData[columns.TYPEVIEW] = type;
+	rowData[columns.NAME] = token.tokenName;
+	rowData[columns.DESC] = token.tokenDescription;
+	rowData[columns.ALLOW] = null;
+	rowData[columns.DENY] = null;
+	rowData[columns.ROLE] = null;
+	rowData[columns.GROUP] = null;
+	rowData[columns.USER] = null;
+	rows.push(rowData);
+	
+	let tokenValues = token.tokenValues;
+	if (tokenValues != undefined && Array.isArray(tokenValues))
+	{
+		for (let [index, value] of tokenValues.entries())
+		{			
+			let subjects = value.subjects;
+			let subjectsIsArray = Array.isArray(subjects);
+			let roles = (subjectsIsArray)?(getSubjectNamesStringByType(subjects, "role", ",")):("");
+			let groups = (subjectsIsArray) ?(getSubjectNamesStringByType(subjects, "group", ",")):("");
+			let users = (subjectsIsArray)?(getSubjectNamesStringByType(subjects, "user", ",")):("");
+			
+			//если работаем с первой группой значений, то пишем в строку токена
+			if (index == 0)
+			{
+				rowData[columns.ALLOW] =  value.allow;
+				rowData[columns.DENY] = value.deny;
+				rowData[columns.ROLE] = roles;
+				rowData[columns.GROUP] = groups;
+				rowData[columns.USER] = users;
+			} 
+			else
+			{
+				rowData = [];
+				rowData[columns.TYPE] = type;
+				rowData[columns.TYPEVIEW] = null;
+				rowData[columns.NAME] = null;
+				rowData[columns.DESC] = null;
+				rowData[columns.ALLOW] = value.allow;
+				rowData[columns.DENY] = value.deny;
+				rowData[columns.ROLE] = roles;
+				rowData[columns.GROUP] = groups;
+				rowData[columns.USER] = users;
+				rows.push(rowData);
+			}
+		}
+	}
+}
+
+//заполнение таблицы
+pRigthsModel.InsertRows(0, rows.length);
+for (let [row, content] of rows.entries())
+{
+	pRigthsModel.SetRowDataAsJson(row, JSON.stringify(content));
+}
+
+//-----------------------------------------------------------------
+function getSubjectNamesStringByType(subjectList, type, separator)
+{
+	let names = [];
+	for (let element of subjectList)
+	{
+		if (element.type == type)
+			names.push(element.name)
+	}
+	return names.join(separator);
+}]]>
+			</body>
+			<param access-modifier="private" name="tokensDataJSON" display-name="" uuid="abf157a4-e365-4478-ad61-e091cb0ab0f1" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+		<do access-modifier="private" name="SaveViewSettings" display-name="SaveViewSettings" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[SystemCommands.ViewSettings.Update(SystemCommands.Forms.AppList, GetViewSettings());]]>
+			</body>
+		</do>
+		<do-trace access-modifier="private" target="ExportToFile" ver="5">
+			<body>
+				<![CDATA[SystemCommands.DoExportToFile]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="EditSelectedApp" ver="5">
+			<body>
+				<![CDATA[Commands.DoEdit]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="ApplicationTemplateExporter" display-name="ApplicationTemplateExporter" uuid="1aded0c1-2e15-4cfa-8ff0-983b1205f385" base-type="ApplicationTemplateExporter" base-type-id="1ad9ec92-7d09-4ebe-bfa2-297eff80a46a" ver="5" description="" cardinal="1">
+			<init target="init_Application" ver="5" ref="Application"/>
+		</object>
+		<init target="pTheme" ver="5" ref="init_Theme"/>
+		<init target="pScreenKeyboard" ver="5" ref="init_ScreenKeyboard"/>
+	</object>
+	<object access-modifier="private" name="SecurityManager" display-name="SecurityManager" uuid="d1e3d43e-1a36-4288-aff7-3c75ab7399d7" base-type="SecurityManager" base-type-id="179958e0-f45a-40f3-9668-98e4ea2987da" ver="5">
+		<init target="SecurityContext" ver="5">
+			<object access-modifier="private" uuid="49e90c5c-26da-4cc3-9d99-1f3687b1d5e3" base-type="SecurityContext" base-type-id="d9cb0fff-b70a-4e2d-833d-3f73cf74e0dd" ver="5"/>
+		</init>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="RequestAppListComplete">
+			<body kind="om">
+				<![CDATA[private.LoadAppListToTable(JSONAppList);
+ActualAppList = JSONAppList;
+
+if (Application.loadedApp == Application.ApplicationID)
+	AppsView.SelectedRowByApplicationId(Application.ApplicationID);
+
+Commands.DoCreate.CanExecute = true;
+SystemCommands.DoImport.CanExecute = true;
+SystemCommands.GoTo.doUnblockingControll();]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="RequestAppListFailed">
+			<body kind="om">
+				<![CDATA[private.ShowError.message = GetErrorDescriptionByCode(FailReason);
+private.ShowError.Invoke();
+SystemCommands.GoTo.doUnblockingControll();]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="DeleteApplicationComplete">
+			<body kind="om">
+				<![CDATA[RequestAppList();
+RightsView.TableModel.Clear();
+Application.loadedApp = "";]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="DeleteApplicationFailed">
+			<body kind="om">
+				<![CDATA[private.ShowError.message = GetErrorDescriptionByCode(FailReason);
+private.ShowError.Invoke();
+SystemCommands.GoTo.doUnblockingControll();]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="ActualAppList" display-name="ActualAppList" uuid="adcabd8f-2d6f-422f-96e9-a5229a1da5ae" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</object>
+	<object access-modifier="private" name="Application" display-name="Application" uuid="ff864092-e44e-48fd-af3d-c4fffa94a0e4" base-type="SecurityManagerApplication" base-type-id="cfc3985c-54fc-4fe4-b001-cade048d6ee0" ver="5">
+		<designed target="ApplicationName" value="" ver="5"/>
+		<init target="SecurityManager" ver="5" ref="here.SecurityManager"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="LoadComplete">
+			<body kind="om">
+				<![CDATA[loadedApp = ApplicationID;
+private.LoadAppRightsToTable(GetTokensList());
+
+loadingApp = "";
+SystemCommands.GoTo.doUnblockingControll();
+
+if (private.ExportToFile.HoldExecute)
+{
+	private.ExportToFile.HoldExecute = false;
+	SystemCommands.DoExportToFile = true;
+}
+
+if (loadingNextApp != "")
+{
+	LoadSelectedApplication(loadingNextApp);
+	loadingNextApp = "";
+}]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="SaveComplete">
+			<body kind="om">
+				<![CDATA[SystemCommands.GoTo.doUnblockingControll();
+if (ApplicationID != loadedApp)
+	Load(ApplicationID);
+here.SecurityManager.RequestAppList();
+SystemCommands.GoTo.doBlockingControll();
+]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="SaveFailed">
+			<body kind="om">
+				<![CDATA[Commands.DoCreate.CanExecute = true;
+private.ShowError.message = GetErrorDescriptionByCode(FailReasonCode);
+private.ShowError.Invoke();
+SystemCommands.GoTo.doUnblockingControll();]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="LoadFailed">
+			<body kind="om">
+				<![CDATA[private.ShowError.message = GetErrorDescriptionByCode(FailReasonCode);
+private.ShowError.Invoke();
+
+loadedApp = "";
+loadingApp = "";
+loadingNextApp = "";
+SystemCommands.GoTo.doUnblockingControll();]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="loadedApp" display-name="loadedApp" uuid="97a07d07-2875-41e5-97b6-63d03cbefa99" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="loadingApp" display-name="loadingApp" uuid="6a5bbc42-15a2-488d-8eb4-6371c6c96155" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="loadingNextApp" display-name="loadingNextApp" uuid="ee66b135-3745-4629-9049-159ab41bed0f" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+		<do access-modifier="private" name="LoadSelectedApplication" display-name="LoadSelectedApplication" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (appId == "" || appId == loadingApp)
+	return;
+
+if (loadingApp == "")
+{
+	//Debug.Log("Загружаем приложение " + appId);
+	SystemCommands.GoTo.doBlockingControll();
+	loadingApp = appId;
+	Load(appId);	
+}
+else
+{
+	//Debug.Log("Откладываем загрузку приложения " + appId);
+	loadingNextApp = appId;
+}]]>
+			</body>
+			<param access-modifier="private" name="appId" display-name="" uuid="c8199272-4e85-4c4d-860e-23e453c4efb2" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+	</object>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="a1e2bfcc-3fa6-45c7-bb5e-749d09854510" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<object access-modifier="private" name="pConfigurationAccess" display-name="Разрешить редактирование" uuid="a870ed4f-83d6-43a2-99cf-1ee36c18e940" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="Commands" display-name="Commands" uuid="203cc931-e950-465c-a480-f2ce266201b9" base-type="ListCommands" base-type-id="d481f36c-0b94-4338-a60e-3e31bf7df8a1" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="SystemCommands" display-name="SystemCommands" uuid="c6495224-1bd4-4799-8e2c-dca3cd78681e" base-type="SystemCommands" base-type-id="0b754dab-38c6-43db-a050-37201965421c" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="AppsView" display-name="AppsView" uuid="3c5ed9fb-8b40-487d-a0a5-794dc5eecbd4" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="5">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Width" value="220" ver="5"/>
+		<designed target="Height" value="350" ver="5"/>
+		<designed target="SelectionBehavior" value="1" ver="5"/>
+		<designed target="SelectionMode" value="3" ver="5"/>
+		<object access-modifier="private" name="Column" display-name="Column" uuid="9b242032-e9e1-4ba1-990b-d124d829d772" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="5" cardinal="2">
+			<designed target="Title" value="" ver="5"/>
+			<designed target="Description" value="" ver="5"/>
+			<designed target="Id" value="" ver="5"/>
+			<designed target="BackgroundColor" value="0xffffffff" ver="5"/>
+			<designed target="ForegroundColor" value="0xff000000" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="TitleBackgroundColor" value="0xfff0f0f0" ver="5"/>
+			<designed target="TitleForegroundColor" value="0xff000000" ver="5"/>
+			<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="Width" value="100" ver="5"/>
+			<designed target="WidthResizeMode" value="0" ver="5"/>
+			<designed target="Emptiable" value="true" ver="5"/>
+			<designed target="Hidden" value="false" ver="5"/>
+			<designed target="NumberFormat" value="%d" ver="5"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<designed target="JsonFilter" value="" ver="5"/>
+			<designed target="SortingEnabled" value="false" ver="5"/>
+			<designed target="SortOrder" value="0" ver="5"/>
+			<designed target="SortPriority" value="0" ver="5"/>
+			<designed target="WordWrap" value="false" ver="5"/>
+			<designed target="TitleTextAlignment" value="132" ver="5"/>
+			<designed target="ColumnOwnId" value="" ver="5"/>
+			<designed target="SortMode" value="0" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseDoubleClick">
+				<body kind="om">
+					<![CDATA[if (Column[Index].Id == "name")
+	Commands.DoEdit = true;]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseTitleClick">
+				<body kind="om">
+					<![CDATA[// меняем направление сортировки: прямая -> обратная -> отключена и т.д.
+if (SortingEnabled)
+{
+	if (SortOrder == 0)
+		SortOrder = 1; // меняем направление сортировки
+	else SortingEnabled = false; // отключаем сортировку
+}
+else
+{
+	// включаем сортировку
+	SortOrder = 0;
+	SortingEnabled = true;
+}
+
+// сортируем таблицу
+ApplySort();
+private.SaveViewSettings();]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="WidthChanged">
+				<body kind="om">
+					<![CDATA[private.SaveViewSettings();]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.EditorBrushColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="Font" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.Font]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="TitleBackgroundColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.BackgroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="TitleForegroundColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="TitleFont" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.TitleFont]]>
+				</body>
+			</do-trace>
+		</object>
+		<designed target="HeaderHeight" value="25" ver="5"/>
+		<designed target="HeaderVisible" value="true" ver="5"/>
+		<designed target="RowHeight" value="25" ver="5"/>
+		<designed target="RowOrder" value="0" ver="5"/>
+		<designed target="LatestRowTracking" value="false" ver="5"/>
+		<init target="TableModel" ver="5" ref="Model"/>
+		<designed target="SelectionOverlayEnabled" value="false" ver="5"/>
+		<designed target="DelayedSortingEnabled" value="false" ver="5"/>
+		<designed target="HorizontalScrollMode" value="0" ver="5"/>
+		<designed target="VerticalScrollMode" value="0" ver="5"/>
+		<designed target="HorizontalScrollBarPolicy" value="0" ver="5"/>
+		<designed target="VerticalScrollBarPolicy" value="0" ver="5"/>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="CurrentChanged">
+			<body kind="om">
+				<![CDATA[CurrentRow = row;
+appId: string = GetSelectedAppId();
+isExistsId:bool = appId != "";
+
+Commands.DoRemoveSelected.CanExecute = isExistsId;
+Commands.DoEdit.CanExecute = isExistsId;
+SystemCommands.DoExportToFile.CanExecute = isExistsId;
+
+if (isExistsId && appId != Application.ApplicationID)
+	Application.LoadSelectedApplication(appId);]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="Model" display-name="Model" uuid="07ae254c-dc70-46a4-a0b5-0c70c7bc2478" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="5">
+			<designed target="MaxRowCount" value="100000" ver="5"/>
+			<designed target="Frozen" value="false" ver="5"/>
+			<designed target="OptOfProcessingEvents" value="0" ver="5"/>
+		</object>
+		<do access-modifier="private" name="Init" display-name="Init" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (Model.GetColumnCount() > 0) 
+	return;
+
+Column[0].Id = "type";
+Column[0].Title = "";
+Column[0].Hidden = true;
+	
+Column[1].Id = "name";
+Column[1].Title = "Приложение";
+Column[1].Hidden = false;
+Column[1].Width = 200;
+Column[1].WidthResizeMode = 1;
+	
+Column[1].SortingEnabled = true;
+Column[1].SortOrder = 0;
+ApplySort();
+
+Decorator.JsonDecorator = GetJsonDecorator(selectionColor);
+	
+Model.Reset();
+Model.AddColumn("type","","","","string",false,true);
+Model.AddColumn("name","","","","string",false,true);
+
+SetCurrentCell(0, 0);]]>
+			</body>
+		</do>
+		<designed target="BackgroundColor" value="0xffffffff" ver="5"/>
+		<designed target="FrameColor" value="0xff808080" ver="5"/>
+		<designed target="GridColor" value="0xffd8d8d8" ver="5"/>
+		<do access-modifier="private" name="SelectedRowByApplicationId" display-name="SelectedRowByApplicationId" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<param access-modifier="private" name="appId" display-name="" uuid="f98237bc-00b8-4a68-826b-1b9f97b48bc7" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<body kind="om">
+				<![CDATA[checkedAppId:string = String.Trim(appId);
+if (checkedAppId == "")
+	return;
+
+for (row: int4 = 0; row < GetRowCount(); row += 1 )
+{
+	currentAppId:string = GetCellData(row, 1);
+	if (checkedAppId == currentAppId)
+	{
+		SetCurrentCell(row, 1);
+		return;
+	}
+}]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="48750fde-8c30-454c-b90f-22e64cd65c2d" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="220" ver="5"/>
+			<designed target="MinHeight" value="0" ver="5"/>
+			<designed target="MaxWidth" value="220" ver="5"/>
+			<designed target="MaxHeight" value="16777215" ver="5"/>
+			<do-trace access-modifier="private" target="MinWidth" ver="5">
+				<body>
+					<![CDATA[Splitter.Position]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="MaxWidth" ver="5">
+				<body>
+					<![CDATA[Splitter.Position]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="ShowContexMenu" display-name="ShowContexMenu" uuid="949d318a-888b-4d44-8fe8-dd66727d6e23" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<object access-modifier="private" name="MenuResult" display-name="MenuResult" uuid="83f00ef4-cf85-4cdb-b602-6b268629fdf8" base-type="MenuResult" base-type-id="0fe7658c-92f4-4af7-b038-3594414ac651" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="MenuItemClick" display-name="MenuItemClick" uuid="82074aa6-da76-473c-b6dc-9b2eb74679a4" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[cmd: string = MenuResult.Id;
+
+if (cmd == "import")
+	SystemCommands.DoImport = true;
+else if (cmd == "insert")
+	Commands.DoCreate = true;
+else if (cmd == "edit")
+	Commands.DoEdit = true;
+else if (cmd == "delete")
+	Commands.DoRemoveSelected = true;
+else if (cmd == "export")
+	SystemCommands.DoExportToFile = true;]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="mouseX" display-name="mouseX" uuid="e47e486f-e33d-4818-9afd-00354d6a198f" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="mouseY" display-name="mouseY" uuid="4dc94004-c0bc-4055-9761-488b4e1876ea" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-new">
+				<object access-modifier="private" uuid="3435070f-3f92-4b9e-b7d4-28477d1cdedd" base-type="Menu" base-type-id="07bb4545-980a-4140-bbaa-4d1397447864" ver="5">
+					<init target="pAction" ver="5" ref="MenuItemClick"/>
+					<init target="pResult" ver="5" ref="MenuResult"/>
+					<init target="WindowX" ver="5" ref="mouseX"/>
+					<init target="WindowY" ver="5" ref="mouseY"/>
+					<init target="Items" ver="5">
+						<expr>
+							<![CDATA[GetMenuItems()]]>
+						</expr>
+					</init>
+					<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
+				</object>
+			</do-on>
+			<do access-modifier="private" name="GetMenuItems" display-name="GetMenuItems" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+				<body kind="javascript">
+					<![CDATA[var items = [];
+
+if (pConfigurationAccess.Value)
+{
+	items.push({
+		'id': "import",
+		'title': "Импортировать приложение из файла...",
+		'active': SystemCommands.DoImport.CanExecute.Value
+	});
+
+	items.push({
+		'title': "-"
+	});
+
+	items.push({
+		'id': "insert",
+		'title': "Добавить приложение...",
+		'active': Commands.DoCreate.CanExecute.Value,
+		'icon': "Security_Icons/Add16.png",
+		'keyGesture': "Insert"
+	});
+	
+	items.push({
+		'id': "edit",
+		'title': "Редактировать приложение...",
+		'active': Commands.DoEdit.CanExecute.Value,
+		'icon': "Security_Icons/Edit16.png",
+		'keyGesture': "Enter"
+	});
+	
+	items.push({
+		'id': "delete",
+		'title': "Удалить приложение...",
+		'active': Commands.DoRemoveSelected.CanExecute.Value,
+		'icon': "Security_Icons/Delete16.png",
+		'keyGesture': "Delete"
+	});
+
+	items.push({
+		'title': "-"
+	});
+}
+
+items.push({
+	'id': "export",
+	'title': "Экспорт в файл...",
+	'active': SystemCommands.DoExportToFile.CanExecute.Value
+});
+
+return JSON.stringify(items);]]>
+				</body>
+			</do>
+		</object>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseRelease">
+			<body kind="om">
+				<![CDATA[//Debug.Log("MouseRelease button: "+String.ToString(button));
+//ПКМ
+if (button == 2)
+{
+	ShowContexMenu.mouseX = ScreenX(MouseX, MouseY);
+	ShowContexMenu.mouseY = ScreenY(MouseX, MouseY);
+	ShowContexMenu.Invoke();
+}
+]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="KeyPress">
+			<body kind="om">
+				<![CDATA[//Debug.Log("KeyPress: " + String.ToString(keyCode));
+if (!SystemCommands.GoTo.CanExecute)
+	return;
+
+if (keyCode == 110) 				// Insert
+	Commands.DoCreate = true;
+else if (keyCode == 82) 			// Enter
+	Commands.DoEdit = true;
+else if (keyCode == 109) 		// Delete
+	Commands.DoRemoveSelected = true;]]>
+			</body>
+		</do-on>
+		<do access-modifier="private" name="GetSelectedAppId" display-name="GetSelectedAppId" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[return (CurrentRow >= 0 && CurrentRow < GetRowCount())?(GetCellData(CurrentRow, 1)):("");]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="CurrentRow" display-name="CurrentRow" uuid="6f150c15-8020-4b5f-a99b-7099d1e32c05" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+		<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+			<body>
+				<![CDATA[here.private.pTheme.EditorBrushColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="FrameColor" ver="5">
+			<body>
+				<![CDATA[here.private.pTheme.BorderColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="GridColor" ver="5">
+			<body>
+				<![CDATA[here.private.pTheme.DisabledBorderColor]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="selectionColor" display-name="selectionColor" uuid="e037d38b-5a31-4b90-8a3a-cd6c778c2eae" base-type="notifying_uint8" base-type-id="2e6d6c20-2489-49e1-9d5f-fe68a21b43df" ver="5" description="" cardinal="1"/>
+		<designed target="RowHeightResizeMode" value="3" ver="5"/>
+		<do-trace access-modifier="private" target="selectionColor" ver="5">
+			<body>
+				<![CDATA[private.pTheme.SelectionColor]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="Decorator" display-name="Decorator" uuid="5f8bc421-f98c-4995-90ff-a7b1f1509280" base-type="TableDecorator" base-type-id="2ff6a2d7-9573-4060-bfea-29c63d61b079" ver="5" description="" cardinal="1">
+			<designed target="JsonDecorator" value="" ver="5"/>
+		</object>
+		<do access-modifier="private" name="GetJsonDecorator" display-name="GetJsonDecorator" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[var decorator = {};
+
+decorator.StyleDictionary = [
+	{
+		'style_name': "selected_style",
+		'style': { 'background_color': `#${selectionColor.toString(16)}` }
+	}
+];
+
+decorator.Decorating = [
+	{
+		'decoration_rule_name': "selected_rule", 
+		'decoration_rule': { 'row:isSelected': true },
+		'rowstyle': "selected_style"
+	}
+
+];
+
+return JSON.stringify(decorator);]]>
+			</body>
+			<param access-modifier="private" name="selectionColor" display-name="" uuid="b0686665-ce48-427e-a39d-b54e8476e7e6" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5"/>
+		</do>
+	</object>
+	<object access-modifier="private" name="Splitter" display-name="Splitter" uuid="2f7fa898-8447-4462-912b-c3f159dcbb38" base-type="HorizontalSplitter" base-type-id="9f2e11a5-219a-4c9b-bceb-928724b2f965" ver="5" description="" cardinal="1">
+		<designed target="X" value="220" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="4" ver="5"/>
+		<designed target="Height" value="350" ver="5"/>
+		<init target="Position" ver="5" value="220"/>
+		<init target="Minimum" ver="5" value="30"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseRelease">
+			<body kind="om">
+				<![CDATA[here.private.SaveViewSettings();]]>
+			</body>
+		</do-on>
+		<init target="init_Theme" ver="5" ref="here.init_Theme"/>
+	</object>
+	<designed target="WindowIconPath" value="" ver="5"/>
+	<do access-modifier="private" name="GetViewSettings" display-name="GetViewSettings" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="javascript">
+			<![CDATA[var settings = 
+	{
+		"Layout" : {
+			"AppsView" : Splitter.Position.Value
+		},
+		"AppsTable" : {
+			"Columns" : {}
+		},
+		"RightsTable" : {
+			"Columns" : {}
+		},
+		"ImportSettings": {
+			"ImportPath" : private.ImportFromFile.ShowFileImportDialog.ImportPath,
+			"FileType" : private.ImportFromFile.ShowFileImportDialog.FileType
+		},
+		"Export" : {
+			"Folder": private.ExportToFile.ShowSaveDialog.Folder,
+			"FileType": private.ExportToFile.ShowSaveDialog.FileType
+		}
+	};
+
+getSettinsFromTable(AppsView, settings.AppsTable);
+getSettinsFromTable(RightsView, settings.RightsTable);
+
+return JSON.stringify(settings);
+
+
+function getSettinsFromTable(tableView, tableSettingsPath) {
+	for (var i = 0; i < tableView.Column.Length; i++) {		
+		var column = tableView.Column[i];
+		var columnInfo = {
+			"Index": column.Index,
+			"Width": column.Width,
+			"Hidden": column.Hidden
+		};
+		if (column.SortingEnabled != false)
+		{
+			columnInfo.SortOrder = column.SortOrder;
+			columnInfo.SortPriority = column.SortPriority;
+		}
+		
+		tableSettingsPath.Columns[column.Id] = columnInfo;
+	}
+}]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="UpdateView" display-name="UpdateView" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[var content = JSON.parse(settings);
+
+let layout = content.Layout;
+if (layout != undefined)
+{
+	Splitter.Position = layout.AppsView;
+}
+
+let appsTable = content.AppsTable;
+if (appsTable != undefined)
+{
+	AppsView.Init();
+	setSettingsToTable(appsTable, AppsView);
+}
+
+let rightsTable = content.RightsTable;
+if (rightsTable != undefined)
+{
+	RightsView.Init();
+	setSettingsToTable(rightsTable, RightsView);
+}
+
+let importSettings = content.ImportSettings;
+if (importSettings != undefined)
+{
+	private.ImportFromFile.ShowFileImportDialog.ImportPath = importSettings.ImportPath;
+	private.ImportFromFile.ShowFileImportDialog.FileType = importSettings.FileType;
+}
+
+var exportSettings = content.Export;
+if (exportSettings != undefined)
+{
+	private.ExportToFile.ShowSaveDialog.Folder = exportSettings.Folder;
+	private.ExportToFile.ShowSaveDialog.FileType = exportSettings.FileType;
+}
+
+function setSettingsToTable(tableSettingsPath, tableView){
+	if (tableSettingsPath.Columns != undefined)
+	{
+		for (var i = 0; i < tableView.Column.Length; i++)
+		{
+			var column = tableView.Column[i];
+			var columnInfo = tableSettingsPath.Columns[column.Id];
+			if (columnInfo != undefined)
+			{
+				if (columnInfo.Width > 0)
+					column.Width = columnInfo.Width;
+				
+				column.Hidden = columnInfo.Hidden;
+				column.SortingEnabled = columnInfo.SortOrder != undefined;
+				if (column.SortingEnabled)
+				{
+					column.SortOrder = columnInfo.SortOrder;
+					column.SortPriority = columnInfo.SortPriority;
+					tableView.ApplySort();
+				}
+			}
+		}
+	}
+}]]>
+		</body>
+		<param access-modifier="private" name="settings" display-name="" uuid="3baa74ae-6aa2-48f2-be41-8d7a6ca3a63e" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<designed target="Flip" value="0" ver="5"/>
+	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="WindowSizeChanged">
+		<body kind="om">
+			<![CDATA[Width = WindowWidth;
+Height = WindowHeight;]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="RightsView" display-name="RightsView" uuid="9b63c510-4fe4-4fb1-8a74-d2fbd609e940" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="5" description="" cardinal="1">
+		<designed target="X" value="224" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Width" value="620" ver="5"/>
+		<designed target="Height" value="350" ver="5"/>
+		<designed target="BackgroundColor" value="0xffffffff" ver="5"/>
+		<designed target="FrameColor" value="0xff808080" ver="5"/>
+		<designed target="GridColor" value="0xffd8d8d8" ver="5"/>
+		<designed target="HeaderHeight" value="25" ver="5"/>
+		<designed target="HeaderVisible" value="true" ver="5"/>
+		<designed target="RowHeight" value="25" ver="5"/>
+		<designed target="RowOrder" value="0" ver="5"/>
+		<designed target="SelectionBehavior" value="1" ver="5"/>
+		<designed target="SelectionMode" value="0" ver="5"/>
+		<designed target="SelectionOverlayEnabled" value="true" ver="5"/>
+		<designed target="LatestRowTracking" value="false" ver="5"/>
+		<designed target="DelayedSortingEnabled" value="false" ver="5"/>
+		<designed target="HorizontalScrollMode" value="0" ver="5"/>
+		<designed target="VerticalScrollMode" value="0" ver="5"/>
+		<designed target="HorizontalScrollBarPolicy" value="0" ver="5"/>
+		<designed target="VerticalScrollBarPolicy" value="0" ver="5"/>
+		<object access-modifier="private" name="Column" display-name="Column" uuid="386654f2-e5f4-47f8-a36b-248128d9f9e9" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="5" cardinal="9">
+			<designed target="Title" value="" ver="5"/>
+			<designed target="Description" value="" ver="5"/>
+			<designed target="Id" value="" ver="5"/>
+			<designed target="BackgroundColor" value="0xffffffff" ver="5"/>
+			<designed target="ForegroundColor" value="0xff000000" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="TitleBackgroundColor" value="0xfff0f0f0" ver="5"/>
+			<designed target="TitleForegroundColor" value="0xff000000" ver="5"/>
+			<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="Width" value="100" ver="5"/>
+			<designed target="WidthResizeMode" value="0" ver="5"/>
+			<designed target="Emptiable" value="true" ver="5"/>
+			<designed target="Hidden" value="false" ver="5"/>
+			<designed target="NumberFormat" value="%d" ver="5"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<designed target="JsonFilter" value="" ver="5"/>
+			<designed target="SortingEnabled" value="false" ver="5"/>
+			<designed target="SortOrder" value="0" ver="5"/>
+			<designed target="SortPriority" value="0" ver="5"/>
+			<designed target="WordWrap" value="true" ver="5"/>
+			<designed target="TitleTextAlignment" value="132" ver="5"/>
+			<designed target="ColumnOwnId" value="" ver="5"/>
+			<designed target="SortMode" value="0" ver="5"/>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="WidthChanged">
+				<body kind="om">
+					<![CDATA[private.SaveViewSettings();]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseRightTitleClick">
+				<body kind="om">
+					<![CDATA[ShowColumnsMenu.mouseX = ScreenX(MouseX, MouseY);
+ShowColumnsMenu.mouseY = ScreenY(MouseX, MouseY);
+ShowColumnsMenu.Invoke();]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.EditorBrushColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="Font" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.Font]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="TitleBackgroundColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.BackgroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="TitleForegroundColor" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="TitleFont" ver="5">
+				<body>
+					<![CDATA[here.private.pTheme.TitleFont]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="Decorator" display-name="Decorator" uuid="75d4f20c-4825-442f-81e1-67c016d51c09" base-type="TableDecorator" base-type-id="2ff6a2d7-9573-4060-bfea-29c63d61b079" ver="5" description="" cardinal="1">
+			<designed target="JsonDecorator" value="" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Model" display-name="Model" uuid="6bec3d38-c888-47a5-8e77-b2ec1e6d58b8" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="5">
+			<designed target="MaxRowCount" value="100000" ver="5"/>
+			<designed target="Frozen" value="false" ver="5"/>
+			<designed target="OptOfProcessingEvents" value="0" ver="5"/>
+		</object>
+		<do access-modifier="private" name="Init" display-name="Init" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (Model.GetColumnCount() > 0)
+	return;
+
+Column[0].Id = "type";
+Column[0].Hidden = true;
+	
+Column[1].Id = "typeView";
+Column[1].Title = "Тип";
+
+Column[2].Id = "name";
+Column[2].Title = "Право";
+
+Column[3].Id = "description";
+Column[3].Title = "Описание";
+
+Column[4].Id = "allowValue";
+Column[4].Title = "Разрешающее значение";
+
+Column[5].Id = "denyValue";
+Column[5].Title = "Запрещающее значение";
+
+Column[6].Id = "roles";
+Column[6].Title = "Роли";
+
+Column[7].Id = "groups";
+Column[7].Title = "Группы";
+
+Column[8].Id = "users";
+Column[8].Title = "Пользователи";
+
+Decorator.JsonDecorator = GetJsonDecorator(selectionColor);
+
+Model.Reset();
+Model.AddColumn("type","","","","string",false,true);
+Model.AddColumn("typeView","","","","string",false,true);
+Model.AddColumn("name","","","","string",false,true);
+Model.AddColumn("description","","","","string",false,true);
+Model.AddColumn("allowValue","","","","string",false,true);
+Model.AddColumn("denyValue","","","","string",false,true);
+Model.AddColumn("roles","","","","string",false,true);
+Model.AddColumn("groups","","","","string",false,true);
+Model.AddColumn("users","","","","string",false,true);
+]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="9b348b4d-7bc9-406c-90bb-fe27118c470d" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5" description="" cardinal="1">
+			<designed target="Weight" value="1000" ver="5"/>
+		</object>
+		<init target="TableModel" ver="5" ref="Model"/>
+		<object access-modifier="private" name="ShowColumnsMenu" display-name="ShowColumnsMenu" uuid="91ef9d8b-4680-48a5-aac2-4327f7492518" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do access-modifier="private" name="GetMenuItems" display-name="GetMenuItems" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+				<body kind="javascript">
+					<![CDATA[var items = [];
+for (var i = 1; i < Column.Length; i++)
+{
+	var column = Column[i];
+	items.push({
+		'id': i,
+		'title': column.Title,
+		'checked': !column.Hidden,
+		'active': i != 2, // право
+		'staysOpen': true
+	});
+}
+
+return JSON.stringify(items);]]>
+				</body>
+			</do>
+			<object access-modifier="private" name="MenuResult" display-name="MenuResult" uuid="de8e412c-3031-44d1-8734-babc2277e453" base-type="MenuResult" base-type-id="0fe7658c-92f4-4af7-b038-3594414ac651" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="MenuItemClick" display-name="MenuItemClick" uuid="5320567a-0110-462d-aa26-cade1dd33ba3" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[i:int4 = String.ToInt4(MenuResult.Id, -1);
+if (i >= 0 && i < Column.Length)
+{
+	Column[i].Hidden = !Column[i].Hidden;
+	private.SaveViewSettings();
+}]]>
+					</body>
+				</do-on>
+			</object>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+				<object access-modifier="private" uuid="e8c88149-863b-469c-9fb4-c933369ba221" base-type="Menu" base-type-id="07bb4545-980a-4140-bbaa-4d1397447864" ver="5">
+					<init target="Items" ver="5">
+						<expr>
+							<![CDATA[GetMenuItems()]]>
+						</expr>
+					</init>
+					<init target="pAction" ver="5" ref="MenuItemClick"/>
+					<init target="pResult" ver="5" ref="MenuResult"/>
+					<init target="WindowX" ver="5" ref="mouseX"/>
+					<init target="WindowY" ver="5" ref="mouseY"/>
+					<init target="init_Theme" ver="5" ref="here.private.pTheme"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="mouseX" display-name="mouseX" uuid="78367a13-93cd-48b5-bd48-625377641102" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="mouseY" display-name="mouseY" uuid="8173094b-4bde-4e7a-b511-e1747a7d36cf" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+		</object>
+		<do access-modifier="private" name="GetJsonDecorator" display-name="GetJsonDecorator" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[var decorator = {};
+
+decorator.StyleDictionary = [
+	{
+		'style_name': "selected_style",
+		'style': { 'background_color': `#${selectionColor.toString(16)}` }
+	},
+		{
+		'style_name': "boolStyle",
+		'style': {'color': '#ff000000', 'background_color': '#ffddddff'}
+	},
+	{
+		'style_name': "stringStyle",
+		'style': {'color': '#ff000000', 'background_color': '#fff3d3b4'}
+	}
+];
+
+decorator.Formatting = [
+	{
+		'formatting_rule_name': "tokenType_format",
+		'formatting_column': "typeView",
+		'conditions': [
+			{'condition': {'and': [{'data:type': 'bool'},{'!=': {'data:name': null}}]}, 'text': 'логическое'},
+			{'condition': {'and': [{'data:type': 'string'},{'!=': {'data:name': null}}]}, 'text': 'строковое'}
+		]
+	},
+	{
+		'formatting_rule_name': "allowValueFormat",
+		'formatting_column': "allowValue",
+		'conditions': [
+			{'condition':{'and':[{'data:type': 'bool'},{'data:allowValue': 'TRUE'}]},'text':'Да'},
+			{'condition':{'and':[{'data:type': 'bool'},{'data:allowValue': 'FALSE'}]},'text':'Нет'}
+		]
+	},
+	{
+		'formatting_rule_name': "denyValueFormat",
+		'formatting_column': "denyValue",
+		'conditions': [
+			{'condition':{'and':[{'data:type': 'bool'},{'data:denyValue': 'TRUE'}]},'text':'Да'},
+			{'condition':{'and':[{'data:type': 'bool'},{'data:denyValue': 'FALSE'}]},'text':'Нет'}
+		]
+	}
+];
+
+decorator.Decorating = [
+	{
+		'decoration_rule_name': "selected_rule", 
+		'decoration_rule': { 'row:isSelected': true },
+		'rowstyle': "selected_style"
+	},
+	{
+		'decoration_rule_name': "string_decorating",
+		'decoration_rule': {'and':[{'data:type': 'string'},{"!=":{'data:typeView': null}}]},
+		'columnstyle': {'typeView': "stringStyle"}
+	},
+	{
+		'decoration_rule_name': "bool_decorating",
+		'decoration_rule': {'and':[{'data:type': 'bool'},{"!=":{'data:typeView': null}}]},
+		'columnstyle': {'typeView': "boolStyle"}
+	}
+
+];
+
+return JSON.stringify(decorator, null, 2);]]>
+			</body>
+			<param access-modifier="private" name="selectionColor" display-name="" uuid="3402aeaa-39b9-4f30-8503-fa5c2b77ba4f" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5"/>
+		</do>
+		<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+			<body>
+				<![CDATA[here.private.pTheme.EditorBrushColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="FrameColor" ver="5">
+			<body>
+				<![CDATA[here.private.pTheme.BorderColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="GridColor" ver="5">
+			<body>
+				<![CDATA[here.private.pTheme.DisabledBorderColor]]>
+			</body>
+		</do-trace>
+		<designed target="RowHeightResizeMode" value="3" ver="5"/>
+		<object access-modifier="private" name="selectionColor" display-name="selectionColor" uuid="d91890b3-1973-4581-83ec-f5865d90997b" base-type="notifying_uint8" base-type-id="2e6d6c20-2489-49e1-9d5f-fe68a21b43df" ver="5" description="" cardinal="1"/>
+		<do-trace access-modifier="private" target="selectionColor" ver="5">
+			<body>
+				<![CDATA[private.pTheme.SelectionColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="LinearLayout" display-name="LinearLayout" uuid="3e27749d-2cc0-4d70-8bb4-97f48589d05f" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5">
+		<designed target="Orientation" value="1" ver="5"/>
+		<designed target="Gap" value="0" ver="5"/>
+	</object>
+	<param access-modifier="private" name="init_Theme" display-name="Тема оформления" uuid="f816518d-68c5-4d8a-b8ce-fe4f82a65013" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
+	<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="AboutToOpen">
+		<body kind="om">
+			<![CDATA[AppsView.Init();
+RightsView.Init();
+
+SecurityManager.RequestAppList();
+SystemCommands.GoTo.doBlockingControll();
+
+UpdateView(SystemCommands.ViewSettings.Data[SystemCommands.Forms.AppList]);]]>
+		</body>
+	</do-on>
+	<param access-modifier="private" name="init_ScreenKeyboard" display-name="Вызов экранной клавиатуры" uuid="505cfc0f-9002-4edb-b70e-ccfeff0a83bb" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="pSettings" display-name="pSettings" uuid="b14b235a-42c5-4992-a677-c8bcdd6e045b" base-type="SecurityConfigurator_Settings" base-type-id="a7c582fd-25fb-4cc3-8522-3166d1a63de6" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="pPermissions" display-name="pPermissions" uuid="e58b755a-1205-4548-8346-ed135911c6f1" base-type="SecurityConfigurator_Permissions" base-type-id="a6a67dc7-2872-46c8-a397-13aa48ddb4e7" base-const="true" base-ref="true" ver="5" description=""/>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[private.pTheme.BackgroundColor]]>
+		</body>
+	</do-trace>
+</type>
+

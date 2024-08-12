@@ -1,0 +1,214 @@
+<type access-modifier="public" name="SecurityConfigurator_Form" display-name="SecurityConfigurator_Form" uuid="fc99cb05-a6e5-4d5f-935d-3df549cd0bfd" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5" description="">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Flip" value="0" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="850" ver="5"/>
+	<designed target="Height" value="500" ver="5"/>
+	<designed target="PenColor" value="0xff808080" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<designed target="WindowX" value="0" ver="5"/>
+	<designed target="WindowY" value="0" ver="5"/>
+	<designed target="WindowWidth" value="850" ver="5"/>
+	<designed target="WindowHeight" value="500" ver="5"/>
+	<designed target="WindowCaption" value="SecurityConfigurator" ver="5"/>
+	<designed target="ShowWindowCaption" value="true" ver="5"/>
+	<designed target="ShowWindowMinimize" value="true" ver="5"/>
+	<designed target="ShowWindowMaximize" value="true" ver="5"/>
+	<designed target="ShowWindowClose" value="true" ver="5"/>
+	<designed target="AlwaysOnTop" value="false" ver="5"/>
+	<designed target="WindowSizeMode" value="0" ver="5"/>
+	<designed target="WindowBorderStyle" value="1" ver="5"/>
+	<designed target="WindowState" value="0" ver="5"/>
+	<designed target="WindowScalingMode" value="0" ver="5"/>
+	<designed target="MonitorNumber" value="0" ver="5"/>
+	<designed target="WindowPosition" value="0" ver="5"/>
+	<designed target="WindowCloseMode" value="1" ver="5"/>
+	<designed target="WindowIconPath" value="" ver="5"/>
+	<object access-modifier="private" name="Toolbar" display-name="Toolbar" uuid="09730af7-972b-4535-a6c0-9aee4938cd9e" base-type="Toolbar" base-type-id="f3703f24-b4d9-4868-acaa-36cd107c7f01" ver="5">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="850" ver="5"/>
+		<designed target="Height" value="40" ver="5"/>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="f413428c-efae-427b-bcac-3bbb61871686" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="0" ver="5"/>
+			<designed target="MinHeight" value="35" ver="5"/>
+			<designed target="MaxWidth" value="16777215" ver="5"/>
+			<designed target="MaxHeight" value="35" ver="5"/>
+		</object>
+		<init target="init_Configurator" ver="5" ref="Configurator"/>
+		<init target="init_Theme" ver="5" ref="here.init_Theme"/>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[Configurator.ViewConfiguration.Value]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Configurator" display-name="Configurator" uuid="4426bc0f-e92d-4605-b011-66894f02f033" base-type="SecurityConfigurator" base-type-id="360fdf2a-a865-416c-855f-70126cfc646d" ver="5">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="35" ver="5"/>
+		<designed target="Width" value="849" ver="5"/>
+		<designed target="Height" value="439" ver="5"/>
+		<object access-modifier="private" name="Weight" display-name="Weight" uuid="56166941-3253-44b6-992a-696684ea039f" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5">
+			<designed target="Weight" value="10000" ver="5"/>
+		</object>
+		<designed target="Rotation" value="0" ver="5"/>
+		<object access-modifier="private" name="Margins" display-name="Margins" uuid="a5604776-61b3-40be-93c4-2dd275f3c3f7" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+			<designed target="Top" value="0" ver="5"/>
+			<designed target="Bottom" value="1" ver="5"/>
+			<designed target="Left" value="0" ver="5"/>
+			<designed target="Right" value="1" ver="5"/>
+		</object>
+		<init target="init_Theme" ver="5" ref="here.init_Theme"/>
+		<object access-modifier="private" name="Closed" display-name="Closed" uuid="221b5d87-991f-42de-8510-8b8402b3f63a" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[here.Close();]]>
+				</body>
+			</do-on>
+		</object>
+		<init target="pClosed" ver="5" ref="Closed"/>
+		<init target="init_Settings" ver="5" ref="here.init_Settings"/>
+		<init target="init_ScreenKeyboard" ver="5" ref="here.init_ScreenKeyboard"/>
+		<init target="init_Permissions" ver="5" ref="here.init_Permissions"/>
+	</object>
+	<object access-modifier="private" name="Layout" display-name="Layout" uuid="07b89183-01c4-480f-8f12-9ec824da1944" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5">
+		<designed target="Orientation" value="2" ver="5"/>
+		<designed target="Gap" value="0" ver="5"/>
+	</object>
+	<param access-modifier="private" name="init_Theme" display-name="Тема оформления" uuid="c009a559-80cd-4b8a-8bf7-506903377e63" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
+	<param access-modifier="private" name="init_Settings" display-name="Настройки" uuid="677118b4-ce26-496b-b136-a9a3484cc8d6" base-type="SecurityConfigurator_Settings" base-type-id="a7c582fd-25fb-4cc3-8522-3166d1a63de6" base-const="true" base-ref="true" ver="5" description=""/>
+	<param access-modifier="private" name="init_Permissions" display-name="Разрешения" uuid="dff2ffb8-d598-4f17-8f82-25fadc4f2ff3" base-type="SecurityConfigurator_Permissions" base-type-id="a6a67dc7-2872-46c8-a397-13aa48ddb4e7" base-const="true" base-ref="true" ver="5" description=""/>
+	<param access-modifier="private" name="init_RestoreWindow" display-name="Восстанавливать положение окна" uuid="1d46323a-a682-424b-8771-0714b847b4e0" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description=""/>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="WindowSizeChanged">
+		<body kind="om">
+			<![CDATA[Width = WindowWidth;
+Height = WindowHeight;]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="Statusbar" display-name="Statusbar" uuid="814c421e-d188-4301-a3c9-25931fe13cd7" base-type="Statusbar" base-type-id="4a5f7990-a990-4948-9be1-8e2cd370e5c8" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="475" ver="5"/>
+		<designed target="Width" value="850" ver="5"/>
+		<designed target="Height" value="25" ver="5"/>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="74d650a6-499e-48d2-a141-9d89a42a3849" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="0" ver="5"/>
+			<designed target="MinHeight" value="25" ver="5"/>
+			<designed target="MaxWidth" value="16777215" ver="5"/>
+			<designed target="MaxHeight" value="25" ver="5"/>
+		</object>
+		<init target="init_Theme" ver="5" ref="here.init_Theme"/>
+		<init target="init_Configurator" ver="5" ref="here.Configurator"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="init_ScreenKeyboard" ver="5" ref="here.init_ScreenKeyboard"/>
+	</object>
+	<object access-modifier="private" name="private" display-name="private" uuid="3a487fdf-2aa1-4d0e-9188-28eee3a1f664" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="restoreWindow" display-name="restoreWindow" uuid="cacc2b9a-91de-4cda-b0e7-1f5a499f67f2" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+		<init target="restoreWindow" ver="5" ref="init_RestoreWindow"/>
+		<do access-modifier="private" name="SaveSession" display-name="SaveSession" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[try
+{
+	var session = 
+	{
+		"Window": 
+		{
+			"X": WindowX,
+			"Y": WindowY, 
+			"Width": WindowWidth,
+			"Height": WindowHeight,
+			"State": WindowState
+		}
+	};
+
+	var folder = Files.ParentPath(filePath);	
+	Files.CreateRecursiveFolder(folder);
+	
+	Files.WriteTextFile(filePath, JSON.stringify(session, null, 2));
+}
+catch(error)
+{
+	log("Не удалось сохранить настройки сессии в "  + filePath + ":\n" + error);
+}]]>
+			</body>
+			<param access-modifier="private" name="filePath" display-name="" uuid="f818dc3b-9113-4451-9e64-6ccae3fb3549" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+		<do access-modifier="private" name="LoadSession" display-name="LoadSession" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[if (Files.Exists(filePath))
+{
+	//log("Загрузка настроек сессии из файла "  + filePath);
+	try
+	{
+		var session = JSON.parse(Files.ReadTextFile(filePath));
+		
+		var window = session.Window;
+		if (window != undefined)
+		{
+			WindowX = window.X;
+			WindowY = window.Y;
+			WindowWidth = window.Width;
+			WindowHeight = window.Height;
+			WindowState = window.State;
+		}
+	}
+	catch(error)
+	{
+		log("Не удалось загрузить настройки сессии из "  + filePath + ":\n" + error);
+	}
+}]]>
+			</body>
+			<param access-modifier="private" name="filePath" display-name="" uuid="cb7ecd17-9ce5-44e9-8092-815b8abd9fbd" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+	</object>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="AboutToOpen">
+		<body kind="om">
+			<![CDATA[if (private.restoreWindow)
+{
+	folderPath: string = unit.ProductInfo.GetUserDataFolder();
+	private.LoadSession(Files.CombinePath(folderPath, "window.json"));
+}]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="CloseRequested">
+		<body kind="om">
+			<![CDATA[if (private.restoreWindow)
+{
+	folderPath: string = unit.ProductInfo.GetUserDataFolder();
+	private.SaveSession(Files.CombinePath(folderPath, "window.json"));
+}
+
+Configurator.Close();]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="9a174b8b-c64d-4074-b2e4-30f4172d183b" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<object access-modifier="private" name="Files" display-name="Files" uuid="d5b4f92b-a473-46bd-bfae-6e3d4d65004e" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5">
+		<designed target="RootPath" value="/" ver="5"/>
+	</object>
+	<init target="init_RestoreWindow" ver="5" value="false"/>
+	<init target="init_Settings" ver="5">
+		<object access-modifier="private" uuid="154a9997-3b3c-458a-99ea-8f1f0c6c41be" base-type="SecurityConfigurator_Settings" base-type-id="a7c582fd-25fb-4cc3-8522-3166d1a63de6" ver="5"/>
+	</init>
+	<param access-modifier="private" name="init_ScreenKeyboard" display-name="Вызов экранной клавиатуры" uuid="a018cb90-6292-4e85-88c1-4cf14f5612a5" base-type="ScreenKeyboardOptions" base-type-id="0589bc8e-fbb2-4f0e-b5d2-f0d825538ef1" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="WindowUtils" display-name="WindowUtils" uuid="ce7c5366-d7ab-4cca-9347-c849a21a4fa6" base-type="WindowUtils" base-type-id="4a818ada-44b1-4070-9b9d-c28dc3447ece" ver="5" description="" cardinal="1">
+		<init target="pForm" ver="5" ref="here"/>
+	</object>
+	<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[WindowUtils.CorrectPosition();]]>
+		</body>
+	</do-on>
+</type>
+

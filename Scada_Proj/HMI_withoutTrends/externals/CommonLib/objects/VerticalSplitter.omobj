@@ -1,0 +1,51 @@
+<type access-modifier="public" name="VerticalSplitter" display-name="Вертикальный сплиттер" uuid="f7b3175e-374e-46fc-bdf9-e8330c5fa171" base-type="Splitter" base-type-id="ba09051c-1cbc-4179-95f6-384e3afefa35" ver="5" description="">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Flip" value="0" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="200" ver="5"/>
+	<designed target="Height" value="4" ver="5"/>
+	<designed target="RoundingRadius" value="0" ver="5"/>
+	<designed target="PenColor" value="0xff808080" ver="5"/>
+	<designed target="PenStyle" value="1" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="5abe6791-57db-4fe6-b65a-f12b6418ad02" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<param access-modifier="private" name="VerticalAlignment" display-name="Направление" uuid="1753e0b7-b768-4940-9108-d3f156400046" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description=""/>
+	<object access-modifier="private" name="private" display-name="private" uuid="106edfe9-f352-4165-94c2-11e88862b9e9" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="alignment" display-name="alignment" uuid="2e8c6225-5072-41db-84b5-138fa55d2503" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+		<init target="alignment" ver="5" ref="VerticalAlignment"/>
+	</object>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseMove">
+		<body kind="om">
+			<![CDATA[protected.UpdatePosition(event.ScreenY, private.alignment);]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MousePress">
+		<body kind="om">
+			<![CDATA[protected.StorePosition(event.ScreenY);]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="caf7873e-5dad-4001-9d2e-d29399e23c96" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+		<designed target="MinWidth" value="0" ver="5"/>
+		<designed target="MinHeight" value="4" ver="5"/>
+		<designed target="MaxWidth" value="16777215" ver="5"/>
+		<designed target="MaxHeight" value="4" ver="5"/>
+		<init target="MinHeight" ver="5" ref="Thickness"/>
+		<init target="MaxHeight" ver="5" ref="Thickness"/>
+	</object>
+	<init target="VerticalAlignment" ver="5" value="2"/>
+	<init target="Cursor" ver="5">
+		<object access-modifier="private" uuid="e4ecbfbf-2d91-4483-b431-5ff908d97d33" base-type="Cursor" base-type-id="b189248c-a70a-4c08-94d2-139295e6c40f" ver="5">
+			<init target="Shape" ver="5" value="11"/>
+		</object>
+	</init>
+</type>
+

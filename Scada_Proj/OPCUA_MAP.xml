@@ -222,16 +222,16 @@
     <nodeId>Application.GVL.DataProg.Gas.ValveBlow13.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Gas.ValveBlow13.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Gas.ValveBlow13.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Gas.ValveBlow13.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Gas.ValveBlow13.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Gas.ValveBlow13.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Gas.ValveBlow13.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Gas.ValveBlow13.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Gas.ValveBlow13.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Gas.ValveBlow13.bClose</node-path>
@@ -312,16 +312,16 @@
     <nodeId>Application.GVL.DataProg.Gas.ValveBlow24.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Gas.ValveBlow24.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Gas.ValveBlow24.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Gas.ValveBlow24.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Gas.ValveBlow24.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Gas.ValveBlow24.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Gas.ValveBlow24.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Gas.ValveBlow24.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Gas.ValveBlow24.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Gas.ValveBlow24.bClose</node-path>
@@ -624,6 +624,72 @@
     <nodeId>Application.PersistentVars.ePGasMode</nodeId>
   </item>
   <item Binding="Introduced">
+    <node-path>Application.Gas.F.fNormValue</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Gas.fFGas</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Gas.F.SETTINGS.iSel</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.PersistentVars.stFlowParams.Gas.iSel</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Gas.F.SETTINGS.iSelDiaf</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.PersistentVars.stFlowParams.Gas.iSelDiaf</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Gas.F.SETTINGS.iPov</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.PersistentVars.stFlowParams.Gas.iPov</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Gas.F.SETTINGS.fDt20</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.PersistentVars.stFlowParams.Gas.fDt20</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Gas.F.SETTINGS.fDd20</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.PersistentVars.stFlowParams.Gas.fDd20</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Gas.F.SETTINGS.fKsher</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.PersistentVars.stFlowParams.Gas.fKsher</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Gas.F.SETTINGS.fRos</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.PersistentVars.stFlowParams.Gas.fRos</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Gas.F.SETTINGS.fXcoPes</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.PersistentVars.stFlowParams.Gas.fXcoPes</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Gas.F.SETTINGS.fXnPes</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.PersistentVars.stFlowParams.Gas.fXnPes</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Gas.F.SETTINGS.fCaloric</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.PersistentVars.stFlowParams.Gas.fCaloric</nodeId>
+  </item>
+  <item Binding="Introduced">
     <node-path>Application.Boiler.bFire1</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
@@ -834,24 +900,6 @@
     <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.iFailIgnCount</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnMain.eBurnIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.eBurnIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group1.BurnMain.eBurnProtections</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.eBurnProtections</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group1.BurnMain.ePressIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.ePressIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
     <node-path>Application.Group1.BurnMain.fIgnRemainingTimeStep</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
@@ -886,6 +934,24 @@
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
     <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.fPressRemainingTimeStep</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group1.BurnMain.eBurnIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.eBurnIgn</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group1.BurnMain.eBurnProtections</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.eBurnProtections</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group1.BurnMain.ePressIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.ePressIgn</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group1.BurnMain.DamperGas.bM</node-path>
@@ -1392,16 +1458,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.Valve1.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnMain.Valve1.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group1.BurnMain.Valve1.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.Valve1.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.Valve1.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnMain.Valve1.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group1.BurnMain.Valve1.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.Valve1.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.Valve1.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group1.BurnMain.Valve1.bClose</node-path>
@@ -1482,16 +1548,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.Valve2.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnMain.Valve2.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group1.BurnMain.Valve2.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.Valve2.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.Valve2.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnMain.Valve2.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group1.BurnMain.Valve2.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.Valve2.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.Valve2.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group1.BurnMain.Valve2.bClose</node-path>
@@ -1572,16 +1638,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.ValveIgn.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnMain.ValveIgn.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group1.BurnMain.ValveIgn.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.ValveIgn.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.ValveIgn.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnMain.ValveIgn.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group1.BurnMain.ValveIgn.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.ValveIgn.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.ValveIgn.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group1.BurnMain.ValveIgn.bClose</node-path>
@@ -1662,16 +1728,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.ValveSafety.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnMain.ValveSafety.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group1.BurnMain.ValveSafety.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.ValveSafety.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.ValveSafety.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnMain.ValveSafety.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group1.BurnMain.ValveSafety.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.ValveSafety.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnMain.ValveSafety.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group1.BurnMain.ValveSafety.bClose</node-path>
@@ -2358,24 +2424,6 @@
     <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[1].fPressPFixat</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork1.eBurnIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[1].eBurnIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork1.eBurnProtections</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[1].eBurnProtections</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork1.ePressIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[1].ePressIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
     <node-path>Application.Group1.BurnWork1.fIgnRemainingTimeStep</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
@@ -2410,6 +2458,24 @@
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
     <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[1].fPressRemainingTimeStep</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group1.BurnWork1.eBurnIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[1].eBurnIgn</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group1.BurnWork1.eBurnProtections</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[1].eBurnProtections</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group1.BurnWork1.ePressIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[1].ePressIgn</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group1.BurnWork1.DamperGas.bM</node-path>
@@ -2706,16 +2772,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[1].Valve1.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork1.Valve1.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group1.BurnWork1.Valve1.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[1].Valve1.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[1].Valve1.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork1.Valve1.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group1.BurnWork1.Valve1.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[1].Valve1.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[1].Valve1.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group1.BurnWork1.Valve1.bClose</node-path>
@@ -2796,16 +2862,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[1].Valve2.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork1.Valve2.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group1.BurnWork1.Valve2.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[1].Valve2.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[1].Valve2.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork1.Valve2.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group1.BurnWork1.Valve2.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[1].Valve2.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[1].Valve2.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group1.BurnWork1.Valve2.bClose</node-path>
@@ -2886,16 +2952,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[1].ValveSafety.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork1.ValveSafety.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group1.BurnWork1.ValveSafety.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[1].ValveSafety.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[1].ValveSafety.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork1.ValveSafety.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group1.BurnWork1.ValveSafety.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[1].ValveSafety.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[1].ValveSafety.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group1.BurnWork1.ValveSafety.bClose</node-path>
@@ -3366,24 +3432,6 @@
     <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[2].fPressPFixat</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork2.eBurnIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[2].eBurnIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork2.eBurnProtections</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[2].eBurnProtections</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork2.ePressIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[2].ePressIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
     <node-path>Application.Group1.BurnWork2.fIgnRemainingTimeStep</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
@@ -3418,6 +3466,24 @@
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
     <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[2].fPressRemainingTimeStep</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group1.BurnWork2.eBurnIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[2].eBurnIgn</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group1.BurnWork2.eBurnProtections</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[2].eBurnProtections</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group1.BurnWork2.ePressIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[2].ePressIgn</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group1.BurnWork2.DamperGas.bM</node-path>
@@ -3714,16 +3780,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[2].Valve1.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork2.Valve1.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group1.BurnWork2.Valve1.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[2].Valve1.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[2].Valve1.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork2.Valve1.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group1.BurnWork2.Valve1.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[2].Valve1.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[2].Valve1.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group1.BurnWork2.Valve1.bClose</node-path>
@@ -3804,16 +3870,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[2].Valve2.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork2.Valve2.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group1.BurnWork2.Valve2.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[2].Valve2.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[2].Valve2.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork2.Valve2.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group1.BurnWork2.Valve2.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[2].Valve2.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[2].Valve2.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group1.BurnWork2.Valve2.bClose</node-path>
@@ -3894,16 +3960,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[2].ValveSafety.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork2.ValveSafety.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group1.BurnWork2.ValveSafety.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[2].ValveSafety.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[2].ValveSafety.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork2.ValveSafety.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group1.BurnWork2.ValveSafety.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[2].ValveSafety.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[2].ValveSafety.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group1.BurnWork2.ValveSafety.bClose</node-path>
@@ -4374,24 +4440,6 @@
     <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[3].fPressPFixat</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork3.eBurnIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[3].eBurnIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork3.eBurnProtections</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[3].eBurnProtections</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork3.ePressIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[3].ePressIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
     <node-path>Application.Group1.BurnWork3.fIgnRemainingTimeStep</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
@@ -4426,6 +4474,24 @@
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
     <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[3].fPressRemainingTimeStep</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group1.BurnWork3.eBurnIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[3].eBurnIgn</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group1.BurnWork3.eBurnProtections</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[3].eBurnProtections</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group1.BurnWork3.ePressIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[3].ePressIgn</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group1.BurnWork3.DamperGas.bM</node-path>
@@ -4722,16 +4788,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[3].Valve1.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork3.Valve1.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group1.BurnWork3.Valve1.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[3].Valve1.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[3].Valve1.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork3.Valve1.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group1.BurnWork3.Valve1.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[3].Valve1.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[3].Valve1.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group1.BurnWork3.Valve1.bClose</node-path>
@@ -4812,16 +4878,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[3].Valve2.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork3.Valve2.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group1.BurnWork3.Valve2.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[3].Valve2.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[3].Valve2.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork3.Valve2.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group1.BurnWork3.Valve2.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[3].Valve2.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[3].Valve2.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group1.BurnWork3.Valve2.bClose</node-path>
@@ -4902,16 +4968,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[3].ValveSafety.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork3.ValveSafety.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group1.BurnWork3.ValveSafety.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[3].ValveSafety.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[3].ValveSafety.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group1.BurnWork3.ValveSafety.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group1.BurnWork3.ValveSafety.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[3].ValveSafety.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[1].BurnWork.BurnWork[3].ValveSafety.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group1.BurnWork3.ValveSafety.bClose</node-path>
@@ -6372,102 +6438,6 @@
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
     <nodeId>Application.GVL.DataProg.Other.GateWater1.bBlockCloseOut</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Persistent.GasProps.fDt20</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.PersistentVars.stFlowParams.Gas.fDt20</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Persistent.GasProps.fDd20</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.PersistentVars.stFlowParams.Gas.fDd20</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Persistent.GasProps.iPov</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.PersistentVars.stFlowParams.Gas.iPov</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Persistent.GasProps.iSelDiaf</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.PersistentVars.stFlowParams.Gas.iSelDiaf</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Persistent.GasProps.fKsher</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.PersistentVars.stFlowParams.Gas.fKsher</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Persistent.GasProps.fRos</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.PersistentVars.stFlowParams.Gas.fRos</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Persistent.GasProps.fXcoPes</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.PersistentVars.stFlowParams.Gas.fXcoPes</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Persistent.GasProps.fXnPes</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.PersistentVars.stFlowParams.Gas.fXnPes</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Persistent.GasProps.iSel</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.PersistentVars.stFlowParams.Gas.iSel</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Persistent.GasProps.fCaloric</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.PersistentVars.stFlowParams.Gas.fCaloric</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Persistent.WaterProps.fDt20</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.PersistentVars.stFlowParams.Water.fDt20</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Persistent.WaterProps.fdd20</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.PersistentVars.stFlowParams.Water.fdd20</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Persistent.WaterProps.iPov</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.PersistentVars.stFlowParams.Water.iPov</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Persistent.WaterProps.iSelDiaf</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.PersistentVars.stFlowParams.Water.iSelDiaf</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Persistent.WaterProps.fKsher</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.PersistentVars.stFlowParams.Water.fKsher</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Persistent.WaterProps.iSel</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.PersistentVars.stFlowParams.Water.iSel</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Persistent.TimeProcPrep.fVentilation</node-path>
@@ -8036,6 +8006,48 @@
     <nodeId>Application.PersistentVars.ePWaterMode</nodeId>
   </item>
   <item Binding="Introduced">
+    <node-path>Application.Water.F.fNormValue</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Water.fF</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Water.F.SETTINGS.iSel</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.PersistentVars.stFlowParams.Water.iSel</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Water.F.SETTINGS.iSelDiaf</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.PersistentVars.stFlowParams.Water.iSelDiaf</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Water.F.SETTINGS.iPov</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.PersistentVars.stFlowParams.Water.iPov</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Water.F.SETTINGS.fDt20</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.PersistentVars.stFlowParams.Water.fDt20</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Water.F.SETTINGS.fDd20</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.PersistentVars.stFlowParams.Water.fdd20</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Water.F.SETTINGS.fKsher</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.PersistentVars.stFlowParams.Water.fKsher</nodeId>
+  </item>
+  <item Binding="Introduced">
     <node-path>Application.Colors.Water</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
@@ -8234,24 +8246,6 @@
     <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.iFailIgnCount</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnMain.eBurnIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.eBurnIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group2.BurnMain.eBurnProtections</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.eBurnProtections</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group2.BurnMain.ePressIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.ePressIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
     <node-path>Application.Group2.BurnMain.fIgnRemainingTimeStep</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
@@ -8286,6 +8280,24 @@
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
     <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.fPressRemainingTimeStep</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group2.BurnMain.eBurnIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.eBurnIgn</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group2.BurnMain.eBurnProtections</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.eBurnProtections</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group2.BurnMain.ePressIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.ePressIgn</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group2.BurnMain.DamperGas.bM</node-path>
@@ -8636,16 +8648,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.Valve1.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnMain.Valve1.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group2.BurnMain.Valve1.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.Valve1.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.Valve1.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnMain.Valve1.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group2.BurnMain.Valve1.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.Valve1.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.Valve1.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group2.BurnMain.Valve1.bClose</node-path>
@@ -8726,16 +8738,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.Valve2.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnMain.Valve2.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group2.BurnMain.Valve2.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.Valve2.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.Valve2.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnMain.Valve2.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group2.BurnMain.Valve2.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.Valve2.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.Valve2.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group2.BurnMain.Valve2.bClose</node-path>
@@ -8816,16 +8828,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.ValveIgn.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnMain.ValveIgn.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group2.BurnMain.ValveIgn.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.ValveIgn.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.ValveIgn.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnMain.ValveIgn.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group2.BurnMain.ValveIgn.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.ValveIgn.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.ValveIgn.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group2.BurnMain.ValveIgn.bClose</node-path>
@@ -8906,16 +8918,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.ValveSafety.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnMain.ValveSafety.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group2.BurnMain.ValveSafety.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.ValveSafety.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.ValveSafety.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnMain.ValveSafety.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group2.BurnMain.ValveSafety.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.ValveSafety.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnMain.ValveSafety.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group2.BurnMain.ValveSafety.bClose</node-path>
@@ -9482,24 +9494,6 @@
     <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[1].fPressPFixat</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork1.eBurnIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[1].eBurnIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork1.eBurnProtections</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[1].eBurnProtections</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork1.ePressIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[1].ePressIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
     <node-path>Application.Group2.BurnWork1.fIgnRemainingTimeStep</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
@@ -9534,6 +9528,24 @@
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
     <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[1].fPressRemainingTimeStep</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group2.BurnWork1.eBurnIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[1].eBurnIgn</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group2.BurnWork1.eBurnProtections</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[1].eBurnProtections</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group2.BurnWork1.ePressIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[1].ePressIgn</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group2.BurnWork1.DamperGas.bM</node-path>
@@ -9830,16 +9842,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[1].Valve1.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork1.Valve1.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group2.BurnWork1.Valve1.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[1].Valve1.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[1].Valve1.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork1.Valve1.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group2.BurnWork1.Valve1.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[1].Valve1.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[1].Valve1.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group2.BurnWork1.Valve1.bClose</node-path>
@@ -9920,16 +9932,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[1].Valve2.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork1.Valve2.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group2.BurnWork1.Valve2.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[1].Valve2.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[1].Valve2.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork1.Valve2.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group2.BurnWork1.Valve2.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[1].Valve2.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[1].Valve2.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group2.BurnWork1.Valve2.bClose</node-path>
@@ -10010,16 +10022,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[1].ValveSafety.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork1.ValveSafety.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group2.BurnWork1.ValveSafety.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[1].ValveSafety.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[1].ValveSafety.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork1.ValveSafety.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group2.BurnWork1.ValveSafety.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[1].ValveSafety.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[1].ValveSafety.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group2.BurnWork1.ValveSafety.bClose</node-path>
@@ -10490,24 +10502,6 @@
     <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[2].fPressPFixat</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork2.eBurnIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[2].eBurnIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork2.eBurnProtections</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[2].eBurnProtections</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork2.ePressIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[2].ePressIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
     <node-path>Application.Group2.BurnWork2.fIgnRemainingTimeStep</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
@@ -10542,6 +10536,24 @@
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
     <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[2].fPressRemainingTimeStep</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group2.BurnWork2.eBurnIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[2].eBurnIgn</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group2.BurnWork2.eBurnProtections</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[2].eBurnProtections</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group2.BurnWork2.ePressIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[2].ePressIgn</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group2.BurnWork2.DamperGas.bM</node-path>
@@ -10838,16 +10850,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[2].Valve1.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork2.Valve1.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group2.BurnWork2.Valve1.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[2].Valve1.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[2].Valve1.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork2.Valve1.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group2.BurnWork2.Valve1.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[2].Valve1.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[2].Valve1.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group2.BurnWork2.Valve1.bClose</node-path>
@@ -10928,16 +10940,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[2].Valve2.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork2.Valve2.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group2.BurnWork2.Valve2.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[2].Valve2.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[2].Valve2.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork2.Valve2.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group2.BurnWork2.Valve2.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[2].Valve2.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[2].Valve2.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group2.BurnWork2.Valve2.bClose</node-path>
@@ -11018,16 +11030,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[2].ValveSafety.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork2.ValveSafety.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group2.BurnWork2.ValveSafety.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[2].ValveSafety.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[2].ValveSafety.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork2.ValveSafety.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group2.BurnWork2.ValveSafety.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[2].ValveSafety.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[2].ValveSafety.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group2.BurnWork2.ValveSafety.bClose</node-path>
@@ -11498,24 +11510,6 @@
     <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[3].fPressPFixat</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork3.eBurnIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[3].eBurnIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork3.eBurnProtections</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[3].eBurnProtections</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork3.ePressIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[3].ePressIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
     <node-path>Application.Group2.BurnWork3.fIgnRemainingTimeStep</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
@@ -11550,6 +11544,24 @@
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
     <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[3].fPressRemainingTimeStep</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group2.BurnWork3.eBurnIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[3].eBurnIgn</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group2.BurnWork3.eBurnProtections</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[3].eBurnProtections</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group2.BurnWork3.ePressIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[3].ePressIgn</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group2.BurnWork3.DamperGas.bM</node-path>
@@ -11846,16 +11858,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[3].Valve1.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork3.Valve1.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group2.BurnWork3.Valve1.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[3].Valve1.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[3].Valve1.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork3.Valve1.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group2.BurnWork3.Valve1.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[3].Valve1.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[3].Valve1.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group2.BurnWork3.Valve1.bClose</node-path>
@@ -11936,16 +11948,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[3].Valve2.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork3.Valve2.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group2.BurnWork3.Valve2.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[3].Valve2.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[3].Valve2.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork3.Valve2.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group2.BurnWork3.Valve2.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[3].Valve2.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[3].Valve2.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group2.BurnWork3.Valve2.bClose</node-path>
@@ -12026,16 +12038,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[3].ValveSafety.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork3.ValveSafety.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group2.BurnWork3.ValveSafety.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[3].ValveSafety.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[3].ValveSafety.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group2.BurnWork3.ValveSafety.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group2.BurnWork3.ValveSafety.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[3].ValveSafety.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[2].BurnWork.BurnWork[3].ValveSafety.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group2.BurnWork3.ValveSafety.bClose</node-path>
@@ -12548,24 +12560,6 @@
     <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.iFailIgnCount</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnMain.eBurnIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.eBurnIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group3.BurnMain.eBurnProtections</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.eBurnProtections</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group3.BurnMain.ePressIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.ePressIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
     <node-path>Application.Group3.BurnMain.fIgnRemainingTimeStep</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
@@ -12600,6 +12594,24 @@
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
     <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.fPressRemainingTimeStep</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group3.BurnMain.eBurnIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.eBurnIgn</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group3.BurnMain.eBurnProtections</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.eBurnProtections</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group3.BurnMain.ePressIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.ePressIgn</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group3.BurnMain.DamperGas.bM</node-path>
@@ -12950,16 +12962,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.Valve1.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnMain.Valve1.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group3.BurnMain.Valve1.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.Valve1.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.Valve1.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnMain.Valve1.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group3.BurnMain.Valve1.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.Valve1.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.Valve1.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group3.BurnMain.Valve1.bClose</node-path>
@@ -13040,16 +13052,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.Valve2.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnMain.Valve2.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group3.BurnMain.Valve2.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.Valve2.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.Valve2.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnMain.Valve2.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group3.BurnMain.Valve2.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.Valve2.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.Valve2.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group3.BurnMain.Valve2.bClose</node-path>
@@ -13130,16 +13142,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.ValveIgn.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnMain.ValveIgn.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group3.BurnMain.ValveIgn.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.ValveIgn.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.ValveIgn.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnMain.ValveIgn.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group3.BurnMain.ValveIgn.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.ValveIgn.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.ValveIgn.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group3.BurnMain.ValveIgn.bClose</node-path>
@@ -13220,16 +13232,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.ValveSafety.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnMain.ValveSafety.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group3.BurnMain.ValveSafety.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.ValveSafety.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.ValveSafety.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnMain.ValveSafety.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group3.BurnMain.ValveSafety.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.ValveSafety.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnMain.ValveSafety.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group3.BurnMain.ValveSafety.bClose</node-path>
@@ -13796,24 +13808,6 @@
     <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[1].fPressPFixat</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork1.eBurnIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[1].eBurnIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork1.eBurnProtections</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[1].eBurnProtections</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork1.ePressIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[1].ePressIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
     <node-path>Application.Group3.BurnWork1.fIgnRemainingTimeStep</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
@@ -13848,6 +13842,24 @@
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
     <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[1].fPressRemainingTimeStep</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group3.BurnWork1.eBurnIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[1].eBurnIgn</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group3.BurnWork1.eBurnProtections</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[1].eBurnProtections</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group3.BurnWork1.ePressIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[1].ePressIgn</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group3.BurnWork1.DamperGas.bM</node-path>
@@ -14144,16 +14156,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[1].Valve1.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork1.Valve1.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group3.BurnWork1.Valve1.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[1].Valve1.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[1].Valve1.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork1.Valve1.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group3.BurnWork1.Valve1.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[1].Valve1.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[1].Valve1.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group3.BurnWork1.Valve1.bClose</node-path>
@@ -14234,16 +14246,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[1].Valve2.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork1.Valve2.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group3.BurnWork1.Valve2.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[1].Valve2.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[1].Valve2.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork1.Valve2.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group3.BurnWork1.Valve2.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[1].Valve2.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[1].Valve2.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group3.BurnWork1.Valve2.bClose</node-path>
@@ -14324,16 +14336,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[1].ValveSafety.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork1.ValveSafety.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group3.BurnWork1.ValveSafety.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[1].ValveSafety.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[1].ValveSafety.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork1.ValveSafety.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group3.BurnWork1.ValveSafety.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[1].ValveSafety.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[1].ValveSafety.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group3.BurnWork1.ValveSafety.bClose</node-path>
@@ -14804,24 +14816,6 @@
     <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[2].fPressPFixat</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork2.eBurnIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[2].eBurnIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork2.eBurnProtections</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[2].eBurnProtections</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork2.ePressIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[2].ePressIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
     <node-path>Application.Group3.BurnWork2.fIgnRemainingTimeStep</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
@@ -14856,6 +14850,24 @@
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
     <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[2].fPressRemainingTimeStep</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group3.BurnWork2.eBurnIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[2].eBurnIgn</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group3.BurnWork2.eBurnProtections</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[2].eBurnProtections</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group3.BurnWork2.ePressIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[2].ePressIgn</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group3.BurnWork2.DamperGas.bM</node-path>
@@ -15152,16 +15164,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[2].Valve1.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork2.Valve1.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group3.BurnWork2.Valve1.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[2].Valve1.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[2].Valve1.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork2.Valve1.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group3.BurnWork2.Valve1.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[2].Valve1.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[2].Valve1.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group3.BurnWork2.Valve1.bClose</node-path>
@@ -15242,16 +15254,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[2].Valve2.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork2.Valve2.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group3.BurnWork2.Valve2.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[2].Valve2.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[2].Valve2.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork2.Valve2.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group3.BurnWork2.Valve2.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[2].Valve2.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[2].Valve2.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group3.BurnWork2.Valve2.bClose</node-path>
@@ -15332,16 +15344,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[2].ValveSafety.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork2.ValveSafety.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group3.BurnWork2.ValveSafety.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[2].ValveSafety.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[2].ValveSafety.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork2.ValveSafety.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group3.BurnWork2.ValveSafety.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[2].ValveSafety.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[2].ValveSafety.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group3.BurnWork2.ValveSafety.bClose</node-path>
@@ -15812,24 +15824,6 @@
     <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[3].fPressPFixat</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork3.eBurnIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[3].eBurnIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork3.eBurnProtections</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[3].eBurnProtections</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork3.ePressIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[3].ePressIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
     <node-path>Application.Group3.BurnWork3.fIgnRemainingTimeStep</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
@@ -15864,6 +15858,24 @@
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
     <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[3].fPressRemainingTimeStep</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group3.BurnWork3.eBurnIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[3].eBurnIgn</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group3.BurnWork3.eBurnProtections</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[3].eBurnProtections</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group3.BurnWork3.ePressIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[3].ePressIgn</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group3.BurnWork3.DamperGas.bM</node-path>
@@ -16160,16 +16172,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[3].Valve1.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork3.Valve1.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group3.BurnWork3.Valve1.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[3].Valve1.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[3].Valve1.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork3.Valve1.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group3.BurnWork3.Valve1.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[3].Valve1.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[3].Valve1.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group3.BurnWork3.Valve1.bClose</node-path>
@@ -16250,16 +16262,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[3].Valve2.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork3.Valve2.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group3.BurnWork3.Valve2.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[3].Valve2.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[3].Valve2.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork3.Valve2.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group3.BurnWork3.Valve2.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[3].Valve2.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[3].Valve2.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group3.BurnWork3.Valve2.bClose</node-path>
@@ -16340,16 +16352,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[3].ValveSafety.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork3.ValveSafety.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group3.BurnWork3.ValveSafety.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[3].ValveSafety.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[3].ValveSafety.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group3.BurnWork3.ValveSafety.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group3.BurnWork3.ValveSafety.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[3].ValveSafety.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[3].BurnWork.BurnWork[3].ValveSafety.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group3.BurnWork3.ValveSafety.bClose</node-path>
@@ -16862,24 +16874,6 @@
     <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.iFailIgnCount</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnMain.eBurnIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.eBurnIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group4.BurnMain.eBurnProtections</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.eBurnProtections</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group4.BurnMain.ePressIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.ePressIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
     <node-path>Application.Group4.BurnMain.fIgnRemainingTimeStep</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
@@ -16914,6 +16908,24 @@
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
     <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.fPressRemainingTimeStep</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group4.BurnMain.eBurnIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.eBurnIgn</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group4.BurnMain.eBurnProtections</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.eBurnProtections</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group4.BurnMain.ePressIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.ePressIgn</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group4.BurnMain.DamperGas.bM</node-path>
@@ -17264,16 +17276,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.Valve1.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnMain.Valve1.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group4.BurnMain.Valve1.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.Valve1.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.Valve1.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnMain.Valve1.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group4.BurnMain.Valve1.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.Valve1.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.Valve1.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group4.BurnMain.Valve1.bClose</node-path>
@@ -17354,16 +17366,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.Valve2.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnMain.Valve2.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group4.BurnMain.Valve2.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.Valve2.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.Valve2.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnMain.Valve2.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group4.BurnMain.Valve2.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.Valve2.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.Valve2.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group4.BurnMain.Valve2.bClose</node-path>
@@ -17444,16 +17456,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.ValveIgn.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnMain.ValveIgn.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group4.BurnMain.ValveIgn.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.ValveIgn.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.ValveIgn.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnMain.ValveIgn.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group4.BurnMain.ValveIgn.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.ValveIgn.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.ValveIgn.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group4.BurnMain.ValveIgn.bClose</node-path>
@@ -17534,16 +17546,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.ValveSafety.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnMain.ValveSafety.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group4.BurnMain.ValveSafety.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.ValveSafety.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.ValveSafety.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnMain.ValveSafety.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group4.BurnMain.ValveSafety.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.ValveSafety.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnMain.ValveSafety.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group4.BurnMain.ValveSafety.bClose</node-path>
@@ -18110,24 +18122,6 @@
     <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[1].fPressPFixat</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork1.eBurnIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[1].eBurnIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork1.eBurnProtections</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[1].eBurnProtections</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork1.ePressIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[1].ePressIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
     <node-path>Application.Group4.BurnWork1.fIgnRemainingTimeStep</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
@@ -18162,6 +18156,24 @@
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
     <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[1].fPressRemainingTimeStep</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group4.BurnWork1.eBurnIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[1].eBurnIgn</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group4.BurnWork1.eBurnProtections</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[1].eBurnProtections</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group4.BurnWork1.ePressIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[1].ePressIgn</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group4.BurnWork1.DamperGas.bM</node-path>
@@ -18458,16 +18470,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[1].Valve1.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork1.Valve1.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group4.BurnWork1.Valve1.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[1].Valve1.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[1].Valve1.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork1.Valve1.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group4.BurnWork1.Valve1.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[1].Valve1.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[1].Valve1.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group4.BurnWork1.Valve1.bClose</node-path>
@@ -18548,16 +18560,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[1].Valve2.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork1.Valve2.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group4.BurnWork1.Valve2.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[1].Valve2.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[1].Valve2.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork1.Valve2.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group4.BurnWork1.Valve2.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[1].Valve2.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[1].Valve2.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group4.BurnWork1.Valve2.bClose</node-path>
@@ -18638,16 +18650,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[1].ValveSafety.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork1.ValveSafety.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group4.BurnWork1.ValveSafety.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[1].ValveSafety.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[1].ValveSafety.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork1.ValveSafety.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group4.BurnWork1.ValveSafety.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[1].ValveSafety.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[1].ValveSafety.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group4.BurnWork1.ValveSafety.bClose</node-path>
@@ -19118,24 +19130,6 @@
     <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[2].fPressPFixat</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork2.eBurnIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[2].eBurnIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork2.eBurnProtections</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[2].eBurnProtections</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork2.ePressIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[2].ePressIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
     <node-path>Application.Group4.BurnWork2.fIgnRemainingTimeStep</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
@@ -19170,6 +19164,24 @@
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
     <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[2].fPressRemainingTimeStep</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group4.BurnWork2.eBurnIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[2].eBurnIgn</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group4.BurnWork2.eBurnProtections</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[2].eBurnProtections</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group4.BurnWork2.ePressIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[2].ePressIgn</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group4.BurnWork2.DamperGas.bM</node-path>
@@ -19466,16 +19478,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[2].Valve1.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork2.Valve1.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group4.BurnWork2.Valve1.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[2].Valve1.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[2].Valve1.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork2.Valve1.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group4.BurnWork2.Valve1.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[2].Valve1.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[2].Valve1.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group4.BurnWork2.Valve1.bClose</node-path>
@@ -19556,16 +19568,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[2].Valve2.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork2.Valve2.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group4.BurnWork2.Valve2.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[2].Valve2.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[2].Valve2.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork2.Valve2.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group4.BurnWork2.Valve2.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[2].Valve2.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[2].Valve2.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group4.BurnWork2.Valve2.bClose</node-path>
@@ -19646,16 +19658,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[2].ValveSafety.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork2.ValveSafety.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group4.BurnWork2.ValveSafety.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[2].ValveSafety.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[2].ValveSafety.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork2.ValveSafety.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group4.BurnWork2.ValveSafety.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[2].ValveSafety.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[2].ValveSafety.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group4.BurnWork2.ValveSafety.bClose</node-path>
@@ -20126,24 +20138,6 @@
     <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[3].fPressPFixat</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork3.eBurnIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[3].eBurnIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork3.eBurnProtections</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[3].eBurnProtections</nodeId>
-  </item>
-  <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork3.ePressIgn</node-path>
-    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
-    <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[3].ePressIgn</nodeId>
-  </item>
-  <item Binding="Introduced">
     <node-path>Application.Group4.BurnWork3.fIgnRemainingTimeStep</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
@@ -20178,6 +20172,24 @@
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
     <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[3].fPressRemainingTimeStep</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group4.BurnWork3.eBurnIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[3].eBurnIgn</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group4.BurnWork3.eBurnProtections</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[3].eBurnProtections</nodeId>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Application.Group4.BurnWork3.ePressIgn</node-path>
+    <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
+    <nodeIdType>String</nodeIdType>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[3].ePressIgn</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group4.BurnWork3.DamperGas.bM</node-path>
@@ -20474,16 +20486,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[3].Valve1.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork3.Valve1.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group4.BurnWork3.Valve1.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[3].Valve1.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[3].Valve1.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork3.Valve1.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group4.BurnWork3.Valve1.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[3].Valve1.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[3].Valve1.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group4.BurnWork3.Valve1.bClose</node-path>
@@ -20564,16 +20576,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[3].Valve2.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork3.Valve2.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group4.BurnWork3.Valve2.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[3].Valve2.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[3].Valve2.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork3.Valve2.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group4.BurnWork3.Valve2.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[3].Valve2.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[3].Valve2.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group4.BurnWork3.Valve2.bClose</node-path>
@@ -20654,16 +20666,16 @@
     <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[3].ValveSafety.bInvertCtrl</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork3.ValveSafety.Settings.bOnlyHCap</node-path>
+    <node-path>Application.Group4.BurnWork3.ValveSafety.Settings.bHasHCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[3].ValveSafety.bOnlyHCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[3].ValveSafety.bHasHCap</nodeId>
   </item>
   <item Binding="Introduced">
-    <node-path>Application.Group4.BurnWork3.ValveSafety.Settings.bOnlyLCap</node-path>
+    <node-path>Application.Group4.BurnWork3.ValveSafety.Settings.bHasLCap</node-path>
     <namespace>urn:ProsoftSystems:regul_ua_server:iec_data</namespace>
     <nodeIdType>String</nodeIdType>
-    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[3].ValveSafety.bOnlyLCap</nodeId>
+    <nodeId>Application.GVL.DataProg.Group.Group[4].BurnWork.BurnWork[3].ValveSafety.bHasLCap</nodeId>
   </item>
   <item Binding="Introduced">
     <node-path>Application.Group4.BurnWork3.ValveSafety.bClose</node-path>

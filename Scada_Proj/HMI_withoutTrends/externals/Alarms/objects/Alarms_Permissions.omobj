@@ -1,0 +1,228 @@
+<type access-modifier="private" name="Alarms_Permissions" display-name="Разрешения пользователя" uuid="eaa1f2f7-6334-4d05-a44d-ca72425d2f9f" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="">
+	<object access-modifier="private" name="Context" display-name="Context" uuid="1524d41c-370c-41b9-9063-5b51181f70da" base-type="SecurityContext" base-type-id="d9cb0fff-b70a-4e2d-833d-3f73cf74e0dd" ver="2">
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="CurrentUserChanged">
+			<body kind="om">
+				<![CDATA[UserName.domain = this.CurrentUserDisplayName;]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="Token_Acknowledgment" display-name="Token_Acknowledgment" uuid="9b6b5d81-263c-4b71-936f-b46314b8ea75" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" ver="2">
+			<init target="Right" ver="5" value="Acknowledgment"/>
+			<init target="SecurityContext" ver="5" ref="Context"/>
+			<init target="Application" ver="5" ref="SecurityApplication"/>
+		</object>
+		<object access-modifier="private" name="Token_ClearCurrentEvents" display-name="Token_ClearCurrentEvents" uuid="86eb15a2-a2b9-450a-9e35-451f638b7d08" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" ver="2">
+			<init target="Right" ver="5" value="ClearCurrentEvents"/>
+			<init target="SecurityContext" ver="5" ref="Context"/>
+			<init target="Application" ver="5" ref="SecurityApplication"/>
+		</object>
+		<object access-modifier="private" name="Token_EditSettings" display-name="Token_EditSettings" uuid="7ebb8178-2f92-4499-aa84-11210bb11616" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" ver="2">
+			<init target="Right" ver="5" value="EditSettings"/>
+			<init target="SecurityContext" ver="5" ref="Context"/>
+			<init target="Application" ver="5" ref="SecurityApplication"/>
+		</object>
+		<object access-modifier="private" name="Token_ExportDataAvailability" display-name="Token_ExportDataAvailability" uuid="4592523d-d435-4f5a-8798-bb5c71fd12c9" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" ver="2">
+			<init target="Right" ver="5" value="ExportDataAvailability"/>
+			<init target="SecurityContext" ver="5" ref="Context"/>
+			<init target="Application" ver="5" ref="SecurityApplication"/>
+		</object>
+		<object access-modifier="private" name="Token_Filtering" display-name="Token_Filtering" uuid="87d56022-9cdb-4e10-b772-e8d47617b5fc" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" ver="2">
+			<init target="Right" ver="5" value="Filtering"/>
+			<init target="SecurityContext" ver="5" ref="Context"/>
+			<init target="Application" ver="5" ref="SecurityApplication"/>
+		</object>
+		<object access-modifier="private" name="Token_SoundPlaybackManagment" display-name="Token_SoundPlaybackManagment" uuid="987e5550-70fe-4363-b317-686ceed27aba" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" ver="2">
+			<init target="Right" ver="5" value="SoundPlaybackManagment"/>
+			<init target="SecurityContext" ver="5" ref="Context"/>
+			<init target="Application" ver="5" ref="SecurityApplication"/>
+		</object>
+		<object access-modifier="private" name="Token_TakeCurrentEventsSnapshot" display-name="Token_TakeCurrentEventsSnapshot" uuid="92bf25f3-b9c2-425b-8840-95fda809eeaa" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" ver="2">
+			<init target="Right" ver="5" value="TakeCurrentEventsSnapshot"/>
+			<init target="SecurityContext" ver="5" ref="Context"/>
+			<init target="Application" ver="5" ref="SecurityApplication"/>
+		</object>
+		<object access-modifier="private" name="Token_ViewCurrentEvents" display-name="Token_ViewCurrentEvents" uuid="2b498a3d-bd96-44bc-ac23-192a88f7aa02" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" ver="2">
+			<init target="Right" ver="5" value="ViewCurrentEvents"/>
+			<init target="SecurityContext" ver="5" ref="Context"/>
+			<init target="Application" ver="5" ref="SecurityApplication"/>
+		</object>
+		<object access-modifier="private" name="Token_ViewEventHistory" display-name="Token_ViewEventHistory" uuid="8b1a5ea6-361e-4bf7-be0c-e1154cb6bdc3" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" ver="2">
+			<init target="Right" ver="5" value="ViewEventHistory"/>
+			<init target="SecurityContext" ver="5" ref="Context"/>
+			<init target="Application" ver="5" ref="SecurityApplication"/>
+		</object>
+		<object access-modifier="private" name="Token_EventTableSortAvailability" display-name="Token_EventTableSortAvailability" uuid="927d98f6-f31e-4ac2-8191-f4707b80e7d3" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" ver="2">
+			<init target="Right" ver="5" value="EventTableSortAvailability"/>
+			<init target="SecurityContext" ver="5" ref="Context"/>
+			<init target="Application" ver="5" ref="SecurityApplication"/>
+		</object>
+		<object access-modifier="private" name="Token_FileSystemAccess" display-name="Token_FileSystemAccess" uuid="0f6f5868-be0c-4783-b8e8-62b2bb1dee46" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" ver="2">
+			<init target="Right" ver="5" value="FileSystemAccess"/>
+			<init target="SecurityContext" ver="5" ref="Context"/>
+			<init target="Application" ver="5" ref="SecurityApplication"/>
+		</object>
+		<object access-modifier="private" name="Token_Printing" display-name="Token_Printing" uuid="78d335ed-7a41-4645-b70d-c1dbfaef471e" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" ver="2">
+			<init target="Right" ver="5" value="Printing"/>
+			<init target="SecurityContext" ver="5" ref="Context"/>
+			<init target="Application" ver="5" ref="SecurityApplication"/>
+		</object>
+		<object access-modifier="private" name="Token_Suppression" display-name="Token_Suppression" uuid="db727cb3-c06d-4295-8e0f-abd95f5fa7cc" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" ver="2">
+			<init target="Right" ver="5" value="Suppression"/>
+			<init target="SecurityContext" ver="5" ref="Context"/>
+			<init target="Application" ver="5" ref="SecurityApplication"/>
+		</object>
+		<object access-modifier="private" name="UsingSecurity" display-name="UsingSecurity" uuid="6ba2a725-3434-4311-a0d0-5dbcdabba9ca" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+		<init target="UsingSecurity" ver="5">
+			<expr>
+				<![CDATA[UseSecurity]]>
+			</expr>
+		</init>
+		<object access-modifier="private" name="UserName" display-name="UserName" uuid="57e96016-ba50-4d9a-bec5-23262263611f" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1">
+			<object access-modifier="private" name="local" display-name="local" uuid="b87af271-f8f4-4028-af29-0a18c86d0697" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="domain" display-name="domain" uuid="4ff43116-07bf-4d4f-8296-57b46ede749b" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		</object>
+		<do-trace access-modifier="private" target="UserName" ver="5">
+			<body>
+				<![CDATA[Context.UsingSecurity ? UserName.domain : UserName.local]]>
+			</body>
+		</do-trace>
+	</object>
+	<param access-modifier="private" name="SecurityApplication" display-name="Имя приложения с правами безопасности" uuid="1286a73b-8d7f-42d4-8d5e-0b87891a7a59" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+	<init target="UseSecurity" ver="5" value="false"/>
+	<param access-modifier="private" name="UseSecurity" display-name="Использовать сервер безопасности для определения прав" uuid="e800c97f-b5d6-48b0-a832-cf41c5e29dad" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="2"/>
+	<do access-modifier="private" name="LogOn" display-name="LogOn" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<body kind="om">
+			<![CDATA[// При использовании безопасности возвращаем false
+if (Context.UsingSecurity)
+	return false;
+	
+// Имя пользователя не может быть пустым
+if (userName == "")
+	return false;
+
+here.Context.UserName.local = userName;
+return true;
+]]>
+		</body>
+		<param access-modifier="private" name="userName" display-name="" uuid="bb6c291e-b838-4bd8-9809-2628d585370b" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+	</do>
+	<do access-modifier="private" name="LogOff" display-name="LogOff" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<body kind="om">
+			<![CDATA[// При использовании безопасности возвращаем false
+if (Context.UsingSecurity)
+	return false;
+
+here.Context.UserName.local = "";
+return true;
+]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="Permission" display-name="Permission" uuid="e7225ff0-cc60-4a4b-ae5d-57cfb22954d1" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="EditingSettings" display-name="EditingSettings" uuid="2f72c3e4-7c8c-43fc-b412-16bc9d16e870" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+		<do-trace access-modifier="private" target="EditingSettings" ver="5">
+			<body>
+				<![CDATA[IsFullAccessAllowed && EditingSettingsAvailable && (!Context.UsingSecurity || Context.Token_EditSettings.Value)]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="ExportData" display-name="ExportData" uuid="ade73f89-b4f5-45e5-baa8-38bec73d63e7" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+		<do-trace access-modifier="private" target="ExportData" ver="5">
+			<body>
+				<![CDATA[ExportDataAvailability &&(!Context.UsingSecurity || Context.Token_ExportDataAvailability.Value)]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="Filtering" display-name="Filtering" uuid="3c5884da-301f-4d29-ac9e-13c48ca283c5" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+		<do-trace access-modifier="private" target="Filtering" ver="5">
+			<body>
+				<![CDATA[FilterAvailable && (!Context.UsingSecurity || Context.Token_Filtering.Value)]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="ViewCurrentEvents" display-name="ViewCurrentEvents" uuid="104c97f8-d5dd-4da2-861c-1053c43f01f3" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+		<do-trace access-modifier="private" target="ViewCurrentEvents" ver="5">
+			<body>
+				<![CDATA[CurrentEventsAvailable &&(!Context.UsingSecurity || Context.Token_ViewCurrentEvents.Value)]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="ViewEventHistory" display-name="ViewEventHistory" uuid="a14e9928-cb4e-414c-8758-6dad10cf87c7" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+		<do-trace access-modifier="private" target="ViewEventHistory" ver="5">
+			<body>
+				<![CDATA[EventHistoryAvailable && (!Context.UsingSecurity || Context.Token_ViewEventHistory.Value)]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="Printing" display-name="Printing" uuid="07c33823-11c2-462e-85fc-f44b8e899b3a" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+		<do-trace access-modifier="private" target="Printing" ver="5">
+			<body>
+				<![CDATA[PrintingAvailable && (!Context.UsingSecurity || Context.Token_Printing.Value)]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="EventTableSort" display-name="EventTableSort" uuid="d7f4bca8-a5d6-4c3f-94f8-f0531e0e3c49" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+		<do-trace access-modifier="private" target="EventTableSort" ver="5">
+			<body>
+				<![CDATA[EventTableSortAvailability && IsFullAccessAllowed && (!Context.UsingSecurity || Context.Token_EventTableSortAvailability.Value)]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="FileSystem" display-name="FileSystem" uuid="b9b25b1f-211f-4f4f-af0c-423a30eb67bf" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+		<do-trace access-modifier="private" target="FileSystem" ver="5">
+			<body>
+				<![CDATA[IsFullAccessAllowed && FileSystemAccess && (!Context.UsingSecurity || Context.Token_FileSystemAccess.Value)]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="Acknowledgment" display-name="Acknowledgment" uuid="783c4cef-55e2-4d04-937c-71561838e555" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+			<object access-modifier="private" name="Result" display-name="Result" uuid="09cef4d6-35c1-4247-b3e6-5fc566e40609" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5" description="" cardinal="1"/>
+			<do-trace access-modifier="private" target="Result" ver="5">
+				<body>
+					<![CDATA[Context.UsingSecurity ? (AcknowledgmentAvailable && Context.Token_Acknowledgment.Value ? 1 : -2) : (Str.Length(Context.UserName)>0 ? (AcknowledgmentAvailable?1:-2) : -1)]]>
+				</body>
+			</do-trace>
+		</object>
+		<do-trace access-modifier="private" target="Acknowledgment" ver="5">
+			<body>
+				<![CDATA[CurrentEventsAvailable && AcknowledgmentAvailable && (Context.UsingSecurity ? Context.Token_Acknowledgment.Value : Context.UserName!="")]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="ClearingCurrentEvents" display-name="ClearingCurrentEvents" uuid="2f16a7e0-1a99-42aa-a74b-f4607aee3872" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+			<object access-modifier="private" name="Result" display-name="Result" uuid="d7e0fd3d-ba49-4e8e-b50c-db8626469cf3" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5" description="" cardinal="1"/>
+			<do-trace access-modifier="private" target="Result" ver="5">
+				<body>
+					<![CDATA[Context.UsingSecurity ? (ClearingCurrentEventsAvailable && Context.Token_ClearCurrentEvents.Value ? 1 : -2) : (Str.Length(Context.UserName)>0 ? (ClearingCurrentEventsAvailable?1:-2) : -1)]]>
+				</body>
+			</do-trace>
+		</object>
+		<do-trace access-modifier="private" target="ClearingCurrentEvents" ver="5">
+			<body>
+				<![CDATA[ClearingCurrentEventsAvailable && (Context.UsingSecurity ? Context.Token_ClearCurrentEvents.Value : Context.UserName!="")]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="SoundManagment" display-name="SoundManagment" uuid="bb52a073-decd-4a07-8dca-9d1612c67a1e" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="Snapshot" display-name="Snapshot" uuid="09c5b806-6250-43f5-8fc8-b80acf23f9ff" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+		<do-trace access-modifier="private" target="SoundManagment" ver="5">
+			<body>
+				<![CDATA[SoundPlaybackManagmentAvailable && CurrentEventsAvailable && (!Context.UsingSecurity || Context.Token_SoundPlaybackManagment.Value)]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Snapshot" ver="5">
+			<body>
+				<![CDATA[SnapshotAvailable && CurrentEventsAvailable && (!Context.UsingSecurity || Context.Token_TakeCurrentEventsSnapshot.Value)]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="Suppressions" display-name="Suppressions" uuid="017cfb9a-c1f9-45b9-86b9-5dfaa98e4e73" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+		<do-trace access-modifier="private" target="Suppressions" ver="5">
+			<body>
+				<![CDATA[SuppressionAvailable && (!Context.UsingSecurity || Context.Token_Suppression.Value)]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="IsFullAccessAllowed" display-name="Разрешить полный доступ" uuid="43614f5f-44ec-4283-9803-8a6f02616c04" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="EditingSettingsAvailable" display-name="Доступность редактирования настроек" uuid="09d01a81-6d49-4a0b-96cd-6448b1ce58cf" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="ExportDataAvailability" display-name="Доступность сохранения данных в табличный файл" uuid="50dc2c63-edd8-49cc-9fff-b22bd1d42429" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="FilterAvailable" display-name="Доступность фильтрации" uuid="c0abc2f3-c773-4c1a-80ec-38f2d41be5cc" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="CurrentEventsAvailable" display-name="Доступность просмотра оперативных событий" uuid="e549dd2f-adc6-4b6e-a00e-baadb66e40d8" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="EventHistoryAvailable" display-name="Доступность просмотра истории событий" uuid="64de8412-de6a-41e8-b893-c2ceb6081167" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="PrintingAvailable" display-name="Доступность управления печатью" uuid="e8721c10-9b26-466f-a2c5-bd47dcff3915" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="EventTableSortAvailability" display-name="Видимость команд сортировки" uuid="bfed0ebb-f839-4a13-bf84-4bef655e0720" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="FileSystemAccess" display-name="Доступность файловой системы" uuid="72c9d40f-8d3a-481d-bedf-9116170acb6d" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="AcknowledgmentAvailable" display-name="Доступность функций квитирования" uuid="2ce6644d-d1b2-4c55-a979-c10dabfc0490" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="ClearingCurrentEventsAvailable" display-name="Доступность функций очистки" uuid="89bfb9b1-6d6d-4ad0-91ce-17d9304e2d77" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="SoundPlaybackManagmentAvailable" display-name="Доступность кнопок управления проигрыванием звуков" uuid="30a558b5-1c02-4c4c-8bb0-272080c8d959" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="SnapshotAvailable" display-name="Доступность кнопок функции Снимок" uuid="56e88a7e-9f30-48f4-b917-409bc748ca85" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="SuppressionAvailable" display-name="Разрешение использования блокировки и подавления" uuid="4af133d3-a472-41ad-8d1c-6bea0ecca0c0" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+</type>
+

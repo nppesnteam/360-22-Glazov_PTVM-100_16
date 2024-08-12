@@ -1,0 +1,219 @@
+<type access-modifier="private" name="Valve" display-name="Valve" uuid="98113973-9854-4dd1-9221-2cfccad5aaa0" base-type="Crane" base-type-id="a41f6a47-a3c4-4aed-b634-50f79381fb31" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<object access-modifier="private" name="Line" display-name="Line" uuid="1a51d411-11c6-4c7e-b4ac-06f266c6ea65" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
+		<designed target="X" value="-4" ver="5"/>
+		<designed target="Y" value="10" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="7" ver="5"/>
+		<designed target="Height" value="0" ver="5"/>
+		<designed target="PenColor" value="0xff888888" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="0xff000000" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<object access-modifier="private" name="Point_1" display-name="Point_1" uuid="79cdd27d-6f27-429d-a5fa-d0ca7deaee27" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Point_2" display-name="Point_2" uuid="ca62c570-896a-4026-a95e-7f7bc245b69e" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+			<designed target="X" value="7" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+		</object>
+		<do-trace access-modifier="private" target="PenColor" ver="5">
+			<body>
+				<![CDATA[Color]]>
+			</body>
+		</do-trace>
+		<designed target="Flip" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="Rectangle" display-name="Rectangle" uuid="998e44f7-1fbf-44ec-bcc1-9146102c015e" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+		<designed target="X" value="-14" ver="5"/>
+		<designed target="Y" value="5" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="10" ver="5"/>
+		<designed target="Height" value="10" ver="5"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<designed target="PenColor" value="0xff888888" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="0xff00ff00" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<do-trace access-modifier="private" target="PenColor" ver="5">
+			<body>
+				<![CDATA[Color]]>
+			</body>
+		</do-trace>
+		<designed target="Flip" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="BrushColor" ver="5">
+			<conditional-expr>
+				<condition>
+					<![CDATA[bCtrl]]>
+				</condition>
+				<expr>
+					<![CDATA[0xff00ff00]]>
+				</expr>
+			</conditional-expr>
+			<default-expr>
+				<expr>
+					<![CDATA[0xff000000]]>
+				</expr>
+			</default-expr>
+		</do-trace>
+	</object>
+	<do-trace access-modifier="private" target="Tooltip" ver="5">
+		<body>
+			<![CDATA[NameExtended]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="Alarm" ver="5">
+		<body>
+			<![CDATA[bErrorEndCaps||bErrorCantCtrl]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="bCtrl" display-name="bCtrl" uuid="944897c8-f30e-49d5-9685-9c86f60fda2a" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Path" ver="5" value="bCtrl"/>
+		<init target="Source" ver="5" ref="craneApSource"/>
+	</object>
+	<object access-modifier="private" name="OpenModuleWindow" display-name="OpenModuleWindow" uuid="6ff09d85-9161-49de-a2dd-38c2d6cea944" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" cardinal="1">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[!isOpenedModule]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+			<object access-modifier="private" uuid="792b7fc3-457d-4cf2-83d2-1be302675304" base-type="Клапан" base-type-id="45774b14-162c-4af4-8b31-2135aa000b2b" ver="5">
+				<init target="refData" ver="5" ref="here"/>
+				<designed target="WindowPosition" value="0" ver="5"/>
+				<init target="WindowX" ver="5" ref="posX"/>
+				<init target="WindowY" ver="5" ref="posY"/>
+			</object>
+		</do-on>
+	</object>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+		<body kind="om">
+			<![CDATA[mX = TypeConvert.ToFloat(ScreenX(MouseX, MouseY));
+mY = TypeConvert.ToFloat(ScreenY(MouseX, MouseY));
+if (mX+250>1920)
+{
+	posX=mX-(260-(1920-mX));
+}
+else
+{
+	posX=mX;
+}
+if (mY+170>1080)
+{
+	posY=mY-(170-(1080-mY));
+}
+else
+{
+	posY=mY;
+}
+OpenModuleWindow.Invoke();]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="InConfig" display-name="InConfig" uuid="2e1d85d2-1aa2-4b4c-9b25-d30d55487dee" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
+		<designed target="Active" value="false" ver="5"/>
+		<designed target="ReAdvise" value="0" ver="5"/>
+		<designed target="Location" value="" ver="5"/>
+		<designed target="Port" value="4388" ver="5"/>
+		<designed target="HistoryPort" value="4950" ver="5"/>
+		<designed target="Path" value="InSettings" ver="5"/>
+		<designed target="ClientDisplayName" value="HMI" ver="5"/>
+		<designed target="ClientId" value="HMI" ver="5"/>
+		<object access-modifier="private" name="bInvertCtrl" display-name="bInvertCtrl" uuid="da4284fd-3c5e-414e-8da5-f700d0da5168" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Path" ver="5" value="bInvertCtrl"/>
+			<init target="Source" ver="5" ref="InConfig"/>
+		</object>
+		<object access-modifier="private" name="bHasHCap" display-name="bHasHCap" uuid="7d04fe39-7892-445f-a6fa-cb4b71704b02" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Path" ver="5" value="bHasHCap"/>
+			<init target="Source" ver="5" ref="InConfig"/>
+		</object>
+		<object access-modifier="private" name="bHasLCap" display-name="bHasLCap" uuid="3f318806-49f5-45f2-9608-735e9107c933" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Path" ver="5" value="bHasLCap"/>
+			<init target="Source" ver="5" ref="InConfig"/>
+		</object>
+		<init target="ParentSource" ver="5" ref="craneApSource"/>
+	</object>
+	<object access-modifier="private" name="OutConfig" display-name="OutConfig" uuid="ac1680a0-c6d5-4af8-b353-089706389b90" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
+		<designed target="Active" value="false" ver="5"/>
+		<designed target="ReAdvise" value="0" ver="5"/>
+		<designed target="Location" value="" ver="5"/>
+		<designed target="Port" value="4388" ver="5"/>
+		<designed target="HistoryPort" value="4950" ver="5"/>
+		<designed target="Path" value="OutSettings" ver="5"/>
+		<designed target="ClientDisplayName" value="HMI" ver="5"/>
+		<designed target="ClientId" value="HMI" ver="5"/>
+		<object access-modifier="private" name="bInvertCtrl" display-name="bInvertCtrl" uuid="9a0a5b2a-7e8b-438b-86f4-67d028872ac3" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Path" ver="5" value="bInvertCtrl"/>
+			<init target="Source" ver="5" ref="OutConfig"/>
+		</object>
+		<object access-modifier="private" name="bHasHCap" display-name="bHasHCap" uuid="8f075426-ee99-4de2-8647-5918e32105c0" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Path" ver="5" value="bHasHCap"/>
+			<init target="Source" ver="5" ref="OutConfig"/>
+		</object>
+		<object access-modifier="private" name="bHasLCap" display-name="bHasLCap" uuid="412a9c19-22b6-4238-8460-258772c2f7b4" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Path" ver="5" value="bHasLCap"/>
+			<init target="Source" ver="5" ref="OutConfig"/>
+		</object>
+		<init target="ParentSource" ver="5" ref="craneApSource"/>
+	</object>
+	<object access-modifier="private" name="OpenSettingsWindow" display-name="OpenSettingsWindow" uuid="dc74cbd0-5deb-45d0-8af9-f10c6b7f0cd7" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" cardinal="1">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[!isOpenedModule && unit.Security.AllowAllWindows.Value]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+			<object access-modifier="private" uuid="235261cd-0056-481f-8e26-8f0eb790dde2" base-type="Клапан (настройки)" base-type-id="d26030f5-5a15-4186-8ae7-bb741b6c9572" ver="5">
+				<init target="WindowY" ver="5" ref="posY"/>
+				<init target="WindowX" ver="5" ref="posX"/>
+				<init target="refData" ver="5" ref="here"/>
+				<designed target="WindowCaption" value="Клапан (настройки)" ver="5"/>
+				<init target="WindowCaption" ver="5" ref="NameExtended"/>
+			</object>
+		</do-on>
+	</object>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseRightClick">
+		<body kind="om">
+			<![CDATA[mX = TypeConvert.ToFloat(ScreenX(MouseX, MouseY));
+mY = TypeConvert.ToFloat(ScreenY(MouseX, MouseY));
+if (mX+250>1920)
+{
+	posX=mX-(260-(1920-mX));
+}
+else
+{
+	posX=mX;
+}
+if (mY+170>1080)
+{
+	posY=mY-(170-(1080-mY));
+}
+else
+{
+	posY=mY;
+}
+OpenSettingsWindow.Invoke();]]>
+		</body>
+	</do-on>
+</type>
+

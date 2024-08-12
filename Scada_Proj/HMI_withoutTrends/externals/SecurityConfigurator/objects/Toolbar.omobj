@@ -1,0 +1,1349 @@
+<type access-modifier="private" name="Toolbar" display-name="Toolbar" uuid="f3703f24-b4d9-4868-acaa-36cd107c7f01" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Flip" value="0" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="860" ver="5"/>
+	<designed target="Height" value="35" ver="5"/>
+	<designed target="RoundingRadius" value="0" ver="5"/>
+	<designed target="PenColor" value="0xff808080" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<object access-modifier="private" name="private" display-name="private" uuid="f32ac561-2376-4bdb-b3d1-270a30c46337" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="pConfigurator" display-name="pConfigurator" uuid="07d2ec67-20a3-45c9-91c7-1370c3eb537b" base-type="SecurityConfigurator" base-type-id="360fdf2a-a865-416c-855f-70126cfc646d" base-const="true" base-ref="true" ver="5" description=""/>
+		<init target="pConfigurator" ver="5" ref="init_Configurator"/>
+		<object access-modifier="private" name="theme" display-name="theme" uuid="0b81ba4a-f253-4f30-a669-6a64719df3c1" base-type="ToolbarTheme" base-type-id="a7287382-701b-4e63-a794-2f3ce4c48f31" ver="5" description="" cardinal="1">
+			<init target="init_Theme" ver="5" ref="here.init_Theme"/>
+		</object>
+	</object>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="727e3a8c-45a8-4bb4-8fa6-0736741ba4a5" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[private.theme.ToolbarBrushColor]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="Layout" display-name="Layout" uuid="6a7da785-d6a8-4997-aebd-a08d5183b590" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5">
+		<designed target="Orientation" value="1" ver="5"/>
+		<designed target="Gap" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="btnSave" display-name="btnSave" uuid="3bf9376d-988d-4727-9007-9f7b163513ac" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="1" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/SaveFile24.png"/>
+		<designed target="Tooltip" value="Сохранить изменения" ver="5"/>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.Common.DoSave = true;]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.ConfigurationAccess.Value &&
+here.private.pConfigurator.Commands.Common.DoSave.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<init target="IsVisible" ver="5" value="true"/>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="separator_0" display-name="separator_0" uuid="4c78a6c9-7c87-47fd-8b5a-30a6757cb2e2" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5">
+		<designed target="X" value="19.083333333333332" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<designed target="Width" value="8" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnSaveBackup" display-name="btnSaveBackup" uuid="d51f7f3d-513e-4596-801d-952d501c726b" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="27.166666666666664" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/SaveBackup24.png"/>
+		<designed target="Tooltip" value="Сохранить резервную копию конфигурации..." ver="5"/>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.SaveBackup.Invoke();]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.SaveBackup.Enabled]]>
+			</body>
+		</do-trace>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnRestoreBackup" display-name="btnRestoreBackup" uuid="a323d19e-0db8-47b2-9d9b-9494b3575a14" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="46.25" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/RestoreBackup24.png"/>
+		<designed target="Tooltip" value="Восcтановить конфигурацию из резервной копии..." ver="5"/>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.RestoreBackup.Invoke();]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.RestoreBackup.Enabled]]>
+			</body>
+		</do-trace>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="separator_1" display-name="separator_1" uuid="ab0c8930-73df-4709-bffa-fbf15775efea" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5">
+		<designed target="X" value="64.333333333333329" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<designed target="Width" value="8" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnApplications" display-name="btnApplications" uuid="7fc979f0-7b92-4434-8fb9-8a7a94253571" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="72.416666666666657" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/Applications24.png"/>
+		<designed target="Tooltip" value="Показать список приложений" ver="5"/>
+		<do-trace access-modifier="private" target="Checked" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.AppList]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Open(here.private.pConfigurator.Commands.Common.Forms.AppList);]]>
+			</body>
+		</do-on>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnGroups" display-name="btnGroups" uuid="9c3fa488-15b5-4c0c-af01-25070b623c64" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="91.499999999999986" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/Groups24.png"/>
+		<designed target="Tooltip" value="Показать группы пользователей" ver="5"/>
+		<do-trace access-modifier="private" target="Checked" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.GroupList]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Open(here.private.pConfigurator.Commands.Common.Forms.GroupList);]]>
+			</body>
+		</do-on>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnUsers" display-name="btnUsers" uuid="f08f0ac3-192e-4ac5-8830-eb9f6d02c5b3" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="110.58333333333331" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/UserList24.png"/>
+		<init target="Checked" ver="5" value="false"/>
+		<designed target="Tooltip" value="Показать список пользователей" ver="5"/>
+		<do-trace access-modifier="private" target="Checked" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserList]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Open(here.private.pConfigurator.Commands.Common.Forms.UserList);]]>
+			</body>
+		</do-on>
+		<init target="IsVisible" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="separator_2" display-name="separator_2" uuid="42206756-f15d-4c4d-9519-9e1dc308ae7c" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5">
+		<designed target="X" value="128.66666666666666" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[btnApplications.IsVisible || btnGroups.IsVisible || btnUsers.IsVisible]]>
+			</body>
+		</do-trace>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<designed target="Width" value="8" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnAppAdd" display-name="btnAppAdd" uuid="267a6a64-8550-4752-8495-21c2633086fc" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="136.75" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/ApplicationAdd24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.AppList && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Добавить приложение..." ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.AppList.DoCreate = true;]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.Common.GoTo.CanExecute && here.private.pConfigurator.Commands.AppList.DoCreate.CanExecute]]>
+			</body>
+		</do-trace>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnAppEdit" display-name="btnAppEdit" uuid="3c7d0c2a-78fb-4a5f-bf60-50052c3054c9" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="155.83333333333334" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/ApplicationEdit24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.AppList && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.AppList.DoEdit.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Редактировать приложение..." ver="5"/>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.AppList.DoEdit = true;]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnAppRemove" display-name="btnAppRemove" uuid="7d74966f-9ad4-494c-b294-0d992ccd921c" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="174.91666666666669" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/ApplicationRemove24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.AppList && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Удалить приложение..." ver="5"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.AppList.DoRemoveSelected.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.AppList.DoRemoveSelected = true;]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnRoleEditor" display-name="btnRoleEditor" uuid="a8389efb-59bb-4208-8c75-2b1cfed303d6" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="194.00000000000003" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/RoleEdit24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.AppEdit && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<init target="Checked" ver="5" value="false"/>
+		<designed target="Tooltip" value="Редактирование ролей" ver="5"/>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Open(here.private.pConfigurator.Commands.Common.Forms.RoleEditor);]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnAppCreateRole" display-name="btnAppCreateRole" uuid="99d7309d-7f9d-4d90-8968-fcf142fb2e65" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="213.08333333333337" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/RoleAdd24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.RoleEditor && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<init target="Checked" ver="5" value="false"/>
+		<designed target="Tooltip" value="Добавить роль" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.Roles.DoCreate = true;]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.Roles.DoCreate.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnAppRenameRole" display-name="btnAppRenameRole" uuid="c3c42e6c-de36-4e28-97f4-5b1cf3dcfbd8" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="232.16666666666671" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/RoleRename24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.RoleEditor && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<init target="Checked" ver="5" value="false"/>
+		<designed target="Tooltip" value="Сменить имя роли" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.Roles.DoEdit = true;]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.Roles.DoEdit.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnAppDeleteRole" display-name="btnAppDeleteRole" uuid="7b79b34c-f1f0-4292-b5fb-c5de41f364e7" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="251.25000000000006" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/RoleRemove24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.RoleEditor && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<init target="Checked" ver="5" value="false"/>
+		<designed target="Tooltip" value="Удалить роль" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.Roles.DoRemoveSelected = true;]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.Roles.DoRemoveSelected.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnGroupAdd" display-name="btnGroupAdd" uuid="05c30c74-0dac-4f73-a472-b03078b40d84" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="270.33333333333337" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/GroupAdd24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.GroupList && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Добавить группу..." ver="5"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.GroupList.DoCreate.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.GroupList.DoCreate = true;]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnGroupEdit" display-name="btnGroupEdit" uuid="12459939-4188-45ca-b663-cccbf0fa16c0" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="289.41666666666669" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/GroupEdit24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.GroupList && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.GroupList.DoEdit.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Редактировать группу..." ver="5"/>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.GroupList.DoEdit = true;]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnGroupRemove" display-name="btnGroupRemove" uuid="1b8aa6fe-f3fb-4126-a986-a7113b267be3" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="308.5" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/GroupRemove24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.GroupList && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.GroupList.DoRemoveSelected.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Удалить группу..." ver="5"/>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.GroupList.DoRemoveSelected = true;]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnGroupAddRole" display-name="btnGroupAddRole" uuid="ddcd1f59-9665-463a-9dd6-41dea3f7bfd7" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="327.58333333333331" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/RoleAdd24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.GroupEdit && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Добавить роли группе" ver="5"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.Group.DoAddRole.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.Group.DoAddRole = true;]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnGroupDeleteRole" display-name="btnGroupDeleteRole" uuid="c9639da4-4a7f-4ef7-ad73-e23f9e69a93c" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="346.66666666666663" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/RoleRemove24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.GroupEdit && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Лишить группу ролей" ver="5"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.Group.DoDeleteRole.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.Group.DoDeleteRole = true;]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnUserAdd" display-name="btnUserAdd" uuid="0d7a664e-4b7b-4f16-b411-9a7190b4d0a1" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="365.74999999999994" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/UserAdd24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[(here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserList || here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserEdit) && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Добавить учетную запись пользователя..." ver="5"/>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[if (here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserList)
+	here.private.pConfigurator.Commands.UserList.DoCreate = true;
+else if (here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserEdit)
+	here.private.pConfigurator.Commands.User.DoCreate = true;]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[(here.private.pConfigurator.Commands.UserList.DoCreate.CanExecute || here.private.pConfigurator.Commands.User.DoCreate.CanExecute) &&  here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnUserEdit" display-name="btnUserEdit" uuid="70f6fc82-4009-4836-b99c-0f0cc1573b1a" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="384.83333333333326" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/UserEdit24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserList && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.UserList.DoEdit.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Редактировать учетную запись пользователя..." ver="5"/>
+		<init target="Focus" ver="5" value="false"/>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.UserList.DoEdit = true;]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnUserRemove" display-name="btnUserRemove" uuid="668ca0b1-e2ba-4931-84a1-cde25dad97a5" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="403.91666666666657" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/UserRemove24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserList && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.UserList.DoRemoveSelected.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Удалить учетную запись пользователя..." ver="5"/>
+		<designed target="Enabled" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.UserList.DoRemoveSelected = true;]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnUserChangePassword" display-name="btnUserChangePassword" uuid="eb135189-82bb-426f-9f38-87ff85aba699" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="422.99999999999989" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/PasswordEdit24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserEdit && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.User.DoChangePassword.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Задать пароль пользователя" ver="5"/>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.User.DoChangePassword = true;]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnUserAddGroup" display-name="btnUserAddGroup" uuid="e789054f-67ba-4c83-84d8-fb356b6c2aa1" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="442.0833333333332" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/GroupAdd24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[(here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserEdit || here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserCreate) && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Добавить в группу" ver="5"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.User.DoAddToGroup.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.User.DoAddToGroup = true;]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnUserRemoveGroup" display-name="btnUserRemoveGroup" uuid="b7f1ee83-07b2-4867-810e-ff7de12649c4" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="461.16666666666652" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/GroupRemove24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[(here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserEdit || here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserCreate) && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Удалить из группы" ver="5"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.User.DoRemoveFromGroup.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.User.DoRemoveFromGroup= true;
+]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnUserAddRole" display-name="btnUserAddRole" uuid="ecefe999-0724-43c3-8c65-66e59bc010a9" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="480.24999999999983" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/RoleAdd24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[(here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserEdit || here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserCreate) && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Добавить роли пользователю" ver="5"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.User.DoAddRole.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.User.DoAddRole = true;]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnUserDeleteRole" display-name="btnUserDeleteRole" uuid="71034a5e-8a0d-4830-939c-4244b47d9fec" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="499.33333333333314" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/RoleRemove24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[(here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserEdit || here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserCreate) && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Лишить пользователя ролей" ver="5"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.User.DoDeleteRole.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.User.DoDeleteRole = true;]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="separator_3" display-name="separator_3" uuid="a9d12f30-a7c4-4652-8e8e-0d7fb574f753" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5">
+		<designed target="X" value="517.41666666666652" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<designed target="Width" value="8" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnAppAddBoolRight" display-name="btnAppAddBoolRight" uuid="ca567683-2d39-417c-beb4-4109c7a79e86" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="525.49999999999989" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/BooleanTokenAdd24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.AppEdit && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Добавить логическое право" ver="5"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.Application.DoCreateBoolToken.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.Application.DoCreateBoolToken = true;]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnAppAddStringRight" display-name="btnAppAddStringRight" uuid="c3b8abee-a70a-40da-81f8-beff83f2804e" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="544.58333333333326" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/StringTokenAdd24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.AppEdit && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Добавить строковое право" ver="5"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.Application.DoCreateStringToken.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.Application.DoCreateStringToken = true;]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnAppChangeRight" display-name="btnAppChangeRight" uuid="e7e32478-a4db-4e9b-b836-4be1c008a0ed" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="563.66666666666663" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/RightEdit24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.AppEdit && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Изменить выделенное право" ver="5"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.Application.DoChangeToken.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.Application.DoChangeToken = true;]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnAppRemoveRight" display-name="btnAppRemoveRight" uuid="1b13ff85-24d0-4cbb-9f16-aca7a11ea812" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="582.75" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/RightRemove24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.AppEdit && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Удалить выделенное право" ver="5"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.Application.DoDeleteToken.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.Application.DoDeleteToken = true;]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnGroupAddRight" display-name="btnGroupAddRight" uuid="da43b84e-1400-4783-b9dd-9c2ac40ed64e" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="601.83333333333337" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/RightAdd24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.GroupEdit && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Добавить права" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.Group.DoAddRights = true;]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.Group.DoAddRights.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnGroupRemoveRight" display-name="btnGroupRemoveRight" uuid="fa7ed9f5-4042-4690-968a-0a625d5ef7e4" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="620.91666666666674" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/RightRemove24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.GroupEdit && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Удалить права" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.Group.DoDeleteRights = true;]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.Group.DoDeleteRights.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnUserAddRight" display-name="btnUserAddRight" uuid="6cdc0aac-6f83-49d3-b6b2-b027cc38125b" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="640.00000000000011" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/RightAdd24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[(here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserEdit || here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserCreate) && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<init target="Focus" ver="5" value="false"/>
+		<init target="Checked" ver="5" value="false"/>
+		<designed target="Tooltip" value="Добавить права" ver="5"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.User.DoAddRights.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.User.DoAddRights = true;]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnUserRemoveRight" display-name="btnUserRemoveRight" uuid="bdfd25d7-644a-47ea-b3d2-278995f5e3b8" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="659.08333333333348" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/RightRemove24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[(here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserEdit || here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserCreate) && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.User.DoDeleteRights.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Удалить права" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick" form-by-id="false">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.User.DoDeleteRights = true;]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnRoleAddRight" display-name="btnRoleAddRight" uuid="1a9e91da-3945-4abd-b951-2616bc776ff9" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="678.16666666666686" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/RightAdd24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[(here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.RoleEditor) && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<init target="Focus" ver="5" value="false"/>
+		<init target="Checked" ver="5" value="false"/>
+		<designed target="Tooltip" value="Добавить права" ver="5"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.Roles
+.DoAddRights.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.Roles.DoAddRights = true;]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnRoleRemoveRight" display-name="btnRoleRemoveRight" uuid="03c328f8-3e7c-43a2-8915-d1ff3135f92c" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="697.25000000000023" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/RightRemove24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[(here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.RoleEditor) && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.Roles.DoDeleteRights.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Удалить права" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick" form-by-id="false">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.Roles.DoDeleteRights = true;]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="separator_5" display-name="separator_5" uuid="7ca3ece9-6d0d-4e90-bee4-c32a36d82c1c" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5">
+		<designed target="X" value="715.3333333333336" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="8" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[(here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.AppEdit ||
+	here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.GroupEdit ||
+	here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserEdit ||
+	here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserCreate) &&
+here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnExportToFile" display-name="btnExportToFile" uuid="2f5c6537-5273-43fd-857d-ab4f7ee05217" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5" description="" cardinal="1">
+		<designed target="X" value="723.41666666666697" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/ExportToFile24.png"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.Common.DoExportToFile = true;]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserList || 
+here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.AppList || 
+here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.AppEdit]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.Common.DoExportToFile.CanExecute && 
+here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<init target="IconSize" ver="5" value="24"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<designed target="Tooltip" value="Экспорт в файл..." ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnImportFromFile" display-name="btnImportFromFile" uuid="abfe0adf-c7ad-48c8-b67b-cd638b6747b8" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="742.50000000000034" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/Import24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.AppList  && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Импорт из файла..." ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.Common.DoImport = true;]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.Common.GoTo.CanExecute && here.private.pConfigurator.Commands.Common.DoImport.CanExecute]]>
+			</body>
+		</do-trace>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="separator_6" display-name="separator_6" uuid="c572e300-c782-48ac-a7d4-8e7ca53d7963" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5">
+		<designed target="X" value="760.58333333333371" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="8" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[btnExportToFile.IsVisible]]>
+			</body>
+		</do-trace>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnGroupLock" display-name="btnGroupLock" uuid="8a775898-927b-48e6-9400-9edf119e1048" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="768.66666666666708" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/Lock24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.GroupEdit && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Заблокировать группу" ver="5"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.Group.DoLock.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<designed target="Enabled" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.Group.DoLock = true;]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnGroupUnlock" display-name="btnGroupUnlock" uuid="b4865740-c020-4d32-841b-b2391183a68b" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="787.75000000000045" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/Unlock24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.GroupEdit && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Разблокировать группу" ver="5"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.Group.DoUnlock.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.Group.DoUnlock = true;]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnUserLock" display-name="btnUserLock" uuid="098f986a-5e25-47c5-b573-ba82426911e3" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="806.83333333333383" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/Lock24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserEdit && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Заблокировать учётную запись пользователя" ver="5"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.User.DoLock.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.User.DoLock = true;]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnUserUnlock" display-name="btnUserUnlock" uuid="b4bf8320-27e7-47e5-b728-9890604ff1fd" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="825.9166666666672" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/Unlock24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserEdit && here.private.pConfigurator.ConfigurationAccess.Value]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Разблокировать учётную запись пользователя" ver="5"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.User.DoUnlock.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.User.DoUnlock = true;]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<object access-modifier="private" name="btnUserLogOut" display-name="btnUserLogOut" uuid="3280da51-8f77-4a4f-8b8d-a86bd3a964a7" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+		<designed target="X" value="845.00000000000057" ver="5"/>
+		<designed target="Y" value="8.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="IconFile" ver="5" value="Security_Icons/Disconnect24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.CurrentForm == here.private.pConfigurator.Commands.Common.Forms.UserEdit && here.private.pConfigurator.ConfigurationAccess.Value ]]>
+			</body>
+		</do-trace>
+		<designed target="Tooltip" value="Завершить сессию пользователя" ver="5"/>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[here.private.pConfigurator.Commands.User.DoLogout.CanExecute && here.private.pConfigurator.Commands.Common.GoTo.CanExecute]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.private.pConfigurator.Commands.User.DoLogout = true;]]>
+			</body>
+		</do-on>
+		<init target="ButtonHeight" ver="5" value="30"/>
+		<init target="ButtonWidth" ver="5" value="30"/>
+		<init target="IconSize" ver="5" value="24"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="init_Theme" ver="5" ref="here.private.theme"/>
+	</object>
+	<param access-modifier="private" name="init_Theme" display-name="init_Theme" uuid="304ae751-57f0-46f3-a48f-4d2cbaa6eb84" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
+	<param access-modifier="private" name="init_Configurator" display-name="init_Configurator" uuid="fa40bb3f-f5e2-4f9f-b786-7ef053a8a097" base-type="SecurityConfigurator" base-type-id="360fdf2a-a865-416c-855f-70126cfc646d" base-const="true" base-ref="true" ver="5" description=""/>
+</type>
+

@@ -1,0 +1,115 @@
+<type access-modifier="private" name="Диалог подтверждения" display-name="Диалог подтверждения" uuid="20f34c44-a409-4bb4-919f-c857fa34e757" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="250" ver="5"/>
+	<designed target="Height" value="75" ver="5"/>
+	<designed target="PenColor" value="0xffff0000" ver="5"/>
+	<designed target="PenStyle" value="1" ver="5"/>
+	<designed target="PenWidth" value="2" ver="5"/>
+	<designed target="BrushColor" value="0xffffff00" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<designed target="WindowX" value="0" ver="5"/>
+	<designed target="WindowY" value="0" ver="5"/>
+	<designed target="WindowWidth" value="252" ver="5"/>
+	<designed target="WindowHeight" value="77" ver="5"/>
+	<designed target="WindowCaption" value="MainForm" ver="5"/>
+	<designed target="ShowWindowCaption" value="false" ver="5"/>
+	<designed target="ShowWindowMinimize" value="false" ver="5"/>
+	<designed target="ShowWindowMaximize" value="false" ver="5"/>
+	<designed target="ShowWindowClose" value="true" ver="5"/>
+	<designed target="AlwaysOnTop" value="true" ver="5"/>
+	<designed target="WindowSizeMode" value="0" ver="5"/>
+	<designed target="WindowBorderStyle" value="2" ver="5"/>
+	<designed target="WindowState" value="0" ver="5"/>
+	<designed target="WindowScalingMode" value="0" ver="5"/>
+	<designed target="MonitorNumber" value="0" ver="5"/>
+	<designed target="WindowPosition" value="1" ver="5"/>
+	<designed target="WindowCloseMode" value="0" ver="5"/>
+	<object access-modifier="private" name="txt" display-name="txt" uuid="4e946eeb-a438-48e7-a1c9-f4d229e8ff0d" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+		<designed target="X" value="5" ver="5"/>
+		<designed target="Y" value="5" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="240" ver="5"/>
+		<designed target="Height" value="20" ver="5"/>
+		<designed target="Text" value="Выполнить действие?" ver="5"/>
+		<designed target="Font" value="Arial,10,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
+		<designed target="FontColor" value="4278190080" ver="5"/>
+		<designed target="TextAlignment" value="132" ver="5"/>
+		<do-trace access-modifier="private" target="Text" ver="5">
+			<body>
+				<![CDATA[Str.Replace(txtTitle,"\n"," ")]]>
+			</body>
+		</do-trace>
+		<designed target="Flip" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="btnYes" display-name="btnYes" uuid="fcdd3f99-3e86-4bd0-bd9d-6143c50c29cc" base-type="SystemButton" base-type-id="22504b6b-d24c-45e5-a9dd-6fb41e3d49c1" ver="5">
+		<designed target="X" value="25" ver="5"/>
+		<designed target="Y" value="40" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="75" ver="5"/>
+		<designed target="Height" value="24" ver="5"/>
+		<designed target="Checkable" value="false" ver="5"/>
+		<designed target="Text" value="Да" ver="5"/>
+		<designed target="Font" value="Arial,10,-1,5,75,0,0,0,0,0" ver="5"/>
+		<designed target="FontColor" value="4278190080" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+			<body kind="om">
+				<![CDATA[refCommand.Invoke();
+here.Close();]]>
+			</body>
+		</do-on>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Checked" value="false" ver="5"/>
+	</object>
+	<object access-modifier="private" name="btnNo" display-name="btnNo" uuid="e9958271-28ba-4c12-9998-24ce0708fb3f" base-type="SystemButton" base-type-id="22504b6b-d24c-45e5-a9dd-6fb41e3d49c1" ver="5">
+		<designed target="X" value="150" ver="5"/>
+		<designed target="Y" value="40" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="75" ver="5"/>
+		<designed target="Height" value="24" ver="5"/>
+		<designed target="Checkable" value="false" ver="5"/>
+		<designed target="Text" value="Нет" ver="5"/>
+		<designed target="Font" value="Arial,10,-1,5,75,0,0,0,0,0" ver="5"/>
+		<designed target="FontColor" value="4278190080" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+			<body kind="om">
+				<![CDATA[here.Close();]]>
+			</body>
+		</do-on>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Checked" value="false" ver="5"/>
+	</object>
+	<object access-modifier="private" name="txtTitle" display-name="Текст диалога" uuid="90cfcbe7-7773-4e92-93d6-98afb2190063" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<designed target="Flip" value="0" ver="5"/>
+	<designed target="WindowIconPath" value="" ver="5"/>
+	<object access-modifier="private" name="refCommand" display-name="Ссылка на команду" uuid="49041ec4-3eb9-4c44-89d7-4fbd047c6ab7" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description="">
+		<designed target="Enabled" value="" ver="5"/>
+		<designed target="InvokeTrigger" value="" ver="5"/>
+	</object>
+</type>
+

@@ -33,7 +33,7 @@
                 <attribute type="unit.System.Attributes.Description" value="Тг за диафрагмой" />
                 <attribute type="unit.System.Attributes.Title" value="16g00Te1" />
                 <attribute type="Attributes.ALIAS" value="T" />
-                <attribute type="Attributes.DIGITS" value="0" />
+                <attribute type="Attributes.DIGITS" value="1" />
                 <attribute type="Attributes.EU" value="°C" />
               </ct:object>
               <ct:object name="P" uuid="8b50da8d-59ed-46c3-b530-1f943634f3b8" base-type="Types.AI2.PLC_View" aspect="Aspects.PLC_Aspect">
@@ -41,6 +41,13 @@
                 <attribute type="Attributes.DIGITS" value="0" />
                 <attribute type="unit.System.Attributes.Title" value="16g00Pe1, 16g00Pe2" />
                 <attribute type="unit.System.Attributes.Description" value="Pг за диафрагмой" />
+              </ct:object>
+              <ct:object name="F" uuid="3c0dd712-77b7-4888-9c82-ecffe2b807d0" base-type="Types.Flow.PLC_View" aspect="Aspects.PLC_Aspect">
+                <attribute type="Attributes.ALIAS" value="F" />
+                <attribute type="Attributes.DIGITS" value="0" />
+                <attribute type="Attributes.EU" value="м³/ч" />
+                <attribute type="unit.System.Attributes.Description" value="Расход газа" />
+                <attribute type="Attributes.Max" value="5000" />
               </ct:object>
             </ct:object>
             <ct:object name="Boiler" uuid="61d2a67d-f40a-41af-ae63-d920961284e3" base-type="Types.Boiler.PLC_View" aspect="Aspects.PLC_Aspect" />
@@ -84,14 +91,17 @@
                 <ct:object name="PAir" uuid="04d0afa0-c6f7-46ed-9120-b4c9d58a7374" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a05Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="8fe03c20-d19c-4996-a23f-2c2c8a0b52d3">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g05Pe2" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="b454df4c-3d4e-40c8-b946-60439a9812ab">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g05Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="FanOff" uuid="d4f76990-68a8-490c-b01c-73b3085ed571" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -144,14 +154,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="9f9b0f78-3b7f-4d1d-bba6-97b7008850e6">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a01Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="0cbe1e7f-46f3-4e09-8d70-cb0ae0351f99">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g01Pe2" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="abad8157-b5ae-43b7-9478-ecbb2a20574e">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g01Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="fc002eab-ed0a-43ea-9982-5436b3bbdb1b">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -196,14 +209,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="047c49bc-7a73-4bb2-a665-59ffdcc1ff0c">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a03Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="ed329fbb-6c90-4723-a3c7-5ba609a0cf12">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g03Pe2" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="fa552ecd-aba3-46f6-a132-f6ef4bace4fe">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g03Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="41cee4e5-d93b-4ade-a634-5b0f1d689d30">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -248,14 +264,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="a176f1c0-ce7a-4277-87d0-30f59619ccfc">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a07Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="a2017b06-cd46-4181-8b84-b5879f024d5e">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g07Pe2" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="38af2624-7703-4176-9942-4c22efd68d9e">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g07Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="b7277cf1-3e28-4b85-be98-787c9a0ba18a">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -370,7 +389,14 @@
               <ct:object name="POut" base-type="Types.AI2.PLC_View" aspect="Aspects.PLC_Aspect" uuid="a3a6434b-ef50-4ce0-9f22-ea6605d2f3b7">
                 <attribute type="Attributes.EU" value="МПа" />
                 <attribute type="unit.System.Attributes.Title" value="16w00Pe1, 16w00Pe2" />
-                <attribute type="unit.System.Attributes.Description" value="Рсв1 на выходе" />
+                <attribute type="unit.System.Attributes.Description" value="Рсв на выходе" />
+              </ct:object>
+              <ct:object name="F" base-type="Types.Flow.PLC_View" aspect="Aspects.PLC_Aspect" uuid="f6615b76-ee6c-4234-af43-e7a90fea9b1f">
+                <attribute type="Attributes.ALIAS" value="F" />
+                <attribute type="Attributes.DIGITS" value="0" />
+                <attribute type="Attributes.EU" value="м³/ч" />
+                <attribute type="unit.System.Attributes.Description" value="Расход воды" />
+                <attribute type="Attributes.Max" value="2800" />
               </ct:object>
             </ct:object>
             <ct:object name="Colors" uuid="1c117d31-667e-4f47-996a-bbfdf0329e0a" base-type="Types.Colors.PLC_View" aspect="Aspects.PLC_Aspect" />
@@ -414,14 +440,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="5fe69705-1e26-4e8f-a866-27eb9915537a">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a06Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="f6bff570-d58f-4ebd-880d-efbfd6d77332">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g06Pe2" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="f13ae5e4-05f6-4093-a9ef-50da1c013100">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g06Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="26c0400d-5acc-4f8e-a7cd-cc36cbb903a3">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -474,14 +503,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="9de78439-0673-45f5-b183-be30d7a6fe07">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a02Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="24bd88e2-1927-45df-b1f7-530173055c8b">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g02Pe2" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="68c13720-cea2-43a3-b962-74f7d7885a96">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g02Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="c13a05d0-6ceb-42dc-bd84-3e613c604b3f">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -526,14 +558,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="68e65386-1fee-4e1e-8a7a-493a8c8460b2">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a04Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="a5693db6-58ec-48f9-91bc-b50ca5382dc8">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g04Pe2" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="9ee43ed7-c911-4ccf-8b1a-9f49b2251fef">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g04Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="64a755bd-46a4-4a43-8642-5d0c3aa59f8f">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -578,14 +613,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="bf80e442-7419-40aa-b503-aec95b9a7633">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a08Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="a0ab5006-123e-4c0a-b8e6-a37777f3056c">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g08Pe2" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="7509396f-e6ed-4869-863e-59cde116bb0d">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g08Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="e8a7789a-d562-4e6d-af43-b147e1fe3080">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -644,14 +682,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="254b940b-4f46-4e0d-8137-a959ca607746">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a11Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="2b527765-439f-4aa3-acd1-cffb57eebdfa">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g11Pe2" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="84e47090-a99b-4bc3-9c0a-e321590d71f5">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g11Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="57d60bde-1ec0-461e-b87c-0c247aabbcfe">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -704,14 +745,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="a4b956ef-f906-446e-a61a-1961203e0c27">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a09Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="7d30c646-78f1-4aa0-b5e4-b66215ce6dac">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g09Pe2" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="8ef43025-845a-488e-ad80-47e06dc2741e">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g09Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="73d89b10-b766-40c2-85af-347f48bc3bbc">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -756,14 +800,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="2d8c6ddc-ccef-4c4e-a261-43d53c38fdef">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a13Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="580132f0-acca-4975-9a10-8db08099629c">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g13Pe2" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="e6bd8827-9929-49b9-b5ca-4a4efbc080a9">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g13Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="9c779831-6894-4322-8940-58bee254ecce">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -808,14 +855,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="fa6a2be2-7468-45c8-8eb7-78a83b9c86c2">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a15Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="a483f247-538f-43a3-8cc5-26c172a2207b">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g15Pe2" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="09e10445-aa2d-43a8-85da-af8abd3cca81">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g15Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="f0df19f6-e276-4bfc-86cb-28b452da97a8">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -874,14 +924,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="a6105507-3c12-422f-b99c-610c83ae826b">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a12Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="79d5c072-4b83-48d0-96d6-e0ba02154f9a">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g12Pe2" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="77f0cc54-0f35-4ce1-b698-fed2b061d22c">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g12Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="4dbc21eb-4f19-40be-80ff-e94ec65fff16">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -934,14 +987,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="f93fac93-a221-4af5-b867-9ba7721cab35">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a10Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="771cd01d-5536-44bd-a768-cde9d6b499db">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g10Pe2" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="0bc637a3-5e69-44a6-91f3-56db07cb8ada">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g10Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="1a05a3c5-7d42-493d-8646-da062d62fe25">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -986,14 +1042,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="c2003088-a142-49ad-b57a-9a6c424552e9">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a14Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="58152925-ab73-4f97-994b-baa1ecf5ce41">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g14Pe2" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="9edf9aad-d422-4406-a355-aaec7e06f4dc">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g14Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="63540efa-b5c6-46f4-97fe-bcb2888f1ac4">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -1039,14 +1098,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="e060c1b1-9e34-4a61-8001-862ea1c5680c">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a16Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="70d16744-0aae-44bd-802e-8e0460324f01">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g16Pe2" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="02b53091-5a57-430f-904e-5b1f0eb2ce07">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g16Pe1" />
+                  <attribute type="Attributes.DIGITS" value="0" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="7fea3856-5b37-4d03-bbc0-16c034c891b6">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -2492,6 +2554,9 @@
             <r:init-ref ref="_PLC_View_2" target="PLC.Runtime.PLC_App.Application.Gas.P.Sens2" />
             <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Gas.P" />
           </ct:object>
+          <ct:object name="F" uuid="6d5ebb49-f3f2-48d7-8ccf-5ed2cd7aa411" original="AstraRegul.PLC.Runtime.PLC_App.Application.Gas.F" base-type="Types.Flow.IOS_View" aspect="Aspects.IOS_Aspect">
+            <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Gas.F" />
+          </ct:object>
         </ct:object>
         <ct:object name="Boiler" uuid="3266418e-40b9-4b0f-b3ec-dad3ccfe09c9" original="AstraRegul.PLC.Runtime.PLC_App.Application.Boiler" base-type="Types.Boiler.IOS_View" aspect="Aspects.IOS_Aspect">
           <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Boiler" />
@@ -2854,6 +2919,9 @@
             <r:init-ref ref="_PLC_View_1" target="PLC.Runtime.PLC_App.Application.Water.TOut.Sens1" />
             <r:init-ref ref="_PLC_View_2" target="PLC.Runtime.PLC_App.Application.Water.TOut.Sens1" />
             <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Water.TOut" />
+          </ct:object>
+          <ct:object name="F" uuid="e6c83181-c794-4882-ae03-125d297cd407" original="AstraRegul.PLC.Runtime.PLC_App.Application.Water.F" base-type="Types.Flow.IOS_View" aspect="Aspects.IOS_Aspect">
+            <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Water.F" />
           </ct:object>
         </ct:object>
         <ct:object name="Colors" uuid="1ad44352-5b92-4796-bb00-a2759bac209e" original="AstraRegul.PLC.Runtime.PLC_App.Application.Colors" base-type="Types.Colors.IOS_View" aspect="Aspects.IOS_Aspect">
@@ -4045,7 +4113,7 @@
         <srv:tcp-server name="TcpServer" uuid="5d6d4ee5-580e-4cbe-8e0c-f9b2852203b5" />
         <dp:host module="IOS_App" />
         <srv:opcua-client name="OpcUaClient" uuid="b7ea6487-16e5-4e39-a024-fbf7bf7eaf5e" application-mame="REGLABOpcUaClient">
-          <srv:opcua-server-link server="PLC.Runtime.OpcUaServer" update-rate="500" security-mode="sign-and-encript" authorization-mode="LoginPassword" login="AstraRegul" control-signal-namespace="urn:ProsoftSystems:regul_ua_server:iec_data" control-signal-id="Application.GVL_RED.bCanControl" control-signal-value="1" sampling-interval="-1">
+          <srv:opcua-server-link server="PLC.Runtime.OpcUaServer" update-rate="500" security-mode="sign-and-encript" authorization-mode="LoginPassword" login="AstraRegul" control-signal-namespace="urn:ProsoftSystems:regul_ua_server:iec_data" control-signal-id="Application.GVL_RED.bCanControl" control-signal-value="1" sampling-interval="500">
             <property name="password">KXnmBRJIF18C+o3t1fBBCirSIfqy5oqVvhKaaZpU8L+IbZmdbkkxG28S00e+kZr0LlmsloQLq8b0+G+lzdIyuRMHLRkn/+3C7R4022Q/abL01oitpbOhIEKIRrEbWVqJw9bkcS6E6wYlrJXs6vZw35LbgENGHQBF4J6/HHgHFyM</property>
           </srv:opcua-server-link>
           <srv:opcua-server-link server="PLC.Diagnostics.OpcUaServer" security-mode="sign-and-encript" authorization-mode="LoginPassword" login="AstraRegul" control-signal-id="Application.GVL_DIAGN.IS_CPU_A" control-signal-namespace="urn:ProsoftSystems:regul_ua_server:iec_data" control-signal-value="1" sampling-interval="1000">
@@ -4081,7 +4149,7 @@
           <srv:agent-config agent="Server2.SNMP.SnmpAgent" />
         </srv:snmp-manager>
         <srv:opcua-client name="OpcUaClient" application-mame="REGLABOpcUaClient" uuid="4c9f0fa0-070d-4ba4-a900-dcc495780f70">
-          <srv:opcua-server-link server="PLC.Runtime.OpcUaServer" update-rate="200" security-mode="sign-and-encript" authorization-mode="LoginPassword" login="AstraRegul" control-signal-namespace="urn:ProsoftSystems:regul_ua_server:iec_data" control-signal-id="Application.GVL_RED.bCanControl" control-signal-value="1" sampling-interval="-1">
+          <srv:opcua-server-link server="PLC.Runtime.OpcUaServer" update-rate="500" security-mode="sign-and-encript" authorization-mode="LoginPassword" login="AstraRegul" control-signal-namespace="urn:ProsoftSystems:regul_ua_server:iec_data" control-signal-id="Application.GVL_RED.bCanControl" control-signal-value="1" sampling-interval="500">
             <property name="password">KXnmBRJIF18C+o3t1fBBCirSIfqy5oqVvhKaaZpU8L+IbZmdbkkxG28S00e+kZr0LlmsloQLq8b0+G+lzdIyuRMHLRkn/+3C7R4022Q/abL01oitpbOhIEKIRrEbWVqJw9bkcS6E6wYlrJXs6vZw35LbgENGHQBF4J6/HHgHFyM</property>
           </srv:opcua-server-link>
           <srv:opcua-server-link server="PLC.Diagnostics.OpcUaServer" security-mode="sign-and-encript" authorization-mode="LoginPassword" login="AstraRegul" control-signal-id="Application.GVL_DIAGN.IS_CPU_A" control-signal-namespace="urn:ProsoftSystems:regul_ua_server:iec_data" control-signal-value="1" sampling-interval="1000">
@@ -4186,31 +4254,20 @@
         <ct:parameter name="KKS" uuid="6ee9672a-e6dd-42a5-b415-d23498368ba8" type="string" direction="out">
           <attribute type="unit.System.Attributes.InitialValue" value="@(object:System.Attributes.Title)" />
         </ct:parameter>
-        <ct:handler name="Handler" uuid="47a84d40-63b6-4bf4-acf8-4087f4027aa5">
-          <property name="source-code">STATUS_BITS.xError		= Math.TestBit(_PLC_View.byHwErrorCode,0);
-STATUS_BITS.xLimL_ADC	= Math.TestBit(_PLC_View.byHwErrorCode,1);
-STATUS_BITS.xLimH_ADC	= Math.TestBit(_PLC_View.byHwErrorCode,2);
-STATUS_BITS.xLimL_Electr= Math.TestBit(_PLC_View.byHwErrorCode,3);
-STATUS_BITS.xLimH_Electr= Math.TestBit(_PLC_View.byHwErrorCode,4);
-STATUS_BITS.xLimL_Norm	= Math.TestBit(_PLC_View.byHwErrorCode,5);
-STATUS_BITS.xLimH_Norm	= Math.TestBit(_PLC_View.byHwErrorCode,6);
-STATUS_BITS.xRejection	= Math.TestBit(_PLC_View.byHwErrorCode,7);</property>
-          <ct:trigger on="_PLC_View.byHwErrorCode" />
-        </ct:handler>
         <ct:parameter name="fElectroValue" uuid="47abb506-af13-475f-89b3-23853caa2683" direction="out" type="float32">
           <attribute type="unit.Server.Attributes.History">
             <property name="value">Enable="True" Deadband="0.1" MinTime="1000" ServerTime="True" AppendServerTime="False"</property>
           </attribute>
         </ct:parameter>
         <ct:socket name="STATUS_BITS" uuid="c9d4ae64-452b-4668-aa4c-18810093100e" direction="out">
-          <ct:socket-parameter name="xRejection" uuid="e971798e-9a74-4c10-90cf-ff862b10eaa9" type="bool" />
-          <ct:socket-parameter name="xLimH_Norm" type="bool" uuid="b798ac8e-05d1-4fd6-a4ac-48443e415ba9" />
-          <ct:socket-parameter name="xLimL_Norm" type="bool" uuid="30c0dcad-e788-4e49-96b3-075f8e87ab69" />
-          <ct:socket-parameter name="xLimH_Electr" type="bool" uuid="2fe763e2-67b5-46be-9c28-9653f2751158" />
-          <ct:socket-parameter name="xLimL_Electr" type="bool" uuid="92f46c0a-7fb1-4f4d-aa26-0dbab4dcb4db" />
-          <ct:socket-parameter name="xLimH_ADC" type="bool" uuid="3d43fd44-384a-489a-84dc-9cf114297da1" />
-          <ct:socket-parameter name="xLimL_ADC" type="bool" uuid="f09517a2-e8fe-42f7-ab26-d7d4421ab681" />
-          <ct:socket-parameter name="xError" type="bool" uuid="cf9ac71e-9980-4230-b291-144d7386e5dd" />
+          <ct:socket-parameter name="xFailure" uuid="e971798e-9a74-4c10-90cf-ff862b10eaa9" type="bool" />
+          <ct:socket-parameter name="xNormLimL" type="bool" uuid="b798ac8e-05d1-4fd6-a4ac-48443e415ba9" />
+          <ct:socket-parameter name="xNormLimH" type="bool" uuid="30c0dcad-e788-4e49-96b3-075f8e87ab69" />
+          <ct:socket-parameter name="xElectrLimL" type="bool" uuid="2fe763e2-67b5-46be-9c28-9653f2751158" />
+          <ct:socket-parameter name="xElectrLimH" type="bool" uuid="92f46c0a-7fb1-4f4d-aa26-0dbab4dcb4db" />
+          <ct:socket-parameter name="xADCLimL" type="bool" uuid="3d43fd44-384a-489a-84dc-9cf114297da1" />
+          <ct:socket-parameter name="xADCLimH" type="bool" uuid="f09517a2-e8fe-42f7-ab26-d7d4421ab681" />
+          <ct:socket-parameter name="xDiscarded" type="bool" uuid="cf9ac71e-9980-4230-b291-144d7386e5dd" />
         </ct:socket>
         <ct:socket name="InSETTINGS" uuid="b28b93b0-b19e-4618-83b0-20e7b5c575b0" direction="in">
           <ct:socket-parameter name="fElectricalL" uuid="968a1116-74c6-4ddc-8a93-e215fa56e1ae" type="float32" />
@@ -4234,6 +4291,14 @@ STATUS_BITS.xRejection	= Math.TestBit(_PLC_View.byHwErrorCode,7);</property>
         <ct:socket-bind source="_PLC_View.SETTINGS" target="OutSETTINGS" />
         <ct:bind source="_PLC_View.fNormValue" target="fNormValue" />
         <ct:bind source="_PLC_View.fElectroValue" target="fElectroValue" />
+        <ct:bind source="_PLC_View.byHwErrorCode" target="STATUS_BITS.xDiscarded" transform="get_bit" bit="0" />
+        <ct:bind source="_PLC_View.byHwErrorCode" target="STATUS_BITS.xNormLimH" transform="get_bit" bit="1" />
+        <ct:bind source="_PLC_View.byHwErrorCode" target="STATUS_BITS.xNormLimL" transform="get_bit" bit="2" />
+        <ct:bind source="_PLC_View.byHwErrorCode" target="STATUS_BITS.xElectrLimH" transform="get_bit" bit="3" />
+        <ct:bind source="_PLC_View.byHwErrorCode" target="STATUS_BITS.xElectrLimL" transform="get_bit" bit="4" />
+        <ct:bind source="_PLC_View.byHwErrorCode" target="STATUS_BITS.xADCLimH" bit="5" transform="get_bit" />
+        <ct:bind source="_PLC_View.byHwErrorCode" target="STATUS_BITS.xADCLimL" transform="get_bit" bit="6" />
+        <ct:bind source="_PLC_View.byHwErrorCode" target="STATUS_BITS.xFailure" transform="get_bit" bit="7" />
       </ct:type>
     </ct:type>
     <ct:type name="DI" uuid="45069495-4b73-4d84-9de0-ac0ec969af37">
@@ -4298,8 +4363,8 @@ STATUS_BITS.xRejection	= Math.TestBit(_PLC_View.byHwErrorCode,7);</property>
         <ct:parameter name="bBlockOpenOut" type="bool" direction="out" uuid="0b33d470-a65b-466d-9bd8-06bb2aa40c0d" />
         <ct:socket name="Settings" uuid="08a94e25-1931-410c-b26f-b705009534b0" direction="in-out">
           <ct:socket-parameter name="bInvertCtrl" uuid="8361a7ed-36f2-47aa-9e0d-fd180be9e64c" type="bool" />
-          <ct:socket-parameter name="bOnlyHCap" type="bool" uuid="5e805bdc-45e5-41e0-91c4-01275caff668" />
-          <ct:socket-parameter name="bOnlyLCap" type="bool" uuid="7cf05958-cd8a-4ecd-8c8e-cf820ee7ccee" />
+          <ct:socket-parameter name="bHasHCap" type="bool" uuid="5e805bdc-45e5-41e0-91c4-01275caff668" />
+          <ct:socket-parameter name="bHasLCap" type="bool" uuid="7cf05958-cd8a-4ecd-8c8e-cf820ee7ccee" />
         </ct:socket>
         <ct:parameter name="bClose" type="bool" direction="out" uuid="d15c78b5-e19b-4d69-9ab0-0ff357ecd899" />
         <ct:parameter name="bOpen" type="bool" direction="out" uuid="4cfaf361-e066-4fad-82c7-4a16b75ca274" />
@@ -4336,14 +4401,14 @@ STATUS_BITS.xRejection	= Math.TestBit(_PLC_View.byHwErrorCode,7);</property>
         <ct:bind source="_PLC_View.bBlockCloseOut" target="bBlockCloseOut" />
         <ct:socket name="InSettings" uuid="34ff4449-b06c-4c5f-857a-471489ed5b3b" direction="in">
           <ct:socket-parameter name="bInvertCtrl" uuid="e5c43772-c1bf-4b24-a117-214f69c15fbc" type="bool" />
-          <ct:socket-parameter name="bOnlyHCap" uuid="0479d3e2-fe1c-4519-a7a6-27a9ec13ee7d" type="bool" />
-          <ct:socket-parameter name="bOnlyLCap" uuid="93455de6-2be9-4bdf-be28-323488839353" type="bool" />
+          <ct:socket-parameter name="bHasHCap" uuid="0479d3e2-fe1c-4519-a7a6-27a9ec13ee7d" type="bool" />
+          <ct:socket-parameter name="bHasLCap" uuid="93455de6-2be9-4bdf-be28-323488839353" type="bool" />
         </ct:socket>
         <ct:socket-bind source="InSettings" target="_PLC_View.Settings" />
         <ct:socket name="OutSettings" uuid="38fcb4d3-b067-4eb2-b568-89cb1bbdb15c" direction="out">
           <ct:socket-parameter name="bInvertCtrl" uuid="0eb32e47-e384-4c1e-90ab-e54d57a7e400" type="bool" />
-          <ct:socket-parameter name="bOnlyHCap" uuid="6e9e330a-7af9-493d-931e-0c3ec7bb7046" type="bool" />
-          <ct:socket-parameter name="bOnlyLCap" uuid="3a5dd66f-6cf2-4e9f-9a84-ff07a499a7a6" type="bool" />
+          <ct:socket-parameter name="bHasHCap" uuid="6e9e330a-7af9-493d-931e-0c3ec7bb7046" type="bool" />
+          <ct:socket-parameter name="bHasLCap" uuid="3a5dd66f-6cf2-4e9f-9a84-ff07a499a7a6" type="bool" />
         </ct:socket>
         <ct:socket-bind source="_PLC_View.Settings" target="OutSettings" />
         <ct:parameter name="bClose" uuid="632f9511-e373-4768-b2c1-6eb1a7e4da54" direction="out" type="bool" />
@@ -5147,7 +5212,7 @@ STATUS_BITS.xRejection	= Math.TestBit(_PLC_View.byHwErrorCode,7);</property>
         <ct:bind source="_PLC_View.fCountdown" target="fCountdown" />
         <ct:parameter name="bInWork" direction="out" type="bool" uuid="653785c3-5eb4-420e-af4b-0c05e0a8546e">
           <attribute type="unit.Server.Attributes.Alarm">
-            <property name="value">{"Condition":{"IsEnabled":"true","Subconditions":[{"AckStrategy":0,"IsEnabled":true,"Message":". Предупредительаня сигнализация введена в работу","Severity":100,"Type":"On"},{"AckStrategy":1,"Severity":1,"Type":"Off"}],"Type":"Discrete"}}</property>
+            <property name="value">{"Condition":{"IsEnabled":"true","Subconditions":[{"AckStrategy":0,"IsEnabled":true,"Message":". Предупредительная сигнализация введена в работу","Severity":"100","Type":"On"},{"AckStrategy":1,"Severity":"1","Type":"Off"}],"Type":"Discrete"}}</property>
           </attribute>
         </ct:parameter>
         <ct:bind source="_PLC_View.bInWork" target="bInWork" />
@@ -5172,8 +5237,6 @@ STATUS_BITS.xRejection	= Math.TestBit(_PLC_View.byHwErrorCode,7);</property>
     </ct:type>
     <ct:type name="PersistentVars" uuid="80c97e47-2305-4abb-95e8-995f2a365059">
       <ct:type name="PLC_View" original="PersistentVars" aspect="Aspects.PLC_Aspect" uuid="20422325-d60a-4ded-a11d-3b9eaa5b538b">
-        <ct:socket name="GasProps" uuid="9558752d-feb9-4e44-92a2-a9c107894d6a" type="Sockets.GasProps" direction="in-out" />
-        <ct:socket name="WaterProps" type="Sockets.WaterProps" direction="in-out" uuid="3ff07877-d74c-4505-afc1-868642b2ef61" />
         <ct:socket name="TimeProcPrep" uuid="20028c46-c5b2-4fda-b9e9-f3e925146e39" type="Sockets.TimeProcPrep" direction="in-out" />
         <ct:socket name="TimeProcIgn" uuid="204fb1f0-088f-4872-8998-14e08b890f91" type="Sockets.TimeProcIgn" direction="in-out" />
         <ct:socket name="TimeProcPress" uuid="9ba181f3-3c2f-4e41-812e-c811548cf266" type="Sockets.TimeProcPress" direction="in-out" />
@@ -5187,14 +5250,6 @@ STATUS_BITS.xRejection	= Math.TestBit(_PLC_View.byHwErrorCode,7);</property>
       </ct:type>
       <ct:type name="IOS_View" aspect="Aspects.IOS_Aspect" original="PersistentVars" uuid="6cf45c8d-9729-4e70-b28b-eb9d03d77fa3">
         <r:ref name="_PLC_View" type="PLC_View" uuid="b2ce4a8b-6813-4730-9214-3c0935d59f4e" />
-        <ct:socket name="InGasProps" uuid="6837a508-ca6d-4365-922a-5e10d261b615" direction="in" type="Sockets.GasProps" />
-        <ct:socket-bind source="InGasProps" target="_PLC_View.GasProps" />
-        <ct:socket name="OutGasProps" uuid="b6fc5f1b-2648-410f-85ee-8182f3ca8149" direction="out" type="Sockets.GasProps" />
-        <ct:socket-bind source="_PLC_View.GasProps" target="OutGasProps" />
-        <ct:socket name="InWaterProps" uuid="63858ec3-0a78-4e17-a47f-c0967474d2cf" direction="in" type="Sockets.WaterProps" />
-        <ct:socket-bind source="InWaterProps" target="_PLC_View.WaterProps" />
-        <ct:socket name="OutWaterProps" uuid="9ccc9dc2-99af-44f8-8546-885b54344bc0" direction="out" type="Sockets.WaterProps" />
-        <ct:socket-bind source="_PLC_View.WaterProps" target="OutWaterProps" />
         <ct:parameter name="IniMaxFailIgnCount" uuid="c235b249-2fa9-4573-99e2-6f4be21edee5" direction="in" type="int32" />
         <ct:bind source="IniMaxFailIgnCount" target="_PLC_View.iMaxFailIgnCount" />
         <ct:parameter name="OutiMaxFailIgnCount" uuid="ec8e9b41-38ab-46b5-b159-24596ff572bc" direction="out" type="int32" />
@@ -5611,6 +5666,82 @@ STATUS_BITS2.xRejection	= Math.TestBit(_PLC_View_2.byHwErrorCode,7);</property>
         <ct:bind source="_PLC_View.iSelSens" target="OutiSelSens" />
       </ct:type>
     </ct:type>
+    <ct:type name="Flow" uuid="752fc615-893a-4f68-b806-13492f7e39e2">
+      <ct:type name="PLC_View" original="Flow" aspect="Aspects.PLC_Aspect" uuid="fd985ac9-02ef-48c8-926b-f04c20286eba">
+        <attribute type="Attributes.ALIAS" value="P" />
+        <attribute type="Attributes.DIGITS" value="1" />
+        <attribute type="Attributes.EU" value="кПа" />
+        <attribute type="unit.System.Attributes.Title" value="KKS" />
+        <attribute type="unit.System.Attributes.Description" value="Описание" />
+        <ct:parameter name="fNormValue" type="float32" direction="out" uuid="7d70d5d0-adf3-4ae2-bb62-2191fcfb5da3" />
+        <ct:socket name="SETTINGS" direction="in-out" uuid="5a09863c-7e65-4e69-be78-20167ad10d6a">
+          <ct:socket-parameter name="iSel" type="int16" uuid="7723139a-c671-4326-8d2e-737197db52be" />
+          <ct:socket-parameter name="iSelDiaf" type="int16" uuid="a538a3f4-5513-477d-bc4c-18c70cddc259" />
+          <ct:socket-parameter name="iPov" type="int16" uuid="69594fdc-44c7-4488-92dd-af1b83b1fd91" />
+          <ct:socket-parameter name="fDt20" type="float32" uuid="1791e66d-28fd-470e-be0f-5e2f1ffc42ef" />
+          <ct:socket-parameter name="fDd20" type="float32" uuid="fbd24930-df3c-411d-9db7-a3065531ae37" />
+          <ct:socket-parameter name="fKsher" type="float32" uuid="3ce34311-4586-4ee1-8685-783b5532558d" />
+          <ct:socket-parameter name="fRos" type="float32" uuid="c610d85e-766e-44d5-bea0-8be444fd56ba" />
+          <ct:socket-parameter name="fXcoPes" type="float32" uuid="62b0d3a0-c3cd-4bbb-9e9a-5f5951277f3b" />
+          <ct:socket-parameter name="fXnPes" type="float32" uuid="141e02df-60e4-4aa7-a356-878eda181e55" />
+          <ct:socket-parameter name="fCaloric" type="float32" uuid="9fdc54a6-813d-4be6-9ab6-ca64ed28a1aa" />
+        </ct:socket>
+        <attribute type="Attributes.Max" value="100" />
+        <attribute type="Attributes.Min" value="0" />
+      </ct:type>
+      <ct:type name="IOS_View" aspect="Aspects.IOS_Aspect" original="Flow" uuid="be372e77-73d9-4140-8d90-38d643107917">
+        <ct:parameter name="NAME" type="string" direction="out" uuid="2ef8a8a2-7511-45aa-af01-6b59e6fef68d">
+          <attribute type="unit.System.Attributes.InitialValue" value="@(object:System.Attributes.Description)" />
+        </ct:parameter>
+        <ct:parameter name="EU" type="string" direction="out" uuid="f507af96-282e-4888-9adf-f9232a852de1">
+          <attribute type="unit.System.Attributes.InitialValue" value="@(object:Attributes.EU)" />
+        </ct:parameter>
+        <ct:parameter name="ALIAS" type="string" direction="out" uuid="aec14376-f7c7-49fe-b042-dd2fde4897ab">
+          <attribute type="unit.System.Attributes.InitialValue" value="@(object:Attributes.ALIAS)" />
+        </ct:parameter>
+        <ct:parameter name="DIGITS" type="uint8" direction="out" uuid="05240884-7c5a-4e00-904a-de830e794afd">
+          <attribute type="unit.System.Attributes.InitialValue" value="@(object:Attributes.DIGITS)" />
+        </ct:parameter>
+        <r:ref name="_PLC_View" type="PLC_View" uuid="8494c759-13a4-49d5-95d1-2fead72696eb" />
+        <ct:parameter name="KKS" type="string" direction="out" uuid="177cc92f-faa7-4177-b915-9ceb12f8d3b9">
+          <attribute type="unit.System.Attributes.InitialValue" value="@(object:System.Attributes.Title)" />
+        </ct:parameter>
+        <ct:parameter name="fNormValue" uuid="1313a395-4667-4cc6-a767-53a09350dd8f" direction="out" type="float32" />
+        <ct:bind source="_PLC_View.fNormValue" target="fNormValue" />
+        <ct:socket name="InSETTINGS" uuid="76781934-0403-4bc1-b0ce-ec7067f28d30" direction="in">
+          <ct:socket-parameter name="iSel" uuid="eb40598c-5f40-4d4f-86eb-73dcc2b18267" type="int16" />
+          <ct:socket-parameter name="iSelDiaf" uuid="2275ec1a-660f-4ec3-b25b-6171e2b903a4" type="int16" />
+          <ct:socket-parameter name="iPov" uuid="fa986630-f53d-4817-a24f-019161f13cde" type="int16" />
+          <ct:socket-parameter name="fDt20" uuid="cf2eb2f0-b669-4cc2-ae45-e91ad63885b2" type="float32" />
+          <ct:socket-parameter name="fDd20" uuid="82a4bd83-95bd-4712-a24e-01a2071f4bea" type="float32" />
+          <ct:socket-parameter name="fKsher" uuid="ca5680d9-a051-4ff2-b026-947cd3ec8b92" type="float32" />
+          <ct:socket-parameter name="fRos" uuid="2d675ded-baad-483e-80b3-e06f7ee3daa2" type="float32" />
+          <ct:socket-parameter name="fXcoPes" uuid="c3341655-94fe-4616-9d89-40fd032b4274" type="float32" />
+          <ct:socket-parameter name="fXnPes" uuid="aed82c55-bdce-4ed8-ac7a-05fbc9e0b1a3" type="float32" />
+          <ct:socket-parameter name="fCaloric" uuid="0ede21e5-7e81-45e2-bfe3-0efb0dffa303" type="float32" />
+        </ct:socket>
+        <ct:socket-bind source="InSETTINGS" target="_PLC_View.SETTINGS" />
+        <ct:socket name="OutSETTINGS" uuid="0ed4ddf3-8617-44be-a676-5177901d459c" direction="out">
+          <ct:socket-parameter name="iSel" uuid="d7e213a4-c0bb-4358-845c-5d3ffefdacfb" type="int16" />
+          <ct:socket-parameter name="iSelDiaf" uuid="476a7e2f-484f-4187-a2c7-cad6dbd2fb9d" type="int16" />
+          <ct:socket-parameter name="iPov" uuid="cd5aa8f8-a1d4-4040-93c0-a61756f02d9d" type="int16" />
+          <ct:socket-parameter name="fDt20" uuid="3d351be9-06da-4a2c-be4e-9eec45178d01" type="float32" />
+          <ct:socket-parameter name="fDd20" uuid="e236ee04-c0b8-4b53-b392-63afba9f955a" type="float32" />
+          <ct:socket-parameter name="fKsher" uuid="51d7efc3-6095-4a12-8eb7-91068ffff9f4" type="float32" />
+          <ct:socket-parameter name="fRos" uuid="63aa8572-b0d8-4ce3-b3f5-229caeaec168" type="float32" />
+          <ct:socket-parameter name="fXcoPes" uuid="6d627d78-169f-48e2-8c78-c1eacb8d2a1a" type="float32" />
+          <ct:socket-parameter name="fXnPes" uuid="6cce0270-1c76-48a6-8cf6-213682d53ca3" type="float32" />
+          <ct:socket-parameter name="fCaloric" uuid="82efcbf3-3e5c-413c-8b3f-90c048f2a4db" type="float32" />
+        </ct:socket>
+        <ct:socket-bind source="_PLC_View.SETTINGS" target="OutSETTINGS" />
+        <ct:parameter name="Min" direction="in-out" type="float32" uuid="a80fad38-93f1-4bf8-b388-4c79c3c19f9b">
+          <attribute type="unit.System.Attributes.InitialValue" value="@(object:Attributes.Min)" />
+        </ct:parameter>
+        <ct:parameter name="Max" direction="in-out" type="float32" uuid="74ae1b0e-75ed-40de-b455-09790e39191d">
+          <attribute type="unit.System.Attributes.InitialValue" value="@(object:Attributes.Max)" />
+        </ct:parameter>
+      </ct:type>
+    </ct:type>
   </namespace>
   <namespace name="Attributes" uuid="386e0e6c-cdc5-45fe-bc90-097b396153fd">
     <attribute-type name="EU" uuid="c88a2b89-c5d5-4b38-b01d-c27e1d553b51" type="string" title="EU" description="Единица измерения" default-value="ЕИ" />
@@ -5619,6 +5750,8 @@ STATUS_BITS2.xRejection	= Math.TestBit(_PLC_View_2.byHwErrorCode,7);</property>
     <attribute-type name="Ign" uuid="89fb8b4f-56ca-4b8a-a392-d6cd927b5c73" type="bool" title="Ign" description="Растопочная" default-value="FALSE" />
     <attribute-type name="BurnNumber" uuid="9cf77812-8cdb-4cf8-9a7c-3e5913624098" type="uint8" title="BurnNumber" description="Номер горелки" />
     <attribute-type name="GroupNumber" type="uint8" title="GroupNumber" description="Номер группы горелок" uuid="8fa44161-0931-45ac-9a90-c56cfecf53f1" />
+    <attribute-type name="Min" type="float32" title="Min" description="Минимум" uuid="6edf1cdf-f20a-4777-a9d2-a494c085a2ee" />
+    <attribute-type name="Max" type="float32" title="Max" description="Максимум" uuid="700b5317-8723-4647-b07d-cfd7dc734d82" />
   </namespace>
   <link-unit name="PsDiagn" target="PsDiagn" uuid="5ff959af-bf6f-4e84-837f-e6a5ccdc3c34" />
   <link-unit name="PsBase" target="PsBase" uuid="0b3d2951-2de2-4e93-a6cf-2ea0c0b07060" />
@@ -6158,6 +6291,31 @@ STATUS_BITS2.xRejection	= Math.TestBit(_PLC_View_2.byHwErrorCode,7);</property>
       <ct:socket-parameter name="[14]" type="int16" uuid="b134c019-4148-4a6b-92f3-a811beada43f" />
       <ct:socket-parameter name="[15]" type="int16" uuid="07da1fa7-c324-4901-a53c-21d7e3179a84" />
       <ct:socket-parameter name="[16]" type="int16" uuid="f6cdef97-3d2f-40ec-84e1-e6e6e150dd7e" />
+    </ct:socket-type>
+    <ct:socket-type name="AiConfig" uuid="7e1ef41f-36de-4cbc-b89b-df19bc2dbbd7">
+      <ct:socket-parameter name="fElectricalL" type="float32" uuid="f118eaf7-4bac-4a50-8b25-935b5d165a72" />
+      <ct:socket-parameter name="fElectricalH" type="float32" uuid="180b4201-0f06-4239-9617-0a28fa5eaed7" />
+      <ct:socket-parameter name="fNormL" type="float32" uuid="a35b48ad-0b1c-4c10-a312-932502000c37" />
+      <ct:socket-parameter name="fNormH" type="float32" uuid="fe7ec644-4363-4bfa-bd7d-734f014eaeec" />
+      <ct:socket-parameter name="fConversion" type="float32" uuid="63be6993-50a0-4cea-9514-4022d13544ff" />
+      <ct:socket-parameter name="fTFilter" type="float32" uuid="b4b80bb0-f779-48a2-b544-2fa3dd3d1f0f" />
+      <ct:socket-parameter name="fError" type="float32" uuid="82b8cd00-d1cf-44b9-9a0f-1a1c58d54fd1" />
+    </ct:socket-type>
+    <ct:socket-type name="AiChannel" uuid="30e09d9f-d344-4a10-8ea8-563c17c0ace6">
+      <ct:nested-socket name="Config" type="Sockets.AiConfig" uuid="5fd88f53-f75a-40ed-ad54-d0c3691321b1" />
+      <ct:socket-parameter name="VALUE" type="float32" uuid="9b08faa8-01de-4735-9117-b2f5f59317f0" />
+      <ct:socket-parameter name="VALUE_ELECTRO" type="float32" uuid="88c43b13-647e-4baf-a730-0282d5b4d5d5" />
+      <ct:socket-parameter name="STATUS" type="uint8" uuid="f3d876e4-c4b3-4a02-a702-1ad87da050d8" />
+    </ct:socket-type>
+    <ct:socket-type name="AiStatusBits" uuid="7b8a60e9-6fac-433b-a252-856d2549cf12">
+      <ct:socket-parameter name="xFailure" type="bool" uuid="c9383794-6694-4c5f-8c45-ae630552dbc0" />
+      <ct:socket-parameter name="xNormLimL" type="bool" uuid="834be42e-cc3b-455f-bed4-473d6e050eee" />
+      <ct:socket-parameter name="xNormLimH" type="bool" uuid="9a65e086-64a8-40cf-8e60-65d5ac788585" />
+      <ct:socket-parameter name="xElectrLimL" type="bool" uuid="b70a69c4-5099-4fbc-8d07-5fdd6d91ef04" />
+      <ct:socket-parameter name="xElectrLimH" type="bool" uuid="06df46d6-b462-4ee9-9f53-e07a39852e7f" />
+      <ct:socket-parameter name="xADCLimL" type="bool" uuid="860e708e-c4b9-48fa-91f4-0501145bb1c6" />
+      <ct:socket-parameter name="xADCLimH" type="bool" uuid="e359fccf-2d1f-42d5-a518-8903a8decdf4" />
+      <ct:socket-parameter name="xDiscarded" type="bool" uuid="e7e002b7-ab18-49d2-b498-7c6149639e1a" />
     </ct:socket-type>
   </namespace>
 </omx>

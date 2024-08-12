@@ -1,0 +1,104 @@
+<type access-modifier="private" name="Splitter" display-name="Splitter" uuid="ba09051c-1cbc-4179-95f6-384e3afefa35" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Flip" value="0" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="100" ver="5"/>
+	<designed target="Height" value="100" ver="5"/>
+	<designed target="RoundingRadius" value="0" ver="5"/>
+	<designed target="PenColor" value="4278190080" ver="5"/>
+	<designed target="PenStyle" value="1" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="4278190080" ver="5"/>
+	<designed target="BrushStyle" value="0" ver="5"/>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="ed1ac886-9bb0-4df6-a665-437f2032f629" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<param access-modifier="private" name="init_Theme" display-name="Тема оформления" uuid="d5299e98-9e40-43bf-b74b-7dd2201cae5a" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
+	<param access-modifier="private" name="Thickness" display-name="Толщина" uuid="d82b5d19-a142-4bc0-8de2-a2150f81d853" base-type="double" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="5" description=""/>
+	<object access-modifier="private" name="protected" display-name="protected" uuid="5e828109-197b-4bd6-b52b-8c1e96981ec1" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="55166e46-e838-4892-873c-92f6080e3a4f" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
+		<init target="pTheme" ver="5" ref="init_Theme"/>
+		<object access-modifier="private" name="StartMousePosition" display-name="StartMousePosition" uuid="293bc82f-6b43-44de-aa94-d414a3c5abdb" base-type="double" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="PressedPosition" display-name="PressedPosition" uuid="13b7aeee-44c3-406b-8a7b-28ac85074797" base-type="double" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="MousePressed" display-name="MousePressed" uuid="87e30e95-090a-4d7a-b8d5-9a47bfa62807" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="MouseIsOver" display-name="MouseIsOver" uuid="cc08d2c6-78d6-4409-a59e-46106d5fe6d3" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+		<do access-modifier="private" name="StorePosition" display-name="StorePosition" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[StartMousePosition = mousePosition;
+PressedPosition = Position;
+MousePressed = true;
+//Debug.Log("Mouse pressed on " + String.ToString(protected.PressedPosition));]]>
+			</body>
+			<param access-modifier="private" name="mousePosition" display-name="" uuid="9ae77e47-eff3-4942-8857-fea52c12a848" base-type="double" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="5"/>
+		</do>
+		<do access-modifier="private" name="UpdatePosition" display-name="UpdatePosition" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (MousePressed)
+{
+	delta: double;
+	if (alignment == 0)
+		delta = mousePosition - StartMousePosition;
+	else if (alignment == 2)
+		delta =  StartMousePosition - mousePosition;
+		
+	if (delta != 0)
+	{
+		position: double = PressedPosition + delta;
+		
+		if (Minimum > 0 && position < Minimum)
+			position = Minimum;
+		
+		if (Maximum > 0 && position > Maximum)
+			position = Maximum;
+		
+		if (Position != position)
+		{
+			//Debug.Log("UpdatePosition to " + String.ToString(position) + " with delta " + String.ToString(delta));
+			Position = position;
+		}
+	}
+}]]>
+			</body>
+			<param access-modifier="private" name="mousePosition" display-name="" uuid="5f813f63-c48c-43fc-9391-2b2c8693b889" base-type="double" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="5"/>
+			<param access-modifier="private" name="alignment" display-name="" uuid="5bf70788-5841-4ab8-8029-6d57d33945d4" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		</do>
+	</object>
+	<object access-modifier="private" name="Position" display-name="Положение" uuid="5158b62d-a538-4b16-8882-80a5cff43e47" base-type="notifying_double" base-type-id="3f905fb7-7738-4619-b402-5a91f136d4bd" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="Minimum" display-name="Минимум" uuid="dac251f6-365c-44cc-9796-50f905f7e8e6" base-type="double" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="Maximum" display-name="Максимум" uuid="bd42fe2e-22c2-4bb6-b4d9-0f24ef1f3c93" base-type="double" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="5" description="" cardinal="1"/>
+	<do-trace access-modifier="private" target="PenColor" ver="5">
+		<body>
+			<![CDATA[protected.pTheme.BorderColor]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[protected.MouseIsOver ? protected.pTheme.SelectionColor : protected.pTheme.BackgroundColor]]>
+		</body>
+	</do-trace>
+	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseRelease">
+		<body kind="om">
+			<![CDATA[protected.MousePressed = false;]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseEnter">
+		<body kind="om">
+			<![CDATA[protected.MouseIsOver = true;]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="MouseLeave">
+		<body kind="om">
+			<![CDATA[protected.MouseIsOver = false;]]>
+		</body>
+	</do-on>
+	<init target="Thickness" ver="5" value="4"/>
+	<init target="init_Theme" ver="5">
+		<object access-modifier="private" uuid="f4951339-f3bd-48fb-92ba-bbaa1ecd02e4" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5"/>
+	</init>
+</type>
+

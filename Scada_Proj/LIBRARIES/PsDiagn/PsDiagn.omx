@@ -10810,162 +10810,98 @@ else
             <ct:type name="PLC_View" aspect="PsBase.Aspects.PLC_Aspect" base-type="BASETYPE.PLC_BaseView" uuid="f5740e7f-6e95-40bb-965a-ba2ea884a18d">
               <attribute type="unit.System.Attributes.Description" value="AI_16_012" />
               <ct:socket name="CH01" direction="out" uuid="d322f9ed-de88-47fd-ae16-0867fd7862f1">
-                <ct:socket-parameter name="VALUE" type="float32" uuid="7b1621f8-b228-4376-a957-8f04aec136f1">
-                  <attribute type="unit.System.Attributes.Description" value="Значение" />
-                </ct:socket-parameter>
-                <ct:socket-parameter name="STATUS" type="uint8" uuid="4509d4b9-9a44-4b6f-a927-9b30b8ad9715">
-                  <attribute type="unit.System.Attributes.Description" value="Статус" />
-                </ct:socket-parameter>
                 <attribute type="unit.System.Attributes.Description" value="Канал 1" />
-              </ct:socket>
-              <ct:socket name="CH02" direction="out" uuid="d539fe63-d1a3-4acf-9515-69db6318d22b">
-                <ct:socket-parameter name="VALUE" type="float32" uuid="26bf2074-7627-49bf-a095-da2871a81606">
-                  <attribute type="unit.System.Attributes.Description" value="Значение" />
-                </ct:socket-parameter>
-                <ct:socket-parameter name="STATUS" type="uint8" uuid="cfbf0004-3ea3-4c6f-aef1-1910ff124ab5">
-                  <attribute type="unit.System.Attributes.Description" value="Статус" />
-                </ct:socket-parameter>
-                <attribute type="unit.System.Attributes.Description" value="Канал 2" />
-              </ct:socket>
-              <ct:socket name="CH03" direction="out" uuid="a1671067-4b38-4040-a185-0dda608779d4">
-                <ct:socket-parameter name="VALUE" type="float32" uuid="91bfc9e4-7485-4749-a739-4ac37f40bc4d">
-                  <attribute type="unit.System.Attributes.Description" value="Значение" />
-                </ct:socket-parameter>
-                <ct:socket-parameter name="STATUS" type="uint8" uuid="29d44972-4bc8-4cb6-accc-884620221aec">
-                  <attribute type="unit.System.Attributes.Description" value="Статус" />
-                </ct:socket-parameter>
-                <attribute type="unit.System.Attributes.Description" value="Канал 3" />
-              </ct:socket>
-              <ct:socket name="CH04" direction="out" uuid="0ed3bd6c-e7f1-4daa-b687-9e506f5c2334">
-                <ct:socket-parameter name="VALUE" type="float32" uuid="d531542b-7409-4f10-9679-b70ec8b5441d">
-                  <attribute type="unit.System.Attributes.Description" value="Значение" />
-                </ct:socket-parameter>
-                <ct:socket-parameter name="STATUS" type="uint8" uuid="59e15960-0cb4-44f5-9dc8-1f6b48f4d444">
-                  <attribute type="unit.System.Attributes.Description" value="Статус" />
-                </ct:socket-parameter>
-                <attribute type="unit.System.Attributes.Description" value="Канал 4" />
-              </ct:socket>
-              <ct:socket name="CH05" direction="out" uuid="e3507199-2c4c-4902-9796-8e623e01a15f">
-                <ct:socket-parameter name="VALUE" type="float32" uuid="508c2cde-c9ff-4757-b768-f3fdac6f0e58">
-                  <attribute type="unit.System.Attributes.Description" value="Значение" />
-                </ct:socket-parameter>
-                <ct:socket-parameter name="STATUS" type="uint8" uuid="e19a2a13-12b8-4534-a6ee-6de5d1e1fd81">
-                  <attribute type="unit.System.Attributes.Description" value="Статус" />
-                </ct:socket-parameter>
-                <attribute type="unit.System.Attributes.Description" value="Канал 5" />
-              </ct:socket>
-              <ct:socket name="CH06" direction="out" uuid="e7de0968-4eb1-4bc2-aa9c-49ed7d506edf">
-                <ct:socket-parameter name="VALUE" type="float32" uuid="569ff8a9-28e0-4576-b6ca-b585f8bf6652">
-                  <attribute type="unit.System.Attributes.Description" value="Значение" />
-                </ct:socket-parameter>
-                <ct:socket-parameter name="STATUS" type="uint8" uuid="cc4b3e67-cb5b-4953-8016-e1be13f15e20">
-                  <attribute type="unit.System.Attributes.Description" value="Статус" />
-                </ct:socket-parameter>
-                <attribute type="unit.System.Attributes.Description" value="Канал 6" />
-              </ct:socket>
-              <ct:socket name="CH07" direction="out" uuid="7e7f558c-aa47-43a6-966b-85f1fa3b1bc0">
-                <ct:socket-parameter name="VALUE" type="float32" uuid="0f2718bc-ad04-4f35-9734-a7a2cda96dea">
-                  <attribute type="unit.System.Attributes.Description" value="Значение" />
-                </ct:socket-parameter>
-                <ct:socket-parameter name="STATUS" type="uint8" uuid="216e3b47-7ff3-4409-b2e0-cdfe65cf8415">
-                  <attribute type="unit.System.Attributes.Description" value="Статус" />
-                </ct:socket-parameter>
-                <attribute type="unit.System.Attributes.Description" value="Канал 7" />
-              </ct:socket>
-              <ct:socket name="CH08" direction="out" uuid="5f66e379-5893-4cbe-b5d1-d51cf52924a4">
-                <ct:socket-parameter name="VALUE" type="float32" uuid="3a3fd949-1e67-4cfd-88ab-3abe0335797b">
-                  <attribute type="unit.System.Attributes.Description" value="Значение" />
-                </ct:socket-parameter>
-                <ct:socket-parameter name="STATUS" type="uint8" uuid="1b4a5603-bc01-4c1b-a809-eb52fb070a10">
-                  <attribute type="unit.System.Attributes.Description" value="Статус" />
-                </ct:socket-parameter>
-                <attribute type="unit.System.Attributes.Description" value="Канал 8" />
-              </ct:socket>
-              <ct:socket name="CH09" direction="out" uuid="2153f9b7-7dcf-4e83-84ba-4e5ce2666cc0">
-                <ct:socket-parameter name="VALUE" type="float32" uuid="a1c02a47-c284-4b1e-8104-819829f8bdd8">
-                  <attribute type="unit.System.Attributes.Description" value="Значение" />
-                </ct:socket-parameter>
-                <ct:socket-parameter name="STATUS" type="uint8" uuid="e9b38cef-2d8c-486d-961e-9fe738c71895">
-                  <attribute type="unit.System.Attributes.Description" value="Статус" />
-                </ct:socket-parameter>
-                <attribute type="unit.System.Attributes.Description" value="Канал 9" />
-              </ct:socket>
-              <ct:socket name="CH10" direction="out" uuid="31f0a672-3943-420d-abe1-05ab6674568d">
-                <ct:socket-parameter name="VALUE" type="float32" uuid="9e1c1616-3252-43c8-9da7-4e605ead7941">
-                  <attribute type="unit.System.Attributes.Description" value="Значение" />
-                </ct:socket-parameter>
-                <ct:socket-parameter name="STATUS" type="uint8" uuid="5d91bf58-5eb2-4ce1-97b1-6c165f2ba9c6">
-                  <attribute type="unit.System.Attributes.Description" value="Статус" />
-                </ct:socket-parameter>
-                <attribute type="unit.System.Attributes.Description" value="Канал 10" />
-              </ct:socket>
-              <ct:socket name="CH11" direction="out" uuid="f81ef8e7-39ac-4424-a141-068c95a7b79b">
-                <ct:socket-parameter name="VALUE" type="float32" uuid="4d7375e0-68e4-493a-aba0-2025fc5f72c7">
-                  <attribute type="unit.System.Attributes.Description" value="Значение" />
-                </ct:socket-parameter>
-                <ct:socket-parameter name="STATUS" type="uint8" uuid="2fbc4811-c1bf-4b42-a4a9-da5a2974a4ae">
-                  <attribute type="unit.System.Attributes.Description" value="Статус" />
-                </ct:socket-parameter>
-                <attribute type="unit.System.Attributes.Description" value="Канал 11" />
-              </ct:socket>
-              <ct:socket name="CH12" direction="out" uuid="19799b61-e3c9-475e-af54-2a6c479363d2">
-                <ct:socket-parameter name="VALUE" type="float32" uuid="1483268f-695d-40da-9189-6b9035094b21">
-                  <attribute type="unit.System.Attributes.Description" value="Значение" />
-                </ct:socket-parameter>
-                <ct:socket-parameter name="STATUS" type="uint8" uuid="2e20a584-0089-4917-94a6-491e989b11df">
-                  <attribute type="unit.System.Attributes.Description" value="Статус" />
-                </ct:socket-parameter>
-                <attribute type="unit.System.Attributes.Description" value="Канал 12" />
-              </ct:socket>
-              <ct:socket name="CH13" direction="out" uuid="91187979-332c-45c8-be2d-6e47b302baf5">
-                <ct:socket-parameter name="VALUE" type="float32" uuid="a0f511e2-c4d6-48e8-84aa-511ff644bf4b">
-                  <attribute type="unit.System.Attributes.Description" value="Значение" />
-                </ct:socket-parameter>
-                <ct:socket-parameter name="STATUS" type="uint8" uuid="3b7721f7-ba6a-4094-9c21-bdf297746a0f">
-                  <attribute type="unit.System.Attributes.Description" value="Статус" />
-                </ct:socket-parameter>
-                <attribute type="unit.System.Attributes.Description" value="Канал 13" />
-              </ct:socket>
-              <ct:socket name="CH14" direction="out" uuid="51b2f6c2-9403-4b2b-bcd9-f9f604239b9d">
-                <ct:socket-parameter name="VALUE" type="float32" uuid="5bec9dff-2e4f-4921-8b29-7a89d2a4312b">
-                  <attribute type="unit.System.Attributes.Description" value="Значение" />
-                </ct:socket-parameter>
-                <ct:socket-parameter name="STATUS" type="uint8" uuid="2d9c10eb-36ae-4c17-8c50-a81594275a66">
-                  <attribute type="unit.System.Attributes.Description" value="Статус" />
-                </ct:socket-parameter>
-                <attribute type="unit.System.Attributes.Description" value="Канал 14" />
-              </ct:socket>
-              <ct:socket name="CH15" direction="out" uuid="a996f8ec-36c9-4408-8001-530171d5674f">
-                <ct:socket-parameter name="VALUE" type="float32" uuid="994165e3-5699-4be2-b2e3-65637665107e">
-                  <attribute type="unit.System.Attributes.Description" value="Значение" />
-                </ct:socket-parameter>
-                <ct:socket-parameter name="STATUS" type="uint8" uuid="671b0595-d514-49c4-b235-2e27945b90a9">
-                  <attribute type="unit.System.Attributes.Description" value="Статус" />
-                </ct:socket-parameter>
-                <attribute type="unit.System.Attributes.Description" value="Канал 15" />
-              </ct:socket>
-              <ct:socket name="CH16" direction="out" uuid="da955891-daa1-4560-b136-2253f8d999bd">
-                <ct:socket-parameter name="VALUE" type="float32" uuid="c8901a81-3746-4175-b668-7f74d2602463">
-                  <attribute type="unit.System.Attributes.Description" value="Значение" />
-                </ct:socket-parameter>
-                <ct:socket-parameter name="STATUS" type="uint8" uuid="a5a97aa7-7489-4eb6-973d-e4ec69df6798">
-                  <attribute type="unit.System.Attributes.Description" value="Статус" />
-                </ct:socket-parameter>
-                <attribute type="unit.System.Attributes.Description" value="Канал 16" />
+                <ct:socket-parameter name="VALUE" uuid="77824ac2-f18a-4195-b0ac-6f3ac99a2709" type="float32" />
+                <ct:socket-parameter name="STATUS" type="uint8" uuid="e5dc8b0b-2773-4eb1-ba27-632c0553aea8" />
               </ct:socket>
               <attribute type="unit.System.Attributes.Title" value="AI_16_012" />
               <attribute type="unit.PsBase.Attributes.ALIAS" value="AI_16_012" />
-              <ct:parameter name="FW_VERSION" type="uint32" direction="out" uuid="9d8ef0f1-9137-4a16-8cdf-b09d7f80b1ce">
+              <attribute type="Attributes.KKS" value="AI_16_012" />
+              <ct:socket name="CH02" direction="out" uuid="00b20529-aaa5-4de4-9e5e-43830118dc5f">
+                <attribute type="unit.System.Attributes.Description" value="Канал 1" />
+                <ct:socket-parameter name="VALUE" type="float32" uuid="183f7d54-d67c-444c-b640-1eaf0e8d4bfc" />
+                <ct:socket-parameter name="STATUS" type="uint8" uuid="90e5459a-4f6b-49e2-94fb-dfd7b1cca4d4" />
+              </ct:socket>
+              <ct:socket name="CH03" direction="out" uuid="f14c2036-d13e-4bff-b07b-5901c5e46425">
+                <attribute type="unit.System.Attributes.Description" value="Канал 1" />
+                <ct:socket-parameter name="VALUE" type="float32" uuid="67b5c913-7dbd-4064-880b-474ccfeba750" />
+                <ct:socket-parameter name="STATUS" type="uint8" uuid="02bff96d-dd9f-4b2c-8b34-1e70b57ce213" />
+              </ct:socket>
+              <ct:socket name="CH04" direction="out" uuid="5d6165fd-a171-43c5-a958-f888b029b62d">
+                <attribute type="unit.System.Attributes.Description" value="Канал 1" />
+                <ct:socket-parameter name="VALUE" type="float32" uuid="80f036bb-2ef4-4f5d-8407-25a540df5ba9" />
+                <ct:socket-parameter name="STATUS" type="uint8" uuid="7592ed55-db02-49c7-aabd-4bcfbaaf74b1" />
+              </ct:socket>
+              <ct:socket name="CH05" direction="out" uuid="266f0707-6303-4f4c-8728-197ea845eb3d">
+                <attribute type="unit.System.Attributes.Description" value="Канал 1" />
+                <ct:socket-parameter name="VALUE" type="float32" uuid="e2a4e91f-57b4-43f5-933d-c6dc091ed5ea" />
+                <ct:socket-parameter name="STATUS" type="uint8" uuid="34a555c1-463b-4f58-9a2e-863561ecb79a" />
+              </ct:socket>
+              <ct:socket name="CH06" direction="out" uuid="b14fb90d-145c-46aa-a079-7ed0bede3cc4">
+                <attribute type="unit.System.Attributes.Description" value="Канал 1" />
+                <ct:socket-parameter name="VALUE" type="float32" uuid="d519ba2d-c1d6-40d0-b64c-c468a3cac35d" />
+                <ct:socket-parameter name="STATUS" type="uint8" uuid="f66fb620-1993-4cf2-ab13-503285a92ab1" />
+              </ct:socket>
+              <ct:socket name="CH07" direction="out" uuid="184af3c1-c12a-431b-805d-f5b540a7ae4b">
+                <attribute type="unit.System.Attributes.Description" value="Канал 1" />
+                <ct:socket-parameter name="VALUE" type="float32" uuid="956fa824-ccab-4037-9917-ebcf2b36f936" />
+                <ct:socket-parameter name="STATUS" type="uint8" uuid="b53902b7-d90b-4ef6-bfa8-b26864f5e450" />
+              </ct:socket>
+              <ct:socket name="CH08" direction="out" uuid="ce9c12ec-ea09-4955-ab5e-994ba7cd5c21">
+                <attribute type="unit.System.Attributes.Description" value="Канал 1" />
+                <ct:socket-parameter name="VALUE" type="float32" uuid="3389c686-ab8f-4526-b99b-df23ba9fe959" />
+                <ct:socket-parameter name="STATUS" type="uint8" uuid="c636868c-9bf7-4e19-8b9c-5de1a84493d8" />
+              </ct:socket>
+              <ct:socket name="CH09" direction="out" uuid="ba72e5f4-da98-4137-83cf-be3ef2cefde0">
+                <attribute type="unit.System.Attributes.Description" value="Канал 1" />
+                <ct:socket-parameter name="VALUE" type="float32" uuid="48f41c18-4c0b-4aa1-bf1a-632608752d98" />
+                <ct:socket-parameter name="STATUS" type="uint8" uuid="b819a370-66e7-4d1a-99fc-e76a1dbe70d7" />
+              </ct:socket>
+              <ct:socket name="CH10" direction="out" uuid="96da50c9-690b-4ac0-bc88-e45852c91374">
+                <attribute type="unit.System.Attributes.Description" value="Канал 1" />
+                <ct:socket-parameter name="VALUE" type="float32" uuid="3f5d60cf-a3e4-4517-bcb7-cce87bfbb5c8" />
+                <ct:socket-parameter name="STATUS" type="uint8" uuid="0a051d8a-7b5b-4507-a86a-f5d3cdb7e5c0" />
+              </ct:socket>
+              <ct:socket name="CH11" direction="out" uuid="3e27ed2d-b166-42ad-bd0b-db5fbc23285e">
+                <attribute type="unit.System.Attributes.Description" value="Канал 1" />
+                <ct:socket-parameter name="VALUE" type="float32" uuid="b80cfea0-56b7-413a-a9f6-be038e6c273e" />
+                <ct:socket-parameter name="STATUS" type="uint8" uuid="a89817c0-0f45-4235-a077-d0ef82552460" />
+              </ct:socket>
+              <ct:socket name="CH12" direction="out" uuid="36f3333a-9f68-4ae0-bb3e-849089116076">
+                <attribute type="unit.System.Attributes.Description" value="Канал 1" />
+                <ct:socket-parameter name="VALUE" type="float32" uuid="b7884498-3ae9-42d8-8166-2f92ba1b3f93" />
+                <ct:socket-parameter name="STATUS" type="uint8" uuid="747a1c7f-c3e3-42d0-8c2e-de99d459fd9f" />
+              </ct:socket>
+              <ct:socket name="CH13" direction="out" uuid="9b89b7cd-f88f-467c-9eaa-7d7acaf6039e">
+                <attribute type="unit.System.Attributes.Description" value="Канал 1" />
+                <ct:socket-parameter name="VALUE" type="float32" uuid="9d6cfb51-9d9f-41c4-b1ba-851d67265591" />
+                <ct:socket-parameter name="STATUS" type="uint8" uuid="0d6eab06-71d4-48be-8470-4a114dcbbaa1" />
+              </ct:socket>
+              <ct:socket name="CH14" direction="out" uuid="5fc238d3-57fa-4fa5-86f5-c8630b0c86c2">
+                <attribute type="unit.System.Attributes.Description" value="Канал 1" />
+                <ct:socket-parameter name="VALUE" type="float32" uuid="226028f3-07f0-4e88-953e-5b4996acfffc" />
+                <ct:socket-parameter name="STATUS" type="uint8" uuid="bd53f53b-5646-4319-9619-3e96e55b4c1b" />
+              </ct:socket>
+              <ct:socket name="CH15" direction="out" uuid="27a4c904-ef37-4336-9386-4f688bd3d89e">
+                <attribute type="unit.System.Attributes.Description" value="Канал 1" />
+                <ct:socket-parameter name="VALUE" type="float32" uuid="022be1a2-f751-491d-a87e-06947a3516a1" />
+                <ct:socket-parameter name="STATUS" type="uint8" uuid="f077e761-8a88-4883-9017-a4eabd1c8c68" />
+              </ct:socket>
+              <ct:socket name="CH16" direction="out" uuid="696be578-db21-4902-821b-b2d47e8b7738">
+                <attribute type="unit.System.Attributes.Description" value="Канал 1" />
+                <ct:socket-parameter name="VALUE" type="float32" uuid="120c1833-3c99-421d-a651-37452c189438" />
+                <ct:socket-parameter name="STATUS" type="uint8" uuid="6f1220c0-876e-4a04-8897-5308ccd2607c" />
+              </ct:socket>
+              <ct:parameter name="FW_VERSION" type="uint32" direction="out" uuid="a2cc5126-7e06-4c45-8b24-ab65c076df84">
                 <attribute type="unit.System.Attributes.Description" value="Текущая версия прошивки" />
               </ct:parameter>
-              <ct:parameter name="FW_VERSION_MIN" type="uint32" direction="out" uuid="fc06721b-cf6b-44c5-98d3-615a6fb8296b">
+              <ct:parameter name="FW_VERSION_MIN" type="uint32" direction="out" uuid="5a4ef081-5518-440c-90d7-54348df86070">
                 <attribute type="unit.System.Attributes.Description" value="Минимальная версия прошивки" />
               </ct:parameter>
-              <attribute type="Attributes.KKS" value="AI_16_012" />
-              <ct:parameter name="HwError" type="bool" direction="out" uuid="1675caf5-4c3d-42b0-a500-c53eecdae1ea">
+              <ct:parameter name="HwError" type="bool" direction="out" uuid="d535b1ee-9294-40b2-af07-2ee72758bdb1">
                 <attribute type="unit.System.Attributes.Description" value="Аппаратная ошибка модуля" />
               </ct:parameter>
-              <ct:parameter name="PWR" type="uint8" direction="out" uuid="0b1db715-ed78-4432-855d-9f4b2938bfbb">
+              <ct:parameter name="PWR" type="uint8" direction="out" uuid="cc98cb5f-f6bb-4713-bff9-5b3936161291">
                 <attribute type="unit.System.Attributes.Description" value="Состояние питания" />
               </ct:parameter>
             </ct:type>

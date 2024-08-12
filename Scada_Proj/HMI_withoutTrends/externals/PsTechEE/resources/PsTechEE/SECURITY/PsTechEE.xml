@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<Application xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="PsTechEE" IsSystem="false">
+  <Tokens>
+    <Token Type="Boolean" Name="sAckEn" Description="Квитирование">
+      <Rights>
+        <Right xsi:type="RightOfBoolean" Id="6bccc07d-e8bc-4e88-88e8-2077632fbe38" Allow="true" Deny="false">
+          <Subjects>
+            <Subject>alpha:b4c00226-1790-4cb1-8c34-e6b2eb2cb1bd</Subject>
+            <Subject>alpha:de2a8a95-89c8-4289-bd90-b8150d46c0b8</Subject>
+            <Subject>alpha:89fc8986-ee61-45f2-961b-49940409057f</Subject>
+            <Subject>alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097</Subject>
+          </Subjects>
+        </Right>
+        <Right xsi:type="RightOfBoolean" Id="c7e81614-1aca-4b27-8533-58f223bcfc9c" Allow="false" Deny="true">
+          <Subjects>
+            <Subject>alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d</Subject>
+            <Subject>alpha:ba9d03c0-67aa-40dc-b5da-a19a7136b44b</Subject>
+          </Subjects>
+        </Right>
+      </Rights>
+    </Token>
+    <Token Type="Boolean" Name="sChangeModeEn" Description="Изменение режима">
+      <Rights>
+        <Right xsi:type="RightOfBoolean" Id="1606b444-de79-473f-a26a-e955ad4ca454" Allow="false" Deny="true">
+          <Subjects>
+            <Subject>alpha:ba9d03c0-67aa-40dc-b5da-a19a7136b44b</Subject>
+          </Subjects>
+        </Right>
+        <Right xsi:type="RightOfBoolean" Id="c98fcb0e-94fe-4124-bd34-0987c593c69b" Allow="true" Deny="false">
+          <Subjects>
+            <Subject>alpha:b4c00226-1790-4cb1-8c34-e6b2eb2cb1bd</Subject>
+            <Subject>alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d</Subject>
+            <Subject>alpha:de2a8a95-89c8-4289-bd90-b8150d46c0b8</Subject>
+            <Subject>alpha:89fc8986-ee61-45f2-961b-49940409057f</Subject>
+            <Subject>alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097</Subject>
+          </Subjects>
+        </Right>
+      </Rights>
+    </Token>
+    <Token Type="Boolean" Name="sChangeParamEn" Description="Изменение параметров">
+      <Rights>
+        <Right xsi:type="RightOfBoolean" Id="727adf05-e9a0-4288-8748-b245f4787b83" Allow="false" Deny="true">
+          <Subjects>
+            <Subject>alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d</Subject>
+            <Subject>alpha:ba9d03c0-67aa-40dc-b5da-a19a7136b44b</Subject>
+          </Subjects>
+        </Right>
+        <Right xsi:type="RightOfBoolean" Id="ba612618-723f-44ea-b299-0d6864164584" Allow="true" Deny="false">
+          <Subjects>
+            <Subject>alpha:b4c00226-1790-4cb1-8c34-e6b2eb2cb1bd</Subject>
+            <Subject>alpha:de2a8a95-89c8-4289-bd90-b8150d46c0b8</Subject>
+            <Subject>alpha:89fc8986-ee61-45f2-961b-49940409057f</Subject>
+            <Subject>alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097</Subject>
+          </Subjects>
+        </Right>
+      </Rights>
+    </Token>
+    <Token Type="Boolean" Name="sCtlEn" Description="Управление">
+      <Rights>
+        <Right xsi:type="RightOfBoolean" Id="2be4e6f7-6783-457f-aff4-103b40793956" Allow="false" Deny="true">
+          <Subjects>
+            <Subject>alpha:ba9d03c0-67aa-40dc-b5da-a19a7136b44b</Subject>
+          </Subjects>
+        </Right>
+        <Right xsi:type="RightOfBoolean" Id="f8b43457-7905-400f-a1e7-935930f31679" Allow="true" Deny="false">
+          <Subjects>
+            <Subject>alpha:b4c00226-1790-4cb1-8c34-e6b2eb2cb1bd</Subject>
+            <Subject>alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d</Subject>
+            <Subject>alpha:de2a8a95-89c8-4289-bd90-b8150d46c0b8</Subject>
+            <Subject>alpha:89fc8986-ee61-45f2-961b-49940409057f</Subject>
+            <Subject>alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097</Subject>
+          </Subjects>
+        </Right>
+      </Rights>
+    </Token>
+    <Token Type="Boolean" Name="sProtectOnEn" Description="Ввод защиты">
+      <Rights />
+    </Token>
+    <Token Type="Boolean" Name="sReplaceModeEn" Description="Режим подмены">
+      <Rights>
+        <Right xsi:type="RightOfBoolean" Id="4e062216-0b6c-48a7-b80c-a065d1c5ebfe" Allow="false" Deny="true">
+          <Subjects>
+            <Subject>alpha:ba9d03c0-67aa-40dc-b5da-a19a7136b44b</Subject>
+          </Subjects>
+        </Right>
+        <Right xsi:type="RightOfBoolean" Id="71098628-e70d-4ace-a476-e79f37e6888e" Allow="true" Deny="false">
+          <Subjects>
+            <Subject>alpha:b4c00226-1790-4cb1-8c34-e6b2eb2cb1bd</Subject>
+            <Subject>alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d</Subject>
+            <Subject>alpha:de2a8a95-89c8-4289-bd90-b8150d46c0b8</Subject>
+            <Subject>alpha:89fc8986-ee61-45f2-961b-49940409057f</Subject>
+            <Subject>alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097</Subject>
+          </Subjects>
+        </Right>
+      </Rights>
+    </Token>
+    <Token Type="Boolean" Name="sRstWorktimeEn" Description="Сброс наработки">
+      <Rights>
+        <Right xsi:type="RightOfBoolean" Id="2a6ab81b-189e-497d-b0b8-15420e343bd7" Allow="false" Deny="true">
+          <Subjects>
+            <Subject>alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d</Subject>
+            <Subject>alpha:ba9d03c0-67aa-40dc-b5da-a19a7136b44b</Subject>
+          </Subjects>
+        </Right>
+        <Right xsi:type="RightOfBoolean" Id="8d55368e-8e7b-495f-8ff2-cb5784409564" Allow="true" Deny="false">
+          <Subjects>
+            <Subject>alpha:b4c00226-1790-4cb1-8c34-e6b2eb2cb1bd</Subject>
+            <Subject>alpha:de2a8a95-89c8-4289-bd90-b8150d46c0b8</Subject>
+            <Subject>alpha:89fc8986-ee61-45f2-961b-49940409057f</Subject>
+            <Subject>alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097</Subject>
+          </Subjects>
+        </Right>
+      </Rights>
+    </Token>
+    <Token Type="Boolean" Name="sTestModeEn" Description="Включение режима &quot;Опробование&quot;">
+      <Rights>
+        <Right xsi:type="RightOfBoolean" Id="51e202a6-1697-482b-b48f-10ff7bb632ba" Allow="true" Deny="false">
+          <Subjects>
+            <Subject>alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097</Subject>
+          </Subjects>
+        </Right>
+        <Right xsi:type="RightOfBoolean" Id="a1e3fd60-90d0-47e1-85d6-9cd73967811b" Allow="false" Deny="true">
+          <Subjects>
+            <Subject>alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d</Subject>
+          </Subjects>
+        </Right>
+      </Rights>
+    </Token>
+  </Tokens>
+  <Roles />
+</Application>
