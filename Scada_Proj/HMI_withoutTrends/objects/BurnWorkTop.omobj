@@ -515,6 +515,21 @@
 				<![CDATA[unit.Global.Colors.Air]]>
 			</body>
 		</do-trace>
+		<do-trace access-modifier="private" target="NameExtended" ver="5">
+			<conditional-expr>
+				<condition>
+					<![CDATA[BurnNumber != "0"]]>
+				</condition>
+				<expr>
+					<![CDATA[NAME + " " + BurnNumber]]>
+				</expr>
+			</conditional-expr>
+			<default-expr>
+				<expr>
+					<![CDATA[NAME]]>
+				</expr>
+			</default-expr>
+		</do-trace>
 	</object>
 	<object access-modifier="private" name="DamperAir" display-name="DamperAir" uuid="694f66c3-28c2-42a7-b804-956874bf7b40" base-type="Damper" base-type-id="a3e73327-f733-446d-ac01-918439e55f3f" ver="5">
 		<designed target="X" value="-42" ver="5"/>

@@ -27,7 +27,7 @@
                 <attribute type="unit.System.Attributes.Description" value="PDг на котёл" />
                 <attribute type="unit.System.Attributes.Title" value="16g00dPe1" />
                 <attribute type="Attributes.ALIAS" value="PD" />
-                <attribute type="Attributes.DIGITS" value="0" />
+                <attribute type="Attributes.DIGITS" value="2" />
               </ct:object>
               <ct:object name="T" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="c6c9435d-c5d2-466c-901e-c436af1446a1">
                 <attribute type="unit.System.Attributes.Description" value="Тг за диафрагмой" />
@@ -38,7 +38,7 @@
               </ct:object>
               <ct:object name="P" uuid="8b50da8d-59ed-46c3-b530-1f943634f3b8" base-type="Types.AI2.PLC_View" aspect="Aspects.PLC_Aspect">
                 <attribute type="Attributes.ALIAS" value="P" />
-                <attribute type="Attributes.DIGITS" value="0" />
+                <attribute type="Attributes.DIGITS" value="2" />
                 <attribute type="unit.System.Attributes.Title" value="16g00Pe1, 16g00Pe2" />
                 <attribute type="unit.System.Attributes.Description" value="Pг за диафрагмой" />
               </ct:object>
@@ -91,17 +91,17 @@
                 <ct:object name="PAir" uuid="04d0afa0-c6f7-46ed-9120-b4c9d58a7374" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a05Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="8fe03c20-d19c-4996-a23f-2c2c8a0b52d3">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g05Pe2" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="b454df4c-3d4e-40c8-b946-60439a9812ab">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g05Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="FanOff" uuid="d4f76990-68a8-490c-b01c-73b3085ed571" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -125,6 +125,10 @@
                 </ct:object>
                 <attribute type="Attributes.BurnNumber" value="5" />
                 <attribute type="unit.System.Attributes.Description" value="Горелка 5" />
+                <ct:object name="PGasH" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="7e4ea26a-0631-47d1-9ae9-cb8c2b068180">
+                  <attribute type="unit.System.Attributes.Title" value="Рг выше нормы" />
+                  <attribute type="unit.System.Attributes.Description" value="Рг выше нормы" />
+                </ct:object>
               </ct:object>
               <ct:object name="BurnWork1" uuid="776fcb88-c4cb-4ab0-a500-3953c6b320e0" base-type="Types.BurnerWork.PLC_View" aspect="Aspects.PLC_Aspect">
                 <ct:object name="DamperGas" base-type="Types.Damper.PLC_View" aspect="Aspects.PLC_Aspect" uuid="9b949e58-388b-46e4-94b7-952222b31387">
@@ -154,17 +158,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="9f9b0f78-3b7f-4d1d-bba6-97b7008850e6">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a01Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="0cbe1e7f-46f3-4e09-8d70-cb0ae0351f99">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g01Pe2" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="abad8157-b5ae-43b7-9478-ecbb2a20574e">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g01Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="fc002eab-ed0a-43ea-9982-5436b3bbdb1b">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -180,6 +184,10 @@
                 </ct:object>
                 <attribute type="Attributes.BurnNumber" value="1" />
                 <attribute type="unit.System.Attributes.Description" value="Горелка 1" />
+                <ct:object name="PGasH" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="adc1e9c7-0f86-4ef6-9c57-ac085d5c49b3">
+                  <attribute type="unit.System.Attributes.Title" value="Рг выше нормы" />
+                  <attribute type="unit.System.Attributes.Description" value="Рг выше нормы" />
+                </ct:object>
               </ct:object>
               <ct:object name="BurnWork2" base-type="Types.BurnerWork.PLC_View" aspect="Aspects.PLC_Aspect" uuid="163036d2-3bd2-4150-84e0-e32f57ec3c9a">
                 <ct:object name="DamperGas" base-type="Types.Damper.PLC_View" aspect="Aspects.PLC_Aspect" uuid="64bf425d-1bfe-426a-929d-612b66ba2bae">
@@ -209,17 +217,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="047c49bc-7a73-4bb2-a665-59ffdcc1ff0c">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a03Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="ed329fbb-6c90-4723-a3c7-5ba609a0cf12">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g03Pe2" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="fa552ecd-aba3-46f6-a132-f6ef4bace4fe">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g03Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="41cee4e5-d93b-4ade-a634-5b0f1d689d30">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -235,6 +243,10 @@
                 </ct:object>
                 <attribute type="Attributes.BurnNumber" value="3" />
                 <attribute type="unit.System.Attributes.Description" value="Горелка 3" />
+                <ct:object name="PGasH" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="a8883874-a732-40f6-8a50-b867c109e21d">
+                  <attribute type="unit.System.Attributes.Title" value="Рг выше нормы" />
+                  <attribute type="unit.System.Attributes.Description" value="Рг выше нормы" />
+                </ct:object>
               </ct:object>
               <ct:object name="BurnWork3" base-type="Types.BurnerWork.PLC_View" aspect="Aspects.PLC_Aspect" uuid="822fda2c-0ce7-4528-9781-dee4e9e6e56e">
                 <ct:object name="DamperGas" base-type="Types.Damper.PLC_View" aspect="Aspects.PLC_Aspect" uuid="b1d04e43-9d8b-45c3-be00-841e4e7968b7">
@@ -264,17 +276,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="a176f1c0-ce7a-4277-87d0-30f59619ccfc">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a07Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="a2017b06-cd46-4181-8b84-b5879f024d5e">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g07Pe2" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="38af2624-7703-4176-9942-4c22efd68d9e">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g07Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="b7277cf1-3e28-4b85-be98-787c9a0ba18a">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -290,11 +302,15 @@
                 </ct:object>
                 <attribute type="Attributes.BurnNumber" value="7" />
                 <attribute type="unit.System.Attributes.Description" value="Горелка 7" />
+                <ct:object name="PGasH" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="63b8c9a0-0c95-4571-b9df-7840912bf558">
+                  <attribute type="unit.System.Attributes.Title" value="Рг выше нормы" />
+                  <attribute type="unit.System.Attributes.Description" value="Рг выше нормы" />
+                </ct:object>
               </ct:object>
               <attribute type="Attributes.GroupNumber" value="1" />
             </ct:object>
             <ct:object name="GVL" uuid="80e88ab5-bc8a-439f-86dc-a2e62838f34f" base-type="Types.GVL.PLC_View" aspect="Aspects.PLC_Aspect" />
-            <ct:object name="OtherGates" uuid="3f778171-de4d-421c-bac3-b8ba03cd143a" base-type="Types.OtherGates.PLC_View" aspect="Aspects.PLC_Aspect">
+            <ct:object name="Other" uuid="3f778171-de4d-421c-bac3-b8ba03cd143a" base-type="Types.Other.PLC_View" aspect="Aspects.PLC_Aspect">
               <ct:object name="Gate17" uuid="cae4b90e-76dd-45b4-a91c-c6a631084580" base-type="Types.Gate.PLC_View" aspect="Aspects.PLC_Aspect">
                 <attribute type="unit.System.Attributes.Description" value="Газ. ЗД перед котлом №17" />
                 <attribute type="unit.System.Attributes.Title" value="17g00M1" />
@@ -336,7 +352,7 @@
                 <attribute type="unit.System.Attributes.Description" value="Содержание О²" />
                 <attribute type="unit.System.Attributes.Title" value="16f00Qe1" />
                 <attribute type="Attributes.EU" value="%" />
-                <attribute type="Attributes.ALIAS" value="O²" />
+                <attribute type="Attributes.ALIAS" value="O₂" />
               </ct:object>
               <ct:object name="T" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="94123af7-0d63-4d24-ae50-ef57e08b41c9">
                 <attribute type="unit.System.Attributes.Description" value="Т уходящих газов" />
@@ -368,11 +384,13 @@
                 <attribute type="unit.System.Attributes.Title" value="16w00dPe1" />
                 <attribute type="Attributes.ALIAS" value="PD" />
                 <attribute type="unit.System.Attributes.Description" value="PDсв на входе" />
+                <attribute type="Attributes.DIGITS" value="2" />
               </ct:object>
               <ct:object name="PIn" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="53fcabdc-aa82-4d7e-a87c-62e3dede2252">
                 <attribute type="unit.System.Attributes.Title" value="16w00Pe1" />
                 <attribute type="Attributes.EU" value="МПа" />
                 <attribute type="unit.System.Attributes.Description" value="Рсв на входе" />
+                <attribute type="Attributes.DIGITS" value="2" />
               </ct:object>
               <ct:object name="TIn" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="5abb824f-8a58-4e84-b8c2-f5d98111ab8c">
                 <attribute type="unit.System.Attributes.Title" value="16w00Te1" />
@@ -390,6 +408,7 @@
                 <attribute type="Attributes.EU" value="МПа" />
                 <attribute type="unit.System.Attributes.Title" value="16w00Pe1, 16w00Pe2" />
                 <attribute type="unit.System.Attributes.Description" value="Рсв на выходе" />
+                <attribute type="Attributes.DIGITS" value="2" />
               </ct:object>
               <ct:object name="F" base-type="Types.Flow.PLC_View" aspect="Aspects.PLC_Aspect" uuid="f6615b76-ee6c-4234-af43-e7a90fea9b1f">
                 <attribute type="Attributes.ALIAS" value="F" />
@@ -440,17 +459,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="5fe69705-1e26-4e8f-a866-27eb9915537a">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a06Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="f6bff570-d58f-4ebd-880d-efbfd6d77332">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g06Pe2" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="f13ae5e4-05f6-4093-a9ef-50da1c013100">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g06Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="26c0400d-5acc-4f8e-a7cd-cc36cbb903a3">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -474,6 +493,10 @@
                 </ct:object>
                 <attribute type="Attributes.BurnNumber" value="6" />
                 <attribute type="unit.System.Attributes.Description" value="Горелка 6" />
+                <ct:object name="PGasH" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="e10349fb-daeb-4d52-abde-50104edb5fc7">
+                  <attribute type="unit.System.Attributes.Title" value="Рг выше нормы" />
+                  <attribute type="unit.System.Attributes.Description" value="Рг выше нормы" />
+                </ct:object>
               </ct:object>
               <ct:object name="BurnWork1" base-type="Types.BurnerWork.PLC_View" aspect="Aspects.PLC_Aspect" uuid="0511a3af-e03d-4d89-b491-21adf4760d1a">
                 <ct:object name="DamperGas" base-type="Types.Damper.PLC_View" aspect="Aspects.PLC_Aspect" uuid="67e61f23-c9ce-41ba-a4e1-ebe4e320bb18">
@@ -503,17 +526,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="9de78439-0673-45f5-b183-be30d7a6fe07">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a02Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="24bd88e2-1927-45df-b1f7-530173055c8b">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g02Pe2" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="68c13720-cea2-43a3-b962-74f7d7885a96">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g02Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="c13a05d0-6ceb-42dc-bd84-3e613c604b3f">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -529,6 +552,10 @@
                 </ct:object>
                 <attribute type="Attributes.BurnNumber" value="2" />
                 <attribute type="unit.System.Attributes.Description" value="Горелка 2" />
+                <ct:object name="PGasH" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="0115bd76-ede0-40d1-816a-96f9d557b2d0">
+                  <attribute type="unit.System.Attributes.Title" value="Рг выше нормы" />
+                  <attribute type="unit.System.Attributes.Description" value="Рг выше нормы" />
+                </ct:object>
               </ct:object>
               <ct:object name="BurnWork2" base-type="Types.BurnerWork.PLC_View" aspect="Aspects.PLC_Aspect" uuid="db445467-7802-43a8-b88b-3ae33b5fbadc">
                 <ct:object name="DamperGas" base-type="Types.Damper.PLC_View" aspect="Aspects.PLC_Aspect" uuid="0227048d-735a-42c0-981d-376de3ece681">
@@ -558,17 +585,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="68e65386-1fee-4e1e-8a7a-493a8c8460b2">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a04Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="a5693db6-58ec-48f9-91bc-b50ca5382dc8">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g04Pe2" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="9ee43ed7-c911-4ccf-8b1a-9f49b2251fef">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g04Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="64a755bd-46a4-4a43-8642-5d0c3aa59f8f">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -584,6 +611,10 @@
                 </ct:object>
                 <attribute type="Attributes.BurnNumber" value="4" />
                 <attribute type="unit.System.Attributes.Description" value="Горелка 4" />
+                <ct:object name="PGasH" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="0a034ca7-32ec-49c7-aa14-fbdf23138698">
+                  <attribute type="unit.System.Attributes.Title" value="Рг выше нормы" />
+                  <attribute type="unit.System.Attributes.Description" value="Рг выше нормы" />
+                </ct:object>
               </ct:object>
               <ct:object name="BurnWork3" base-type="Types.BurnerWork.PLC_View" aspect="Aspects.PLC_Aspect" uuid="ab8a73b8-95ac-40a1-abc1-cb7ba049484e">
                 <ct:object name="DamperGas" base-type="Types.Damper.PLC_View" aspect="Aspects.PLC_Aspect" uuid="50340b17-add0-4e21-b470-b8d837a4015c">
@@ -613,17 +644,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="bf80e442-7419-40aa-b503-aec95b9a7633">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a08Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="a0ab5006-123e-4c0a-b8e6-a37777f3056c">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g08Pe2" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="7509396f-e6ed-4869-863e-59cde116bb0d">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g08Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="e8a7789a-d562-4e6d-af43-b147e1fe3080">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -639,6 +670,10 @@
                 </ct:object>
                 <attribute type="Attributes.BurnNumber" value="8" />
                 <attribute type="unit.System.Attributes.Description" value="Горелка 8" />
+                <ct:object name="PGasH" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="e4c37824-f498-4f48-92c0-b3b8abc92702">
+                  <attribute type="unit.System.Attributes.Title" value="Рг выше нормы" />
+                  <attribute type="unit.System.Attributes.Description" value="Рг выше нормы" />
+                </ct:object>
               </ct:object>
               <attribute type="Attributes.GroupNumber" value="2" />
             </ct:object>
@@ -682,17 +717,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="254b940b-4f46-4e0d-8137-a959ca607746">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a11Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="2b527765-439f-4aa3-acd1-cffb57eebdfa">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g11Pe2" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="84e47090-a99b-4bc3-9c0a-e321590d71f5">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g11Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="57d60bde-1ec0-461e-b87c-0c247aabbcfe">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -716,6 +751,10 @@
                 </ct:object>
                 <attribute type="Attributes.BurnNumber" value="11" />
                 <attribute type="unit.System.Attributes.Description" value="Горелка 11" />
+                <ct:object name="PGasH" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="a52699a3-d352-4761-899c-83b9f7349366">
+                  <attribute type="unit.System.Attributes.Title" value="Рг выше нормы" />
+                  <attribute type="unit.System.Attributes.Description" value="Рг выше нормы" />
+                </ct:object>
               </ct:object>
               <ct:object name="BurnWork1" base-type="Types.BurnerWork.PLC_View" aspect="Aspects.PLC_Aspect" uuid="3d129969-4b84-43ec-8304-3a0d3809fc8a">
                 <ct:object name="DamperGas" base-type="Types.Damper.PLC_View" aspect="Aspects.PLC_Aspect" uuid="396ba4a7-9ec2-48d9-a47b-5b0e2704cfb5">
@@ -745,17 +784,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="a4b956ef-f906-446e-a61a-1961203e0c27">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a09Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="7d30c646-78f1-4aa0-b5e4-b66215ce6dac">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g09Pe2" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="8ef43025-845a-488e-ad80-47e06dc2741e">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g09Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="73d89b10-b766-40c2-85af-347f48bc3bbc">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -771,6 +810,10 @@
                 </ct:object>
                 <attribute type="Attributes.BurnNumber" value="9" />
                 <attribute type="unit.System.Attributes.Description" value="Горелка 9" />
+                <ct:object name="PGasH" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="f8e596fe-f631-4ad8-9bdb-830987a38c95">
+                  <attribute type="unit.System.Attributes.Title" value="Рг выше нормы" />
+                  <attribute type="unit.System.Attributes.Description" value="Рг выше нормы" />
+                </ct:object>
               </ct:object>
               <ct:object name="BurnWork2" base-type="Types.BurnerWork.PLC_View" aspect="Aspects.PLC_Aspect" uuid="620ded8f-7e7b-454c-bcc9-80cae7186355">
                 <ct:object name="DamperGas" base-type="Types.Damper.PLC_View" aspect="Aspects.PLC_Aspect" uuid="dee9337e-baa7-4887-acc6-4f0b67c0a835">
@@ -800,17 +843,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="2d8c6ddc-ccef-4c4e-a261-43d53c38fdef">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a13Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="580132f0-acca-4975-9a10-8db08099629c">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g13Pe2" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="e6bd8827-9929-49b9-b5ca-4a4efbc080a9">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g13Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="9c779831-6894-4322-8940-58bee254ecce">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -826,6 +869,10 @@
                 </ct:object>
                 <attribute type="Attributes.BurnNumber" value="13" />
                 <attribute type="unit.System.Attributes.Description" value="Горелка 13" />
+                <ct:object name="PGasH" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="fbc1037a-da11-4499-8408-b21bf180660b">
+                  <attribute type="unit.System.Attributes.Title" value="Рг выше нормы" />
+                  <attribute type="unit.System.Attributes.Description" value="Рг выше нормы" />
+                </ct:object>
               </ct:object>
               <ct:object name="BurnWork3" base-type="Types.BurnerWork.PLC_View" aspect="Aspects.PLC_Aspect" uuid="a03d4445-c362-477d-9c85-9431c338eb3d">
                 <ct:object name="DamperGas" base-type="Types.Damper.PLC_View" aspect="Aspects.PLC_Aspect" uuid="bd485956-e4e0-4e57-ae08-86ec5f40c4ac">
@@ -855,17 +902,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="fa6a2be2-7468-45c8-8eb7-78a83b9c86c2">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a15Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="a483f247-538f-43a3-8cc5-26c172a2207b">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g15Pe2" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="09e10445-aa2d-43a8-85da-af8abd3cca81">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g15Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="f0df19f6-e276-4bfc-86cb-28b452da97a8">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -881,6 +928,10 @@
                 </ct:object>
                 <attribute type="Attributes.BurnNumber" value="15" />
                 <attribute type="unit.System.Attributes.Description" value="Горелка 15" />
+                <ct:object name="PGasH" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="5817ac5a-a6ea-4a9a-9d1b-73cb0f79fae6">
+                  <attribute type="unit.System.Attributes.Title" value="Рг выше нормы" />
+                  <attribute type="unit.System.Attributes.Description" value="Рг выше нормы" />
+                </ct:object>
               </ct:object>
               <attribute type="Attributes.GroupNumber" value="3" />
             </ct:object>
@@ -924,17 +975,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="a6105507-3c12-422f-b99c-610c83ae826b">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a12Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="79d5c072-4b83-48d0-96d6-e0ba02154f9a">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g12Pe2" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="77f0cc54-0f35-4ce1-b698-fed2b061d22c">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g12Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="4dbc21eb-4f19-40be-80ff-e94ec65fff16">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -958,6 +1009,10 @@
                 </ct:object>
                 <attribute type="Attributes.BurnNumber" value="12" />
                 <attribute type="unit.System.Attributes.Description" value="Горелка 12" />
+                <ct:object name="PGasH" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="da11205a-7d56-4cde-8584-00194f40627c">
+                  <attribute type="unit.System.Attributes.Title" value="Рг выше нормы" />
+                  <attribute type="unit.System.Attributes.Description" value="Рг выше нормы" />
+                </ct:object>
               </ct:object>
               <ct:object name="BurnWork1" base-type="Types.BurnerWork.PLC_View" aspect="Aspects.PLC_Aspect" uuid="3e324793-bd67-4383-bfc7-506f34b2c2f0">
                 <ct:object name="DamperGas" base-type="Types.Damper.PLC_View" aspect="Aspects.PLC_Aspect" uuid="e7057de6-3269-471a-9571-11265c95b293">
@@ -987,17 +1042,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="f93fac93-a221-4af5-b867-9ba7721cab35">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a10Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="771cd01d-5536-44bd-a768-cde9d6b499db">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g10Pe2" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="0bc637a3-5e69-44a6-91f3-56db07cb8ada">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g10Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="1a05a3c5-7d42-493d-8646-da062d62fe25">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -1013,6 +1068,10 @@
                 </ct:object>
                 <attribute type="Attributes.BurnNumber" value="10" />
                 <attribute type="unit.System.Attributes.Description" value="Горелка 10" />
+                <ct:object name="PGasH" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="b26169c9-1e3e-4cf5-9b28-5ba5e3997856">
+                  <attribute type="unit.System.Attributes.Title" value="Рг выше нормы" />
+                  <attribute type="unit.System.Attributes.Description" value="Рг выше нормы" />
+                </ct:object>
               </ct:object>
               <ct:object name="BurnWork2" base-type="Types.BurnerWork.PLC_View" aspect="Aspects.PLC_Aspect" uuid="40790348-ed00-49a7-b184-f8af81c6bf58">
                 <ct:object name="DamperGas" base-type="Types.Damper.PLC_View" aspect="Aspects.PLC_Aspect" uuid="3a838d86-1a0f-435f-aae8-04da3a6f7d31">
@@ -1042,17 +1101,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="c2003088-a142-49ad-b57a-9a6c424552e9">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a14Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="58152925-ab73-4f97-994b-baa1ecf5ce41">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g14Pe2" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="9edf9aad-d422-4406-a355-aaec7e06f4dc">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g14Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="63540efa-b5c6-46f4-97fe-bcb2888f1ac4">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -1069,6 +1128,10 @@
                 <attribute type="Attributes.BurnNumber" value="14" />
                 <attribute type="unit.System.Attributes.Description" value="Горелка 14" />
                 <attribute type="unit.System.Attributes.Title" value=" " />
+                <ct:object name="PGasH" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="27218f32-cf5e-4c64-ab7e-08f29e4169c5">
+                  <attribute type="unit.System.Attributes.Title" value="Рг выше нормы" />
+                  <attribute type="unit.System.Attributes.Description" value="Рг выше нормы" />
+                </ct:object>
               </ct:object>
               <ct:object name="BurnWork3" base-type="Types.BurnerWork.PLC_View" aspect="Aspects.PLC_Aspect" uuid="02e15a79-962c-4cc0-b1c1-806688c05ad7">
                 <ct:object name="DamperGas" base-type="Types.Damper.PLC_View" aspect="Aspects.PLC_Aspect" uuid="0b3f2d5e-64c8-41e0-b5d0-b785090a72ec">
@@ -1098,17 +1161,17 @@
                 <ct:object name="PAir" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="e060c1b1-9e34-4a61-8001-862ea1c5680c">
                   <attribute type="unit.System.Attributes.Description" value="Рв перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16a16Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGas" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="70d16744-0aae-44bd-802e-8e0460324f01">
                   <attribute type="unit.System.Attributes.Description" value="Рг перед гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g16Pe2" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="PGasBetween" base-type="Types.AI1.PLC_View" aspect="Aspects.PLC_Aspect" uuid="02b53091-5a57-430f-904e-5b1f0eb2ce07">
                   <attribute type="unit.System.Attributes.Description" value="Рг между ПЗК гор." />
                   <attribute type="unit.System.Attributes.Title" value="16g16Pe1" />
-                  <attribute type="Attributes.DIGITS" value="0" />
+                  <attribute type="Attributes.DIGITS" value="2" />
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="7fea3856-5b37-4d03-bbc0-16c034c891b6">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
@@ -1124,6 +1187,10 @@
                 </ct:object>
                 <attribute type="Attributes.BurnNumber" value="16" />
                 <attribute type="unit.System.Attributes.Description" value="Горелка 16" />
+                <ct:object name="PGasH" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="4f4de2f6-e5fe-4b33-8122-db4b2d0b59b0">
+                  <attribute type="unit.System.Attributes.Title" value="Рг выше нормы" />
+                  <attribute type="unit.System.Attributes.Description" value="Рг выше нормы" />
+                </ct:object>
               </ct:object>
               <attribute type="Attributes.GroupNumber" value="4" />
             </ct:object>
@@ -1217,6 +1284,35 @@
               <ct:object name="CO" base-type="Types.Warning.PLC_View" aspect="Aspects.PLC_Aspect" uuid="d88f9598-eb91-451f-9a0c-42a6caa9ec7e">
                 <attribute type="unit.System.Attributes.Title" value="Содержание СО выше нормы" />
                 <attribute type="unit.System.Attributes.Description" value="Содержание СО выше нормы" />
+              </ct:object>
+            </ct:object>
+            <ct:object name="VentilationSystem" uuid="2e974d94-0367-4501-81e6-65acec995faf" base-type="Types.VentilationSystem.PLC_View" aspect="Aspects.PLC_Aspect">
+              <ct:object name="FanIn1" uuid="b5c45065-424c-4156-8faf-000f80281d51" base-type="Types.Fan.PLC_View" aspect="Aspects.PLC_Aspect">
+                <attribute type="unit.System.Attributes.Description" value="Приточный вентилятор №1" />
+              </ct:object>
+              <ct:object name="FanIn2" base-type="Types.Fan.PLC_View" aspect="Aspects.PLC_Aspect" uuid="29e15aab-84c3-4fc3-acc0-28ebd4cceab1">
+                <attribute type="unit.System.Attributes.Description" value="Приточный вентилятор №2" />
+              </ct:object>
+              <ct:object name="FanIn3" base-type="Types.Fan.PLC_View" aspect="Aspects.PLC_Aspect" uuid="97c92491-7206-4875-82c3-8547483a018d">
+                <attribute type="unit.System.Attributes.Description" value="Приточный вентилятор №3" />
+              </ct:object>
+              <ct:object name="FanIn4" base-type="Types.Fan.PLC_View" aspect="Aspects.PLC_Aspect" uuid="ff46ee51-ee6a-4ace-8b64-44646dc75dc7">
+                <attribute type="unit.System.Attributes.Description" value="Приточный вентилятор №4" />
+              </ct:object>
+              <ct:object name="FanIn5" base-type="Types.Fan.PLC_View" aspect="Aspects.PLC_Aspect" uuid="deb1c756-cc3a-47a3-a159-4251ce9b02b4">
+                <attribute type="unit.System.Attributes.Description" value="Приточный вентилятор №5" />
+              </ct:object>
+              <ct:object name="FanOut1" base-type="Types.Fan.PLC_View" aspect="Aspects.PLC_Aspect" uuid="5f9bf266-f932-4d40-85e1-281662b89e2d">
+                <attribute type="unit.System.Attributes.Description" value="Вытяжной вентилятор №1" />
+              </ct:object>
+              <ct:object name="FanOut2" base-type="Types.Fan.PLC_View" aspect="Aspects.PLC_Aspect" uuid="0b3824e9-7f5b-4856-809a-afc2323c7c1d">
+                <attribute type="unit.System.Attributes.Description" value="Вытяжной вентилятор №2" />
+              </ct:object>
+              <ct:object name="FanOut3" base-type="Types.Fan.PLC_View" aspect="Aspects.PLC_Aspect" uuid="c2496726-3a3e-4bdc-849f-3edd17b933db">
+                <attribute type="unit.System.Attributes.Description" value="Вытяжной вентилятор №3" />
+              </ct:object>
+              <ct:object name="FanOut4" base-type="Types.Fan.PLC_View" aspect="Aspects.PLC_Aspect" uuid="360e2213-b15b-4eac-8a7e-83547b083b99">
+                <attribute type="unit.System.Attributes.Description" value="Вытяжной вентилятор №4" />
               </ct:object>
             </ct:object>
           </ct:object>
@@ -1477,13 +1573,6 @@
       </dp:external-runtime>
     </dp:computer>
     <dp:application-object name="IOS_App" uuid="28985c17-7d18-4cac-b712-ec3f38d5543e">
-      <ct:object name="HMI" uuid="e36be96c-5c0f-4c9d-8607-c91e6038e8d2">
-        <ct:parameter name="MSG" uuid="f334d9a7-3aac-4e86-843b-1dc4a6a94288" type="string" direction="out">
-          <attribute type="unit.Server.Attributes.Alarm">
-            <property name="value">{"Condition":{"IsEnabled":"true","Subconditions":[{"AckStrategy":0,"IsEnabled":true,"Severity":2,"Type":"Dynamic"}],"Type":"Dynamic"}}</property>
-          </attribute>
-        </ct:parameter>
-      </ct:object>
       <ct:object name="DIAGNOSTICS" uuid="953d2383-5542-417a-8cce-025ee27ad671">
         <ct:object name="SERVER1" uuid="4cd1fa1c-f50c-4a4f-8e53-8d68ed21b8b2" original="Server1.SNMP.Server1_SnmpApp.SERVER" base-type="unit.PsDiagn.COMPUTER.IOS_View" aspect="unit.PsBase.Aspects.IOS_Aspect">
           <r:init-ref ref="_PLC_View" target="Server1.SNMP.Server1_SnmpApp.SERVER" />
@@ -2642,6 +2731,9 @@
               <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group1.BurnMain.PGasL" />
             </ct:object>
             <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group1.BurnMain" />
+            <ct:object name="PGasH" uuid="6b60cdd1-b2bb-420d-8817-d3be09ce8652" original="AstraRegul.PLC.Runtime.PLC_App.Application.Group1.BurnMain.PGasH" base-type="Types.Prot.IOS_View" aspect="Aspects.IOS_Aspect">
+              <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group1.BurnMain.PGasH" />
+            </ct:object>
           </ct:object>
           <ct:object name="BurnWork1" uuid="bb7c4544-4449-4c09-8710-e1437611edf4" original="AstraRegul.PLC.Runtime.PLC_App.Application.Group1.BurnWork1" base-type="Types.BurnerWork.IOS_View" aspect="Aspects.IOS_Aspect">
             <ct:object name="DamperGas" uuid="d373fe01-8741-4862-a376-bd8169fe51b9" base-type="Types.Damper.IOS_View" aspect="Aspects.IOS_Aspect">
@@ -2708,6 +2800,12 @@
               </r:init-ref>
             </ct:object>
             <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group1.BurnWork1" />
+            <ct:object name="PGasH" uuid="635a74f1-aa75-42a0-a25e-d839a4749a26" base-type="Types.Prot.IOS_View" aspect="Aspects.IOS_Aspect">
+              <property name="original">AstraRegul.PLC.Runtime.PLC_App.Application.Group1.BurnWork1.PGasH</property>
+              <r:init-ref ref="_PLC_View">
+                <property name="target">AstraRegul.PLC.Runtime.PLC_App.Application.Group1.BurnWork1.PGasH</property>
+              </r:init-ref>
+            </ct:object>
           </ct:object>
           <ct:object name="BurnWork2" uuid="149836e3-9a04-4e51-a40f-8244e36cf577" original="AstraRegul.PLC.Runtime.PLC_App.Application.Group1.BurnWork2" base-type="Types.BurnerWork.IOS_View" aspect="Aspects.IOS_Aspect">
             <ct:object name="DamperGas" uuid="d05d5888-1b12-425d-8e48-ff845c0d38fd" base-type="Types.Damper.IOS_View" aspect="Aspects.IOS_Aspect">
@@ -2774,6 +2872,12 @@
               </r:init-ref>
             </ct:object>
             <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group1.BurnWork2" />
+            <ct:object name="PGasH" uuid="3a01dd1b-fc05-4d39-8047-5355c00ba87b" base-type="Types.Prot.IOS_View" aspect="Aspects.IOS_Aspect">
+              <property name="original">AstraRegul.PLC.Runtime.PLC_App.Application.Group1.BurnWork2.PGasH</property>
+              <r:init-ref ref="_PLC_View">
+                <property name="target">AstraRegul.PLC.Runtime.PLC_App.Application.Group1.BurnWork2.PGasH</property>
+              </r:init-ref>
+            </ct:object>
           </ct:object>
           <ct:object name="BurnWork3" uuid="284b7d3c-62a3-42b7-8b33-ca098db3ed03" original="AstraRegul.PLC.Runtime.PLC_App.Application.Group1.BurnWork3" base-type="Types.BurnerWork.IOS_View" aspect="Aspects.IOS_Aspect">
             <ct:object name="DamperGas" uuid="dec0d58e-6fd8-49aa-85fc-85dcbd6ef614" base-type="Types.Damper.IOS_View" aspect="Aspects.IOS_Aspect">
@@ -2840,32 +2944,38 @@
               </r:init-ref>
             </ct:object>
             <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group1.BurnWork3" />
+            <ct:object name="PGasH" uuid="3d83dce0-931c-4c8c-92be-0671f1969fac" base-type="Types.Prot.IOS_View" aspect="Aspects.IOS_Aspect">
+              <property name="original">AstraRegul.PLC.Runtime.PLC_App.Application.Group1.BurnWork3.PGasH</property>
+              <r:init-ref ref="_PLC_View">
+                <property name="target">AstraRegul.PLC.Runtime.PLC_App.Application.Group1.BurnWork3.PGasH</property>
+              </r:init-ref>
+            </ct:object>
           </ct:object>
           <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group1" />
         </ct:object>
         <ct:object name="GVL" uuid="1ea372e7-4da4-47f8-8fc4-529d0ea2d7a7" original="AstraRegul.PLC.Runtime.PLC_App.Application.GVL" base-type="Types.GVL.IOS_View" aspect="Aspects.IOS_Aspect">
           <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.GVL" />
         </ct:object>
-        <ct:object name="OtherGates" uuid="4fb600f0-b03d-44b9-a891-d752fa988657" original="AstraRegul.PLC.Runtime.PLC_App.Application.OtherGates" base-type="Types.OtherGates.IOS_View" aspect="Aspects.IOS_Aspect">
-          <ct:object name="Gate17" uuid="0a4e1bfe-930e-4a0b-9a95-3ecf34a61818" original="AstraRegul.PLC.Runtime.PLC_App.Application.OtherGates.Gate17" base-type="Types.Gate.IOS_View" aspect="Aspects.IOS_Aspect">
-            <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.OtherGates.Gate17" />
+        <ct:object name="Other" uuid="4fb600f0-b03d-44b9-a891-d752fa988657" original="AstraRegul.PLC.Runtime.PLC_App.Application.Other" base-type="Types.Other.IOS_View" aspect="Aspects.IOS_Aspect">
+          <ct:object name="Gate17" uuid="0a4e1bfe-930e-4a0b-9a95-3ecf34a61818" original="AstraRegul.PLC.Runtime.PLC_App.Application.Other.Gate17" base-type="Types.Gate.IOS_View" aspect="Aspects.IOS_Aspect">
+            <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Other.Gate17" />
           </ct:object>
-          <ct:object name="GateKV204" uuid="44809851-bb6b-4bd5-a8d1-f5237da7a094" original="AstraRegul.PLC.Runtime.PLC_App.Application.OtherGates.GateKV204" base-type="Types.Gate.IOS_View" aspect="Aspects.IOS_Aspect">
-            <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.OtherGates.GateKV204" />
+          <ct:object name="GateKV204" uuid="44809851-bb6b-4bd5-a8d1-f5237da7a094" original="AstraRegul.PLC.Runtime.PLC_App.Application.Other.GateKV204" base-type="Types.Gate.IOS_View" aspect="Aspects.IOS_Aspect">
+            <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Other.GateKV204" />
           </ct:object>
-          <ct:object name="GateKV205" uuid="37abcb03-a383-4fbc-8b3c-1eb5703f49a5" original="AstraRegul.PLC.Runtime.PLC_App.Application.OtherGates.GateKV205" base-type="Types.Gate.IOS_View" aspect="Aspects.IOS_Aspect">
-            <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.OtherGates.GateKV205" />
+          <ct:object name="GateKV205" uuid="37abcb03-a383-4fbc-8b3c-1eb5703f49a5" original="AstraRegul.PLC.Runtime.PLC_App.Application.Other.GateKV205" base-type="Types.Gate.IOS_View" aspect="Aspects.IOS_Aspect">
+            <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Other.GateKV205" />
           </ct:object>
-          <ct:object name="GateKV206" uuid="d23f02c5-3508-44d4-989b-a0f0cf1eb2a7" original="AstraRegul.PLC.Runtime.PLC_App.Application.OtherGates.GateKV206" base-type="Types.Gate.IOS_View" aspect="Aspects.IOS_Aspect">
-            <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.OtherGates.GateKV206" />
+          <ct:object name="GateKV206" uuid="d23f02c5-3508-44d4-989b-a0f0cf1eb2a7" original="AstraRegul.PLC.Runtime.PLC_App.Application.Other.GateKV206" base-type="Types.Gate.IOS_View" aspect="Aspects.IOS_Aspect">
+            <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Other.GateKV206" />
           </ct:object>
-          <ct:object name="GateMC213" uuid="c84d8edc-6411-4030-8311-823bec05c0c9" original="AstraRegul.PLC.Runtime.PLC_App.Application.OtherGates.GateMC213" base-type="Types.Gate.IOS_View" aspect="Aspects.IOS_Aspect">
-            <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.OtherGates.GateMC213" />
+          <ct:object name="GateMC213" uuid="c84d8edc-6411-4030-8311-823bec05c0c9" original="AstraRegul.PLC.Runtime.PLC_App.Application.Other.GateMC213" base-type="Types.Gate.IOS_View" aspect="Aspects.IOS_Aspect">
+            <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Other.GateMC213" />
           </ct:object>
-          <ct:object name="GateWater1" uuid="fb55ee89-729b-412d-bf05-8531ae505d84" original="AstraRegul.PLC.Runtime.PLC_App.Application.OtherGates.GateWater1" base-type="Types.Gate.IOS_View" aspect="Aspects.IOS_Aspect">
-            <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.OtherGates.GateWater1" />
+          <ct:object name="GateWater1" uuid="fb55ee89-729b-412d-bf05-8531ae505d84" original="AstraRegul.PLC.Runtime.PLC_App.Application.Other.GateWater1" base-type="Types.Gate.IOS_View" aspect="Aspects.IOS_Aspect">
+            <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Other.GateWater1" />
           </ct:object>
-          <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.OtherGates" />
+          <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Other" />
         </ct:object>
         <ct:object name="Persistent" uuid="14e727c2-6b9b-4c98-948e-9fd42547046d" original="AstraRegul.PLC.Runtime.PLC_App.Application.Persistent" base-type="Types.PersistentVars.IOS_View" aspect="Aspects.IOS_Aspect">
           <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Persistent" />
@@ -2917,7 +3027,7 @@
           </ct:object>
           <ct:object name="TOut" uuid="8ee4d791-913f-4c3b-8955-a2fda25ab922" original="AstraRegul.PLC.Runtime.PLC_App.Application.Water.TOut" base-type="Types.AI2.IOS_View" aspect="Aspects.IOS_Aspect">
             <r:init-ref ref="_PLC_View_1" target="PLC.Runtime.PLC_App.Application.Water.TOut.Sens1" />
-            <r:init-ref ref="_PLC_View_2" target="PLC.Runtime.PLC_App.Application.Water.TOut.Sens1" />
+            <r:init-ref ref="_PLC_View_2" target="PLC.Runtime.PLC_App.Application.Water.TOut.Sens2" />
             <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Water.TOut" />
           </ct:object>
           <ct:object name="F" uuid="e6c83181-c794-4882-ae03-125d297cd407" original="AstraRegul.PLC.Runtime.PLC_App.Application.Water.F" base-type="Types.Flow.IOS_View" aspect="Aspects.IOS_Aspect">
@@ -3008,6 +3118,9 @@
               <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group2.BurnMain.PGasL" />
             </ct:object>
             <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group2.BurnMain" />
+            <ct:object name="PGasH" uuid="d701eb47-9f93-4b20-8b3b-5c89ef895c83" original="AstraRegul.PLC.Runtime.PLC_App.Application.Group2.BurnMain.PGasH" base-type="Types.Prot.IOS_View" aspect="Aspects.IOS_Aspect">
+              <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group2.BurnMain.PGasH" />
+            </ct:object>
           </ct:object>
           <ct:object name="BurnWork1" uuid="4730adb2-239e-48df-a288-13a450a01c86" original="AstraRegul.PLC.Runtime.PLC_App.Application.Group2.BurnWork1" base-type="Types.BurnerWork.IOS_View" aspect="Aspects.IOS_Aspect">
             <ct:object name="DamperGas" uuid="a6996654-cd26-4a9f-b5f2-d9d8f835d6ae" base-type="Types.Damper.IOS_View" aspect="Aspects.IOS_Aspect">
@@ -3074,6 +3187,12 @@
               </r:init-ref>
             </ct:object>
             <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group2.BurnWork1" />
+            <ct:object name="PGasH" uuid="9896d060-8e61-4ca4-807f-0dedcab9c74b" base-type="Types.Prot.IOS_View" aspect="Aspects.IOS_Aspect">
+              <property name="original">AstraRegul.PLC.Runtime.PLC_App.Application.Group2.BurnWork1.PGasH</property>
+              <r:init-ref ref="_PLC_View">
+                <property name="target">AstraRegul.PLC.Runtime.PLC_App.Application.Group2.BurnWork1.PGasH</property>
+              </r:init-ref>
+            </ct:object>
           </ct:object>
           <ct:object name="BurnWork2" uuid="3bd21d10-8a94-475b-825c-2d562120c3b8" original="AstraRegul.PLC.Runtime.PLC_App.Application.Group2.BurnWork2" base-type="Types.BurnerWork.IOS_View" aspect="Aspects.IOS_Aspect">
             <ct:object name="DamperGas" uuid="6c153999-f8ec-4b0f-99a1-569be96abb56" base-type="Types.Damper.IOS_View" aspect="Aspects.IOS_Aspect">
@@ -3140,6 +3259,12 @@
               </r:init-ref>
             </ct:object>
             <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group2.BurnWork2" />
+            <ct:object name="PGasH" uuid="d84caa7c-88b8-4cca-9a64-f6bfaf49d31b" base-type="Types.Prot.IOS_View" aspect="Aspects.IOS_Aspect">
+              <property name="original">AstraRegul.PLC.Runtime.PLC_App.Application.Group2.BurnWork2.PGasH</property>
+              <r:init-ref ref="_PLC_View">
+                <property name="target">AstraRegul.PLC.Runtime.PLC_App.Application.Group2.BurnWork2.PGasH</property>
+              </r:init-ref>
+            </ct:object>
           </ct:object>
           <ct:object name="BurnWork3" uuid="cb1cc8d8-f922-40b8-a6ac-4b349b2d488e" original="AstraRegul.PLC.Runtime.PLC_App.Application.Group2.BurnWork3" base-type="Types.BurnerWork.IOS_View" aspect="Aspects.IOS_Aspect">
             <ct:object name="DamperGas" uuid="00b68538-9fbe-40ca-9ac0-35e0d9f5d076" base-type="Types.Damper.IOS_View" aspect="Aspects.IOS_Aspect">
@@ -3206,6 +3331,12 @@
               </r:init-ref>
             </ct:object>
             <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group2.BurnWork3" />
+            <ct:object name="PGasH" uuid="a345b85a-1b11-4c96-8404-73a6b4d8808d" base-type="Types.Prot.IOS_View" aspect="Aspects.IOS_Aspect">
+              <property name="original">AstraRegul.PLC.Runtime.PLC_App.Application.Group3.BurnWork3.PGasH</property>
+              <r:init-ref ref="_PLC_View">
+                <property name="target">AstraRegul.PLC.Runtime.PLC_App.Application.Group3.BurnWork3.PGasH</property>
+              </r:init-ref>
+            </ct:object>
           </ct:object>
           <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group2" />
         </ct:object>
@@ -3290,6 +3421,9 @@
               <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group3.BurnMain.PGasL" />
             </ct:object>
             <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group3.BurnMain" />
+            <ct:object name="PGasH" uuid="6e9150b9-12e8-4e5c-b463-e2b8181a8a6f" original="AstraRegul.PLC.Runtime.PLC_App.Application.Group3.BurnMain.PGasH" base-type="Types.Prot.IOS_View" aspect="Aspects.IOS_Aspect">
+              <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group3.BurnMain.PGasH" />
+            </ct:object>
           </ct:object>
           <ct:object name="BurnWork1" uuid="7a3ff25f-5acc-4ce5-8e3c-087475f29f9a" original="AstraRegul.PLC.Runtime.PLC_App.Application.Group3.BurnWork1" base-type="Types.BurnerWork.IOS_View" aspect="Aspects.IOS_Aspect">
             <ct:object name="DamperGas" uuid="538bfb13-3253-4c98-9eac-c49a37c7aa27" base-type="Types.Damper.IOS_View" aspect="Aspects.IOS_Aspect">
@@ -3356,6 +3490,12 @@
               </r:init-ref>
             </ct:object>
             <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group3.BurnWork1" />
+            <ct:object name="PGasH" uuid="39963916-a01f-4443-b9e8-1bea3ae82c4d" base-type="Types.Prot.IOS_View" aspect="Aspects.IOS_Aspect">
+              <property name="original">AstraRegul.PLC.Runtime.PLC_App.Application.Group3.BurnWork1.PGasH</property>
+              <r:init-ref ref="_PLC_View">
+                <property name="target">AstraRegul.PLC.Runtime.PLC_App.Application.Group3.BurnWork1.PGasH</property>
+              </r:init-ref>
+            </ct:object>
           </ct:object>
           <ct:object name="BurnWork2" uuid="39818084-3af0-4177-bed1-87dc81700ecb" original="AstraRegul.PLC.Runtime.PLC_App.Application.Group3.BurnWork2" base-type="Types.BurnerWork.IOS_View" aspect="Aspects.IOS_Aspect">
             <ct:object name="DamperGas" uuid="e1b2cdeb-ad0b-4ab3-886a-686204cde83d" base-type="Types.Damper.IOS_View" aspect="Aspects.IOS_Aspect">
@@ -3422,6 +3562,12 @@
               </r:init-ref>
             </ct:object>
             <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group3.BurnWork2" />
+            <ct:object name="PGasH" uuid="2ea35f12-b818-4f60-8051-feaffbf29837" base-type="Types.Prot.IOS_View" aspect="Aspects.IOS_Aspect">
+              <property name="original">AstraRegul.PLC.Runtime.PLC_App.Application.Group3.BurnWork2.PGasH</property>
+              <r:init-ref ref="_PLC_View">
+                <property name="target">AstraRegul.PLC.Runtime.PLC_App.Application.Group3.BurnWork2.PGasH</property>
+              </r:init-ref>
+            </ct:object>
           </ct:object>
           <ct:object name="BurnWork3" uuid="1e07c1ec-f6c8-4899-86e6-83f24538efcb" original="AstraRegul.PLC.Runtime.PLC_App.Application.Group3.BurnWork3" base-type="Types.BurnerWork.IOS_View" aspect="Aspects.IOS_Aspect">
             <ct:object name="DamperGas" uuid="f6af6075-a1c3-46d8-90a0-cd9ba2467286" base-type="Types.Damper.IOS_View" aspect="Aspects.IOS_Aspect">
@@ -3488,6 +3634,12 @@
               </r:init-ref>
             </ct:object>
             <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group3.BurnWork3" />
+            <ct:object name="PGasH" uuid="0b494b30-1875-4db0-bb74-fbcd9d504c1f" base-type="Types.Prot.IOS_View" aspect="Aspects.IOS_Aspect">
+              <property name="original">AstraRegul.PLC.Runtime.PLC_App.Application.Group3.BurnWork3.PGasH</property>
+              <r:init-ref ref="_PLC_View">
+                <property name="target">AstraRegul.PLC.Runtime.PLC_App.Application.Group3.BurnWork3.PGasH</property>
+              </r:init-ref>
+            </ct:object>
           </ct:object>
           <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group3" />
         </ct:object>
@@ -3572,6 +3724,9 @@
               <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group4.BurnMain.PGasL" />
             </ct:object>
             <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group4.BurnMain" />
+            <ct:object name="PGasH" uuid="e4c857c8-bf07-4a08-ac5c-cc5f5b7f17e7" original="AstraRegul.PLC.Runtime.PLC_App.Application.Group4.BurnMain.PGasH" base-type="Types.Prot.IOS_View" aspect="Aspects.IOS_Aspect">
+              <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group4.BurnMain.PGasH" />
+            </ct:object>
           </ct:object>
           <ct:object name="BurnWork1" uuid="39040cc1-16a7-4b04-8edf-ed7bad5eec2b" original="AstraRegul.PLC.Runtime.PLC_App.Application.Group4.BurnWork1" base-type="Types.BurnerWork.IOS_View" aspect="Aspects.IOS_Aspect">
             <ct:object name="DamperGas" uuid="14907f5a-99bc-4105-91c7-b405b9c7d687" base-type="Types.Damper.IOS_View" aspect="Aspects.IOS_Aspect">
@@ -3638,6 +3793,12 @@
               </r:init-ref>
             </ct:object>
             <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group4.BurnWork1" />
+            <ct:object name="PGasH" uuid="312da0bc-1bad-4f72-814b-eb8673acc38b" base-type="Types.Prot.IOS_View" aspect="Aspects.IOS_Aspect">
+              <property name="original">AstraRegul.PLC.Runtime.PLC_App.Application.Group4.BurnWork1.PGasH</property>
+              <r:init-ref ref="_PLC_View">
+                <property name="target">AstraRegul.PLC.Runtime.PLC_App.Application.Group4.BurnWork1.PGasH</property>
+              </r:init-ref>
+            </ct:object>
           </ct:object>
           <ct:object name="BurnWork2" uuid="c7f12d40-bf43-4a22-8bcd-e79efeacd1e4" original="AstraRegul.PLC.Runtime.PLC_App.Application.Group4.BurnWork2" base-type="Types.BurnerWork.IOS_View" aspect="Aspects.IOS_Aspect">
             <ct:object name="DamperGas" uuid="943204fc-a9d8-41ea-b3b6-1899cce58511" base-type="Types.Damper.IOS_View" aspect="Aspects.IOS_Aspect">
@@ -3704,6 +3865,12 @@
               </r:init-ref>
             </ct:object>
             <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group4.BurnWork2" />
+            <ct:object name="PGasH" uuid="0856d309-ecc2-4971-8a52-c724001dfad7" base-type="Types.Prot.IOS_View" aspect="Aspects.IOS_Aspect">
+              <property name="original">AstraRegul.PLC.Runtime.PLC_App.Application.Group4.BurnWork2.PGasH</property>
+              <r:init-ref ref="_PLC_View">
+                <property name="target">AstraRegul.PLC.Runtime.PLC_App.Application.Group4.BurnWork2.PGasH</property>
+              </r:init-ref>
+            </ct:object>
           </ct:object>
           <ct:object name="BurnWork3" uuid="3b5dea58-3aec-4a4a-80dc-d49dfa84c3a2" original="AstraRegul.PLC.Runtime.PLC_App.Application.Group4.BurnWork3" base-type="Types.BurnerWork.IOS_View" aspect="Aspects.IOS_Aspect">
             <ct:object name="DamperGas" uuid="1fc2741d-2ab6-4bf2-8988-5c6d1d65ab2e" base-type="Types.Damper.IOS_View" aspect="Aspects.IOS_Aspect">
@@ -3770,6 +3937,12 @@
               </r:init-ref>
             </ct:object>
             <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group4.BurnWork3" />
+            <ct:object name="PGasH" uuid="1b8e7908-ebd4-4c4e-908b-138f1a40bc1e" base-type="Types.Prot.IOS_View" aspect="Aspects.IOS_Aspect">
+              <property name="original">AstraRegul.PLC.Runtime.PLC_App.Application.Group4.BurnWork3.PGasH</property>
+              <r:init-ref ref="_PLC_View">
+                <property name="target">AstraRegul.PLC.Runtime.PLC_App.Application.Group4.BurnWork3.PGasH</property>
+              </r:init-ref>
+            </ct:object>
           </ct:object>
           <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Group4" />
         </ct:object>
@@ -3841,6 +4014,69 @@
           </ct:object>
           <ct:object name="CO" uuid="33f8c12f-7b25-479e-883b-7ffda7eb9538" original="AstraRegul.PLC.Runtime.PLC_App.Application.Warnings.CO" base-type="Types.Warning.IOS_View" aspect="Aspects.IOS_Aspect">
             <r:init-ref ref="_PLC_View" target="AstraRegul.PLC.Runtime.PLC_App.Application.Warnings.CO" />
+          </ct:object>
+        </ct:object>
+        <ct:object name="HMI" uuid="6ea5ba12-dcf3-4c0f-bc53-b4384bf6c472">
+          <ct:parameter name="MSG" type="string" direction="out" uuid="c5f0cd7c-346b-460b-bcb7-c690302adc79">
+            <attribute type="unit.Server.Attributes.Alarm">
+              <property name="value">{"Condition":{"IsEnabled":"true","Subconditions":[{"AckStrategy":0,"IsEnabled":true,"Severity":2,"Type":"Dynamic"}],"Type":"Dynamic"}}</property>
+            </attribute>
+          </ct:parameter>
+        </ct:object>
+        <ct:object name="VentilationSystem" uuid="77feda30-3e96-4f0a-8a34-8ec51dff4a0b" original="AstraRegul.PLC.Runtime.PLC_App.Application.VentilationSystem" base-type="Types.VentilationSystem.IOS_View" aspect="Aspects.IOS_Aspect">
+          <ct:object name="FanIn1" uuid="06f81952-ffd0-4103-9c09-78734cc1befa" base-type="Types.Fan.IOS_View" aspect="Aspects.IOS_Aspect">
+            <property name="original">AstraRegul.PLC.Runtime.PLC_App.Application.VentilationSystem.FanIn1</property>
+            <r:init-ref ref="_PLC_View">
+              <property name="target">AstraRegul.PLC.Runtime.PLC_App.Application.VentilationSystem.FanIn1</property>
+            </r:init-ref>
+          </ct:object>
+          <ct:object name="FanIn2" uuid="33d735ee-288b-4df7-adc1-fd6bb35c24d0" base-type="Types.Fan.IOS_View" aspect="Aspects.IOS_Aspect">
+            <property name="original">AstraRegul.PLC.Runtime.PLC_App.Application.VentilationSystem.FanIn2</property>
+            <r:init-ref ref="_PLC_View">
+              <property name="target">AstraRegul.PLC.Runtime.PLC_App.Application.VentilationSystem.FanIn2</property>
+            </r:init-ref>
+          </ct:object>
+          <ct:object name="FanIn3" uuid="00bc6672-3686-4e04-b5e2-61d7feaf1c17" base-type="Types.Fan.IOS_View" aspect="Aspects.IOS_Aspect">
+            <property name="original">AstraRegul.PLC.Runtime.PLC_App.Application.VentilationSystem.FanIn3</property>
+            <r:init-ref ref="_PLC_View">
+              <property name="target">AstraRegul.PLC.Runtime.PLC_App.Application.VentilationSystem.FanIn3</property>
+            </r:init-ref>
+          </ct:object>
+          <ct:object name="FanIn4" uuid="4868bb14-e5cd-43ca-9a87-68524a975295" base-type="Types.Fan.IOS_View" aspect="Aspects.IOS_Aspect">
+            <property name="original">AstraRegul.PLC.Runtime.PLC_App.Application.VentilationSystem.FanIn4</property>
+            <r:init-ref ref="_PLC_View">
+              <property name="target">AstraRegul.PLC.Runtime.PLC_App.Application.VentilationSystem.FanIn4</property>
+            </r:init-ref>
+          </ct:object>
+          <ct:object name="FanIn5" uuid="53fed21a-303f-4978-a1ca-ed0c59337511" base-type="Types.Fan.IOS_View" aspect="Aspects.IOS_Aspect">
+            <property name="original">AstraRegul.PLC.Runtime.PLC_App.Application.VentilationSystem.FanIn5</property>
+            <r:init-ref ref="_PLC_View">
+              <property name="target">AstraRegul.PLC.Runtime.PLC_App.Application.VentilationSystem.FanIn5</property>
+            </r:init-ref>
+          </ct:object>
+          <ct:object name="FanOut1" uuid="d8a164c3-cfbc-40fc-b7f8-d67bea7ff892" base-type="Types.Fan.IOS_View" aspect="Aspects.IOS_Aspect">
+            <property name="original">AstraRegul.PLC.Runtime.PLC_App.Application.VentilationSystem.FanOut1</property>
+            <r:init-ref ref="_PLC_View">
+              <property name="target">AstraRegul.PLC.Runtime.PLC_App.Application.VentilationSystem.FanOut1</property>
+            </r:init-ref>
+          </ct:object>
+          <ct:object name="FanOut2" uuid="54704b6a-914a-4b0b-97c9-d82327db6d1e" base-type="Types.Fan.IOS_View" aspect="Aspects.IOS_Aspect">
+            <property name="original">AstraRegul.PLC.Runtime.PLC_App.Application.VentilationSystem.FanOut2</property>
+            <r:init-ref ref="_PLC_View">
+              <property name="target">AstraRegul.PLC.Runtime.PLC_App.Application.VentilationSystem.FanOut2</property>
+            </r:init-ref>
+          </ct:object>
+          <ct:object name="FanOut3" uuid="8f2039dd-051e-449d-bbe9-f4e956cfe137" base-type="Types.Fan.IOS_View" aspect="Aspects.IOS_Aspect">
+            <property name="original">AstraRegul.PLC.Runtime.PLC_App.Application.VentilationSystem.FanOut3</property>
+            <r:init-ref ref="_PLC_View">
+              <property name="target">AstraRegul.PLC.Runtime.PLC_App.Application.VentilationSystem.FanOut3</property>
+            </r:init-ref>
+          </ct:object>
+          <ct:object name="FanOut4" uuid="441e396e-fe9a-410f-b1bc-44008678344e" base-type="Types.Fan.IOS_View" aspect="Aspects.IOS_Aspect">
+            <property name="original">AstraRegul.PLC.Runtime.PLC_App.Application.VentilationSystem.FanOut4</property>
+            <r:init-ref ref="_PLC_View">
+              <property name="target">AstraRegul.PLC.Runtime.PLC_App.Application.VentilationSystem.FanOut4</property>
+            </r:init-ref>
           </ct:object>
         </ct:object>
       </ct:object>
@@ -4113,13 +4349,13 @@
         <srv:tcp-server name="TcpServer" uuid="5d6d4ee5-580e-4cbe-8e0c-f9b2852203b5" />
         <dp:host module="IOS_App" />
         <srv:opcua-client name="OpcUaClient" uuid="b7ea6487-16e5-4e39-a024-fbf7bf7eaf5e" application-mame="REGLABOpcUaClient">
-          <srv:opcua-server-link server="PLC.Runtime.OpcUaServer" update-rate="500" security-mode="sign-and-encript" authorization-mode="LoginPassword" login="AstraRegul" control-signal-namespace="urn:ProsoftSystems:regul_ua_server:iec_data" control-signal-id="Application.GVL_RED.bCanControl" control-signal-value="1" sampling-interval="500">
+          <srv:opcua-server-link server="PLC.Runtime.OpcUaServer" update-rate="500" security-mode="sign-and-encript" authorization-mode="LoginPassword" login="AstraRegul" control-signal-namespace="urn:ProsoftSystems:regul_ua_server:iec_data" control-signal-id="Application.GVL_RED.bCanControl" control-signal-value="1" sampling-interval="500" can-suspended-server-be-active="true">
             <property name="password">KXnmBRJIF18C+o3t1fBBCirSIfqy5oqVvhKaaZpU8L+IbZmdbkkxG28S00e+kZr0LlmsloQLq8b0+G+lzdIyuRMHLRkn/+3C7R4022Q/abL01oitpbOhIEKIRrEbWVqJw9bkcS6E6wYlrJXs6vZw35LbgENGHQBF4J6/HHgHFyM</property>
           </srv:opcua-server-link>
-          <srv:opcua-server-link server="PLC.Diagnostics.OpcUaServer" security-mode="sign-and-encript" authorization-mode="LoginPassword" login="AstraRegul" control-signal-id="Application.GVL_DIAGN.IS_CPU_A" control-signal-namespace="urn:ProsoftSystems:regul_ua_server:iec_data" control-signal-value="1" sampling-interval="1000">
+          <srv:opcua-server-link server="PLC.Diagnostics.OpcUaServer" security-mode="sign-and-encript" authorization-mode="LoginPassword" login="AstraRegul" control-signal-id="Application.GVL_DIAGN.IS_CPU_A" control-signal-namespace="urn:ProsoftSystems:regul_ua_server:iec_data" control-signal-value="1" sampling-interval="1000" can-suspended-server-be-active="true">
             <property name="password">l8fF0jxqhWvK6XrMHvwpitOIq67nv9EMyHWu5Rr5rAjmgII2M3yFzEWhschfrU4ReoW7752K0JdxHmXD8rSFbN1Phcfrg0T4HYMVJqeEf38HtaDJUsIncxol2aNSy89TIWQIzddgnaQB3gipImvjkXoyw2jYwPEqdJWrgVKagrY</property>
           </srv:opcua-server-link>
-          <srv:opcua-server-link server="PLC_R.Diagnostics.OpcUaServer" security-mode="sign-and-encript" authorization-mode="LoginPassword" login="AstraRegul" control-signal-namespace="urn:ProsoftSystems:regul_ua_server:iec_data" control-signal-id="Application.GVL_DIAGN.IS_CPU_B" control-signal-value="1" sampling-interval="1000">
+          <srv:opcua-server-link server="PLC_R.Diagnostics.OpcUaServer" security-mode="sign-and-encript" authorization-mode="LoginPassword" login="AstraRegul" control-signal-namespace="urn:ProsoftSystems:regul_ua_server:iec_data" control-signal-id="Application.GVL_DIAGN.IS_CPU_B" control-signal-value="1" sampling-interval="1000" can-suspended-server-be-active="true">
             <property name="password">YDdxmHdsgc9wg8jS70JstXLMynDC2OBF1EGRGp0X25vt/p9O6MloP1X36uJs+WYhFz/c8T0bwWI5DW5aIMMLVI9zWE1Aca8gXgznTfFzyPV0NAxyTbVpUjNrNA3HUTt6WXai8zgZttHgh+TRENDHJsSEFOEd8Ery/MmLSJ6tQus</property>
           </srv:opcua-server-link>
         </srv:opcua-client>
@@ -4149,13 +4385,13 @@
           <srv:agent-config agent="Server2.SNMP.SnmpAgent" />
         </srv:snmp-manager>
         <srv:opcua-client name="OpcUaClient" application-mame="REGLABOpcUaClient" uuid="4c9f0fa0-070d-4ba4-a900-dcc495780f70">
-          <srv:opcua-server-link server="PLC.Runtime.OpcUaServer" update-rate="500" security-mode="sign-and-encript" authorization-mode="LoginPassword" login="AstraRegul" control-signal-namespace="urn:ProsoftSystems:regul_ua_server:iec_data" control-signal-id="Application.GVL_RED.bCanControl" control-signal-value="1" sampling-interval="500">
+          <srv:opcua-server-link server="PLC.Runtime.OpcUaServer" update-rate="500" security-mode="sign-and-encript" authorization-mode="LoginPassword" login="AstraRegul" control-signal-namespace="urn:ProsoftSystems:regul_ua_server:iec_data" control-signal-id="Application.GVL_RED.bCanControl" control-signal-value="1" sampling-interval="500" can-suspended-server-be-active="true" max-nodes-per-read="0" max-nodes-per-write="0" max-nodes-per-browse="0" max-monitored-items-per-call="0" write-only-to-active-server="false">
             <property name="password">KXnmBRJIF18C+o3t1fBBCirSIfqy5oqVvhKaaZpU8L+IbZmdbkkxG28S00e+kZr0LlmsloQLq8b0+G+lzdIyuRMHLRkn/+3C7R4022Q/abL01oitpbOhIEKIRrEbWVqJw9bkcS6E6wYlrJXs6vZw35LbgENGHQBF4J6/HHgHFyM</property>
           </srv:opcua-server-link>
-          <srv:opcua-server-link server="PLC.Diagnostics.OpcUaServer" security-mode="sign-and-encript" authorization-mode="LoginPassword" login="AstraRegul" control-signal-id="Application.GVL_DIAGN.IS_CPU_A" control-signal-namespace="urn:ProsoftSystems:regul_ua_server:iec_data" control-signal-value="1" sampling-interval="1000">
+          <srv:opcua-server-link server="PLC.Diagnostics.OpcUaServer" security-mode="sign-and-encript" authorization-mode="LoginPassword" login="AstraRegul" control-signal-id="Application.GVL_DIAGN.IS_CPU_A" control-signal-namespace="urn:ProsoftSystems:regul_ua_server:iec_data" control-signal-value="1" sampling-interval="1000" can-suspended-server-be-active="true">
             <property name="password">l8fF0jxqhWvK6XrMHvwpitOIq67nv9EMyHWu5Rr5rAjmgII2M3yFzEWhschfrU4ReoW7752K0JdxHmXD8rSFbN1Phcfrg0T4HYMVJqeEf38HtaDJUsIncxol2aNSy89TIWQIzddgnaQB3gipImvjkXoyw2jYwPEqdJWrgVKagrY</property>
           </srv:opcua-server-link>
-          <srv:opcua-server-link server="PLC_R.Diagnostics.OpcUaServer" security-mode="sign-and-encript" authorization-mode="LoginPassword" login="AstraRegul" control-signal-namespace="urn:ProsoftSystems:regul_ua_server:iec_data" control-signal-id="Application.GVL_DIAGN.IS_CPU_B" control-signal-value="1" sampling-interval="1000">
+          <srv:opcua-server-link server="PLC_R.Diagnostics.OpcUaServer" security-mode="sign-and-encript" authorization-mode="LoginPassword" login="AstraRegul" control-signal-namespace="urn:ProsoftSystems:regul_ua_server:iec_data" control-signal-id="Application.GVL_DIAGN.IS_CPU_B" control-signal-value="1" sampling-interval="1000" can-suspended-server-be-active="true">
             <property name="password">oyEVCHd3ZQViyLlXbfL6m6NVKkiCW9ikcMx3XJy0I9LyOpcGQdQzXVfbP82Ikb2n8Um5u3LpGH483/hhSkPP5Ci5D8jOC5bJPiJXzuTAhKKQQed5zyyh/PeEEHBKQrgv03ZRYgOet1gtk8oWD8+pZ2Fe8LOeMO+tU6AtfkSs3Gg</property>
           </srv:opcua-server-link>
         </srv:opcua-client>
@@ -4997,32 +5233,53 @@
         <ct:bind source="_PLC_View.bRackCall" target="bRackCall" />
       </ct:type>
     </ct:type>
-    <ct:type name="OtherGates" uuid="a8f24781-5207-46c1-8fa7-174adea3df3a">
-      <ct:type name="PLC_View" original="OtherGates" aspect="Aspects.PLC_Aspect" uuid="5148d6df-c636-4e1d-8c93-516cf8e63a85">
-        <ct:parameter name="bRackCall1" uuid="d72321b0-d5fe-4043-9e64-8e52081bdc71" type="bool" direction="out" />
-        <ct:parameter name="bRackCall2" type="bool" direction="out" uuid="465d974a-8d66-4d1b-8113-7c994990dcae" />
+    <ct:type name="Other" uuid="a8f24781-5207-46c1-8fa7-174adea3df3a">
+      <ct:type name="PLC_View" original="Other" aspect="Aspects.PLC_Aspect" uuid="5148d6df-c636-4e1d-8c93-516cf8e63a85">
         <ct:parameter name="bReset" type="bool" direction="out" uuid="5bcb486d-fd3a-4a16-b285-8cb3c02473e9" />
-        <ct:parameter name="bSupplyActive2" type="bool" direction="out" uuid="7beab310-e53a-42a0-97e7-d68119b6635c" />
-        <ct:parameter name="bSupplyModeAuto" type="bool" direction="out" uuid="0ae1054f-3a5f-48ec-8b07-f8190c5ae880" />
-        <ct:parameter name="bSupplyOk1" type="bool" direction="out" uuid="be2a01b3-d641-416c-a2d7-3c301c0a3ca9" />
-        <ct:parameter name="bSupplyOk2" type="bool" direction="out" uuid="4911206e-8951-4185-8e77-e7305ee7b717" />
+        <ct:parameter name="bCallSHSG1" type="bool" direction="out" uuid="b10f4aba-e17e-4c4b-8366-68e5cbf5d370" />
+        <ct:parameter name="bCallSHSG2" type="bool" direction="out" uuid="821c3c2e-4886-493b-84c7-4b4666d6b34b" />
+        <ct:parameter name="bCallSHSG3" type="bool" direction="out" uuid="1b9856d0-9292-40d5-9497-0a95c53f0723" />
+        <ct:parameter name="bCallSHSG4" type="bool" direction="out" uuid="7e811440-8893-4675-8188-bc84ebdef3b0" />
+        <ct:parameter name="bCallSHSK" type="bool" direction="out" uuid="ae17694b-dfc1-4d5e-a005-baa03965c821" />
+        <ct:parameter name="bCallSHSO" type="bool" direction="out" uuid="4c5a49f7-e858-439f-b9b8-a0a661d84593" />
+        <ct:parameter name="bCallSHUPVV1" type="bool" direction="out" uuid="1e52f4eb-1fd2-40a9-8fdf-2c9b24be8af0" />
+        <ct:parameter name="bCallSHUPVV2" type="bool" direction="out" uuid="65a358fb-f04f-4753-9bda-28474f03753d" />
+        <ct:parameter name="bCallSHUV1" type="bool" direction="out" uuid="9869726c-e58b-479e-8edc-ea2513e30426" />
+        <ct:parameter name="bCallSHUV2" type="bool" direction="out" uuid="35509015-621d-4efa-bb3d-36037f072895" />
+        <ct:parameter name="bCallShared" type="bool" direction="out" uuid="5adec6e4-db3d-47bc-832a-fa0270b593ee" />
+        <ct:socket name="SHAVR1" uuid="09aca9e8-ccf1-4921-a079-142354eb8a38" direction="out" type="Sockets.AVR" />
+        <ct:socket name="SHAVR2" direction="out" type="Sockets.AVR" uuid="55d033cd-c730-48df-b7c6-64b99ef2f5c3" />
       </ct:type>
-      <ct:type name="IOS_View" original="OtherGates" aspect="Aspects.IOS_Aspect" uuid="c4b0eb56-f907-451a-92b3-7dc4d6d9b0f6">
+      <ct:type name="IOS_View" original="Other" aspect="Aspects.IOS_Aspect" uuid="c4b0eb56-f907-451a-92b3-7dc4d6d9b0f6">
         <r:ref name="_PLC_View" type="PLC_View" uuid="4cd0f5dd-e618-40cf-8a75-651766dac48f" />
-        <ct:parameter name="bRackCall1" uuid="20cdb1fc-1453-4224-8dc7-707060d0c84e" direction="out" type="bool" />
-        <ct:bind source="_PLC_View.bRackCall1" target="bRackCall1" />
-        <ct:parameter name="bRackCall2" uuid="b592f957-b358-434b-b825-82e437d0587d" direction="out" type="bool" />
-        <ct:bind source="_PLC_View.bRackCall2" target="bRackCall2" />
         <ct:parameter name="bReset" uuid="98504eeb-70d4-4a09-b165-47417e8c323d" direction="out" type="bool" />
         <ct:bind source="_PLC_View.bReset" target="bReset" />
-        <ct:parameter name="bSupplyActive2" uuid="f48a617a-3011-4abf-b34b-96bd5d41d058" direction="out" type="bool" />
-        <ct:bind source="_PLC_View.bSupplyActive2" target="bSupplyActive2" />
-        <ct:parameter name="bSupplyModeAuto" uuid="3111c0c0-1920-4ede-9a9f-988aaa4a40e8" direction="out" type="bool" />
-        <ct:bind source="_PLC_View.bSupplyModeAuto" target="bSupplyModeAuto" />
-        <ct:parameter name="bSupplyOk1" uuid="8290c157-87f8-4b1e-8983-12c5daa9ee20" direction="out" type="bool" />
-        <ct:bind source="_PLC_View.bSupplyOk1" target="bSupplyOk1" />
-        <ct:parameter name="bSupplyOk2" uuid="d760393a-5f1a-47f1-b178-644795cff926" direction="out" type="bool" />
-        <ct:bind source="_PLC_View.bSupplyOk2" target="bSupplyOk2" />
+        <ct:parameter name="bCallSHSG1" uuid="abbff75f-f79f-4bc2-82dd-2be618447114" direction="out" type="bool" />
+        <ct:bind source="_PLC_View.bCallSHSG1" target="bCallSHSG1" />
+        <ct:parameter name="bCallSHSG2" uuid="ec450dc9-923b-4dfa-9cad-a665e4819c55" direction="out" type="bool" />
+        <ct:bind source="_PLC_View.bCallSHSG2" target="bCallSHSG2" />
+        <ct:parameter name="bCallSHSG3" uuid="ef46317e-e3e0-484c-9868-9442e7771179" direction="out" type="bool" />
+        <ct:bind source="_PLC_View.bCallSHSG3" target="bCallSHSG3" />
+        <ct:parameter name="bCallSHSG4" uuid="cdea4532-4f45-49f0-840c-e4cb0abe4eda" direction="out" type="bool" />
+        <ct:bind source="_PLC_View.bCallSHSG4" target="bCallSHSG4" />
+        <ct:parameter name="bCallSHSK" uuid="3272422a-fe76-42e0-9671-ccd615cb03fa" direction="out" type="bool" />
+        <ct:bind source="_PLC_View.bCallSHSK" target="bCallSHSK" />
+        <ct:parameter name="bCallSHSO" uuid="950a93ca-ea41-485c-a634-d5eb90999888" direction="out" type="bool" />
+        <ct:bind source="_PLC_View.bCallSHSO" target="bCallSHSO" />
+        <ct:parameter name="bCallSHUPVV1" uuid="4d6ee1c3-952e-4080-8a3c-62908c42e253" direction="out" type="bool" />
+        <ct:bind source="_PLC_View.bCallSHUPVV1" target="bCallSHUPVV1" />
+        <ct:parameter name="bCallSHUPVV2" uuid="49965294-ec1c-48b5-9305-7405de2d7af3" direction="out" type="bool" />
+        <ct:bind source="_PLC_View.bCallSHUPVV2" target="bCallSHUPVV2" />
+        <ct:parameter name="bCallSHUV1" uuid="ff4f6df4-d195-431f-96d3-005d3719a28a" direction="out" type="bool" />
+        <ct:bind source="_PLC_View.bCallSHUV1" target="bCallSHUV1" />
+        <ct:parameter name="bCallSHUV2" uuid="22b47a30-73fa-40d5-aded-8ec3eff3cfe3" direction="out" type="bool" />
+        <ct:bind source="_PLC_View.bCallSHUV2" target="bCallSHUV2" />
+        <ct:parameter name="bCallShared" uuid="4104116b-e7be-401c-a158-e9847c4c12d1" direction="out" type="bool" />
+        <ct:bind source="_PLC_View.bCallShared" target="bCallShared" />
+        <ct:socket name="SHAVR1" uuid="e423c390-e3d5-464e-affb-3796796ce805" direction="out" type="Sockets.AVR" />
+        <ct:socket-bind source="_PLC_View.SHAVR1" target="SHAVR1" />
+        <ct:socket name="SHAVR2" uuid="8b853960-532e-4ca5-8532-5a1d2377e24f" direction="out" type="Sockets.AVR" />
+        <ct:socket-bind source="_PLC_View.SHAVR2" target="SHAVR2" />
       </ct:type>
     </ct:type>
     <ct:type name="Smoke" uuid="200c2880-301f-443e-82ca-d910215c7b20">
@@ -5094,6 +5351,9 @@
         </ct:socket>
         <ct:parameter name="bTriggered" type="bool" direction="out" uuid="b5a0a9ff-fe39-4137-a10a-048af036bb2d" />
         <attribute type="unit.System.Attributes.Description" value="Защита" />
+        <ct:parameter name="fSensValue" type="float32" direction="out" uuid="4ddf7b69-5d84-4ef8-aa34-944c3ec469c0" />
+        <ct:parameter name="fValueClone" type="float32" direction="out" uuid="4421db6d-d197-42f4-9677-739961d2783c" />
+        <ct:parameter name="fSensValue2" type="float32" direction="out" uuid="6df221ab-0040-4afd-bbcb-4fbf00219c9d" />
       </ct:type>
       <ct:type name="IOS_View" aspect="Aspects.IOS_Aspect" original="Prot" uuid="d8a63963-a242-4a25-8a45-2540ca6845e1">
         <r:ref name="_PLC_View" type="PLC_View" uuid="a278a60c-e2e6-40f2-98a8-bbfc7efdea92" />
@@ -5166,6 +5426,12 @@
           </attribute>
         </ct:parameter>
         <ct:bind source="_PLC_View.bTriggered" target="bTriggered" />
+        <ct:parameter name="fSensValue" uuid="49116361-3fbe-4c90-af5c-bf126ebbfba8" direction="out" type="float32" />
+        <ct:bind source="_PLC_View.fSensValue" target="fSensValue" />
+        <ct:parameter name="fValueClone" uuid="bbf7a299-c58b-46b3-9600-eafd9ae018dd" direction="out" type="float32" />
+        <ct:bind source="_PLC_View.fValueClone" target="fValueClone" />
+        <ct:parameter name="fSensValue2" uuid="5e19a6ac-d38d-48f8-ae47-bed366ef1ee1" direction="out" type="float32" />
+        <ct:bind source="_PLC_View.fSensValue2" target="fSensValue2" />
       </ct:type>
     </ct:type>
     <ct:type name="Warning" uuid="0d1dca5b-75a1-4b8d-9281-af84127fc8ed">
@@ -5183,6 +5449,9 @@
           <ct:socket-parameter name="eDoubleSens" type="int16" uuid="710630c3-5a8d-4256-b4e0-e7653f347268" />
         </ct:socket>
         <attribute type="unit.System.Attributes.Description" value="Сигнализация" />
+        <ct:parameter name="fSensValue" type="float32" direction="out" uuid="13e0059e-1e4e-4e39-a08e-e2f7bced5fae" />
+        <ct:parameter name="fValueClone" type="float32" direction="out" uuid="99ebabd9-91ed-4011-8ac2-4024bb462166" />
+        <ct:parameter name="fSensValue2" type="float32" direction="out" uuid="d631d833-d595-42df-9e93-2d88bd401870" />
       </ct:type>
       <ct:type name="IOS_View" aspect="Aspects.IOS_Aspect" original="Warning" uuid="97248afb-4da4-400d-aa67-26755c1159c8">
         <r:ref name="_PLC_View" type="PLC_View" uuid="b108cd98-a8c3-4818-8f97-3a0add1e51a5" />
@@ -5233,6 +5502,11 @@
           <ct:socket-parameter name="eDoubleSens" uuid="af624cb9-3ab3-4fc9-8dd8-2a513929a846" type="int16" />
         </ct:socket>
         <ct:socket-bind source="_PLC_View.Settings" target="OutSettings" />
+        <ct:parameter name="fSensValue" uuid="a4dfff1c-38da-459d-8303-02e37600554a" direction="out" type="float32" />
+        <ct:bind source="_PLC_View.fSensValue" target="fSensValue" />
+        <ct:parameter name="fValueClone" uuid="de5342e6-b000-4537-86f8-4eeb25827d20" direction="out" type="float32" />
+        <ct:bind source="_PLC_View.fValueClone" target="fValueClone" />
+        <ct:parameter name="fSensValue2" direction="out" type="float32" uuid="c3bb7091-2f55-4ca8-a435-a20cf897edca" />
       </ct:type>
     </ct:type>
     <ct:type name="PersistentVars" uuid="80c97e47-2305-4abb-95e8-995f2a365059">
@@ -5741,6 +6015,10 @@ STATUS_BITS2.xRejection	= Math.TestBit(_PLC_View_2.byHwErrorCode,7);</property>
           <attribute type="unit.System.Attributes.InitialValue" value="@(object:Attributes.Max)" />
         </ct:parameter>
       </ct:type>
+    </ct:type>
+    <ct:type name="VentilationSystem" uuid="8f5c4fa0-1daf-46d2-a2b2-5f6e3f511636">
+      <ct:type name="PLC_View" uuid="e23f1a4f-f124-4a8a-928c-e765b5765c97" aspect="Aspects.PLC_Aspect" original="VentilationSystem" />
+      <ct:type name="IOS_View" uuid="ca62aaec-6f29-485e-b3c2-b47e213388d9" aspect="Aspects.IOS_Aspect" original="VentilationSystem" />
     </ct:type>
   </namespace>
   <namespace name="Attributes" uuid="386e0e6c-cdc5-45fe-bc90-097b396153fd">
@@ -6316,6 +6594,14 @@ STATUS_BITS2.xRejection	= Math.TestBit(_PLC_View_2.byHwErrorCode,7);</property>
       <ct:socket-parameter name="xADCLimL" type="bool" uuid="860e708e-c4b9-48fa-91f4-0501145bb1c6" />
       <ct:socket-parameter name="xADCLimH" type="bool" uuid="e359fccf-2d1f-42d5-a518-8903a8decdf4" />
       <ct:socket-parameter name="xDiscarded" type="bool" uuid="e7e002b7-ab18-49d2-b498-7c6149639e1a" />
+    </ct:socket-type>
+    <ct:socket-type name="AVR" uuid="d8ccd1b0-5be7-4d88-bccf-2abc99680c25">
+      <ct:socket-parameter name="bCall" uuid="cfc92139-f1ba-4edf-a625-4a6fbdea2f5e" type="bool" />
+      <ct:socket-parameter name="bAutoMode" type="bool" uuid="94d49a10-7e6d-441e-b1eb-e3148dd14361" />
+      <ct:socket-parameter name="bSupplyOk1" type="bool" uuid="7b6f0be6-e614-4f1a-a063-4e32434d8004" />
+      <ct:socket-parameter name="bSupplyOk2" type="bool" uuid="8abdafd2-57a0-4618-90d7-75ea7417a610" />
+      <ct:socket-parameter name="bSupplyActive1" type="bool" uuid="e18e3c96-89b6-44dd-a617-f2999974c129" />
+      <ct:socket-parameter name="bSupplyActive2" type="bool" uuid="84ab7956-5a92-4bf4-b19c-ac4bc8bb0f1f" />
     </ct:socket-type>
   </namespace>
 </omx>

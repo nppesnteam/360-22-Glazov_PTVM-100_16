@@ -565,6 +565,21 @@
 		</do-trace>
 		<init target="initApSource" ver="5" ref="here.hereApSource"/>
 		<init target="bHorizontal" ver="5" value="true"/>
+		<do-trace access-modifier="private" target="NameExtended" ver="5">
+			<conditional-expr>
+				<condition>
+					<![CDATA[BurnNumber != "0"]]>
+				</condition>
+				<expr>
+					<![CDATA[NAME + " " + BurnNumber]]>
+				</expr>
+			</conditional-expr>
+			<default-expr>
+				<expr>
+					<![CDATA[NAME]]>
+				</expr>
+			</default-expr>
+		</do-trace>
 	</object>
 	<object access-modifier="private" name="DamperAir" display-name="DamperAir" uuid="018334af-af74-46d3-82ef-2703b997667f" base-type="Damper" base-type-id="a3e73327-f733-446d-ac01-918439e55f3f" ver="5">
 		<designed target="X" value="255" ver="5"/>

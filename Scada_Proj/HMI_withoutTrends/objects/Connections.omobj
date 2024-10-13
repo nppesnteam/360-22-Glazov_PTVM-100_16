@@ -19,7 +19,7 @@
 	<designed target="OverrideScaling" value="false" ver="5"/>
 	<designed target="ShowScrollBars" value="true" ver="5"/>
 	<designed target="MoveByMouse" value="false" ver="5"/>
-	<object access-modifier="private" name="ApSource" display-name="ApSource" uuid="dc5ce921-b79d-4c39-b916-092f7080d253" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
+	<object access-modifier="private" name="AppSource" display-name="AppSource" uuid="dc5ce921-b79d-4c39-b916-092f7080d253" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
 		<designed target="Active" value="true" ver="5"/>
 		<designed target="ReAdvise" value="0" ver="5"/>
 		<init target="Location" ver="5" value="127.0.0.1"/>
@@ -27,7 +27,7 @@
 			<object access-modifier="private" uuid="38ca45e7-56f6-4ee5-ba1c-f49b39faf238" base-type="Ошибка" base-type-id="71e4282d-ac4c-4686-b42b-b400ae3a645a" ver="5">
 				<init target="ErrorMsg" ver="5">
 					<expr>
-						<![CDATA[ApSource.ErrorString]]>
+						<![CDATA[AppSource.ErrorString]]>
 					</expr>
 				</init>
 			</object>
@@ -47,7 +47,7 @@
 			<object access-modifier="private" uuid="9e0a3df3-5f06-47ec-86c1-452e3944b6b1" base-type="Ошибка" base-type-id="71e4282d-ac4c-4686-b42b-b400ae3a645a" ver="5">
 				<init target="ErrorMsg" ver="5">
 					<expr>
-						<![CDATA[ApSource.ErrorString]]>
+						<![CDATA[DiagSource.ErrorString]]>
 					</expr>
 				</init>
 			</object>
@@ -67,7 +67,7 @@
 			<object access-modifier="private" uuid="77e23931-ea8f-496e-bd2a-2daaea42cab8" base-type="Ошибка" base-type-id="71e4282d-ac4c-4686-b42b-b400ae3a645a" ver="5">
 				<init target="ErrorMsg" ver="5">
 					<expr>
-						<![CDATA[ApSource.ErrorString]]>
+						<![CDATA[MainSource.ErrorString]]>
 					</expr>
 				</init>
 			</object>

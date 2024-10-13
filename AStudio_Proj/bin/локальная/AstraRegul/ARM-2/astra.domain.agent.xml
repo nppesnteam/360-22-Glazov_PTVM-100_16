@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Astra.Domain.Agent Name="ARM-2">
+  <EntryPointNetAgent Name="Server2" Address="127.0.0.1" Port="1010" />
+  <InstalledComponents>
+    <Astra.Server Name="AstraServer" ServiceName="Astra.Server" />
+  </InstalledComponents>
+  <Server>
+    <Components StoragePath="C:\DomainStorage\cache">
+      <Component InstalledName="AstraServer" Name="AstraServer" />
+    </Components>
+  </Server>
+  <Options LoggerLevel="2" />
+</Astra.Domain.Agent>

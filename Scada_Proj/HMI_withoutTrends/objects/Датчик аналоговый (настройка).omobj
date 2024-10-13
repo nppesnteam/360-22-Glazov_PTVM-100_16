@@ -358,6 +358,12 @@
 unit.Global.ShowMSG(refData.NAME + " (" + Title + ") изменено на " + me.Text + ".",2);]]>
 					</body>
 				</do-on>
+				<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="EditFinished">
+					<body kind="om">
+						<![CDATA[me.Text=Str.Replace(me.Text,",",".");
+refData.DIGITS = String.ToUint1(me.Text, refData.DIGITS);]]>
+					</body>
+				</do-on>
 			</object>
 		</object>
 		<object access-modifier="private" name="Conversion" display-name="Conversion" uuid="ce3c0496-cc3b-44bf-bffe-1b51a11b3127" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
@@ -1642,7 +1648,7 @@ unit.Global.ShowMSG(refData.NAME + " (" + Title + ") изменена на " + m
 				<designed target="TextAlignment" value="132" ver="5"/>
 				<do-trace access-modifier="private" target="Text" ver="5">
 					<body>
-						<![CDATA[refData.fElectroValue]]>
+						<![CDATA[refData.private.ValElectro]]>
 					</body>
 				</do-trace>
 				<designed target="Flip" value="0" ver="5"/>

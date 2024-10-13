@@ -181,9 +181,19 @@
 			<designed target="TextAlignment" value="132" ver="5"/>
 			<designed target="Flip" value="0" ver="5"/>
 			<do-trace access-modifier="private" target="Text" ver="5">
-				<body>
-					<![CDATA[private.Val]]>
-				</body>
+				<conditional-expr>
+					<condition>
+						<![CDATA[private.bOutBonds_1 && private.bOutBonds_2]]>
+					</condition>
+					<expr>
+						<![CDATA["NaN"]]>
+					</expr>
+				</conditional-expr>
+				<default-expr>
+					<expr>
+						<![CDATA[private.Val]]>
+					</expr>
+				</default-expr>
 			</do-trace>
 		</object>
 		<designed target="Flip" value="0" ver="5"/>
@@ -650,13 +660,13 @@
 		<object access-modifier="private" name="bOutBonds_1" display-name="bOutBonds_1" uuid="a2d38950-1568-4266-be75-ef7011b3f8ba" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
 		<do-trace access-modifier="private" target="bOutBonds_1" ver="5">
 			<body>
-				<![CDATA[(fNormValue1 <= OutConfig_1.fNormL) || (fNormValue1 >= OutConfig_1.fNormH) || bErrFirstSens]]>
+				<![CDATA[(fElectroValue1 <= 3) || (fElectroValue1 >= 21) || bErrFirstSens]]>
 			</body>
 		</do-trace>
 		<object access-modifier="private" name="bOutBonds_2" display-name="bOutBonds_2" uuid="54916a84-ff2d-4f10-93b9-b83e3921ef5a" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
 		<do-trace access-modifier="private" target="bOutBonds_2" ver="5">
 			<body>
-				<![CDATA[(fNormValue2 <= OutConfig_2.fNormL) || (fNormValue2 >= OutConfig_2.fNormH) || bErrSecondSens]]>
+				<![CDATA[(fElectroValue2 <= 3) || (fElectroValue2 >= 21) || bErrSecondSens]]>
 			</body>
 		</do-trace>
 		<object access-modifier="private" name="fProtH" display-name="fProtH" uuid="37f1a26b-22e8-4d99-b08b-2f78f1749d61" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
@@ -759,22 +769,24 @@
 				</object>
 			</do-on>
 		</object>
+		<object access-modifier="private" name="ValElectro_1" display-name="ValElectro_1" uuid="58af3ecf-edd7-4735-b8bf-ff254ad65cbd" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="ValElectro_2" display-name="ValElectro_2" uuid="daca9f4e-69e7-4ef2-aa20-c6316dcdec21" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
 	</object>
 	<object access-modifier="private" name="fElectroValue1" display-name="fElectroValue1" uuid="a16619ff-27bf-4925-9bf1-e1092502880c" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 		<init target="Path" ver="5" value="fElectroValue1"/>
 		<init target="Source" ver="5" ref="sensApSource"/>
-		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnValueChanged">
-			<body kind="javascript">
-				<![CDATA[private.Val_1 = isNaN(me.Value) ? me.Value : Number(me.Value).toFixed(DIGITS.Value);]]>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.ValElectro_1 = String.ToString( "%.1f", me.Value);]]>
 			</body>
 		</do-on>
 	</object>
 	<object access-modifier="private" name="fElectroValue2" display-name="fElectroValue2" uuid="48708fd5-8022-4a82-b061-df4c083ee9b1" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 		<init target="Path" ver="5" value="fElectroValue2"/>
 		<init target="Source" ver="5" ref="sensApSource"/>
-		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnValueChanged">
-			<body kind="javascript">
-				<![CDATA[private.Val_2 = isNaN(me.Value) ? me.Value : Number(me.Value).toFixed(DIGITS.Value);]]>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.ValElectro_2 = String.ToString( "%.1f", me.Value);]]>
 			</body>
 		</do-on>
 	</object>

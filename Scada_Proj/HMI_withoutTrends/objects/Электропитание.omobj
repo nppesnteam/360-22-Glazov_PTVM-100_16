@@ -1,0 +1,215 @@
+<type access-modifier="private" name="Электропитание" display-name="Электропитание" uuid="43dbf24c-ffd9-4fc1-b08d-f2c8aa8c9e06" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="1720" ver="5"/>
+	<designed target="Height" value="960" ver="5"/>
+	<designed target="PenColor" value="4278190080" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="0xff4d4d4d" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<designed target="WindowX" value="0" ver="5"/>
+	<designed target="WindowY" value="0" ver="5"/>
+	<designed target="WindowWidth" value="1720" ver="5"/>
+	<designed target="WindowHeight" value="960" ver="5"/>
+	<designed target="WindowCaption" value="DiagForm" ver="5"/>
+	<designed target="ShowWindowCaption" value="true" ver="5"/>
+	<designed target="ShowWindowMinimize" value="false" ver="5"/>
+	<designed target="ShowWindowMaximize" value="false" ver="5"/>
+	<designed target="ShowWindowClose" value="false" ver="5"/>
+	<designed target="AlwaysOnTop" value="false" ver="5"/>
+	<designed target="WindowSizeMode" value="0" ver="5"/>
+	<designed target="WindowBorderStyle" value="0" ver="5"/>
+	<designed target="WindowState" value="0" ver="5"/>
+	<designed target="WindowScalingMode" value="0" ver="5"/>
+	<designed target="MonitorNumber" value="0" ver="5"/>
+	<designed target="WindowPosition" value="0" ver="5"/>
+	<designed target="WindowCloseMode" value="0" ver="5"/>
+	<designed target="Flip" value="0" ver="5"/>
+	<designed target="WindowIconPath" value="" ver="5"/>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[unit.Global.ActiveMainFrame = "Электропитание";]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="ШУПВВ2" display-name="ШУПВВ2" uuid="34c40693-3000-4294-b556-9c288b98107d" base-type="Rack" base-type-id="607de3da-fb91-446a-8ae8-8e287d281022" ver="5" description="" cardinal="1">
+		<designed target="X" value="307" ver="5"/>
+		<designed target="Y" value="94" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="init_Source" ver="5" ref="Connections.AppSource"/>
+		<init target="init_Path" ver="5" value="Other"/>
+		<init target="Path" ver="5" value="bCallSHUPVV2"/>
+		<init target="Name" ver="5" value="ШУПВВ2"/>
+	</object>
+	<object access-modifier="private" name="ШУГ2" display-name="ШУГ2" uuid="005607f1-1d10-40b1-9aca-b155532cd8f1" base-type="Rack" base-type-id="607de3da-fb91-446a-8ae8-8e287d281022" ver="5" description="" cardinal="1">
+		<designed target="X" value="477" ver="5"/>
+		<designed target="Y" value="94" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="init_Source" ver="5" ref="Connections.AppSource"/>
+		<init target="init_Path" ver="5" value="Other"/>
+		<init target="Path" ver="5" value="bCallSHUG2"/>
+		<init target="Name" ver="5" value="ШУГ2"/>
+	</object>
+	<object access-modifier="private" name="ШУВ2" display-name="ШУВ2" uuid="883a0456-41ac-4f3e-9a5f-7b79180f1ba8" base-type="Rack" base-type-id="607de3da-fb91-446a-8ae8-8e287d281022" ver="5" description="" cardinal="1">
+		<designed target="X" value="307" ver="5"/>
+		<designed target="Y" value="234" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="init_Source" ver="5" ref="Connections.AppSource"/>
+		<init target="init_Path" ver="5" value="Other"/>
+		<init target="Path" ver="5" value="bCallSHUV2"/>
+		<init target="Name" ver="5" value="ШУВ2"/>
+	</object>
+	<object access-modifier="private" name="ШСГ2" display-name="ШСГ2" uuid="fbfc91a7-04cd-4ed8-9329-c9a827790bb4" base-type="Rack" base-type-id="607de3da-fb91-446a-8ae8-8e287d281022" ver="5" description="" cardinal="1">
+		<designed target="X" value="307" ver="5"/>
+		<designed target="Y" value="374" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="init_Source" ver="5" ref="Connections.AppSource"/>
+		<init target="init_Path" ver="5" value="Other"/>
+		<init target="Path" ver="5" value="bCallSHSG2"/>
+		<init target="Name" ver="5" value="ШСГ2"/>
+	</object>
+	<object access-modifier="private" name="ШСГ4" display-name="ШСГ4" uuid="782c7b70-6915-48b5-b7f2-676398a5bfb1" base-type="Rack" base-type-id="607de3da-fb91-446a-8ae8-8e287d281022" ver="5" description="" cardinal="1">
+		<designed target="X" value="307" ver="5"/>
+		<designed target="Y" value="514" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="init_Source" ver="5" ref="Connections.AppSource"/>
+		<init target="init_Path" ver="5" value="Other"/>
+		<init target="Path" ver="5" value="bCallSHSG4"/>
+		<init target="Name" ver="5" value="ШСГ4"/>
+	</object>
+	<object access-modifier="private" name="ШСО" display-name="ШСО" uuid="a4129149-64c1-4728-8f97-b6a32e53b157" base-type="Rack" base-type-id="607de3da-fb91-446a-8ae8-8e287d281022" ver="5" description="" cardinal="1">
+		<designed target="X" value="307" ver="5"/>
+		<designed target="Y" value="654" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="init_Source" ver="5" ref="Connections.AppSource"/>
+		<init target="init_Path" ver="5" value="Other"/>
+		<init target="Path" ver="5" value="bCallSHSO"/>
+		<init target="Name" ver="5" value="ШСО"/>
+	</object>
+	<object access-modifier="private" name="ШАВР2" display-name="ШАВР2" uuid="127bede8-1da5-42d9-9230-cb21e4fad283" base-type="Rack" base-type-id="607de3da-fb91-446a-8ae8-8e287d281022" ver="5" description="" cardinal="1">
+		<designed target="X" value="307" ver="5"/>
+		<designed target="Y" value="794" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="init_Source" ver="5" ref="Connections.AppSource"/>
+		<init target="init_Path" ver="5" value="Other"/>
+		<init target="Path" ver="5" value="SHAVR2.bCall"/>
+		<init target="Name" ver="5" value="ШАВР2"/>
+	</object>
+	<object access-modifier="private" name="ШУГ4" display-name="ШУГ4" uuid="7dc1195b-23cf-4d2f-b343-83fa6a759955" base-type="Rack" base-type-id="607de3da-fb91-446a-8ae8-8e287d281022" ver="5" description="" cardinal="1">
+		<designed target="X" value="477" ver="5"/>
+		<designed target="Y" value="794" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="init_Source" ver="5" ref="Connections.AppSource"/>
+		<init target="init_Path" ver="5" value="Other"/>
+		<init target="Path" ver="5" value="bCallSHUG4"/>
+		<init target="Name" ver="5" value="ШУГ4"/>
+	</object>
+	<object access-modifier="private" name="ШУПВВ1" display-name="ШУПВВ1" uuid="42377151-b048-49bc-8f96-4a7ed377dbc2" base-type="Rack" base-type-id="607de3da-fb91-446a-8ae8-8e287d281022" ver="5" description="" cardinal="1">
+		<designed target="X" value="1277" ver="5"/>
+		<designed target="Y" value="234" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="init_Source" ver="5" ref="Connections.AppSource"/>
+		<init target="init_Path" ver="5" value="Other"/>
+		<init target="Path" ver="5" value="bCallSHUPVV1"/>
+		<init target="Name" ver="5" value="ШУПВВ1"/>
+	</object>
+	<object access-modifier="private" name="ШУГ1" display-name="ШУГ1" uuid="77390f0b-d35a-450f-8a87-b57be56476d1" base-type="Rack" base-type-id="607de3da-fb91-446a-8ae8-8e287d281022" ver="5" description="" cardinal="1">
+		<designed target="X" value="1107" ver="5"/>
+		<designed target="Y" value="94" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="init_Source" ver="5" ref="Connections.AppSource"/>
+		<init target="init_Path" ver="5" value="Other"/>
+		<init target="Path" ver="5" value="bCallSHUG1"/>
+		<init target="Name" ver="5" value="ШУГ1"/>
+	</object>
+	<object access-modifier="private" name="ШУВ1" display-name="ШУВ1" uuid="e64cdde9-82c5-4f98-8835-c878aff13509" base-type="Rack" base-type-id="607de3da-fb91-446a-8ae8-8e287d281022" ver="5" description="" cardinal="1">
+		<designed target="X" value="1277" ver="5"/>
+		<designed target="Y" value="94" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="init_Source" ver="5" ref="Connections.AppSource"/>
+		<init target="init_Path" ver="5" value="Other"/>
+		<init target="Path" ver="5" value="bCallSHUV1"/>
+		<init target="Name" ver="5" value="ШУВ1"/>
+	</object>
+	<object access-modifier="private" name="ШСГ1" display-name="ШСГ1" uuid="74cee89d-3b4e-43c3-932d-393405ca6bdc" base-type="Rack" base-type-id="607de3da-fb91-446a-8ae8-8e287d281022" ver="5" description="" cardinal="1">
+		<designed target="X" value="1277" ver="5"/>
+		<designed target="Y" value="654" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="init_Source" ver="5" ref="Connections.AppSource"/>
+		<init target="init_Path" ver="5" value="Other"/>
+		<init target="Path" ver="5" value="bCallSHSG1"/>
+		<init target="Name" ver="5" value="ШСГ1"/>
+	</object>
+	<object access-modifier="private" name="ШСГ3" display-name="ШСГ3" uuid="eb82e8b2-3f41-4a95-97b8-c2f33a3de39a" base-type="Rack" base-type-id="607de3da-fb91-446a-8ae8-8e287d281022" ver="5" description="" cardinal="1">
+		<designed target="X" value="1277" ver="5"/>
+		<designed target="Y" value="794" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="init_Source" ver="5" ref="Connections.AppSource"/>
+		<init target="init_Path" ver="5" value="Other"/>
+		<init target="Path" ver="5" value="bCallSHSG3"/>
+		<init target="Name" ver="5" value="ШСГ3"/>
+	</object>
+	<object access-modifier="private" name="ШСК" display-name="ШСК" uuid="e5f349ce-f0a2-4b18-8f73-31921a3d989b" base-type="Rack" base-type-id="607de3da-fb91-446a-8ae8-8e287d281022" ver="5" description="" cardinal="1">
+		<designed target="X" value="1277" ver="5"/>
+		<designed target="Y" value="514" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="init_Source" ver="5" ref="Connections.AppSource"/>
+		<init target="init_Path" ver="5" value="Other"/>
+		<init target="Path" ver="5" value="bCallSHSK"/>
+		<init target="Name" ver="5" value="ШСК"/>
+	</object>
+	<object access-modifier="private" name="ШАВР1" display-name="ШАВР1" uuid="10cc8006-e4f4-490b-b756-36fee710535c" base-type="Rack" base-type-id="607de3da-fb91-446a-8ae8-8e287d281022" ver="5" description="" cardinal="1">
+		<designed target="X" value="1277" ver="5"/>
+		<designed target="Y" value="374" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="init_Source" ver="5" ref="Connections.AppSource"/>
+		<init target="init_Path" ver="5" value="Other"/>
+		<init target="Path" ver="5" value="SHAVR1.bCall"/>
+		<init target="Name" ver="5" value="ШАВР1"/>
+	</object>
+	<object access-modifier="private" name="ШУГ3" display-name="ШУГ3" uuid="4e6aa2c5-1cbc-445c-aac6-2a9cbb076504" base-type="Rack" base-type-id="607de3da-fb91-446a-8ae8-8e287d281022" ver="5" description="" cardinal="1">
+		<designed target="X" value="1107" ver="5"/>
+		<designed target="Y" value="794" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="init_Source" ver="5" ref="Connections.AppSource"/>
+		<init target="init_Path" ver="5" value="Other"/>
+		<init target="Path" ver="5" value="bCallSHUG3"/>
+		<init target="Name" ver="5" value="ШУГ3"/>
+	</object>
+	<object access-modifier="private" name="ШУК" display-name="ШУК" uuid="89cd5be0-e462-4e7d-8f36-3ebd8f4f8802" base-type="Rack" base-type-id="607de3da-fb91-446a-8ae8-8e287d281022" ver="5" description="" cardinal="1">
+		<designed target="X" value="967" ver="5"/>
+		<designed target="Y" value="94" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="Name" ver="5" value="ШУК"/>
+	</object>
+	<object access-modifier="private" name="ШУОВ" display-name="ШУОВ" uuid="817c97ba-76bf-4815-b451-a844b297d9b5" base-type="Rack" base-type-id="607de3da-fb91-446a-8ae8-8e287d281022" ver="5" description="" cardinal="1">
+		<designed target="X" value="827" ver="5"/>
+		<designed target="Y" value="94" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="Name" ver="5" value="ШУОВ"/>
+	</object>
+	<object access-modifier="private" name="SHAVR_1" display-name="SHAVR_1" uuid="ca21c57b-074b-45c2-bdd2-41d7d78ddcf8" base-type="SHAVR" base-type-id="153b31cf-b759-42d5-a188-a9e01cdff5c4" ver="5" description="" cardinal="1">
+		<designed target="X" value="16" ver="5"/>
+		<designed target="Y" value="246" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="init_Source" ver="5" ref="Connections.AppSource"/>
+		<init target="init_Path" ver="5" value="Other.SHAVR2"/>
+		<init target="Name" ver="5" value="ШАВР2"/>
+	</object>
+	<object access-modifier="private" name="SHAVR_2" display-name="SHAVR_2" uuid="265b5929-a6fa-4ebd-ab39-be6352f4a44a" base-type="SHAVR" base-type-id="153b31cf-b759-42d5-a188-a9e01cdff5c4" ver="5" description="" cardinal="1">
+		<designed target="X" value="1440" ver="5"/>
+		<designed target="Y" value="246" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="init_Source" ver="5" ref="Connections.AppSource"/>
+		<init target="init_Path" ver="5" value="Other.SHAVR1"/>
+		<init target="Name" ver="5" value="ШАВР1"/>
+	</object>
+</type>
+

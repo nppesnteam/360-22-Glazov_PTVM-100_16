@@ -384,7 +384,7 @@
 			<object access-modifier="private" name="GasApSource" display-name="GasApSource" uuid="1619dc9b-cee5-4903-9ba8-904d2d4e108f" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
 				<designed target="Active" value="false" ver="5"/>
 				<designed target="ReAdvise" value="0" ver="5"/>
-				<init target="ParentSource" ver="5" ref="unit.Connections.ApSource"/>
+				<init target="ParentSource" ver="5" ref="unit.Connections.AppSource"/>
 				<init target="Path" ver="5" value="Gas"/>
 				<designed target="Location" value="" ver="5"/>
 				<designed target="Port" value="4388" ver="5"/>
@@ -522,8 +522,8 @@
 			<designed target="ShowScrollBars" value="true" ver="5"/>
 			<designed target="MoveByMouse" value="false" ver="5"/>
 			<object access-modifier="private" name="txtGroup" display-name="txtGroup" uuid="4366a9e4-a4e7-480d-b878-00582392e75e" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
-				<designed target="X" value="210" ver="5"/>
-				<designed target="Y" value="30" ver="5"/>
+				<designed target="X" value="82.636363636363654" ver="5"/>
+				<designed target="Y" value="130.31818181818181" ver="5"/>
 				<designed target="ZValue" value="0" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
 				<designed target="Scale" value="1" ver="5"/>
@@ -547,7 +547,7 @@
 			<object access-modifier="private" name="GroupApSource" display-name="GroupApSource" uuid="23a3a18a-301e-44a7-8d04-d78e1ad7c1bb" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
 				<designed target="Active" value="false" ver="5"/>
 				<designed target="ReAdvise" value="0" ver="5"/>
-				<init target="ParentSource" ver="5" ref="unit.Connections.ApSource"/>
+				<init target="ParentSource" ver="5" ref="unit.Connections.AppSource"/>
 				<do-trace access-modifier="private" target="Path" ver="5">
 					<body>
 						<![CDATA["Group"+Str.ToString(here.Group)]]>
@@ -639,8 +639,8 @@
 		</object>
 		<designed target="Flip" value="0" ver="5"/>
 		<object access-modifier="private" name="Smoke" display-name="Smoke" uuid="42b9d67f-0585-4738-92d4-bf3478a20fa1" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
-			<designed target="X" value="707" ver="5"/>
-			<designed target="Y" value="63" ver="5"/>
+			<designed target="X" value="264.09090909090912" ver="5"/>
+			<designed target="Y" value="-5.136363636363626" ver="5"/>
 			<designed target="ZValue" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Scale" value="1" ver="5"/>
@@ -649,8 +649,8 @@
 			<designed target="Opacity" value="1" ver="5"/>
 			<designed target="Enabled" value="true" ver="5"/>
 			<designed target="Tooltip" value="" ver="5"/>
-			<designed target="Width" value="143" ver="5"/>
-			<designed target="Height" value="88" ver="5"/>
+			<designed target="Width" value="149" ver="5"/>
+			<designed target="Height" value="100" ver="5"/>
 			<designed target="PenColor" value="4278190080" ver="5"/>
 			<designed target="PenStyle" value="1" ver="5"/>
 			<designed target="PenWidth" value="1" ver="5"/>
@@ -662,7 +662,7 @@
 			<object access-modifier="private" name="SmokeApSource" display-name="SmokeApSource" uuid="99633928-6ef4-4e8f-b9ec-61de5ec22aa9" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
 				<designed target="Active" value="false" ver="5"/>
 				<designed target="ReAdvise" value="0" ver="5"/>
-				<init target="ParentSource" ver="5" ref="unit.Connections.ApSource"/>
+				<init target="ParentSource" ver="5" ref="unit.Connections.AppSource"/>
 				<init target="Path" ver="5" value="Smoke"/>
 				<designed target="Location" value="" ver="5"/>
 				<designed target="Port" value="4388" ver="5"/>
@@ -672,8 +672,8 @@
 				<designed target="ClientId" value="HMI" ver="5"/>
 			</object>
 			<object access-modifier="private" name="txtPVac" display-name="txtPVac" uuid="0ca3c5e6-b039-44ad-83ca-fac9ffc80807" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
-				<designed target="X" value="6" ver="5"/>
-				<designed target="Y" value="4" ver="5"/>
+				<designed target="X" value="6.3636363636364308" ver="5"/>
+				<designed target="Y" value="3.6363636363636402" ver="5"/>
 				<designed target="ZValue" value="0" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
 				<designed target="Scale" value="1" ver="5"/>
@@ -682,14 +682,14 @@
 				<designed target="Opacity" value="1" ver="5"/>
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="131" ver="5"/>
+				<designed target="Width" value="134" ver="5"/>
 				<designed target="Height" value="45" ver="5"/>
 				<designed target="Text" value="Разрежение в топке" ver="5"/>
 				<designed target="Font" value="MS Shell Dlg 2,16,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
 				<designed target="FontColor" value="0xffffffff" ver="5"/>
 				<designed target="TextAlignment" value="132" ver="5"/>
 			</object>
-			<object access-modifier="private" name="PVacSmoke" display-name="PVacSmoke" uuid="c2eed31b-b869-42e2-939d-430a3348d2a4" base-type="Sens" base-type-id="bda7de48-3eeb-48b5-8968-c64cf04eb418" ver="5">
+			<object access-modifier="private" name="PVacSmoke" display-name="PVacSmoke" uuid="c2eed31b-b869-42e2-939d-430a3348d2a4" base-type="SensDouble" base-type-id="f0efb2b9-b2c2-4ae5-9828-4b87079c3c46" ver="5">
 				<designed target="X" value="43" ver="5"/>
 				<designed target="Y" value="61" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
@@ -768,7 +768,7 @@
 				<designed target="OnClickFontColor" value="4278190080" ver="5"/>
 				<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
 				<designed target="DisabledFontColor" value="4278190080" ver="5"/>
-				<designed target="BrushColor" value="4293980400" ver="5"/>
+				<designed target="BrushColor" value="0xffc3c3c3" ver="5"/>
 				<designed target="BrushStyle" value="1" ver="5"/>
 				<designed target="OnClickBrushColor" value="4288716960" ver="5"/>
 				<designed target="OnClickBrushStyle" value="1" ver="5"/>
@@ -808,16 +808,52 @@
 						<init target="refCommand" ver="5" ref="Burn.BurnStart"/>
 						<init target="txtTitle" ver="5">
 							<expr>
-								<![CDATA["Разжечь горелку №" + Burn.burner.BurnNumber.ValueAsString + "?"]]>
+								<![CDATA[(Burn.burner.bPressOk ? ("Разжечь горелку №") : ("Опрессовать горелку №")) + Burn.burner.BurnNumber.ValueAsString + "?"]]>
 							</expr>
 						</init>
 					</object>
 				</do-on>
 				<do-trace access-modifier="private" target="Enabled" ver="5">
 					<body>
-						<![CDATA[unit.Global.bBoilerOk]]>
+						<![CDATA[unit.Global.bBoilerOk && (Burn.burner.ePressIgn.bDoNothing || Burn.burner.bPressOk) && Burn.burner.eBurnIgn.bDoNothing]]>
 					</body>
 				</do-trace>
+				<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="0ea03373-d852-42eb-a3f9-6c47198a37c4" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
+					<designed target="Rotation" value="90" ver="5"/>
+					<designed target="Visible" value="false" ver="5"/>
+					<designed target="Opacity" value="1" ver="5"/>
+					<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="5f202240-ff89-415f-9c97-10386cd3270d" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+						<designed target="Position" value="0" ver="5"/>
+						<designed target="Color" value="0xff999999" ver="5"/>
+					</object>
+					<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="c602a90e-b3e4-49ed-9aaa-3b42cc7efc66" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+						<designed target="Position" value="0.40000000000000002" ver="5"/>
+						<designed target="Color" value="0xffffffff" ver="5"/>
+					</object>
+					<object access-modifier="private" name="GradientPoint_3" display-name="GradientPoint_3" uuid="3e6eb4c1-3743-4d94-b0c7-79ea7c810111" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+						<designed target="Position" value="0.59999999999999998" ver="5"/>
+						<designed target="Color" value="0xffffffff" ver="5"/>
+					</object>
+					<object access-modifier="private" name="GradientPoint_4" display-name="GradientPoint_4" uuid="8383b249-9e82-4753-aa7e-ebf6a5f6ad2e" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+						<designed target="Position" value="1" ver="5"/>
+						<designed target="Color" value="0xff999999" ver="5"/>
+					</object>
+					<do-trace access-modifier="private" target="Visible" ver="5">
+						<body>
+							<![CDATA[unit.Global.bBoilerOk && (Burn.burner.ePressIgn.bDoNothing || Burn.burner.bPressOk) && Burn.burner.eBurnIgn.bDoNothing]]>
+						</body>
+					</do-trace>
+				</object>
+				<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseEnter">
+					<body kind="om">
+						<![CDATA[LinearGradient_1.Visible=false;]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="MouseLeave">
+					<body kind="om">
+						<![CDATA[LinearGradient_1.Visible=true;]]>
+					</body>
+				</do-on>
 			</object>
 			<object access-modifier="private" name="BurnStop" display-name="BurnStop" uuid="68d43630-3ac0-4b82-a6df-79db28c78cd9" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5" description="" cardinal="1">
 				<designed target="X" value="231" ver="5"/>
@@ -841,7 +877,7 @@
 				<designed target="OnClickFontColor" value="4278190080" ver="5"/>
 				<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
 				<designed target="DisabledFontColor" value="4278190080" ver="5"/>
-				<designed target="BrushColor" value="4293980400" ver="5"/>
+				<designed target="BrushColor" value="0xffc3c3c3" ver="5"/>
 				<designed target="BrushStyle" value="1" ver="5"/>
 				<designed target="OnClickBrushColor" value="4288716960" ver="5"/>
 				<designed target="OnClickBrushStyle" value="1" ver="5"/>
@@ -881,7 +917,7 @@
 						<init target="refCommand" ver="5" ref="Burn.BurnStop"/>
 						<init target="txtTitle" ver="5">
 							<expr>
-								<![CDATA["Остановить горелку №" + Burn.burner.BurnNumber.ValueAsString + "?"]]>
+								<![CDATA[(Burn.burner.bBurnStarted ? ("Остановить горелку №") : ("Сбросить опрессовку горелки №")) + Burn.burner.BurnNumber.ValueAsString + "?"]]>
 							</expr>
 						</init>
 					</object>
@@ -891,6 +927,42 @@
 						<![CDATA[Burn.burner.bPressOk || Burn.burner.bPressProc || Burn.burner.bPressAlarm]]>
 					</body>
 				</do-trace>
+				<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="a8bd8e66-de1a-472b-843a-e8c7701267c6" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
+					<designed target="Rotation" value="90" ver="5"/>
+					<designed target="Visible" value="false" ver="5"/>
+					<designed target="Opacity" value="1" ver="5"/>
+					<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="598c705c-7ccd-42d6-b59c-c703b4a252be" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+						<designed target="Position" value="0" ver="5"/>
+						<designed target="Color" value="0xff999999" ver="5"/>
+					</object>
+					<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="c31a4bea-0056-46dd-8d79-0bcc509188ba" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+						<designed target="Position" value="0.40000000000000002" ver="5"/>
+						<designed target="Color" value="0xffffffff" ver="5"/>
+					</object>
+					<object access-modifier="private" name="GradientPoint_3" display-name="GradientPoint_3" uuid="a0396e8a-003b-4ee1-abaa-b1c558ffd247" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+						<designed target="Position" value="0.59999999999999998" ver="5"/>
+						<designed target="Color" value="0xffffffff" ver="5"/>
+					</object>
+					<object access-modifier="private" name="GradientPoint_4" display-name="GradientPoint_4" uuid="10d657d4-a507-446b-b4d8-fe97cd61d3a5" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+						<designed target="Position" value="1" ver="5"/>
+						<designed target="Color" value="0xff999999" ver="5"/>
+					</object>
+					<do-trace access-modifier="private" target="Visible" ver="5">
+						<body>
+							<![CDATA[Burn.burner.bPressOk || Burn.burner.bPressProc || Burn.burner.bPressAlarm]]>
+						</body>
+					</do-trace>
+				</object>
+				<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseEnter">
+					<body kind="om">
+						<![CDATA[LinearGradient_1.Visible=false;]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="MouseLeave">
+					<body kind="om">
+						<![CDATA[LinearGradient_1.Visible=Burn.burner.bPressOk || Burn.burner.bPressProc || Burn.burner.bPressAlarm;]]>
+					</body>
+				</do-on>
 			</object>
 			<object access-modifier="private" name="Burn" display-name="Burn" uuid="eb65f703-91eb-47e2-be0b-0b130a37d51b" base-type="BurnMain" base-type-id="b4bb791a-887e-4d66-9bf7-0abe346cbe1c" base-const="true" base-ref="true" ver="5" description=""/>
 			<init target="Burn" ver="5" ref="Scheme.Group.BurnMain"/>
@@ -1025,12 +1097,12 @@
 								<![CDATA[Burn.burner.bBurnStarted]]>
 							</condition>
 							<expr>
-								<![CDATA[Burn.burner.eBurnIgn.DESCRIPTION]]>
+								<![CDATA[Burn.burner.eBurnIgn.DESCRIPTION + (Burn.burner.bIgnProc ? (" " + String.ToString( "%.0f", Burn.burner.fIgnRemainingTimeStep) + " сек") : "")]]>
 							</expr>
 						</conditional-expr>
 						<default-expr>
 							<expr>
-								<![CDATA[Burn.burner.ePressIgn.DESCRIPTION]]>
+								<![CDATA[Burn.burner.ePressIgn.DESCRIPTION + (Burn.burner.bPressProc ? (" " + String.ToString( "%.0f", Burn.burner.fPressRemainingTimeStep) + " сек") : "")]]>
 							</expr>
 						</default-expr>
 					</do-trace>
@@ -1103,7 +1175,7 @@
 				<designed target="OnClickFontColor" value="4278190080" ver="5"/>
 				<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
 				<designed target="DisabledFontColor" value="4278190080" ver="5"/>
-				<designed target="BrushColor" value="4293980400" ver="5"/>
+				<designed target="BrushColor" value="0xffc3c3c3" ver="5"/>
 				<designed target="BrushStyle" value="1" ver="5"/>
 				<designed target="OnClickBrushColor" value="4288716960" ver="5"/>
 				<designed target="OnClickBrushStyle" value="1" ver="5"/>
@@ -1143,16 +1215,55 @@
 						<init target="refCommand" ver="5" ref="Burn.BurnStart"/>
 						<init target="txtTitle" ver="5">
 							<expr>
-								<![CDATA["Разжечь горелку №" + Burn.burner.BurnNumber.ValueAsString + "?"]]>
+								<![CDATA[(Burn.burner.bPressOk ? ("Разжечь горелку №") : ("Опрессовать горелку №")) + Burn.burner.BurnNumber.ValueAsString + "?"]]>
 							</expr>
 						</init>
 					</object>
 				</do-on>
 				<do-trace access-modifier="private" target="Enabled" ver="5">
 					<body>
-						<![CDATA[unit.Global.bBoilerOk]]>
+						<![CDATA[unit.Global.bBoilerOk && 
+(Control.BurnMain.Burn.burner.bBurnFinal || !Burn.burner.bPressOk) && 
+(Burn.burner.ePressIgn.bDoNothing || Burn.burner.bPressOk) && 
+Burn.burner.eBurnIgn.bDoNothing]]>
 					</body>
 				</do-trace>
+				<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="bb5a1c6c-9aee-4804-b11b-7350363b19b7" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
+					<designed target="Rotation" value="90" ver="5"/>
+					<designed target="Visible" value="false" ver="5"/>
+					<designed target="Opacity" value="1" ver="5"/>
+					<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="bd85310a-fc2f-4fad-9bef-486e12e49713" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+						<designed target="Position" value="0" ver="5"/>
+						<designed target="Color" value="0xff999999" ver="5"/>
+					</object>
+					<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="ea6d9a39-4882-4bb5-a149-6c0ed77d7c38" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+						<designed target="Position" value="0.40000000000000002" ver="5"/>
+						<designed target="Color" value="0xffffffff" ver="5"/>
+					</object>
+					<object access-modifier="private" name="GradientPoint_3" display-name="GradientPoint_3" uuid="da18ccb7-ac02-4efa-bce4-fba652edd9f2" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+						<designed target="Position" value="0.59999999999999998" ver="5"/>
+						<designed target="Color" value="0xffffffff" ver="5"/>
+					</object>
+					<object access-modifier="private" name="GradientPoint_4" display-name="GradientPoint_4" uuid="002bd67b-a2f2-4a36-82d2-d6aca28920eb" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+						<designed target="Position" value="1" ver="5"/>
+						<designed target="Color" value="0xff999999" ver="5"/>
+					</object>
+					<do-trace access-modifier="private" target="Visible" ver="5">
+						<body>
+							<![CDATA[unit.Global.bBoilerOk && (Control.BurnMain.Burn.burner.bBurnFinal || !Burn.burner.bPressOk) && (Burn.burner.ePressIgn.bDoNothing || Burn.burner.bPressOk) && Burn.burner.eBurnIgn.bDoNothing]]>
+						</body>
+					</do-trace>
+				</object>
+				<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseEnter">
+					<body kind="om">
+						<![CDATA[LinearGradient_1.Visible=false;]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="MouseLeave">
+					<body kind="om">
+						<![CDATA[LinearGradient_1.Visible=true;]]>
+					</body>
+				</do-on>
 			</object>
 			<object access-modifier="private" name="BurnStop" display-name="BurnStop" uuid="d648add1-c051-4945-9e3e-e6a0358e6fc9" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5" description="" cardinal="1">
 				<designed target="X" value="231" ver="5"/>
@@ -1176,7 +1287,7 @@
 				<designed target="OnClickFontColor" value="4278190080" ver="5"/>
 				<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
 				<designed target="DisabledFontColor" value="4278190080" ver="5"/>
-				<designed target="BrushColor" value="4293980400" ver="5"/>
+				<designed target="BrushColor" value="0xffc3c3c3" ver="5"/>
 				<designed target="BrushStyle" value="1" ver="5"/>
 				<designed target="OnClickBrushColor" value="4288716960" ver="5"/>
 				<designed target="OnClickBrushStyle" value="1" ver="5"/>
@@ -1216,7 +1327,7 @@
 						<init target="refCommand" ver="5" ref="Burn.BurnStop"/>
 						<init target="txtTitle" ver="5">
 							<expr>
-								<![CDATA["Остановить горелку №" + Burn.burner.BurnNumber.ValueAsString + "?"]]>
+								<![CDATA[(Burn.burner.bBurnStarted ? ("Остановить горелку №") : ("Сбросить опрессовку горелки №")) + Burn.burner.BurnNumber.ValueAsString + "?"]]>
 							</expr>
 						</init>
 					</object>
@@ -1226,6 +1337,42 @@
 						<![CDATA[Burn.burner.bPressOk || Burn.burner.bPressProc || Burn.burner.bPressAlarm]]>
 					</body>
 				</do-trace>
+				<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="f1ca706b-8afe-4ad4-942a-3b9f9372b681" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
+					<designed target="Rotation" value="90" ver="5"/>
+					<designed target="Visible" value="false" ver="5"/>
+					<designed target="Opacity" value="1" ver="5"/>
+					<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="34b45451-dc13-47ee-8264-d06b6242bc2a" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+						<designed target="Position" value="0" ver="5"/>
+						<designed target="Color" value="0xff999999" ver="5"/>
+					</object>
+					<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="2303bfd3-d266-462b-8a65-f5fd87b206d0" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+						<designed target="Position" value="0.40000000000000002" ver="5"/>
+						<designed target="Color" value="0xffffffff" ver="5"/>
+					</object>
+					<object access-modifier="private" name="GradientPoint_3" display-name="GradientPoint_3" uuid="2457730d-5ef0-4b05-b00d-bf662a3bc550" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+						<designed target="Position" value="0.59999999999999998" ver="5"/>
+						<designed target="Color" value="0xffffffff" ver="5"/>
+					</object>
+					<object access-modifier="private" name="GradientPoint_4" display-name="GradientPoint_4" uuid="065b3c90-21f7-422d-bf8c-b4260b24b815" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+						<designed target="Position" value="1" ver="5"/>
+						<designed target="Color" value="0xff999999" ver="5"/>
+					</object>
+					<do-trace access-modifier="private" target="Visible" ver="5">
+						<body>
+							<![CDATA[Burn.burner.bPressOk || Burn.burner.bPressProc || Burn.burner.bPressAlarm]]>
+						</body>
+					</do-trace>
+				</object>
+				<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseEnter">
+					<body kind="om">
+						<![CDATA[LinearGradient_1.Visible=false;]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="MouseLeave">
+					<body kind="om">
+						<![CDATA[LinearGradient_1.Visible=Burn.burner.bPressOk || Burn.burner.bPressProc || Burn.burner.bPressAlarm;]]>
+					</body>
+				</do-on>
 			</object>
 			<object access-modifier="private" name="Burn" display-name="Burn" uuid="18de6477-1a18-461b-9718-f02fab761b7b" base-type="BurnWork" base-type-id="fd973e8a-d8c8-4b96-8763-069ba372be39" base-const="true" base-ref="true" ver="5" description=""/>
 			<init target="Burn" ver="5" ref="Scheme.Group.BurnWork1"/>
@@ -1337,12 +1484,12 @@
 								<![CDATA[Burn.burner.bBurnStarted]]>
 							</condition>
 							<expr>
-								<![CDATA[Burn.burner.eBurnIgn.DESCRIPTION]]>
+								<![CDATA[Burn.burner.eBurnIgn.DESCRIPTION + (Burn.burner.bIgnProc ? (" " + String.ToString( "%.0f", Burn.burner.fIgnRemainingTimeStep) + " сек") : "")]]>
 							</expr>
 						</conditional-expr>
 						<default-expr>
 							<expr>
-								<![CDATA[Burn.burner.ePressIgn.DESCRIPTION]]>
+								<![CDATA[Burn.burner.ePressIgn.DESCRIPTION + (Burn.burner.bPressProc ? (" " + String.ToString( "%.0f", Burn.burner.fPressRemainingTimeStep) + " сек") : "")]]>
 							</expr>
 						</default-expr>
 					</do-trace>
@@ -1415,7 +1562,7 @@
 				<designed target="OnClickFontColor" value="4278190080" ver="5"/>
 				<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
 				<designed target="DisabledFontColor" value="4278190080" ver="5"/>
-				<designed target="BrushColor" value="4293980400" ver="5"/>
+				<designed target="BrushColor" value="0xffc3c3c3" ver="5"/>
 				<designed target="BrushStyle" value="1" ver="5"/>
 				<designed target="OnClickBrushColor" value="4288716960" ver="5"/>
 				<designed target="OnClickBrushStyle" value="1" ver="5"/>
@@ -1455,16 +1602,52 @@
 						<init target="refCommand" ver="5" ref="Burn.BurnStart"/>
 						<init target="txtTitle" ver="5">
 							<expr>
-								<![CDATA["Разжечь горелку №" + Burn.burner.BurnNumber.ValueAsString + "?"]]>
+								<![CDATA[(Burn.burner.bPressOk ? ("Разжечь горелку №") : ("Опрессовать горелку №")) + Burn.burner.BurnNumber.ValueAsString + "?"]]>
 							</expr>
 						</init>
 					</object>
 				</do-on>
 				<do-trace access-modifier="private" target="Enabled" ver="5">
 					<body>
-						<![CDATA[unit.Global.bBoilerOk]]>
+						<![CDATA[unit.Global.bBoilerOk && (Control.BurnMain.Burn.burner.bBurnFinal || !Burn.burner.bPressOk) && (Burn.burner.ePressIgn.bDoNothing || Burn.burner.bPressOk) && Burn.burner.eBurnIgn.bDoNothing]]>
 					</body>
 				</do-trace>
+				<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="9059a6d4-c405-48dd-a43d-98d1188216de" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
+					<designed target="Rotation" value="90" ver="5"/>
+					<designed target="Visible" value="false" ver="5"/>
+					<designed target="Opacity" value="1" ver="5"/>
+					<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="bf8dc35b-e8cc-40bc-adc4-8e215a7d58b2" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+						<designed target="Position" value="0" ver="5"/>
+						<designed target="Color" value="0xff999999" ver="5"/>
+					</object>
+					<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="25f938ca-c551-41ee-8a94-46db162b2edc" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+						<designed target="Position" value="0.40000000000000002" ver="5"/>
+						<designed target="Color" value="0xffffffff" ver="5"/>
+					</object>
+					<object access-modifier="private" name="GradientPoint_3" display-name="GradientPoint_3" uuid="0307e77f-e361-467d-a6c1-36020b98f9b8" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+						<designed target="Position" value="0.59999999999999998" ver="5"/>
+						<designed target="Color" value="0xffffffff" ver="5"/>
+					</object>
+					<object access-modifier="private" name="GradientPoint_4" display-name="GradientPoint_4" uuid="96124053-683c-4fff-8bde-a148285e331e" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+						<designed target="Position" value="1" ver="5"/>
+						<designed target="Color" value="0xff999999" ver="5"/>
+					</object>
+					<do-trace access-modifier="private" target="Visible" ver="5">
+						<body>
+							<![CDATA[unit.Global.bBoilerOk && (Control.BurnMain.Burn.burner.bBurnFinal || !Burn.burner.bPressOk) && (Burn.burner.ePressIgn.bDoNothing || Burn.burner.bPressOk) && Burn.burner.eBurnIgn.bDoNothing]]>
+						</body>
+					</do-trace>
+				</object>
+				<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseEnter">
+					<body kind="om">
+						<![CDATA[LinearGradient_1.Visible=false;]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="MouseLeave">
+					<body kind="om">
+						<![CDATA[LinearGradient_1.Visible=true;]]>
+					</body>
+				</do-on>
 			</object>
 			<object access-modifier="private" name="BurnStop" display-name="BurnStop" uuid="bac9f8df-7360-4742-be56-4c7690968ab9" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5" description="" cardinal="1">
 				<designed target="X" value="231" ver="5"/>
@@ -1488,7 +1671,7 @@
 				<designed target="OnClickFontColor" value="4278190080" ver="5"/>
 				<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
 				<designed target="DisabledFontColor" value="4278190080" ver="5"/>
-				<designed target="BrushColor" value="4293980400" ver="5"/>
+				<designed target="BrushColor" value="0xffc3c3c3" ver="5"/>
 				<designed target="BrushStyle" value="1" ver="5"/>
 				<designed target="OnClickBrushColor" value="4288716960" ver="5"/>
 				<designed target="OnClickBrushStyle" value="1" ver="5"/>
@@ -1528,7 +1711,7 @@
 						<init target="refCommand" ver="5" ref="Burn.BurnStop"/>
 						<init target="txtTitle" ver="5">
 							<expr>
-								<![CDATA["Остановить горелку №" + Burn.burner.BurnNumber.ValueAsString + "?"]]>
+								<![CDATA[(Burn.burner.bBurnStarted ? ("Остановить горелку №") : ("Сбросить опрессовку горелки №")) + Burn.burner.BurnNumber.ValueAsString + "?"]]>
 							</expr>
 						</init>
 					</object>
@@ -1538,6 +1721,42 @@
 						<![CDATA[Burn.burner.bPressOk || Burn.burner.bPressProc || Burn.burner.bPressAlarm]]>
 					</body>
 				</do-trace>
+				<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="20bfca23-a0ba-4bd7-8af2-44ae28307b84" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
+					<designed target="Rotation" value="90" ver="5"/>
+					<designed target="Visible" value="false" ver="5"/>
+					<designed target="Opacity" value="1" ver="5"/>
+					<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="2e592a09-ec01-406d-a6fb-00fc2984c1e6" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+						<designed target="Position" value="0" ver="5"/>
+						<designed target="Color" value="0xff999999" ver="5"/>
+					</object>
+					<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="96144cea-ac2a-4715-8600-112f82858833" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+						<designed target="Position" value="0.40000000000000002" ver="5"/>
+						<designed target="Color" value="0xffffffff" ver="5"/>
+					</object>
+					<object access-modifier="private" name="GradientPoint_3" display-name="GradientPoint_3" uuid="416b2da3-a3cf-4153-b85e-d5ff74387c25" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+						<designed target="Position" value="0.59999999999999998" ver="5"/>
+						<designed target="Color" value="0xffffffff" ver="5"/>
+					</object>
+					<object access-modifier="private" name="GradientPoint_4" display-name="GradientPoint_4" uuid="635c8e0f-ff83-4554-870a-805c284bef35" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+						<designed target="Position" value="1" ver="5"/>
+						<designed target="Color" value="0xff999999" ver="5"/>
+					</object>
+					<do-trace access-modifier="private" target="Visible" ver="5">
+						<body>
+							<![CDATA[Burn.burner.bPressOk || Burn.burner.bPressProc || Burn.burner.bPressAlarm]]>
+						</body>
+					</do-trace>
+				</object>
+				<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseEnter">
+					<body kind="om">
+						<![CDATA[LinearGradient_1.Visible=false;]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="MouseLeave">
+					<body kind="om">
+						<![CDATA[LinearGradient_1.Visible=Burn.burner.bPressOk || Burn.burner.bPressProc || Burn.burner.bPressAlarm;]]>
+					</body>
+				</do-on>
 			</object>
 			<object access-modifier="private" name="Burn" display-name="Burn" uuid="f8faf17b-f6a3-4347-a622-a1a861a24665" base-type="BurnWork" base-type-id="fd973e8a-d8c8-4b96-8763-069ba372be39" base-const="true" base-ref="true" ver="5" description=""/>
 			<init target="Burn" ver="5" ref="Scheme.Group.BurnWork2"/>
@@ -1672,12 +1891,12 @@
 								<![CDATA[Burn.burner.bBurnStarted]]>
 							</condition>
 							<expr>
-								<![CDATA[Burn.burner.eBurnIgn.DESCRIPTION]]>
+								<![CDATA[Burn.burner.eBurnIgn.DESCRIPTION + (Burn.burner.bIgnProc ? (" " + String.ToString( "%.0f", Burn.burner.fIgnRemainingTimeStep) + " сек") : "")]]>
 							</expr>
 						</conditional-expr>
 						<default-expr>
 							<expr>
-								<![CDATA[Burn.burner.ePressIgn.DESCRIPTION]]>
+								<![CDATA[Burn.burner.ePressIgn.DESCRIPTION + (Burn.burner.bPressProc ? (" " + String.ToString( "%.0f", Burn.burner.fPressRemainingTimeStep) + " сек") : "")]]>
 							</expr>
 						</default-expr>
 					</do-trace>
@@ -1750,7 +1969,7 @@
 				<designed target="OnClickFontColor" value="4278190080" ver="5"/>
 				<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
 				<designed target="DisabledFontColor" value="4278190080" ver="5"/>
-				<designed target="BrushColor" value="4293980400" ver="5"/>
+				<designed target="BrushColor" value="0xffc3c3c3" ver="5"/>
 				<designed target="BrushStyle" value="1" ver="5"/>
 				<designed target="OnClickBrushColor" value="4288716960" ver="5"/>
 				<designed target="OnClickBrushStyle" value="1" ver="5"/>
@@ -1790,16 +2009,52 @@
 						<init target="refCommand" ver="5" ref="Burn.BurnStart"/>
 						<init target="txtTitle" ver="5">
 							<expr>
-								<![CDATA["Разжечь горелку №" + Burn.burner.BurnNumber.ValueAsString + "?"]]>
+								<![CDATA[(Burn.burner.bPressOk ? ("Разжечь горелку №") : ("Опрессовать горелку №")) + Burn.burner.BurnNumber.ValueAsString + "?"]]>
 							</expr>
 						</init>
 					</object>
 				</do-on>
 				<do-trace access-modifier="private" target="Enabled" ver="5">
 					<body>
-						<![CDATA[unit.Global.bBoilerOk]]>
+						<![CDATA[unit.Global.bBoilerOk && (Control.BurnMain.Burn.burner.bBurnFinal || !Burn.burner.bPressOk) && (Burn.burner.ePressIgn.bDoNothing || Burn.burner.bPressOk) && Burn.burner.eBurnIgn.bDoNothing]]>
 					</body>
 				</do-trace>
+				<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="64d86232-0072-43a9-8024-49e1487a3467" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
+					<designed target="Rotation" value="90" ver="5"/>
+					<designed target="Visible" value="false" ver="5"/>
+					<designed target="Opacity" value="1" ver="5"/>
+					<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="25471d9e-5c52-4d52-8bd3-d9907dedccb6" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+						<designed target="Position" value="0" ver="5"/>
+						<designed target="Color" value="0xff999999" ver="5"/>
+					</object>
+					<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="017b9172-1254-4c03-a124-aa35423d1765" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+						<designed target="Position" value="0.40000000000000002" ver="5"/>
+						<designed target="Color" value="0xffffffff" ver="5"/>
+					</object>
+					<object access-modifier="private" name="GradientPoint_3" display-name="GradientPoint_3" uuid="3fb3ce3c-c60d-45c5-897e-7f59c3c0138c" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+						<designed target="Position" value="0.59999999999999998" ver="5"/>
+						<designed target="Color" value="0xffffffff" ver="5"/>
+					</object>
+					<object access-modifier="private" name="GradientPoint_4" display-name="GradientPoint_4" uuid="f1a0fa99-5916-464f-a2ae-0da2c8f26c4e" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+						<designed target="Position" value="1" ver="5"/>
+						<designed target="Color" value="0xff999999" ver="5"/>
+					</object>
+					<do-trace access-modifier="private" target="Visible" ver="5">
+						<body>
+							<![CDATA[unit.Global.bBoilerOk && (Control.BurnMain.Burn.burner.bBurnFinal || !Burn.burner.bPressOk) && (Burn.burner.ePressIgn.bDoNothing || Burn.burner.bPressOk) && Burn.burner.eBurnIgn.bDoNothing]]>
+						</body>
+					</do-trace>
+				</object>
+				<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseEnter">
+					<body kind="om">
+						<![CDATA[LinearGradient_1.Visible=false;]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="MouseLeave">
+					<body kind="om">
+						<![CDATA[LinearGradient_1.Visible=true;]]>
+					</body>
+				</do-on>
 			</object>
 			<object access-modifier="private" name="BurnStop" display-name="BurnStop" uuid="bd70b965-c2a4-4f51-a2b9-fc1903f2982e" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5" description="" cardinal="1">
 				<designed target="X" value="231" ver="5"/>
@@ -1823,7 +2078,7 @@
 				<designed target="OnClickFontColor" value="4278190080" ver="5"/>
 				<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
 				<designed target="DisabledFontColor" value="4278190080" ver="5"/>
-				<designed target="BrushColor" value="4293980400" ver="5"/>
+				<designed target="BrushColor" value="0xffc3c3c3" ver="5"/>
 				<designed target="BrushStyle" value="1" ver="5"/>
 				<designed target="OnClickBrushColor" value="4288716960" ver="5"/>
 				<designed target="OnClickBrushStyle" value="1" ver="5"/>
@@ -1863,7 +2118,7 @@
 						<init target="refCommand" ver="5" ref="Burn.BurnStop"/>
 						<init target="txtTitle" ver="5">
 							<expr>
-								<![CDATA["Остановить горелку №" + Burn.burner.BurnNumber.ValueAsString + "?"]]>
+								<![CDATA[(Burn.burner.bBurnStarted ? ("Остановить горелку №") : ("Сбросить опрессовку горелки №")) + Burn.burner.BurnNumber.ValueAsString + "?"]]>
 							</expr>
 						</init>
 					</object>
@@ -1873,6 +2128,42 @@
 						<![CDATA[Burn.burner.bPressOk || Burn.burner.bPressProc || Burn.burner.bPressAlarm]]>
 					</body>
 				</do-trace>
+				<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="34fee24a-87d3-4125-91df-ee078b4ee694" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
+					<designed target="Rotation" value="90" ver="5"/>
+					<designed target="Visible" value="false" ver="5"/>
+					<designed target="Opacity" value="1" ver="5"/>
+					<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="9f047366-8775-4145-b121-448b06d785a4" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+						<designed target="Position" value="0" ver="5"/>
+						<designed target="Color" value="0xff999999" ver="5"/>
+					</object>
+					<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="91db9ce2-baa9-4405-80af-b35f8cdc8311" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+						<designed target="Position" value="0.40000000000000002" ver="5"/>
+						<designed target="Color" value="0xffffffff" ver="5"/>
+					</object>
+					<object access-modifier="private" name="GradientPoint_3" display-name="GradientPoint_3" uuid="1b266827-53d4-4c0d-88a3-40d57f9679be" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+						<designed target="Position" value="0.59999999999999998" ver="5"/>
+						<designed target="Color" value="0xffffffff" ver="5"/>
+					</object>
+					<object access-modifier="private" name="GradientPoint_4" display-name="GradientPoint_4" uuid="ebc30fa0-5807-4d9c-b24e-b731218ef699" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+						<designed target="Position" value="1" ver="5"/>
+						<designed target="Color" value="0xff999999" ver="5"/>
+					</object>
+					<do-trace access-modifier="private" target="Visible" ver="5">
+						<body>
+							<![CDATA[Burn.burner.bPressOk || Burn.burner.bPressProc || Burn.burner.bPressAlarm]]>
+						</body>
+					</do-trace>
+				</object>
+				<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseEnter">
+					<body kind="om">
+						<![CDATA[LinearGradient_1.Visible=false;]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="MouseLeave">
+					<body kind="om">
+						<![CDATA[LinearGradient_1.Visible=Burn.burner.bPressOk || Burn.burner.bPressProc || Burn.burner.bPressAlarm;]]>
+					</body>
+				</do-on>
 			</object>
 			<object access-modifier="private" name="Burn" display-name="Burn" uuid="6225d292-da31-4603-90b5-8e6f54a76d88" base-type="BurnWork" base-type-id="fd973e8a-d8c8-4b96-8763-069ba372be39" base-const="true" base-ref="true" ver="5" description=""/>
 			<init target="Burn" ver="5" ref="Scheme.Group.BurnWork3"/>
@@ -1984,12 +2275,12 @@
 								<![CDATA[Burn.burner.bBurnStarted]]>
 							</condition>
 							<expr>
-								<![CDATA[Burn.burner.eBurnIgn.DESCRIPTION]]>
+								<![CDATA[Burn.burner.eBurnIgn.DESCRIPTION + (Burn.burner.bIgnProc ? (" " + String.ToString( "%.0f", Burn.burner.fIgnRemainingTimeStep) + " сек") : "")]]>
 							</expr>
 						</conditional-expr>
 						<default-expr>
 							<expr>
-								<![CDATA[Burn.burner.ePressIgn.DESCRIPTION]]>
+								<![CDATA[Burn.burner.ePressIgn.DESCRIPTION + (Burn.burner.bPressProc ? (" " + String.ToString( "%.0f", Burn.burner.fPressRemainingTimeStep) + " сек") : "")]]>
 							</expr>
 						</default-expr>
 					</do-trace>
@@ -2051,7 +2342,7 @@
 			<designed target="ReAdvise" value="0" ver="5"/>
 			<designed target="ClientDisplayName" value="HMI" ver="5"/>
 			<designed target="ClientId" value="HMI" ver="5"/>
-			<init target="ParentSource" ver="5" ref="unit.Connections.ApSource"/>
+			<init target="ParentSource" ver="5" ref="unit.Connections.AppSource"/>
 		</object>
 		<object access-modifier="private" name="IgnFinalSource" display-name="IgnFinalSource" uuid="d7c2ae6c-64f4-4f0b-bf9d-49a4b7594cf3" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
 			<designed target="Location" value="" ver="5"/>
@@ -2062,7 +2353,7 @@
 			<designed target="ReAdvise" value="0" ver="5"/>
 			<designed target="ClientDisplayName" value="HMI" ver="5"/>
 			<designed target="ClientId" value="HMI" ver="5"/>
-			<init target="ParentSource" ver="5" ref="unit.Connections.ApSource"/>
+			<init target="ParentSource" ver="5" ref="unit.Connections.AppSource"/>
 		</object>
 		<object access-modifier="private" name="ariIgnFinal" display-name="ariIgnFinal" uuid="687e0e54-412e-4809-bd55-fdb261a17302" base-type="ApItemInt2" base-type-id="46c29e2c-cf0c-4e96-ad30-6d7ae4e2ae8c" ver="5" description="" cardinal="16">
 			<init target="Source" ver="5" ref="IgnFinalSource"/>
@@ -2370,5 +2661,721 @@ if (unit.Global.OpenedGroup == 3 || unit.Global.OpenedGroup == 4)
 			<![CDATA[unit.Global.isGroupOpened=false;]]>
 		</body>
 	</do-on>
+	<object access-modifier="private" name="frameAlarms" display-name="frameAlarms" uuid="dc584549-d6ab-491f-b8ff-7d2af9f21fd3" base-type="Frame" base-type-id="71f78e19-ef99-4133-a029-2968b14f02b6" ver="5" description="" cardinal="1">
+		<designed target="X" value="566" ver="5"/>
+		<designed target="Y" value="14" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="1140" ver="5"/>
+		<designed target="Height" value="210" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="4278190080" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<designed target="OverrideScaling" value="false" ver="5"/>
+		<designed target="ShowScrollBars" value="true" ver="5"/>
+		<designed target="MoveByMouse" value="false" ver="5"/>
+		<object access-modifier="private" name="ApSourceAlarms" display-name="ApSourceAlarms" uuid="338a318c-ce97-4b9f-99f1-9d7cfe565e00" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+			<designed target="Location" value="" ver="5"/>
+			<designed target="Port" value="4388" ver="5"/>
+			<designed target="HistoryPort" value="4950" ver="5"/>
+			<designed target="Path" value="" ver="5"/>
+			<designed target="Active" value="false" ver="5"/>
+			<designed target="ReAdvise" value="0" ver="5"/>
+			<designed target="ClientDisplayName" value="HMI" ver="5"/>
+			<designed target="ClientId" value="HMI" ver="5"/>
+			<init target="ParentSource" ver="5" ref="Scheme.Group.GroupApSource"/>
+			<do-trace access-modifier="private" target="Path" ver="5">
+				<body>
+					<![CDATA[sSelectedBurn]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="sSelectedBurn" display-name="sSelectedBurn" uuid="0649665d-0bd6-4c5b-b6b4-0cc9fff2d788" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		<init target="sSelectedBurn" ver="5" value="BurnMain"/>
+		<object access-modifier="private" name="PGasH" display-name="PGasH" uuid="5cd7312c-d251-4617-8c71-43aa4793ef14" base-type="Frame" base-type-id="71f78e19-ef99-4133-a029-2968b14f02b6" ver="5" description="" cardinal="1">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="30" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="1140" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<designed target="OverrideScaling" value="false" ver="5"/>
+			<designed target="ShowScrollBars" value="true" ver="5"/>
+			<designed target="MoveByMouse" value="false" ver="5"/>
+			<object access-modifier="private" name="visu" display-name="visu" uuid="9497637d-5237-4f08-8f4b-29174e644303" base-type="AlarmVisu" base-type-id="f5e5874a-ae14-42b1-9b75-bfb0b0090079" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<init target="ProtData" ver="5" ref="data"/>
+				<init target="isWarning" ver="5" value="false"/>
+				<init target="isProtection" ver="5" value="true"/>
+				<init target="Number" ver="5" value="1"/>
+			</object>
+			<object access-modifier="private" name="data" display-name="data" uuid="c5b15945-8238-4c6a-9ad0-5fe19f38a23b" base-type="ProtData" base-type-id="9c826d5c-1976-4f54-a35a-bb8180d89ee8" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<init target="init_Source" ver="5" ref="ApSourceAlarms"/>
+				<init target="init_Path" ver="5" value="PGasH"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="PGasL" display-name="PGasL" uuid="412ee817-e092-4377-a8da-00e7b2065d46" base-type="Frame" base-type-id="71f78e19-ef99-4133-a029-2968b14f02b6" ver="5" description="" cardinal="1">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="60" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="1140" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<designed target="OverrideScaling" value="false" ver="5"/>
+			<designed target="ShowScrollBars" value="true" ver="5"/>
+			<designed target="MoveByMouse" value="false" ver="5"/>
+			<object access-modifier="private" name="visu" display-name="visu" uuid="e2f8ec44-e341-4381-90a6-d38ad78db84f" base-type="AlarmVisu" base-type-id="f5e5874a-ae14-42b1-9b75-bfb0b0090079" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<init target="ProtData" ver="5" ref="data"/>
+				<init target="isWarning" ver="5" value="false"/>
+				<init target="isProtection" ver="5" value="true"/>
+				<init target="Number" ver="5" value="2"/>
+			</object>
+			<object access-modifier="private" name="data" display-name="data" uuid="caa04b42-12d4-49b7-8a1f-fc4519b20dee" base-type="ProtData" base-type-id="9c826d5c-1976-4f54-a35a-bb8180d89ee8" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<init target="init_Source" ver="5" ref="ApSourceAlarms"/>
+				<init target="init_Path" ver="5" value="PGasL"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="PAirL" display-name="PAirL" uuid="d0e72dd5-78f0-4c14-bdef-a695ef6e451f" base-type="Frame" base-type-id="71f78e19-ef99-4133-a029-2968b14f02b6" ver="5" description="" cardinal="1">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="90" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="1140" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<designed target="OverrideScaling" value="false" ver="5"/>
+			<designed target="ShowScrollBars" value="true" ver="5"/>
+			<designed target="MoveByMouse" value="false" ver="5"/>
+			<object access-modifier="private" name="visu" display-name="visu" uuid="0ffbe6c2-d97d-43f9-a5da-bbf84487312f" base-type="AlarmVisu" base-type-id="f5e5874a-ae14-42b1-9b75-bfb0b0090079" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<init target="ProtData" ver="5" ref="data"/>
+				<init target="isWarning" ver="5" value="false"/>
+				<init target="isProtection" ver="5" value="true"/>
+				<init target="Number" ver="5" value="3"/>
+			</object>
+			<object access-modifier="private" name="data" display-name="data" uuid="421c6935-6be1-4526-9560-168e70a70eb9" base-type="ProtData" base-type-id="9c826d5c-1976-4f54-a35a-bb8180d89ee8" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<init target="init_Source" ver="5" ref="ApSourceAlarms"/>
+				<init target="init_Path" ver="5" value="PAirL"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="FanOff" display-name="FanOff" uuid="e28950a5-2a15-4e20-9464-11a9b1d4f0a2" base-type="Frame" base-type-id="71f78e19-ef99-4133-a029-2968b14f02b6" ver="5" description="" cardinal="1">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="120" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="1140" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<designed target="OverrideScaling" value="false" ver="5"/>
+			<designed target="ShowScrollBars" value="true" ver="5"/>
+			<designed target="MoveByMouse" value="false" ver="5"/>
+			<object access-modifier="private" name="visu" display-name="visu" uuid="798298e3-6666-486f-b10a-d56a2d40fe37" base-type="AlarmVisu" base-type-id="f5e5874a-ae14-42b1-9b75-bfb0b0090079" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<init target="ProtData" ver="5" ref="data"/>
+				<init target="isWarning" ver="5" value="false"/>
+				<init target="isProtection" ver="5" value="true"/>
+				<init target="Number" ver="5" value="4"/>
+			</object>
+			<object access-modifier="private" name="data" display-name="data" uuid="1906019f-e229-45ad-8b32-9205fa6c79f5" base-type="ProtData" base-type-id="9c826d5c-1976-4f54-a35a-bb8180d89ee8" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<init target="init_Source" ver="5" ref="ApSourceAlarms"/>
+				<init target="init_Path" ver="5" value="FanOff"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="FireIgnOff" display-name="FireIgnOff" uuid="cb6d581a-ae57-4530-822e-97543b4237c1" base-type="Frame" base-type-id="71f78e19-ef99-4133-a029-2968b14f02b6" ver="5" description="" cardinal="1">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="150" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="1140" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<designed target="OverrideScaling" value="false" ver="5"/>
+			<designed target="ShowScrollBars" value="true" ver="5"/>
+			<designed target="MoveByMouse" value="false" ver="5"/>
+			<object access-modifier="private" name="visu" display-name="visu" uuid="fda71763-8780-43df-acc6-a5aec27d75df" base-type="AlarmVisu" base-type-id="f5e5874a-ae14-42b1-9b75-bfb0b0090079" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<init target="ProtData" ver="5" ref="data"/>
+				<init target="isWarning" ver="5" value="false"/>
+				<init target="isProtection" ver="5" value="true"/>
+				<init target="Number" ver="5" value="5"/>
+			</object>
+			<object access-modifier="private" name="data" display-name="data" uuid="f4947d39-d9b6-4891-a5a3-720c9013f2e0" base-type="ProtData" base-type-id="9c826d5c-1976-4f54-a35a-bb8180d89ee8" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<init target="init_Source" ver="5" ref="ApSourceAlarms"/>
+				<init target="init_Path" ver="5" value="FireIgnOff"/>
+			</object>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[sSelectedBurn=="BurnMain"]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="FireBurnOff" display-name="FireBurnOff" uuid="d3cbc70b-5592-402e-b141-ae3853951a68" base-type="Frame" base-type-id="71f78e19-ef99-4133-a029-2968b14f02b6" ver="5" description="" cardinal="1">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="180" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="1140" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<designed target="OverrideScaling" value="false" ver="5"/>
+			<designed target="ShowScrollBars" value="true" ver="5"/>
+			<designed target="MoveByMouse" value="false" ver="5"/>
+			<object access-modifier="private" name="visu" display-name="visu" uuid="4154cbe3-9fce-4548-9c20-68878d22db60" base-type="AlarmVisu" base-type-id="f5e5874a-ae14-42b1-9b75-bfb0b0090079" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<init target="ProtData" ver="5" ref="data"/>
+				<init target="isWarning" ver="5" value="false"/>
+				<init target="isProtection" ver="5" value="true"/>
+				<init target="Number" ver="5" value="6"/>
+			</object>
+			<object access-modifier="private" name="data" display-name="data" uuid="55283970-7c3b-49b0-b748-f6d1eaa11a1f" base-type="ProtData" base-type-id="9c826d5c-1976-4f54-a35a-bb8180d89ee8" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<init target="init_Source" ver="5" ref="ApSourceAlarms"/>
+				<init target="init_Path" ver="5" value="FireBurnOff"/>
+			</object>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[sSelectedBurn=="BurnMain"]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="SystemButton_1" display-name="SystemButton_1" uuid="28037727-7af3-4c4a-a3ca-eb1cbab07463" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5" description="" cardinal="1">
+			<designed target="X" value="10" ver="5"/>
+			<designed target="Y" value="3" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="25" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Checkable" value="false" ver="5"/>
+			<designed target="Checked" value="false" ver="5"/>
+			<designed target="Text" value="1" ver="5"/>
+			<designed target="Font" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="FontColor" value="4278190080" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+				<body kind="om">
+					<![CDATA[sSelectedBurn="BurnWork1";]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Text" ver="5">
+				<body>
+					<![CDATA[Scheme.Group.BurnWork1.BurnNumber]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="Enabled" ver="5">
+				<body>
+					<![CDATA[sSelectedBurn != "BurnWork1"]]>
+				</body>
+			</do-trace>
+			<designed target="TextAlignment" value="132" ver="5"/>
+			<designed target="OnClickFontColor" value="4278190080" ver="5"/>
+			<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
+			<designed target="DisabledFontColor" value="4278190080" ver="5"/>
+			<designed target="BrushColor" value="4293980400" ver="5"/>
+			<designed target="BrushStyle" value="1" ver="5"/>
+			<designed target="OnClickBrushColor" value="4288716960" ver="5"/>
+			<designed target="OnClickBrushStyle" value="1" ver="5"/>
+			<designed target="OnHoverBrushColor" value="4294967295" ver="5"/>
+			<designed target="OnHoverBrushStyle" value="1" ver="5"/>
+			<designed target="DisabledBrushColor" value="0xff00ff00" ver="5"/>
+			<designed target="DisabledBrushStyle" value="1" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="OnClickPenColor" value="4278190080" ver="5"/>
+			<designed target="OnClickPenStyle" value="1" ver="5"/>
+			<designed target="OnClickPenWidth" value="1" ver="5"/>
+			<designed target="OnHoverPenColor" value="4278190080" ver="5"/>
+			<designed target="OnHoverPenStyle" value="1" ver="5"/>
+			<designed target="OnHoverPenWidth" value="1" ver="5"/>
+			<designed target="DisabledPenColor" value="4288716960" ver="5"/>
+			<designed target="DisabledPenStyle" value="1" ver="5"/>
+			<designed target="DisabledPenWidth" value="1" ver="5"/>
+		</object>
+		<object access-modifier="private" name="SystemButton_2" display-name="SystemButton_2" uuid="b4cfdbfb-27fa-4e16-9d58-20374ca4f7e8" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5" description="" cardinal="1">
+			<designed target="X" value="50" ver="5"/>
+			<designed target="Y" value="3" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="25" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Checkable" value="false" ver="5"/>
+			<designed target="Checked" value="false" ver="5"/>
+			<designed target="Text" value="3" ver="5"/>
+			<designed target="Font" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="FontColor" value="4278190080" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+				<body kind="om">
+					<![CDATA[sSelectedBurn="BurnWork2";]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Text" ver="5">
+				<body>
+					<![CDATA[Scheme.Group.BurnWork2.BurnNumber]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="Enabled" ver="5">
+				<body>
+					<![CDATA[sSelectedBurn != "BurnWork2"]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="X" ver="5">
+				<conditional-expr>
+					<condition>
+						<![CDATA[(here.Group == 3) || (here.Group == 4)]]>
+					</condition>
+					<expr>
+						<![CDATA[90]]>
+					</expr>
+				</conditional-expr>
+				<conditional-expr>
+					<condition>
+						<![CDATA[(here.Group == 1) || (here.Group == 2)]]>
+					</condition>
+					<expr>
+						<![CDATA[50]]>
+					</expr>
+				</conditional-expr>
+				<default-expr>
+					<expr>
+						<![CDATA[50]]>
+					</expr>
+				</default-expr>
+			</do-trace>
+			<designed target="TextAlignment" value="132" ver="5"/>
+			<designed target="OnClickFontColor" value="4278190080" ver="5"/>
+			<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
+			<designed target="DisabledFontColor" value="4278190080" ver="5"/>
+			<designed target="BrushColor" value="4293980400" ver="5"/>
+			<designed target="BrushStyle" value="1" ver="5"/>
+			<designed target="OnClickBrushColor" value="4288716960" ver="5"/>
+			<designed target="OnClickBrushStyle" value="1" ver="5"/>
+			<designed target="OnHoverBrushColor" value="4294967295" ver="5"/>
+			<designed target="OnHoverBrushStyle" value="1" ver="5"/>
+			<designed target="DisabledBrushColor" value="0xff00ff00" ver="5"/>
+			<designed target="DisabledBrushStyle" value="1" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="OnClickPenColor" value="4278190080" ver="5"/>
+			<designed target="OnClickPenStyle" value="1" ver="5"/>
+			<designed target="OnClickPenWidth" value="1" ver="5"/>
+			<designed target="OnHoverPenColor" value="4278190080" ver="5"/>
+			<designed target="OnHoverPenStyle" value="1" ver="5"/>
+			<designed target="OnHoverPenWidth" value="1" ver="5"/>
+			<designed target="DisabledPenColor" value="4288716960" ver="5"/>
+			<designed target="DisabledPenStyle" value="1" ver="5"/>
+			<designed target="DisabledPenWidth" value="1" ver="5"/>
+		</object>
+		<object access-modifier="private" name="SystemButton_3" display-name="SystemButton_3" uuid="da428cd9-419d-43a9-adc2-a7f285ded53d" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5" description="" cardinal="1">
+			<designed target="X" value="90" ver="5"/>
+			<designed target="Y" value="3" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="25" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Checkable" value="false" ver="5"/>
+			<designed target="Checked" value="false" ver="5"/>
+			<designed target="Text" value="5" ver="5"/>
+			<designed target="Font" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="FontColor" value="4278190080" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+				<body kind="om">
+					<![CDATA[sSelectedBurn="BurnMain";]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Text" ver="5">
+				<body>
+					<![CDATA[Scheme.Group.BurnMain.BurnNumber]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="Enabled" ver="5">
+				<body>
+					<![CDATA[sSelectedBurn != "BurnMain"]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="X" ver="5">
+				<conditional-expr>
+					<condition>
+						<![CDATA[(here.Group == 3) || (here.Group == 4)]]>
+					</condition>
+					<expr>
+						<![CDATA[50]]>
+					</expr>
+				</conditional-expr>
+				<conditional-expr>
+					<condition>
+						<![CDATA[(here.Group == 1) || (here.Group == 2)]]>
+					</condition>
+					<expr>
+						<![CDATA[90]]>
+					</expr>
+				</conditional-expr>
+				<default-expr>
+					<expr>
+						<![CDATA[90]]>
+					</expr>
+				</default-expr>
+			</do-trace>
+			<designed target="TextAlignment" value="132" ver="5"/>
+			<designed target="OnClickFontColor" value="4278190080" ver="5"/>
+			<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
+			<designed target="DisabledFontColor" value="4278190080" ver="5"/>
+			<designed target="BrushColor" value="4293980400" ver="5"/>
+			<designed target="BrushStyle" value="1" ver="5"/>
+			<designed target="OnClickBrushColor" value="4288716960" ver="5"/>
+			<designed target="OnClickBrushStyle" value="1" ver="5"/>
+			<designed target="OnHoverBrushColor" value="4294967295" ver="5"/>
+			<designed target="OnHoverBrushStyle" value="1" ver="5"/>
+			<designed target="DisabledBrushColor" value="0xff00ff00" ver="5"/>
+			<designed target="DisabledBrushStyle" value="1" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="OnClickPenColor" value="4278190080" ver="5"/>
+			<designed target="OnClickPenStyle" value="1" ver="5"/>
+			<designed target="OnClickPenWidth" value="1" ver="5"/>
+			<designed target="OnHoverPenColor" value="4278190080" ver="5"/>
+			<designed target="OnHoverPenStyle" value="1" ver="5"/>
+			<designed target="OnHoverPenWidth" value="1" ver="5"/>
+			<designed target="DisabledPenColor" value="4288716960" ver="5"/>
+			<designed target="DisabledPenStyle" value="1" ver="5"/>
+			<designed target="DisabledPenWidth" value="1" ver="5"/>
+		</object>
+		<object access-modifier="private" name="SystemButton_4" display-name="SystemButton_4" uuid="eb9a7c35-13c7-4149-86fc-db886fb7a821" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5" description="" cardinal="1">
+			<designed target="X" value="130" ver="5"/>
+			<designed target="Y" value="3" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="25" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Checkable" value="false" ver="5"/>
+			<designed target="Checked" value="false" ver="5"/>
+			<designed target="Text" value="7" ver="5"/>
+			<designed target="Font" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="FontColor" value="4278190080" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+				<body kind="om">
+					<![CDATA[sSelectedBurn="BurnWork3";]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Text" ver="5">
+				<body>
+					<![CDATA[Scheme.Group.BurnWork3.BurnNumber]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="Enabled" ver="5">
+				<body>
+					<![CDATA[sSelectedBurn != "BurnWork3"]]>
+				</body>
+			</do-trace>
+			<designed target="TextAlignment" value="132" ver="5"/>
+			<designed target="OnClickFontColor" value="4278190080" ver="5"/>
+			<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
+			<designed target="DisabledFontColor" value="4278190080" ver="5"/>
+			<designed target="BrushColor" value="4293980400" ver="5"/>
+			<designed target="BrushStyle" value="1" ver="5"/>
+			<designed target="OnClickBrushColor" value="4288716960" ver="5"/>
+			<designed target="OnClickBrushStyle" value="1" ver="5"/>
+			<designed target="OnHoverBrushColor" value="4294967295" ver="5"/>
+			<designed target="OnHoverBrushStyle" value="1" ver="5"/>
+			<designed target="DisabledBrushColor" value="0xff00ff00" ver="5"/>
+			<designed target="DisabledBrushStyle" value="1" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="OnClickPenColor" value="4278190080" ver="5"/>
+			<designed target="OnClickPenStyle" value="1" ver="5"/>
+			<designed target="OnClickPenWidth" value="1" ver="5"/>
+			<designed target="OnHoverPenColor" value="4278190080" ver="5"/>
+			<designed target="OnHoverPenStyle" value="1" ver="5"/>
+			<designed target="OnHoverPenWidth" value="1" ver="5"/>
+			<designed target="DisabledPenColor" value="4288716960" ver="5"/>
+			<designed target="DisabledPenStyle" value="1" ver="5"/>
+			<designed target="DisabledPenWidth" value="1" ver="5"/>
+		</object>
+	</object>
+	<object access-modifier="private" name="BurnSequence_1" display-name="BurnSequence_1" uuid="8dc60de3-81ee-46b1-aa17-b9bacbf408e9" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+		<designed target="X" value="-1" ver="5"/>
+		<designed target="Y" value="35" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="85" ver="5"/>
+		<designed target="Height" value="600" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="4278190080" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<designed target="OverrideScaling" value="false" ver="5"/>
+		<designed target="ShowScrollBars" value="true" ver="5"/>
+		<designed target="MoveByMouse" value="false" ver="5"/>
+		<object access-modifier="private" name="IgnQueueSource" display-name="IgnQueueSource" uuid="8d44afb5-91d5-4e7f-852d-8f18010f58cf" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+			<designed target="Location" value="" ver="5"/>
+			<designed target="Port" value="4388" ver="5"/>
+			<designed target="HistoryPort" value="4950" ver="5"/>
+			<designed target="Path" value="GVL.arBurnsIgnQueue" ver="5"/>
+			<designed target="Active" value="false" ver="5"/>
+			<designed target="ReAdvise" value="0" ver="5"/>
+			<designed target="ClientDisplayName" value="HMI" ver="5"/>
+			<designed target="ClientId" value="HMI" ver="5"/>
+			<init target="ParentSource" ver="5" ref="unit.Connections.AppSource"/>
+		</object>
+		<object access-modifier="private" name="IgnFinalSource" display-name="IgnFinalSource" uuid="00db519a-919a-4955-b136-41f21c558187" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+			<designed target="Location" value="" ver="5"/>
+			<designed target="Port" value="4388" ver="5"/>
+			<designed target="HistoryPort" value="4950" ver="5"/>
+			<designed target="Path" value="GVL.arBurnsFinal" ver="5"/>
+			<designed target="Active" value="false" ver="5"/>
+			<designed target="ReAdvise" value="0" ver="5"/>
+			<designed target="ClientDisplayName" value="HMI" ver="5"/>
+			<designed target="ClientId" value="HMI" ver="5"/>
+			<init target="ParentSource" ver="5" ref="unit.Connections.AppSource"/>
+		</object>
+		<object access-modifier="private" name="ariIgnFinal" display-name="ariIgnFinal" uuid="bd83e059-b6ee-4f34-9037-dd310be5636c" base-type="ApItemInt2" base-type-id="46c29e2c-cf0c-4e96-ad30-6d7ae4e2ae8c" ver="5" description="" cardinal="16">
+			<init target="Source" ver="5" ref="IgnFinalSource"/>
+			<init target="Path" ver="5">
+				<expr>
+					<![CDATA["[" + String.ToString(Index+1) + "]"]]>
+				</expr>
+			</init>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnValueChanged">
+				<body kind="om">
+					<![CDATA[rectFinalNumber[me.Index].Visible = me.Value > 0;
+rectFinalNumber[me.Index].txtFinalNumber = me.ValueAsString;]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="ariIgnQueue" display-name="ariIgnQueue" uuid="8b00f0a5-7605-4a0a-879f-eae623429d4b" base-type="ApItemInt2" base-type-id="46c29e2c-cf0c-4e96-ad30-6d7ae4e2ae8c" ver="5" description="" cardinal="16">
+			<init target="Source" ver="5" ref="IgnQueueSource"/>
+			<init target="Path" ver="5">
+				<expr>
+					<![CDATA["[" + String.ToString(Index+1) + "]"]]>
+				</expr>
+			</init>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnValueChanged">
+				<body kind="om">
+					<![CDATA[rectQueueNumber[me.Index].Visible = me.Value > 0;
+rectQueueNumber[me.Index].txtFinalNumber = me.ValueAsString;]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="rectFinalNumber" display-name="rectFinalNumber" uuid="dad4ba00-c35b-499a-8de5-70f21d8c79f9" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="16">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="false" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="35" ver="5"/>
+			<designed target="Height" value="35" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="0xffd6d6d6" ver="5"/>
+			<designed target="BrushStyle" value="1" ver="5"/>
+			<object access-modifier="private" name="txtFinalNumber" display-name="txtFinalNumber" uuid="d2263b77-6a22-474b-b3af-cce5c91acc1d" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="35" ver="5"/>
+				<designed target="Height" value="35" ver="5"/>
+				<designed target="Text" value="0" ver="5"/>
+				<designed target="Font" value="MS Shell Dlg 2,20,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="132" ver="5"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="rectQueueNumber" display-name="rectQueueNumber" uuid="fe8e88cf-a671-4131-8256-2e7d8ffc099e" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="16">
+			<designed target="X" value="50" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="false" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="35" ver="5"/>
+			<designed target="Height" value="35" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="0xffd6d6d6" ver="5"/>
+			<designed target="BrushStyle" value="1" ver="5"/>
+			<object access-modifier="private" name="txtFinalNumber" display-name="txtFinalNumber" uuid="e270b7fb-7b5d-4383-b289-b3c57e5c20d7" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="35" ver="5"/>
+				<designed target="Height" value="35" ver="5"/>
+				<designed target="Text" value="0" ver="5"/>
+				<designed target="Font" value="MS Shell Dlg 2,20,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="132" ver="5"/>
+			</object>
+		</object>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<object access-modifier="private" name="Initializer_1" display-name="Initializer_1" uuid="dede331c-e3f2-420d-941a-f6df02ba133b" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Initialized">
+				<body kind="om">
+					<![CDATA[for (i : int1 = 1; i<17; i+=1)
+{
+	rectQueueNumber[i-1].Y =i*rectQueueNumber.Height;
+	rectFinalNumber[i-1].Y =i*rectFinalNumber.Height;
+}]]>
+				</body>
+			</do-on>
+		</object>
+	</object>
 </type>
 

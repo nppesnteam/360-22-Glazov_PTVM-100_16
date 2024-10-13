@@ -297,6 +297,12 @@
 unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на " + me.Text + ".",2);]]>
 					</body>
 				</do-on>
+				<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="EditFinished">
+					<body kind="om">
+						<![CDATA[me.Text=Str.Replace(me.Text,",",".");
+refDataFlow.DIGITS = String.ToUint1(me.Text, refDataFlow.DIGITS);]]>
+					</body>
+				</do-on>
 			</object>
 		</object>
 		<object access-modifier="private" name="SelectionEnvoirment" display-name="SelectionEnvoirment" uuid="814b4b53-963e-4f35-9a5e-bab1ccb6510f" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
@@ -526,7 +532,7 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				<designed target="ReadOnly" value="true" ver="5"/>
 				<do-trace access-modifier="private" target="Text" ver="5">
 					<body>
-						<![CDATA[refDataFlow.OutConfig.fDt20]]>
+						<![CDATA[refDataFlow.OutConfig.fDt20.ValueAsString]]>
 					</body>
 				</do-trace>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
@@ -607,7 +613,7 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				<designed target="ReadOnly" value="true" ver="5"/>
 				<do-trace access-modifier="private" target="Text" ver="5">
 					<body>
-						<![CDATA[refDataFlow.DIGITS.ValueAsString]]>
+						<![CDATA[refDataFlow.OutConfig.fDd20.ValueAsString]]>
 					</body>
 				</do-trace>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
@@ -688,7 +694,7 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				<designed target="ReadOnly" value="true" ver="5"/>
 				<do-trace access-modifier="private" target="Text" ver="5">
 					<body>
-						<![CDATA[refDataFlow.DIGITS.ValueAsString]]>
+						<![CDATA[refDataFlow.OutConfig.iPov.ValueAsString]]>
 					</body>
 				</do-trace>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
@@ -769,7 +775,7 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				<designed target="ReadOnly" value="true" ver="5"/>
 				<do-trace access-modifier="private" target="Text" ver="5">
 					<body>
-						<![CDATA[refDataFlow.DIGITS.ValueAsString]]>
+						<![CDATA[refDataFlow.OutConfig.fKsher.ValueAsString]]>
 					</body>
 				</do-trace>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
@@ -850,7 +856,7 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				<designed target="ReadOnly" value="true" ver="5"/>
 				<do-trace access-modifier="private" target="Text" ver="5">
 					<body>
-						<![CDATA[refDataFlow.DIGITS.ValueAsString]]>
+						<![CDATA[refDataFlow.OutConfig.fRos.ValueAsString]]>
 					</body>
 				</do-trace>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
@@ -931,7 +937,7 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				<designed target="ReadOnly" value="true" ver="5"/>
 				<do-trace access-modifier="private" target="Text" ver="5">
 					<body>
-						<![CDATA[refDataFlow.DIGITS.ValueAsString]]>
+						<![CDATA[refDataFlow.OutConfig.fXcoPes.ValueAsString]]>
 					</body>
 				</do-trace>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
@@ -1012,7 +1018,7 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				<designed target="ReadOnly" value="true" ver="5"/>
 				<do-trace access-modifier="private" target="Text" ver="5">
 					<body>
-						<![CDATA[refDataFlow.DIGITS.ValueAsString]]>
+						<![CDATA[refDataFlow.OutConfig.fXnPes.ValueAsString]]>
 					</body>
 				</do-trace>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
@@ -1023,7 +1029,7 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="EditFinished">
 					<body kind="om">
 						<![CDATA[me.Text=Str.Replace(me.Text,",",".");
-refDataFlow.InConfig.fXcoPes = TypeConvert.ToFloat(Str.ToDouble(me.Text,refDataFlow.OutConfig.fXcoPes));]]>
+refDataFlow.InConfig.fXnPes = TypeConvert.ToFloat(Str.ToDouble(me.Text,refDataFlow.OutConfig.fXnPes));]]>
 					</body>
 				</do-on>
 				<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="EditFinished">
@@ -1093,7 +1099,7 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				<designed target="ReadOnly" value="true" ver="5"/>
 				<do-trace access-modifier="private" target="Text" ver="5">
 					<body>
-						<![CDATA[refDataFlow.DIGITS.ValueAsString]]>
+						<![CDATA[refDataFlow.OutConfig.fCaloric.ValueAsString]]>
 					</body>
 				</do-trace>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">

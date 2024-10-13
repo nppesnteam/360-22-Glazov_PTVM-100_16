@@ -71,7 +71,7 @@
 	<object access-modifier="private" name="isOpenedModule" display-name="isOpenedModule" uuid="a260a312-39e1-4c67-996c-f82e0f06cfb7" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
 	<object access-modifier="private" name="bOffManual" display-name="bOffManual" uuid="ec7dba7d-7dbf-49a1-b473-3dfc00afade8" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
 		<init target="Source" ver="5" ref="fanApSource"/>
-		<init target="Path" ver="5" value="bOnManual"/>
+		<init target="Path" ver="5" value="bOffManual"/>
 	</object>
 	<object access-modifier="private" name="bTurnedOff" display-name="bTurnedOff" uuid="99aae445-0e2f-4466-b3ee-2dc7092f9159" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
 		<init target="Source" ver="5" ref="fanApSource"/>
@@ -149,5 +149,43 @@ OpenModuleWindow.Invoke();]]>
 	<object access-modifier="private" name="mY" display-name="mY" uuid="9f1358f9-7b52-428d-8b46-d381aba84a8c" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
 	<object access-modifier="private" name="posX" display-name="posX" uuid="ef3d2962-ceaa-483f-84b4-49556ddbb5c2" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
 	<object access-modifier="private" name="posY" display-name="posY" uuid="8a206ad6-61a2-4da6-98ec-c9593fc64a01" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+	<object access-modifier="private" name="On" display-name="On" uuid="b0e6ade9-99b5-4066-bd7b-8d3e0b59e48d" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[!bBlockOn]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[bOffManual=false;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[bOnManual=true;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Off" display-name="Off" uuid="a97f1288-4fc4-4b0f-87b7-133fc02c4714" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[!bBlockOff]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[bOnManual=false;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[bOffManual=true;]]>
+			</body>
+		</do-on>
+	</object>
 </type>
 

@@ -1,0 +1,146 @@
+<type access-modifier="private" name="График_нов" display-name="График_нов" uuid="333e356c-2fd3-486e-9047-48b1b96d2e57" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="1360" ver="5"/>
+	<designed target="Height" value="600" ver="5"/>
+	<designed target="PenColor" value="4278190080" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="4293980400" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<designed target="WindowX" value="0" ver="5"/>
+	<designed target="WindowY" value="0" ver="5"/>
+	<designed target="WindowWidth" value="1360" ver="5"/>
+	<designed target="WindowHeight" value="600" ver="5"/>
+	<designed target="WindowCaption" value="График" ver="5"/>
+	<designed target="ShowWindowCaption" value="true" ver="5"/>
+	<designed target="ShowWindowMinimize" value="true" ver="5"/>
+	<designed target="ShowWindowMaximize" value="false" ver="5"/>
+	<designed target="ShowWindowClose" value="true" ver="5"/>
+	<designed target="AlwaysOnTop" value="false" ver="5"/>
+	<designed target="WindowSizeMode" value="0" ver="5"/>
+	<designed target="WindowBorderStyle" value="1" ver="5"/>
+	<designed target="WindowState" value="0" ver="5"/>
+	<designed target="WindowScalingMode" value="0" ver="5"/>
+	<designed target="MonitorNumber" value="0" ver="5"/>
+	<designed target="WindowPosition" value="0" ver="5"/>
+	<designed target="WindowCloseMode" value="0" ver="5"/>
+	<object access-modifier="private" name="OPCTag_1" display-name="OPCTag_1" uuid="a134b8ba-bc6c-4aa5-96e9-4c2ecbe4acfd" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<object access-modifier="private" name="OPCTag_2" display-name="OPCTag_2" uuid="ea20ff4c-6e5e-4dd6-80b7-7e7910b0094d" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[if (OPCTag_1 != "")
+{
+	Trends_1.ForcedAddItem(OPCTag_1,EU_1,Description_1);
+}
+if (OPCTag_2 != "")
+{
+	Trends_1.ForcedAddItem(OPCTag_2,EU_2,Description_2);
+}]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="EU_1" display-name="EU_1" uuid="c9fe5c23-9223-41b1-a59a-f8eb84a9eb20" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<object access-modifier="private" name="EU_2" display-name="EU_2" uuid="c37f3f6a-7b17-4305-a35f-6de67eabae6a" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="WindowSizeChanged">
+		<body kind="om">
+			<![CDATA[here.Width = here.WindowWidth;
+here.Height = here.WindowHeight;
+TrendsWidth = here.WindowWidth;
+TrendsHeight = here.WindowHeight;]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="Description_1" display-name="Description_1" uuid="d776cfbc-c124-48d4-b336-8fb3061ec6ad" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<object access-modifier="private" name="Description_2" display-name="Description_2" uuid="a243bf6d-c916-48b9-a570-0c670c6b3f48" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<object access-modifier="private" name="Trends_1" display-name="Trends_1" uuid="a92b98f9-aa8d-4a8d-85fe-17c81e02e7aa" base-type="Trends" base-type-id="81673f92-ac48-4244-bfe3-ddbdcc98167a" ver="5">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Width" value="1360" ver="5"/>
+		<designed target="Height" value="600" ver="5"/>
+		<designed target="ConfigurationFolder" value="" ver="5"/>
+		<designed target="ActiveMode" value="0" ver="5"/>
+		<designed target="Item" value="" ver="5"/>
+		<designed target="ShowDataPoints" value="false" ver="5"/>
+		<designed target="ShowMarkerPoints" value="false" ver="5"/>
+		<designed target="ShowMarkerLabels" value="false" ver="5"/>
+		<designed target="ShowSources" value="false" ver="5"/>
+		<designed target="ShowLegend" value="false" ver="5"/>
+		<designed target="GlobalRanges" value="false" ver="5"/>
+		<designed target="LowRange" value="0" ver="5"/>
+		<designed target="HighRange" value="0" ver="5"/>
+		<designed target="AutoRange" value="false" ver="5"/>
+		<designed target="AlwaysOnTop" value="false" ver="5"/>
+		<designed target="YAxisPrecision" value="0" ver="5"/>
+		<designed target="ShowToolbar" value="false" ver="5"/>
+		<designed target="WindowsFixed" value="false" ver="5"/>
+		<designed target="IsFullAccessAllowed" value="false" ver="5"/>
+		<designed target="FileSystemSafeMode" value="false" ver="5"/>
+		<designed target="GUIModificationAvailable" value="false" ver="5"/>
+		<designed target="SignalsModificationAvailable" value="false" ver="5"/>
+		<designed target="SurfaceModificationAvailable" value="false" ver="5"/>
+		<do-trace access-modifier="private" target="Width" ver="5">
+			<body>
+				<![CDATA[TrendsWidth]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Height" ver="5">
+			<body>
+				<![CDATA[TrendsHeight]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="IsFullAccessAllowed" ver="5">
+			<body>
+				<![CDATA[unit.Security.AllowSettingsChange.Value]]>
+			</body>
+		</do-trace>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="int_AP" ver="5" ref="Connections.MainSource"/>
+		<init target="YAxisPrecision" ver="5" value="1"/>
+		<init target="FileUserSignalTree" ver="5" value="C:\\Users\\Admin\\Documents\\Projects\\360-22-Glazov_PTVM-100_16\\Scada_Proj\\HMI_withoutTrends\\Tree.xml"/>
+		<init target="UseCustomTree" ver="5" value="true"/>
+		<init target="UseServerTime" ver="5" value="true"/>
+		<init target="ShowLegend" ver="5" value="true"/>
+		<init target="ActiveMode" ver="5" value="1"/>
+	</object>
+	<object access-modifier="private" name="refMainForm" display-name="refMainForm" uuid="16251f0c-a407-48ac-a068-81b05cfc20d0" base-type="MainForm" base-type-id="c9cad641-8960-46db-9523-43c92084d4a1" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="refDouble" display-name="refDouble" uuid="6c1a7d05-1428-4ca2-b54a-28f3e5a4df8e" base-type="2 датчика" base-type-id="a104b692-57e6-4ab3-bea4-4df08bf16447" base-const="true" base-ref="true" ver="5"/>
+	<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[if (FromWhere=="MainForm")
+{
+	refMainForm.RightPanel.MainFramesButtons.isOpenedTrends=true;
+	unit.Global.ActiveMainFrame = "Графики";
+}
+else
+{
+	refDouble.refData.private.isOpenedTrends=true;
+}]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="Closed">
+		<body kind="om">
+			<![CDATA[if (FromWhere=="MainForm")
+	refMainForm.RightPanel.MainFramesButtons.isOpenedTrends=false;
+if (FromWhere=="Double")
+	refDouble.refData.private.isOpenedTrends=false;]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="FromWhere" display-name="FromWhere" uuid="05d7542f-4075-49af-839d-5deccee20e38" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<object access-modifier="private" name="TrendsWidth" display-name="TrendsWidth" uuid="dbefcb06-64f3-4333-86e8-0dd40ac5497d" base-type="notifying_double" base-type-id="3f905fb7-7738-4619-b402-5a91f136d4bd" ver="5"/>
+	<object access-modifier="private" name="TrendsHeight" display-name="TrendsHeight" uuid="ff23b9e7-9e2e-47d1-af5a-062482455d46" base-type="notifying_double" base-type-id="3f905fb7-7738-4619-b402-5a91f136d4bd" ver="5"/>
+	<designed target="Flip" value="0" ver="5"/>
+	<designed target="WindowIconPath" value="" ver="5"/>
+	<object access-modifier="private" name="LinearLayout_1" display-name="LinearLayout_1" uuid="7ebe301e-fcda-435d-b0e9-ea296b83f7f3" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
+		<designed target="Orientation" value="1" ver="5"/>
+		<designed target="Gap" value="0" ver="5"/>
+	</object>
+</type>
+

@@ -16,11 +16,6 @@
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
 			<object access-modifier="private" uuid="0dbb1d62-181f-4109-a52b-dc3368798e6f" base-type="Регулятор" base-type-id="d5ad689c-b93f-45e5-a8a5-5d7dd4c15e5b" ver="5">
 				<designed target="WindowCaption" value="Заслонка" ver="5"/>
-				<init target="WindowCaption" ver="5">
-					<expr>
-						<![CDATA[KKS]]>
-					</expr>
-				</init>
 				<init target="refData" ver="5" ref="here"/>
 				<init target="WindowX" ver="5">
 					<expr>
@@ -30,6 +25,11 @@
 				<init target="WindowY" ver="5">
 					<expr>
 						<![CDATA[mY]]>
+					</expr>
+				</init>
+				<init target="WindowCaption" ver="5">
+					<expr>
+						<![CDATA[NameExtended]]>
 					</expr>
 				</init>
 			</object>
@@ -62,7 +62,8 @@ OpenModuleWindowReg.Invoke();]]>
 		</body>
 	</do-on>
 	<object access-modifier="private" name="outTASK" display-name="outTASK" uuid="2cd901af-326a-4d02-9881-5b5d7e75305a" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
-		<init target="Path" ver="5" value="OutfSetTask"/>
+		<init target="Path" ver="5" value="OutfTask"/>
+		<init target="Source" ver="5" ref="here.craneApSource"/>
 	</object>
 	<object access-modifier="private" name="inTASK" display-name="inTASK" uuid="b8e491f9-2adc-4c2d-b1fe-62cec49326d0" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnValueChanged">
@@ -74,49 +75,64 @@ OpenModuleWindowReg.Invoke();]]>
 }]]>
 			</body>
 		</do-on>
-		<init target="Path" ver="5" value="InfSetTask"/>
+		<init target="Path" ver="5" value="InfTask"/>
+		<init target="Source" ver="5" ref="here.craneApSource"/>
 	</object>
 	<object access-modifier="private" name="outTFillIn" display-name="outTFillIn" uuid="1537bf6d-83af-4a81-9ca5-b01f62857261" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
-		<init target="Path" ver="5" value="OutTFillIn"/>
+		<init target="Path" ver="5" value="fTfilIn"/>
+		<init target="Source" ver="5" ref="hereApSourceForOutParams"/>
 	</object>
 	<object access-modifier="private" name="inTFillIn" display-name="inTFillIn" uuid="1fd1ac38-80a1-4533-ba48-66b3babc03c8" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
-		<init target="Path" ver="5" value="InTFillIn"/>
+		<init target="Path" ver="5" value="fTfilIn"/>
+		<init target="Source" ver="5" ref="hereApSourceForInParams"/>
 	</object>
 	<object access-modifier="private" name="outFDead" display-name="outFDead" uuid="837f0f32-62cb-4e30-bcd0-a699e27c5a99" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
-		<init target="Path" ver="5" value="OutfDead"/>
+		<init target="Path" ver="5" value="fDead"/>
+		<init target="Source" ver="5" ref="hereApSourceForOutParams"/>
 	</object>
 	<object access-modifier="private" name="inFDead" display-name="inFDead" uuid="1c8e5c92-d167-490f-b70e-d0737287d688" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
-		<init target="Path" ver="5" value="InFDead"/>
+		<init target="Path" ver="5" value="fDead"/>
+		<init target="Source" ver="5" ref="hereApSourceForInParams"/>
 	</object>
 	<object access-modifier="private" name="outfKp" display-name="outfKp" uuid="b332628c-8647-4212-8c03-192646dda9ed" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
-		<init target="Path" ver="5" value="outfKp"/>
+		<init target="Path" ver="5" value="fKp"/>
+		<init target="Source" ver="5" ref="hereApSourceForOutParams"/>
 	</object>
 	<object access-modifier="private" name="infKp" display-name="infKp" uuid="76075e32-f090-481a-85e7-fea7c5c1ffaa" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
-		<init target="Path" ver="5" value="infKp"/>
+		<init target="Path" ver="5" value="fKp"/>
+		<init target="Source" ver="5" ref="hereApSourceForInParams"/>
 	</object>
 	<object access-modifier="private" name="outfTi" display-name="outfTi" uuid="a73f77a3-b764-4d6c-8f88-4caa5898a889" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
-		<init target="Path" ver="5" value="outfTi"/>
+		<init target="Path" ver="5" value="fTi"/>
+		<init target="Source" ver="5" ref="hereApSourceForOutParams"/>
 	</object>
 	<object access-modifier="private" name="infTi" display-name="infTi" uuid="95912b8f-43bc-45cc-9ba4-74cf7cbb3466" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
-		<init target="Path" ver="5" value="infTi"/>
+		<init target="Path" ver="5" value="fTi"/>
+		<init target="Source" ver="5" ref="hereApSourceForInParams"/>
 	</object>
 	<object access-modifier="private" name="outfTd" display-name="outfTd" uuid="72abd5ca-3d7c-40d6-b775-22d0fb563a44" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
-		<init target="Path" ver="5" value="outfTd"/>
+		<init target="Path" ver="5" value="fTd"/>
+		<init target="Source" ver="5" ref="hereApSourceForOutParams"/>
 	</object>
 	<object access-modifier="private" name="infTd" display-name="infTd" uuid="7b0f1da9-61c3-4cf6-9812-42ee049266d8" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
-		<init target="Path" ver="5" value="infTd"/>
+		<init target="Path" ver="5" value="fTd"/>
+		<init target="Source" ver="5" ref="hereApSourceForInParams"/>
 	</object>
 	<object access-modifier="private" name="outfTm" display-name="outfTm" uuid="820009a4-af54-42de-9f75-e4088ad9f694" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
-		<init target="Path" ver="5" value="outfTm"/>
+		<init target="Path" ver="5" value="fTm"/>
+		<init target="Source" ver="5" ref="hereApSourceForOutParams"/>
 	</object>
 	<object access-modifier="private" name="infTm" display-name="infTm" uuid="76ea78f3-f697-4160-9413-55b49f23e9b2" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
-		<init target="Path" ver="5" value="infTm"/>
+		<init target="Path" ver="5" value="fTm"/>
+		<init target="Source" ver="5" ref="hereApSourceForInParams"/>
 	</object>
 	<object access-modifier="private" name="outfTmin" display-name="outfTmin" uuid="0e7d3156-a5eb-4178-b772-fda1ab09af58" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
-		<init target="Path" ver="5" value="outfTmin"/>
+		<init target="Path" ver="5" value="fTmin"/>
+		<init target="Source" ver="5" ref="hereApSourceForOutParams"/>
 	</object>
 	<object access-modifier="private" name="infTmin" display-name="infTmin" uuid="b1d1345e-bac1-48fe-a971-96a9f197b1d1" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
-		<init target="Path" ver="5" value="infTmin"/>
+		<init target="Path" ver="5" value="fTmin"/>
+		<init target="Source" ver="5" ref="hereApSourceForInParams"/>
 	</object>
 	<object access-modifier="private" name="InOutH" display-name="InOutH" uuid="f142264d-b229-4338-aca4-506fc3b1c998" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
 		<init target="Path" ver="5" value="InOpen"/>
@@ -140,6 +156,7 @@ OpenModuleWindowReg.Invoke();]]>
 						<![CDATA[mY]]>
 					</expr>
 				</init>
+				<init target="WindowCaption" ver="5" ref="NameExtended"/>
 			</object>
 		</do-on>
 		<do-trace access-modifier="private" target="Enabled" ver="5">
@@ -250,6 +267,28 @@ if (counter == 60)
 				<![CDATA[OpenModuleWindow.Enabled=false;]]>
 			</body>
 		</do-on>
+	</object>
+	<object access-modifier="private" name="hereApSourceForInParams" display-name="hereApSourceForInParams" uuid="2f91631a-b28b-42ca-a2d8-6bace7b5be68" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
+		<designed target="Active" value="false" ver="5"/>
+		<designed target="ReAdvise" value="0" ver="5"/>
+		<designed target="Location" value="" ver="5"/>
+		<designed target="Port" value="4388" ver="5"/>
+		<designed target="HistoryPort" value="4950" ver="5"/>
+		<designed target="Path" value="InParamsPIDImp" ver="5"/>
+		<designed target="ClientDisplayName" value="HMI" ver="5"/>
+		<designed target="ClientId" value="HMI" ver="5"/>
+		<init target="ParentSource" ver="5" ref="here.craneApSource"/>
+	</object>
+	<object access-modifier="private" name="hereApSourceForOutParams" display-name="hereApSourceForOutParams" uuid="f9270336-4908-4ffd-bde9-2397a45b79be" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
+		<designed target="Active" value="false" ver="5"/>
+		<designed target="ReAdvise" value="0" ver="5"/>
+		<designed target="Location" value="" ver="5"/>
+		<designed target="Port" value="4388" ver="5"/>
+		<designed target="HistoryPort" value="4950" ver="5"/>
+		<designed target="Path" value="OutParamsPIDImp" ver="5"/>
+		<designed target="ClientDisplayName" value="HMI" ver="5"/>
+		<designed target="ClientId" value="HMI" ver="5"/>
+		<init target="ParentSource" ver="5" ref="here.craneApSource"/>
 	</object>
 </type>
 

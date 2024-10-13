@@ -121,7 +121,7 @@
 							<![CDATA[private.bOutBonds]]>
 						</condition>
 						<expr>
-							<![CDATA[0xff0055ff]]>
+							<![CDATA[0xffffffff]]>
 						</expr>
 					</conditional-expr>
 					<default-expr>
@@ -181,7 +181,7 @@
 						<![CDATA[private.bOutBonds]]>
 					</condition>
 					<expr>
-						<![CDATA[0xffffffff]]>
+						<![CDATA[0xffff0000]]>
 					</expr>
 				</conditional-expr>
 				<default-expr>
@@ -191,9 +191,19 @@
 				</default-expr>
 			</do-trace>
 			<do-trace access-modifier="private" target="Text" ver="5">
-				<body>
-					<![CDATA[private.Val]]>
-				</body>
+				<conditional-expr>
+					<condition>
+						<![CDATA[private.bOutBonds]]>
+					</condition>
+					<expr>
+						<![CDATA["NaN"]]>
+					</expr>
+				</conditional-expr>
+				<default-expr>
+					<expr>
+						<![CDATA[private.Val]]>
+					</expr>
+				</default-expr>
 			</do-trace>
 		</object>
 		<designed target="Flip" value="0" ver="5"/>
@@ -250,6 +260,11 @@
 	<object access-modifier="private" name="fElectroValue" display-name="fElectroValue" uuid="5f50d215-a996-4eb4-b8e2-24179d9c62a3" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 		<init target="Source" ver="5" ref="sensApSource"/>
 		<init target="Path" ver="5" value="fElectroValue"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.ValElectro = String.ToString( "%.2f", me.Value);]]>
+			</body>
+		</do-on>
 	</object>
 	<object access-modifier="private" name="BurnNumber" display-name="BurnNumber" uuid="e2fc0d40-b644-4e17-b20f-6a0278b0991e" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description=""/>
 	<object access-modifier="private" name="Color" display-name="Color" uuid="800ddaf5-1065-47dc-8a78-20d60f4e76dc" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5" description=""/>
@@ -404,7 +419,7 @@
 		<object access-modifier="private" name="bOutBonds" display-name="bOutBonds" uuid="6b0a45a5-eb33-463d-b64b-5eccbef1ac61" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
 		<do-trace access-modifier="private" target="bOutBonds" ver="5">
 			<body>
-				<![CDATA[(fNormValue < OutConfig.fNormL) || (fNormValue > OutConfig.fNormH)]]>
+				<![CDATA[(fElectroValue <= 3) || (fElectroValue >= 21)]]>
 			</body>
 		</do-trace>
 		<object access-modifier="private" name="fProtH" display-name="fProtH" uuid="73fb504a-1501-432f-971e-dc870bafd9fa" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
@@ -489,11 +504,6 @@
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
 				<object access-modifier="private" uuid="72c075cb-7d6e-4a64-a764-b15bb910139f" base-type="Датчик (настройка)" base-type-id="517e7a40-0ece-428a-88c3-0c52a68a25ec" ver="5">
 					<designed target="WindowCaption" value="Датчик (настройка)" ver="5"/>
-					<init target="WindowCaption" ver="5">
-						<expr>
-							<![CDATA[here.NAME]]>
-						</expr>
-					</init>
 					<init target="refData" ver="5" ref="here"/>
 					<init target="WindowX" ver="5">
 						<expr>
@@ -505,10 +515,16 @@
 							<![CDATA[here.private.posY]]>
 						</expr>
 					</init>
+					<init target="WindowCaption" ver="5">
+						<expr>
+							<![CDATA[here.private.NameExtended]]>
+						</expr>
+					</init>
 				</object>
 			</do-on>
 		</object>
 		<object access-modifier="private" name="refSettings" display-name="refSettings" uuid="41e60707-8b16-4195-8358-f4772be1fa10" base-type="Датчик аналоговый (настройка)" base-type-id="517e7a40-0ece-428a-88c3-0c52a68a25ec" base-const="true" base-ref="true" ver="5" description=""/>
+		<object access-modifier="private" name="ValElectro" display-name="ValElectro" uuid="17d5c777-c98b-485e-9c0b-fa2ff373c5db" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
 	</object>
 	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
 		<body kind="om">

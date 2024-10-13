@@ -78,13 +78,13 @@
 		</do-trace>
 		<do-trace access-modifier="private" target="MaxLimit" ver="5">
 			<body>
-				<![CDATA[refData.OutConfig_1.fNormH + (Math.Abs(refData.OutConfig_1.fNormH - refData.OutConfig_1.fNormL) * 0.2)]]>
+				<![CDATA[refData.OutConfig_1.fNormH]]>
 			</body>
 		</do-trace>
 		<designed target="Flip" value="0" ver="5"/>
 		<do-trace access-modifier="private" target="MinLimit" ver="5">
 			<body>
-				<![CDATA[refData.OutConfig_1.fNormL - (Math.Abs(refData.OutConfig_1.fNormH - refData.OutConfig_1.fNormL) * 0.2)]]>
+				<![CDATA[refData.OutConfig_1.fNormL]]>
 			</body>
 		</do-trace>
 	</object>
@@ -199,7 +199,7 @@ refData.private.isOpened = true;]]>
 			<designed target="TextAlignment" value="129" ver="5"/>
 			<do-trace access-modifier="private" target="Text" ver="5">
 				<body>
-					<![CDATA[refData.NAME + ", " + refData.EU]]>
+					<![CDATA[refData.KKS]]>
 				</body>
 			</do-trace>
 			<designed target="Flip" value="0" ver="5"/>
@@ -453,6 +453,11 @@ unit.Global.ShowMSG("Допустимая разница датчиков \""+re
 				<![CDATA[refData.Color]]>
 			</body>
 		</do-trace>
+		<do-trace access-modifier="private" target="bOutBounds" ver="5">
+			<body>
+				<![CDATA[refData.private.bOutBonds_1]]>
+			</body>
+		</do-trace>
 	</object>
 	<object access-modifier="private" name="SensSimple_2" display-name="SensSimple_2" uuid="a86623c6-a191-4f42-b4cb-cdafb83ad860" base-type="SensSimple" base-type-id="7d6aa5f1-44ff-4cfe-a668-21207cda0486" ver="5" description="" cardinal="1">
 		<designed target="X" value="42" ver="5"/>
@@ -472,6 +477,11 @@ unit.Global.ShowMSG("Допустимая разница датчиков \""+re
 		<do-trace access-modifier="private" target="Color" ver="5">
 			<body>
 				<![CDATA[refData.Color]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="bOutBounds" ver="5">
+			<body>
+				<![CDATA[refData.private.bOutBonds_2]]>
 			</body>
 		</do-trace>
 	</object>

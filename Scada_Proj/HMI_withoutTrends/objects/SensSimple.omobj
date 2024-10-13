@@ -8,7 +8,7 @@
 	<designed target="Opacity" value="1" ver="5"/>
 	<designed target="Enabled" value="true" ver="5"/>
 	<designed target="Tooltip" value="" ver="5"/>
-	<object access-modifier="private" name="VALUE" display-name="VALUE" uuid="4657a46c-bb70-4269-9fb9-4bf837b187e7" base-type="notifying_float" base-type-id="bb7d05ee-cbf0-4c44-8740-1905239c8ead" ver="5"/>
+	<object access-modifier="private" name="VALUE" display-name="VALUE" uuid="4657a46c-bb70-4269-9fb9-4bf837b187e7" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
 	<object access-modifier="private" name="ALIAS" display-name="ALIAS" uuid="455e3ecb-7d1b-4578-bdc6-84d3ee72ec6e" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
 	<designed target="Flip" value="0" ver="5"/>
 	<object access-modifier="private" name="rectEUWrapper" display-name="rectEUWrapper" uuid="1de9eefe-9f4c-4227-9309-a783baffb44e" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
@@ -95,9 +95,19 @@
 			<designed target="TextAlignment" value="132" ver="5"/>
 			<designed target="Flip" value="0" ver="5"/>
 			<do-trace access-modifier="private" target="Text" ver="5">
-				<body>
-					<![CDATA[VALUE]]>
-				</body>
+				<conditional-expr>
+					<condition>
+						<![CDATA[bOutBounds]]>
+					</condition>
+					<expr>
+						<![CDATA["NaN"]]>
+					</expr>
+				</conditional-expr>
+				<default-expr>
+					<expr>
+						<![CDATA[VALUE]]>
+					</expr>
+				</default-expr>
 			</do-trace>
 		</object>
 		<designed target="Flip" value="0" ver="5"/>
@@ -106,5 +116,6 @@
 	<init target="Color" ver="5" value="0xffb5adad"/>
 	<init target="ALIAS" ver="5" value="P"/>
 	<init target="VALUE" ver="5" value="0.0"/>
+	<object access-modifier="private" name="bOutBounds" display-name="bOutBounds" uuid="5400b850-79ec-4873-90b3-dec10a0628bc" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
 </type>
 

@@ -78,13 +78,13 @@
 		</do-trace>
 		<do-trace access-modifier="private" target="MaxLimit" ver="5">
 			<body>
-				<![CDATA[refData.OutConfig.fNormH + (Math.Abs(refData.OutConfig.fNormH - refData.OutConfig.fNormL) * 0.2)]]>
+				<![CDATA[refData.OutConfig.fNormH]]>
 			</body>
 		</do-trace>
 		<designed target="Flip" value="0" ver="5"/>
 		<do-trace access-modifier="private" target="MinLimit" ver="5">
 			<body>
-				<![CDATA[refData.OutConfig.fNormL - (Math.Abs(refData.OutConfig.fNormH - refData.OutConfig.fNormL) * 0.2)]]>
+				<![CDATA[refData.OutConfig.fNormL]]>
 			</body>
 		</do-trace>
 	</object>
@@ -129,7 +129,7 @@ while (i<51)
 	if (i%10==0)
 	{
 		mark[i].Point_2.X -= 6;
-		txtMark[i/10].Text = Str.ToString(TypeConvert.Toint4(scale.MaxLimit - ((scale.MaxLimit/50)*i)));
+		txtMark[i/10].Text = Str.ToString(TypeConvert.ToInt4(scale.MaxLimit - ((scale.MaxLimit/50)*i)));
 		txtMark[i/10].X = mark[i].X - txtMark.Width - 12;
 		txtMark[i/10].Y = mark[i].Y - txtMark.Height/2;
 	}
@@ -198,7 +198,7 @@ refData.private.isOpened = true;]]>
 			<designed target="TextAlignment" value="129" ver="5"/>
 			<do-trace access-modifier="private" target="Text" ver="5">
 				<body>
-					<![CDATA[refData.NAME + ", " + refData.EU]]>
+					<![CDATA[refData.KKS]]>
 				</body>
 			</do-trace>
 			<designed target="Flip" value="0" ver="5"/>

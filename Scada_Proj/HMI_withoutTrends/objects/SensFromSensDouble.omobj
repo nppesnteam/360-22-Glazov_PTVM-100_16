@@ -1,0 +1,851 @@
+<type access-modifier="private" name="SensFromSensDouble" display-name="SensFromSensDouble" uuid="6ab9fadb-a7ab-4dd8-b771-29b146fbb3b6" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1.2" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<param access-modifier="private" name="initApSource" display-name="initApSource" uuid="6a29b75d-8dca-48e4-b7bb-6e49fa5c52c5" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="NAME" display-name="NAME" uuid="abcb2cdf-424d-4e99-b9e0-f58dbb1e9374" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5">
+		<init target="Path" ver="5" value="NAME"/>
+		<init target="Source" ver="5" ref="sensApSource"/>
+	</object>
+	<object access-modifier="private" name="EU" display-name="EU" uuid="7ea16b6e-c4dc-4508-a741-0f4e58e411e9" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5">
+		<init target="Path" ver="5" value="EU"/>
+		<init target="Source" ver="5" ref="sensApSource"/>
+	</object>
+	<object access-modifier="private" name="ALIAS" display-name="ALIAS" uuid="bf78f654-7687-4b3e-b5a9-5c4fcb2602af" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5">
+		<init target="Path" ver="5" value="ALIAS"/>
+		<init target="Source" ver="5" ref="sensApSource"/>
+	</object>
+	<object access-modifier="private" name="fNormValue1" display-name="fNormValue1" uuid="831f7403-9147-4d03-97ba-a3a8d3eefcda" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+		<init target="Path" ver="5" value="fNormValue1"/>
+		<init target="Source" ver="5" ref="sensApSource"/>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.Val_1 = String.ToString( "%." + DIGITS.ValueAsString + "f", me.Value);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="fNormValue2" display-name="fNormValue2" uuid="b2270d8c-a5c2-47b1-8e72-b514805a887d" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+		<init target="Path" ver="5" value="fNormValue2"/>
+		<init target="Source" ver="5" ref="sensApSource"/>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.Val_2 = String.ToString( "%." + DIGITS.ValueAsString + "f", me.Value);]]>
+			</body>
+		</do-on>
+	</object>
+	<param access-modifier="private" name="initPath" display-name="initPath" uuid="7b7058cc-baaf-43a9-988b-43828b651896" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	<object access-modifier="private" name="iniSel" display-name="iniSel" uuid="4f0be40b-ffe7-4a81-acc4-606659f9ec04" base-type="ApItemInt2" base-type-id="46c29e2c-cf0c-4e96-ad30-6d7ae4e2ae8c" ver="5">
+		<init target="Source" ver="5" ref="sensApSource"/>
+		<init target="Path" ver="5" value="IniSelSens"/>
+	</object>
+	<object access-modifier="private" name="outiSel" display-name="outiSel" uuid="a7440b7b-ae29-4b7b-8d12-55ceb8fcd668" base-type="ApItemInt2" base-type-id="46c29e2c-cf0c-4e96-ad30-6d7ae4e2ae8c" ver="5">
+		<init target="Source" ver="5" ref="sensApSource"/>
+		<init target="Path" ver="5" value="OutiSelSens"/>
+	</object>
+	<object access-modifier="private" name="sensApSource" display-name="sensApSource" uuid="d77d16d0-91da-4fb3-be77-dee25cbad6cb" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
+		<designed target="Active" value="false" ver="5"/>
+		<designed target="ReAdvise" value="0" ver="5"/>
+		<init target="ParentSource" ver="5" ref="initApSource"/>
+		<init target="Path" ver="5" ref="initPath"/>
+		<designed target="Location" value="" ver="5"/>
+		<designed target="Port" value="4388" ver="5"/>
+		<designed target="HistoryPort" value="4950" ver="5"/>
+		<designed target="Path" value="" ver="5"/>
+		<designed target="ClientDisplayName" value="HMI" ver="5"/>
+		<designed target="ClientId" value="HMI" ver="5"/>
+	</object>
+	<do-trace access-modifier="private" target="Tooltip" ver="5">
+		<body>
+			<![CDATA[NAME + ", " + EU]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="DIGITS" display-name="DIGITS" uuid="de073615-102f-4e54-9e28-8c83dc9f370c" base-type="ApItemUInt1" base-type-id="ed85e2d2-e5ed-42df-91a6-9455307a85c9" ver="5">
+		<init target="Source" ver="5" ref="sensApSource"/>
+		<init target="Path" ver="5" value="DIGITS"/>
+	</object>
+	<object access-modifier="private" name="fOutValue" display-name="fOutValue" uuid="c11e7ab4-e043-48cb-8dcb-797baea2a69a" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+		<init target="Source" ver="5" ref="sensApSource"/>
+		<init target="Path" ver="5" value="fOutValue"/>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.Val = String.ToString( "%." + DIGITS.ValueAsString + "f", me.Value);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="InfAllowedDifference" display-name="InfAllowedDifference" uuid="8c4a9e26-a8ac-4e1e-b615-5c7faebf18d2" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+		<init target="Source" ver="5" ref="sensApSource"/>
+		<init target="Path" ver="5" value="InfAllowedDifference"/>
+	</object>
+	<object access-modifier="private" name="OutfAllowedDifference" display-name="OutfAllowedDifference" uuid="9a518a7d-a510-4e0e-949e-66196634cc29" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+		<init target="Source" ver="5" ref="sensApSource"/>
+		<init target="Path" ver="5" value="OutfAllowedDifference"/>
+	</object>
+	<designed target="Flip" value="0" ver="5"/>
+	<object access-modifier="private" name="InfTimeDifference" display-name="InfTimeDifference" uuid="5ce7716c-4de3-4330-ac58-b460a95cf40a" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+		<init target="Source" ver="5" ref="sensApSource"/>
+		<init target="Path" ver="5" value="InfTimeDifference"/>
+	</object>
+	<object access-modifier="private" name="OutfTimeDifference" display-name="OutfTimeDifference" uuid="e76a7cf3-0431-47eb-b051-e0a7d6451028" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+		<init target="Source" ver="5" ref="sensApSource"/>
+		<init target="Path" ver="5" value="OutfTimeDifference"/>
+	</object>
+	<object access-modifier="private" name="BurnNumber" display-name="BurnNumber" uuid="b5175a50-91ab-4d99-875e-c7cb22f274b8" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description=""/>
+	<object access-modifier="private" name="Color" display-name="Color" uuid="8d5e1a06-9afa-439c-9f12-e8000aee19d1" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5" description=""/>
+	<object access-modifier="private" name="InConfig_1" display-name="InConfig_1" uuid="d8e9e69b-82ed-453e-ba6f-1cac15c95374" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
+		<designed target="Active" value="false" ver="5"/>
+		<designed target="ReAdvise" value="0" ver="5"/>
+		<designed target="Location" value="" ver="5"/>
+		<designed target="Port" value="4388" ver="5"/>
+		<designed target="HistoryPort" value="4950" ver="5"/>
+		<designed target="Path" value="InSETTINGS1" ver="5"/>
+		<designed target="ClientDisplayName" value="HMI" ver="5"/>
+		<designed target="ClientId" value="HMI" ver="5"/>
+		<object access-modifier="private" name="fConversion" display-name="fConversion" uuid="95fb61a2-9768-4c4d-b2ab-ad9286172a5e" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fConversion"/>
+			<init target="Source" ver="5" ref="InConfig_1"/>
+		</object>
+		<object access-modifier="private" name="fElectricalH" display-name="fElectricalH" uuid="11179d97-e788-4748-ae0f-5d219180f150" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fElectricalH"/>
+			<init target="Source" ver="5" ref="InConfig_1"/>
+		</object>
+		<object access-modifier="private" name="fElectricalL" display-name="fElectricalL" uuid="ebfe50b5-2b3f-4bb3-a92a-263075011c5a" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fElectricalL"/>
+			<init target="Source" ver="5" ref="InConfig_1"/>
+		</object>
+		<object access-modifier="private" name="fError" display-name="fError" uuid="c8b3e3a3-631c-4427-b746-e96169282c06" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fError"/>
+			<init target="Source" ver="5" ref="InConfig_1"/>
+		</object>
+		<object access-modifier="private" name="fNormH" display-name="fNormH" uuid="a179e3ac-d0d3-4251-afd0-baae1d554bf1" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fNormH"/>
+			<init target="Source" ver="5" ref="InConfig_1"/>
+		</object>
+		<object access-modifier="private" name="fNormL" display-name="fNormL" uuid="8a15e04a-f716-45cf-926b-098e8dd0ae9a" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fNormL"/>
+			<init target="Source" ver="5" ref="InConfig_1"/>
+		</object>
+		<object access-modifier="private" name="fTFilter" display-name="fTFilter" uuid="fb47d730-e23c-4a53-aa0a-b0bab34e1ec9" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fTFilter"/>
+			<init target="Source" ver="5" ref="InConfig_1"/>
+		</object>
+		<init target="ParentSource" ver="5" ref="sensApSource"/>
+	</object>
+	<object access-modifier="private" name="OutConfig_1" display-name="OutConfig_1" uuid="f660775e-60c5-4b38-bab4-4f290caa3764" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
+		<designed target="Active" value="false" ver="5"/>
+		<designed target="ReAdvise" value="0" ver="5"/>
+		<designed target="Location" value="" ver="5"/>
+		<designed target="Port" value="4388" ver="5"/>
+		<designed target="HistoryPort" value="4950" ver="5"/>
+		<designed target="Path" value="OutSETTINGS1" ver="5"/>
+		<designed target="ClientDisplayName" value="HMI" ver="5"/>
+		<designed target="ClientId" value="HMI" ver="5"/>
+		<object access-modifier="private" name="fConversion" display-name="fConversion" uuid="3b59eace-6656-4600-8ff3-d58d2f900484" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fConversion"/>
+			<init target="Source" ver="5" ref="OutConfig_1"/>
+		</object>
+		<object access-modifier="private" name="fElectricalH" display-name="fElectricalH" uuid="49d565c3-e561-4881-97b9-b7278d1b2a40" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fElectricalH"/>
+			<init target="Source" ver="5" ref="OutConfig_1"/>
+		</object>
+		<object access-modifier="private" name="fElectricalL" display-name="fElectricalL" uuid="8834fcad-49d4-4143-ab33-73b7732d5247" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fElectricalL"/>
+			<init target="Source" ver="5" ref="OutConfig_1"/>
+		</object>
+		<object access-modifier="private" name="fError" display-name="fError" uuid="d824c54f-7951-40f5-95a4-f75950c8e9cc" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fError"/>
+			<init target="Source" ver="5" ref="OutConfig_1"/>
+		</object>
+		<object access-modifier="private" name="fNormH" display-name="fNormH" uuid="b8ab83a5-469f-4bda-8931-7cf379e62a1a" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fNormH"/>
+			<init target="Source" ver="5" ref="OutConfig_1"/>
+		</object>
+		<object access-modifier="private" name="fNormL" display-name="fNormL" uuid="09a1a560-bf2e-4145-a35a-f5cfa73e4dee" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fNormL"/>
+			<init target="Source" ver="5" ref="OutConfig_1"/>
+		</object>
+		<object access-modifier="private" name="fTFilter" display-name="fTFilter" uuid="a6d9689f-b28b-4533-9557-7a52afe7b776" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fTFilter"/>
+			<init target="Source" ver="5" ref="OutConfig_1"/>
+		</object>
+		<init target="ParentSource" ver="5" ref="sensApSource"/>
+	</object>
+	<object access-modifier="private" name="Status_1" display-name="Status_1" uuid="409efbe5-22b8-4584-9487-8c998798ca73" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
+		<designed target="Active" value="false" ver="5"/>
+		<designed target="ReAdvise" value="0" ver="5"/>
+		<designed target="Location" value="" ver="5"/>
+		<designed target="Port" value="4388" ver="5"/>
+		<designed target="HistoryPort" value="4950" ver="5"/>
+		<designed target="Path" value="STATUS_BITS1" ver="5"/>
+		<designed target="ClientDisplayName" value="HMI" ver="5"/>
+		<designed target="ClientId" value="HMI" ver="5"/>
+		<object access-modifier="private" name="xDiscarded" display-name="xDiscarded" uuid="35741bdc-5c69-478f-9b2f-7c8c93145554" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Path" ver="5" value="xDiscarded"/>
+			<init target="Source" ver="5" ref="Status_1"/>
+		</object>
+		<object access-modifier="private" name="xNormLimH" display-name="xNormLimH" uuid="26bcefd3-731f-4431-8c58-fac80daea561" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Path" ver="5" value="xNormLimH"/>
+			<init target="Source" ver="5" ref="Status_1"/>
+		</object>
+		<object access-modifier="private" name="xNormLimL" display-name="xNormLimL" uuid="469f3fac-664d-4ce9-b0ed-8e606e9b799c" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Path" ver="5" value="xNormLimL"/>
+			<init target="Source" ver="5" ref="Status_1"/>
+		</object>
+		<object access-modifier="private" name="xElectrLimH" display-name="xElectrLimH" uuid="672cafa6-b757-43dc-9b4a-d70ee943deb2" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Path" ver="5" value="xElectrLimH"/>
+			<init target="Source" ver="5" ref="Status_1"/>
+		</object>
+		<object access-modifier="private" name="xElectrLimL" display-name="xElectrLimL" uuid="0cdcdcb8-661b-4394-919c-507830c2ee35" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Path" ver="5" value="xElectrLimL"/>
+			<init target="Source" ver="5" ref="Status_1"/>
+		</object>
+		<object access-modifier="private" name="xADCLimH" display-name="xADCLimH" uuid="958c2437-5673-4d7b-9549-f3809fe66b5c" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Path" ver="5" value="xADCLimH"/>
+			<init target="Source" ver="5" ref="Status_1"/>
+		</object>
+		<init target="ParentSource" ver="5" ref="sensApSource"/>
+		<object access-modifier="private" name="xADCLimL" display-name="xADCLimL" uuid="cc1ee92a-7ff2-424c-b588-0d8bea38ecf8" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Path" ver="5" value="xADCLimL"/>
+			<init target="Source" ver="5" ref="Status_1"/>
+		</object>
+		<object access-modifier="private" name="xFailure" display-name="xFailure" uuid="6d6a8119-4340-4bd4-9ef9-520bd3a445c5" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Path" ver="5" value="xFailure"/>
+			<init target="Source" ver="5" ref="Status_1"/>
+		</object>
+	</object>
+	<object access-modifier="private" name="InConfig_2" display-name="InConfig_2" uuid="cfb9bd9b-b829-4a8e-95c8-f31032beb9bc" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
+		<designed target="Active" value="false" ver="5"/>
+		<designed target="ReAdvise" value="0" ver="5"/>
+		<designed target="Location" value="" ver="5"/>
+		<designed target="Port" value="4388" ver="5"/>
+		<designed target="HistoryPort" value="4950" ver="5"/>
+		<designed target="Path" value="InSETTINGS2" ver="5"/>
+		<designed target="ClientDisplayName" value="HMI" ver="5"/>
+		<designed target="ClientId" value="HMI" ver="5"/>
+		<object access-modifier="private" name="fConversion" display-name="fConversion" uuid="645943ee-9032-4488-b0e6-2f7b38e29244" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fConversion"/>
+			<init target="Source" ver="5" ref="InConfig_1"/>
+		</object>
+		<object access-modifier="private" name="fElectricalH" display-name="fElectricalH" uuid="4d6640b3-5350-41ce-990c-b41398706bc2" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fElectricalH"/>
+			<init target="Source" ver="5" ref="InConfig_1"/>
+		</object>
+		<object access-modifier="private" name="fElectricalL" display-name="fElectricalL" uuid="ec39e1ed-e4b1-41c1-af1f-210bd3302877" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fElectricalL"/>
+			<init target="Source" ver="5" ref="InConfig_1"/>
+		</object>
+		<object access-modifier="private" name="fError" display-name="fError" uuid="70346838-0a6d-44ee-b49f-2b74f8507381" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fError"/>
+			<init target="Source" ver="5" ref="InConfig_1"/>
+		</object>
+		<object access-modifier="private" name="fNormH" display-name="fNormH" uuid="e384ed45-2b2f-49c9-b948-203cafea94a5" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fNormH"/>
+			<init target="Source" ver="5" ref="InConfig_1"/>
+		</object>
+		<object access-modifier="private" name="fNormL" display-name="fNormL" uuid="2278e482-8a9f-4b68-af54-168c693c040d" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fNormL"/>
+			<init target="Source" ver="5" ref="InConfig_1"/>
+		</object>
+		<object access-modifier="private" name="fTFilter" display-name="fTFilter" uuid="3fa6394f-1111-4060-b5c4-78b7151fe007" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fTFilter"/>
+			<init target="Source" ver="5" ref="InConfig_1"/>
+		</object>
+		<init target="ParentSource" ver="5" ref="sensApSource"/>
+	</object>
+	<object access-modifier="private" name="OutConfig_2" display-name="OutConfig_2" uuid="3c43f02d-7ca0-4bba-967a-01775c40eba3" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
+		<designed target="Active" value="false" ver="5"/>
+		<designed target="ReAdvise" value="0" ver="5"/>
+		<designed target="Location" value="" ver="5"/>
+		<designed target="Port" value="4388" ver="5"/>
+		<designed target="HistoryPort" value="4950" ver="5"/>
+		<designed target="Path" value="OutSETTINGS2" ver="5"/>
+		<designed target="ClientDisplayName" value="HMI" ver="5"/>
+		<designed target="ClientId" value="HMI" ver="5"/>
+		<object access-modifier="private" name="fConversion" display-name="fConversion" uuid="17d5d7d7-b987-4e94-af89-bac6fb0e3c12" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fConversion"/>
+			<init target="Source" ver="5" ref="OutConfig_1"/>
+		</object>
+		<object access-modifier="private" name="fElectricalH" display-name="fElectricalH" uuid="44934795-0785-4774-a249-237133740e3a" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fElectricalH"/>
+			<init target="Source" ver="5" ref="OutConfig_1"/>
+		</object>
+		<object access-modifier="private" name="fElectricalL" display-name="fElectricalL" uuid="aafe948e-c536-466e-9cdc-aa514cbfc616" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fElectricalL"/>
+			<init target="Source" ver="5" ref="OutConfig_1"/>
+		</object>
+		<object access-modifier="private" name="fError" display-name="fError" uuid="038bbfc3-e9a7-4b41-a92b-efe7637055fa" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fError"/>
+			<init target="Source" ver="5" ref="OutConfig_1"/>
+		</object>
+		<object access-modifier="private" name="fNormH" display-name="fNormH" uuid="603c8fbf-7b26-45ed-8e7d-99bbe519f1fd" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fNormH"/>
+			<init target="Source" ver="5" ref="OutConfig_1"/>
+		</object>
+		<object access-modifier="private" name="fNormL" display-name="fNormL" uuid="79159ae2-0c73-4ab2-966a-99e67db5ce34" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fNormL"/>
+			<init target="Source" ver="5" ref="OutConfig_1"/>
+		</object>
+		<object access-modifier="private" name="fTFilter" display-name="fTFilter" uuid="15e9319e-c1e4-462f-bfed-a3e4dca19e18" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fTFilter"/>
+			<init target="Source" ver="5" ref="OutConfig_1"/>
+		</object>
+		<init target="ParentSource" ver="5" ref="sensApSource"/>
+	</object>
+	<object access-modifier="private" name="Status_2" display-name="Status_2" uuid="e9c5cb26-0475-43e4-a659-9a341e3ce5f8" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
+		<designed target="Active" value="false" ver="5"/>
+		<designed target="ReAdvise" value="0" ver="5"/>
+		<designed target="Location" value="" ver="5"/>
+		<designed target="Port" value="4388" ver="5"/>
+		<designed target="HistoryPort" value="4950" ver="5"/>
+		<designed target="Path" value="STATUS_BITS2" ver="5"/>
+		<designed target="ClientDisplayName" value="HMI" ver="5"/>
+		<designed target="ClientId" value="HMI" ver="5"/>
+		<init target="ParentSource" ver="5" ref="sensApSource"/>
+		<object access-modifier="private" name="xDiscarded" display-name="xDiscarded" uuid="0623724c-af0d-4b54-8d3a-a66d8a35d2c2" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Path" ver="5" value="xDiscarded"/>
+			<init target="Source" ver="5" ref="Status_2"/>
+		</object>
+		<object access-modifier="private" name="xNormLimH" display-name="xNormLimH" uuid="1c9d528e-6df1-49e0-a181-b39964488d51" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Path" ver="5" value="xNormLimH"/>
+			<init target="Source" ver="5" ref="Status_2"/>
+		</object>
+		<object access-modifier="private" name="xNormLimL" display-name="xNormLimL" uuid="2a72f2af-b2fd-4032-b8d6-1ae270a17a4f" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Path" ver="5" value="xNormLimL"/>
+			<init target="Source" ver="5" ref="Status_2"/>
+		</object>
+		<object access-modifier="private" name="xElectrLimH" display-name="xElectrLimH" uuid="e37ac9f0-997d-4fa7-b3a4-f5ffb3f364f3" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Path" ver="5" value="xElectrLimH"/>
+			<init target="Source" ver="5" ref="Status_2"/>
+		</object>
+		<object access-modifier="private" name="xElectrLimL" display-name="xElectrLimL" uuid="f1bfa8a0-79f1-4dcd-b335-428b85cddd1e" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Path" ver="5" value="xElectrLimL"/>
+			<init target="Source" ver="5" ref="Status_2"/>
+		</object>
+		<object access-modifier="private" name="xADCLimH" display-name="xADCLimH" uuid="55d844b8-31dd-4b57-a6b3-abddd5db87a5" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Path" ver="5" value="xADCLimH"/>
+			<init target="Source" ver="5" ref="Status_2"/>
+		</object>
+		<object access-modifier="private" name="xADCLimL" display-name="xADCLimL" uuid="ba778aff-a07e-4399-97c1-3f4f99eced30" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Path" ver="5" value="xADCLimL"/>
+			<init target="Source" ver="5" ref="Status_2"/>
+		</object>
+		<object access-modifier="private" name="xFailure" display-name="xFailure" uuid="71524e60-c5ea-40c0-923b-7b76c9c7d71c" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+			<init target="Path" ver="5" value="xFailure"/>
+			<init target="Source" ver="5" ref="Status_2"/>
+		</object>
+	</object>
+	<object access-modifier="private" name="bBigDifferencePre" display-name="bBigDifferencePre" uuid="e6ddb463-6d83-45fd-b507-e86a776963aa" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Source" ver="5" ref="sensApSource"/>
+		<init target="Path" ver="5" value="bBigDifferencePre"/>
+	</object>
+	<object access-modifier="private" name="bErrAllSens" display-name="bErrAllSens" uuid="c78c5bc9-0a93-4168-8c45-18466d5c3c79" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Source" ver="5" ref="sensApSource"/>
+		<init target="Path" ver="5" value="bErrAllSens"/>
+	</object>
+	<object access-modifier="private" name="bErrFirstSens" display-name="bErrFirstSens" uuid="cb77c21c-134d-4e17-b184-cc1172133fe6" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Source" ver="5" ref="sensApSource"/>
+		<init target="Path" ver="5" value="bErrFirstSens"/>
+	</object>
+	<object access-modifier="private" name="bErrSecondSens" display-name="bErrSecondSens" uuid="7955da66-3f01-4afe-a4c5-cbcbc41e8d1a" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Source" ver="5" ref="sensApSource"/>
+		<init target="Path" ver="5" value="bErrSecondSens"/>
+	</object>
+	<object access-modifier="private" name="rectEUWrapper" display-name="rectEUWrapper" uuid="0304b598-54ba-4bd0-abc0-212810db867e" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="13" ver="5"/>
+		<designed target="Height" value="13" ver="5"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<designed target="PenColor" value="0xffbfbfbf" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="0xff000000" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<object access-modifier="private" name="txtEU" display-name="txtEU" uuid="e2de9fbb-d654-4c4c-9fb5-8f422960e41c" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="13" ver="5"/>
+			<designed target="Height" value="13" ver="5"/>
+			<designed target="Text" value="P" ver="5"/>
+			<designed target="Font" value="Arial,7,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="0xff888888" ver="5"/>
+			<designed target="TextAlignment" value="132" ver="5"/>
+			<do-trace access-modifier="private" target="Text" ver="5">
+				<body>
+					<![CDATA[ALIAS]]>
+				</body>
+			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[Color]]>
+				</body>
+			</do-trace>
+		</object>
+		<designed target="Flip" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="rectValueWrapper" display-name="rectValueWrapper" uuid="e655658a-b294-4d88-b42d-2e839a81adb4" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+		<designed target="X" value="13" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="45" ver="5"/>
+		<designed target="Height" value="13" ver="5"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<designed target="PenColor" value="0xffbfbfbf" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="0xff5b5757" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<object access-modifier="private" name="rectFading" display-name="rectFading" uuid="2bfe3a95-02cc-498b-862e-78c814793950" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="45" ver="5"/>
+			<designed target="Height" value="13" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="0xffbfbfbf" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="0xff5b5757" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<object access-modifier="private" name="Fading" display-name="Fading" uuid="4f717392-8b90-4257-a541-208a23504db9" base-type="Fading" base-type-id="a1786c57-8cdb-4470-ac0a-6e549ed6370a" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<init target="Period" ver="5" value="1"/>
+				<init target="InColor" ver="5" value="0xffffffff"/>
+				<do-trace access-modifier="private" target="InColor" ver="5">
+					<conditional-expr>
+						<condition>
+							<![CDATA[private.bProt]]>
+						</condition>
+						<expr>
+							<![CDATA[0xffff0000]]>
+						</expr>
+					</conditional-expr>
+					<conditional-expr>
+						<condition>
+							<![CDATA[private.bWarn]]>
+						</condition>
+						<expr>
+							<![CDATA[0xffffff00]]>
+						</expr>
+					</conditional-expr>
+					<conditional-expr>
+						<condition>
+							<![CDATA[private.bOutBonds_1 && uiSensNum==1]]>
+						</condition>
+						<expr>
+							<![CDATA[0xffffffff]]>
+						</expr>
+					</conditional-expr>
+					<conditional-expr>
+						<condition>
+							<![CDATA[private.bOutBonds_2 && uiSensNum==2]]>
+						</condition>
+						<expr>
+							<![CDATA[0xffffffff]]>
+						</expr>
+					</conditional-expr>
+					<default-expr>
+						<expr>
+							<![CDATA[0xff00ff00]]>
+						</expr>
+					</default-expr>
+				</do-trace>
+				<do-trace access-modifier="private" target="TurnOn" ver="5">
+					<body>
+						<![CDATA[private.bProt || private.bWarn || private.bOutBonds]]>
+					</body>
+				</do-trace>
+			</object>
+			<do-trace access-modifier="private" target="PenColor" ver="5">
+				<body>
+					<![CDATA[Fading.OutColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="txtValue" display-name="txtValue" uuid="e27b1fcb-372d-4f08-8fbe-e51e4f7a7ed9" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="45" ver="5"/>
+			<designed target="Height" value="13" ver="5"/>
+			<designed target="Text" value="0,0" ver="5"/>
+			<designed target="Font" value="Arial,11,-1,5,75,0,0,0,0,0,Narrow Bold" ver="5"/>
+			<designed target="FontColor" value="0xff00ff00" ver="5"/>
+			<designed target="TextAlignment" value="132" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<conditional-expr>
+					<condition>
+						<![CDATA[private.bProt]]>
+					</condition>
+					<expr>
+						<![CDATA[0xffff0000]]>
+					</expr>
+				</conditional-expr>
+				<conditional-expr>
+					<condition>
+						<![CDATA[private.bWarn]]>
+					</condition>
+					<expr>
+						<![CDATA[0xffffff00]]>
+					</expr>
+				</conditional-expr>
+				<conditional-expr>
+					<condition>
+						<![CDATA[private.bOutBonds_1 && uiSensNum==1]]>
+					</condition>
+					<expr>
+						<![CDATA[0xffff0000]]>
+					</expr>
+				</conditional-expr>
+				<conditional-expr>
+					<condition>
+						<![CDATA[private.bOutBonds_2 && uiSensNum==2]]>
+					</condition>
+					<expr>
+						<![CDATA[0xffff0000]]>
+					</expr>
+				</conditional-expr>
+				<default-expr>
+					<expr>
+						<![CDATA[0xff00ff00]]>
+					</expr>
+				</default-expr>
+			</do-trace>
+			<do-trace access-modifier="private" target="Text" ver="5">
+				<conditional-expr>
+					<condition>
+						<![CDATA[uiSensNum == 1]]>
+					</condition>
+					<expr>
+						<![CDATA[private.bOutBonds_1 ? "NaN" : private.Val_1]]>
+					</expr>
+				</conditional-expr>
+				<conditional-expr>
+					<condition>
+						<![CDATA[uiSensNum == 2]]>
+					</condition>
+					<expr>
+						<![CDATA[private.bOutBonds_2 ? "NaN" : private.Val_2]]>
+					</expr>
+				</conditional-expr>
+				<default-expr>
+					<expr>
+						<![CDATA["NaN"]]>
+					</expr>
+				</default-expr>
+			</do-trace>
+		</object>
+		<designed target="Flip" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="refProtH" display-name="refProtH" uuid="ac76a061-2092-4a6f-9a27-8e966236a177" base-type="ProtData" base-type-id="9c826d5c-1976-4f54-a35a-bb8180d89ee8" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="refProtL" display-name="refProtL" uuid="dab78e1f-0f19-4d44-a342-55145dfacb02" base-type="ProtData" base-type-id="9c826d5c-1976-4f54-a35a-bb8180d89ee8" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="refWarnH" display-name="refWarnH" uuid="84b9bc53-df7e-4686-a83d-4503c64f7134" base-type="WarningData" base-type-id="87e194c3-d282-478d-8ee4-389b0934531f" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="refWarnL" display-name="refWarnL" uuid="2ca06a61-069b-4fcb-823a-4d6dee4306be" base-type="WarningData" base-type-id="87e194c3-d282-478d-8ee4-389b0934531f" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="private" display-name="private" uuid="01c5344d-7ed3-44af-9c1d-737f1014e9b4" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="0" ver="5"/>
+		<designed target="Height" value="0" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="4278190080" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<designed target="OverrideScaling" value="false" ver="5"/>
+		<designed target="ShowScrollBars" value="true" ver="5"/>
+		<designed target="MoveByMouse" value="false" ver="5"/>
+		<object access-modifier="private" name="bOutBonds_1" display-name="bOutBonds_1" uuid="a83e60d6-6685-4cf0-8ea3-306c37cca0a5" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+		<do-trace access-modifier="private" target="bOutBonds_1" ver="5">
+			<body>
+				<![CDATA[(fElectroValue1 <= 3) || (fElectroValue1 >= 21) || bErrFirstSens]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="bOutBonds_2" display-name="bOutBonds_2" uuid="e6dfeab1-081b-4dc3-be91-c003d2c8ff7d" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+		<do-trace access-modifier="private" target="bOutBonds_2" ver="5">
+			<body>
+				<![CDATA[(fElectroValue2 <= 3) || (fElectroValue2 >= 21) || bErrSecondSens]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="fProtH" display-name="fProtH" uuid="d0bfa3e6-2e46-4dcf-8d38-49b02adc7cc7" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		<do-trace access-modifier="private" target="fProtH" ver="5">
+			<body>
+				<![CDATA[refProtH.OutfValue]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="fProtL" display-name="fProtL" uuid="5a9a4980-bc87-409a-84c3-2d4ec75392e0" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		<do-trace access-modifier="private" target="fProtL" ver="5">
+			<body>
+				<![CDATA[refProtL.OutfValue]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="fWarnH" display-name="fWarnH" uuid="4d2c57c8-07e1-4a9c-86bd-b149ef6dbe62" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		<do-trace access-modifier="private" target="fWarnH" ver="5">
+			<body>
+				<![CDATA[refWarnH.OutfValue]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="fWarnL" display-name="fWarnL" uuid="481d3fd1-0a4b-4506-b931-c4790c786ff3" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		<do-trace access-modifier="private" target="fWarnL" ver="5">
+			<body>
+				<![CDATA[refWarnL.OutfValue]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="isOpened" display-name="isOpened" uuid="c808d078-3c19-432c-ae59-5033f21adc63" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+		<object access-modifier="private" name="mX" display-name="mX" uuid="9fa0311e-37fc-42dc-8919-2d84aaa78b46" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+		<object access-modifier="private" name="mY" display-name="mY" uuid="0132008c-8c12-43d3-b408-b2db2a295241" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+		<object access-modifier="private" name="posX" display-name="posX" uuid="4db19885-e9bd-452c-a2c6-bcb95d53c24d" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+		<object access-modifier="private" name="posY" display-name="posY" uuid="9c808096-abd6-4c5e-9355-5de9b2c6828a" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+		<object access-modifier="private" name="NameExtended" display-name="NameExtended" uuid="440c96c5-fb63-422e-8c46-9587c322aafb" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description=""/>
+		<do-trace access-modifier="private" target="NameExtended" ver="5">
+			<conditional-expr>
+				<condition>
+					<![CDATA[BurnNumber != "0"]]>
+				</condition>
+				<expr>
+					<![CDATA[NAME + " " + BurnNumber + ", " + EU]]>
+				</expr>
+			</conditional-expr>
+			<default-expr>
+				<expr>
+					<![CDATA[NAME + ", " + EU]]>
+				</expr>
+			</default-expr>
+		</do-trace>
+		<object access-modifier="private" name="bProt" display-name="bProt" uuid="b83ea407-c8b3-4186-9d93-dcb7929efbc3" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="bWarn" display-name="bWarn" uuid="ddc15225-229f-4818-96c3-3b616d72da73" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+		<do-trace access-modifier="private" target="bProt" ver="5">
+			<body>
+				<![CDATA[refProtH.bCtrl || refProtL.bCtrl]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="bWarn" ver="5">
+			<body>
+				<![CDATA[refWarnH.bTriggered || refWarnL.bTriggered]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="OpenModuleWindow" display-name="OpenModuleWindow" uuid="67aa39d4-5737-44f6-bd15-a86cb6643b5c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-trace access-modifier="private" target="Enabled" ver="5">
+				<body>
+					<![CDATA[!private.isOpened]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+				<object access-modifier="private" uuid="68913202-8097-4725-9e25-6a27a7b3412b" base-type="1 из 2 датчиков" base-type-id="f5463445-de17-4bf9-a21b-351bcd1f8191" ver="5">
+					<init target="WindowY" ver="5" ref="here.private.posY"/>
+					<init target="WindowX" ver="5" ref="here.private.posX"/>
+					<init target="WindowCaption" ver="5" ref="here.private.NameExtended"/>
+					<init target="refData" ver="5" ref="here"/>
+				</object>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="Val" display-name="Val" uuid="57b4c08e-2fed-439d-ac93-a809de483e3f" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="isOpenedTrends" display-name="isOpenedTrends" uuid="fa2137f5-1d14-4b83-ade2-550ea3f82745" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+		<object access-modifier="private" name="Val_1" display-name="Val_1" uuid="e4d71920-4387-43d3-a83a-5f16f5dff970" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="Val_2" display-name="Val_2" uuid="08f83bb6-35f5-40c4-b1bf-2b74ede46f71" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<object access-modifier="private" name="isOpenedSettings" display-name="isOpenedSettings" uuid="18e17790-454b-46eb-85bc-c038ec4525ce" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+		<object access-modifier="private" name="OpenSettingsWindow" display-name="OpenSettingsWindow" uuid="f8c1acb2-8c0b-4bf6-951e-cb68efa6d803" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-trace access-modifier="private" target="Enabled" ver="5">
+				<body>
+					<![CDATA[!private.isOpenedSettings]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+				<object access-modifier="private" uuid="ff57c60a-7d0d-481e-ab1b-7182df12f990" base-type="1 из 2 датчиков (настройка)" base-type-id="6952c59d-c09c-4551-9bfe-676b96c49b45" ver="5">
+					<init target="WindowX" ver="5" ref="here.private.posX"/>
+					<init target="WindowY" ver="5" ref="here.private.posY"/>
+					<init target="WindowCaption" ver="5" ref="here.private.NameExtended"/>
+					<init target="refData" ver="5" ref="here"/>
+				</object>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="ValElectro_1" display-name="ValElectro_1" uuid="42917485-68d4-41c6-a342-d9ad1b9b459c" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="ValElectro_2" display-name="ValElectro_2" uuid="e94c5299-5731-40c9-9c43-1294bbf89170" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="bOutBonds" display-name="bOutBonds" uuid="e10f31fc-1012-4b51-bfe5-d8d97113f820" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+		<do-trace access-modifier="private" target="bOutBonds" ver="5">
+			<body>
+				<![CDATA[(bOutBonds_1 && uiSensNum==1) || (bOutBonds_2 && uiSensNum==2)]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="fElectroValue1" display-name="fElectroValue1" uuid="e817d234-9d65-42a0-b1bb-73f87c4137f2" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+		<init target="Path" ver="5" value="fElectroValue1"/>
+		<init target="Source" ver="5" ref="sensApSource"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.ValElectro_1 = String.ToString( "%.1f", me.Value);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="fElectroValue2" display-name="fElectroValue2" uuid="357f774e-7104-481e-8dfc-7d73eb9e283d" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+		<init target="Path" ver="5" value="fElectroValue2"/>
+		<init target="Source" ver="5" ref="sensApSource"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.ValElectro_2 = String.ToString( "%.1f", me.Value);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="SensOnOff_1" display-name="SensOnOff_1" uuid="f122e0ac-2361-405f-9ea2-58a7c9207489" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[if (outiSel == 0)
+{
+}
+if (outiSel == 1)
+{
+}
+if (outiSel == 2)
+{
+	iniSel = 3;
+}
+if (outiSel == 3)
+{
+	iniSel = 2;
+}]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[outiSel > 1]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="SensOnOff_2" display-name="SensOnOff_2" uuid="f47081d4-b8e8-4533-9ba9-15dc2d7c209f" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[outiSel != 2]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[if (outiSel == 0)
+{
+	iniSel = 3;
+}
+if (outiSel == 1)
+{
+	iniSel = 3;
+}
+if (outiSel == 2)
+{
+}
+if (outiSel == 3)
+{
+	iniSel = 1;
+}]]>
+			</body>
+		</do-on>
+	</object>
+	<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseRightClick">
+		<body kind="om">
+			<![CDATA[private.mX = TypeConvert.ToFloat(ScreenX(MouseX, MouseY));
+private.mY = TypeConvert.ToFloat(ScreenY(MouseX, MouseY));
+if (private.mX+300>1920)
+{
+	private.posX=private.mX-(310-(1920-private.mX));
+}
+else
+{
+	private.posX=private.mX;
+}
+if (private.mY+500>1080)
+{
+	private.posY=private.mY-(500-(1080-private.mY));
+}
+else
+{
+	private.posY=private.mY;
+}
+private.OpenSettingsWindow.Invoke();]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="MouseClick">
+		<body kind="om">
+			<![CDATA[private.mX = TypeConvert.ToFloat(ScreenX(MouseX, MouseY));
+private.mY = TypeConvert.ToFloat(ScreenY(MouseX, MouseY));
+if (private.mX+250>1920)
+{
+	private.posX=private.mX-(260-(1920-private.mX));
+}
+else
+{
+	private.posX=private.mX;
+}
+if (private.mY+350>1080)
+{
+	private.posY=private.mY-(350-(1080-private.mY));
+}
+else
+{
+	private.posY=private.mY;
+}
+private.OpenModuleWindow.Invoke();]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="KKS" display-name="KKS" uuid="2e3f3fe4-0826-4bf5-85cf-bd4ed026c885" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5">
+		<init target="Source" ver="5" ref="sensApSource"/>
+		<init target="Path" ver="5" value="KKS"/>
+	</object>
+	<object access-modifier="private" name="uiSensNum" display-name="uiSensNum" uuid="d00f0d4e-f715-450e-89ae-497516cc5e8b" base-type="notifying_uint1" base-type-id="fed14c54-414c-56bd-549a-8d761c4d6200" ver="5" description=""/>
+	<init target="uiSensNum" ver="5" value="1"/>
+</type>
+

@@ -42,7 +42,7 @@
 		<designed target="Path" value="" ver="5"/>
 		<designed target="ClientDisplayName" value="HMI" ver="5"/>
 		<designed target="ClientId" value="HMI" ver="5"/>
-		<init target="ParentSource" ver="5" ref="unit.Connections.ApSource"/>
+		<init target="ParentSource" ver="5" ref="unit.Connections.AppSource"/>
 	</object>
 	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Opened">
 		<body kind="om">
@@ -59,7 +59,7 @@
 		<designed target="Path" value="" ver="5"/>
 		<designed target="ClientDisplayName" value="HMI" ver="5"/>
 		<designed target="ClientId" value="HMI" ver="5"/>
-		<init target="ParentSource" ver="5" ref="unit.Connections.ApSource"/>
+		<init target="ParentSource" ver="5" ref="unit.Connections.AppSource"/>
 	</object>
 	<object access-modifier="private" name="VentStatus" display-name="VentStatus" uuid="75d411ac-bc79-4b54-9533-1ad443961e7f" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5">
 		<init target="Source" ver="5" ref="hereAPSource"/>
@@ -177,7 +177,7 @@
 			<designed target="ShowScrollBars" value="true" ver="5"/>
 			<designed target="MoveByMouse" value="false" ver="5"/>
 			<object access-modifier="private" name="TubeWaterBoil" display-name="TubeWaterBoil" uuid="a780dbf2-6193-450f-befb-d491f47c8a7f" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
-				<designed target="X" value="16" ver="5"/>
+				<designed target="X" value="66" ver="5"/>
 				<designed target="Y" value="510" ver="5"/>
 				<designed target="ZValue" value="0" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
@@ -186,7 +186,7 @@
 				<designed target="Opacity" value="1" ver="5"/>
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="1350" ver="5"/>
+				<designed target="Width" value="1280" ver="5"/>
 				<designed target="Height" value="70" ver="5"/>
 				<designed target="PenColor" value="0xff00aa00" ver="5"/>
 				<designed target="PenStyle" value="1" ver="5"/>
@@ -202,30 +202,30 @@
 					<designed target="Y" value="70" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_15" display-name="Point_15" uuid="f9ecb456-be13-4d2b-89e3-faeec3cef61b" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="1350" ver="5"/>
+					<designed target="X" value="1280" ver="5"/>
 					<designed target="Y" value="70" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_16" display-name="Point_16" uuid="eaef77f1-d61c-452e-adcc-b05d0c3af2fb" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="1350" ver="5"/>
+					<designed target="X" value="1280" ver="5"/>
 					<designed target="Y" value="0" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_17" display-name="Point_17" uuid="902067aa-63e3-41fb-a69b-039c02e35405" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="1330" ver="5"/>
+					<designed target="X" value="1260" ver="5"/>
 					<designed target="Y" value="0" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_19" display-name="Point_19" uuid="b9f78934-1ed2-4497-8d5a-1a2e15323b61" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="1330" ver="5"/>
+					<designed target="X" value="1260" ver="5"/>
 					<designed target="Y" value="50" ver="5"/>
 				</object>
 				<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="2c3eb856-5b2a-4dfd-b82c-7b3c83708846" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5">
 					<designed target="Rotation" value="0" ver="5"/>
 					<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="2b1a5879-4bb9-4b93-9d01-ea3b1a8d2e36" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
 						<designed target="Position" value="0" ver="5"/>
-						<designed target="Color" value="0xffff0000" ver="5"/>
+						<designed target="Color" value="0xff0000ff" ver="5"/>
 					</object>
 					<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="efa60096-24c2-47a1-9ac0-b784f6c526e6" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
 						<designed target="Position" value="1" ver="5"/>
-						<designed target="Color" value="0xff0000ff" ver="5"/>
+						<designed target="Color" value="0xffff0000" ver="5"/>
 					</object>
 					<designed target="Visible" value="true" ver="5"/>
 					<designed target="Opacity" value="1" ver="5"/>
@@ -245,172 +245,8 @@
 					</body>
 				</do-trace>
 			</object>
-			<object access-modifier="private" name="TubeWaterBackup" display-name="TubeWaterBackup" uuid="c1d1a516-6a2d-4d39-a44f-f3cb2599c33e" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
-				<designed target="X" value="26" ver="5"/>
-				<designed target="Y" value="470" ver="5"/>
-				<designed target="ZValue" value="0" ver="5"/>
-				<designed target="Rotation" value="0" ver="5"/>
-				<designed target="Scale" value="1" ver="5"/>
-				<designed target="Visible" value="false" ver="5"/>
-				<designed target="Opacity" value="1" ver="5"/>
-				<designed target="Enabled" value="true" ver="5"/>
-				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="1300" ver="5"/>
-				<designed target="Height" value="114" ver="5"/>
-				<designed target="PenColor" value="0xff00aa00" ver="5"/>
-				<designed target="PenStyle" value="1" ver="5"/>
-				<designed target="PenWidth" value="4" ver="5"/>
-				<designed target="BrushColor" value="4278190080" ver="5"/>
-				<designed target="BrushStyle" value="1" ver="5"/>
-				<object access-modifier="private" name="Point_1" display-name="Point_1" uuid="30250f17-892c-4c40-92b7-3b1ca9e2e359" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="0" ver="5"/>
-					<designed target="Y" value="0" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_2" display-name="Point_2" uuid="09a2f2b8-9f26-44a5-a0ac-80d0a6b6e338" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="0" ver="5"/>
-					<designed target="Y" value="50" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_3" display-name="Point_3" uuid="e15145a3-42be-49ee-883e-fcdf9e5de0fb" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="103" ver="5"/>
-					<designed target="Y" value="50" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_4" display-name="Point_4" uuid="0862e37d-83a1-41c4-9fc6-72c0d0ef4550" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="155" ver="5"/>
-					<designed target="Y" value="14" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_5" display-name="Point_5" uuid="9bfcdb21-6cd4-422d-a0f8-1c6ed8fad65c" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="265" ver="5"/>
-					<designed target="Y" value="114" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_6" display-name="Point_6" uuid="804ee25b-b11c-4fe4-a309-e06707326320" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="375" ver="5"/>
-					<designed target="Y" value="14" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_7" display-name="Point_7" uuid="22a170be-f632-4a5c-a3c9-e958731c46d6" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="485" ver="5"/>
-					<designed target="Y" value="114" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_8" display-name="Point_8" uuid="0d51d5a7-ac7d-443f-8bfd-388ca207e034" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="595" ver="5"/>
-					<designed target="Y" value="14" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_9" display-name="Point_9" uuid="353fd956-62d2-4923-a7d5-7b31dd1911d6" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="705" ver="5"/>
-					<designed target="Y" value="114" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_10" display-name="Point_10" uuid="b469b0d5-586b-457d-9bde-db3900d4bedf" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="815" ver="5"/>
-					<designed target="Y" value="14" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_11" display-name="Point_11" uuid="5c6b2076-c1a0-4700-bf6e-161c7e474894" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="925" ver="5"/>
-					<designed target="Y" value="114" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_12" display-name="Point_12" uuid="68af26ec-7d6f-45d0-9a39-6fd81fa55b12" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="1035" ver="5"/>
-					<designed target="Y" value="14" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_13" display-name="Point_13" uuid="9f0d126f-f5de-4431-9d96-df7aad4d4ca7" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="1145" ver="5"/>
-					<designed target="Y" value="114" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_14" display-name="Point_14" uuid="bbe377de-6da1-4dee-8d38-b2ed3e0fc069" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="1200" ver="5"/>
-					<designed target="Y" value="50" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_15" display-name="Point_15" uuid="ad10adbf-8b7f-44f9-beac-460b5fd0b52f" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="1300" ver="5"/>
-					<designed target="Y" value="50" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_16" display-name="Point_16" uuid="67535ebb-e8c3-4794-ad88-31025243518d" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="1300" ver="5"/>
-					<designed target="Y" value="0" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_17" display-name="Point_17" uuid="0aa79b7b-5f0c-4915-8afa-1da0e5461afe" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="1290" ver="5"/>
-					<designed target="Y" value="0" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_19" display-name="Point_19" uuid="5d47f7d3-374b-4331-96f6-aa3c3e7bb8d8" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="1290" ver="5"/>
-					<designed target="Y" value="40" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_20" display-name="Point_20" uuid="8a4d8565-ee00-4f93-be0d-da791f220315" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="1197" ver="5"/>
-					<designed target="Y" value="40" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_21" display-name="Point_21" uuid="ce38637f-f899-43d9-96cd-f14ed7a82d6c" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="1145" ver="5"/>
-					<designed target="Y" value="100" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_22" display-name="Point_22" uuid="25460528-f41a-4884-ab59-41c2c15f3252" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="1035" ver="5"/>
-					<designed target="Y" value="0" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_23" display-name="Point_23" uuid="021ef0a8-b967-49b6-8ef6-e0f31198efc8" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="925" ver="5"/>
-					<designed target="Y" value="100" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_24" display-name="Point_24" uuid="9d034eab-5682-4eb4-a41e-f7a8dfcaf985" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="815" ver="5"/>
-					<designed target="Y" value="0" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_25" display-name="Point_25" uuid="8ec4a2b4-1e5a-4154-9239-a4586708bdac" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="705" ver="5"/>
-					<designed target="Y" value="100" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_26" display-name="Point_26" uuid="13033dd0-3eef-47c4-942a-e2b9490a73ab" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="595" ver="5"/>
-					<designed target="Y" value="0" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_27" display-name="Point_27" uuid="e9a97b44-aadd-49cb-bc0b-7b4bd8d84364" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="485" ver="5"/>
-					<designed target="Y" value="100" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_28" display-name="Point_28" uuid="ec556e93-6c7c-4db7-b54f-23c8e2a327ed" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="375" ver="5"/>
-					<designed target="Y" value="0" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_29" display-name="Point_29" uuid="cd243670-6db0-4d65-b99b-25bce7e77e6c" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="265" ver="5"/>
-					<designed target="Y" value="100" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_30" display-name="Point_30" uuid="a18b03e6-63d3-433b-ace6-6e3404ab0e1d" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="155" ver="5"/>
-					<designed target="Y" value="0" ver="5"/>
-				</object>
-				<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="1b215869-6047-4e6f-b990-b7caa728e985" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5">
-					<designed target="Rotation" value="0" ver="5"/>
-					<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="5f493100-a370-420c-be00-bbf5ea09a5ba" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
-						<designed target="Position" value="0" ver="5"/>
-						<designed target="Color" value="0xffff0000" ver="5"/>
-					</object>
-					<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="e10ebbff-f7ed-4e3a-8e77-e3d7f5aa3627" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
-						<designed target="Position" value="1" ver="5"/>
-						<designed target="Color" value="0xff0000ff" ver="5"/>
-					</object>
-				</object>
-				<object access-modifier="private" name="Point_31" display-name="Point_31" uuid="1487207c-3a54-4af2-92fa-10119bcd691b" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="100" ver="5"/>
-					<designed target="Y" value="40" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_32" display-name="Point_32" uuid="f92c6ba0-4a91-437c-b87e-c882c490e2e3" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="10" ver="5"/>
-					<designed target="Y" value="40" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_33" display-name="Point_33" uuid="b1a97150-eb5f-4dc9-a66d-52f3fd1a6216" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="10" ver="5"/>
-					<designed target="Y" value="0" ver="5"/>
-				</object>
-				<designed target="Flip" value="0" ver="5"/>
-				<do-trace access-modifier="private" target="PenColor" ver="5">
-					<body>
-						<![CDATA[unit.Global.Colors.Water]]>
-					</body>
-				</do-trace>
-				<init target="PenColor" ver="5" ref="unit.Global.Colors.Water"/>
-			</object>
 			<object access-modifier="private" name="TubeWaterOut2" display-name="TubeWaterOut2" uuid="d4c4c5f7-4c75-4f2b-81e1-de41f4e9a9c0" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
-				<designed target="X" value="16" ver="5"/>
+				<designed target="X" value="66" ver="5"/>
 				<designed target="Y" value="480" ver="5"/>
 				<designed target="ZValue" value="0" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
@@ -419,12 +255,12 @@
 				<designed target="Opacity" value="1" ver="5"/>
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="520" ver="5"/>
+				<designed target="Width" value="470" ver="5"/>
 				<designed target="Height" value="385" ver="5"/>
 				<designed target="PenColor" value="0xff00aa00" ver="5"/>
 				<designed target="PenStyle" value="1" ver="5"/>
 				<designed target="PenWidth" value="4" ver="5"/>
-				<designed target="BrushColor" value="0xffff0000" ver="5"/>
+				<designed target="BrushColor" value="0xff0000ff" ver="5"/>
 				<designed target="BrushStyle" value="1" ver="5"/>
 				<object access-modifier="private" name="Point_1" display-name="Point_1" uuid="85385be2-42f8-4ade-81e1-3aa17a6154bc" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
 					<designed target="X" value="0" ver="5"/>
@@ -435,19 +271,19 @@
 					<designed target="Y" value="-320" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_3" display-name="Point_3" uuid="4df758b1-47e5-4cec-8761-e0773c74643f" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="500" ver="5"/>
+					<designed target="X" value="450" ver="5"/>
 					<designed target="Y" value="-320" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_4" display-name="Point_4" uuid="97ae985f-334a-4c54-8adf-90fe8a00defa" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="500" ver="5"/>
+					<designed target="X" value="450" ver="5"/>
 					<designed target="Y" value="-330" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_5" display-name="Point_5" uuid="a9a94ba0-609d-42c4-92e5-3d645b54155f" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="520" ver="5"/>
+					<designed target="X" value="470" ver="5"/>
 					<designed target="Y" value="-330" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_6" display-name="Point_6" uuid="2b09e59a-7d1c-402c-b551-c4c5295793d4" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="520" ver="5"/>
+					<designed target="X" value="470" ver="5"/>
 					<designed target="Y" value="-300" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_7" display-name="Point_7" uuid="3adde0a2-bb2a-46c7-a79a-1a2aef69d03f" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
@@ -475,19 +311,19 @@
 				<designed target="Opacity" value="1" ver="5"/>
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="500" ver="5"/>
+				<designed target="Width" value="480" ver="5"/>
 				<designed target="Height" value="385" ver="5"/>
 				<designed target="PenColor" value="0xff00aa00" ver="5"/>
 				<designed target="PenStyle" value="1" ver="5"/>
 				<designed target="PenWidth" value="4" ver="5"/>
-				<designed target="BrushColor" value="0xff0000ff" ver="5"/>
+				<designed target="BrushColor" value="0xffff0000" ver="5"/>
 				<designed target="BrushStyle" value="1" ver="5"/>
 				<object access-modifier="private" name="Point_1" display-name="Point_1" uuid="4e3b24cc-105e-4cd8-ac99-d2ac47550cbb" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="-20" ver="5"/>
+					<designed target="X" value="-40" ver="5"/>
 					<designed target="Y" value="55" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_2" display-name="Point_2" uuid="75f92fbf-c88a-4e65-9723-9926cb0073a8" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="-20" ver="5"/>
+					<designed target="X" value="-40" ver="5"/>
 					<designed target="Y" value="-300" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_3" display-name="Point_3" uuid="5281dcf3-3755-46f7-a015-36aa5b83bf55" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
@@ -507,11 +343,11 @@
 					<designed target="Y" value="-320" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_7" display-name="Point_7" uuid="edc07fe4-888b-4b3e-b2eb-17c458418dbe" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="0" ver="5"/>
+					<designed target="X" value="-20" ver="5"/>
 					<designed target="Y" value="-320" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_8" display-name="Point_8" uuid="2d9a1bd0-4a1c-4d6b-82a3-1b26df804c4e" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="0" ver="5"/>
+					<designed target="X" value="-20" ver="5"/>
 					<designed target="Y" value="55" ver="5"/>
 				</object>
 				<designed target="Flip" value="0" ver="5"/>
@@ -582,8 +418,10 @@
 					</object>
 					<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="384ec976-f57d-4a91-a331-386ee00a4745" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
 						<designed target="Position" value="1" ver="5"/>
-						<designed target="Color" value="0xff0000ff" ver="5"/>
+						<designed target="Color" value="0xffff0000" ver="5"/>
 					</object>
+					<designed target="Visible" value="true" ver="5"/>
+					<designed target="Opacity" value="1" ver="5"/>
 				</object>
 				<designed target="Flip" value="0" ver="5"/>
 				<do-trace access-modifier="private" target="PenColor" ver="5">
@@ -649,7 +487,7 @@
 					<designed target="Rotation" value="0" ver="5"/>
 					<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="97604473-9643-404d-8642-393fe03c11c8" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
 						<designed target="Position" value="0" ver="5"/>
-						<designed target="Color" value="0xffff0000" ver="5"/>
+						<designed target="Color" value="0xff0000ff" ver="5"/>
 					</object>
 					<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="3bc88153-1086-4ce4-8a56-dbe8aa722c45" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
 						<designed target="Position" value="1" ver="5"/>
@@ -663,13 +501,13 @@
 					</body>
 				</do-trace>
 			</object>
-			<object access-modifier="private" name="GateWaterIn" display-name="GateWaterIn" uuid="9686506b-3c84-419d-b51d-a8e47ca76ff3" base-type="Gate" base-type-id="412146cb-dc7b-472f-be3b-e66aa672ce43" ver="5">
+			<object access-modifier="private" name="GateWaterOut" display-name="GateWaterOut" uuid="9686506b-3c84-419d-b51d-a8e47ca76ff3" base-type="Gate" base-type-id="412146cb-dc7b-472f-be3b-e66aa672ce43" ver="5">
 				<designed target="X" value="870" ver="5"/>
 				<designed target="Y" value="100" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
 				<designed target="Scale" value="2" ver="5"/>
 				<init target="initApSource" ver="5" ref="ApSource"/>
-				<init target="initPath" ver="5" value="GateIn"/>
+				<init target="initPath" ver="5" value="GateOut"/>
 				<do-trace access-modifier="private" target="Color" ver="5">
 					<body>
 						<![CDATA[unit.Global.Colors.Water]]>
@@ -681,13 +519,13 @@
 					</body>
 				</do-trace>
 			</object>
-			<object access-modifier="private" name="GateWaterOut" display-name="GateWaterOut" uuid="72e352c8-eab0-426c-b6a5-3834eee52148" base-type="Gate" base-type-id="412146cb-dc7b-472f-be3b-e66aa672ce43" ver="5">
+			<object access-modifier="private" name="GateWaterIn" display-name="GateWaterIn" uuid="72e352c8-eab0-426c-b6a5-3834eee52148" base-type="Gate" base-type-id="412146cb-dc7b-472f-be3b-e66aa672ce43" ver="5">
 				<designed target="X" value="519.5" ver="5"/>
 				<designed target="Y" value="100" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
 				<designed target="Scale" value="2" ver="5"/>
 				<init target="initApSource" ver="5" ref="ApSource"/>
-				<init target="initPath" ver="5" value="GateOut"/>
+				<init target="initPath" ver="5" value="GateIn"/>
 				<do-trace access-modifier="private" target="Color" ver="5">
 					<body>
 						<![CDATA[unit.Global.Colors.Water]]>
@@ -721,7 +559,7 @@
 			<object access-modifier="private" name="ArrowWaterIn" display-name="ArrowWaterIn" uuid="67659280-6fc5-4717-8f18-50df50baa873" base-type="Arrow" base-type-id="bd45c7e6-c41b-44ca-a8f9-0542667feb49" ver="5">
 				<designed target="X" value="868" ver="5"/>
 				<designed target="Y" value="16" ver="5"/>
-				<designed target="Rotation" value="270" ver="5"/>
+				<designed target="Rotation" value="90" ver="5"/>
 				<designed target="Scale" value="2" ver="5"/>
 				<init target="Color" ver="5" ref="unit.Global.Colors.Water"/>
 				<do-trace access-modifier="private" target="Color" ver="5">
@@ -733,7 +571,7 @@
 			<object access-modifier="private" name="ArrowWaterOut" display-name="ArrowWaterOut" uuid="7fccbfe1-49d3-43ae-a8d3-e992c27c547e" base-type="Arrow" base-type-id="bd45c7e6-c41b-44ca-a8f9-0542667feb49" ver="5">
 				<designed target="X" value="518" ver="5"/>
 				<designed target="Y" value="16" ver="5"/>
-				<designed target="Rotation" value="90" ver="5"/>
+				<designed target="Rotation" value="-90" ver="5"/>
 				<designed target="Scale" value="2" ver="5"/>
 				<init target="Color" ver="5" ref="unit.Global.Colors.Water"/>
 				<do-trace access-modifier="private" target="Color" ver="5">
@@ -743,8 +581,8 @@
 				</do-trace>
 			</object>
 			<object access-modifier="private" name="TxtWaterIn" display-name="TxtWaterIn" uuid="233636b6-b51a-4427-994e-d8d59e36c60b" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
-				<designed target="X" value="964" ver="5"/>
-				<designed target="Y" value="70" ver="5"/>
+				<designed target="X" value="980" ver="5"/>
+				<designed target="Y" value="40" ver="5"/>
 				<designed target="ZValue" value="0" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
 				<designed target="Scale" value="2" ver="5"/>
@@ -752,9 +590,9 @@
 				<designed target="Opacity" value="1" ver="5"/>
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="123.5" ver="5"/>
-				<designed target="Height" value="28.5" ver="5"/>
-				<designed target="Text" value="Вода на входе" ver="5"/>
+				<designed target="Width" value="155" ver="5"/>
+				<designed target="Height" value="28" ver="5"/>
+				<designed target="Text" value="Вода на выходе" ver="5"/>
 				<designed target="Font" value="Arial,12,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
 				<designed target="FontColor" value="0xffffffff" ver="5"/>
 				<designed target="TextAlignment" value="132" ver="5"/>
@@ -762,7 +600,7 @@
 			</object>
 			<object access-modifier="private" name="TxtWaterOut" display-name="TxtWaterOut" uuid="49255abb-10ec-4a95-a7a4-4a0f62c70e7d" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
 				<designed target="X" value="288" ver="5"/>
-				<designed target="Y" value="70" ver="5"/>
+				<designed target="Y" value="40" ver="5"/>
 				<designed target="ZValue" value="0" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
 				<designed target="Scale" value="2" ver="5"/>
@@ -772,7 +610,7 @@
 				<designed target="Tooltip" value="" ver="5"/>
 				<designed target="Width" value="141.5" ver="5"/>
 				<designed target="Height" value="24" ver="5"/>
-				<designed target="Text" value="Вода на выходе" ver="5"/>
+				<designed target="Text" value="Вода на входе" ver="5"/>
 				<designed target="Font" value="Arial,12,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
 				<designed target="FontColor" value="0xffffffff" ver="5"/>
 				<designed target="TextAlignment" value="132" ver="5"/>
@@ -781,7 +619,7 @@
 			<object access-modifier="private" name="ApSource" display-name="ApSource" uuid="0d6e9c72-67b8-43ff-9cea-8a74e00bb1a1" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
 				<designed target="Active" value="false" ver="5"/>
 				<designed target="ReAdvise" value="0" ver="5"/>
-				<init target="ParentSource" ver="5" ref="unit.Connections.ApSource"/>
+				<init target="ParentSource" ver="5" ref="unit.Connections.AppSource"/>
 				<init target="Path" ver="5" value="Water"/>
 				<designed target="Location" value="" ver="5"/>
 				<designed target="Port" value="4388" ver="5"/>
@@ -794,6 +632,11 @@
 			<object access-modifier="private" name="fEnergy" display-name="fEnergy" uuid="e2c5b678-7606-4724-906f-036182344f4c" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5" description="" cardinal="1">
 				<init target="Source" ver="5" ref="ApSource"/>
 				<init target="Path" ver="5" value="fEnergy"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnVqtChanged">
+					<body kind="om">
+						<![CDATA[AdditionInfo.rectQk.txtQkValue = String.ToString( "%.1f", me.Value);]]>
+					</body>
+				</do-on>
 			</object>
 			<object access-modifier="private" name="AdditionInfo" display-name="AdditionInfo" uuid="53f61f34-a628-4582-8bcd-af9882a74de1" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 				<designed target="X" value="595" ver="5"/>
@@ -867,11 +710,6 @@
 						<designed target="Font" value="Arial,10,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
 						<designed target="FontColor" value="4278190080" ver="5"/>
 						<designed target="TextAlignment" value="132" ver="5"/>
-						<do-trace access-modifier="private" target="Text" ver="5">
-							<body>
-								<![CDATA[FormattedValue.OutValue]]>
-							</body>
-						</do-trace>
 						<designed target="Flip" value="0" ver="5"/>
 					</object>
 					<designed target="Flip" value="0" ver="5"/>
@@ -879,23 +717,10 @@
 				<designed target="Flip" value="0" ver="5"/>
 				<designed target="RoundingRadius" value="0" ver="5"/>
 			</object>
-			<object access-modifier="private" name="FormattedValue" display-name="FormattedValue" uuid="a4c18a84-7c27-4626-89c0-0468a8666f13" base-type="OutputFormatter" base-type-id="9095fd20-4489-4cca-bd27-49ff94391a32" ver="5" description="" cardinal="1">
-				<designed target="InValue" value="" ver="5"/>
-				<init target="Format" ver="5">
-					<object access-modifier="private" uuid="f6358ae3-9aac-4d7d-946a-3654940c686c" base-type="FormatFloat" base-type-id="0b9dd5b4-9b68-4bbe-92b2-eb6fb5617d8e" ver="5">
-						<designed target="DigitsCount" value="1" ver="5"/>
-					</object>
-				</init>
-				<do-trace access-modifier="private" target="InValue" ver="5">
-					<body>
-						<![CDATA[fEnergy]]>
-					</body>
-				</do-trace>
-			</object>
 			<designed target="RoundingRadius" value="0" ver="5"/>
-			<object access-modifier="private" name="PWaterOut" display-name="PWaterOut" uuid="fd50c3a7-5793-4558-9b25-e7de3c350ae3" base-type="SensDouble" base-type-id="f0efb2b9-b2c2-4ae5-9828-4b87079c3c46" ver="5" description="" cardinal="1">
-				<designed target="X" value="368" ver="5"/>
-				<designed target="Y" value="124" ver="5"/>
+			<object access-modifier="private" name="PWaterOut_1" display-name="PWaterOut_1" uuid="fd50c3a7-5793-4558-9b25-e7de3c350ae3" base-type="SensFromSensDouble" base-type-id="6ab9fadb-a7ab-4dd8-b771-29b146fbb3b6" ver="5" description="" cardinal="1">
+				<designed target="X" value="1105" ver="5"/>
+				<designed target="Y" value="94" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
 				<designed target="Scale" value="2" ver="5"/>
 				<init target="initPath" ver="5" value="POut"/>
@@ -910,9 +735,41 @@
 					</body>
 				</do-trace>
 			</object>
-			<object access-modifier="private" name="TWaterOut" display-name="TWaterOut" uuid="5bfa41bc-36d4-49c4-995d-1d0b67a266f4" base-type="SensDouble" base-type-id="f0efb2b9-b2c2-4ae5-9828-4b87079c3c46" ver="5" description="" cardinal="1">
-				<designed target="X" value="215" ver="5"/>
-				<designed target="Y" value="124" ver="5"/>
+			<object access-modifier="private" name="PWaterOut_2" display-name="PWaterOut_2" uuid="49d41d90-c783-49a5-bdfc-1d20427084df" base-type="SensFromSensDouble" base-type-id="6ab9fadb-a7ab-4dd8-b771-29b146fbb3b6" ver="5" description="" cardinal="1">
+				<designed target="X" value="1105" ver="5"/>
+				<designed target="Y" value="131" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="2" ver="5"/>
+				<init target="initPath" ver="5" value="POut"/>
+				<init target="refProtH" ver="5" ref="unit.Alarm.Prots.PWaterOutH"/>
+				<init target="refProtL" ver="5" ref="unit.Alarm.Prots.PWaterOutL"/>
+				<init target="refWarnH" ver="5" ref="unit.Alarm.Warnings.PWaterOutH"/>
+				<init target="refWarnL" ver="5" ref="unit.Alarm.Warnings.PWaterOutL"/>
+				<init target="initApSource" ver="5" ref="ApSource"/>
+				<do-trace access-modifier="private" target="Color" ver="5">
+					<body>
+						<![CDATA[unit.Global.Colors.Water]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="TWaterOut_1" display-name="TWaterOut_1" uuid="5bfa41bc-36d4-49c4-995d-1d0b67a266f4" base-type="SensFromSensDouble" base-type-id="6ab9fadb-a7ab-4dd8-b771-29b146fbb3b6" ver="5" description="" cardinal="1">
+				<designed target="X" value="1263" ver="5"/>
+				<designed target="Y" value="94" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="2" ver="5"/>
+				<init target="initPath" ver="5" value="TOut"/>
+				<init target="refProtH" ver="5" ref="unit.Alarm.Prots.TWaterOutH"/>
+				<init target="refWarnH" ver="5" ref="unit.Alarm.Warnings.TWaterOutH"/>
+				<init target="initApSource" ver="5" ref="ApSource"/>
+				<do-trace access-modifier="private" target="Color" ver="5">
+					<body>
+						<![CDATA[unit.Global.Colors.Water]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="TWaterOut_2" display-name="TWaterOut_2" uuid="f1e45401-c078-4e22-ba7b-6ebf53aaced8" base-type="SensFromSensDouble" base-type-id="6ab9fadb-a7ab-4dd8-b771-29b146fbb3b6" ver="5" description="" cardinal="1">
+				<designed target="X" value="1263" ver="5"/>
+				<designed target="Y" value="131" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
 				<designed target="Scale" value="2" ver="5"/>
 				<init target="initPath" ver="5" value="TOut"/>
@@ -926,8 +783,8 @@
 				</do-trace>
 			</object>
 			<object access-modifier="private" name="FGasAfterGate" display-name="FGasAfterGate" uuid="21472ba4-b2b5-47ef-a335-17b322fdfebd" base-type="SensFlow" base-type-id="36b5fe82-dca7-4d19-b14e-46d688268c65" ver="5">
-				<designed target="X" value="73" ver="5"/>
-				<designed target="Y" value="124" ver="5"/>
+				<designed target="X" value="948" ver="5"/>
+				<designed target="Y" value="131" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
 				<designed target="Scale" value="2" ver="5"/>
 				<init target="initApSource" ver="5" ref="ApSource"/>
@@ -943,8 +800,8 @@
 				<init target="initPath" ver="5" value="F"/>
 			</object>
 			<object access-modifier="private" name="PWaterIn" display-name="PWaterIn" uuid="163b7255-2b25-4866-bfc2-abee0298b5f0" base-type="Sens" base-type-id="bda7de48-3eeb-48b5-8968-c64cf04eb418" ver="5">
-				<designed target="X" value="949" ver="5"/>
-				<designed target="Y" value="129" ver="5"/>
+				<designed target="X" value="245" ver="5"/>
+				<designed target="Y" value="119" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
 				<init target="initPath" ver="5" value="PIn"/>
 				<designed target="Scale" value="2" ver="5"/>
@@ -956,8 +813,8 @@
 				</do-trace>
 			</object>
 			<object access-modifier="private" name="TWaterIn" display-name="TWaterIn" uuid="3354a5d5-cbcb-4752-885e-8c1fe4e96d81" base-type="Sens" base-type-id="bda7de48-3eeb-48b5-8968-c64cf04eb418" ver="5">
-				<designed target="X" value="1085" ver="5"/>
-				<designed target="Y" value="129" ver="5"/>
+				<designed target="X" value="379" ver="5"/>
+				<designed target="Y" value="119" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
 				<init target="initPath" ver="5" value="TIn"/>
 				<designed target="Scale" value="2" ver="5"/>
@@ -1225,7 +1082,7 @@
 					</body>
 				</do-trace>
 			</object>
-			<object access-modifier="private" name="PVacSmoke" display-name="PVacSmoke" uuid="5dbca9f3-c583-45c5-9ba6-6b59fc273a89" base-type="Sens" base-type-id="bda7de48-3eeb-48b5-8968-c64cf04eb418" ver="5">
+			<object access-modifier="private" name="PVacSmoke_1" display-name="PVacSmoke_1" uuid="5dbca9f3-c583-45c5-9ba6-6b59fc273a89" base-type="SensFromSensDouble" base-type-id="6ab9fadb-a7ab-4dd8-b771-29b146fbb3b6" ver="5">
 				<designed target="X" value="70" ver="5"/>
 				<designed target="Y" value="493" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
@@ -1237,6 +1094,8 @@
 						<![CDATA[Global.Colors.Smoke]]>
 					</body>
 				</do-trace>
+				<init target="refProtH" ver="5" ref="unit.Alarm.Prots.PVacH"/>
+				<init target="refWarnH" ver="5" ref="unit.Alarm.Warnings.PVacH"/>
 			</object>
 			<object access-modifier="private" name="O2Smoke" display-name="O2Smoke" uuid="3b029eaf-6cde-46e8-9eb0-0eec4cb8f615" base-type="Sens" base-type-id="bda7de48-3eeb-48b5-8968-c64cf04eb418" ver="5">
 				<designed target="X" value="70" ver="5"/>
@@ -1298,7 +1157,7 @@
 			<object access-modifier="private" name="ApSource" display-name="ApSource" uuid="a892fe1e-5b98-4e49-82ff-5f10a6fba3a9" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
 				<designed target="Active" value="false" ver="5"/>
 				<designed target="ReAdvise" value="0" ver="5"/>
-				<init target="ParentSource" ver="5" ref="unit.Connections.ApSource"/>
+				<init target="ParentSource" ver="5" ref="unit.Connections.AppSource"/>
 				<designed target="Location" value="" ver="5"/>
 				<designed target="Port" value="4388" ver="5"/>
 				<designed target="HistoryPort" value="4950" ver="5"/>
@@ -1307,7 +1166,7 @@
 				<designed target="ClientId" value="HMI" ver="5"/>
 			</object>
 			<object access-modifier="private" name="bAnyFinal" display-name="bAnyFinal" uuid="26eb682a-07d8-4b65-aa4b-8abccbeefb6a" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
-				<init target="Source" ver="5" ref="unit.Connections.ApSource"/>
+				<init target="Source" ver="5" ref="unit.Connections.AppSource"/>
 				<init target="Path" ver="5" value="GVL.bOneBurnFinal"/>
 			</object>
 			<designed target="Flip" value="0" ver="5"/>
@@ -1332,9 +1191,24 @@
 			<object access-modifier="private" name="ColorMain" display-name="ColorMain" uuid="360462e9-72ef-4f77-b866-5c80bb1ac72f" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5" description="" cardinal="1"/>
 			<init target="ColorPen" ver="5" ref="unit.Global.Colors.SmokePen"/>
 			<init target="ColorMain" ver="5" ref="unit.Global.Colors.Smoke"/>
+			<object access-modifier="private" name="PVacSmoke_2" display-name="PVacSmoke_2" uuid="86d27a5e-ccb1-4e3c-a11f-ce576f7db0c5" base-type="SensFromSensDouble" base-type-id="6ab9fadb-a7ab-4dd8-b771-29b146fbb3b6" ver="5">
+				<designed target="X" value="70" ver="5"/>
+				<designed target="Y" value="551" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<init target="initApSource" ver="5" ref="ApSource"/>
+				<init target="initPath" ver="5" value="PVac"/>
+				<designed target="Scale" value="2" ver="5"/>
+				<do-trace access-modifier="private" target="Color" ver="5">
+					<body>
+						<![CDATA[Global.Colors.Smoke]]>
+					</body>
+				</do-trace>
+				<init target="refProtH" ver="5" ref="unit.Alarm.Prots.PVacH"/>
+				<init target="refWarnH" ver="5" ref="unit.Alarm.Warnings.PVacH"/>
+			</object>
 		</object>
 		<object access-modifier="private" name="Gas" display-name="Gas" uuid="54b7cfca-2b19-4a09-9133-f243b33c5e8a" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
-			<designed target="X" value="140" ver="5"/>
+			<designed target="X" value="-40" ver="5"/>
 			<designed target="Y" value="170" ver="5"/>
 			<designed target="ZValue" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
@@ -1354,8 +1228,8 @@
 			<designed target="ShowScrollBars" value="true" ver="5"/>
 			<designed target="MoveByMouse" value="false" ver="5"/>
 			<object access-modifier="private" name="TubeGasBeforeGates" display-name="TubeGasBeforeGates" uuid="e0e9f140-3f98-42ee-905d-3f08fbdd7a49" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
-				<designed target="X" value="1474" ver="5"/>
-				<designed target="Y" value="699" ver="5"/>
+				<designed target="X" value="80" ver="5"/>
+				<designed target="Y" value="485" ver="5"/>
 				<designed target="ZValue" value="0" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
 				<designed target="Scale" value="1" ver="5"/>
@@ -1413,7 +1287,7 @@
 				</do-trace>
 			</object>
 			<object access-modifier="private" name="TubeGasСoll" display-name="TubeGasСoll" uuid="4456876b-225b-4abb-86cb-202bab25af23" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
-				<designed target="X" value="1425" ver="5"/>
+				<designed target="X" value="1465" ver="5"/>
 				<designed target="Y" value="450" ver="5"/>
 				<designed target="ZValue" value="0" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
@@ -1422,7 +1296,7 @@
 				<designed target="Opacity" value="1" ver="5"/>
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="1404" ver="5"/>
+				<designed target="Width" value="1445" ver="5"/>
 				<designed target="Height" value="700" ver="5"/>
 				<designed target="PenColor" value="0xffffff00" ver="5"/>
 				<designed target="PenStyle" value="1" ver="5"/>
@@ -1430,35 +1304,35 @@
 				<designed target="BrushColor" value="0xff000000" ver="5"/>
 				<designed target="BrushStyle" value="1" ver="5"/>
 				<object access-modifier="private" name="Point_1" display-name="Point_1" uuid="b32d1ec8-a32f-43a8-913d-4b19b8f6fb14" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="49" ver="5"/>
-					<designed target="Y" value="200" ver="5"/>
+					<designed target="X" value="60" ver="5"/>
+					<designed target="Y" value="130" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_2" display-name="Point_2" uuid="bc2f083f-e7c1-46a0-84c2-2b2e9318ecd0" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="50" ver="5"/>
-					<designed target="Y" value="0" ver="5"/>
+					<designed target="X" value="60" ver="5"/>
+					<designed target="Y" value="305" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_3" display-name="Point_3" uuid="33f6165f-16d7-4cb9-aa25-8cd49985ad15" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
 					<designed target="X" value="-110" ver="5"/>
-					<designed target="Y" value="0" ver="5"/>
+					<designed target="Y" value="305" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_4" display-name="Point_4" uuid="5778a641-f5ba-4c9a-a965-09cb6f64dc8a" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
 					<designed target="X" value="-110" ver="5"/>
 					<designed target="Y" value="305" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_5" display-name="Point_5" uuid="4951a989-7a74-4d15-825f-5545b7917eb2" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="-1345" ver="5"/>
+					<designed target="X" value="-1355" ver="5"/>
 					<designed target="Y" value="305" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_48" display-name="Point_48" uuid="9d58f3b2-4d33-480c-9a30-00127df62232" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="-1345" ver="5"/>
+					<designed target="X" value="-1355" ver="5"/>
 					<designed target="Y" value="299" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_49" display-name="Point_49" uuid="5141c784-0e48-486e-8dbe-1269d427d022" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="-1270" ver="5"/>
+					<designed target="X" value="-1256" ver="5"/>
 					<designed target="Y" value="299" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_6" display-name="Point_6" uuid="0525f51a-8c03-411d-bd8c-1bf2d15277da" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="-1270" ver="5"/>
+					<designed target="X" value="-1256" ver="5"/>
 					<designed target="Y" value="295" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_23" display-name="Point_23" uuid="a44a7aaa-a042-4198-95b5-bfec7b0ed151" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
@@ -1470,19 +1344,19 @@
 					<designed target="Y" value="-385" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_25" display-name="Point_25" uuid="a576476b-6ac2-4aca-83e6-839f76736746" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="-1270" ver="5"/>
+					<designed target="X" value="-1256" ver="5"/>
 					<designed target="Y" value="-385" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_41" display-name="Point_41" uuid="3d092535-d4fc-4ebe-8bfa-de1dec9570c2" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="-1270" ver="5"/>
+					<designed target="X" value="-1256" ver="5"/>
 					<designed target="Y" value="-389" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_47" display-name="Point_47" uuid="6eb8a586-a36d-40fe-938e-eb494535c85b" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="-1345" ver="5"/>
+					<designed target="X" value="-1385" ver="5"/>
 					<designed target="Y" value="-389" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_42" display-name="Point_42" uuid="477ac408-07d1-41c8-b300-c15bff1b5e57" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="-1345" ver="5"/>
+					<designed target="X" value="-1385" ver="5"/>
 					<designed target="Y" value="-395" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_43" display-name="Point_43" uuid="66dcb9fb-1dde-4985-b00b-18f68299e566" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
@@ -1491,17 +1365,17 @@
 				</object>
 				<object access-modifier="private" name="Point_44" display-name="Point_44" uuid="95a430d9-8692-4681-a8a1-b5eec2354425" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
 					<designed target="X" value="-110" ver="5"/>
-					<designed target="Y" value="-10" ver="5"/>
+					<designed target="Y" value="295" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_45" display-name="Point_45" uuid="7fef08ed-2856-45ac-9ad5-e6553bfc9530" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="59" ver="5"/>
-					<designed target="Y" value="-10" ver="5"/>
+					<designed target="X" value="50" ver="5"/>
+					<designed target="Y" value="295" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_46" display-name="Point_46" uuid="750488f5-d1fa-4f2f-a620-f2886bbb7dd1" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="59" ver="5"/>
-					<designed target="Y" value="200" ver="5"/>
+					<designed target="X" value="50" ver="5"/>
+					<designed target="Y" value="130" ver="5"/>
 				</object>
-				<designed target="Flip" value="0" ver="5"/>
+				<designed target="Flip" value="1" ver="5"/>
 				<do-trace access-modifier="private" target="BrushColor" ver="5">
 					<conditional-expr>
 						<condition>
@@ -1524,7 +1398,7 @@
 				</do-trace>
 			</object>
 			<object access-modifier="private" name="TubeGasBlowTop" display-name="TubeGasBlowTop" uuid="ae79b2e8-3a21-4632-a6aa-d5d9eddd5533" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
-				<designed target="X" value="43" ver="5"/>
+				<designed target="X" value="1580" ver="5"/>
 				<designed target="Y" value="61" ver="5"/>
 				<designed target="ZValue" value="0" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
@@ -1572,7 +1446,7 @@
 					<designed target="X" value="0" ver="5"/>
 					<designed target="Y" value="-6" ver="5"/>
 				</object>
-				<designed target="Flip" value="0" ver="5"/>
+				<designed target="Flip" value="1" ver="5"/>
 				<do-trace access-modifier="private" target="BrushColor" ver="5">
 					<conditional-expr>
 						<condition>
@@ -1599,7 +1473,7 @@
 				</do-trace>
 			</object>
 			<object access-modifier="private" name="TubeGasBlowBot" display-name="TubeGasBlowBot" uuid="637bd4a4-c97b-40a9-a0a3-16932d1a4638" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
-				<designed target="X" value="43" ver="5"/>
+				<designed target="X" value="1554.942908117752" ver="5"/>
 				<designed target="Y" value="755" ver="5"/>
 				<designed target="ZValue" value="0" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
@@ -1647,7 +1521,7 @@
 					<designed target="X" value="0" ver="5"/>
 					<designed target="Y" value="-6" ver="5"/>
 				</object>
-				<designed target="Flip" value="0" ver="5"/>
+				<designed target="Flip" value="1" ver="5"/>
 				<do-trace access-modifier="private" target="BrushColor" ver="5">
 					<conditional-expr>
 						<condition>
@@ -1674,7 +1548,7 @@
 				</do-trace>
 			</object>
 			<object access-modifier="private" name="TubeGasOutTop" display-name="TubeGasOutTop" uuid="8fb4e1ba-6855-45c5-b6df-1ac90cd1c3de" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
-				<designed target="X" value="63" ver="5"/>
+				<designed target="X" value="311" ver="5"/>
 				<designed target="Y" value="35" ver="5"/>
 				<designed target="ZValue" value="0" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
@@ -1683,7 +1557,7 @@
 				<designed target="Opacity" value="1" ver="5"/>
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="1121" ver="5"/>
+				<designed target="Width" value="1270" ver="5"/>
 				<designed target="Height" value="35" ver="5"/>
 				<designed target="PenColor" value="0xffffff00" ver="5"/>
 				<designed target="PenStyle" value="1" ver="5"/>
@@ -1691,38 +1565,38 @@
 				<designed target="BrushColor" value="0xff000000" ver="5"/>
 				<designed target="BrushStyle" value="1" ver="5"/>
 				<object access-modifier="private" name="Point_1" display-name="Point_1" uuid="363b35e4-0769-4b25-b8d8-2d6a96771c21" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="1098" ver="5"/>
+					<designed target="X" value="1243.942908117752" ver="5"/>
 					<designed target="Y" value="0" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_2" display-name="Point_2" uuid="8929083b-7948-4202-a135-dcea3a434a6c" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="-15" ver="5"/>
+					<designed target="X" value="-16.993755575379133" ver="5"/>
 					<designed target="Y" value="0" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_8" display-name="Point_8" uuid="1c63f774-9403-4872-a222-0cb148a818b8" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="-15" ver="5"/>
+					<designed target="X" value="-16.993755575379133" ver="5"/>
 					<designed target="Y" value="-15" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_3" display-name="Point_3" uuid="c8cf66ea-7753-4b67-93b3-deed03079308" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="-23" ver="5"/>
+					<designed target="X" value="-26.057091882247999" ver="5"/>
 					<designed target="Y" value="-20" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_4" display-name="Point_4" uuid="ea08d346-c86e-4873-825c-751cd0e1fea3" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="-23" ver="5"/>
+					<designed target="X" value="-26.057091882247999" ver="5"/>
 					<designed target="Y" value="-35" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_5" display-name="Point_5" uuid="5e3ebd91-9a44-4b54-ac3e-03f15fe0a7bd" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="-9" ver="5"/>
+					<designed target="X" value="-10.196253345227476" ver="5"/>
 					<designed target="Y" value="-25" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_6" display-name="Point_6" uuid="5820171e-1e94-4f89-8e24-b463331ac7f2" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="-9" ver="5"/>
+					<designed target="X" value="-10.196253345227476" ver="5"/>
 					<designed target="Y" value="-6" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_7" display-name="Point_7" uuid="b67ad1a3-9b84-4f9a-baa2-584ebd9ea19c" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="1098" ver="5"/>
+					<designed target="X" value="1243.942908117752" ver="5"/>
 					<designed target="Y" value="-6" ver="5"/>
 				</object>
-				<designed target="Flip" value="0" ver="5"/>
+				<designed target="Flip" value="1" ver="5"/>
 				<do-trace access-modifier="private" target="BrushColor" ver="5">
 					<conditional-expr>
 						<condition>
@@ -1739,7 +1613,7 @@
 					</default-expr>
 				</do-trace>
 				<object access-modifier="private" name="Point_9" display-name="Point_9" uuid="58377d30-4ada-452b-8fdf-27b5ec1e5da4" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="1098" ver="5"/>
+					<designed target="X" value="1243.942908117752" ver="5"/>
 					<designed target="Y" value="0" ver="5"/>
 				</object>
 				<do-trace access-modifier="private" target="PenColor" ver="5">
@@ -1749,7 +1623,7 @@
 				</do-trace>
 			</object>
 			<object access-modifier="private" name="TubeGasOutBot" display-name="TubeGasOutBot" uuid="56f11209-c96d-4f31-90b6-648975530ca1" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
-				<designed target="X" value="23" ver="5"/>
+				<designed target="X" value="308" ver="5"/>
 				<designed target="Y" value="781" ver="5"/>
 				<designed target="ZValue" value="0" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
@@ -1758,7 +1632,7 @@
 				<designed target="Opacity" value="1" ver="5"/>
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="1161" ver="5"/>
+				<designed target="Width" value="1297" ver="5"/>
 				<designed target="Height" value="35" ver="5"/>
 				<designed target="PenColor" value="0xffffff00" ver="5"/>
 				<designed target="PenStyle" value="1" ver="5"/>
@@ -1766,7 +1640,7 @@
 				<designed target="BrushColor" value="0xff000000" ver="5"/>
 				<designed target="BrushStyle" value="1" ver="5"/>
 				<object access-modifier="private" name="Point_1" display-name="Point_1" uuid="365a91d7-5065-4a6e-89a5-ebdd62cb27da" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="1138" ver="5"/>
+					<designed target="X" value="1274" ver="5"/>
 					<designed target="Y" value="0" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_2" display-name="Point_2" uuid="bb16292d-5c6b-4926-9430-47c3da555ada" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
@@ -1794,10 +1668,10 @@
 					<designed target="Y" value="-6" ver="5"/>
 				</object>
 				<object access-modifier="private" name="Point_7" display-name="Point_7" uuid="dfdf3d99-cf55-4cd7-9adc-bf27b4c7abf8" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="1138" ver="5"/>
+					<designed target="X" value="1274" ver="5"/>
 					<designed target="Y" value="-6" ver="5"/>
 				</object>
-				<designed target="Flip" value="0" ver="5"/>
+				<designed target="Flip" value="1" ver="5"/>
 				<do-trace access-modifier="private" target="BrushColor" ver="5">
 					<conditional-expr>
 						<condition>
@@ -1814,7 +1688,7 @@
 					</default-expr>
 				</do-trace>
 				<object access-modifier="private" name="Point_9" display-name="Point_9" uuid="44c7a2fd-ce57-4a78-9352-23de8d49f258" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="1138" ver="5"/>
+					<designed target="X" value="1274" ver="5"/>
 					<designed target="Y" value="0" ver="5"/>
 				</object>
 				<do-trace access-modifier="private" target="PenColor" ver="5">
@@ -1824,8 +1698,8 @@
 				</do-trace>
 			</object>
 			<object access-modifier="private" name="Gate" display-name="Gate" uuid="6669983e-751b-4b80-b54e-546511e7cc9e" base-type="Gate" base-type-id="412146cb-dc7b-472f-be3b-e66aa672ce43" ver="5">
-				<designed target="X" value="1473" ver="5"/>
-				<designed target="Y" value="655" ver="5"/>
+				<designed target="X" value="79" ver="5"/>
+				<designed target="Y" value="535" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
 				<designed target="Scale" value="2" ver="5"/>
 				<init target="initApSource" ver="5" ref="ApSource"/>
@@ -1842,7 +1716,7 @@
 				</do-trace>
 			</object>
 			<object access-modifier="private" name="ValveBlow24" display-name="ValveBlow24" uuid="dd31d8e9-001b-4b21-85f9-25628b005da6" base-type="Valve" base-type-id="98113973-9854-4dd1-9221-2cfccad5aaa0" ver="5">
-				<designed target="X" value="60" ver="5"/>
+				<designed target="X" value="1535" ver="5"/>
 				<designed target="Y" value="48" ver="5"/>
 				<designed target="Rotation" value="90" ver="5"/>
 				<designed target="Flip" value="0" ver="5"/>
@@ -1860,7 +1734,7 @@
 				</do-trace>
 			</object>
 			<object access-modifier="private" name="ValveBlow13" display-name="ValveBlow13" uuid="4a2c587c-6bae-479d-b4af-5e2282373813" base-type="Valve" base-type-id="98113973-9854-4dd1-9221-2cfccad5aaa0" ver="5">
-				<designed target="X" value="60" ver="5"/>
+				<designed target="X" value="1510" ver="5"/>
 				<designed target="Y" value="742" ver="5"/>
 				<designed target="Rotation" value="90" ver="5"/>
 				<designed target="Flip" value="0" ver="5"/>
@@ -1878,8 +1752,8 @@
 				</do-trace>
 			</object>
 			<object access-modifier="private" name="TGasAfterGate" display-name="TGasAfterGate" uuid="64df5226-f929-49b4-9c7e-d89fa650bd75" base-type="Sens" base-type-id="bda7de48-3eeb-48b5-8968-c64cf04eb418" ver="5">
-				<designed target="X" value="1362" ver="5"/>
-				<designed target="Y" value="522" ver="5"/>
+				<designed target="X" value="141" ver="5"/>
+				<designed target="Y" value="711" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
 				<init target="initPath" ver="5" value="T"/>
 				<designed target="Scale" value="2" ver="5"/>
@@ -1891,8 +1765,8 @@
 				</do-trace>
 			</object>
 			<object access-modifier="private" name="FGasAfterGate" display-name="FGasAfterGate" uuid="762d937f-f87b-41d8-a81b-847db9d78c7f" base-type="SensFlow" base-type-id="36b5fe82-dca7-4d19-b14e-46d688268c65" ver="5">
-				<designed target="X" value="1362" ver="5"/>
-				<designed target="Y" value="486" ver="5"/>
+				<designed target="X" value="141" ver="5"/>
+				<designed target="Y" value="606" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
 				<init target="initPath" ver="5" value="F"/>
 				<designed target="Scale" value="2" ver="5"/>
@@ -1906,15 +1780,15 @@
 				<init target="initPathPD" ver="5" value="PD"/>
 			</object>
 			<object access-modifier="private" name="ArrowGasIn" display-name="ArrowGasIn" uuid="48f52351-63e4-4ac2-86ab-cdc389e91151" base-type="Arrow" base-type-id="bd45c7e6-c41b-44ca-a8f9-0542667feb49" ver="5">
-				<designed target="X" value="1471" ver="5"/>
-				<designed target="Y" value="740" ver="5"/>
-				<designed target="Rotation" value="90" ver="5"/>
+				<designed target="X" value="77" ver="5"/>
+				<designed target="Y" value="460" ver="5"/>
+				<designed target="Rotation" value="-90" ver="5"/>
 				<init target="Color" ver="5" value="0xffffff00"/>
 				<designed target="Scale" value="2" ver="5"/>
 			</object>
 			<object access-modifier="private" name="TxtGas" display-name="TxtGas" uuid="576a393a-1502-4df0-9ff1-c8c769761f7e" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
-				<designed target="X" value="1402" ver="5"/>
-				<designed target="Y" value="731" ver="5"/>
+				<designed target="X" value="128" ver="5"/>
+				<designed target="Y" value="450" ver="5"/>
 				<designed target="ZValue" value="0" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
 				<designed target="Scale" value="2" ver="5"/>
@@ -1933,7 +1807,7 @@
 			<object access-modifier="private" name="ApSource" display-name="ApSource" uuid="0016c31f-4596-40bc-a9b7-a22c72c24129" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
 				<designed target="Active" value="false" ver="5"/>
 				<designed target="ReAdvise" value="0" ver="5"/>
-				<init target="ParentSource" ver="5" ref="unit.Connections.ApSource"/>
+				<init target="ParentSource" ver="5" ref="unit.Connections.AppSource"/>
 				<designed target="Location" value="" ver="5"/>
 				<designed target="Port" value="4388" ver="5"/>
 				<designed target="HistoryPort" value="4950" ver="5"/>
@@ -1971,9 +1845,9 @@
 			<object access-modifier="private" name="ColorMain" display-name="ColorMain" uuid="0f38663b-53ec-4bdc-9c67-f3d9f39a2f29" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5" description="" cardinal="1"/>
 			<init target="ColorPen" ver="5" ref="unit.Global.Colors.GasPen"/>
 			<init target="ColorMain" ver="5" ref="unit.Global.Colors.Gas"/>
-			<object access-modifier="private" name="PWaterOut" display-name="PWaterOut" uuid="ca22b761-ab40-4184-acf0-8823d76fb06a" base-type="SensDouble" base-type-id="f0efb2b9-b2c2-4ae5-9828-4b87079c3c46" ver="5" description="" cardinal="1">
-				<designed target="X" value="1361" ver="5"/>
-				<designed target="Y" value="562" ver="5"/>
+			<object access-modifier="private" name="PGas_1" display-name="PGas_1" uuid="ca22b761-ab40-4184-acf0-8823d76fb06a" base-type="SensFromSensDouble" base-type-id="6ab9fadb-a7ab-4dd8-b771-29b146fbb3b6" ver="5" description="" cardinal="1">
+				<designed target="X" value="141" ver="5"/>
+				<designed target="Y" value="641" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
 				<designed target="Scale" value="2" ver="5"/>
 				<init target="initPath" ver="5" value="P"/>
@@ -1987,6 +1861,24 @@
 				<init target="refProtL" ver="5" ref="unit.Alarm.Prots.PGasCollL"/>
 				<init target="refWarnH" ver="5" ref="unit.Alarm.Warnings.PGasCollH"/>
 				<init target="refWarnL" ver="5" ref="unit.Alarm.Warnings.PGasCollL"/>
+			</object>
+			<object access-modifier="private" name="PGas_2" display-name="PGas_2" uuid="3688bafd-c53e-4dbd-8f3b-c7e62786e3bd" base-type="SensFromSensDouble" base-type-id="6ab9fadb-a7ab-4dd8-b771-29b146fbb3b6" ver="5" description="" cardinal="1">
+				<designed target="X" value="141" ver="5"/>
+				<designed target="Y" value="676" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="2" ver="5"/>
+				<init target="initPath" ver="5" value="P"/>
+				<init target="initApSource" ver="5" ref="ApSource"/>
+				<do-trace access-modifier="private" target="Color" ver="5">
+					<body>
+						<![CDATA[unit.Global.Colors.Gas]]>
+					</body>
+				</do-trace>
+				<init target="refProtH" ver="5" ref="unit.Alarm.Prots.PGasCollH"/>
+				<init target="refProtL" ver="5" ref="unit.Alarm.Prots.PGasCollL"/>
+				<init target="refWarnH" ver="5" ref="unit.Alarm.Warnings.PGasCollH"/>
+				<init target="refWarnL" ver="5" ref="unit.Alarm.Warnings.PGasCollL"/>
+				<init target="uiSensNum" ver="5" value="2"/>
 			</object>
 		</object>
 		<object access-modifier="private" name="Group1" display-name="Group1" uuid="914950cb-ff1b-4621-bf2d-2016cace11a2" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
@@ -2042,7 +1934,7 @@
 			<object access-modifier="private" name="ApSource" display-name="ApSource" uuid="e3ad9369-36ad-4511-9680-196b481efc7e" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
 				<designed target="Active" value="false" ver="5"/>
 				<designed target="ReAdvise" value="0" ver="5"/>
-				<init target="ParentSource" ver="5" ref="unit.Connections.ApSource"/>
+				<init target="ParentSource" ver="5" ref="unit.Connections.AppSource"/>
 				<do-trace access-modifier="private" target="Path" ver="5">
 					<body>
 						<![CDATA["Group"+Str.ToString(Group)]]>
@@ -2111,7 +2003,7 @@
 			<object access-modifier="private" name="ApSource" display-name="ApSource" uuid="85a0bb47-367e-436c-911a-6f143280c068" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
 				<designed target="Active" value="false" ver="5"/>
 				<designed target="ReAdvise" value="0" ver="5"/>
-				<init target="ParentSource" ver="5" ref="unit.Connections.ApSource"/>
+				<init target="ParentSource" ver="5" ref="unit.Connections.AppSource"/>
 				<do-trace access-modifier="private" target="Path" ver="5">
 					<body>
 						<![CDATA["Group"+Str.ToString(Group)]]>
@@ -2180,7 +2072,7 @@
 			<object access-modifier="private" name="ApSource" display-name="ApSource" uuid="29d2f84a-7916-4cae-ae01-8e42f40e5e49" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
 				<designed target="Active" value="true" ver="5"/>
 				<designed target="ReAdvise" value="0" ver="5"/>
-				<init target="ParentSource" ver="5" ref="unit.Connections.ApSource"/>
+				<init target="ParentSource" ver="5" ref="unit.Connections.AppSource"/>
 				<do-trace access-modifier="private" target="Path" ver="5">
 					<body>
 						<![CDATA["Group"+Str.ToString(Group)]]>
@@ -2249,7 +2141,7 @@
 			<object access-modifier="private" name="ApSource" display-name="ApSource" uuid="9d4dd6ae-00f9-4605-91a4-df6c51e37bf2" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
 				<designed target="Active" value="false" ver="5"/>
 				<designed target="ReAdvise" value="0" ver="5"/>
-				<init target="ParentSource" ver="5" ref="unit.Connections.ApSource"/>
+				<init target="ParentSource" ver="5" ref="unit.Connections.AppSource"/>
 				<do-trace access-modifier="private" target="Path" ver="5">
 					<body>
 						<![CDATA["Group"+Str.ToString(Group)]]>
@@ -2266,13 +2158,13 @@
 			<designed target="RoundingRadius" value="0" ver="5"/>
 		</object>
 		<object access-modifier="private" name="BoilerWork" display-name="BoilerWork" uuid="9919c560-1e0f-4c9e-a99b-40e575606597" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
-			<init target="Source" ver="5" ref="unit.Connections.ApSource"/>
+			<init target="Source" ver="5" ref="unit.Connections.AppSource"/>
 			<init target="Path" ver="5" value="bBoilerStarted"/>
 		</object>
 		<designed target="Flip" value="0" ver="5"/>
 		<object access-modifier="private" name="BurnSequence" display-name="BurnSequence" uuid="523743ce-0196-4ae6-9c98-84a05a0d770a" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
-			<designed target="X" value="19" ver="5"/>
-			<designed target="Y" value="359" ver="5"/>
+			<designed target="X" value="-1" ver="5"/>
+			<designed target="Y" value="35" ver="5"/>
 			<designed target="ZValue" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Scale" value="1" ver="5"/>
@@ -2300,7 +2192,7 @@
 				<designed target="ReAdvise" value="0" ver="5"/>
 				<designed target="ClientDisplayName" value="HMI" ver="5"/>
 				<designed target="ClientId" value="HMI" ver="5"/>
-				<init target="ParentSource" ver="5" ref="unit.Connections.ApSource"/>
+				<init target="ParentSource" ver="5" ref="unit.Connections.AppSource"/>
 			</object>
 			<object access-modifier="private" name="IgnFinalSource" display-name="IgnFinalSource" uuid="8eab1007-bf8c-43a5-8bce-36215e048985" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
 				<designed target="Location" value="" ver="5"/>
@@ -2311,7 +2203,7 @@
 				<designed target="ReAdvise" value="0" ver="5"/>
 				<designed target="ClientDisplayName" value="HMI" ver="5"/>
 				<designed target="ClientId" value="HMI" ver="5"/>
-				<init target="ParentSource" ver="5" ref="unit.Connections.ApSource"/>
+				<init target="ParentSource" ver="5" ref="unit.Connections.AppSource"/>
 			</object>
 			<object access-modifier="private" name="ariIgnFinal" display-name="ariIgnFinal" uuid="c3096a45-731f-405f-97f7-ad68d9e37c61" base-type="ApItemInt2" base-type-id="46c29e2c-cf0c-4e96-ad30-6d7ae4e2ae8c" ver="5" description="" cardinal="16">
 				<init target="Source" ver="5" ref="IgnFinalSource"/>
@@ -2320,6 +2212,12 @@
 						<![CDATA["[" + String.ToString(Index+1) + "]"]]>
 					</expr>
 				</init>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnValueChanged">
+					<body kind="om">
+						<![CDATA[rectFinalNumber[me.Index].Visible = me.Value > 0;
+rectFinalNumber[me.Index].txtFinalNumber = me.ValueAsString;]]>
+					</body>
+				</do-on>
 			</object>
 			<object access-modifier="private" name="ariIgnQueue" display-name="ariIgnQueue" uuid="c392ba71-6ea4-45ea-ba9b-8072f5e5db05" base-type="ApItemInt2" base-type-id="46c29e2c-cf0c-4e96-ad30-6d7ae4e2ae8c" ver="5" description="" cardinal="16">
 				<init target="Source" ver="5" ref="IgnQueueSource"/>
@@ -2328,96 +2226,16 @@
 						<![CDATA["[" + String.ToString(Index+1) + "]"]]>
 					</expr>
 				</init>
-			</object>
-			<object access-modifier="private" name="rectFinalNumberHeader" display-name="rectFinalNumberHeader" uuid="91087ab0-f7cc-4b22-87de-032086d77a8b" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
-				<designed target="X" value="0" ver="5"/>
-				<designed target="Y" value="0" ver="5"/>
-				<designed target="ZValue" value="0" ver="5"/>
-				<designed target="Rotation" value="0" ver="5"/>
-				<designed target="Scale" value="1" ver="5"/>
-				<designed target="Flip" value="0" ver="5"/>
-				<designed target="Visible" value="false" ver="5"/>
-				<designed target="Opacity" value="1" ver="5"/>
-				<designed target="Enabled" value="true" ver="5"/>
-				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="35" ver="5"/>
-				<designed target="Height" value="35" ver="5"/>
-				<designed target="RoundingRadius" value="0" ver="5"/>
-				<designed target="PenColor" value="4278190080" ver="5"/>
-				<designed target="PenStyle" value="1" ver="5"/>
-				<designed target="PenWidth" value="1" ver="5"/>
-				<designed target="BrushColor" value="0xffd6d6d6" ver="5"/>
-				<designed target="BrushStyle" value="1" ver="5"/>
-				<object access-modifier="private" name="txtFinalNumber" display-name="txtFinalNumber" uuid="b25d177a-d08b-4f98-b622-afbcd7d49efb" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
-					<designed target="X" value="0" ver="5"/>
-					<designed target="Y" value="0" ver="5"/>
-					<designed target="ZValue" value="0" ver="5"/>
-					<designed target="Rotation" value="0" ver="5"/>
-					<designed target="Scale" value="1" ver="5"/>
-					<designed target="Flip" value="0" ver="5"/>
-					<designed target="Visible" value="true" ver="5"/>
-					<designed target="Opacity" value="1" ver="5"/>
-					<designed target="Enabled" value="true" ver="5"/>
-					<designed target="Tooltip" value="" ver="5"/>
-					<designed target="Width" value="35" ver="5"/>
-					<designed target="Height" value="35" ver="5"/>
-					<designed target="Text" value="№" ver="5"/>
-					<designed target="Font" value="MS Shell Dlg 2,20,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
-					<designed target="FontColor" value="4278190080" ver="5"/>
-					<designed target="TextAlignment" value="132" ver="5"/>
-				</object>
-				<do-trace access-modifier="private" target="Visible" ver="5">
-					<body>
-						<![CDATA[ariIgnFinal[0] > 0]]>
+				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnValueChanged">
+					<body kind="om">
+						<![CDATA[rectQueueNumber[me.Index].Visible = me.Value > 0;
+rectQueueNumber[me.Index].txtFinalNumber = me.ValueAsString;]]>
 					</body>
-				</do-trace>
-			</object>
-			<object access-modifier="private" name="rectQueueNumberHeader" display-name="rectQueueNumberHeader" uuid="ad94ccc4-6bb4-46f5-b6f0-f3a229f841d0" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
-				<designed target="X" value="50" ver="5"/>
-				<designed target="Y" value="0" ver="5"/>
-				<designed target="ZValue" value="0" ver="5"/>
-				<designed target="Rotation" value="0" ver="5"/>
-				<designed target="Scale" value="1" ver="5"/>
-				<designed target="Flip" value="0" ver="5"/>
-				<designed target="Visible" value="false" ver="5"/>
-				<designed target="Opacity" value="1" ver="5"/>
-				<designed target="Enabled" value="true" ver="5"/>
-				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="35" ver="5"/>
-				<designed target="Height" value="35" ver="5"/>
-				<designed target="RoundingRadius" value="0" ver="5"/>
-				<designed target="PenColor" value="4278190080" ver="5"/>
-				<designed target="PenStyle" value="1" ver="5"/>
-				<designed target="PenWidth" value="1" ver="5"/>
-				<designed target="BrushColor" value="0xffd6d6d6" ver="5"/>
-				<designed target="BrushStyle" value="1" ver="5"/>
-				<object access-modifier="private" name="txtFinalNumber" display-name="txtFinalNumber" uuid="5ef9a186-0305-4bd1-9abc-70b25d085bdc" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
-					<designed target="X" value="0" ver="5"/>
-					<designed target="Y" value="0" ver="5"/>
-					<designed target="ZValue" value="0" ver="5"/>
-					<designed target="Rotation" value="0" ver="5"/>
-					<designed target="Scale" value="1" ver="5"/>
-					<designed target="Flip" value="0" ver="5"/>
-					<designed target="Visible" value="true" ver="5"/>
-					<designed target="Opacity" value="1" ver="5"/>
-					<designed target="Enabled" value="true" ver="5"/>
-					<designed target="Tooltip" value="" ver="5"/>
-					<designed target="Width" value="35" ver="5"/>
-					<designed target="Height" value="35" ver="5"/>
-					<designed target="Text" value="№" ver="5"/>
-					<designed target="Font" value="MS Shell Dlg 2,20,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
-					<designed target="FontColor" value="4278190080" ver="5"/>
-					<designed target="TextAlignment" value="132" ver="5"/>
-				</object>
-				<do-trace access-modifier="private" target="Visible" ver="5">
-					<body>
-						<![CDATA[ariIgnQueue[0] > 0]]>
-					</body>
-				</do-trace>
+				</do-on>
 			</object>
 			<object access-modifier="private" name="rectFinalNumber" display-name="rectFinalNumber" uuid="8d6c1a74-f081-40dc-b2ea-fe9ee76c8d64" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="16">
 				<designed target="X" value="0" ver="5"/>
-				<designed target="Y" value="35" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
 				<designed target="ZValue" value="0" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
 				<designed target="Scale" value="1" ver="5"/>
@@ -2451,26 +2269,11 @@
 					<designed target="Font" value="MS Shell Dlg 2,20,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
 					<designed target="FontColor" value="4278190080" ver="5"/>
 					<designed target="TextAlignment" value="132" ver="5"/>
-					<do-trace access-modifier="private" target="Text" ver="5">
-						<body>
-							<![CDATA[String.ToString(ariIgnFinal[Index])]]>
-						</body>
-					</do-trace>
 				</object>
-				<do-trace access-modifier="private" target="Y" ver="5">
-					<body>
-						<![CDATA[Index*Height*Variant.ToDouble(unit.Global.AuthOK, 1)]]>
-					</body>
-				</do-trace>
-				<do-trace access-modifier="private" target="Visible" ver="5">
-					<body>
-						<![CDATA[ariIgnFinal[me.Index] > 0]]>
-					</body>
-				</do-trace>
 			</object>
 			<object access-modifier="private" name="rectQueueNumber" display-name="rectQueueNumber" uuid="6a1c5618-48ec-4b34-b3fb-273d080785d9" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="16">
 				<designed target="X" value="50" ver="5"/>
-				<designed target="Y" value="35" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
 				<designed target="ZValue" value="0" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
 				<designed target="Scale" value="1" ver="5"/>
@@ -2504,24 +2307,20 @@
 					<designed target="Font" value="MS Shell Dlg 2,20,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
 					<designed target="FontColor" value="4278190080" ver="5"/>
 					<designed target="TextAlignment" value="132" ver="5"/>
-					<do-trace access-modifier="private" target="Text" ver="5">
-						<body>
-							<![CDATA[String.ToString(ariIgnQueue[parent.Index])]]>
-						</body>
-					</do-trace>
 				</object>
-				<do-trace access-modifier="private" target="Y" ver="5">
-					<body>
-						<![CDATA[Index*Height*Variant.ToDouble(unit.Global.AuthOK, 1)]]>
-					</body>
-				</do-trace>
-				<do-trace access-modifier="private" target="Visible" ver="5">
-					<body>
-						<![CDATA[ariIgnQueue[me.Index] > 0]]>
-					</body>
-				</do-trace>
 			</object>
 			<designed target="RoundingRadius" value="0" ver="5"/>
+			<object access-modifier="private" name="Initializer_1" display-name="Initializer_1" uuid="b92ef024-9f6d-49b5-8d38-624eecd87020" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="5" description="" cardinal="1">
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Initialized">
+					<body kind="om">
+						<![CDATA[for (i : int1 = 1; i<17; i+=1)
+{
+	rectQueueNumber[i-1].Y =i*rectQueueNumber.Height;
+	rectFinalNumber[i-1].Y =i*rectFinalNumber.Height;
+}]]>
+					</body>
+				</do-on>
+			</object>
 		</object>
 		<designed target="RoundingRadius" value="0" ver="5"/>
 	</object>

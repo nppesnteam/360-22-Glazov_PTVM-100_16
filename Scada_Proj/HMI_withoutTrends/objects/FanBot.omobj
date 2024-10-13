@@ -146,12 +146,12 @@
 						<![CDATA[bOn]]>
 					</condition>
 					<expr>
-						<![CDATA[0xff00ff00]]>
+						<![CDATA[0xffff0000]]>
 					</expr>
 				</conditional-expr>
 				<default-expr>
 					<expr>
-						<![CDATA[0xffb5adad]]>
+						<![CDATA[0xff00ff00]]>
 					</expr>
 				</default-expr>
 			</do-trace>
@@ -162,7 +162,7 @@
 					<![CDATA[bErrorCantCtrl]]>
 				</condition>
 				<expr>
-					<![CDATA[0xffff0000]]>
+					<![CDATA[0xffffffff]]>
 				</expr>
 			</conditional-expr>
 			<conditional-expr>
@@ -170,12 +170,72 @@
 					<![CDATA[bTurnedOn]]>
 				</condition>
 				<expr>
+					<![CDATA[0xffff0000]]>
+				</expr>
+			</conditional-expr>
+			<default-expr>
+				<expr>
+					<![CDATA[0xff00ff00]]>
+				</expr>
+			</default-expr>
+		</do-trace>
+	</object>
+	<do-trace access-modifier="private" target="NameExtended" ver="5">
+		<conditional-expr>
+			<condition>
+				<![CDATA[BurnNumber != "0"]]>
+			</condition>
+			<expr>
+				<![CDATA[NAME + " " + BurnNumber]]>
+			</expr>
+		</conditional-expr>
+		<default-expr>
+			<expr>
+				<![CDATA[NAME]]>
+			</expr>
+		</default-expr>
+	</do-trace>
+	<object access-modifier="private" name="Remote" display-name="Remote" uuid="6b5b1d03-1c07-4c45-b1c5-d481d3a38732" base-type="Ellipse" base-type-id="7f9e9b77-5d97-45c4-89c1-0f67adb636cd" ver="5" description="" cardinal="1">
+		<designed target="X" value="19" ver="5"/>
+		<designed target="Y" value="-1" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="5" ver="5"/>
+		<designed target="Height" value="5" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="0.5" ver="5"/>
+		<designed target="BrushColor" value="0xffffffff" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<designed target="PieAngle" value="360" ver="5"/>
+		<designed target="PieAngleStart" value="360" ver="5"/>
+		<designed target="HoleSize" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="BrushColor" ver="5">
+			<conditional-expr>
+				<condition>
+					<![CDATA[bRemote]]>
+				</condition>
+				<expr>
+					<![CDATA[0xffff0000]]>
+				</expr>
+			</conditional-expr>
+			<conditional-expr>
+				<condition>
+					<![CDATA[!bRemote]]>
+				</condition>
+				<expr>
 					<![CDATA[0xff00ff00]]>
 				</expr>
 			</conditional-expr>
 			<default-expr>
 				<expr>
-					<![CDATA[0xffb5adad]]>
+					<![CDATA[0xffffffff]]>
 				</expr>
 			</default-expr>
 		</do-trace>

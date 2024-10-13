@@ -131,6 +131,30 @@
 				</conditional-expr>
 				<conditional-expr>
 					<condition>
+						<![CDATA[!refData.bRemote]]>
+					</condition>
+					<expr>
+						<![CDATA["Местный режим"]]>
+					</expr>
+				</conditional-expr>
+				<conditional-expr>
+					<condition>
+						<![CDATA[refData.bOn && !refData.bTurnedOn]]>
+					</condition>
+					<expr>
+						<![CDATA["Включается"]]>
+					</expr>
+				</conditional-expr>
+				<conditional-expr>
+					<condition>
+						<![CDATA[!refData.bOn && !refData.bTurnedOff]]>
+					</condition>
+					<expr>
+						<![CDATA["Отключается"]]>
+					</expr>
+				</conditional-expr>
+				<conditional-expr>
+					<condition>
 						<![CDATA[refData.bTurnedOn]]>
 					</condition>
 					<expr>
@@ -147,7 +171,7 @@
 				</conditional-expr>
 				<default-expr>
 					<expr>
-						<![CDATA["Состояние"]]>
+						<![CDATA["Неопределенное состояние"]]>
 					</expr>
 				</default-expr>
 			</do-trace>
@@ -199,17 +223,17 @@
 		<designed target="Flip" value="0" ver="5"/>
 		<do-trace access-modifier="private" target="Enabled" ver="5">
 			<body>
-				<![CDATA[refData.bBlockOff]]>
+				<![CDATA[!refData.bBlockOff]]>
 			</body>
 		</do-trace>
-		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="ButtonPressed">
-			<body kind="om">
-				<![CDATA[refData.bOffManual = checked;]]>
-			</body>
-		</do-on>
 		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="ButtonPressed">
 			<body kind="om">
 				<![CDATA[unit.Global.ShowMSG("Нажатие на кнопку \""+me.Text+"\" объекта \""+refData.NAME+"\".", 2);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="ButtonPressed">
+			<body kind="om">
+				<![CDATA[refData.Off.Invoke();]]>
 			</body>
 		</do-on>
 	</object>
@@ -257,47 +281,22 @@
 		<designed target="Flip" value="0" ver="5"/>
 		<do-trace access-modifier="private" target="Enabled" ver="5">
 			<body>
-				<![CDATA[refData.bBlockOn]]>
+				<![CDATA[!refData.bBlockOn]]>
 			</body>
 		</do-trace>
-		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="ButtonPressed">
-			<body kind="om">
-				<![CDATA[refData.bOnManual = checked;]]>
-			</body>
-		</do-on>
 		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="ButtonPressed">
 			<body kind="om">
 				<![CDATA[unit.Global.ShowMSG("Нажатие на кнопку \""+me.Text+"\" объекта \""+refData.NAME+"\".", 2);]]>
 			</body>
 		</do-on>
-	</object>
-	<object access-modifier="private" name="indicClose" display-name="indicClose" uuid="fa76f9a0-0b0e-4ba8-bc55-20158ac963b2" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
-		<designed target="X" value="30" ver="5"/>
-		<designed target="Y" value="90" ver="5"/>
-		<designed target="ZValue" value="0" ver="5"/>
-		<designed target="Rotation" value="0" ver="5"/>
-		<designed target="Scale" value="1" ver="5"/>
-		<designed target="Visible" value="true" ver="5"/>
-		<designed target="Opacity" value="1" ver="5"/>
-		<designed target="Enabled" value="true" ver="5"/>
-		<designed target="Tooltip" value="" ver="5"/>
-		<designed target="Width" value="65" ver="5"/>
-		<designed target="Height" value="5" ver="5"/>
-		<designed target="RoundingRadius" value="0" ver="5"/>
-		<designed target="PenColor" value="4278190080" ver="5"/>
-		<designed target="PenStyle" value="1" ver="5"/>
-		<designed target="PenWidth" value="0.5" ver="5"/>
-		<designed target="BrushColor" value="0xff00ff00" ver="5"/>
-		<designed target="BrushStyle" value="0" ver="5"/>
-		<designed target="Flip" value="0" ver="5"/>
-		<do-trace access-modifier="private" target="BrushStyle" ver="5">
-			<body>
-				<![CDATA[refData.bTurnedOff]]>
+		<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="ButtonPressed">
+			<body kind="om">
+				<![CDATA[refData.On.Invoke();]]>
 			</body>
-		</do-trace>
+		</do-on>
 	</object>
 	<object access-modifier="private" name="indicOpen" display-name="indicOpen" uuid="45dc282f-0e30-4a89-b867-ad79159f54e5" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
-		<designed target="X" value="138" ver="5"/>
+		<designed target="X" value="82.5" ver="5"/>
 		<designed target="Y" value="90" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
@@ -312,13 +311,31 @@
 		<designed target="PenColor" value="4278190080" ver="5"/>
 		<designed target="PenStyle" value="1" ver="5"/>
 		<designed target="PenWidth" value="0.5" ver="5"/>
-		<designed target="BrushColor" value="0xff00ff00" ver="5"/>
-		<designed target="BrushStyle" value="0" ver="5"/>
+		<designed target="BrushColor" value="0xffffffff" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
 		<designed target="Flip" value="0" ver="5"/>
-		<do-trace access-modifier="private" target="BrushStyle" ver="5">
-			<body>
-				<![CDATA[refData.bTurnedOn]]>
-			</body>
+		<do-trace access-modifier="private" target="BrushColor" ver="5">
+			<conditional-expr>
+				<condition>
+					<![CDATA[refData.bOn]]>
+				</condition>
+				<expr>
+					<![CDATA[0xffff0000]]>
+				</expr>
+			</conditional-expr>
+			<conditional-expr>
+				<condition>
+					<![CDATA[!refData.bOn]]>
+				</condition>
+				<expr>
+					<![CDATA[0xff00ff00]]>
+				</expr>
+			</conditional-expr>
+			<default-expr>
+				<expr>
+					<![CDATA[0xffffffff]]>
+				</expr>
+			</default-expr>
 		</do-trace>
 	</object>
 	<do-trace access-modifier="private" target="WindowCaption" ver="5">

@@ -122,7 +122,7 @@
 			<do-trace access-modifier="private" target="Text" ver="5">
 				<conditional-expr>
 					<condition>
-						<![CDATA[refData.bErrorEndCaps==true]]>
+						<![CDATA[refData.bErrorEndCaps]]>
 					</condition>
 					<expr>
 						<![CDATA["Ошибка КВ"]]>
@@ -130,7 +130,7 @@
 				</conditional-expr>
 				<conditional-expr>
 					<condition>
-						<![CDATA[refData.bErrorCantCtrl == true]]>
+						<![CDATA[refData.bErrorCantCtrl]]>
 					</condition>
 					<expr>
 						<![CDATA["Не сработала команда упр."]]>
@@ -138,23 +138,7 @@
 				</conditional-expr>
 				<conditional-expr>
 					<condition>
-						<![CDATA[refData.bH==true]]>
-					</condition>
-					<expr>
-						<![CDATA["Открыт"]]>
-					</expr>
-				</conditional-expr>
-				<conditional-expr>
-					<condition>
-						<![CDATA[refData.bL==true]]>
-					</condition>
-					<expr>
-						<![CDATA["Закрыт"]]>
-					</expr>
-				</conditional-expr>
-				<conditional-expr>
-					<condition>
-						<![CDATA[refData.bOpening==true]]>
+						<![CDATA[refData.bOpening]]>
 					</condition>
 					<expr>
 						<![CDATA["Открывается"]]>
@@ -162,7 +146,7 @@
 				</conditional-expr>
 				<conditional-expr>
 					<condition>
-						<![CDATA[refData.bClosing==true]]>
+						<![CDATA[refData.bClosing]]>
 					</condition>
 					<expr>
 						<![CDATA["Закрывается"]]>
@@ -170,15 +154,39 @@
 				</conditional-expr>
 				<conditional-expr>
 					<condition>
-						<![CDATA[refData.bM==true]]>
+						<![CDATA[refData.bMoving]]>
+					</condition>
+					<expr>
+						<![CDATA["Дожатие"]]>
+					</expr>
+				</conditional-expr>
+				<conditional-expr>
+					<condition>
+						<![CDATA[refData.bM]]>
 					</condition>
 					<expr>
 						<![CDATA["Среднее положение"]]>
 					</expr>
 				</conditional-expr>
+				<conditional-expr>
+					<condition>
+						<![CDATA[refData.bH]]>
+					</condition>
+					<expr>
+						<![CDATA["Открыт"]]>
+					</expr>
+				</conditional-expr>
+				<conditional-expr>
+					<condition>
+						<![CDATA[refData.bL]]>
+					</condition>
+					<expr>
+						<![CDATA["Закрыт"]]>
+					</expr>
+				</conditional-expr>
 				<default-expr>
 					<expr>
-						<![CDATA["Состояние"]]>
+						<![CDATA["Неопределенное состояние"]]>
 					</expr>
 				</default-expr>
 			</do-trace>

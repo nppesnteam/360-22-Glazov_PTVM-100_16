@@ -67,6 +67,7 @@
 						<![CDATA[BurnNumber]]>
 					</body>
 				</do-trace>
+				<designed target="Flip" value="0" ver="5"/>
 			</object>
 			<do-trace access-modifier="private" target="BrushColor" ver="5">
 				<conditional-expr>
@@ -74,12 +75,12 @@
 						<![CDATA[bFireIgn == true]]>
 					</condition>
 					<expr>
-						<![CDATA[0xffffff00]]>
+						<![CDATA[0xffff0000]]>
 					</expr>
 				</conditional-expr>
 				<conditional-expr>
 					<condition>
-						<![CDATA[bBurnStarted == true]]>
+						<![CDATA[bIgnProc == true]]>
 					</condition>
 					<expr>
 						<![CDATA[0xff00ff00]]>
@@ -112,7 +113,7 @@
 					<![CDATA[bFireBurn]]>
 				</condition>
 				<expr>
-					<![CDATA[0xffffff00]]>
+					<![CDATA[0xffff0000]]>
 				</expr>
 			</conditional-expr>
 			<default-expr>
@@ -180,8 +181,8 @@
 		<init target="Path" ver="5" value="bBurnAlarm"/>
 	</object>
 	<object access-modifier="private" name="bPressAlarm" display-name="bPressAlarm" uuid="4f828e43-edd2-49ec-9227-26919be4e68c" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
-		<init target="Source" ver="5" ref="unit.Connections.ApSource"/>
 		<init target="Path" ver="5" value="bPressAlarm"/>
+		<init target="Source" ver="5" ref="burnApSource"/>
 	</object>
 	<object access-modifier="private" name="bStartBurn" display-name="bStartBurn" uuid="75c9627b-9c00-4e31-843d-175f9afb6444" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
 		<init target="Path" ver="5" value="bStartBurnVirt"/>
@@ -283,27 +284,27 @@
 	</object>
 	<object access-modifier="private" name="fIgnRemainingTimeStep" display-name="fIgnRemainingTimeStep" uuid="79ae1706-7d5e-461f-9ac2-7a6d46ea603d" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 		<init target="Source" ver="5" ref="burnApSource"/>
-		<init target="Path" ver="5" value="iIgnRemainingTimeStep"/>
+		<init target="Path" ver="5" value="fIgnRemainingTimeStep"/>
 	</object>
 	<object access-modifier="private" name="fIgnStepTime" display-name="fIgnStepTime" uuid="19612657-9df0-4b40-b399-01acb0289313" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 		<init target="Source" ver="5" ref="burnApSource"/>
-		<init target="Path" ver="5" value="iIgnStepTime"/>
+		<init target="Path" ver="5" value="fIgnStepTime"/>
 	</object>
 	<object access-modifier="private" name="fPressFullTime" display-name="fPressFullTime" uuid="81c2e676-7d2b-42c0-a9f6-011bf0f3af68" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 		<init target="Source" ver="5" ref="burnApSource"/>
-		<init target="Path" ver="5" value="iPressFullTime"/>
+		<init target="Path" ver="5" value="fPressFullTime"/>
 	</object>
 	<object access-modifier="private" name="fPressRemainingTime" display-name="fPressRemainingTime" uuid="9121d861-2317-4495-856a-2644f7a04cf7" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 		<init target="Source" ver="5" ref="burnApSource"/>
-		<init target="Path" ver="5" value="iPressRemainingTime"/>
+		<init target="Path" ver="5" value="fPressRemainingTime"/>
 	</object>
 	<object access-modifier="private" name="fPressRemainingTimeStep" display-name="fPressRemainingTimeStep" uuid="a3508f56-8657-4d5a-a563-2c3605551030" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 		<init target="Source" ver="5" ref="burnApSource"/>
-		<init target="Path" ver="5" value="iPressRemainingTimeStep"/>
+		<init target="Path" ver="5" value="fPressRemainingTimeStep"/>
 	</object>
 	<object access-modifier="private" name="fPressStepTime" display-name="fPressStepTime" uuid="bf8f4622-e904-4951-99c8-1f372e523fb5" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 		<init target="Source" ver="5" ref="burnApSource"/>
-		<init target="Path" ver="5" value="iPressStepTime"/>
+		<init target="Path" ver="5" value="fPressStepTime"/>
 	</object>
 	<object access-modifier="private" name="InbSkipPress" display-name="InbSkipPress" uuid="88874234-b7b5-4f33-84f4-4bd5f8b935c2" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
 		<init target="Source" ver="5" ref="burnApSource"/>

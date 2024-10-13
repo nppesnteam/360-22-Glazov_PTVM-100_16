@@ -1,0 +1,280 @@
+<type access-modifier="private" name="Прочие задвижки" display-name="Прочие задвижки" uuid="2658c1cb-4d0e-4509-a23e-aa7b6f67da16" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5" description="">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Flip" value="0" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="1720" ver="5"/>
+	<designed target="Height" value="960" ver="5"/>
+	<designed target="PenColor" value="4278190080" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="0xff4d4d4d" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<designed target="WindowX" value="0" ver="5"/>
+	<designed target="WindowY" value="0" ver="5"/>
+	<designed target="WindowWidth" value="1720" ver="5"/>
+	<designed target="WindowHeight" value="960" ver="5"/>
+	<designed target="WindowCaption" value="Прочие задвижки" ver="5"/>
+	<designed target="ShowWindowCaption" value="true" ver="5"/>
+	<designed target="ShowWindowMinimize" value="true" ver="5"/>
+	<designed target="ShowWindowMaximize" value="true" ver="5"/>
+	<designed target="ShowWindowClose" value="true" ver="5"/>
+	<designed target="AlwaysOnTop" value="false" ver="5"/>
+	<designed target="WindowSizeMode" value="0" ver="5"/>
+	<designed target="WindowBorderStyle" value="1" ver="5"/>
+	<designed target="WindowState" value="0" ver="5"/>
+	<designed target="WindowScalingMode" value="0" ver="5"/>
+	<designed target="MonitorNumber" value="0" ver="5"/>
+	<designed target="WindowPosition" value="0" ver="5"/>
+	<designed target="WindowCloseMode" value="0" ver="5"/>
+	<designed target="WindowIconPath" value="" ver="5"/>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[unit.Global.ActiveMainFrame = "Прочие задвижки";]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="Gate17" display-name="Gate17" uuid="6b5df417-59f8-445b-958f-ceab037138e3" base-type="Gate" base-type-id="412146cb-dc7b-472f-be3b-e66aa672ce43" ver="5" description="" cardinal="1">
+		<designed target="X" value="240" ver="5"/>
+		<designed target="Y" value="282" ver="5"/>
+		<designed target="Rotation" value="90" ver="5"/>
+		<designed target="Scale" value="5" ver="5"/>
+		<init target="initApSource" ver="5" ref="ApSource_1"/>
+		<init target="initPath" ver="5" value="Gate17"/>
+		<do-trace access-modifier="private" target="Color" ver="5">
+			<body>
+				<![CDATA[Global.Colors.Gas]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="ColorPen" ver="5">
+			<body>
+				<![CDATA[Global.Colors.GasPen]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="txtGate17" display-name="txtGate17" uuid="2a0a20f6-2d6e-4201-b0b7-48e1b79681e4" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
+		<designed target="X" value="86" ver="5"/>
+		<designed target="Y" value="76" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="308" ver="5"/>
+		<designed target="Height" value="123" ver="5"/>
+		<designed target="Text" value="Задвижка перед котлом №17" ver="5"/>
+		<designed target="Font" value="MS Shell Dlg 2,24,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+		<designed target="FontColor" value="4278190080" ver="5"/>
+		<designed target="TextAlignment" value="132" ver="5"/>
+	</object>
+	<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="62d3978b-f596-42e5-802e-95280a29ba01" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+		<designed target="Location" value="" ver="5"/>
+		<designed target="Port" value="4388" ver="5"/>
+		<designed target="HistoryPort" value="4950" ver="5"/>
+		<designed target="Path" value="Other" ver="5"/>
+		<designed target="Active" value="false" ver="5"/>
+		<designed target="ReAdvise" value="0" ver="5"/>
+		<designed target="ClientDisplayName" value="HMI" ver="5"/>
+		<designed target="ClientId" value="HMI" ver="5"/>
+		<init target="ParentSource" ver="5" ref="Connections.AppSource"/>
+	</object>
+	<object access-modifier="private" name="GateKV205" display-name="GateKV205" uuid="5aa28530-2f6d-48f3-973c-afc7afd60673" base-type="Gate" base-type-id="412146cb-dc7b-472f-be3b-e66aa672ce43" ver="5" description="" cardinal="1">
+		<designed target="X" value="854.00000000000011" ver="5"/>
+		<designed target="Y" value="282" ver="5"/>
+		<designed target="Rotation" value="90" ver="5"/>
+		<designed target="Scale" value="5" ver="5"/>
+		<init target="initApSource" ver="5" ref="ApSource_1"/>
+		<init target="initPath" ver="5" value="GateKV205"/>
+		<do-trace access-modifier="private" target="Color" ver="5">
+			<body>
+				<![CDATA[Global.Colors.Water]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="ColorPen" ver="5">
+			<body>
+				<![CDATA[Global.Colors.WaterPen]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="txtGateKV205" display-name="txtGateKV205" uuid="b37c8841-2a4e-4289-b64e-6b715816139c" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
+		<designed target="X" value="700" ver="5"/>
+		<designed target="Y" value="76" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="308" ver="5"/>
+		<designed target="Height" value="123" ver="5"/>
+		<designed target="Text" value='Задвижка КВ-205
+теплосети на
+жил.поселок "И"' ver="5"/>
+		<designed target="Font" value="MS Shell Dlg 2,24,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+		<designed target="FontColor" value="4278190080" ver="5"/>
+		<designed target="TextAlignment" value="132" ver="5"/>
+	</object>
+	<object access-modifier="private" name="GateKV206" display-name="GateKV206" uuid="56ea80c5-337b-4184-8e1a-f18f387207f3" base-type="Gate" base-type-id="412146cb-dc7b-472f-be3b-e66aa672ce43" ver="5" description="" cardinal="1">
+		<designed target="X" value="1468" ver="5"/>
+		<designed target="Y" value="282" ver="5"/>
+		<designed target="Rotation" value="90" ver="5"/>
+		<designed target="Scale" value="5" ver="5"/>
+		<init target="initApSource" ver="5" ref="ApSource_1"/>
+		<init target="initPath" ver="5" value="GateKV206"/>
+		<do-trace access-modifier="private" target="Color" ver="5">
+			<body>
+				<![CDATA[Global.Colors.Water]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="ColorPen" ver="5">
+			<body>
+				<![CDATA[Global.Colors.WaterPen]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="txtGateKV206" display-name="txtGateKV206" uuid="2f4225ca-a16d-4f3b-9e92-877ce8b1e362" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
+		<designed target="X" value="1314" ver="5"/>
+		<designed target="Y" value="76" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="308" ver="5"/>
+		<designed target="Height" value="123" ver="5"/>
+		<designed target="Text" value="Задвижка КВ-206
+теплосети на
+жил.поселок" ver="5"/>
+		<designed target="Font" value="MS Shell Dlg 2,24,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+		<designed target="FontColor" value="4278190080" ver="5"/>
+		<designed target="TextAlignment" value="132" ver="5"/>
+	</object>
+	<object access-modifier="private" name="GateMC213" display-name="GateMC213" uuid="8534d68a-865d-43ec-9d22-615fdd665304" base-type="Gate" base-type-id="412146cb-dc7b-472f-be3b-e66aa672ce43" ver="5" description="" cardinal="1">
+		<designed target="X" value="235.99999999999997" ver="5"/>
+		<designed target="Y" value="710" ver="5"/>
+		<designed target="Rotation" value="90" ver="5"/>
+		<designed target="Scale" value="5" ver="5"/>
+		<init target="initApSource" ver="5" ref="ApSource_1"/>
+		<init target="initPath" ver="5" value="GateMC213"/>
+		<do-trace access-modifier="private" target="Color" ver="5">
+			<body>
+				<![CDATA[Global.Colors.Water]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="ColorPen" ver="5">
+			<body>
+				<![CDATA[Global.Colors.WaterPen]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="txtGateMC213" display-name="txtGateMC213" uuid="432ded78-c9b3-4e14-93fc-31e22c050c95" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
+		<designed target="X" value="82" ver="5"/>
+		<designed target="Y" value="503" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="308" ver="5"/>
+		<designed target="Height" value="123" ver="5"/>
+		<designed target="Text" value="Задвижка МЦ213
+теплосети обартной
+воды сж-п" ver="5"/>
+		<designed target="Font" value="MS Shell Dlg 2,24,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+		<designed target="FontColor" value="4278190080" ver="5"/>
+		<designed target="TextAlignment" value="132" ver="5"/>
+	</object>
+	<object access-modifier="private" name="GateKV204" display-name="GateKV204" uuid="2cf88167-a837-436d-aac5-8a8388dc710e" base-type="Gate" base-type-id="412146cb-dc7b-472f-be3b-e66aa672ce43" ver="5" description="" cardinal="1">
+		<designed target="X" value="854.00000000000011" ver="5"/>
+		<designed target="Y" value="710" ver="5"/>
+		<designed target="Rotation" value="90" ver="5"/>
+		<designed target="Scale" value="5" ver="5"/>
+		<init target="initApSource" ver="5" ref="ApSource_1"/>
+		<init target="initPath" ver="5" value="GateKV204"/>
+		<do-trace access-modifier="private" target="Color" ver="5">
+			<body>
+				<![CDATA[Global.Colors.Water]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="ColorPen" ver="5">
+			<body>
+				<![CDATA[Global.Colors.WaterPen]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="txtGateKV204" display-name="txtGateKV204" uuid="6edcbd11-d667-4895-9e93-183d8490d05b" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
+		<designed target="X" value="700" ver="5"/>
+		<designed target="Y" value="503" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="308" ver="5"/>
+		<designed target="Height" value="123" ver="5"/>
+		<designed target="Text" value="Задвижка КВ-204
+теплосети к
+объекту 700" ver="5"/>
+		<designed target="Font" value="MS Shell Dlg 2,24,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+		<designed target="FontColor" value="4278190080" ver="5"/>
+		<designed target="TextAlignment" value="132" ver="5"/>
+	</object>
+	<object access-modifier="private" name="GateWater1" display-name="GateWater1" uuid="8e02b76d-aa7d-494f-af80-f6b23d716098" base-type="Gate" base-type-id="412146cb-dc7b-472f-be3b-e66aa672ce43" ver="5" description="" cardinal="1">
+		<designed target="X" value="1468" ver="5"/>
+		<designed target="Y" value="710" ver="5"/>
+		<designed target="Rotation" value="90" ver="5"/>
+		<designed target="Scale" value="5" ver="5"/>
+		<init target="initApSource" ver="5" ref="ApSource_1"/>
+		<init target="initPath" ver="5" value="GateWater1"/>
+		<do-trace access-modifier="private" target="Color" ver="5">
+			<body>
+				<![CDATA[Global.Colors.Water]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="ColorPen" ver="5">
+			<body>
+				<![CDATA[Global.Colors.WaterPen]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="txtGateWater1" display-name="txtGateWater1" uuid="bb030af3-6ad0-47ad-8cf3-47639e9bcbb7" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
+		<designed target="X" value="1314" ver="5"/>
+		<designed target="Y" value="503" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="308" ver="5"/>
+		<designed target="Height" value="123" ver="5"/>
+		<designed target="Text" value="Задвижка на прямой
+сетевой воде на
+1 очередь" ver="5"/>
+		<designed target="Font" value="MS Shell Dlg 2,24,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+		<designed target="FontColor" value="4278190080" ver="5"/>
+		<designed target="TextAlignment" value="132" ver="5"/>
+	</object>
+</type>
+

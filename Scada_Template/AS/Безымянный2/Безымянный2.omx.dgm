@@ -13,9 +13,9 @@
     <application-object Id="ad928244-ff34-456e-bc25-70f7f10f8be2" Left="10" Top="174" Width="97.44" Height="32" />
     <computer Id="18d93d7e-ec66-48c1-96b1-52cf422fa53d" Left="205.463333333333" Top="40" Width="186.77" Height="124" />
     <computer Id="09e5a4ec-be6f-4e56-a658-1d1eb83b0362" Left="432.233333333333" Top="40" Width="185.91" Height="124" />
-    <ethernet-net Id="dbbaa72c-45f5-46c0-8c09-4298377bf78b" Left="658.143333333333" Top="20" Width="128.073333333333" Height="32.59" />
-    <ethernet-net Id="fcbfdce4-1a53-4621-8459-fb94e423c78b" Left="826.216666666667" Top="20" Width="105.88" Height="32.59" />
-    <ethernet-net Id="c97be6ae-0b79-4807-97aa-e787309b6af9" Left="972.096666666667" Top="20" Width="105.88" Height="32.59" />
+    <ethernet-net Id="5e314e4a-1b42-40ac-9b40-e438b0539621" Left="658.143333333333" Top="20" Width="128.073333333333" Height="32.59" />
+    <ethernet-net Id="bab0aef0-1d14-40dc-9722-2ab6dff542b7" Left="826.216666666666" Top="20" Width="105.88" Height="32.59" />
+    <ethernet-net Id="4ae380ed-7bf5-493f-a703-ceae4fa9950a" Left="972.096666666666" Top="20" Width="105.88" Height="32.59" />
     <domain-node Id="2a7f7d69-e69f-411a-9989-28d810ba1bd7" Left="658.143333333333" Top="80" Width="125.463333333333" Height="172" />
     <domain-node Id="f84e02e4-3086-40bd-a56a-9c23fd457b70" Left="823.606666666667" Top="80" Width="125.463333333333" Height="172" />
   </domain>
@@ -43,4 +43,21 @@
     <object Id="0ba43ff3-41bd-4214-be91-79dadb35bfdb" Left="967.706666666667" Top="26" Width="91.5033333333333" Height="32" />
   </object>
   <object Id="402c53a4-6087-47ce-bf94-325ce5675455" OffsetX="0" OffsetY="0" Scale="1" SnapToGrid="false" />
+  <domain-node Id="2a7f7d69-e69f-411a-9989-28d810ba1bd7" OffsetX="0" OffsetY="0" Scale="1" SnapToGrid="false">
+    <io-server Id="3692f836-e7b1-4ec6-ab0a-350c1e5fc4ff" Left="30" Top="30" Width="206.163333333333" Height="124" />
+    <historian Id="48188c0c-3bc1-48bd-be77-aecd601a4516" Left="320" Top="333.520687599182" Width="139.72" Height="110" />
+    <external-runtime Id="e56123e6-d22f-4f05-853a-79e1143308e2" Left="296.163333333333" Top="30" Width="102.493333333333" Height="56" />
+    <ethernet-adapter Id="154bd71f-1bf9-444a-a528-5d6bb1466cf1" Left="1088.78333333333" Top="323.520687599182" Width="101.216666666667" Height="55.63" />
+    <ethernet-adapter Id="9d8e0e3e-164f-45fd-8e91-53eff517a1ec" Left="1045.53666666667" Top="399.150687599182" Width="144.463333333333" Height="55.63" />
+    <ethernet-adapter Id="5771fee4-6bb6-48b7-96a9-3e4667dca85d" Left="1045.53666666667" Top="474.780687599182" Width="144.463333333333" Height="55.63" />
+  </domain-node>
+  <io-server Id="3692f836-e7b1-4ec6-ab0a-350c1e5fc4ff" OffsetX="0" OffsetY="0" Scale="1" SnapToGrid="false">
+    <tcp-server Id="5fb48f9e-c917-4cd8-a70a-fd9922799b94" Left="1306.02" Top="26" Width="112.733333333333" Height="36.63" />
+    <opcaeserver-module Id="bbe1bda5-a51f-47b1-b169-b26bc9df2bd7" Left="1303.72666666667" Top="102.63" Width="115.026666666667" Height="36.63" />
+    <opcua-module Id="df7679fd-3304-4f0a-a1c4-786a94405eaf" Left="1302" Top="179.26" Width="116.753333333333" Height="36.63" />
+    <snmp-manager Id="63ef60e4-fca1-4d59-a540-fc0cb71bd1d4" Left="24" Top="26" Width="205.03" Height="99.63" />
+    <opcua-client Id="93d383e5-ee91-4623-8a54-818923b4ffce" Left="24" Top="165.63" Width="314" Height="120.63" />
+    <history-module Id="a9fc5cf6-f3b8-4461-82db-d74291cf34ea" Left="380" Top="464.928962638855" Width="283.65" Height="192.63" />
+    <host Id="dp:host[4]" Left="1152.56" Top="26" Width="107.44" Height="24" />
+  </io-server>
 </Diagrams>

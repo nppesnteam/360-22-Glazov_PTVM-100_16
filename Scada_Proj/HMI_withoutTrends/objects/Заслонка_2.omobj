@@ -30,7 +30,7 @@
 	<designed target="WindowState" value="0" ver="5"/>
 	<designed target="WindowScalingMode" value="0" ver="5"/>
 	<designed target="MonitorNumber" value="0" ver="5"/>
-	<designed target="WindowPosition" value="1" ver="5"/>
+	<designed target="WindowPosition" value="0" ver="5"/>
 	<designed target="WindowCloseMode" value="0" ver="5"/>
 	<object access-modifier="private" name="refData" display-name="refData" uuid="72e46612-64b4-4c66-a375-fa3a141f92a6" base-type="Damper" base-type-id="a3e73327-f733-446d-ac01-918439e55f3f" base-const="true" base-ref="true" ver="5"/>
 	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Opened">
@@ -123,7 +123,7 @@
 			<do-trace access-modifier="private" target="Text" ver="5">
 				<conditional-expr>
 					<condition>
-						<![CDATA[refData.bErrorEndCaps==true]]>
+						<![CDATA[refData.bErrorEndCaps]]>
 					</condition>
 					<expr>
 						<![CDATA["Ошибка КВ"]]>
@@ -131,7 +131,7 @@
 				</conditional-expr>
 				<conditional-expr>
 					<condition>
-						<![CDATA[refData.bErrorCantCtrl == true]]>
+						<![CDATA[refData.bErrorCantCtrl]]>
 					</condition>
 					<expr>
 						<![CDATA["Не сработала команда упр."]]>
@@ -139,7 +139,23 @@
 				</conditional-expr>
 				<conditional-expr>
 					<condition>
-						<![CDATA[refData.bH==true]]>
+						<![CDATA[refData.bOpen]]>
+					</condition>
+					<expr>
+						<![CDATA["Открывается"]]>
+					</expr>
+				</conditional-expr>
+				<conditional-expr>
+					<condition>
+						<![CDATA[refData.bClose]]>
+					</condition>
+					<expr>
+						<![CDATA["Закрывается"]]>
+					</expr>
+				</conditional-expr>
+				<conditional-expr>
+					<condition>
+						<![CDATA[refData.bH]]>
 					</condition>
 					<expr>
 						<![CDATA["Открыт"]]>
@@ -147,15 +163,23 @@
 				</conditional-expr>
 				<conditional-expr>
 					<condition>
-						<![CDATA[refData.bL==true]]>
+						<![CDATA[refData.bL]]>
 					</condition>
 					<expr>
 						<![CDATA["Закрыт"]]>
 					</expr>
 				</conditional-expr>
+				<conditional-expr>
+					<condition>
+						<![CDATA[refData.bM]]>
+					</condition>
+					<expr>
+						<![CDATA["Среднее положение"]]>
+					</expr>
+				</conditional-expr>
 				<default-expr>
 					<expr>
-						<![CDATA["Состояние"]]>
+						<![CDATA["Неопределенное состояние"]]>
 					</expr>
 				</default-expr>
 			</do-trace>
@@ -194,7 +218,7 @@
 		<designed target="PenColor" value="4278190080" ver="5"/>
 		<designed target="PenStyle" value="1" ver="5"/>
 		<designed target="PenWidth" value="0.5" ver="5"/>
-		<designed target="OnClickPenColor" value="4278190080" ver="5"/>
+		<designed target="OnClickPenColor" value="0xff000000" ver="5"/>
 		<designed target="OnClickPenStyle" value="1" ver="5"/>
 		<designed target="OnClickPenWidth" value="0.5" ver="5"/>
 		<designed target="OnHoverPenColor" value="4278190080" ver="5"/>
@@ -627,7 +651,7 @@ else refData.Open.Invoke();]]>
 			<designed target="TextAlignment" value="132" ver="5"/>
 			<do-trace access-modifier="private" target="Text" ver="5">
 				<body>
-					<![CDATA[refData.fPosition]]>
+					<![CDATA[String.ToString( "%.0f", refData.fPosition)]]>
 				</body>
 			</do-trace>
 			<designed target="Flip" value="0" ver="5"/>

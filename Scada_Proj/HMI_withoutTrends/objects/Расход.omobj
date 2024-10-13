@@ -78,15 +78,10 @@
 		</do-trace>
 		<do-trace access-modifier="private" target="MaxLimit" ver="5">
 			<body>
-				<![CDATA[refData.Max + (Math.Abs(refData.Max - refData.Min) * 0.2)]]>
+				<![CDATA[refData.Max]]>
 			</body>
 		</do-trace>
 		<designed target="Flip" value="0" ver="5"/>
-		<do-trace access-modifier="private" target="MinLimit" ver="5">
-			<body>
-				<![CDATA[refData.Min - (Math.Abs(refData.Max - refData.Min) * 0.2)]]>
-			</body>
-		</do-trace>
 	</object>
 	<object access-modifier="private" name="mark" display-name="mark" uuid="9fac528c-8648-4d5b-a728-559ba4db143e" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5" cardinal="51">
 		<designed target="X" value="165" ver="5"/>
@@ -202,7 +197,7 @@ refData.private.isOpened = true;]]>
 			<designed target="TextAlignment" value="129" ver="5"/>
 			<do-trace access-modifier="private" target="Text" ver="5">
 				<body>
-					<![CDATA[refData.KKS]]>
+					<![CDATA[PD.KKS]]>
 				</body>
 			</do-trace>
 			<designed target="Flip" value="0" ver="5"/>
@@ -352,5 +347,51 @@ OpenTrendsWindow.Invoke();]]>
 	</object>
 	<param access-modifier="private" name="initApSourcePD" display-name="initApSourcePD" uuid="aaccf853-9440-4f0d-b3a8-c8b172847cbe" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" base-const="true" base-ref="true" ver="5"/>
 	<param access-modifier="private" name="initPathPD" display-name="initPathPD" uuid="9603e199-640f-4bb7-86ba-6f93659cd1d5" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	<object access-modifier="private" name="txtPD_1" display-name="txtPD_1" uuid="c8836592-d9e8-4c54-99b0-7f8b10e57d05" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+		<designed target="X" value="10" ver="5"/>
+		<designed target="Y" value="85" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="128" ver="5"/>
+		<designed target="Height" value="20" ver="5"/>
+		<designed target="Text" value="т/ч" ver="5"/>
+		<designed target="Font" value="Arial,9,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
+		<designed target="FontColor" value="4278190080" ver="5"/>
+		<designed target="TextAlignment" value="132" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="Text" ver="5">
+			<body>
+				<![CDATA[refData.EU]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="txtPD_2" display-name="txtPD_2" uuid="afee0bad-e58c-4672-b46e-8fb0fbda62da" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+		<designed target="X" value="10" ver="5"/>
+		<designed target="Y" value="165" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="128" ver="5"/>
+		<designed target="Height" value="20" ver="5"/>
+		<designed target="Text" value="кПа" ver="5"/>
+		<designed target="Font" value="Arial,9,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
+		<designed target="FontColor" value="4278190080" ver="5"/>
+		<designed target="TextAlignment" value="132" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="Text" ver="5">
+			<body>
+				<![CDATA[PD.EU]]>
+			</body>
+		</do-trace>
+	</object>
 </type>
 
