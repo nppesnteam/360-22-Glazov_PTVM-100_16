@@ -96,7 +96,7 @@
 				<designed target="Period" value="1000" ver="5"/>
 				<designed target="Active" value="false" ver="5"/>
 				<designed target="PenColor" value="0xffffffff" ver="5"/>
-				<designed target="BrushColor" value="0xffff0000" ver="5"/>
+				<designed target="BrushColor" value="0xffffffff" ver="5"/>
 				<designed target="FontColor" value="4278190080" ver="5"/>
 				<do-trace access-modifier="private" target="Active" ver="5">
 					<body>
@@ -110,7 +110,15 @@
 		<do-trace access-modifier="private" target="BrushColor" ver="5">
 			<conditional-expr>
 				<condition>
-					<![CDATA[bFireBurn]]>
+					<![CDATA[eBurnIgn.bFinalAir]]>
+				</condition>
+				<expr>
+					<![CDATA[unit.Global.Colors.Air]]>
+				</expr>
+			</conditional-expr>
+			<conditional-expr>
+				<condition>
+					<![CDATA[bFireBurn && !bAirBurn]]>
 				</condition>
 				<expr>
 					<![CDATA[0xffff0000]]>
@@ -126,7 +134,7 @@
 			<designed target="Period" value="1000" ver="5"/>
 			<designed target="Active" value="false" ver="5"/>
 			<designed target="PenColor" value="0xffffffff" ver="5"/>
-			<designed target="BrushColor" value="0xffff0000" ver="5"/>
+			<designed target="BrushColor" value="0xffffffff" ver="5"/>
 			<designed target="FontColor" value="4278190080" ver="5"/>
 			<do-trace access-modifier="private" target="Active" ver="5">
 				<body>
@@ -313,6 +321,10 @@
 	<object access-modifier="private" name="OutbSkipPress" display-name="OutbSkipPress" uuid="1a7de7d7-7abf-4b41-9f31-e4349bc0a58f" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
 		<init target="Source" ver="5" ref="burnApSource"/>
 		<init target="Path" ver="5" value="OutbSkipPress"/>
+	</object>
+	<object access-modifier="private" name="bAirBurn" display-name="bAirBurn" uuid="c5d4fd7b-73b1-4f37-a480-b8135d7ea87a" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Source" ver="5" ref="burnApSource"/>
+		<init target="Path" ver="5" value="bAirBurn"/>
 	</object>
 </type>
 

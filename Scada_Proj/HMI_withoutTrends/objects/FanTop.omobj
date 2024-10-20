@@ -220,5 +220,20 @@
 			</default-expr>
 		</do-trace>
 	</object>
+	<do-trace access-modifier="private" target="NameExtended" ver="5">
+		<conditional-expr>
+			<condition>
+				<![CDATA[BurnNumber != "0"]]>
+			</condition>
+			<expr>
+				<![CDATA[NAME + " " + BurnNumber]]>
+			</expr>
+		</conditional-expr>
+		<default-expr>
+			<expr>
+				<![CDATA[NAME]]>
+			</expr>
+		</default-expr>
+	</do-trace>
 </type>
 

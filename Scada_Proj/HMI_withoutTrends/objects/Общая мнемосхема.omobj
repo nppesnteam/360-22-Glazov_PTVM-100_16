@@ -61,18 +61,6 @@
 		<designed target="ClientId" value="HMI" ver="5"/>
 		<init target="ParentSource" ver="5" ref="unit.Connections.AppSource"/>
 	</object>
-	<object access-modifier="private" name="VentStatus" display-name="VentStatus" uuid="75d411ac-bc79-4b54-9533-1ad443961e7f" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5">
-		<init target="Source" ver="5" ref="hereAPSource"/>
-		<init target="Path" ver="5" value="VentStatus"/>
-	</object>
-	<object access-modifier="private" name="VentOK" display-name="VentOK" uuid="a3814559-dd88-4709-824c-d5701e8147c7" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
-		<init target="Path" ver="5" value="ROOT.ALARMS.OtherAlarms.AlarmVentOK"/>
-		<init target="Source" ver="5" ref="hereAPSource"/>
-	</object>
-	<object access-modifier="private" name="VentProgress" display-name="VentProgress" uuid="d1dcf08e-e214-493b-b149-db055d1c3735" base-type="ApItemInt4" base-type-id="5b29f957-961e-4313-bde4-d20611af1b9a" ver="5">
-		<init target="Source" ver="5" ref="hereAPSource"/>
-		<init target="Path" ver="5" value="VentProgress"/>
-	</object>
 	<object access-modifier="private" name="linkMain" display-name="linkMain" uuid="159c9f8c-8d55-4ff7-bdf9-0cd3186a1cb5" base-type="MainForm" base-type-id="c9cad641-8960-46db-9523-43c92084d4a1" base-const="true" base-ref="true" ver="5"/>
 	<designed target="Flip" value="0" ver="5"/>
 	<designed target="WindowIconPath" value="" ver="5"/>
@@ -1149,7 +1137,7 @@
 				<designed target="Speed" value="1" ver="5"/>
 				<do-trace access-modifier="private" target="Visible" ver="5">
 					<body>
-						<![CDATA[bAnyFinal]]>
+						<![CDATA[Global.bAnyFinal]]>
 					</body>
 				</do-trace>
 				<designed target="Flip" value="0" ver="5"/>
@@ -1164,10 +1152,6 @@
 				<designed target="Path" value="Smoke" ver="5"/>
 				<designed target="ClientDisplayName" value="HMI" ver="5"/>
 				<designed target="ClientId" value="HMI" ver="5"/>
-			</object>
-			<object access-modifier="private" name="bAnyFinal" display-name="bAnyFinal" uuid="26eb682a-07d8-4b65-aa4b-8abccbeefb6a" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
-				<init target="Source" ver="5" ref="unit.Connections.AppSource"/>
-				<init target="Path" ver="5" value="GVL.bOneBurnFinal"/>
 			</object>
 			<designed target="Flip" value="0" ver="5"/>
 			<object access-modifier="private" name="bSmokeIn" display-name="bSmokeIn" uuid="b6277062-8bf3-480f-a856-af2c68cc6901" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
@@ -2157,14 +2141,10 @@
 			<designed target="Flip" value="0" ver="5"/>
 			<designed target="RoundingRadius" value="0" ver="5"/>
 		</object>
-		<object access-modifier="private" name="BoilerWork" display-name="BoilerWork" uuid="9919c560-1e0f-4c9e-a99b-40e575606597" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
-			<init target="Source" ver="5" ref="unit.Connections.AppSource"/>
-			<init target="Path" ver="5" value="bBoilerStarted"/>
-		</object>
 		<designed target="Flip" value="0" ver="5"/>
 		<object access-modifier="private" name="BurnSequence" display-name="BurnSequence" uuid="523743ce-0196-4ae6-9c98-84a05a0d770a" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
-			<designed target="X" value="-1" ver="5"/>
-			<designed target="Y" value="35" ver="5"/>
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
 			<designed target="ZValue" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Scale" value="1" ver="5"/>
@@ -2313,10 +2293,10 @@ rectQueueNumber[me.Index].txtFinalNumber = me.ValueAsString;]]>
 			<object access-modifier="private" name="Initializer_1" display-name="Initializer_1" uuid="b92ef024-9f6d-49b5-8d38-624eecd87020" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="5" description="" cardinal="1">
 				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Initialized">
 					<body kind="om">
-						<![CDATA[for (i : int1 = 1; i<17; i+=1)
+						<![CDATA[for (i : int1 = 0; i<16; i+=1)
 {
-	rectQueueNumber[i-1].Y =i*rectQueueNumber.Height;
-	rectFinalNumber[i-1].Y =i*rectFinalNumber.Height;
+	rectQueueNumber[i].Y =i*rectQueueNumber.Height;
+	rectFinalNumber[i].Y =i*rectFinalNumber.Height;
 }]]>
 					</body>
 				</do-on>
@@ -2362,6 +2342,11 @@ rectQueueNumber[me.Index].txtFinalNumber = me.ValueAsString;]]>
 			<do-trace access-modifier="private" target="Enabled" ver="5">
 				<body>
 					<![CDATA[!unit.Global.isFGUOpened]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="InvokeTrigger" ver="5">
+				<body>
+					<![CDATA[Global.eBoiler.bBoilerCheck]]>
 				</body>
 			</do-trace>
 		</object>
@@ -2423,6 +2408,47 @@ OpenSteps.Invoke();]]>
 			</do-on>
 			<designed target="Checked" value="false" ver="5"/>
 			<designed target="Flip" value="0" ver="5"/>
+			<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="8f6c6ecf-cedd-4bd7-a19c-f4b5a93ded72" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
+				<designed target="Rotation" value="90" ver="5"/>
+				<designed target="Visible" value="false" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="b5114c92-a16d-494e-a11b-ac03ab6824f8" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+					<designed target="Position" value="0" ver="5"/>
+					<designed target="Color" value="0xff999999" ver="5"/>
+				</object>
+				<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="14595e86-880f-4149-b4bb-86b90758efad" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+					<designed target="Position" value="0.40000000000000002" ver="5"/>
+					<designed target="Color" value="0xffffffff" ver="5"/>
+				</object>
+				<object access-modifier="private" name="GradientPoint_3" display-name="GradientPoint_3" uuid="1ef2b758-20f4-4e07-9440-097126a8d745" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+					<designed target="Position" value="0.59999999999999998" ver="5"/>
+					<designed target="Color" value="0xffffffff" ver="5"/>
+				</object>
+				<object access-modifier="private" name="GradientPoint_4" display-name="GradientPoint_4" uuid="5aafe484-71ef-4507-8d5b-af13107ba136" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+					<designed target="Position" value="1" ver="5"/>
+					<designed target="Color" value="0xff999999" ver="5"/>
+				</object>
+				<do-trace access-modifier="private" target="Visible" ver="5">
+					<body>
+						<![CDATA[!Global.isFGUOpened]]>
+					</body>
+				</do-trace>
+			</object>
+			<do-on access-modifier="private" name="Handler_11" display-name="Handler_11" ver="5" event="MouseEnter">
+				<body kind="om">
+					<![CDATA[LinearGradient_1.Visible=false;]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_12" display-name="Handler_12" ver="5" event="MouseLeave">
+				<body kind="om">
+					<![CDATA[LinearGradient_1.Visible=true;]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Enabled" ver="5">
+				<body>
+					<![CDATA[!Global.isFGUOpened]]>
+				</body>
+			</do-trace>
 		</object>
 		<object access-modifier="private" name="isOpenedSteps" display-name="isOpenedSteps" uuid="94698934-5924-424c-8886-e793b8fab7d7" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
 		<object access-modifier="private" name="OpenSteps" display-name="OpenSteps" uuid="7bbd18da-c653-4045-881f-2e4ac8bb8ace" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" cardinal="1">

@@ -485,11 +485,6 @@
 					<init target="WindowX" ver="5" ref="here.private.posX"/>
 					<init target="WindowY" ver="5" ref="here.private.posY"/>
 					<designed target="WindowCaption" value="Аналоговый датчик" ver="5"/>
-					<do-trace access-modifier="private" target="WindowCaption" ver="5">
-						<body>
-							<![CDATA[refData.private.NameExtended]]>
-						</body>
-					</do-trace>
 				</object>
 			</do-on>
 		</object>
@@ -513,11 +508,6 @@
 					<init target="WindowY" ver="5">
 						<expr>
 							<![CDATA[here.private.posY]]>
-						</expr>
-					</init>
-					<init target="WindowCaption" ver="5">
-						<expr>
-							<![CDATA[here.private.NameExtended]]>
 						</expr>
 					</init>
 				</object>
@@ -576,5 +566,15 @@ private.OpenSettingsWindow.Invoke();]]>
 		</body>
 	</do-on>
 	<object access-modifier="private" name="MonitorList_1" display-name="MonitorList_1" uuid="045ec43f-1d11-44b9-a3b8-e3cd195e88c2" base-type="MonitorList" base-type-id="c74bfc5a-253e-4144-8b20-917cf4cf333b" ver="5" description="" cardinal="1"/>
+	<do-trace access-modifier="private" target="bProt" ver="5">
+		<body>
+			<![CDATA[refProtH.bCtrl || refProtL.bCtrl]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="bWarn" ver="5">
+		<body>
+			<![CDATA[refWarnH.bTriggered || refWarnL.bTriggered]]>
+		</body>
+	</do-trace>
 </type>
 

@@ -665,12 +665,12 @@
 		<object access-modifier="private" name="bWarn" display-name="bWarn" uuid="ddc15225-229f-4818-96c3-3b616d72da73" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
 		<do-trace access-modifier="private" target="bProt" ver="5">
 			<body>
-				<![CDATA[refProtH.bCtrl || refProtL.bCtrl]]>
+				<![CDATA[refProtH.bCtrl || refProtL.bCtrl || bErrAllSens || (bErrFirstSens && uiSensNum==1) || (bErrSecondSens && uiSensNum==2)]]>
 			</body>
 		</do-trace>
 		<do-trace access-modifier="private" target="bWarn" ver="5">
 			<body>
-				<![CDATA[refWarnH.bTriggered || refWarnL.bTriggered]]>
+				<![CDATA[refWarnH.bTriggered || refWarnL.bTriggered || bBigDifferencePre]]>
 			</body>
 		</do-trace>
 		<object access-modifier="private" name="OpenModuleWindow" display-name="OpenModuleWindow" uuid="67aa39d4-5737-44f6-bd15-a86cb6643b5c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" cardinal="1">
@@ -685,7 +685,6 @@
 				<object access-modifier="private" uuid="68913202-8097-4725-9e25-6a27a7b3412b" base-type="1 из 2 датчиков" base-type-id="f5463445-de17-4bf9-a21b-351bcd1f8191" ver="5">
 					<init target="WindowY" ver="5" ref="here.private.posY"/>
 					<init target="WindowX" ver="5" ref="here.private.posX"/>
-					<init target="WindowCaption" ver="5" ref="here.private.NameExtended"/>
 					<init target="refData" ver="5" ref="here"/>
 				</object>
 			</do-on>
@@ -708,7 +707,6 @@
 				<object access-modifier="private" uuid="ff57c60a-7d0d-481e-ab1b-7182df12f990" base-type="1 из 2 датчиков (настройка)" base-type-id="6952c59d-c09c-4551-9bfe-676b96c49b45" ver="5">
 					<init target="WindowX" ver="5" ref="here.private.posX"/>
 					<init target="WindowY" ver="5" ref="here.private.posY"/>
-					<init target="WindowCaption" ver="5" ref="here.private.NameExtended"/>
 					<init target="refData" ver="5" ref="here"/>
 				</object>
 			</do-on>

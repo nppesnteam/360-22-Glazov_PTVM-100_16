@@ -78,13 +78,13 @@
 		</do-trace>
 		<do-trace access-modifier="private" target="MaxLimit" ver="5">
 			<body>
-				<![CDATA[refData.OutConfig_1.fNormH]]>
+				<![CDATA[refData.OutConfig_1.fNormH*refData.OutConfig_1.fConversion]]>
 			</body>
 		</do-trace>
 		<designed target="Flip" value="0" ver="5"/>
 		<do-trace access-modifier="private" target="MinLimit" ver="5">
 			<body>
-				<![CDATA[refData.OutConfig_1.fNormL]]>
+				<![CDATA[refData.OutConfig_1.fNormL*refData.OutConfig_1.fConversion]]>
 			</body>
 		</do-trace>
 	</object>
@@ -485,5 +485,10 @@ unit.Global.ShowMSG("Допустимая разница датчиков \""+re
 			</body>
 		</do-trace>
 	</object>
+	<do-trace access-modifier="private" target="WindowCaption" ver="5">
+		<body>
+			<![CDATA[refData.NAME]]>
+		</body>
+	</do-trace>
 </type>
 

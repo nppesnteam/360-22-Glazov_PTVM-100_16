@@ -423,5 +423,9 @@ SmokePen = '0xff' + red.toString(16).padStart(2, '0') + green.toString(16).padSt
 	</object>
 	<object access-modifier="private" name="isStepsOpened" display-name="isStepsOpened" uuid="d5a36325-5e46-43ff-b157-35ed22bc594b" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
 	<init target="isStepsOpened" ver="5" value="true"/>
+	<object access-modifier="private" name="bAnyFinal" display-name="bAnyFinal" uuid="82ba3ffb-5857-43bb-8258-3d3656036c37" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Source" ver="5" ref="unit.Connections.AppSource"/>
+		<init target="Path" ver="5" value="GVL.bOneBurnFinal"/>
+	</object>
 </object>
 

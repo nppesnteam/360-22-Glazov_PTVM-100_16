@@ -105,7 +105,7 @@
                 </ct:object>
                 <ct:object name="FanOff" uuid="d4f76990-68a8-490c-b01c-73b3085ed571" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
-                  <attribute type="unit.System.Attributes.Description" value="Отключение вентилятора гор. 5" />
+                  <attribute type="unit.System.Attributes.Description" value="Отключение ДВ гор. 5" />
                 </ct:object>
                 <ct:object name="FireBurnOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="b10c7e71-7332-4f81-97e2-296c4c0c6fb8">
                   <attribute type="unit.System.Attributes.Title" value="Нет факела горелки" />
@@ -172,7 +172,7 @@
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="fc002eab-ed0a-43ea-9982-5436b3bbdb1b">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
-                  <attribute type="unit.System.Attributes.Description" value="Отключение вентилятора гор. 1" />
+                  <attribute type="unit.System.Attributes.Description" value="Отключение ДВ гор. 1" />
                 </ct:object>
                 <ct:object name="PAirL" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="5f396377-a4d7-477b-9176-0924afefa488">
                   <attribute type="unit.System.Attributes.Title" value="Рв ниже нормы" />
@@ -231,7 +231,7 @@
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="41cee4e5-d93b-4ade-a634-5b0f1d689d30">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
-                  <attribute type="unit.System.Attributes.Description" value="Отключение вентилятора гор. 3" />
+                  <attribute type="unit.System.Attributes.Description" value="Отключение ДВ гор. 3" />
                 </ct:object>
                 <ct:object name="PAirL" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="80e14561-611b-4d85-8fe4-ffd535a45674">
                   <attribute type="unit.System.Attributes.Title" value="Рв ниже нормы" />
@@ -247,6 +247,7 @@
                   <attribute type="unit.System.Attributes.Title" value="Рг выше нормы" />
                   <attribute type="unit.System.Attributes.Description" value="Рг выше нормы гор. 3" />
                 </ct:object>
+                <attribute type="Attributes.isAirBurn" value="true" />
               </ct:object>
               <ct:object name="BurnWork3" base-type="Types.BurnerWork.PLC_View" aspect="Aspects.PLC_Aspect" uuid="822fda2c-0ce7-4528-9781-dee4e9e6e56e">
                 <ct:object name="DamperGas" base-type="Types.Damper.PLC_View" aspect="Aspects.PLC_Aspect" uuid="b1d04e43-9d8b-45c3-be00-841e4e7968b7">
@@ -290,7 +291,7 @@
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="b7277cf1-3e28-4b85-be98-787c9a0ba18a">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
-                  <attribute type="unit.System.Attributes.Description" value="Отключение вентилятора гор. 7" />
+                  <attribute type="unit.System.Attributes.Description" value="Отключение ДВ гор. 7" />
                 </ct:object>
                 <ct:object name="PAirL" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="e3c3421c-dfa5-4cad-bc1e-4d324490f59c">
                   <attribute type="unit.System.Attributes.Title" value="Рв ниже нормы" />
@@ -473,7 +474,7 @@
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="26c0400d-5acc-4f8e-a7cd-cc36cbb903a3">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
-                  <attribute type="unit.System.Attributes.Description" value="Отключение вентилятора гор. 6" />
+                  <attribute type="unit.System.Attributes.Description" value="Отключение ДВ гор. 6" />
                 </ct:object>
                 <ct:object name="FireBurnOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="0ed1ed47-9803-4d86-90a0-3d10674bae0d">
                   <attribute type="unit.System.Attributes.Title" value="Нет факела горелки" />
@@ -540,7 +541,7 @@
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="c13a05d0-6ceb-42dc-bd84-3e613c604b3f">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
-                  <attribute type="unit.System.Attributes.Description" value="Отключение вентилятора гор. 2" />
+                  <attribute type="unit.System.Attributes.Description" value="Отключение ДВ гор. 2" />
                 </ct:object>
                 <ct:object name="PAirL" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="0adb3eeb-99ff-4a61-af6e-1870091103a4">
                   <attribute type="unit.System.Attributes.Title" value="Рв ниже нормы" />
@@ -599,7 +600,7 @@
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="64a755bd-46a4-4a43-8642-5d0c3aa59f8f">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
-                  <attribute type="unit.System.Attributes.Description" value="Отключение вентилятора гор. 4" />
+                  <attribute type="unit.System.Attributes.Description" value="Отключение ДВ гор. 4" />
                 </ct:object>
                 <ct:object name="PAirL" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="07c957e4-f363-4aa4-abf1-28ce27667196">
                   <attribute type="unit.System.Attributes.Title" value="Рв ниже нормы" />
@@ -615,6 +616,7 @@
                   <attribute type="unit.System.Attributes.Title" value="Рг выше нормы" />
                   <attribute type="unit.System.Attributes.Description" value="Рг выше нормы гор. 4" />
                 </ct:object>
+                <attribute type="Attributes.isAirBurn" value="true" />
               </ct:object>
               <ct:object name="BurnWork3" base-type="Types.BurnerWork.PLC_View" aspect="Aspects.PLC_Aspect" uuid="ab8a73b8-95ac-40a1-abc1-cb7ba049484e">
                 <ct:object name="DamperGas" base-type="Types.Damper.PLC_View" aspect="Aspects.PLC_Aspect" uuid="50340b17-add0-4e21-b470-b8d837a4015c">
@@ -658,7 +660,7 @@
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="e8a7789a-d562-4e6d-af43-b147e1fe3080">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
-                  <attribute type="unit.System.Attributes.Description" value="Отключение вентилятора гор. 8" />
+                  <attribute type="unit.System.Attributes.Description" value="Отключение ДВ гор. 8" />
                 </ct:object>
                 <ct:object name="PAirL" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="f08f6077-c4d5-48b7-a841-3e3029954a34">
                   <attribute type="unit.System.Attributes.Title" value="Рв ниже нормы" />
@@ -731,7 +733,7 @@
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="57d60bde-1ec0-461e-b87c-0c247aabbcfe">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
-                  <attribute type="unit.System.Attributes.Description" value="Отключение вентилятора гор. 11" />
+                  <attribute type="unit.System.Attributes.Description" value="Отключение ДВ гор. 11" />
                 </ct:object>
                 <ct:object name="FireBurnOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="6a68b77f-9f18-4b5f-88df-9fe113091dd7">
                   <attribute type="unit.System.Attributes.Title" value="Нет факела горелки" />
@@ -798,7 +800,7 @@
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="73d89b10-b766-40c2-85af-347f48bc3bbc">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
-                  <attribute type="unit.System.Attributes.Description" value="Отключение вентилятора гор. 9" />
+                  <attribute type="unit.System.Attributes.Description" value="Отключение ДВ гор. 9" />
                 </ct:object>
                 <ct:object name="PAirL" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="1ea1e1c9-3589-4db2-bc34-69e65521615e">
                   <attribute type="unit.System.Attributes.Title" value="Рв ниже нормы" />
@@ -857,7 +859,7 @@
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="9c779831-6894-4322-8940-58bee254ecce">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
-                  <attribute type="unit.System.Attributes.Description" value="Отключение вентилятора гор. 13" />
+                  <attribute type="unit.System.Attributes.Description" value="Отключение ДВ гор. 13" />
                 </ct:object>
                 <ct:object name="PAirL" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="cb03d983-445c-47a3-99c4-5bab9849ee97">
                   <attribute type="unit.System.Attributes.Title" value="Рв ниже нормы" />
@@ -873,6 +875,7 @@
                   <attribute type="unit.System.Attributes.Title" value="Рг выше нормы" />
                   <attribute type="unit.System.Attributes.Description" value="Рг выше нормы гор. 13" />
                 </ct:object>
+                <attribute type="Attributes.isAirBurn" value="true" />
               </ct:object>
               <ct:object name="BurnWork3" base-type="Types.BurnerWork.PLC_View" aspect="Aspects.PLC_Aspect" uuid="a03d4445-c362-477d-9c85-9431c338eb3d">
                 <ct:object name="DamperGas" base-type="Types.Damper.PLC_View" aspect="Aspects.PLC_Aspect" uuid="bd485956-e4e0-4e57-ae08-86ec5f40c4ac">
@@ -916,7 +919,7 @@
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="f0df19f6-e276-4bfc-86cb-28b452da97a8">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
-                  <attribute type="unit.System.Attributes.Description" value="Отключение вентилятора гор. 15" />
+                  <attribute type="unit.System.Attributes.Description" value="Отключение ДВ гор. 15" />
                 </ct:object>
                 <ct:object name="PAirL" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="f6618a36-76ee-4f0b-8cac-876e40a1b7c3">
                   <attribute type="unit.System.Attributes.Title" value="Рв ниже нормы" />
@@ -989,7 +992,7 @@
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="4dbc21eb-4f19-40be-80ff-e94ec65fff16">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
-                  <attribute type="unit.System.Attributes.Description" value="Отключение вентилятора гор. 12" />
+                  <attribute type="unit.System.Attributes.Description" value="Отключение ДВ гор. 12" />
                 </ct:object>
                 <ct:object name="FireBurnOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="01668d04-acf8-473b-b57c-2de40087185a">
                   <attribute type="unit.System.Attributes.Title" value="Нет факела горелки" />
@@ -1056,7 +1059,7 @@
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="1a05a3c5-7d42-493d-8646-da062d62fe25">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
-                  <attribute type="unit.System.Attributes.Description" value="Отключение вентилятора гор. 10" />
+                  <attribute type="unit.System.Attributes.Description" value="Отключение ДВ гор. 10" />
                 </ct:object>
                 <ct:object name="PAirL" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="01f2a6d1-61ba-4f50-aaa5-d042d775564f">
                   <attribute type="unit.System.Attributes.Title" value="Рв ниже нормы" />
@@ -1115,7 +1118,7 @@
                 </ct:object>
                 <ct:object name="FanOff" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="63540efa-b5c6-46f4-97fe-bcb2888f1ac4">
                   <attribute type="unit.System.Attributes.Title" value="Отключение вентилятора" />
-                  <attribute type="unit.System.Attributes.Description" value="Отключение вентилятора гор. 14" />
+                  <attribute type="unit.System.Attributes.Description" value="Отключение ДВ гор. 14" />
                 </ct:object>
                 <ct:object name="PAirL" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="ba0ec465-d444-4e5e-9bf3-3e5b2ba80bab">
                   <attribute type="unit.System.Attributes.Title" value="Рв ниже нормы" />
@@ -1132,6 +1135,7 @@
                   <attribute type="unit.System.Attributes.Title" value="Рг выше нормы" />
                   <attribute type="unit.System.Attributes.Description" value="Рг выше нормы гор. 14" />
                 </ct:object>
+                <attribute type="Attributes.isAirBurn" value="true" />
               </ct:object>
               <ct:object name="BurnWork3" base-type="Types.BurnerWork.PLC_View" aspect="Aspects.PLC_Aspect" uuid="02e15a79-962c-4cc0-b1c1-806688c05ad7">
                 <ct:object name="DamperGas" base-type="Types.Damper.PLC_View" aspect="Aspects.PLC_Aspect" uuid="0b3f2d5e-64c8-41e0-b5d0-b785090a72ec">
@@ -1197,7 +1201,7 @@
             <ct:object name="Prots" uuid="f03136bb-022b-4bee-9a18-80694c808ae9">
               <ct:object name="FWaterOutL" uuid="c8c98024-f99e-42e5-8b23-4c71b5cfd2c9" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect">
                 <attribute type="unit.System.Attributes.Title" value="Fсв на выходе ниже нормы" />
-                <attribute type="unit.System.Attributes.Description" value="Fсв на выходе ниже нормы" />
+                <attribute type="unit.System.Attributes.Description" value="Fсв на выходе" />
               </ct:object>
               <ct:object name="LastBurnProt" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="a8129919-c34b-4b44-8cc5-aba59ef6e3c7">
                 <attribute type="unit.System.Attributes.Title" value="Авария последней горелки" />
@@ -1221,27 +1225,27 @@
               </ct:object>
               <ct:object name="PGasCollH" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="3850ff03-17bf-4194-9761-2b60aa24239e">
                 <attribute type="unit.System.Attributes.Title" value="Рг в коллекторе выше нормы" />
-                <attribute type="unit.System.Attributes.Description" value="Рг в коллекторе выше нормы" />
+                <attribute type="unit.System.Attributes.Description" value="Рг в коллекторе" />
               </ct:object>
               <ct:object name="PGasCollL" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="06e35b85-a676-4b6d-b81b-abadb42ab070">
                 <attribute type="unit.System.Attributes.Title" value="Рг в коллекторе ниже нормы" />
-                <attribute type="unit.System.Attributes.Description" value="Рг в коллекторе ниже нормы" />
+                <attribute type="unit.System.Attributes.Description" value="Рг в коллекторе" />
               </ct:object>
               <ct:object name="PVacH" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="6da95ea0-74fc-4de9-8b33-a60715034d37">
                 <attribute type="unit.System.Attributes.Title" value="Разрежение ниже нормы" />
-                <attribute type="unit.System.Attributes.Description" value="Разрежение ниже нормы" />
+                <attribute type="unit.System.Attributes.Description" value="Разрежение" />
               </ct:object>
               <ct:object name="PWaterOutH" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="a5c5182b-d06e-405c-9b8d-bbab98172df1">
                 <attribute type="unit.System.Attributes.Title" value="Рсв на выходе выше нормы" />
-                <attribute type="unit.System.Attributes.Description" value="Рсв на выходе выше нормы" />
+                <attribute type="unit.System.Attributes.Description" value="Рсв на выходе" />
               </ct:object>
               <ct:object name="PWaterOutL" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="116c97b6-1a7c-43de-ad0d-ef40d3dba016">
                 <attribute type="unit.System.Attributes.Title" value="Рсв на выходе ниже нормы" />
-                <attribute type="unit.System.Attributes.Description" value="Рсв на выходе ниже нормы" />
+                <attribute type="unit.System.Attributes.Description" value="Рсв на выходе" />
               </ct:object>
               <ct:object name="TWaterOutH" base-type="Types.Prot.PLC_View" aspect="Aspects.PLC_Aspect" uuid="61368ee2-862b-4878-8327-fca021c09525">
                 <attribute type="unit.System.Attributes.Title" value="Тсв на выходе выше нормы" />
-                <attribute type="unit.System.Attributes.Description" value="Тсв на выходе выше нормы" />
+                <attribute type="unit.System.Attributes.Description" value="Тсв на выходе" />
               </ct:object>
             </ct:object>
             <ct:object name="Warnings" uuid="37a7f589-f9c2-4af4-90ff-c269eda8a0c2">
@@ -4486,6 +4490,9 @@
           <attribute type="unit.Server.Attributes.History">
             <property name="value">Enable="True" Deadband="0.1" MinTime="1000" ServerTime="True" AppendServerTime="False"</property>
           </attribute>
+          <attribute type="unit.Server.Attributes.Alarm">
+            <property name="value">{"Condition":{"IsEnabled":"true","Subconditions":[{"AckStrategy":1,"Severity":"1","Type":"Above"},{"AckStrategy":1,"Severity":"1","Type":"Normal"},{"AckStrategy":1,"Severity":"1","Type":"Below"}],"Type":"Level"}}</property>
+          </attribute>
         </ct:parameter>
         <ct:parameter name="KKS" uuid="6ee9672a-e6dd-42a5-b415-d23498368ba8" type="string" direction="out">
           <attribute type="unit.System.Attributes.InitialValue" value="@(object:System.Attributes.Title)" />
@@ -5084,6 +5091,7 @@
         <ct:parameter name="eBurnProtections" type="int32" direction="out" uuid="947e5c74-a8f4-4979-b53a-c54b4d4fb1f7" />
         <ct:parameter name="ePressIgn" type="int32" direction="out" uuid="801706d3-2cbb-4934-b927-bb51c0d6379a" />
         <attribute type="Attributes.Ign" value="FALSE" />
+        <ct:parameter name="bAirBurn" type="bool" direction="out" uuid="f49d3d25-d594-4330-824d-021645d9fd7a" />
       </ct:type>
       <ct:type name="IOS_View" aspect="Aspects.IOS_Aspect" original="BurnerWork" uuid="d2ad88ad-bbfa-4f38-b686-bc07fb19ced9">
         <r:ref name="_PLC_View" type="PLC_View" uuid="3940f98c-c903-42c5-8c07-b1532d733d58" />
@@ -5168,6 +5176,8 @@
         <ct:bind source="ePressIgn1.DESCRIPTION" target="sPressIgn" />
         <ct:bind source="eBurnProtections.VALUE" target="eBurnProtection" />
         <ct:bind source="eBurnProtections.DESCRIPTION" target="sBurnProtection" />
+        <ct:parameter name="bAirBurn" type="bool" direction="out" uuid="fec80d8e-9f57-4b78-aa92-21cdb4d95933" />
+        <ct:bind source="_PLC_View.bAirBurn" target="bAirBurn" />
       </ct:type>
     </ct:type>
     <ct:type name="Gas" uuid="7e71ba3c-d7cf-4293-bd81-5bd610447730">
@@ -5418,7 +5428,7 @@
         <ct:bind source="OutSettings.eDoubleSens" target="eDoubleSens.VALUE" />
         <ct:bind source="eDoubleSens.DESCRIPTION" target="OutSettings.Description" />
         <ct:parameter name="NAME" type="string" direction="out" uuid="78db3ef1-3b13-4801-86de-4ac641dd9135">
-          <attribute type="unit.System.Attributes.InitialValue" value="@(object:System.Attributes.Description)" />
+          <attribute type="unit.System.Attributes.InitialValue" value="@(object:System.Attributes.Title)" />
         </ct:parameter>
         <ct:parameter name="bTriggered" uuid="178e9ee8-9a48-4ef2-af2f-32eebbb5491f" direction="out" type="bool">
           <attribute type="unit.Server.Attributes.Alarm">
@@ -5432,6 +5442,9 @@
         <ct:bind source="_PLC_View.fValueClone" target="fValueClone" />
         <ct:parameter name="fSensValue2" uuid="5e19a6ac-d38d-48f8-ae47-bed366ef1ee1" direction="out" type="float32" />
         <ct:bind source="_PLC_View.fSensValue2" target="fSensValue2" />
+        <ct:parameter name="DESCRIPTION" type="string" direction="out" uuid="ff86e719-9808-4cd4-89fd-729c61f81ada">
+          <attribute type="unit.System.Attributes.InitialValue" value="@(object:System.Attributes.Description)" />
+        </ct:parameter>
       </ct:type>
     </ct:type>
     <ct:type name="Warning" uuid="0d1dca5b-75a1-4b8d-9281-af84127fc8ed">
@@ -6030,6 +6043,7 @@ STATUS_BITS2.xRejection	= Math.TestBit(_PLC_View_2.byHwErrorCode,7);</property>
     <attribute-type name="GroupNumber" type="uint8" title="GroupNumber" description="Номер группы горелок" uuid="8fa44161-0931-45ac-9a90-c56cfecf53f1" />
     <attribute-type name="Min" type="float32" title="Min" description="Минимум" uuid="6edf1cdf-f20a-4777-a9d2-a494c085a2ee" />
     <attribute-type name="Max" type="float32" title="Max" description="Максимум" uuid="700b5317-8723-4647-b07d-cfd7dc734d82" />
+    <attribute-type name="isAirBurn" uuid="bebb38a7-90f5-42da-86b4-155862c56fb8" type="bool" title="isAirBurn" description="Горелка для доп воздуха" />
   </namespace>
   <link-unit name="PsDiagn" target="PsDiagn" uuid="5ff959af-bf6f-4e84-837f-e6a5ccdc3c34" />
   <link-unit name="PsBase" target="PsBase" uuid="0b3d2951-2de2-4e93-a6cf-2ea0c0b07060" />
@@ -6042,17 +6056,20 @@ STATUS_BITS2.xRejection	= Math.TestBit(_PLC_View_2.byHwErrorCode,7);</property>
       </ct:parameter>
       <ct:formula target="DESCRIPTION">
         <property name="source-code">(VALUE == 0) ? "Не в работе" : 
-(VALUE == 1) ? "Проверка" : 
+(VALUE == 1) ? "Подготовка" : 
 (VALUE == 2) ? "Подача газа" : 
 (VALUE == 3) ? "Подача искры" : 
-(VALUE == 4) ? "Открытие КЗ" :
+(VALUE == 4) ? "Розжиг запальника" :
 (VALUE == 5) ? "Стаб. факела запальника" :
-(VALUE == 6) ? "Подготовка заслонок" :
-(VALUE == 7) ? "Открытие ПЗК-2" :
-(VALUE == 8) ? "Выход на мин. мощность" :
-(VALUE == 9) ? "Стаб. факела горелки" :
-(VALUE == 10) ? "Горелка в работе" :
-(VALUE == 11) ? "Авария горелки" :
+(VALUE == 6) ? "Закрытие ШВ" :
+(VALUE == 7) ? "Подготовка заслонок" :
+(VALUE == 8) ? "Открытие воздуха и газа" :
+(VALUE == 9) ? "Открытие воздуха" :
+(VALUE == 10) ? "Выход на мин. мощность" :
+(VALUE == 11) ? "Стаб. факела горелки" :
+(VALUE == 12) ? "Режим доп. воздуха" :
+(VALUE == 13) ? "Горелка в работе" :
+(VALUE == 14) ? "Авария горелки" :
 "???"</property>
       </ct:formula>
       <ct:parameter name="bDoNothing" type="bool" direction="out" uuid="93dca4f4-4e6f-4f06-81cb-ea1664e63975">
@@ -6081,12 +6098,23 @@ STATUS_BITS2.xRejection	= Math.TestBit(_PLC_View_2.byHwErrorCode,7);</property>
       <ct:formula target="bSpark" source-code="VALUE == 3" />
       <ct:formula target="bIgnition" source-code="VALUE == 4" />
       <ct:formula target="bStabFireIgn" source-code="VALUE == 5" />
-      <ct:formula target="bPrepDampers" source-code="VALUE == 6" />
-      <ct:formula target="bOpenValve2" source-code="VALUE == 7" />
-      <ct:formula target="bMinPower" source-code="VALUE == 8" />
-      <ct:formula target="bStabFireBurn" source-code="VALUE == 9" />
-      <ct:formula target="bFinalBurn" source-code="VALUE == 10" />
-      <ct:formula target="bProtection" source-code="VALUE == 11" />
+      <ct:formula target="bPrepDampers" source-code="VALUE == 7" />
+      <ct:formula target="bOpenValve2" source-code="VALUE == 8" />
+      <ct:formula target="bMinPower" source-code="VALUE == 10" />
+      <ct:formula target="bStabFireBurn" source-code="VALUE == 11" />
+      <ct:formula target="bFinalBurn" source-code="VALUE == 13" />
+      <ct:formula target="bProtection" source-code="VALUE == 14" />
+      <ct:parameter name="bCloseAir" type="bool" direction="out" uuid="3f50d963-778a-4f38-bb15-cb5b0923dd5c" />
+      <ct:formula target="bStabFireIgn" source-code="VALUE == 5" />
+      <ct:formula target="bCloseAir" source-code="VALUE == 6" />
+      <ct:parameter name="bOpenAir" type="bool" direction="out" uuid="c310c27f-1e9b-42e5-96bf-0112eb2d1603" />
+      <ct:formula target="bOpenAir" source-code="VALUE == 9" />
+      <ct:parameter name="bFinalAir" type="bool" direction="out" uuid="152748cc-e115-44fc-8695-7a92e5155e9d">
+        <attribute type="unit.Server.Attributes.Alarm">
+          <property name="value">{"Condition":{"IsEnabled":"true","Subconditions":[{"AckStrategy":0,"IsEnabled":true,"Message":". Розжиг завершен","Severity":"100","Type":"On"},{"AckStrategy":1,"Severity":"1","Type":"Off"}],"Type":"Discrete"}}</property>
+        </attribute>
+      </ct:parameter>
+      <ct:formula target="bFinalAir" source-code="VALUE == 12" />
     </ct:type>
     <ct:type name="eBurnProtections" uuid="1edb9af3-01b2-4b1f-bd2e-120850c896a2">
       <ct:parameter name="VALUE" type="int32" direction="in-out" uuid="0ed0bd3b-f81d-4e08-967e-c37715debd27" />

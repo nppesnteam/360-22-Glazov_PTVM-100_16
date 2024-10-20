@@ -85,17 +85,7 @@
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Width" value="1190" ver="5"/>
 			<designed target="Height" value="100" ver="5"/>
-			<do-trace access-modifier="private" target="IsFullAccessAllowed" ver="5">
-				<body>
-					<![CDATA[unit.Security.AllowSettingsChange.Value]]>
-				</body>
-			</do-trace>
 			<init target="ShowMilliseconds" ver="5" value="false"/>
-			<do-trace access-modifier="private" target="GUIModificationAvailable" ver="5">
-				<body>
-					<![CDATA[unit.Security.AllowSettingsChange.Value]]>
-				</body>
-			</do-trace>
 			<init target="NotAckOtherEvents" ver="5" value="true"/>
 			<init target="DisplayToolbar" ver="5" value="false"/>
 			<init target="DisplayStatePanel" ver="5" value="false"/>
@@ -105,6 +95,9 @@
 			<init target="OnAck" ver="5" ref="cmdReset"/>
 			<init target="RequestEventsStart" ver="5" value="false"/>
 			<init target="init_ApSource" ver="5" ref="unit.Connections.AppSource"/>
+			<init target="FileSystemAccess" ver="5" value="false"/>
+			<init target="UseSecurity" ver="5" value="true"/>
+			<init target="HideAckedEvents" ver="5" value="true"/>
 		</object>
 		<object access-modifier="private" name="frameCurrentMainFrame" display-name="frameCurrentMainFrame" uuid="bbfd1447-763c-4f97-b820-10f2de42dfcc" base-type="Frame" base-type-id="71f78e19-ef99-4133-a029-2968b14f02b6" ver="5">
 			<designed target="X" value="0" ver="5"/>

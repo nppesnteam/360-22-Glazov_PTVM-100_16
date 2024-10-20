@@ -446,7 +446,6 @@
 					<init target="refData" ver="5" ref="here"/>
 					<init target="initPathPD" ver="5" ref="here.initPathPD"/>
 					<designed target="WindowCaption" value="Расход" ver="5"/>
-					<init target="WindowCaption" ver="5" ref="NameExtended"/>
 					<init target="WindowX" ver="5" ref="here.private.posX"/>
 					<init target="WindowY" ver="5" ref="here.private.posY"/>
 					<init target="initApSourcePD" ver="5" ref="here.initApSourcePD"/>
@@ -466,7 +465,6 @@
 					<init target="WindowX" ver="5" ref="posX"/>
 					<init target="WindowY" ver="5" ref="posY"/>
 					<designed target="WindowCaption" value="Расход (настройка)" ver="5"/>
-					<init target="WindowCaption" ver="5" ref="NameExtended"/>
 					<init target="refDataFlow" ver="5" ref="here"/>
 				</object>
 			</do-on>
@@ -533,5 +531,15 @@ private.OpenSettingsWindow.Invoke();]]>
 	</object>
 	<object access-modifier="private" name="initApSourcePD" display-name="initApSourcePD" uuid="c5c72728-188c-4825-accd-aa9f91038155" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" base-const="true" base-ref="true" ver="5"/>
 	<object access-modifier="private" name="initPathPD" display-name="initPathPD" uuid="44ca51de-e388-4429-8061-a83a801f946c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	<do-trace access-modifier="private" target="bProt" ver="5">
+		<body>
+			<![CDATA[refProtH.bCtrl || refProtL.bCtrl]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="bWarn" ver="5">
+		<body>
+			<![CDATA[refWarnH.bTriggered || refWarnL.bTriggered]]>
+		</body>
+	</do-trace>
 </type>
 

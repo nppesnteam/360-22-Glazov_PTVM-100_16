@@ -2879,5 +2879,10 @@ if (refData.outiSel == 1)
 	</do-on>
 	<designed target="Flip" value="0" ver="5"/>
 	<designed target="WindowIconPath" value="" ver="5"/>
+	<do-trace access-modifier="private" target="WindowCaption" ver="5">
+		<body>
+			<![CDATA[refData.NAME]]>
+		</body>
+	</do-trace>
 </type>
 

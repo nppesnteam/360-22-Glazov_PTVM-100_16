@@ -88,23 +88,39 @@ here.btnMain_2.Visible = !here.btnMain_2.Visible;]]>
 		<designed target="DisabledPenColor" value="4288716960" ver="5"/>
 		<designed target="DisabledPenStyle" value="1" ver="5"/>
 		<designed target="DisabledPenWidth" value="1" ver="5"/>
-		<do-trace access-modifier="private" target="BrushColor" ver="5">
-			<conditional-expr>
-				<condition>
-					<![CDATA[ChoosedRack == 0]]>
-				</condition>
-				<expr>
-					<![CDATA[0xff00ff00]]>
-				</expr>
-			</conditional-expr>
-			<default-expr>
-				<expr>
-					<![CDATA[0xfff0f0f0]]>
-				</expr>
-			</default-expr>
-		</do-trace>
+		<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="MouseEnter">
+			<body kind="om">
+				<![CDATA[LinearGradient_1.Visible=false;]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="59609f00-49f6-4777-8e4a-f8395305bf05" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
+			<designed target="Rotation" value="90" ver="5"/>
+			<designed target="Visible" value="false" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="32737940-9bd3-4b5e-8bf1-100ccbdf3c4f" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+				<designed target="Position" value="0" ver="5"/>
+				<designed target="Color" value="0xff999999" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="239ab309-01f8-4a5b-8b2f-8ecb87195c68" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+				<designed target="Position" value="0.40000000000000002" ver="5"/>
+				<designed target="Color" value="0xffffffff" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_3" display-name="GradientPoint_3" uuid="1b240055-a3bf-427f-b64d-ade93a111516" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+				<designed target="Position" value="0.59999999999999998" ver="5"/>
+				<designed target="Color" value="0xffffffff" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_4" display-name="GradientPoint_4" uuid="4f33df27-8c46-4ca2-8bbe-07943c92be49" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+				<designed target="Position" value="1" ver="5"/>
+				<designed target="Color" value="0xff999999" ver="5"/>
+			</object>
+		</object>
+		<do-on access-modifier="private" name="Handler_8" display-name="Handler_8" ver="5" event="MouseLeave">
+			<body kind="om">
+				<![CDATA[LinearGradient_1.Visible=true;]]>
+			</body>
+		</do-on>
 	</object>
-	<object access-modifier="private" name="txtGroup_4" display-name="txtGroup_4" uuid="4adb839a-0bd2-4450-83ba-2f2998cd6770" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
+	<object access-modifier="private" name="btnGroup_4" display-name="btnGroup_4" uuid="4adb839a-0bd2-4450-83ba-2f2998cd6770" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
 		<designed target="X" value="75" ver="5"/>
 		<designed target="Y" value="849" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
@@ -151,21 +167,47 @@ here.btnMain_2.Visible = !here.btnMain_2.Visible;]]>
 				<![CDATA[ChoosedRack = 4;]]>
 			</body>
 		</do-on>
-		<do-trace access-modifier="private" target="BrushColor" ver="5">
-			<conditional-expr>
-				<condition>
-					<![CDATA[ChoosedRack == 4]]>
-				</condition>
-				<expr>
-					<![CDATA[0xff00ff00]]>
-				</expr>
-			</conditional-expr>
-			<default-expr>
-				<expr>
-					<![CDATA[0xfff0f0f0]]>
-				</expr>
-			</default-expr>
+		<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="7b65c046-f871-4050-be86-648eeb26c8ae" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
+			<designed target="Rotation" value="90" ver="5"/>
+			<designed target="Visible" value="false" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="61c58da2-06a2-44de-a669-4b7166a3c73b" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+				<designed target="Position" value="0" ver="5"/>
+				<designed target="Color" value="0xff999999" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="97eacd56-6eda-45de-a8a3-9fc16d59c32d" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+				<designed target="Position" value="0.40000000000000002" ver="5"/>
+				<designed target="Color" value="0xffffffff" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_3" display-name="GradientPoint_3" uuid="ec7c5cba-26f5-45f7-bb51-4fbc00e9053a" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+				<designed target="Position" value="0.59999999999999998" ver="5"/>
+				<designed target="Color" value="0xffffffff" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_4" display-name="GradientPoint_4" uuid="b31605ce-9870-409e-864b-ad737c19e332" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+				<designed target="Position" value="1" ver="5"/>
+				<designed target="Color" value="0xff999999" ver="5"/>
+			</object>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[ChoosedRack!=4]]>
+				</body>
+			</do-trace>
+		</object>
+		<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="MouseEnter">
+			<body kind="om">
+				<![CDATA[LinearGradient_1.Visible=false;]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[ChoosedRack!=4]]>
+			</body>
 		</do-trace>
+		<do-on access-modifier="private" name="Handler_8" display-name="Handler_8" ver="5" event="MouseLeave">
+			<body kind="om">
+				<![CDATA[LinearGradient_1.Visible=true;]]>
+			</body>
+		</do-on>
 	</object>
 	<object access-modifier="private" name="btnGroup_2" display-name="btnGroup_2" uuid="c519344d-aef1-4e6c-a4b2-e8026a9b5eee" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
 		<designed target="X" value="75" ver="5"/>
@@ -214,21 +256,47 @@ here.btnMain_2.Visible = !here.btnMain_2.Visible;]]>
 				<![CDATA[ChoosedRack = 2;]]>
 			</body>
 		</do-on>
-		<do-trace access-modifier="private" target="BrushColor" ver="5">
-			<conditional-expr>
-				<condition>
-					<![CDATA[ChoosedRack == 2]]>
-				</condition>
-				<expr>
-					<![CDATA[0xff00ff00]]>
-				</expr>
-			</conditional-expr>
-			<default-expr>
-				<expr>
-					<![CDATA[0xfff0f0f0]]>
-				</expr>
-			</default-expr>
+		<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="e9f5e662-f93f-48ad-b8ec-5627e0a1699e" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
+			<designed target="Rotation" value="90" ver="5"/>
+			<designed target="Visible" value="false" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="12ea445a-fcaf-4085-90db-ba46dcea57bf" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+				<designed target="Position" value="0" ver="5"/>
+				<designed target="Color" value="0xff999999" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="ab5db71b-f06b-43ee-b701-5d293a17d062" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+				<designed target="Position" value="0.40000000000000002" ver="5"/>
+				<designed target="Color" value="0xffffffff" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_3" display-name="GradientPoint_3" uuid="ec7170e5-07ff-4368-b35a-0b1f1329d67a" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+				<designed target="Position" value="0.59999999999999998" ver="5"/>
+				<designed target="Color" value="0xffffffff" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_4" display-name="GradientPoint_4" uuid="5aa707ad-b8e6-414a-901a-57104160e07c" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+				<designed target="Position" value="1" ver="5"/>
+				<designed target="Color" value="0xff999999" ver="5"/>
+			</object>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[ChoosedRack!=2]]>
+				</body>
+			</do-trace>
+		</object>
+		<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="MouseEnter">
+			<body kind="om">
+				<![CDATA[LinearGradient_1.Visible=false;]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[ChoosedRack!=2]]>
+			</body>
 		</do-trace>
+		<do-on access-modifier="private" name="Handler_8" display-name="Handler_8" ver="5" event="MouseLeave">
+			<body kind="om">
+				<![CDATA[LinearGradient_1.Visible=true;]]>
+			</body>
+		</do-on>
 	</object>
 	<object access-modifier="private" name="btnGroup_3" display-name="btnGroup_3" uuid="038fc07e-d249-470e-b43a-5582e97225a0" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
 		<designed target="X" value="75" ver="5"/>
@@ -277,21 +345,47 @@ here.btnMain_2.Visible = !here.btnMain_2.Visible;]]>
 				<![CDATA[ChoosedRack = 3;]]>
 			</body>
 		</do-on>
-		<do-trace access-modifier="private" target="BrushColor" ver="5">
-			<conditional-expr>
-				<condition>
-					<![CDATA[ChoosedRack == 3]]>
-				</condition>
-				<expr>
-					<![CDATA[0xff00ff00]]>
-				</expr>
-			</conditional-expr>
-			<default-expr>
-				<expr>
-					<![CDATA[0xfff0f0f0]]>
-				</expr>
-			</default-expr>
+		<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="5517bddd-685b-4e0d-ba79-8010a3c26375" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
+			<designed target="Rotation" value="90" ver="5"/>
+			<designed target="Visible" value="false" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="42a30731-7abe-4517-ad07-816560f9b78f" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+				<designed target="Position" value="0" ver="5"/>
+				<designed target="Color" value="0xff999999" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="2a66f822-6334-418f-ac0e-214ff65ccacb" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+				<designed target="Position" value="0.40000000000000002" ver="5"/>
+				<designed target="Color" value="0xffffffff" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_3" display-name="GradientPoint_3" uuid="5823859d-4b1a-4089-b572-ea50e511c5ad" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+				<designed target="Position" value="0.59999999999999998" ver="5"/>
+				<designed target="Color" value="0xffffffff" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_4" display-name="GradientPoint_4" uuid="49cee8dd-d2fb-43f8-98ba-2a9007659ab7" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+				<designed target="Position" value="1" ver="5"/>
+				<designed target="Color" value="0xff999999" ver="5"/>
+			</object>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[ChoosedRack!=3]]>
+				</body>
+			</do-trace>
+		</object>
+		<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="MouseEnter">
+			<body kind="om">
+				<![CDATA[LinearGradient_1.Visible=false;]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[ChoosedRack!=3]]>
+			</body>
 		</do-trace>
+		<do-on access-modifier="private" name="Handler_8" display-name="Handler_8" ver="5" event="MouseLeave">
+			<body kind="om">
+				<![CDATA[LinearGradient_1.Visible=true;]]>
+			</body>
+		</do-on>
 	</object>
 	<object access-modifier="private" name="btnGroup_1" display-name="btnGroup_1" uuid="2df4f494-3d0f-4363-9d37-8da0f923e834" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
 		<designed target="X" value="75" ver="5"/>
@@ -340,21 +434,47 @@ here.btnMain_2.Visible = !here.btnMain_2.Visible;]]>
 				<![CDATA[ChoosedRack = 1;]]>
 			</body>
 		</do-on>
-		<do-trace access-modifier="private" target="BrushColor" ver="5">
-			<conditional-expr>
-				<condition>
-					<![CDATA[ChoosedRack == 1]]>
-				</condition>
-				<expr>
-					<![CDATA[0xff00ff00]]>
-				</expr>
-			</conditional-expr>
-			<default-expr>
-				<expr>
-					<![CDATA[0xfff0f0f0]]>
-				</expr>
-			</default-expr>
+		<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="1e477c15-55b9-4f6a-8c7b-0d7d515028d4" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
+			<designed target="Rotation" value="90" ver="5"/>
+			<designed target="Visible" value="false" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="18a4f345-a2ec-43d1-a3c4-044cdb5c1b8e" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+				<designed target="Position" value="0" ver="5"/>
+				<designed target="Color" value="0xff999999" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="6d429279-67d8-4d91-8363-32335b8e412d" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+				<designed target="Position" value="0.40000000000000002" ver="5"/>
+				<designed target="Color" value="0xffffffff" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_3" display-name="GradientPoint_3" uuid="56b43880-90e6-4ccd-a8ee-570a1b15a36f" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+				<designed target="Position" value="0.59999999999999998" ver="5"/>
+				<designed target="Color" value="0xffffffff" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_4" display-name="GradientPoint_4" uuid="c0152745-b795-4cb9-915b-fe42446d7ba9" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+				<designed target="Position" value="1" ver="5"/>
+				<designed target="Color" value="0xff999999" ver="5"/>
+			</object>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[ChoosedRack!=1]]>
+				</body>
+			</do-trace>
+		</object>
+		<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="MouseEnter">
+			<body kind="om">
+				<![CDATA[LinearGradient_1.Visible=false;]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[ChoosedRack!=1]]>
+			</body>
 		</do-trace>
+		<do-on access-modifier="private" name="Handler_8" display-name="Handler_8" ver="5" event="MouseLeave">
+			<body kind="om">
+				<![CDATA[LinearGradient_1.Visible=true;]]>
+			</body>
+		</do-on>
 	</object>
 	<designed target="Flip" value="0" ver="5"/>
 	<designed target="WindowIconPath" value="" ver="5"/>
@@ -407,6 +527,47 @@ here.btnMain_2.Visible = !here.btnMain_2.Visible;
 ChoosedRack = 0;]]>
 			</body>
 		</do-on>
+		<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="c1092292-6787-4923-b5a0-f671a86dfc65" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
+			<designed target="Rotation" value="90" ver="5"/>
+			<designed target="Visible" value="false" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="e251565a-7d7c-4900-a04e-657568c7675e" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+				<designed target="Position" value="0" ver="5"/>
+				<designed target="Color" value="0xff999999" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="c7e73e3d-1b5c-499f-bbc4-22a5cd5ac6c1" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+				<designed target="Position" value="0.40000000000000002" ver="5"/>
+				<designed target="Color" value="0xffffffff" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_3" display-name="GradientPoint_3" uuid="b80be5e8-4df4-40e7-a1eb-9596a92cdd9f" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+				<designed target="Position" value="0.59999999999999998" ver="5"/>
+				<designed target="Color" value="0xffffffff" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_4" display-name="GradientPoint_4" uuid="13bde948-4985-4e67-a249-07d612d222c2" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+				<designed target="Position" value="1" ver="5"/>
+				<designed target="Color" value="0xff999999" ver="5"/>
+			</object>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[ChoosedRack!=0]]>
+				</body>
+			</do-trace>
+		</object>
+		<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="MouseEnter">
+			<body kind="om">
+				<![CDATA[LinearGradient_1.Visible=false;]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[ChoosedRack!=0]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_8" display-name="Handler_8" ver="5" event="MouseLeave">
+			<body kind="om">
+				<![CDATA[LinearGradient_1.Visible=true;]]>
+			</body>
+		</do-on>
 	</object>
 	<object access-modifier="private" name="btnMain_2" display-name="btnMain_2" uuid="49e6b566-a27a-46a3-96a6-cb3befaf8bf0" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
 		<designed target="X" value="220" ver="5"/>
@@ -457,6 +618,47 @@ here.btnMain_2.Visible = !here.btnMain_2.Visible;
 ChoosedRack = 5;]]>
 			</body>
 		</do-on>
+		<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="f787ae27-654e-4bde-8352-787f2c40428b" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
+			<designed target="Rotation" value="90" ver="5"/>
+			<designed target="Visible" value="false" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="37da8b20-75c7-4a9e-b3b9-b06cf4ddf53d" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+				<designed target="Position" value="0" ver="5"/>
+				<designed target="Color" value="0xff999999" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="0b5ed0ee-200f-4c25-824b-2ce3d3484e83" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+				<designed target="Position" value="0.40000000000000002" ver="5"/>
+				<designed target="Color" value="0xffffffff" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_3" display-name="GradientPoint_3" uuid="9201dcaa-8c1f-44fb-9763-d827514195da" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+				<designed target="Position" value="0.59999999999999998" ver="5"/>
+				<designed target="Color" value="0xffffffff" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_4" display-name="GradientPoint_4" uuid="419a4474-7c73-43b7-be1c-ddc0448654f6" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+				<designed target="Position" value="1" ver="5"/>
+				<designed target="Color" value="0xff999999" ver="5"/>
+			</object>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[ChoosedRack!=5]]>
+				</body>
+			</do-trace>
+		</object>
+		<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="MouseEnter">
+			<body kind="om">
+				<![CDATA[LinearGradient_1.Visible=false;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_7" display-name="Handler_7" ver="5" event="MouseLeave">
+			<body kind="om">
+				<![CDATA[LinearGradient_1.Visible=true;]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[ChoosedRack!=5]]>
+			</body>
+		</do-trace>
 	</object>
 	<object access-modifier="private" name="ChoosedRack" display-name="ChoosedRack" uuid="9324aeef-6353-4467-b10b-a43a67a3f601" base-type="notifying_uint1" base-type-id="fed14c54-414c-56bd-549a-8d761c4d6200" ver="5" description="" cardinal="1"/>
 	<object access-modifier="private" name="РЕЗЕРВИРОВАННАЯ ПАРА СЕРВЕРОВ_1" display-name="РЕЗЕРВИРОВАННАЯ ПАРА СЕРВЕРОВ_1" uuid="06e26f91-fdaa-4ec2-a7f5-dd972573ec35" base-type="РЕЗЕРВИРОВАННАЯ ПАРА СЕРВЕРОВ" base-type-id="ed2726dd-382b-49b3-9318-57c564593e59" ver="5" description="" cardinal="1">

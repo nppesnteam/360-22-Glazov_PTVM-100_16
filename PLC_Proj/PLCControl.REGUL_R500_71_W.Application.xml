@@ -21,11 +21,11 @@
     <TypeSimple name="T_WORD" size="2" swapsize="2" typeclass="Word" iecname="WORD" />
     <TypeSimple name="T_WSTRING" size="162" swapsize="2" typeclass="WString" iecname="WSTRING" />
     <TypeSimple name="T_WSTRING_30_" size="62" swapsize="2" typeclass="WString" iecname="WSTRING(30)" />
-    <TypeArray name="T_ARRAY__0__13__OF_WSTRING_30_" size="868" nativesize="868" typeclass="Array" iecname="ARRAY [0..13] OF WSTRING(30)" basetype="T_WSTRING_30_">
-      <ArrayDim minrange="0" maxrange="13" />
-    </TypeArray>
     <TypeArray name="T_ARRAY__0__14__OF_WSTRING_30_" size="930" nativesize="930" typeclass="Array" iecname="ARRAY [0..14] OF WSTRING(30)" basetype="T_WSTRING_30_">
       <ArrayDim minrange="0" maxrange="14" />
+    </TypeArray>
+    <TypeArray name="T_ARRAY__0__16__OF_WSTRING_30_" size="1054" nativesize="1054" typeclass="Array" iecname="ARRAY [0..16] OF WSTRING(30)" basetype="T_WSTRING_30_">
+      <ArrayDim minrange="0" maxrange="16" />
     </TypeArray>
     <TypeArray name="T_ARRAY__0__6__OF_WSTRING_30_" size="434" nativesize="434" typeclass="Array" iecname="ARRAY [0..6] OF WSTRING(30)" basetype="T_WSTRING_30_">
       <ArrayDim minrange="0" maxrange="6" />
@@ -205,12 +205,15 @@
       <UserDefElement type="T_eBurnIgn" iecname="Spark" enumvalue="3" />
       <UserDefElement type="T_eBurnIgn" iecname="Ignition" enumvalue="4" />
       <UserDefElement type="T_eBurnIgn" iecname="StabFireIgn" enumvalue="5" />
-      <UserDefElement type="T_eBurnIgn" iecname="PrepDampers" enumvalue="6" />
-      <UserDefElement type="T_eBurnIgn" iecname="OpenValve2" enumvalue="7" />
-      <UserDefElement type="T_eBurnIgn" iecname="MinPower" enumvalue="8" />
-      <UserDefElement type="T_eBurnIgn" iecname="StabFireBurn" enumvalue="9" />
-      <UserDefElement type="T_eBurnIgn" iecname="FinalBurn" enumvalue="10" />
-      <UserDefElement type="T_eBurnIgn" iecname="Protection" enumvalue="11" />
+      <UserDefElement type="T_eBurnIgn" iecname="CloseAir" enumvalue="6" />
+      <UserDefElement type="T_eBurnIgn" iecname="PrepDampers" enumvalue="7" />
+      <UserDefElement type="T_eBurnIgn" iecname="OpenValve2" enumvalue="8" />
+      <UserDefElement type="T_eBurnIgn" iecname="OpenAir" enumvalue="9" />
+      <UserDefElement type="T_eBurnIgn" iecname="MinPower" enumvalue="10" />
+      <UserDefElement type="T_eBurnIgn" iecname="StabFireBurn" enumvalue="11" />
+      <UserDefElement type="T_eBurnIgn" iecname="FinalAir" enumvalue="12" />
+      <UserDefElement type="T_eBurnIgn" iecname="FinalBurn" enumvalue="13" />
+      <UserDefElement type="T_eBurnIgn" iecname="Protection" enumvalue="14" />
     </TypeUserDef>
     <TypeUserDef name="T_eBurnProtections" size="2" nativesize="2" swapsize="2" typeclass="Enum" iecname="eBurnProtections" basetype="T_INT">
       <UserDefElement type="T_eBurnProtections" iecname="NoBurnProt" enumvalue="0" />
@@ -1195,21 +1198,22 @@
       <UserDefElement iecname="fGasTask" type="T_REAL" byteoffset="0" vartype="VAR" access="ReadWrite" />
       <UserDefElement iecname="fAirTask" type="T_REAL" byteoffset="4" vartype="VAR" access="ReadWrite" />
     </TypeUserDef>
-    <TypeUserDef name="T_stTimeProcIgn" size="56" nativesize="56" typeclass="Userdef" pouclass="STRUCTURE" iecname="stTimeProcIgn">
+    <TypeUserDef name="T_stTimeProcIgn" size="60" nativesize="60" typeclass="Userdef" pouclass="STRUCTURE" iecname="stTimeProcIgn">
       <UserDefElement iecname="fCheckBurn" type="T_REAL" byteoffset="0" vartype="VAR" access="ReadWrite" />
       <UserDefElement iecname="fPumpGas" type="T_REAL" byteoffset="4" vartype="VAR" access="ReadWrite" />
       <UserDefElement iecname="fSpark" type="T_REAL" byteoffset="8" vartype="VAR" access="ReadWrite" />
       <UserDefElement iecname="fIgnition" type="T_REAL" byteoffset="12" vartype="VAR" access="ReadWrite" />
       <UserDefElement iecname="fStabFireIgn" type="T_REAL" byteoffset="16" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="fPrepDampers" type="T_REAL" byteoffset="20" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="fStabFireBurn" type="T_REAL" byteoffset="24" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="fSlowStop" type="T_REAL" byteoffset="28" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="fPWMLowGas" type="T_REAL" byteoffset="32" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="fPWMHighGas" type="T_REAL" byteoffset="36" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="fPWMLowAir" type="T_REAL" byteoffset="40" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="fPWMHighAir" type="T_REAL" byteoffset="44" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="fFireBurnFirstDelay" type="T_REAL" byteoffset="48" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="fValve2" type="T_REAL" byteoffset="52" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fCloseAir" type="T_REAL" byteoffset="20" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fPrepDampers" type="T_REAL" byteoffset="24" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fStabFireBurn" type="T_REAL" byteoffset="28" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fSlowStop" type="T_REAL" byteoffset="32" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fPWMLowGas" type="T_REAL" byteoffset="36" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fPWMHighGas" type="T_REAL" byteoffset="40" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fPWMLowAir" type="T_REAL" byteoffset="44" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fPWMHighAir" type="T_REAL" byteoffset="48" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fFireBurnFirstDelay" type="T_REAL" byteoffset="52" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fValve2" type="T_REAL" byteoffset="56" vartype="VAR" access="ReadWrite" />
     </TypeUserDef>
     <TypeUserDef name="T_stTimeProcPrep" size="16" nativesize="16" typeclass="Userdef" pouclass="STRUCTURE" iecname="stTimeProcPrep">
       <UserDefElement iecname="fVentilation" type="T_REAL" byteoffset="0" vartype="VAR" access="ReadWrite" />
@@ -1274,8 +1278,8 @@
       <UserDefElement iecname="iSelDiaf" type="T_INT" byteoffset="14" vartype="VAR" access="ReadWrite" />
       <UserDefElement iecname="fKsher" type="T_REAL" byteoffset="16" vartype="VAR" access="ReadWrite" />
     </TypeUserDef>
-    <TypeArray name="T_ARRAY__0__7__OF_stTaskGasAir" size="64" nativesize="64" typeclass="Array" iecname="ARRAY [0..7] OF stTaskGasAir" basetype="T_stTaskGasAir">
-      <ArrayDim minrange="0" maxrange="7" />
+    <TypeArray name="T_ARRAY__0__16__OF_stTaskGasAir" size="136" nativesize="136" typeclass="Array" iecname="ARRAY [0..16] OF stTaskGasAir" basetype="T_stTaskGasAir">
+      <ArrayDim minrange="0" maxrange="16" />
     </TypeArray>
     <TypeArray name="T_ARRAY__1__16__OF_stSequenceIgnBurn" size="128" nativesize="128" typeclass="Array" iecname="ARRAY [1..16] OF stSequenceIgnBurn" basetype="T_stSequenceIgnBurn">
       <ArrayDim minrange="1" maxrange="16" />
@@ -1370,17 +1374,17 @@
       <UserDefElement iecname="TaskStat" type="T_TTaskStat" byteoffset="0" vartype="VAR" access="ReadWrite" />
       <UserDefElement iecname="SyncStat" type="T_TSyncStat" byteoffset="136" vartype="VAR" access="ReadWrite" />
     </TypeUserDef>
-    <TypeUserDef name="T_fbGas" size="8" nativesize="3636" typeclass="Userdef" pouclass="FUNCTION_BLOCK" iecname="fbGas">
+    <TypeUserDef name="T_fbGas" size="8" nativesize="3764" typeclass="Userdef" pouclass="FUNCTION_BLOCK" iecname="fbGas">
       <UserDefElement iecname="fbDoubleP" type="T_FB_DoubleSensor" byteoffset="0" vartype="VAR" access="ReadWrite" />
     </TypeUserDef>
     <TypeUserDef name="T_fbIgnQueue" size="34" nativesize="40" typeclass="Userdef" pouclass="FUNCTION_BLOCK" iecname="fbIgnQueue">
       <UserDefElement iecname="ariIgnQueue" type="T_ARRAY__1__16__OF_INT" byteoffset="0" vartype="VAR" access="ReadWrite" />
       <UserDefElement iecname="iCurrentPoint" type="T_INT" byteoffset="32" vartype="VAR" access="ReadWrite" />
     </TypeUserDef>
-    <TypeUserDef name="T_fbSmoke" size="8" nativesize="4136" typeclass="Userdef" pouclass="FUNCTION_BLOCK" iecname="fbSmoke">
+    <TypeUserDef name="T_fbSmoke" size="8" nativesize="2812" typeclass="Userdef" pouclass="FUNCTION_BLOCK" iecname="fbSmoke">
       <UserDefElement iecname="fbDoublePVac" type="T_FB_DoubleSensor" byteoffset="0" vartype="VAR" access="ReadWrite" />
     </TypeUserDef>
-    <TypeUserDef name="T_fbWater" size="16" nativesize="2680" typeclass="Userdef" pouclass="FUNCTION_BLOCK" iecname="fbWater">
+    <TypeUserDef name="T_fbWater" size="16" nativesize="2904" typeclass="Userdef" pouclass="FUNCTION_BLOCK" iecname="fbWater">
       <UserDefElement iecname="fbDoubleP" type="T_FB_DoubleSensor" byteoffset="0" vartype="VAR" access="ReadWrite" />
       <UserDefElement iecname="fbDoubleT" type="T_FB_DoubleSensor" byteoffset="8" vartype="VAR" access="ReadWrite" />
     </TypeUserDef>
@@ -1752,14 +1756,15 @@
       <UserDefElement iecname="Valve2" type="T_stValveProg" byteoffset="187" vartype="VAR" access="ReadWrite" />
       <UserDefElement iecname="Fan" type="T_stFanProg" byteoffset="202" vartype="VAR" access="ReadWrite" />
       <UserDefElement iecname="bFireBurn" type="T_BOOL" byteoffset="212" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="bBurnStarted" type="T_BOOL" byteoffset="213" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="bIgnProc" type="T_BOOL" byteoffset="214" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="bBurnFinal" type="T_BOOL" byteoffset="215" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="bBurnAlarm" type="T_BOOL" byteoffset="216" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="bPressProc" type="T_BOOL" byteoffset="217" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="bPressOk" type="T_BOOL" byteoffset="218" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="bPressAlarm" type="T_BOOL" byteoffset="219" vartype="VAR" access="ReadWrite" />
-      <UserDefElement iecname="bSkipPress" type="T_BOOL" byteoffset="220" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bAirBurn" type="T_BOOL" byteoffset="213" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bBurnStarted" type="T_BOOL" byteoffset="214" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bIgnProc" type="T_BOOL" byteoffset="215" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bBurnFinal" type="T_BOOL" byteoffset="216" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bBurnAlarm" type="T_BOOL" byteoffset="217" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bPressProc" type="T_BOOL" byteoffset="218" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bPressOk" type="T_BOOL" byteoffset="219" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bPressAlarm" type="T_BOOL" byteoffset="220" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bSkipPress" type="T_BOOL" byteoffset="221" vartype="VAR" access="ReadWrite" />
       <UserDefElement iecname="fPressRemainingTime" type="T_REAL" byteoffset="224" vartype="VAR" access="ReadWrite" />
       <UserDefElement iecname="fPressFullTime" type="T_REAL" byteoffset="228" vartype="VAR" access="ReadWrite" />
       <UserDefElement iecname="fPressRemainingTimeStep" type="T_REAL" byteoffset="232" vartype="VAR" access="ReadWrite" />
@@ -2421,7 +2426,7 @@ CHECKED_OMIT</Comment>
       <Node name="GVL_Constant">
         <Node name="arsBlowStep" type="T_ARRAY__0__6__OF_WSTRING_30_" access="Read" />
         <Node name="arsIgnAlarm" type="T_ARRAY__0__6__OF_WSTRING_30_" access="Read" />
-        <Node name="arsIgnStep" type="T_ARRAY__0__13__OF_WSTRING_30_" access="Read" />
+        <Node name="arsIgnStep" type="T_ARRAY__0__16__OF_WSTRING_30_" access="Read" />
         <Node name="arsPressStep" type="T_ARRAY__0__14__OF_WSTRING_30_" access="Read" />
         <Node name="arsVentStep" type="T_ARRAY__0__7__OF_WSTRING_30_" access="Read" />
         <Node name="stSelectionSequene" type="T_ARRAY__1__16__OF_stSequenceIgnBurn" access="Read">
@@ -2507,7 +2512,7 @@ CHECKED_OMIT</Comment>
         <Node name="bCanControl" type="T_BOOL" access="ReadWrite" />
       </Node>
       <Node name="PersistentVars">
-        <Node name="arRegimeMap" type="T_ARRAY__0__7__OF_stTaskGasAir" access="ReadWrite" />
+        <Node name="arRegimeMap" type="T_ARRAY__0__16__OF_stTaskGasAir" access="ReadWrite" />
         <Node name="bUseArrayTaskGas" type="T_BOOL" access="ReadWrite" />
         <Node name="ePGasMode" type="T_eDoubleSens" access="ReadWrite">
           <Comment>Режим работы двойного датчика Pг в колл.</Comment>

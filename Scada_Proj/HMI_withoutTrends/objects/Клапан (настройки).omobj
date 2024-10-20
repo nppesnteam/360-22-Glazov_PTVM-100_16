@@ -722,5 +722,10 @@
 	<designed target="Flip" value="0" ver="5"/>
 	<designed target="WindowIconPath" value="" ver="5"/>
 	<object access-modifier="private" name="refData" display-name="refData" uuid="b099dea1-2f90-4bbb-ab4d-4c816dd2223a" base-type="Valve" base-type-id="98113973-9854-4dd1-9221-2cfccad5aaa0" base-const="true" base-ref="true" ver="5"/>
+	<do-trace access-modifier="private" target="WindowCaption" ver="5">
+		<body>
+			<![CDATA[refData.NAME]]>
+		</body>
+	</do-trace>
 </type>
 
