@@ -427,5 +427,15 @@ SmokePen = '0xff' + red.toString(16).padStart(2, '0') + green.toString(16).padSt
 		<init target="Source" ver="5" ref="unit.Connections.AppSource"/>
 		<init target="Path" ver="5" value="GVL.bOneBurnFinal"/>
 	</object>
+	<object access-modifier="private" name="OutbManualDO" display-name="OutbManualDO" uuid="53a180d8-03d4-446b-b8f6-933ac913925b" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Source" ver="5" ref="unit.Connections.AppSource"/>
+		<init target="Path" ver="5" value="GVL.OutbManualDO"/>
+	</object>
+	<object access-modifier="private" name="InbManualDO" display-name="InbManualDO" uuid="8c9ec968-fdc4-4afa-8c04-f93fc400dbc4" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Source" ver="5" ref="unit.Connections.AppSource"/>
+		<init target="Path" ver="5" value="GVL.InbManualDO"/>
+	</object>
+	<object access-modifier="private" name="CloseAllWindows" display-name="CloseAllWindows" uuid="95bb62d2-ef35-48e6-b87e-c3e2ba49f803" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="isPressOpened" display-name="isPressOpened" uuid="e96401f1-459e-4a32-9674-651f150f15ce" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
 </object>
 

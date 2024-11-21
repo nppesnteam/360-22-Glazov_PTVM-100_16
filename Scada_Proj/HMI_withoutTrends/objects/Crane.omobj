@@ -461,7 +461,7 @@
 		<designed target="InvokeTrigger" value="false" ver="5"/>
 		<do-trace access-modifier="private" target="Enabled" ver="5">
 			<body>
-				<![CDATA[!bBlockOpen]]>
+				<![CDATA[!bBlockOpen && Security.AllowControl.Value]]>
 			</body>
 		</do-trace>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
@@ -485,7 +485,7 @@
 		<designed target="InvokeTrigger" value="false" ver="5"/>
 		<do-trace access-modifier="private" target="Enabled" ver="5">
 			<body>
-				<![CDATA[!bBlockClose]]>
+				<![CDATA[!bBlockClose && Security.AllowControl.Value]]>
 			</body>
 		</do-trace>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
@@ -522,6 +522,11 @@
 				<![CDATA[bStopManual = true;]]>
 			</body>
 		</do-on>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[Security.AllowControl.Value]]>
+			</body>
+		</do-trace>
 	</object>
 	<object access-modifier="private" name="ColorPen" display-name="ColorPen" uuid="9bc34011-84c8-483e-a656-cea68a26b9ac" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5"/>
 	<object access-modifier="private" name="isOpenedSettings" display-name="isOpenedSettings" uuid="1d72044e-1bca-4a41-bc0a-0b5ce8d143e3" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>

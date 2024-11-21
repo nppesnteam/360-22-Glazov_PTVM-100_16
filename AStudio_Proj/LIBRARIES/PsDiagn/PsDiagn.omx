@@ -11119,7 +11119,7 @@ else
                 <ct:socket-parameter name="B_HW_FAILURE" type="bool" uuid="7b7c8b12-6997-4007-872f-01183bf3d0f3">
                   <attribute type="unit.System.Attributes.Description" value="Аппаратная неисправность канала" />
                   <attribute type="unit.Server.Attributes.Alarm">
-                    <property name="value">{"Condition":{"IsEnabled":"true","Subconditions":[{"AckStrategy":1,"IsEnabled":true,"Message":". Канал 1. Начато бракование канала по выбросу","Severity":"30","Sound":"Warn.wav","Type":"On"},{"AckStrategy":0,"IsEnabled":true,"Message":". Канал 1. Бракование канала по выбросу завершено","Severity":"40","Type":"Off"}],"Type":"Discrete"}}</property>
+                    <property name="value">{"Condition":{"IsEnabled":"true","Subconditions":[{"AckStrategy":1,"IsEnabled":true,"Message":". Канал 1. Обнаружена аппаратная неисправность канала","Severity":"30","Sound":"Warn.wav","Type":"On"},{"AckStrategy":0,"IsEnabled":true,"Message":". Канал 1. Аппаратная неисправность канала устранена","Severity":"40","Type":"Off"}],"Type":"Discrete"}}</property>
                   </attribute>
                 </ct:socket-parameter>
               </ct:socket>
@@ -22620,49 +22620,49 @@ TIME = TIME_str1 + TIME_str2 + TIME_str3;
                 <ct:socket-parameter name="B_BUS_HW" uuid="56009c19-e867-44e6-8387-94c465e6f90f" type="bool">
                   <attribute type="unit.System.Attributes.Description" value="Аппаратная ошибка шины" />
                   <attribute type="unit.Server.Attributes.Alarm">
-                    <property name="value">{"Condition":{"IsEnabled":"true","Subconditions":[{"AckStrategy":1,"IsEnabled":true,"Message":". Обнаружена аппаратная ошибка шины","Severity":10,"Sound":"Fault.wav","Type":"On"},{"AckStrategy":0,"IsEnabled":true,"Message":". Аппаратная ошибка шины устранена","Severity":40,"Type":"Off"}],"Type":"Discrete"}}</property>
+                    <property name="value">{"Condition":{"IsEnabled":"true","Subconditions":[{"AckStrategy":1,"IsEnabled":true,"Message":". Обнаружена аппаратная ошибка шины","Severity":"800","Sound":"Fault.wav","Type":"On"},{"AckStrategy":0,"IsEnabled":true,"Message":". Аппаратная ошибка шины устранена","Severity":"40","Type":"Off"}],"Type":"Discrete"}}</property>
                   </attribute>
                 </ct:socket-parameter>
                 <ct:socket-parameter name="B_PORT3_LINK" type="bool" uuid="3c3cd853-2ccc-4b99-ac73-286252cadf90">
                   <attribute type="unit.System.Attributes.Description" value="Порт 3. Отсутствие соединения" />
                   <attribute type="unit.Server.Attributes.Alarm">
-                    <property name="value">{"Condition":{"IsEnabled":"true","Subconditions":[{"AckStrategy":1,"IsEnabled":true,"Message":". Порт 3. Соединение отсутвует","Severity":30,"Sound":"Warn.wav","Type":"On"},{"AckStrategy":0,"IsEnabled":true,"Message":". Порт 3. Соединение в норме","Severity":40,"Type":"Off"}],"Type":"Discrete"}}</property>
+                    <property name="value">{"Condition":{"IsEnabled":"true","Subconditions":[{"AckStrategy":1,"IsEnabled":true,"Message":". Порт 3. Соединение отсутвует","Severity":"800","Sound":"Warn.wav","Type":"On"},{"AckStrategy":0,"IsEnabled":true,"Message":". Порт 3. Соединение в норме","Severity":"40","Type":"Off"}],"Type":"Discrete"}}</property>
                   </attribute>
                 </ct:socket-parameter>
                 <ct:socket-parameter name="B_PORT4_LINK" type="bool" uuid="28c92492-ccca-442b-9361-3f3742c91c1b">
                   <attribute type="unit.System.Attributes.Description" value="Порт 4. Отсутствие соединения" />
                   <attribute type="unit.Server.Attributes.Alarm">
-                    <property name="value">{"Condition":{"IsEnabled":"true","Subconditions":[{"AckStrategy":1,"IsEnabled":true,"Message":". Порт 4. Соединение отсутвует","Severity":30,"Sound":"Warn.wav","Type":"On"},{"AckStrategy":0,"IsEnabled":true,"Message":". Порт 4. Соединение в норме","Severity":40,"Type":"Off"}],"Type":"Discrete"}}</property>
+                    <property name="value">{"Condition":{"IsEnabled":"true","Subconditions":[{"AckStrategy":1,"IsEnabled":true,"Message":". Порт 4. Соединение отсутвует","Severity":"800","Sound":"Warn.wav","Type":"On"},{"AckStrategy":0,"IsEnabled":true,"Message":". Порт 4. Соединение в норме","Severity":"40","Type":"Off"}],"Type":"Discrete"}}</property>
                   </attribute>
                 </ct:socket-parameter>
                 <ct:socket-parameter name="B_PORT5_LINK" type="bool" uuid="685e3e02-5b85-4b53-9237-ed692f37fb3b">
                   <attribute type="unit.System.Attributes.Description" value="Порт 5. Отсутствие соединения" />
                   <attribute type="unit.Server.Attributes.Alarm">
-                    <property name="value">{"Condition":{"IsEnabled":"true","Subconditions":[{"AckStrategy":1,"IsEnabled":true,"Message":". Порт 5. Соединение отсутвует","Severity":30,"Sound":"Warn.wav","Type":"On"},{"AckStrategy":0,"IsEnabled":true,"Message":". Порт 5. Соединение в норме","Severity":40,"Type":"Off"}],"Type":"Discrete"}}</property>
+                    <property name="value">{"Condition":{"IsEnabled":"true","Subconditions":[{"AckStrategy":1,"IsEnabled":true,"Message":". Порт 5. Соединение отсутвует","Severity":"800","Sound":"Warn.wav","Type":"On"},{"AckStrategy":0,"IsEnabled":true,"Message":". Порт 5. Соединение в норме","Severity":"40","Type":"Off"}],"Type":"Discrete"}}</property>
                   </attribute>
                 </ct:socket-parameter>
                 <ct:socket-parameter name="B_PORT6_LINK" type="bool" uuid="a208c913-ec34-4ea0-8335-8e7c2cf45060">
                   <attribute type="unit.System.Attributes.Description" value="Порт 6. Отсутствие соединения" />
                   <attribute type="unit.Server.Attributes.Alarm">
-                    <property name="value">{"Condition":{"IsEnabled":"true","Subconditions":[{"AckStrategy":1,"IsEnabled":true,"Message":". Порт 6. Соединение отсутвует","Severity":30,"Sound":"Warn.wav","Type":"On"},{"AckStrategy":0,"IsEnabled":true,"Message":". Порт 6. Соединение в норме","Severity":40,"Type":"Off"}],"Type":"Discrete"}}</property>
+                    <property name="value">{"Condition":{"IsEnabled":"true","Subconditions":[{"AckStrategy":1,"IsEnabled":true,"Message":". Порт 6. Соединение отсутвует","Severity":"800","Sound":"Warn.wav","Type":"On"},{"AckStrategy":0,"IsEnabled":true,"Message":". Порт 6. Соединение в норме","Severity":"40","Type":"Off"}],"Type":"Discrete"}}</property>
                   </attribute>
                 </ct:socket-parameter>
                 <ct:socket-parameter name="B_SYNC_ERR" type="bool" uuid="31e5d1a0-ca75-4ffe-abde-e36e4097f5ca">
                   <attribute type="unit.System.Attributes.Description" value="Отсутсвует синхронизация в резервной системе" />
                   <attribute type="unit.Server.Attributes.Alarm">
-                    <property name="value">{"Condition":{"IsEnabled":"true","Subconditions":[{"AckStrategy":1,"IsEnabled":true,"Message":". Ошибка синхронизации резервирования","Severity":30,"Sound":"Warn.wav","Type":"On"},{"AckStrategy":0,"IsEnabled":true,"Message":". Ошибка синхронизации устранена","Severity":40,"Type":"Off"}],"Type":"Discrete"}}</property>
+                    <property name="value">{"Condition":{"IsEnabled":"true","Subconditions":[{"AckStrategy":1,"IsEnabled":true,"Message":". Ошибка синхронизации резервирования","Severity":"800","Sound":"Warn.wav","Type":"On"},{"AckStrategy":0,"IsEnabled":true,"Message":". Ошибка синхронизации устранена","Severity":"40","Type":"Off"}],"Type":"Discrete"}}</property>
                   </attribute>
                 </ct:socket-parameter>
                 <ct:socket-parameter name="B_HW" type="bool" uuid="adf340a6-bf39-42d2-b786-010ccb1f5a52">
                   <attribute type="unit.System.Attributes.Description" value="Аппаратная ошибка ЦПУ" />
                   <attribute type="unit.Server.Attributes.Alarm">
-                    <property name="value">{"Condition":{"IsEnabled":"true","Subconditions":[{"AckStrategy":1,"IsEnabled":true,"Message":". Аппаратная ошибка ЦПУ","Severity":10,"Sound":"Fault.wav","Type":"On"},{"AckStrategy":0,"IsEnabled":true,"Message":". Аппаратная ошибка устранена","Severity":40,"Type":"Off"}],"Type":"Discrete"}}</property>
+                    <property name="value">{"Condition":{"IsEnabled":"true","Subconditions":[{"AckStrategy":1,"IsEnabled":true,"Message":". Аппаратная ошибка ЦПУ","Severity":"800","Sound":"Fault.wav","Type":"On"},{"AckStrategy":0,"IsEnabled":true,"Message":". Аппаратная ошибка устранена","Severity":"40","Type":"Off"}],"Type":"Discrete"}}</property>
                   </attribute>
                 </ct:socket-parameter>
                 <ct:socket-parameter name="B_PF" type="bool" uuid="05cc62d8-f6ef-4350-8ad9-7cb9d5cc6881">
                   <attribute type="unit.System.Attributes.Description" value="Программная ошибка ЦПУ" />
                   <attribute type="unit.Server.Attributes.Alarm">
-                    <property name="value">{"Condition":{"IsEnabled":"true","Subconditions":[{"AckStrategy":1,"IsEnabled":true,"Message":". Программная ошибка ЦПУ","Severity":10,"Sound":"Fault.wav","Type":"On"},{"AckStrategy":0,"IsEnabled":true,"Message":". Программная ошибка ЦПУ устранена","Severity":40,"Type":"Off"}],"Type":"Discrete"}}</property>
+                    <property name="value">{"Condition":{"IsEnabled":"true","Subconditions":[{"AckStrategy":1,"IsEnabled":true,"Message":". Программная ошибка ЦПУ","Severity":"800","Sound":"Fault.wav","Type":"On"},{"AckStrategy":0,"IsEnabled":true,"Message":". Программная ошибка ЦПУ устранена","Severity":"40","Type":"Off"}],"Type":"Discrete"}}</property>
                   </attribute>
                 </ct:socket-parameter>
                 <ct:socket-parameter name="B_PORT1_LINK" type="bool" uuid="1f46f69b-58d6-4ebe-bfe7-3b0da11ade4d">

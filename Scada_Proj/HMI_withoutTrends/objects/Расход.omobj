@@ -1,4 +1,4 @@
-<type access-modifier="private" name="Расход" display-name="Расход" uuid="d5d52fc3-324b-42c3-a279-73d4fe8616bf" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+<type access-modifier="private" name="Расход" display-name="Расход" uuid="d5d52fc3-324b-42c3-a279-73d4fe8616bf" base-type="ParentPopup" base-type-id="05fbbd36-bc45-4ff3-b67c-707c9d718186" ver="5">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="ZValue" value="0" ver="5"/>
@@ -241,45 +241,23 @@ refData.private.isOpened = true;]]>
 			<designed target="Active" value="true" ver="5"/>
 			<designed target="CurrentFrameNumber" value="0" ver="5"/>
 			<designed target="Speed" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
 		</object>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick" form-by-id="false">
+		<designed target="Flip" value="0" ver="5"/>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick" form-by-id="false">
 			<body kind="om">
-				<![CDATA[mX = TypeConvert.ToFloat(ScreenX(MouseX, MouseY));
-mY = TypeConvert.ToFloat(ScreenY(MouseX, MouseY));
-if (mX+1362>1920)
-{
-	posX=mX-(1370-(1920-mX));
-}
-else
-{
-	posX=mX;
-}
-if (mY+630>1080)
-{
-	posY=mY-(630-(1080-mY));
-}
-else
-{
-	posY=mY;
-}
-OpenTrendsWindow.Invoke();]]>
+				<![CDATA[posX = WindowX + WindowWidth;
+posX = posX + 600 > 1920 ? 1920 - 600 : posX;
+posY = WindowY;
+posY = posY + 300 > 1080 ? 1080 - 300 : posY;
+refData.private.OpenTrends.Invoke();]]>
 			</body>
 		</do-on>
-		<designed target="Flip" value="0" ver="5"/>
 	</object>
 	<object access-modifier="private" name="mX" display-name="mX" uuid="e6462af6-730c-497f-a6e4-c628e22b4ce8" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
 	<object access-modifier="private" name="mY" display-name="mY" uuid="e2d84dcf-ebec-43e3-ad1c-275282f6589b" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
 	<object access-modifier="private" name="posX" display-name="posX" uuid="03224cb7-12d6-48ca-a0f5-f5c19a0cd1fa" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
 	<object access-modifier="private" name="posY" display-name="posY" uuid="7662f795-da99-49fd-807f-16191b0dd67d" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
-	<object access-modifier="private" name="OpenTrendsWindow" display-name="OpenTrendsWindow" uuid="f5f0e788-db43-445f-9ac7-4e5467eca782" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" cardinal="1">
-		<designed target="Enabled" value="true" ver="5"/>
-		<designed target="InvokeTrigger" value="false" ver="5"/>
-		<do-trace access-modifier="private" target="Enabled" ver="5">
-			<body>
-				<![CDATA[!refData.private.isOpenedTrends]]>
-			</body>
-		</do-trace>
-	</object>
 	<designed target="Flip" value="0" ver="5"/>
 	<designed target="WindowIconPath" value="" ver="5"/>
 	<object access-modifier="private" name="SensSimple_1" display-name="SensSimple_1" uuid="5f0f859b-0aef-4b3d-b5b4-d1fdd6e7ede4" base-type="SensSimple" base-type-id="7d6aa5f1-44ff-4cfe-a668-21207cda0486" ver="5" description="" cardinal="1">

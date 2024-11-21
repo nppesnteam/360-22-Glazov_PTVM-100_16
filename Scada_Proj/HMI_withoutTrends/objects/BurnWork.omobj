@@ -604,6 +604,7 @@
 				<![CDATA[unit.Global.Colors.AirPen]]>
 			</body>
 		</do-trace>
+		<init target="HavePositSens" ver="5" value="false"/>
 	</object>
 	<object access-modifier="private" name="DamperGas" display-name="DamperGas" uuid="79ed26bd-882c-455b-9161-4147c275be29" base-type="Damper" base-type-id="a3e73327-f733-446d-ac01-918439e55f3f" ver="5">
 		<designed target="X" value="240" ver="5"/>
@@ -726,52 +727,6 @@
 		<do-trace access-modifier="private" target="Color" ver="5">
 			<body>
 				<![CDATA[unit.Global.Colors.Gas]]>
-			</body>
-		</do-trace>
-	</object>
-	<object access-modifier="private" name="BurnStart" display-name="BurnStart" uuid="2708fd8d-f543-44b2-83f6-8ecee5d7735c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
-		<designed target="Enabled" value="true" ver="5"/>
-		<designed target="InvokeTrigger" value="false" ver="5"/>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
-			<body kind="om">
-				<![CDATA[burner.bStartBurn = true;]]>
-			</body>
-		</do-on>
-	</object>
-	<object access-modifier="private" name="BurnStop" display-name="BurnStop" uuid="7e5d0e3a-34bc-4254-9072-b766febdc965" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
-		<designed target="Enabled" value="true" ver="5"/>
-		<designed target="InvokeTrigger" value="false" ver="5"/>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
-			<body kind="om">
-				<![CDATA[burner.bStopBurn = true;]]>
-			</body>
-		</do-on>
-	</object>
-	<object access-modifier="private" name="PressStart" display-name="PressStart" uuid="cef8debf-1be9-446c-83be-dab813873eca" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
-		<designed target="Enabled" value="true" ver="5"/>
-		<designed target="InvokeTrigger" value="false" ver="5"/>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
-			<body kind="om">
-				<![CDATA[burner.bStartPress = true;]]>
-			</body>
-		</do-on>
-		<do-trace access-modifier="private" target="Enabled" ver="5">
-			<body>
-				<![CDATA[!burner.bBurnStarted]]>
-			</body>
-		</do-trace>
-	</object>
-	<object access-modifier="private" name="PressStop" display-name="PressStop" uuid="9238585f-79c3-43cd-8d86-2cfb8178bfb1" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
-		<designed target="Enabled" value="true" ver="5"/>
-		<designed target="InvokeTrigger" value="false" ver="5"/>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
-			<body kind="om">
-				<![CDATA[burner.bStopPress = true;]]>
-			</body>
-		</do-on>
-		<do-trace access-modifier="private" target="Enabled" ver="5">
-			<body>
-				<![CDATA[!burner.bBurnStarted]]>
 			</body>
 		</do-trace>
 	</object>

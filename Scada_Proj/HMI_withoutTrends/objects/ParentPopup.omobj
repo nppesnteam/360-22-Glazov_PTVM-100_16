@@ -1,0 +1,52 @@
+<type access-modifier="private" name="ParentPopup" display-name="ParentPopup" uuid="05fbbd36-bc45-4ff3-b67c-707c9d718186" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5" description="">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Flip" value="0" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="400" ver="5"/>
+	<designed target="Height" value="300" ver="5"/>
+	<designed target="PenColor" value="4278190080" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="4293980400" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<designed target="WindowX" value="0" ver="5"/>
+	<designed target="WindowY" value="0" ver="5"/>
+	<designed target="WindowWidth" value="400" ver="5"/>
+	<designed target="WindowHeight" value="300" ver="5"/>
+	<designed target="WindowCaption" value="ParentPopup" ver="5"/>
+	<designed target="ShowWindowCaption" value="true" ver="5"/>
+	<designed target="ShowWindowMinimize" value="true" ver="5"/>
+	<designed target="ShowWindowMaximize" value="true" ver="5"/>
+	<designed target="ShowWindowClose" value="true" ver="5"/>
+	<designed target="AlwaysOnTop" value="false" ver="5"/>
+	<designed target="WindowSizeMode" value="0" ver="5"/>
+	<designed target="WindowBorderStyle" value="1" ver="5"/>
+	<designed target="WindowState" value="0" ver="5"/>
+	<designed target="WindowScalingMode" value="0" ver="5"/>
+	<designed target="MonitorNumber" value="0" ver="5"/>
+	<designed target="WindowPosition" value="0" ver="5"/>
+	<designed target="WindowCloseMode" value="0" ver="5"/>
+	<designed target="WindowIconPath" value="" ver="5"/>
+	<object access-modifier="private" name="cmdClose" display-name="cmdClose" uuid="ad32dc46-4120-4b9e-b472-799009c7d688" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" ver="5" description="">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[Close();]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="InvokeTrigger" ver="5">
+			<body>
+				<![CDATA[Global.CloseAllWindows]]>
+			</body>
+		</do-trace>
+	</object>
+</type>
+

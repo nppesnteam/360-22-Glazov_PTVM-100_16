@@ -1,4 +1,4 @@
-<type access-modifier="private" name="1 из 2 датчиков" display-name="1 из 2 датчиков" uuid="f5463445-de17-4bf9-a21b-351bcd1f8191" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+<type access-modifier="private" name="1 из 2 датчиков" display-name="1 из 2 датчиков" uuid="f5463445-de17-4bf9-a21b-351bcd1f8191" base-type="ParentPopup" base-type-id="05fbbd36-bc45-4ff3-b67c-707c9d718186" ver="5">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="ZValue" value="0" ver="5"/>
@@ -242,31 +242,18 @@ refData.private.isOpened = true;]]>
 			<designed target="Active" value="true" ver="5"/>
 			<designed target="CurrentFrameNumber" value="0" ver="5"/>
 			<designed target="Speed" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
 		</object>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick" form-by-id="false">
+		<designed target="Flip" value="0" ver="5"/>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick" form-by-id="false">
 			<body kind="om">
-				<![CDATA[mX = TypeConvert.ToFloat(ScreenX(MouseX, MouseY));
-mY = TypeConvert.ToFloat(ScreenY(MouseX, MouseY));
-if (mX+1362>1920)
-{
-	posX=mX-(1370-(1920-mX));
-}
-else
-{
-	posX=mX;
-}
-if (mY+630>1080)
-{
-	posY=mY-(630-(1080-mY));
-}
-else
-{
-	posY=mY;
-}
-OpenTrendsWindow.Invoke();]]>
+				<![CDATA[posX = WindowX + WindowWidth;
+posX = posX + 600 > 1920 ? 1920 - 600 : posX;
+posY = WindowY;
+posY = posY + 300 > 1080 ? 1080 - 300 : posY;
+refData.private.OpenTrends.Invoke();]]>
 			</body>
 		</do-on>
-		<designed target="Flip" value="0" ver="5"/>
 	</object>
 	<object access-modifier="private" name="rectValue" display-name="rectValue" uuid="e09aff03-9702-4b4e-b89f-22b544ba6bd0" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 		<designed target="X" value="25" ver="5"/>
@@ -327,6 +314,7 @@ OpenTrendsWindow.Invoke();]]>
 				</do-trace>
 				<designed target="Flip" value="0" ver="5"/>
 			</object>
+			<designed target="Flip" value="0" ver="5"/>
 		</object>
 		<designed target="Flip" value="0" ver="5"/>
 	</object>
@@ -334,15 +322,6 @@ OpenTrendsWindow.Invoke();]]>
 	<object access-modifier="private" name="mY" display-name="mY" uuid="3944ea60-70cb-4fe6-86b0-191e8268619b" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
 	<object access-modifier="private" name="posX" display-name="posX" uuid="0c35ad83-0d6f-449b-92c0-cc0c0cfb7ddd" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
 	<object access-modifier="private" name="posY" display-name="posY" uuid="f018221a-2fa2-48a7-848f-bee1c57deb26" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
-	<object access-modifier="private" name="OpenTrendsWindow" display-name="OpenTrendsWindow" uuid="333d14cb-de11-4dd3-8365-1a3e327a9a8c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" cardinal="1">
-		<designed target="Enabled" value="true" ver="5"/>
-		<designed target="InvokeTrigger" value="false" ver="5"/>
-		<do-trace access-modifier="private" target="Enabled" ver="5">
-			<body>
-				<![CDATA[!refData.private.isOpenedTrends]]>
-			</body>
-		</do-trace>
-	</object>
 	<object access-modifier="private" name="txtAllowDiff" display-name="txtAllowDiff" uuid="b16ec993-a91d-425e-b7de-4a0846dd9bf6" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
 		<designed target="X" value="10" ver="5"/>
 		<designed target="Y" value="175" ver="5"/>
@@ -382,7 +361,7 @@ OpenTrendsWindow.Invoke();]]>
 		<designed target="ReadOnly" value="false" ver="5"/>
 		<do-trace access-modifier="private" target="Text" ver="5">
 			<body>
-				<![CDATA[refData.OutfAllowedDifference]]>
+				<![CDATA[String.ToString( "%." + refData.DIGITS.ValueAsString + "f", refData.OutfAllowedDifference)]]>
 			</body>
 		</do-trace>
 		<do-trace access-modifier="private" target="ReadOnly" ver="5">

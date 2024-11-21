@@ -1,4 +1,4 @@
-<type access-modifier="private" name="Опрессовка общая" display-name="Опрессовка общая" uuid="23a83cc0-f372-4e53-b32f-298e64ac4ea7" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5" description="">
+<type access-modifier="private" name="Опрессовка общая" display-name="Опрессовка общая" uuid="23a83cc0-f372-4e53-b32f-298e64ac4ea7" base-type="ParentPopup" base-type-id="05fbbd36-bc45-4ff3-b67c-707c9d718186" ver="5" description="">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="ZValue" value="0" ver="5"/>
@@ -602,5 +602,15 @@
 			<init target="InitApSource" ver="5" ref="ApSource_1[0]"/>
 		</object>
 	</object>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[Global.isPressOpened = true;]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Closed">
+		<body kind="om">
+			<![CDATA[Global.isPressOpened = false;]]>
+		</body>
+	</do-on>
 </type>
 

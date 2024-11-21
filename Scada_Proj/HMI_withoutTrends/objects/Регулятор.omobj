@@ -1,4 +1,4 @@
-<type access-modifier="private" name="Регулятор" display-name="Регулятор" uuid="d5ad689c-b93f-45e5-a8a5-5d7dd4c15e5b" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+<type access-modifier="private" name="Регулятор" display-name="Регулятор" uuid="d5ad689c-b93f-45e5-a8a5-5d7dd4c15e5b" base-type="ParentPopup" base-type-id="05fbbd36-bc45-4ff3-b67c-707c9d718186" ver="5">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="ZValue" value="0" ver="5"/>
@@ -101,10 +101,11 @@ refData.isOpenedModule = true;]]>
 			</do-trace>
 			<designed target="Flip" value="0" ver="5"/>
 		</object>
+		<designed target="Flip" value="0" ver="5"/>
 	</object>
 	<object access-modifier="private" name="rectTask" display-name="rectTask" uuid="be7fb886-535d-45a2-b162-d4b4c1472960" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 		<designed target="X" value="2" ver="5"/>
-		<designed target="Y" value="31" ver="5"/>
+		<designed target="Y" value="30" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
@@ -193,7 +194,7 @@ refData.isOpenedModule = true;]]>
 				<designed target="PenStyle" value="1" ver="5"/>
 				<designed target="PenWidth" value="0.5" ver="5"/>
 				<designed target="BrushColor" value="4278190080" ver="5"/>
-				<designed target="BrushStyle" value="0" ver="5"/>
+				<designed target="BrushStyle" value="1" ver="5"/>
 				<object access-modifier="private" name="Point_1" display-name="Point_1" uuid="9d3d044a-4def-49cb-8b27-2db9ec924cbf" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
 					<designed target="X" value="0" ver="5"/>
 					<designed target="Y" value="0" ver="5"/>
@@ -210,37 +211,56 @@ refData.isOpenedModule = true;]]>
 					<designed target="X" value="0" ver="5"/>
 					<designed target="Y" value="0" ver="5"/>
 				</object>
+				<designed target="Flip" value="0" ver="5"/>
 			</object>
-			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MousePress">
-				<body kind="om">
-					<![CDATA[refData.inTASK -= refData.step;]]>
-				</body>
-			</do-on>
-			<do-trace access-modifier="private" target="Enabled" ver="5">
-				<conditional-expr>
-					<condition>
-						<![CDATA[refData.NAME=="Регулирующая заслонка газа перед котлом"]]>
-					</condition>
-					<expr>
-						<![CDATA[false]]>
-					</expr>
-				</conditional-expr>
-				<conditional-expr>
-					<condition>
-						<![CDATA[refData.NAME=="Регулирующая заслонка рез. топлива перед котлом"]]>
-					</condition>
-					<expr>
-						<![CDATA[false]]>
-					</expr>
-				</conditional-expr>
-				<default-expr>
-					<expr>
-						<![CDATA[true]]>
-					</expr>
-				</default-expr>
-			</do-trace>
 			<designed target="Checked" value="false" ver="5"/>
 			<designed target="Flip" value="0" ver="5"/>
+			<do-trace access-modifier="private" target="Enabled" ver="5">
+				<body>
+					<![CDATA[refData.OutfTask > refData.PARAM.OutConfig_1.fNormL*refData.PARAM.OutConfig_1.fConversion]]>
+				</body>
+			</do-trace>
+			<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="f07a248a-aad5-43c8-bc52-6c7e3a20fa05" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
+				<designed target="Rotation" value="90" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="02105e8a-3437-4042-a818-ecf1a7bdf957" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+					<designed target="Position" value="0" ver="5"/>
+					<designed target="Color" value="0xff999999" ver="5"/>
+				</object>
+				<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="393cd413-0bba-49db-a08f-2afe7cfcdf34" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+					<designed target="Position" value="0.40000000000000002" ver="5"/>
+					<designed target="Color" value="0xffffffff" ver="5"/>
+				</object>
+				<object access-modifier="private" name="GradientPoint_3" display-name="GradientPoint_3" uuid="6a6f0b41-e9cf-4293-aea6-277848c1e67a" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+					<designed target="Position" value="0.59999999999999998" ver="5"/>
+					<designed target="Color" value="0xffffffff" ver="5"/>
+				</object>
+				<object access-modifier="private" name="GradientPoint_4" display-name="GradientPoint_4" uuid="2e9fb759-9316-4191-9833-35cbfd2f0d05" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+					<designed target="Position" value="1" ver="5"/>
+					<designed target="Color" value="0xff999999" ver="5"/>
+				</object>
+				<do-trace access-modifier="private" target="Visible" ver="5">
+					<body>
+						<![CDATA[refData.OutfTask > refData.PARAM.OutConfig_1.fNormL*refData.PARAM.OutConfig_1.fConversion]]>
+					</body>
+				</do-trace>
+			</object>
+			<do-on access-modifier="private" name="Handler_17" display-name="Handler_17" ver="5" event="MouseEnter">
+				<body kind="om">
+					<![CDATA[LinearGradient_1.Visible=false;]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_18" display-name="Handler_18" ver="5" event="MouseLeave">
+				<body kind="om">
+					<![CDATA[LinearGradient_1.Visible=true;]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_19" display-name="Handler_19" ver="5" event="ButtonPressed">
+				<body kind="om">
+					<![CDATA[refData.InfTask = refData.OutfTask - refData.step;]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="txtValue" display-name="txtValue" uuid="68458f4a-1cf2-4f61-a579-e48fb7e3f651" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
 			<designed target="X" value="126" ver="5"/>
@@ -255,12 +275,12 @@ refData.isOpenedModule = true;]]>
 			<designed target="Width" value="50" ver="5"/>
 			<designed target="Height" value="20" ver="5"/>
 			<designed target="Text" value="0" ver="5"/>
-			<designed target="Font" value="Arial,10,-1,5,75,0,0,0,0,0,Narrow Bold" ver="5"/>
+			<designed target="Font" value="Arial,12,-1,5,75,0,0,0,0,0,Narrow Bold" ver="5"/>
 			<designed target="FontColor" value="4278190080" ver="5"/>
 			<designed target="TextAlignment" value="132" ver="5"/>
 			<do-trace access-modifier="private" target="Text" ver="5">
 				<body>
-					<![CDATA[refData.outTASK]]>
+					<![CDATA[refData.OutfTask]]>
 				</body>
 			</do-trace>
 			<designed target="Flip" value="0" ver="5"/>
@@ -321,7 +341,7 @@ refData.isOpenedModule = true;]]>
 				<designed target="PenStyle" value="1" ver="5"/>
 				<designed target="PenWidth" value="0.5" ver="5"/>
 				<designed target="BrushColor" value="4278190080" ver="5"/>
-				<designed target="BrushStyle" value="0" ver="5"/>
+				<designed target="BrushStyle" value="1" ver="5"/>
 				<object access-modifier="private" name="Point_1" display-name="Point_1" uuid="6a4b864a-d32d-4dc2-9ab4-f3e93b386755" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
 					<designed target="X" value="0" ver="5"/>
 					<designed target="Y" value="0" ver="5"/>
@@ -340,41 +360,60 @@ refData.isOpenedModule = true;]]>
 				</object>
 				<designed target="Flip" value="0" ver="5"/>
 			</object>
-			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MousePress">
+			<designed target="Checked" value="false" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="4792a1a2-e15c-4994-b1f7-5cc94092ba54" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
+				<designed target="Rotation" value="90" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="3697833b-6142-48a7-80c2-f0345bc43c41" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+					<designed target="Position" value="0" ver="5"/>
+					<designed target="Color" value="0xff999999" ver="5"/>
+				</object>
+				<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="a8211ed4-3a2c-4890-9084-8771187cf932" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+					<designed target="Position" value="0.40000000000000002" ver="5"/>
+					<designed target="Color" value="0xffffffff" ver="5"/>
+				</object>
+				<object access-modifier="private" name="GradientPoint_3" display-name="GradientPoint_3" uuid="82386286-ec0a-4949-aa71-a7a8b2e17f31" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+					<designed target="Position" value="0.59999999999999998" ver="5"/>
+					<designed target="Color" value="0xffffffff" ver="5"/>
+				</object>
+				<object access-modifier="private" name="GradientPoint_4" display-name="GradientPoint_4" uuid="87828a8d-0e5a-4385-aaaa-8fd37d18bcda" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+					<designed target="Position" value="1" ver="5"/>
+					<designed target="Color" value="0xff999999" ver="5"/>
+				</object>
+				<do-trace access-modifier="private" target="Visible" ver="5">
+					<body>
+						<![CDATA[refData.OutfTask < refData.PARAM.OutConfig_1.fNormH*refData.PARAM.OutConfig_1.fConversion]]>
+					</body>
+				</do-trace>
+			</object>
+			<do-on access-modifier="private" name="Handler_16" display-name="Handler_16" ver="5" event="MouseEnter">
 				<body kind="om">
-					<![CDATA[refData.inTASK += refData.step;]]>
+					<![CDATA[LinearGradient_1.Visible=false;]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_17" display-name="Handler_17" ver="5" event="MouseLeave">
+				<body kind="om">
+					<![CDATA[LinearGradient_1.Visible=true;]]>
 				</body>
 			</do-on>
 			<do-trace access-modifier="private" target="Enabled" ver="5">
-				<conditional-expr>
-					<condition>
-						<![CDATA[refData.NAME=="Регулирующая заслонка газа перед котлом"]]>
-					</condition>
-					<expr>
-						<![CDATA[false]]>
-					</expr>
-				</conditional-expr>
-				<conditional-expr>
-					<condition>
-						<![CDATA[refData.NAME=="Регулирующая заслонка рез. топлива перед котлом"]]>
-					</condition>
-					<expr>
-						<![CDATA[false]]>
-					</expr>
-				</conditional-expr>
-				<default-expr>
-					<expr>
-						<![CDATA[true]]>
-					</expr>
-				</default-expr>
+				<body>
+					<![CDATA[refData.OutfTask < refData.PARAM.OutConfig_1.fNormH*refData.PARAM.OutConfig_1.fConversion]]>
+				</body>
 			</do-trace>
-			<designed target="Checked" value="false" ver="5"/>
-			<designed target="Flip" value="0" ver="5"/>
+			<do-on access-modifier="private" name="Handler_18" display-name="Handler_18" ver="5" event="ButtonPressed">
+				<body kind="om">
+					<![CDATA[refData.InfTask = refData.OutfTask + refData.step;]]>
+				</body>
+			</do-on>
 		</object>
+		<designed target="Flip" value="0" ver="5"/>
 	</object>
 	<object access-modifier="private" name="rectParam" display-name="rectParam" uuid="9947c2d1-8e83-454d-b710-2b7f443b7a73" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 		<designed target="X" value="2" ver="5"/>
-		<designed target="Y" value="52" ver="5"/>
+		<designed target="Y" value="50" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
@@ -406,6 +445,7 @@ refData.isOpenedModule = true;]]>
 			<designed target="Font" value="Arial,10,-1,5,75,0,0,0,0,0,Narrow Bold" ver="5"/>
 			<designed target="FontColor" value="4278190080" ver="5"/>
 			<designed target="TextAlignment" value="129" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
 		</object>
 		<object access-modifier="private" name="rectVal" display-name="rectVal" uuid="d1315634-fa31-47c6-a63f-cf4671c7b057" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 			<designed target="X" value="126" ver="5"/>
@@ -438,12 +478,12 @@ refData.isOpenedModule = true;]]>
 				<designed target="Width" value="50" ver="5"/>
 				<designed target="Height" value="20" ver="5"/>
 				<designed target="Text" value="0" ver="5"/>
-				<designed target="Font" value="Arial,10,-1,5,75,0,0,0,0,0,Narrow Bold" ver="5"/>
+				<designed target="Font" value="Arial,12,-1,5,75,0,0,0,0,0,Narrow Bold" ver="5"/>
 				<designed target="FontColor" value="0xff55ff00" ver="5"/>
 				<designed target="TextAlignment" value="132" ver="5"/>
 				<do-trace access-modifier="private" target="Text" ver="5">
 					<body>
-						<![CDATA[refData.PARAM.VALUE]]>
+						<![CDATA[refData.PARAM.private.Val]]>
 					</body>
 				</do-trace>
 				<designed target="Flip" value="0" ver="5"/>
@@ -452,82 +492,9 @@ refData.isOpenedModule = true;]]>
 		</object>
 		<designed target="Flip" value="0" ver="5"/>
 	</object>
-	<object access-modifier="private" name="rectMisalign" display-name="rectMisalign" uuid="62183094-da9f-4765-b897-4596a3358a26" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
-		<designed target="X" value="2" ver="5"/>
-		<designed target="Y" value="73" ver="5"/>
-		<designed target="ZValue" value="0" ver="5"/>
-		<designed target="Rotation" value="0" ver="5"/>
-		<designed target="Scale" value="1" ver="5"/>
-		<designed target="Visible" value="true" ver="5"/>
-		<designed target="Opacity" value="1" ver="5"/>
-		<designed target="Enabled" value="true" ver="5"/>
-		<designed target="Tooltip" value="" ver="5"/>
-		<designed target="Width" value="176" ver="5"/>
-		<designed target="Height" value="20" ver="5"/>
-		<designed target="RoundingRadius" value="0" ver="5"/>
-		<designed target="PenColor" value="4278190080" ver="5"/>
-		<designed target="PenStyle" value="1" ver="5"/>
-		<designed target="PenWidth" value="0.5" ver="5"/>
-		<designed target="BrushColor" value="4278190080" ver="5"/>
-		<designed target="BrushStyle" value="0" ver="5"/>
-		<object access-modifier="private" name="txtMism" display-name="txtMism" uuid="e7b566f3-a747-43b6-9b95-aa79a91950bc" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
-			<designed target="X" value="5" ver="5"/>
-			<designed target="Y" value="0" ver="5"/>
-			<designed target="ZValue" value="0" ver="5"/>
-			<designed target="Rotation" value="0" ver="5"/>
-			<designed target="Scale" value="1" ver="5"/>
-			<designed target="Visible" value="true" ver="5"/>
-			<designed target="Opacity" value="1" ver="5"/>
-			<designed target="Enabled" value="true" ver="5"/>
-			<designed target="Tooltip" value="" ver="5"/>
-			<designed target="Width" value="111.8" ver="5"/>
-			<designed target="Height" value="20" ver="5"/>
-			<designed target="Text" value="Рассогласован." ver="5"/>
-			<designed target="Font" value="Arial,10,-1,5,75,0,0,0,0,0,Narrow Bold" ver="5"/>
-			<designed target="FontColor" value="4278190080" ver="5"/>
-			<designed target="TextAlignment" value="129" ver="5"/>
-		</object>
-		<object access-modifier="private" name="rectVal" display-name="rectVal" uuid="e1c28e2e-4d42-4bd7-b16e-bc9fa17b9440" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
-			<designed target="X" value="126" ver="5"/>
-			<designed target="Y" value="0" ver="5"/>
-			<designed target="ZValue" value="0" ver="5"/>
-			<designed target="Rotation" value="0" ver="5"/>
-			<designed target="Scale" value="1" ver="5"/>
-			<designed target="Visible" value="true" ver="5"/>
-			<designed target="Opacity" value="1" ver="5"/>
-			<designed target="Enabled" value="true" ver="5"/>
-			<designed target="Tooltip" value="" ver="5"/>
-			<designed target="Width" value="50" ver="5"/>
-			<designed target="Height" value="20" ver="5"/>
-			<designed target="RoundingRadius" value="0" ver="5"/>
-			<designed target="PenColor" value="4278190080" ver="5"/>
-			<designed target="PenStyle" value="1" ver="5"/>
-			<designed target="PenWidth" value="0.5" ver="5"/>
-			<designed target="BrushColor" value="0xff000000" ver="5"/>
-			<designed target="BrushStyle" value="0" ver="5"/>
-			<object access-modifier="private" name="txtValue" display-name="txtValue" uuid="7a2cb18a-638f-4b6c-baac-ad92c1d5ddbc" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
-				<designed target="X" value="0" ver="5"/>
-				<designed target="Y" value="0" ver="5"/>
-				<designed target="ZValue" value="0" ver="5"/>
-				<designed target="Rotation" value="0" ver="5"/>
-				<designed target="Scale" value="1" ver="5"/>
-				<designed target="Visible" value="true" ver="5"/>
-				<designed target="Opacity" value="1" ver="5"/>
-				<designed target="Enabled" value="true" ver="5"/>
-				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="50" ver="5"/>
-				<designed target="Height" value="20" ver="5"/>
-				<designed target="Text" value="0" ver="5"/>
-				<designed target="Font" value="Arial,10,-1,5,75,0,0,0,0,0,Narrow Bold" ver="5"/>
-				<designed target="FontColor" value="0xff000000" ver="5"/>
-				<designed target="TextAlignment" value="132" ver="5"/>
-				<designed target="Flip" value="0" ver="5"/>
-			</object>
-		</object>
-	</object>
 	<object access-modifier="private" name="scale" display-name="scale" uuid="67547c2f-70e0-4cdf-9910-f29882cd6e10" base-type="HistogramBar" base-type-id="abcbe2c6-2016-434a-b9bf-f6cbfa135e4c" ver="5">
 		<designed target="X" value="5" ver="5"/>
-		<designed target="Y" value="155" ver="5"/>
+		<designed target="Y" value="146" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
@@ -563,7 +530,7 @@ refData.isOpenedModule = true;]]>
 	</object>
 	<object access-modifier="private" name="mark" display-name="mark" uuid="84af95ed-350c-4695-ad07-98371f2b39b6" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5" cardinal="21">
 		<designed target="X" value="5" ver="5"/>
-		<designed target="Y" value="155" ver="5"/>
+		<designed target="Y" value="146" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
@@ -594,7 +561,7 @@ refData.isOpenedModule = true;]]>
 	</object>
 	<object access-modifier="private" name="txtMark" display-name="txtMark" uuid="5eaf31bd-d5bc-4756-a907-899de99ab9c6" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" cardinal="3">
 		<designed target="X" value="-5" ver="5"/>
-		<designed target="Y" value="135" ver="5"/>
+		<designed target="Y" value="126" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
@@ -612,7 +579,7 @@ refData.isOpenedModule = true;]]>
 	</object>
 	<object access-modifier="private" name="rectValue" display-name="rectValue" uuid="6d25ae7e-c76d-4904-ac06-6f10a4e8a949" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 		<designed target="X" value="187" ver="5"/>
-		<designed target="Y" value="155" ver="5"/>
+		<designed target="Y" value="146" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
@@ -655,7 +622,7 @@ refData.isOpenedModule = true;]]>
 	</object>
 	<object access-modifier="private" name="txt%" display-name="txt%" uuid="919f8fd4-f170-4f64-83da-6e88f6e099fd" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
 		<designed target="X" value="214" ver="5"/>
-		<designed target="Y" value="155" ver="5"/>
+		<designed target="Y" value="146" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
@@ -671,7 +638,195 @@ refData.isOpenedModule = true;]]>
 		<designed target="TextAlignment" value="132" ver="5"/>
 		<designed target="Flip" value="0" ver="5"/>
 	</object>
-	<object access-modifier="private" name="txtMism" display-name="txtMism" uuid="94a7d7fd-421e-4f08-a4f0-7d51949e3ca7" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+	<object access-modifier="private" name="btnAuto" display-name="btnAuto" uuid="c0c36593-2dab-4a6d-a48c-91c1ddbb59d7" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
+		<designed target="X" value="125" ver="5"/>
+		<designed target="Y" value="74" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="41.666666666666657" ver="5"/>
+		<designed target="Height" value="25.666666666666664" ver="5"/>
+		<designed target="Checkable" value="false" ver="5"/>
+		<designed target="Text" value="АВТ" ver="5"/>
+		<designed target="TextAlignment" value="132" ver="5"/>
+		<designed target="Font" value="Arial,10,-1,5,75,0,0,0,0,0,Narrow Bold" ver="5"/>
+		<designed target="FontColor" value="4278190080" ver="5"/>
+		<designed target="OnClickFontColor" value="4278190080" ver="5"/>
+		<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
+		<designed target="DisabledFontColor" value="0xff000000" ver="5"/>
+		<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<designed target="OnClickBrushColor" value="0xffa0a0a0" ver="5"/>
+		<designed target="OnClickBrushStyle" value="1" ver="5"/>
+		<designed target="OnHoverBrushColor" value="4294967295" ver="5"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="5"/>
+		<designed target="DisabledBrushColor" value="0xffa0a0a0" ver="5"/>
+		<designed target="DisabledBrushStyle" value="1" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="0.5" ver="5"/>
+		<designed target="OnClickPenColor" value="4278190080" ver="5"/>
+		<designed target="OnClickPenStyle" value="1" ver="5"/>
+		<designed target="OnClickPenWidth" value="0.5" ver="5"/>
+		<designed target="OnHoverPenColor" value="4278190080" ver="5"/>
+		<designed target="OnHoverPenStyle" value="1" ver="5"/>
+		<designed target="OnHoverPenWidth" value="0.5" ver="5"/>
+		<designed target="DisabledPenColor" value="4288716960" ver="5"/>
+		<designed target="DisabledPenStyle" value="1" ver="5"/>
+		<designed target="DisabledPenWidth" value="0.5" ver="5"/>
+		<designed target="Checked" value="false" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[!refData.OutbAuto]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="ebbd1e79-b8ad-4c1f-a24e-a9206394755a" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
+			<designed target="Rotation" value="90" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="1c60cfa3-84ff-4cc8-abf2-8193f4246517" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+				<designed target="Position" value="0" ver="5"/>
+				<designed target="Color" value="0xff999999" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="3e780ae4-6551-4fe3-82c8-7dbabeaa9220" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+				<designed target="Position" value="0.40000000000000002" ver="5"/>
+				<designed target="Color" value="0xffffffff" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_3" display-name="GradientPoint_3" uuid="eac6a046-edac-4a07-b31e-db0159eb5ee8" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+				<designed target="Position" value="0.59999999999999998" ver="5"/>
+				<designed target="Color" value="0xffffffff" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_4" display-name="GradientPoint_4" uuid="fa7853b6-dd9e-49b2-9c2b-beb7248d230d" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+				<designed target="Position" value="1" ver="5"/>
+				<designed target="Color" value="0xff999999" ver="5"/>
+			</object>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[!refData.OutbAuto]]>
+				</body>
+			</do-trace>
+		</object>
+		<do-on access-modifier="private" name="Handler_12" display-name="Handler_12" ver="5" event="MouseEnter">
+			<body kind="om">
+				<![CDATA[LinearGradient_1.Visible=false;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_13" display-name="Handler_13" ver="5" event="MouseLeave">
+			<body kind="om">
+				<![CDATA[LinearGradient_1.Visible=true;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_14" display-name="Handler_14" ver="5" event="ButtonPressed">
+			<body kind="om">
+				<![CDATA[unit.Global.ShowMSG("Нажатие на кнопку \""+me.Text+"\" объекта \""+refData.NAME+"\".", 2);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_15" display-name="Handler_15" ver="5" event="ButtonPressed">
+			<body kind="om">
+				<![CDATA[refData.InbAuto = true;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="btnManual" display-name="btnManual" uuid="4b81fd95-6b5d-4d3f-858f-c1140cba03f6" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
+		<designed target="X" value="178" ver="5"/>
+		<designed target="Y" value="74" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="41.666666666666657" ver="5"/>
+		<designed target="Height" value="25.666666666666664" ver="5"/>
+		<designed target="Checkable" value="false" ver="5"/>
+		<designed target="Text" value="РУЧ" ver="5"/>
+		<designed target="TextAlignment" value="132" ver="5"/>
+		<designed target="Font" value="Arial,10,-1,5,75,0,0,0,0,0,Narrow Bold" ver="5"/>
+		<designed target="FontColor" value="4278190080" ver="5"/>
+		<designed target="OnClickFontColor" value="4278190080" ver="5"/>
+		<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
+		<designed target="DisabledFontColor" value="0xff000000" ver="5"/>
+		<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<designed target="OnClickBrushColor" value="0xffa0a0a0" ver="5"/>
+		<designed target="OnClickBrushStyle" value="1" ver="5"/>
+		<designed target="OnHoverBrushColor" value="4294967295" ver="5"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="5"/>
+		<designed target="DisabledBrushColor" value="0xffa0a0a0" ver="5"/>
+		<designed target="DisabledBrushStyle" value="1" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="0.5" ver="5"/>
+		<designed target="OnClickPenColor" value="4278190080" ver="5"/>
+		<designed target="OnClickPenStyle" value="1" ver="5"/>
+		<designed target="OnClickPenWidth" value="0.5" ver="5"/>
+		<designed target="OnHoverPenColor" value="4278190080" ver="5"/>
+		<designed target="OnHoverPenStyle" value="1" ver="5"/>
+		<designed target="OnHoverPenWidth" value="0.5" ver="5"/>
+		<designed target="DisabledPenColor" value="4288716960" ver="5"/>
+		<designed target="DisabledPenStyle" value="1" ver="5"/>
+		<designed target="DisabledPenWidth" value="0.5" ver="5"/>
+		<designed target="Checked" value="false" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[refData.OutbAuto]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="2d0a3d13-79f6-41e2-aff1-ba0b97360c1c" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
+			<designed target="Rotation" value="90" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="56c7a28c-cb0c-4f45-b3e3-c476d66e77cf" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+				<designed target="Position" value="0" ver="5"/>
+				<designed target="Color" value="0xff999999" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="babcd637-53e8-46c4-a25b-eaf250ec27ea" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
+				<designed target="Position" value="0.40000000000000002" ver="5"/>
+				<designed target="Color" value="0xffffffff" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_3" display-name="GradientPoint_3" uuid="0b391df4-d89e-4244-9533-aa416263faec" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+				<designed target="Position" value="0.59999999999999998" ver="5"/>
+				<designed target="Color" value="0xffffffff" ver="5"/>
+			</object>
+			<object access-modifier="private" name="GradientPoint_4" display-name="GradientPoint_4" uuid="17ad47f4-49d2-4686-9cf4-d9269cf9e091" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
+				<designed target="Position" value="1" ver="5"/>
+				<designed target="Color" value="0xff999999" ver="5"/>
+			</object>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[refData.OutbAuto]]>
+				</body>
+			</do-trace>
+		</object>
+		<do-on access-modifier="private" name="Handler_13" display-name="Handler_13" ver="5" event="MouseLeave">
+			<body kind="om">
+				<![CDATA[LinearGradient_1.Visible=true;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_14" display-name="Handler_14" ver="5" event="MouseEnter">
+			<body kind="om">
+				<![CDATA[LinearGradient_1.Visible=false;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_15" display-name="Handler_15" ver="5" event="ButtonPressed">
+			<body kind="om">
+				<![CDATA[refData.InbAuto = false;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_16" display-name="Handler_16" ver="5" event="ButtonPressed">
+			<body kind="om">
+				<![CDATA[unit.Global.ShowMSG("Нажатие на кнопку \""+me.Text+"\" объекта \""+refData.NAME+"\".", 2);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="txtEU" display-name="txtEU" uuid="94a7d7fd-421e-4f08-a4f0-7d51949e3ca7" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
 		<designed target="X" value="180" ver="5"/>
 		<designed target="Y" value="52" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
@@ -682,211 +837,23 @@ refData.isOpenedModule = true;]]>
 		<designed target="Enabled" value="true" ver="5"/>
 		<designed target="Tooltip" value="" ver="5"/>
 		<designed target="Width" value="48" ver="5"/>
-		<designed target="Height" value="41" ver="5"/>
+		<designed target="Height" value="20" ver="5"/>
 		<designed target="Text" value="" ver="5"/>
 		<designed target="Font" value="Arial,10,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
 		<designed target="FontColor" value="4278190080" ver="5"/>
 		<designed target="TextAlignment" value="132" ver="5"/>
 		<do-trace access-modifier="private" target="Text" ver="5">
 			<body>
-				<![CDATA[refData.EUForGraph]]>
+				<![CDATA[refData.PARAM.EU]]>
 			</body>
 		</do-trace>
 		<designed target="Flip" value="0" ver="5"/>
-		<object access-modifier="private" name="btnAuto" display-name="btnAuto" uuid="c0c36593-2dab-4a6d-a48c-91c1ddbb59d7" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
-			<designed target="X" value="-175" ver="5"/>
-			<designed target="Y" value="133" ver="5"/>
-			<designed target="ZValue" value="0" ver="5"/>
-			<designed target="Rotation" value="0" ver="5"/>
-			<designed target="Scale" value="1" ver="5"/>
-			<designed target="Visible" value="true" ver="5"/>
-			<designed target="Opacity" value="1" ver="5"/>
-			<designed target="Enabled" value="true" ver="5"/>
-			<designed target="Tooltip" value="" ver="5"/>
-			<designed target="Width" value="41.666666666666657" ver="5"/>
-			<designed target="Height" value="25.666666666666664" ver="5"/>
-			<designed target="Checkable" value="false" ver="5"/>
-			<designed target="Text" value="АВТ" ver="5"/>
-			<designed target="TextAlignment" value="132" ver="5"/>
-			<designed target="Font" value="Arial,10,-1,5,75,0,0,0,0,0,Narrow Bold" ver="5"/>
-			<designed target="FontColor" value="4278190080" ver="5"/>
-			<designed target="OnClickFontColor" value="4278190080" ver="5"/>
-			<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
-			<designed target="DisabledFontColor" value="0xff000000" ver="5"/>
-			<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
-			<designed target="BrushStyle" value="1" ver="5"/>
-			<designed target="OnClickBrushColor" value="0xffa0a0a0" ver="5"/>
-			<designed target="OnClickBrushStyle" value="1" ver="5"/>
-			<designed target="OnHoverBrushColor" value="4294967295" ver="5"/>
-			<designed target="OnHoverBrushStyle" value="1" ver="5"/>
-			<designed target="DisabledBrushColor" value="0xff55ff7f" ver="5"/>
-			<designed target="DisabledBrushStyle" value="1" ver="5"/>
-			<designed target="PenColor" value="4278190080" ver="5"/>
-			<designed target="PenStyle" value="1" ver="5"/>
-			<designed target="PenWidth" value="0.5" ver="5"/>
-			<designed target="OnClickPenColor" value="4278190080" ver="5"/>
-			<designed target="OnClickPenStyle" value="1" ver="5"/>
-			<designed target="OnClickPenWidth" value="0.5" ver="5"/>
-			<designed target="OnHoverPenColor" value="4278190080" ver="5"/>
-			<designed target="OnHoverPenStyle" value="1" ver="5"/>
-			<designed target="OnHoverPenWidth" value="0.5" ver="5"/>
-			<designed target="DisabledPenColor" value="4288716960" ver="5"/>
-			<designed target="DisabledPenStyle" value="1" ver="5"/>
-			<designed target="DisabledPenWidth" value="0.5" ver="5"/>
-			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MousePress">
-				<body kind="om">
-					<![CDATA[refData.InbAuto = true;]]>
-				</body>
-			</do-on>
-			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MousePress">
-				<body kind="om">
-					<![CDATA[unit.Global.ShowMSG("Нажатие на кнопку \""+me.Text+"\" объекта \""+refData.NAME+"\".", 2);]]>
-				</body>
-			</do-on>
-			<designed target="Checked" value="false" ver="5"/>
-			<designed target="Flip" value="0" ver="5"/>
-			<do-trace access-modifier="private" target="Enabled" ver="5">
-				<body>
-					<![CDATA[!refData.OutbAuto]]>
-				</body>
-			</do-trace>
-			<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="ebbd1e79-b8ad-4c1f-a24e-a9206394755a" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
-				<designed target="Rotation" value="90" ver="5"/>
-				<designed target="Visible" value="false" ver="5"/>
-				<designed target="Opacity" value="1" ver="5"/>
-				<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="1c60cfa3-84ff-4cc8-abf2-8193f4246517" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
-					<designed target="Position" value="0" ver="5"/>
-					<designed target="Color" value="0xff999999" ver="5"/>
-				</object>
-				<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="3e780ae4-6551-4fe3-82c8-7dbabeaa9220" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
-					<designed target="Position" value="0.40000000000000002" ver="5"/>
-					<designed target="Color" value="0xffffffff" ver="5"/>
-				</object>
-				<object access-modifier="private" name="GradientPoint_3" display-name="GradientPoint_3" uuid="eac6a046-edac-4a07-b31e-db0159eb5ee8" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
-					<designed target="Position" value="0.59999999999999998" ver="5"/>
-					<designed target="Color" value="0xffffffff" ver="5"/>
-				</object>
-				<object access-modifier="private" name="GradientPoint_4" display-name="GradientPoint_4" uuid="fa7853b6-dd9e-49b2-9c2b-beb7248d230d" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
-					<designed target="Position" value="1" ver="5"/>
-					<designed target="Color" value="0xff999999" ver="5"/>
-				</object>
-				<do-trace access-modifier="private" target="Visible" ver="5">
-					<body>
-						<![CDATA[!refData.OutbAuto]]>
-					</body>
-				</do-trace>
-			</object>
-			<do-on access-modifier="private" name="Handler_12" display-name="Handler_12" ver="5" event="MouseEnter">
-				<body kind="om">
-					<![CDATA[LinearGradient_1.Visible=false;]]>
-				</body>
-			</do-on>
-			<do-on access-modifier="private" name="Handler_13" display-name="Handler_13" ver="5" event="MouseLeave">
-				<body kind="om">
-					<![CDATA[LinearGradient_1.Visible=true;]]>
-				</body>
-			</do-on>
-		</object>
-		<object access-modifier="private" name="btnManual" display-name="btnManual" uuid="4b81fd95-6b5d-4d3f-858f-c1140cba03f6" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
-			<designed target="X" value="-125" ver="5"/>
-			<designed target="Y" value="133" ver="5"/>
-			<designed target="ZValue" value="0" ver="5"/>
-			<designed target="Rotation" value="0" ver="5"/>
-			<designed target="Scale" value="1" ver="5"/>
-			<designed target="Visible" value="true" ver="5"/>
-			<designed target="Opacity" value="1" ver="5"/>
-			<designed target="Enabled" value="true" ver="5"/>
-			<designed target="Tooltip" value="" ver="5"/>
-			<designed target="Width" value="41.666666666666657" ver="5"/>
-			<designed target="Height" value="25.666666666666664" ver="5"/>
-			<designed target="Checkable" value="false" ver="5"/>
-			<designed target="Text" value="РУЧ" ver="5"/>
-			<designed target="TextAlignment" value="132" ver="5"/>
-			<designed target="Font" value="Arial,10,-1,5,75,0,0,0,0,0,Narrow Bold" ver="5"/>
-			<designed target="FontColor" value="4278190080" ver="5"/>
-			<designed target="OnClickFontColor" value="4278190080" ver="5"/>
-			<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
-			<designed target="DisabledFontColor" value="0xff000000" ver="5"/>
-			<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
-			<designed target="BrushStyle" value="1" ver="5"/>
-			<designed target="OnClickBrushColor" value="0xffa0a0a0" ver="5"/>
-			<designed target="OnClickBrushStyle" value="1" ver="5"/>
-			<designed target="OnHoverBrushColor" value="4294967295" ver="5"/>
-			<designed target="OnHoverBrushStyle" value="1" ver="5"/>
-			<designed target="DisabledBrushColor" value="0xff55ff7f" ver="5"/>
-			<designed target="DisabledBrushStyle" value="1" ver="5"/>
-			<designed target="PenColor" value="4278190080" ver="5"/>
-			<designed target="PenStyle" value="1" ver="5"/>
-			<designed target="PenWidth" value="0.5" ver="5"/>
-			<designed target="OnClickPenColor" value="4278190080" ver="5"/>
-			<designed target="OnClickPenStyle" value="1" ver="5"/>
-			<designed target="OnClickPenWidth" value="0.5" ver="5"/>
-			<designed target="OnHoverPenColor" value="4278190080" ver="5"/>
-			<designed target="OnHoverPenStyle" value="1" ver="5"/>
-			<designed target="OnHoverPenWidth" value="0.5" ver="5"/>
-			<designed target="DisabledPenColor" value="4288716960" ver="5"/>
-			<designed target="DisabledPenStyle" value="1" ver="5"/>
-			<designed target="DisabledPenWidth" value="0.5" ver="5"/>
-			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MousePress">
-				<body kind="om">
-					<![CDATA[refData.InbAuto = false;]]>
-				</body>
-			</do-on>
-			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MousePress">
-				<body kind="om">
-					<![CDATA[unit.Global.ShowMSG("Нажатие на кнопку \""+me.Text+"\" объекта \""+refData.NAME+"\".", 2);]]>
-				</body>
-			</do-on>
-			<designed target="Checked" value="false" ver="5"/>
-			<designed target="Flip" value="0" ver="5"/>
-			<do-trace access-modifier="private" target="Enabled" ver="5">
-				<body>
-					<![CDATA[refData.OutbAuto]]>
-				</body>
-			</do-trace>
-			<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="2d0a3d13-79f6-41e2-aff1-ba0b97360c1c" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
-				<designed target="Rotation" value="90" ver="5"/>
-				<designed target="Visible" value="false" ver="5"/>
-				<designed target="Opacity" value="1" ver="5"/>
-				<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="56c7a28c-cb0c-4f45-b3e3-c476d66e77cf" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
-					<designed target="Position" value="0" ver="5"/>
-					<designed target="Color" value="0xff999999" ver="5"/>
-				</object>
-				<object access-modifier="private" name="GradientPoint_2" display-name="GradientPoint_2" uuid="babcd637-53e8-46c4-a25b-eaf250ec27ea" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
-					<designed target="Position" value="0.40000000000000002" ver="5"/>
-					<designed target="Color" value="0xffffffff" ver="5"/>
-				</object>
-				<object access-modifier="private" name="GradientPoint_3" display-name="GradientPoint_3" uuid="0b391df4-d89e-4244-9533-aa416263faec" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
-					<designed target="Position" value="0.59999999999999998" ver="5"/>
-					<designed target="Color" value="0xffffffff" ver="5"/>
-				</object>
-				<object access-modifier="private" name="GradientPoint_4" display-name="GradientPoint_4" uuid="17ad47f4-49d2-4686-9cf4-d9269cf9e091" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5" description="" cardinal="1">
-					<designed target="Position" value="1" ver="5"/>
-					<designed target="Color" value="0xff999999" ver="5"/>
-				</object>
-				<do-trace access-modifier="private" target="Visible" ver="5">
-					<body>
-						<![CDATA[refData.OutbAuto]]>
-					</body>
-				</do-trace>
-			</object>
-			<do-on access-modifier="private" name="Handler_13" display-name="Handler_13" ver="5" event="MouseLeave">
-				<body kind="om">
-					<![CDATA[LinearGradient_1.Visible=true;]]>
-				</body>
-			</do-on>
-			<do-on access-modifier="private" name="Handler_14" display-name="Handler_14" ver="5" event="MouseEnter">
-				<body kind="om">
-					<![CDATA[LinearGradient_1.Visible=false;]]>
-				</body>
-			</do-on>
-		</object>
 	</object>
 	<designed target="Flip" value="0" ver="5"/>
 	<designed target="WindowIconPath" value="" ver="5"/>
 	<object access-modifier="private" name="rectPosit" display-name="rectPosit" uuid="867fecad-dbcb-44b2-9378-c4441378f4fa" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 		<designed target="X" value="2" ver="5"/>
-		<designed target="Y" value="106" ver="5"/>
+		<designed target="Y" value="105" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
@@ -986,8 +953,8 @@ refData.isOpenedModule = true;]]>
 		<designed target="Flip" value="0" ver="5"/>
 	</object>
 	<object access-modifier="private" name="btnClose" display-name="btnClose" uuid="a8f9219d-c1ec-401a-8f05-1e06d265fac3" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
-		<designed target="X" value="125" ver="5"/>
-		<designed target="Y" value="185" ver="5"/>
+		<designed target="X" value="30" ver="5"/>
+		<designed target="Y" value="176" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
@@ -995,12 +962,12 @@ refData.isOpenedModule = true;]]>
 		<designed target="Opacity" value="1" ver="5"/>
 		<designed target="Enabled" value="true" ver="5"/>
 		<designed target="Tooltip" value="" ver="5"/>
-		<designed target="Width" value="41.666666666666657" ver="5"/>
-		<designed target="Height" value="25.666666666666664" ver="5"/>
+		<designed target="Width" value="65" ver="5"/>
+		<designed target="Height" value="30" ver="5"/>
 		<designed target="Checkable" value="false" ver="5"/>
 		<designed target="Text" value="ЗАКР" ver="5"/>
 		<designed target="TextAlignment" value="132" ver="5"/>
-		<designed target="Font" value="Arial,10,-1,5,75,0,0,0,0,0,Narrow Bold" ver="5"/>
+		<designed target="Font" value="Arial,16,-1,5,75,0,0,0,0,0,Narrow Bold" ver="5"/>
 		<designed target="FontColor" value="4278190080" ver="5"/>
 		<designed target="OnClickFontColor" value="4278190080" ver="5"/>
 		<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
@@ -1025,11 +992,6 @@ refData.isOpenedModule = true;]]>
 		<designed target="DisabledPenColor" value="4288716960" ver="5"/>
 		<designed target="DisabledPenStyle" value="1" ver="5"/>
 		<designed target="DisabledPenWidth" value="0.5" ver="5"/>
-		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MousePress">
-			<body kind="om">
-				<![CDATA[unit.Global.ShowMSG("Нажатие на кнопку \""+me.Text+"\" объекта \""+refData.NAME+"\".", 2);]]>
-			</body>
-		</do-on>
 		<designed target="Checked" value="false" ver="5"/>
 		<designed target="Flip" value="0" ver="5"/>
 		<do-trace access-modifier="private" target="Enabled" ver="5">
@@ -1037,14 +999,9 @@ refData.isOpenedModule = true;]]>
 				<![CDATA[!refData.bBlockClose]]>
 			</body>
 		</do-trace>
-		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="ButtonPressed">
-			<body kind="om">
-				<![CDATA[refData.bCloseManual = checked;]]>
-			</body>
-		</do-on>
 		<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="c2521d38-5b75-4316-aa0a-f14f923a7e82" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
 			<designed target="Rotation" value="90" ver="5"/>
-			<designed target="Visible" value="false" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
 			<designed target="Opacity" value="1" ver="5"/>
 			<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="40a278a0-5573-4f62-a137-5d57c7ac93a5" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
 				<designed target="Position" value="0" ver="5"/>
@@ -1078,10 +1035,31 @@ refData.isOpenedModule = true;]]>
 				<![CDATA[LinearGradient_1.Visible=false;]]>
 			</body>
 		</do-on>
+		<do-on access-modifier="private" name="Handler_16" display-name="Handler_16" ver="5" event="ButtonPressed">
+			<body kind="om">
+				<![CDATA[unit.Global.ShowMSG("Нажатие на кнопку \""+me.Text+"\" объекта \""+refData.NAME+"\".", 2);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_17" display-name="Handler_17" ver="5" event="MouseRightClick">
+			<body kind="om">
+				<![CDATA[if (refData.bClose) refData.Stop.Invoke();
+else refData.Close.Invoke();]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_18" display-name="Handler_18" ver="5" event="MousePress">
+			<body kind="om">
+				<![CDATA[refData.Close.Invoke();]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_19" display-name="Handler_19" ver="5" event="MouseRelease">
+			<body kind="om">
+				<![CDATA[refData.Stop.Invoke();]]>
+			</body>
+		</do-on>
 	</object>
 	<object access-modifier="private" name="btnOpen" display-name="btnOpen" uuid="bce22c10-6cad-4ca6-a7df-666ae0daaa3e" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
-		<designed target="X" value="175" ver="5"/>
-		<designed target="Y" value="185" ver="5"/>
+		<designed target="X" value="138" ver="5"/>
+		<designed target="Y" value="176" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
@@ -1089,12 +1067,12 @@ refData.isOpenedModule = true;]]>
 		<designed target="Opacity" value="1" ver="5"/>
 		<designed target="Enabled" value="true" ver="5"/>
 		<designed target="Tooltip" value="" ver="5"/>
-		<designed target="Width" value="41.666666666666657" ver="5"/>
-		<designed target="Height" value="25.666666666666664" ver="5"/>
+		<designed target="Width" value="65" ver="5"/>
+		<designed target="Height" value="30" ver="5"/>
 		<designed target="Checkable" value="false" ver="5"/>
 		<designed target="Text" value="ОТКР" ver="5"/>
 		<designed target="TextAlignment" value="132" ver="5"/>
-		<designed target="Font" value="Arial,10,-1,5,75,0,0,0,0,0,Narrow Bold" ver="5"/>
+		<designed target="Font" value="Arial,16,-1,5,75,0,0,0,0,0,Narrow Bold" ver="5"/>
 		<designed target="FontColor" value="4278190080" ver="5"/>
 		<designed target="OnClickFontColor" value="4278190080" ver="5"/>
 		<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
@@ -1119,11 +1097,6 @@ refData.isOpenedModule = true;]]>
 		<designed target="DisabledPenColor" value="4288716960" ver="5"/>
 		<designed target="DisabledPenStyle" value="1" ver="5"/>
 		<designed target="DisabledPenWidth" value="0.5" ver="5"/>
-		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MousePress">
-			<body kind="om">
-				<![CDATA[unit.Global.ShowMSG("Нажатие на кнопку \""+me.Text+"\" объекта \""+refData.NAME+"\".", 2);]]>
-			</body>
-		</do-on>
 		<designed target="Checked" value="false" ver="5"/>
 		<designed target="Flip" value="0" ver="5"/>
 		<do-trace access-modifier="private" target="Enabled" ver="5">
@@ -1131,14 +1104,9 @@ refData.isOpenedModule = true;]]>
 				<![CDATA[!refData.bBlockOpen]]>
 			</body>
 		</do-trace>
-		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="ButtonPressed">
-			<body kind="om">
-				<![CDATA[refData.bOpenManual = checked;]]>
-			</body>
-		</do-on>
 		<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="088ec769-8670-4952-ba1f-b6dcd7ea8a8b" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
 			<designed target="Rotation" value="90" ver="5"/>
-			<designed target="Visible" value="false" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
 			<designed target="Opacity" value="1" ver="5"/>
 			<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="2ec8d4be-52d7-4b7c-b63c-db6c88ac5838" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
 				<designed target="Position" value="0" ver="5"/>
@@ -1172,10 +1140,31 @@ refData.isOpenedModule = true;]]>
 				<![CDATA[LinearGradient_1.Visible=false;]]>
 			</body>
 		</do-on>
+		<do-on access-modifier="private" name="Handler_16" display-name="Handler_16" ver="5" event="ButtonPressed">
+			<body kind="om">
+				<![CDATA[unit.Global.ShowMSG("Нажатие на кнопку \""+me.Text+"\" объекта \""+refData.NAME+"\".", 2);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_17" display-name="Handler_17" ver="5" event="MouseRightClick">
+			<body kind="om">
+				<![CDATA[if (refData.bOpen) refData.Stop.Invoke();
+else refData.Open.Invoke();]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_18" display-name="Handler_18" ver="5" event="MousePress">
+			<body kind="om">
+				<![CDATA[refData.Open.Invoke();]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_19" display-name="Handler_19" ver="5" event="MouseRelease">
+			<body kind="om">
+				<![CDATA[refData.Stop.Invoke();]]>
+			</body>
+		</do-on>
 	</object>
 	<object access-modifier="private" name="indicClose" display-name="indicClose" uuid="4a62c9d0-d881-4d69-9a2c-8964f8523f77" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
-		<designed target="X" value="125" ver="5"/>
-		<designed target="Y" value="175" ver="5"/>
+		<designed target="X" value="30" ver="5"/>
+		<designed target="Y" value="167" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
@@ -1183,7 +1172,7 @@ refData.isOpenedModule = true;]]>
 		<designed target="Opacity" value="1" ver="5"/>
 		<designed target="Enabled" value="true" ver="5"/>
 		<designed target="Tooltip" value="" ver="5"/>
-		<designed target="Width" value="41.666666666666657" ver="5"/>
+		<designed target="Width" value="65" ver="5"/>
 		<designed target="Height" value="5" ver="5"/>
 		<designed target="RoundingRadius" value="0" ver="5"/>
 		<designed target="PenColor" value="4278190080" ver="5"/>
@@ -1206,8 +1195,8 @@ refData.isOpenedModule = true;]]>
 		</object>
 	</object>
 	<object access-modifier="private" name="indicOpen" display-name="indicOpen" uuid="b418db09-7c55-42d7-8656-67e2b5baf1bd" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
-		<designed target="X" value="175" ver="5"/>
-		<designed target="Y" value="175" ver="5"/>
+		<designed target="X" value="138" ver="5"/>
+		<designed target="Y" value="167" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
@@ -1215,7 +1204,7 @@ refData.isOpenedModule = true;]]>
 		<designed target="Opacity" value="1" ver="5"/>
 		<designed target="Enabled" value="true" ver="5"/>
 		<designed target="Tooltip" value="" ver="5"/>
-		<designed target="Width" value="41.666666666666657" ver="5"/>
+		<designed target="Width" value="65" ver="5"/>
 		<designed target="Height" value="5" ver="5"/>
 		<designed target="RoundingRadius" value="0" ver="5"/>
 		<designed target="PenColor" value="4278190080" ver="5"/>
@@ -1242,5 +1231,23 @@ refData.isOpenedModule = true;]]>
 			<![CDATA[refData.NAME]]>
 		</body>
 	</do-trace>
+	<object access-modifier="private" name="txtWorkMode" display-name="txtWorkMode" uuid="00decc51-ca8d-480b-867d-c64c995fd852" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
+		<designed target="X" value="5" ver="5"/>
+		<designed target="Y" value="76.833333333333329" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="132" ver="5"/>
+		<designed target="Height" value="20" ver="5"/>
+		<designed target="Text" value="Режим работы:" ver="5"/>
+		<designed target="Font" value="MS Shell Dlg 2,12,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+		<designed target="FontColor" value="4278190080" ver="5"/>
+		<designed target="TextAlignment" value="33" ver="5"/>
+	</object>
 </type>
 

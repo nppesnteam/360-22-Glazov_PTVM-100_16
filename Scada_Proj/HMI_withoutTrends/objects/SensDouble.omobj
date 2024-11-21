@@ -731,7 +731,7 @@
 			<designed target="InvokeTrigger" value="false" ver="5"/>
 			<do-trace access-modifier="private" target="Enabled" ver="5">
 				<body>
-					<![CDATA[!private.isOpened]]>
+					<![CDATA[!private.isOpened && Security.AllowControl.Value]]>
 				</body>
 			</do-trace>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
@@ -753,7 +753,7 @@
 			<designed target="InvokeTrigger" value="false" ver="5"/>
 			<do-trace access-modifier="private" target="Enabled" ver="5">
 				<body>
-					<![CDATA[!private.isOpenedSettings]]>
+					<![CDATA[!private.isOpenedSettings && Security.AllowControl.Value]]>
 				</body>
 			</do-trace>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
@@ -772,7 +772,7 @@
 		<init target="Source" ver="5" ref="sensApSource"/>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnVqtChanged">
 			<body kind="om">
-				<![CDATA[private.ValElectro_1 = String.ToString( "%.1f", me.Value);]]>
+				<![CDATA[private.ValElectro_1 = String.ToString( "%.2f", me.Value);]]>
 			</body>
 		</do-on>
 	</object>
@@ -781,7 +781,7 @@
 		<init target="Source" ver="5" ref="sensApSource"/>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnVqtChanged">
 			<body kind="om">
-				<![CDATA[private.ValElectro_2 = String.ToString( "%.1f", me.Value);]]>
+				<![CDATA[private.ValElectro_2 = String.ToString( "%.2f", me.Value);]]>
 			</body>
 		</do-on>
 	</object>

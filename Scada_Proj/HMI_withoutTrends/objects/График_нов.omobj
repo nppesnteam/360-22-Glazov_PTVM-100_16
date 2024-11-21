@@ -1,4 +1,4 @@
-<type access-modifier="private" name="График_нов" display-name="График_нов" uuid="333e356c-2fd3-486e-9047-48b1b96d2e57" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+<type access-modifier="private" name="График_нов" display-name="График_нов" uuid="333e356c-2fd3-486e-9047-48b1b96d2e57" base-type="ParentForm" base-type-id="c59a2246-41af-48f9-8499-1f2a48c0182b" ver="5">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="ZValue" value="0" ver="5"/>
@@ -103,12 +103,27 @@ TrendsHeight = here.WindowHeight;]]>
 		</do-trace>
 		<designed target="Rotation" value="0" ver="5"/>
 		<init target="int_AP" ver="5" ref="Connections.MainSource"/>
-		<init target="YAxisPrecision" ver="5" value="1"/>
-		<init target="FileUserSignalTree" ver="5" value="C:\\Users\\Admin\\Documents\\Projects\\360-22-Glazov_PTVM-100_16\\Scada_Proj\\HMI_withoutTrends\\Tree.xml"/>
+		<init target="FileUserSignalTree" ver="5" value="Tree.json"/>
 		<init target="UseCustomTree" ver="5" value="true"/>
 		<init target="UseServerTime" ver="5" value="true"/>
 		<init target="ShowLegend" ver="5" value="true"/>
-		<init target="ActiveMode" ver="5" value="1"/>
+		<init target="InterpolationLine" ver="5" value="true"/>
+		<init target="OperativeDisplayedInterval" ver="5" value="60"/>
+		<object access-modifier="private" name="Trends_Permissions_1" display-name="Trends_Permissions_1" uuid="24096f11-fb08-4dc4-a0fe-b5c35b62634b" base-type="Trends_Permissions" base-type-id="083b63d1-3678-4da0-80a0-9c09d0076a3c" ver="5" description="" cardinal="1">
+			<init target="UseSecurity" ver="5" value="true"/>
+			<init target="Printing" ver="5" value="true"/>
+		</object>
+		<init target="init_Permissions" ver="5" ref="Trends_Permissions_1"/>
+		<init target="ModeTimeSourceServer" ver="5" value="1"/>
+		<object access-modifier="private" name="Trends_Theme_1" display-name="Trends_Theme_1" uuid="7303d9ae-7b00-4211-a234-e21fd134a73a" base-type="Trends_Theme" base-type-id="3fbfa4c2-c742-4bec-94dc-d1bcb7ef25b6" ver="5" description="" cardinal="1">
+			<init target="BackgroundColor" ver="5" value="0xffe3e3e3"/>
+			<init target="EditorBrushColor" ver="5" value="0xffe3e3e3"/>
+			<init target="ToolbarEditorColor" ver="5" value="0xffe3e3e3"/>
+			<init target="MenuBrushColor" ver="5" value="0xffe3e3e3"/>
+			<init target="ChartFieldColor" ver="5" value="0xffe3e3e3"/>
+			<init target="ToolbarBrushColor" ver="5" value="0xfff0f0f0"/>
+		</object>
+		<init target="init_Theme" ver="5" ref="Trends_Theme_1"/>
 	</object>
 	<object access-modifier="private" name="refMainForm" display-name="refMainForm" uuid="16251f0c-a407-48ac-a068-81b05cfc20d0" base-type="MainForm" base-type-id="c9cad641-8960-46db-9523-43c92084d4a1" base-const="true" base-ref="true" ver="5"/>
 	<object access-modifier="private" name="refDouble" display-name="refDouble" uuid="6c1a7d05-1428-4ca2-b54a-28f3e5a4df8e" base-type="2 датчика" base-type-id="a104b692-57e6-4ab3-bea4-4df08bf16447" base-const="true" base-ref="true" ver="5"/>

@@ -10,7 +10,7 @@
 		<designed target="InvokeTrigger" value="false" ver="5"/>
 		<do-trace access-modifier="private" target="Enabled" ver="5">
 			<body>
-				<![CDATA[!isOpenedModule]]>
+				<![CDATA[!isOpenedModule && Security.AllowControl.Value]]>
 			</body>
 		</do-trace>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
@@ -61,23 +61,6 @@ mY = TypeConvert.ToFloat(ScreenY(MouseX, MouseY));
 OpenModuleWindowReg.Invoke();]]>
 		</body>
 	</do-on>
-	<object access-modifier="private" name="outTASK" display-name="outTASK" uuid="2cd901af-326a-4d02-9881-5b5d7e75305a" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
-		<init target="Path" ver="5" value="OutfTask"/>
-		<init target="Source" ver="5" ref="here.craneApSource"/>
-	</object>
-	<object access-modifier="private" name="inTASK" display-name="inTASK" uuid="b8e491f9-2adc-4c2d-b1fe-62cec49326d0" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnValueChanged">
-			<body kind="om">
-				<![CDATA[if (SetChanged==true)
-{
-	unit.Global.ShowMSG("Настройка \""+me.Description+"\" объекта \""+NAME.ValueAsString+"\" изменена на "+me.ValueAsString+" "+EU.ValueAsString+".",2);
-	SetChanged=false;
-}]]>
-			</body>
-		</do-on>
-		<init target="Path" ver="5" value="InfTask"/>
-		<init target="Source" ver="5" ref="here.craneApSource"/>
-	</object>
 	<object access-modifier="private" name="outTFillIn" display-name="outTFillIn" uuid="1537bf6d-83af-4a81-9ca5-b01f62857261" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 		<init target="Path" ver="5" value="fTfilIn"/>
 		<init target="Source" ver="5" ref="hereApSourceForOutParams"/>
@@ -161,7 +144,7 @@ OpenModuleWindowReg.Invoke();]]>
 		</do-on>
 		<do-trace access-modifier="private" target="Enabled" ver="5">
 			<body>
-				<![CDATA[!isOpenedSettings]]>
+				<![CDATA[!isOpenedSettings && Security.AllowAll.Value]]>
 			</body>
 		</do-trace>
 	</object>
@@ -192,36 +175,8 @@ OpenSettingsWindow.Invoke();]]>
 	<object access-modifier="private" name="step" display-name="step" uuid="a3e682fa-666e-4db2-b8e5-53647bf3afa4" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
 	<object access-modifier="private" name="posX" display-name="posX" uuid="c54d35c4-625d-4a1a-8665-d0c71b78eafa" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
 	<object access-modifier="private" name="posY" display-name="posY" uuid="991965d0-3512-4967-835b-9514415b19f6" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
-	<object access-modifier="private" name="TimerCount" display-name="TimerCount" uuid="03efe82a-a8ba-49d9-ba00-671edc926b9c" base-type="Timer" base-type-id="72ba7cd4-549e-41f2-923c-2431b91f349a" ver="5">
-		<designed target="Period" value="1000" ver="5"/>
-		<designed target="Active" value="true" ver="5"/>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnTimer">
-			<body kind="om">
-				<![CDATA[OnCount-=On1s[counter];
-On1s[counter]=0;
-if (readOn == false)
-{
-	On1s[counter]=1;
-	readOn = true;
-}
-OnCount+=On1s[counter];
-counter+=1;
-if (counter == 60)
-{
-	counter=0;
-}
-]]>
-			</body>
-		</do-on>
-	</object>
-	<object access-modifier="private" name="OnCount" display-name="OnCount" uuid="c2136232-9f80-4481-bae3-5f4cde992bb3" base-type="notifying_uint8" base-type-id="2e6d6c20-2489-49e1-9d5f-fe68a21b43df" ver="5"/>
-	<object access-modifier="private" name="On1s" display-name="On1s" uuid="3cdc3bc8-2aef-41ed-b4d4-89a2367e9df3" base-type="notifying_uint1" base-type-id="fed14c54-414c-56bd-549a-8d761c4d6200" ver="5" cardinal="60"/>
 	<object access-modifier="private" name="readOn" display-name="readOn" uuid="b79294c6-74a5-4f6b-8383-91b39505c439" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
-	<object access-modifier="private" name="counter" display-name="counter" uuid="5130fb74-16fd-4624-af0d-257e4127f45f" base-type="notifying_uint1" base-type-id="fed14c54-414c-56bd-549a-8d761c4d6200" ver="5"/>
-	<init target="counter" ver="5" value="0"/>
-	<init target="On1s" ver="5" value="0"/>
 	<init target="readOn" ver="5" value="true"/>
-	<init target="OnCount" ver="5" value="0"/>
 	<do-trace access-modifier="private" target="Tooltip" ver="5">
 		<body>
 			<![CDATA[NameExtended]]>
@@ -230,44 +185,12 @@ if (counter == 60)
 	<object access-modifier="private" name="EU" display-name="EU" uuid="93e9e5e7-1e94-4d8a-93a8-c06c90ba1d11" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5">
 		<init target="Path" ver="5" value="EU"/>
 	</object>
-	<param access-modifier="private" name="initPathForGraph" display-name="initPathForGraph" uuid="f1178f24-5328-4bc7-8bf7-75b785cbd9e9" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
-	<object access-modifier="private" name="hereApSourceForGraph" display-name="hereApSourceForGraph" uuid="e7bfda9d-afeb-4b5d-9a77-594f903aa481" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
-		<designed target="Active" value="false" ver="5"/>
-		<designed target="ReAdvise" value="0" ver="5"/>
-		<init target="Path" ver="5" ref="initPathForGraph"/>
-		<designed target="Location" value="" ver="5"/>
-		<designed target="Port" value="4388" ver="5"/>
-		<designed target="HistoryPort" value="4950" ver="5"/>
-		<designed target="Path" value="" ver="5"/>
-		<designed target="ClientDisplayName" value="HMI" ver="5"/>
-		<designed target="ClientId" value="HMI" ver="5"/>
-	</object>
-	<object access-modifier="private" name="NAMEForGraph" display-name="NAMEForGraph" uuid="6eadc41a-1db1-40ce-ae64-df57e003882c" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5">
-		<init target="Path" ver="5" value="NAME"/>
-		<init target="Source" ver="5" ref="hereApSourceForGraph"/>
-	</object>
-	<object access-modifier="private" name="VALUEForGraph" display-name="VALUEForGraph" uuid="420cfdc5-5d08-4224-9dd0-e3d8b0c04096" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
-		<init target="Source" ver="5" ref="hereApSourceForGraph"/>
-		<init target="Path" ver="5" value="VALUE"/>
-	</object>
-	<object access-modifier="private" name="EUForGraph" display-name="EUForGraph" uuid="b816e030-b818-4ab0-ab79-53b78e38357f" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5">
-		<init target="Path" ver="5" value="EU"/>
-		<init target="Source" ver="5" ref="hereApSourceForGraph"/>
-	</object>
 	<do-trace access-modifier="private" target="Alarm" ver="5">
 		<body>
 			<![CDATA[bErrorEndCaps||bErrorCantCtrl]]>
 		</body>
 	</do-trace>
-	<object access-modifier="private" name="SetChanged" display-name="SetChanged" uuid="0295633f-82d1-43a7-a70b-349ae6b232a6" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
-	<object access-modifier="private" name="PARAM" display-name="PARAM" uuid="c433d1eb-faa0-429b-a5d9-e83ec99e9fef" base-type="sensor" base-type-id="7d6aa5f1-44ff-4cfe-a668-21207cda0486" base-const="true" base-ref="true" ver="5" description=""/>
-	<object access-modifier="private" name="Initializer_1" display-name="Initializer_1" uuid="d83e3f1f-33a4-4cb3-b2e7-8870dc02d0df" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="5" description="" cardinal="1">
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Initialized">
-			<body kind="om">
-				<![CDATA[OpenModuleWindow.Enabled=false;]]>
-			</body>
-		</do-on>
-	</object>
+	<object access-modifier="private" name="PARAM" display-name="PARAM" uuid="c433d1eb-faa0-429b-a5d9-e83ec99e9fef" base-type="SensFromSensDouble" base-type-id="6ab9fadb-a7ab-4dd8-b771-29b146fbb3b6" base-const="true" base-ref="true" ver="5" description=""/>
 	<object access-modifier="private" name="hereApSourceForInParams" display-name="hereApSourceForInParams" uuid="2f91631a-b28b-42ca-a2d8-6bace7b5be68" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
 		<designed target="Active" value="false" ver="5"/>
 		<designed target="ReAdvise" value="0" ver="5"/>
@@ -290,5 +213,6 @@ if (counter == 60)
 		<designed target="ClientId" value="HMI" ver="5"/>
 		<init target="ParentSource" ver="5" ref="here.craneApSource"/>
 	</object>
+	<init target="isReg" ver="5" value="true"/>
 </type>
 

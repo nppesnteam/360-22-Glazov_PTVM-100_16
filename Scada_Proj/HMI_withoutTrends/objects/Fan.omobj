@@ -105,7 +105,7 @@
 		<designed target="InvokeTrigger" value="false" ver="5"/>
 		<do-trace access-modifier="private" target="Enabled" ver="5">
 			<body>
-				<![CDATA[!isOpenedModule]]>
+				<![CDATA[!isOpenedModule && bCanCtrl && Security.AllowControl.Value]]>
 			</body>
 		</do-trace>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
@@ -149,7 +149,7 @@ OpenModuleWindow.Invoke();]]>
 		<designed target="InvokeTrigger" value="false" ver="5"/>
 		<do-trace access-modifier="private" target="Enabled" ver="5">
 			<body>
-				<![CDATA[!bBlockOn]]>
+				<![CDATA[!bBlockOn && Security.AllowControl.Value]]>
 			</body>
 		</do-trace>
 		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Invoked">
@@ -168,7 +168,7 @@ OpenModuleWindow.Invoke();]]>
 		<designed target="InvokeTrigger" value="false" ver="5"/>
 		<do-trace access-modifier="private" target="Enabled" ver="5">
 			<body>
-				<![CDATA[!bBlockOff]]>
+				<![CDATA[!bBlockOff && Security.AllowControl.Value]]>
 			</body>
 		</do-trace>
 		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Invoked">
@@ -182,5 +182,7 @@ OpenModuleWindow.Invoke();]]>
 			</body>
 		</do-on>
 	</object>
+	<object access-modifier="private" name="bCanCtrl" display-name="bCanCtrl" uuid="5a8f7056-91fb-44c9-83ab-99203770ba5d" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description=""/>
+	<init target="bCanCtrl" ver="5" value="true"/>
 </type>
 

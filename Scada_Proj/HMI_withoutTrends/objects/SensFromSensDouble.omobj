@@ -665,12 +665,12 @@
 		<object access-modifier="private" name="bWarn" display-name="bWarn" uuid="ddc15225-229f-4818-96c3-3b616d72da73" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
 		<do-trace access-modifier="private" target="bProt" ver="5">
 			<body>
-				<![CDATA[refProtH.bCtrl || refProtL.bCtrl || bErrAllSens || (bErrFirstSens && uiSensNum==1) || (bErrSecondSens && uiSensNum==2)]]>
+				<![CDATA[refProtH.bCtrl || refProtL.bCtrl || bErrAllSens || (bErrFirstSens && uiSensNum==1) || (bErrSecondSens && uiSensNum==2) || here.bProt]]>
 			</body>
 		</do-trace>
 		<do-trace access-modifier="private" target="bWarn" ver="5">
 			<body>
-				<![CDATA[refWarnH.bTriggered || refWarnL.bTriggered || bBigDifferencePre]]>
+				<![CDATA[refWarnH.bTriggered || refWarnL.bTriggered || bBigDifferencePre || here.bWarn]]>
 			</body>
 		</do-trace>
 		<object access-modifier="private" name="OpenModuleWindow" display-name="OpenModuleWindow" uuid="67aa39d4-5737-44f6-bd15-a86cb6643b5c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" cardinal="1">
@@ -678,7 +678,7 @@
 			<designed target="InvokeTrigger" value="false" ver="5"/>
 			<do-trace access-modifier="private" target="Enabled" ver="5">
 				<body>
-					<![CDATA[!private.isOpened]]>
+					<![CDATA[!private.isOpened && Security.AllowControl.Value]]>
 				</body>
 			</do-trace>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
@@ -700,7 +700,7 @@
 			<designed target="InvokeTrigger" value="false" ver="5"/>
 			<do-trace access-modifier="private" target="Enabled" ver="5">
 				<body>
-					<![CDATA[!private.isOpenedSettings]]>
+					<![CDATA[!private.isOpenedSettings && Security.AllowControl.Value]]>
 				</body>
 			</do-trace>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
@@ -719,13 +719,37 @@
 				<![CDATA[(bOutBonds_1 && uiSensNum==1) || (bOutBonds_2 && uiSensNum==2)]]>
 			</body>
 		</do-trace>
+		<object access-modifier="private" name="OpenTrends" display-name="OpenTrends" uuid="596b31b5-ab25-4843-b8ff-42730e3b17c0" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" ver="5" description="">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-new">
+				<object access-modifier="private" uuid="4ce5e1e9-6251-4811-bf88-ad653b25bb14" base-type="График аналога" base-type-id="84c81543-df97-40b2-8286-cce2b21e5433" ver="5">
+					<init target="WindowX" ver="5">
+						<expr>
+							<![CDATA[posX]]>
+						</expr>
+					</init>
+					<init target="WindowY" ver="5">
+						<expr>
+							<![CDATA[posY]]>
+						</expr>
+					</init>
+					<init target="SensFromSensDouble_1" ver="5" ref="here"/>
+				</object>
+			</do-on>
+			<do-trace access-modifier="private" target="Enabled" ver="5">
+				<body>
+					<![CDATA[!isOpenedTrends]]>
+				</body>
+			</do-trace>
+		</object>
 	</object>
 	<object access-modifier="private" name="fElectroValue1" display-name="fElectroValue1" uuid="e817d234-9d65-42a0-b1bb-73f87c4137f2" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 		<init target="Path" ver="5" value="fElectroValue1"/>
 		<init target="Source" ver="5" ref="sensApSource"/>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnVqtChanged">
 			<body kind="om">
-				<![CDATA[private.ValElectro_1 = String.ToString( "%.1f", me.Value);]]>
+				<![CDATA[private.ValElectro_1 = String.ToString( "%.2f", me.Value);]]>
 			</body>
 		</do-on>
 	</object>
@@ -734,7 +758,7 @@
 		<init target="Source" ver="5" ref="sensApSource"/>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnVqtChanged">
 			<body kind="om">
-				<![CDATA[private.ValElectro_2 = String.ToString( "%.1f", me.Value);]]>
+				<![CDATA[private.ValElectro_2 = String.ToString( "%.2f", me.Value);]]>
 			</body>
 		</do-on>
 	</object>
@@ -845,5 +869,13 @@ private.OpenModuleWindow.Invoke();]]>
 	</object>
 	<object access-modifier="private" name="uiSensNum" display-name="uiSensNum" uuid="d00f0d4e-f715-450e-89ae-497516cc5e8b" base-type="notifying_uint1" base-type-id="fed14c54-414c-56bd-549a-8d761c4d6200" ver="5" description=""/>
 	<init target="uiSensNum" ver="5" value="1"/>
+	<object access-modifier="private" name="formatDigits" display-name="formatDigits" uuid="95e0e554-5268-4f15-b6f9-7dd3c1f96271" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+	<do-trace access-modifier="private" target="formatDigits" ver="5">
+		<body>
+			<![CDATA["%." + DIGITS.ValueAsString + "f"]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="bProt" display-name="bProt" uuid="70ca2a8e-f2b5-47a2-9ea3-5547322dae71" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="bWarn" display-name="bWarn" uuid="138b0299-1765-4e56-a048-4a06c740d4e4" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
 </type>
 

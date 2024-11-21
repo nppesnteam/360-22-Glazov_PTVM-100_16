@@ -260,44 +260,48 @@
 		<designed target="ClientId" value="HMI" ver="5"/>
 		<object access-modifier="private" name="fCaloric" display-name="fCaloric" uuid="262afb2a-ab56-4a38-97f9-968dc64957d0" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 			<init target="Path" ver="5" value="fCaloric"/>
-			<init target="Source" ver="5" ref="InConfig"/>
+			<init target="Source" ver="5" ref="parent"/>
 		</object>
 		<object access-modifier="private" name="fDd20" display-name="fDd20" uuid="7a5e7ed9-6ce5-42e8-b1fd-0fd52c4e31f3" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 			<init target="Path" ver="5" value="fDd20"/>
-			<init target="Source" ver="5" ref="InConfig"/>
+			<init target="Source" ver="5" ref="parent"/>
 		</object>
 		<object access-modifier="private" name="fDt20" display-name="fDt20" uuid="fc83ee61-107e-4486-90b0-ca2ffd7f2063" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 			<init target="Path" ver="5" value="fDt20"/>
-			<init target="Source" ver="5" ref="InConfig"/>
+			<init target="Source" ver="5" ref="parent"/>
 		</object>
 		<object access-modifier="private" name="fKsher" display-name="fKsher" uuid="5a0db4b4-6b7a-4608-ac4c-47a935843a80" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 			<init target="Path" ver="5" value="fKsher"/>
-			<init target="Source" ver="5" ref="InConfig"/>
+			<init target="Source" ver="5" ref="parent"/>
 		</object>
 		<object access-modifier="private" name="fRos" display-name="fRos" uuid="27bd9498-9cdd-40ab-89a5-82352ba8899c" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 			<init target="Path" ver="5" value="fRos"/>
-			<init target="Source" ver="5" ref="InConfig"/>
+			<init target="Source" ver="5" ref="parent"/>
 		</object>
 		<object access-modifier="private" name="fXcoPes" display-name="fXcoPes" uuid="8a19456d-6e9d-44bc-9aa8-95e449fd0bc8" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 			<init target="Path" ver="5" value="fXcoPes"/>
-			<init target="Source" ver="5" ref="InConfig"/>
+			<init target="Source" ver="5" ref="parent"/>
 		</object>
 		<object access-modifier="private" name="fXnPes" display-name="fXnPes" uuid="76b7fa2b-d725-4a27-852b-97e8f3421e07" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 			<init target="Path" ver="5" value="fXnPes"/>
-			<init target="Source" ver="5" ref="InConfig"/>
+			<init target="Source" ver="5" ref="parent"/>
 		</object>
 		<init target="ParentSource" ver="5" ref="sensApSource"/>
 		<object access-modifier="private" name="iPov" display-name="iPov" uuid="2da009f7-9076-4659-9212-b9e01a81a95c" base-type="ApItemInt2" base-type-id="46c29e2c-cf0c-4e96-ad30-6d7ae4e2ae8c" ver="5">
 			<init target="Path" ver="5" value="iPov"/>
-			<init target="Source" ver="5" ref="InConfig"/>
+			<init target="Source" ver="5" ref="parent"/>
 		</object>
 		<object access-modifier="private" name="iSel" display-name="iSel" uuid="11c62adc-8a78-4baa-8787-b451398cfeef" base-type="ApItemInt2" base-type-id="46c29e2c-cf0c-4e96-ad30-6d7ae4e2ae8c" ver="5">
 			<init target="Path" ver="5" value="iSel"/>
-			<init target="Source" ver="5" ref="InConfig"/>
+			<init target="Source" ver="5" ref="parent"/>
 		</object>
 		<object access-modifier="private" name="iSelDiaf" display-name="iSelDiaf" uuid="b4fefb93-149a-4c51-a170-a15396a9e104" base-type="ApItemInt2" base-type-id="46c29e2c-cf0c-4e96-ad30-6d7ae4e2ae8c" ver="5">
 			<init target="Path" ver="5" value="iSelDiaf"/>
-			<init target="Source" ver="5" ref="InConfig"/>
+			<init target="Source" ver="5" ref="parent"/>
+		</object>
+		<object access-modifier="private" name="fPAtm" display-name="fPAtm" uuid="6ea22ae7-6552-4212-8f03-dc0c2ddad83c" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fPAtm"/>
+			<init target="Source" ver="5" ref="parent"/>
 		</object>
 	</object>
 	<object access-modifier="private" name="OutConfig" display-name="OutConfig" uuid="0d65365a-7cc6-4266-bc45-ac2717a24f1a" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
@@ -312,43 +316,47 @@
 		<init target="ParentSource" ver="5" ref="sensApSource"/>
 		<object access-modifier="private" name="fCaloric" display-name="fCaloric" uuid="34605797-eba7-4ef6-aa51-d8fe85cda4c5" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 			<init target="Path" ver="5" value="fCaloric"/>
-			<init target="Source" ver="5" ref="OutConfig"/>
+			<init target="Source" ver="5" ref="parent"/>
 		</object>
 		<object access-modifier="private" name="fDd20" display-name="fDd20" uuid="6d59cf6c-2819-46fc-9b97-3c78edfd2174" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 			<init target="Path" ver="5" value="fDd20"/>
-			<init target="Source" ver="5" ref="OutConfig"/>
+			<init target="Source" ver="5" ref="parent"/>
 		</object>
 		<object access-modifier="private" name="fDt20" display-name="fDt20" uuid="b1c0f0b3-ee0c-413b-bf60-5cbecf779cb4" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 			<init target="Path" ver="5" value="fDt20"/>
-			<init target="Source" ver="5" ref="OutConfig"/>
+			<init target="Source" ver="5" ref="parent"/>
 		</object>
 		<object access-modifier="private" name="fKsher" display-name="fKsher" uuid="c676b183-2999-4e8c-82e9-8e8f4e612741" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 			<init target="Path" ver="5" value="fKsher"/>
-			<init target="Source" ver="5" ref="OutConfig"/>
+			<init target="Source" ver="5" ref="parent"/>
 		</object>
 		<object access-modifier="private" name="fRos" display-name="fRos" uuid="e43aebf6-707c-49e7-bfa7-d2f4cc00cb33" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 			<init target="Path" ver="5" value="fRos"/>
-			<init target="Source" ver="5" ref="OutConfig"/>
+			<init target="Source" ver="5" ref="parent"/>
 		</object>
 		<object access-modifier="private" name="fXcoPes" display-name="fXcoPes" uuid="29eb5e78-4597-44b3-a05a-64c5dd269253" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 			<init target="Path" ver="5" value="fXcoPes"/>
-			<init target="Source" ver="5" ref="OutConfig"/>
+			<init target="Source" ver="5" ref="parent"/>
 		</object>
 		<object access-modifier="private" name="fXnPes" display-name="fXnPes" uuid="6ea74012-891d-495b-9f5d-b11a730ce615" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
 			<init target="Path" ver="5" value="fXnPes"/>
-			<init target="Source" ver="5" ref="OutConfig"/>
+			<init target="Source" ver="5" ref="parent"/>
 		</object>
 		<object access-modifier="private" name="iPov" display-name="iPov" uuid="b729b6c6-ee6d-44a0-a1f1-0596f14faa97" base-type="ApItemInt2" base-type-id="46c29e2c-cf0c-4e96-ad30-6d7ae4e2ae8c" ver="5">
 			<init target="Path" ver="5" value="iPov"/>
-			<init target="Source" ver="5" ref="OutConfig"/>
+			<init target="Source" ver="5" ref="parent"/>
 		</object>
 		<object access-modifier="private" name="iSel" display-name="iSel" uuid="33f59e47-d7be-43a7-9c76-6cbeb42f67de" base-type="ApItemInt2" base-type-id="46c29e2c-cf0c-4e96-ad30-6d7ae4e2ae8c" ver="5">
 			<init target="Path" ver="5" value="iSel"/>
-			<init target="Source" ver="5" ref="OutConfig"/>
+			<init target="Source" ver="5" ref="parent"/>
 		</object>
 		<object access-modifier="private" name="iSelDiaf" display-name="iSelDiaf" uuid="d1ea01e4-4187-40cb-8289-e3e648b55740" base-type="ApItemInt2" base-type-id="46c29e2c-cf0c-4e96-ad30-6d7ae4e2ae8c" ver="5">
 			<init target="Path" ver="5" value="iSelDiaf"/>
-			<init target="Source" ver="5" ref="OutConfig"/>
+			<init target="Source" ver="5" ref="parent"/>
+		</object>
+		<object access-modifier="private" name="fPAtm" display-name="fPAtm" uuid="0ecc87d2-7629-4e4e-bbf4-b0794e69a4bb" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5">
+			<init target="Path" ver="5" value="fPAtm"/>
+			<init target="Source" ver="5" ref="parent"/>
 		</object>
 	</object>
 	<object access-modifier="private" name="bProt" display-name="bProt" uuid="5895d4ae-cf42-409e-936e-630e883d09c9" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
@@ -438,7 +446,7 @@
 			<designed target="InvokeTrigger" value="false" ver="5"/>
 			<do-trace access-modifier="private" target="Enabled" ver="5">
 				<body>
-					<![CDATA[!private.isOpened]]>
+					<![CDATA[!private.isOpened && Security.AllowControl.Value]]>
 				</body>
 			</do-trace>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
@@ -457,7 +465,7 @@
 			<designed target="InvokeTrigger" value="false" ver="5"/>
 			<do-trace access-modifier="private" target="Enabled" ver="5">
 				<body>
-					<![CDATA[!private.isOpenedSettings]]>
+					<![CDATA[!private.isOpenedSettings && Security.AllowControl.Value]]>
 				</body>
 			</do-trace>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
@@ -466,10 +474,42 @@
 					<init target="WindowY" ver="5" ref="posY"/>
 					<designed target="WindowCaption" value="Расход (настройка)" ver="5"/>
 					<init target="refDataFlow" ver="5" ref="here"/>
+					<init target="initApSourcePD" ver="5" ref="here.initApSourcePD"/>
+					<init target="initPathPD" ver="5" ref="here.initPathPD"/>
+					<init target="color" ver="5" ref="here.Color"/>
+					<init target="isWater" ver="5">
+						<expr>
+							<![CDATA[here.isWater]]>
+						</expr>
+					</init>
 				</object>
 			</do-on>
 		</object>
 		<object access-modifier="private" name="refSettings" display-name="refSettings" uuid="7b47e2b2-22e0-4310-b162-60a1c9ab1dc2" base-type="Датчик аналоговый (настройка)" base-type-id="517e7a40-0ece-428a-88c3-0c52a68a25ec" base-const="true" base-ref="true" ver="5" description=""/>
+		<object access-modifier="private" name="OpenTrends" display-name="OpenTrends" uuid="bb479554-0d53-42f0-8f21-f48e5d362ec1" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" ver="5" description="">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-new">
+				<object access-modifier="private" uuid="ac96acd4-c2d6-435c-8b91-71c33fd06254" base-type="График аналога" base-type-id="84c81543-df97-40b2-8286-cce2b21e5433" ver="5">
+					<init target="WindowX" ver="5">
+						<expr>
+							<![CDATA[posX]]>
+						</expr>
+					</init>
+					<init target="WindowY" ver="5">
+						<expr>
+							<![CDATA[posY]]>
+						</expr>
+					</init>
+					<init target="SensFlow_1" ver="5" ref="here"/>
+				</object>
+			</do-on>
+			<do-trace access-modifier="private" target="Enabled" ver="5">
+				<body>
+					<![CDATA[!isOpenedTrends]]>
+				</body>
+			</do-trace>
+		</object>
 	</object>
 	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
 		<body kind="om">
@@ -541,5 +581,12 @@ private.OpenSettingsWindow.Invoke();]]>
 			<![CDATA[refWarnH.bTriggered || refWarnL.bTriggered]]>
 		</body>
 	</do-trace>
+	<object access-modifier="private" name="formatDigits" display-name="formatDigits" uuid="ee92d08e-3449-49b7-a8a5-ed1962d2183b" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+	<do-trace access-modifier="private" target="formatDigits" ver="5">
+		<body>
+			<![CDATA["%." + DIGITS.ValueAsString + "f"]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="isWater" display-name="isWater" uuid="98e9871e-75ea-4879-88e5-7ba82fc78521" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description=""/>
 </type>
 

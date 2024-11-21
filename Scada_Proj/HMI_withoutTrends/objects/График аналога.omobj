@@ -1,0 +1,189 @@
+<type access-modifier="private" name="График аналога" display-name="График аналога" uuid="84c81543-df97-40b2-8286-cce2b21e5433" base-type="ParentPopup" base-type-id="05fbbd36-bc45-4ff3-b67c-707c9d718186" ver="5" description="">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Flip" value="0" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="600" ver="5"/>
+	<designed target="Height" value="300" ver="5"/>
+	<designed target="PenColor" value="4278190080" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="4293980400" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<designed target="WindowX" value="0" ver="5"/>
+	<designed target="WindowY" value="0" ver="5"/>
+	<designed target="WindowWidth" value="600" ver="5"/>
+	<designed target="WindowHeight" value="300" ver="5"/>
+	<designed target="WindowCaption" value="График" ver="5"/>
+	<designed target="ShowWindowCaption" value="true" ver="5"/>
+	<designed target="ShowWindowMinimize" value="false" ver="5"/>
+	<designed target="ShowWindowMaximize" value="false" ver="5"/>
+	<designed target="ShowWindowClose" value="true" ver="5"/>
+	<designed target="AlwaysOnTop" value="false" ver="5"/>
+	<designed target="WindowSizeMode" value="0" ver="5"/>
+	<designed target="WindowBorderStyle" value="1" ver="5"/>
+	<designed target="WindowState" value="0" ver="5"/>
+	<designed target="WindowScalingMode" value="0" ver="5"/>
+	<designed target="MonitorNumber" value="0" ver="5"/>
+	<designed target="WindowPosition" value="0" ver="5"/>
+	<designed target="WindowCloseMode" value="0" ver="5"/>
+	<designed target="WindowIconPath" value="" ver="5"/>
+	<object access-modifier="private" name="Text_1" display-name="Text_1" uuid="37ed7dfe-b9fc-41ae-9f44-bbe41daf5d53" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
+		<designed target="X" value="10" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="590" ver="5"/>
+		<designed target="Height" value="30" ver="5"/>
+		<designed target="Text" value="Параметр" ver="5"/>
+		<designed target="Font" value="Arial,16,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+		<designed target="FontColor" value="4278190080" ver="5"/>
+		<designed target="TextAlignment" value="129" ver="5"/>
+		<object access-modifier="private" name="LayoutWeight_1" display-name="LayoutWeight_1" uuid="90cf2648-e016-4bdc-b903-ac129b21cf64" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5" description="" cardinal="1">
+			<designed target="Weight" value="0.10000000000000001" ver="5"/>
+		</object>
+		<object access-modifier="private" name="LayoutAlignment_1" display-name="LayoutAlignment_1" uuid="dc366f47-2bb8-4707-87fd-3a4bac95e955" base-type="LayoutAlignment" base-type-id="cb30d8f3-1816-4ca2-87ec-f9a3c4b4e7b4" ver="5" description="" cardinal="1">
+			<designed target="HorizontalAlignment" value="0" ver="5"/>
+			<designed target="VerticalAlignment" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="LayoutMargins_1" display-name="LayoutMargins_1" uuid="3ad08fb5-c4bf-4ee8-9590-b0e6ebb6fb99" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+			<designed target="Top" value="0" ver="5"/>
+			<designed target="Bottom" value="0" ver="5"/>
+			<designed target="Left" value="10" ver="5"/>
+			<designed target="Right" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="LayoutSizeLimits_1" display-name="LayoutSizeLimits_1" uuid="f53118b0-fbb9-4948-89c2-1eb0a853e933" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="300" ver="5"/>
+			<designed target="MinHeight" value="30" ver="5"/>
+			<designed target="MaxWidth" value="16777215" ver="5"/>
+			<designed target="MaxHeight" value="16777215" ver="5"/>
+		</object>
+		<do-trace access-modifier="private" target="Text" ver="5">
+			<conditional-expr>
+				<condition>
+					<![CDATA[Sens_1.NAME != ""]]>
+				</condition>
+				<expr>
+					<![CDATA[Sens_1.NAME]]>
+				</expr>
+			</conditional-expr>
+			<conditional-expr>
+				<condition>
+					<![CDATA[SensFlow_1.NAME != ""]]>
+				</condition>
+				<expr>
+					<![CDATA[SensFlow_1.NAME]]>
+				</expr>
+			</conditional-expr>
+			<conditional-expr>
+				<condition>
+					<![CDATA[SensFromSensDouble_1.NAME != ""]]>
+				</condition>
+				<expr>
+					<![CDATA[SensFromSensDouble_1.NAME]]>
+				</expr>
+			</conditional-expr>
+			<default-expr>
+				<expr>
+					<![CDATA["Параметр"]]>
+				</expr>
+			</default-expr>
+		</do-trace>
+	</object>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="AboutToOpen">
+		<body kind="om">
+			<![CDATA[Trends_Indicator_1.AddItem(Sens_1.fNormValue.Tag);
+Trends_Indicator_1.AddItem(SensFlow_1.fNormValue.Tag);
+Trends_Indicator_1.AddItem(SensFromSensDouble_1.fNormValue1.Tag);
+Trends_Indicator_1.AddItem(SensFromSensDouble_1.fNormValue2.Tag);
+if (Sens_1.OutConfig.fNormH != Sens_1.OutConfig.fNormL)
+{
+	Trends_Indicator_1.LowRange = (Sens_1.OutConfig.fNormL - Math.Abs((Sens_1.OutConfig.fNormH - Sens_1.OutConfig.fNormL))/10)*Sens_1.OutConfig.fConversion;
+	Trends_Indicator_1.HighRange = (Sens_1.OutConfig.fNormH + Math.Abs((Sens_1.OutConfig.fNormH - Sens_1.OutConfig.fNormL))/10)*Sens_1.OutConfig.fConversion;
+}
+if (SensFlow_1.Max != SensFlow_1.Min)
+{
+	Trends_Indicator_1.LowRange = SensFlow_1.Min - Math.Abs((SensFlow_1.Max - SensFlow_1.Min))/10;
+	Trends_Indicator_1.HighRange = SensFlow_1.Max + Math.Abs((SensFlow_1.Max - SensFlow_1.Min))/10;
+}
+if (SensFromSensDouble_1.OutConfig_1.fNormH != SensFromSensDouble_1.OutConfig_1.fNormL)
+{
+	Trends_Indicator_1.LowRange = (SensFromSensDouble_1.OutConfig_1.fNormL - Math.Abs((SensFromSensDouble_1.OutConfig_1.fNormH - SensFromSensDouble_1.OutConfig_1.fNormL))/10)*SensFromSensDouble_1.OutConfig_1.fConversion;
+	Trends_Indicator_1.HighRange = (SensFromSensDouble_1.OutConfig_1.fNormH + Math.Abs((SensFromSensDouble_1.OutConfig_1.fNormH - SensFromSensDouble_1.OutConfig_1.fNormL))/10)*SensFromSensDouble_1.OutConfig_1.fConversion;
+}]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="LinearLayout_1" display-name="LinearLayout_1" uuid="928469de-e862-489e-8c4c-a7c25cb597d7" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
+		<designed target="Orientation" value="2" ver="5"/>
+		<designed target="Gap" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="Trends_Indicator_1" display-name="Trends_Indicator_1" uuid="ff9b507f-143c-4a51-a50e-fcf33dced49b" base-type="Trends_Indicator" base-type-id="13588092-03b2-409e-a184-a56745e08b2a" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="30" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="600" ver="5"/>
+		<designed target="Height" value="270" ver="5"/>
+		<init target="initApSource" ver="5" ref="Connections.MainSource"/>
+		<object access-modifier="private" name="Trends_Theme_1" display-name="Trends_Theme_1" uuid="2d6844e5-0424-45cb-baa8-f537ddeecc38" base-type="Trends_Theme" base-type-id="3fbfa4c2-c742-4bec-94dc-d1bcb7ef25b6" ver="5" description="" cardinal="1"/>
+		<init target="init_Theme" ver="5" ref="Trends_Theme_1"/>
+		<init target="ViewInterval" ver="5" value="60"/>
+		<init target="ShowAxisX" ver="5" value="true"/>
+		<init target="ShowAxisY" ver="5" value="true"/>
+		<object access-modifier="private" name="LayoutWeight_1" display-name="LayoutWeight_1" uuid="c8413b7c-fe7b-4382-b823-fb5a1c860180" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5" description="" cardinal="1">
+			<designed target="Weight" value="1" ver="5"/>
+		</object>
+		<object access-modifier="private" name="LayoutAlignment_1" display-name="LayoutAlignment_1" uuid="99b02adf-9d97-457a-a353-f9d245dd5a8c" base-type="LayoutAlignment" base-type-id="cb30d8f3-1816-4ca2-87ec-f9a3c4b4e7b4" ver="5" description="" cardinal="1">
+			<designed target="HorizontalAlignment" value="1" ver="5"/>
+			<designed target="VerticalAlignment" value="2" ver="5"/>
+		</object>
+		<object access-modifier="private" name="LayoutMargins_1" display-name="LayoutMargins_1" uuid="38e4a159-3c87-44f1-9ecd-e4378c974de1" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+			<designed target="Top" value="0" ver="5"/>
+			<designed target="Bottom" value="0" ver="5"/>
+			<designed target="Left" value="0" ver="5"/>
+			<designed target="Right" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="LayoutSizeLimits_1" display-name="LayoutSizeLimits_1" uuid="f58c3d0c-7c65-4261-acdf-1a55f1ac877e" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="300" ver="5"/>
+			<designed target="MinHeight" value="270" ver="5"/>
+			<designed target="MaxWidth" value="16777215" ver="5"/>
+			<designed target="MaxHeight" value="16777215" ver="5"/>
+		</object>
+		<init target="AutoRange" ver="5" value="false"/>
+	</object>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="WindowSizeChanged">
+		<body kind="om">
+			<![CDATA[Width = WindowWidth;
+Height = WindowHeight;]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[SensFlow_1.private.isOpenedTrends = true;
+Sens_1.private.isOpenedTrends = true;
+SensFromSensDouble_1.private.isOpenedTrends = true;]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="Closed">
+		<body kind="om">
+			<![CDATA[SensFlow_1.private.isOpenedTrends = false;
+Sens_1.private.isOpenedTrends = false;
+SensFromSensDouble_1.private.isOpenedTrends = false;]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="Sens_1" display-name="Sens_1" uuid="2a1db950-6466-4503-87e5-58539956bd27" base-type="Sens" base-type-id="bda7de48-3eeb-48b5-8968-c64cf04eb418" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="SensFlow_1" display-name="SensFlow_1" uuid="d9381a3a-8105-45d8-94db-10cecbd86480" base-type="SensFlow" base-type-id="36b5fe82-dca7-4d19-b14e-46d688268c65" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="SensFromSensDouble_1" display-name="SensFromSensDouble_1" uuid="2ea7a01b-474b-427c-b274-709d47e8af85" base-type="SensFromSensDouble" base-type-id="6ab9fadb-a7ab-4dd8-b771-29b146fbb3b6" base-const="true" base-ref="true" ver="5" description=""/>
+</type>
+

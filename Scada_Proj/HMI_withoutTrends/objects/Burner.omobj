@@ -72,7 +72,7 @@
 			<do-trace access-modifier="private" target="BrushColor" ver="5">
 				<conditional-expr>
 					<condition>
-						<![CDATA[bFireIgn == true]]>
+						<![CDATA[bFireIgn]]>
 					</condition>
 					<expr>
 						<![CDATA[0xffff0000]]>
@@ -80,7 +80,7 @@
 				</conditional-expr>
 				<conditional-expr>
 					<condition>
-						<![CDATA[bIgnProc == true]]>
+						<![CDATA[bBurnInQueue]]>
 					</condition>
 					<expr>
 						<![CDATA[0xff00ff00]]>
@@ -325,6 +325,136 @@
 	<object access-modifier="private" name="bAirBurn" display-name="bAirBurn" uuid="c5d4fd7b-73b1-4f37-a480-b8135d7ea87a" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
 		<init target="Source" ver="5" ref="burnApSource"/>
 		<init target="Path" ver="5" value="bAirBurn"/>
+	</object>
+	<object access-modifier="private" name="private" display-name="private" uuid="229955b0-fcc4-4451-8d91-e6b360aeaac2" base-type="Frame" base-type-id="71f78e19-ef99-4133-a029-2968b14f02b6" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="false" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="0" ver="5"/>
+		<designed target="Height" value="0" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="4278190080" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<designed target="OverrideScaling" value="false" ver="5"/>
+		<designed target="ShowScrollBars" value="true" ver="5"/>
+		<designed target="MoveByMouse" value="false" ver="5"/>
+		<object access-modifier="private" name="OpenModule" display-name="OpenModule" uuid="a8eafed9-4c4d-4e6b-8b3d-07483fcff32d" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-trace access-modifier="private" target="Enabled" ver="5">
+				<body>
+					<![CDATA[!private.isOpenedModule && Security.AllowControl.Value]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+				<object access-modifier="private" uuid="bcc52160-6730-4da6-99be-56c1679271a5" base-type="Горелка" base-type-id="4c47bc47-023e-4903-9edb-a611d1d4d550" ver="5">
+					<init target="WindowX" ver="5" ref="posX"/>
+					<init target="WindowY" ver="5" ref="posY"/>
+					<init target="WindowCaption" ver="5" ref="NAME"/>
+					<init target="Burner" ver="5" ref="here"/>
+				</object>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="isOpenedModule" display-name="isOpenedModule" uuid="5e63460b-ab7b-446a-a9a4-ef123278f691" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+		<object access-modifier="private" name="mX" display-name="mX" uuid="21901d99-3c1a-45b3-b4cb-66cefdd55551" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+		<object access-modifier="private" name="mY" display-name="mY" uuid="84742015-0815-4bc0-9b17-feb38cf7aa98" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+		<object access-modifier="private" name="posX" display-name="posX" uuid="e9cc0583-c28c-4f4d-ac15-de4ca63b8ae2" base-type="notifying_float" base-type-id="bb7d05ee-cbf0-4c44-8740-1905239c8ead" ver="5"/>
+		<object access-modifier="private" name="posY" display-name="posY" uuid="3749a989-561a-4712-b73b-a681e824c794" base-type="float" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+		<object access-modifier="private" name="BurnStart" display-name="BurnStart" uuid="df947388-f98a-4e3b-a4b4-5581226291eb" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[bStartBurn = true;]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="BurnStop" display-name="BurnStop" uuid="dfd823a8-5b92-4873-ac58-070bd8af32a1" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[bStopBurn = true;]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="PressStart" display-name="PressStart" uuid="d10af9a1-a054-42e8-831e-d27fd4dae451" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[bStartPress = true;]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Enabled" ver="5">
+				<body>
+					<![CDATA[!bBurnStarted]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="PressStop" display-name="PressStop" uuid="789819cd-118a-46e0-9a3e-7bf823d366e3" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[bStopPress = true;]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Enabled" ver="5">
+				<body>
+					<![CDATA[!bBurnStarted]]>
+				</body>
+			</do-trace>
+		</object>
+	</object>
+	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseRightClick">
+		<body kind="om">
+			<![CDATA[private.mX = TypeConvert.ToFloat(ScreenX(MouseX, MouseY));
+private.mY = TypeConvert.ToFloat(ScreenY(MouseX, MouseY));
+if (private.mX+400>1920)
+{
+	private.posX=private.mX-(400-(1920-private.mX));
+}
+else
+{
+	private.posX=private.mX;
+}
+if (private.mY+160>1080)
+{
+	private.posY=private.mY-(160-(1080-private.mY));
+}
+else
+{
+	private.posY=private.mY;
+}
+private.OpenModule.Invoke();]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="PGasBetween" display-name="PGasBetween" uuid="d381e9f7-4e7e-4ceb-b074-32d4507d862f" base-type="Sens" base-type-id="bda7de48-3eeb-48b5-8968-c64cf04eb418" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="bBurnInQueue" display-name="bBurnInQueue" uuid="9b4d00ce-935c-418d-b75d-5ad9c1d8c4df" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Source" ver="5" ref="burnApSource"/>
+		<init target="Path" ver="5" value="bBurnInQueue"/>
+	</object>
+	<object access-modifier="private" name="sIgnCurrentProblem" display-name="sIgnCurrentProblem" uuid="e65eccba-798e-4247-9a8e-f5a795513ba3" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5">
+		<init target="Source" ver="5" ref="burnApSource"/>
+		<init target="Path" ver="5" value="sIgnCurrentProblem"/>
+	</object>
+	<object access-modifier="private" name="bMainBurn" display-name="bMainBurn" uuid="9d08de99-9126-4b61-be11-5df3ecd5affc" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Source" ver="5" ref="burnApSource"/>
+		<init target="Path" ver="5" value="bMainBurn"/>
+	</object>
+	<object access-modifier="private" name="bMainFinal" display-name="bMainFinal" uuid="399a362a-1318-467f-968d-4689cbf95778" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+		<init target="Source" ver="5" ref="burnApSource"/>
+		<init target="Path" ver="5" value="bMainFinal"/>
 	</object>
 </type>
 

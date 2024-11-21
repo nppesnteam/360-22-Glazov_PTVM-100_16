@@ -1,0 +1,49 @@
+<type access-modifier="private" name="ParentForm" display-name="ParentForm" uuid="c59a2246-41af-48f9-8499-1f2a48c0182b" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5" description="">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Flip" value="0" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="1720" ver="5"/>
+	<designed target="Height" value="960" ver="5"/>
+	<designed target="PenColor" value="4278190080" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="0xff4d4d4d" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<designed target="WindowX" value="0" ver="5"/>
+	<designed target="WindowY" value="0" ver="5"/>
+	<designed target="WindowWidth" value="1720" ver="5"/>
+	<designed target="WindowHeight" value="960" ver="5"/>
+	<designed target="WindowCaption" value="Form_1" ver="5"/>
+	<designed target="ShowWindowCaption" value="false" ver="5"/>
+	<designed target="ShowWindowMinimize" value="false" ver="5"/>
+	<designed target="ShowWindowMaximize" value="false" ver="5"/>
+	<designed target="ShowWindowClose" value="false" ver="5"/>
+	<designed target="AlwaysOnTop" value="false" ver="5"/>
+	<designed target="WindowSizeMode" value="0" ver="5"/>
+	<designed target="WindowBorderStyle" value="0" ver="5"/>
+	<designed target="WindowState" value="0" ver="5"/>
+	<designed target="WindowScalingMode" value="0" ver="5"/>
+	<designed target="MonitorNumber" value="0" ver="5"/>
+	<designed target="WindowPosition" value="0" ver="5"/>
+	<designed target="WindowCloseMode" value="0" ver="5"/>
+	<designed target="WindowIconPath" value="" ver="5"/>
+	<object access-modifier="private" name="refCmd" display-name="refCmd" uuid="cd5abd53-be79-4fa9-ad18-56a851e27946" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description=""/>
+	<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="Closed">
+		<body kind="om">
+			<![CDATA[refCmd.Enabled = true;]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[refCmd.Enabled = false;]]>
+		</body>
+	</do-on>
+</type>
+

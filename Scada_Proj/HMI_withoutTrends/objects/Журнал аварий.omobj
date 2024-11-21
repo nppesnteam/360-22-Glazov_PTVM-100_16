@@ -1,4 +1,4 @@
-<type access-modifier="private" name="Журнал аварий" display-name="Журнал аварий" uuid="55cd9ba6-ea0f-4ff5-ba1d-6eac99948224" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5" description="">
+<type access-modifier="private" name="Журнал аварий" display-name="Журнал аварий" uuid="55cd9ba6-ea0f-4ff5-ba1d-6eac99948224" base-type="ParentForm" base-type-id="c59a2246-41af-48f9-8499-1f2a48c0182b" ver="5" description="">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="ZValue" value="0" ver="5"/>
@@ -41,6 +41,16 @@
 		<designed target="Width" value="1720" ver="5"/>
 		<designed target="Height" value="960" ver="5"/>
 		<init target="init_ApSource" ver="5" ref="unit.Connections.MainSource"/>
+		<init target="UseSecurity" ver="5" value="true"/>
+		<init target="ShowMilliseconds" ver="5" value="false"/>
+		<init target="NotAckOtherEvents" ver="5" value="true"/>
+		<init target="RequestAcknowledgmentComment" ver="5" value="false"/>
+		<object access-modifier="private" name="Theme_1" display-name="Theme_1" uuid="f48b5d48-f8a2-464c-b5fa-8b02027e3752" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5" description="" cardinal="1">
+			<init target="BackgroundColor" ver="5" value="0xffb5adad"/>
+			<init target="EditorBrushColor" ver="5" value="0xffe3e3e3"/>
+		</object>
+		<init target="pTheme" ver="5" ref="Theme_1"/>
+		<init target="RequestEventsStart" ver="5" value="false"/>
 	</object>
 	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Opened">
 		<body kind="om">

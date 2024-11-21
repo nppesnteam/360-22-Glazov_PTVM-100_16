@@ -278,7 +278,7 @@ OpenModuleWindow.Invoke();]]>
 		<designed target="InvokeTrigger" value="false" ver="5"/>
 		<do-trace access-modifier="private" target="Enabled" ver="5">
 			<body>
-				<![CDATA[!isOpenedModule]]>
+				<![CDATA[!isOpenedModule && Security.AllowControl.Value]]>
 			</body>
 		</do-trace>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">

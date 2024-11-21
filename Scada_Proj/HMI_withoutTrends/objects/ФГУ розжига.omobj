@@ -1,4 +1,4 @@
-<type access-modifier="private" name="ФГУ розжига" display-name="ФГУ розжига" uuid="94bd5536-9e3c-4b80-b296-b6744ba3ae9e" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+<type access-modifier="private" name="ФГУ розжига" display-name="ФГУ розжига" uuid="94bd5536-9e3c-4b80-b296-b6744ba3ae9e" base-type="ParentPopup" base-type-id="05fbbd36-bc45-4ff3-b67c-707c9d718186" ver="5">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="ZValue" value="0" ver="5"/>
@@ -47,7 +47,7 @@
 		<designed target="Editable" value="false" ver="5"/>
 		<designed target="Text" value="" ver="5"/>
 		<designed target="SelectedIndex" value="-1" ver="5"/>
-		<designed target="Font" value="Arial,8,-1,5,75,0,0,0,0,0" ver="5"/>
+		<designed target="Font" value="Arial,10,-1,5,75,0,0,0,0,0" ver="5"/>
 		<designed target="FontColor" value="0xff000000" ver="5"/>
 		<designed target="MaxVisibleItems" value="16" ver="5"/>
 		<do-trace access-modifier="private" target="SelectedIndex" ver="5">
@@ -118,7 +118,7 @@
 		</do-on>
 		<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="f924e86c-a78a-4c77-8b27-428939394ff2" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
 			<designed target="Rotation" value="90" ver="5"/>
-			<designed target="Visible" value="false" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
 			<designed target="Opacity" value="1" ver="5"/>
 			<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="a99705c5-fd59-4d66-87fa-c32b166511d4" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
 				<designed target="Position" value="0" ver="5"/>
@@ -236,7 +236,7 @@
 		</do-on>
 		<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="86650337-b54a-487c-88b6-9e8e32fa856e" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
 			<designed target="Rotation" value="90" ver="5"/>
-			<designed target="Visible" value="false" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
 			<designed target="Opacity" value="1" ver="5"/>
 			<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="b8765b69-c294-4aff-81a0-ca19b3b56283" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
 				<designed target="Position" value="0" ver="5"/>
@@ -360,7 +360,7 @@ unit.Global.isFGUOpened=true;]]>
 		<designed target="BrushStyle" value="1" ver="5"/>
 		<designed target="OnClickBrushColor" value="4288716960" ver="5"/>
 		<designed target="OnClickBrushStyle" value="1" ver="5"/>
-		<designed target="OnHoverBrushColor" value="0xffaeffae" ver="5"/>
+		<designed target="OnHoverBrushColor" value="0xffffffff" ver="5"/>
 		<designed target="OnHoverBrushStyle" value="1" ver="5"/>
 		<designed target="DisabledBrushColor" value="4288716960" ver="5"/>
 		<designed target="DisabledBrushStyle" value="1" ver="5"/>
@@ -383,11 +383,6 @@ unit.Global.isFGUOpened=true;]]>
 			</body>
 		</do-trace>
 		<designed target="Flip" value="0" ver="5"/>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
-			<body kind="om">
-				<![CDATA[BurnsStart.Invoke();]]>
-			</body>
-		</do-on>
 		<do-on access-modifier="private" name="Handler_11" display-name="Handler_11" ver="5" event="MouseLeave">
 			<body kind="om">
 				<![CDATA[LinearGradient_1.Visible=true;]]>
@@ -400,7 +395,7 @@ unit.Global.isFGUOpened=true;]]>
 		</do-on>
 		<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="78ce4bd5-433c-46d2-8ef5-1957bbb6f203" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
 			<designed target="Rotation" value="90" ver="5"/>
-			<designed target="Visible" value="false" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
 			<designed target="Opacity" value="1" ver="5"/>
 			<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="23a081d8-6235-4b3c-a934-7089668fa844" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
 				<designed target="Position" value="0" ver="5"/>
@@ -424,6 +419,12 @@ unit.Global.isFGUOpened=true;]]>
 				</body>
 			</do-trace>
 		</object>
+		<do-on access-modifier="private" name="Handler_14" display-name="Handler_14" ver="5" event="ButtonPressed" form-action="open-dialog" form-by-id="false">
+			<object access-modifier="private" uuid="d1b6ab61-838f-4c6e-aab4-89d8003cfbe4" base-type="Диалог подтверждения" base-type-id="20f34c44-a409-4bb4-919f-c857fa34e757" ver="5">
+				<init target="txtTitle" ver="5" value="Разжечь растопочные горелки в выбранном порядке?"/>
+				<init target="refCommand" ver="5" ref="BurnsStart"/>
+			</object>
+		</do-on>
 	</object>
 	<designed target="Flip" value="0" ver="5"/>
 	<designed target="WindowIconPath" value="" ver="5"/>
@@ -562,7 +563,7 @@ unit.Global.isFGUOpened=true;]]>
 			<designed target="Width" value="280" ver="5"/>
 			<designed target="Height" value="20" ver="5"/>
 			<designed target="Text" value="???" ver="5"/>
-			<designed target="Font" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="Font" value="Arial,10,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
 			<designed target="FontColor" value="4278190080" ver="5"/>
 			<designed target="TextAlignment" value="132" ver="5"/>
 			<do-trace access-modifier="private" target="Text" ver="5">
@@ -603,7 +604,7 @@ unit.Global.isFGUOpened=true;]]>
 			<designed target="Width" value="35" ver="5"/>
 			<designed target="Height" value="20" ver="5"/>
 			<designed target="Text" value="???" ver="5"/>
-			<designed target="Font" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="Font" value="Arial,10,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
 			<designed target="FontColor" value="4278190080" ver="5"/>
 			<designed target="TextAlignment" value="132" ver="5"/>
 			<do-trace access-modifier="private" target="Text" ver="5">
@@ -748,7 +749,7 @@ unit.Global.isFGUOpened=true;]]>
 			<designed target="Width" value="230" ver="5"/>
 			<designed target="Height" value="20" ver="5"/>
 			<designed target="Text" value="???" ver="5"/>
-			<designed target="Font" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="Font" value="Arial,10,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
 			<designed target="FontColor" value="4278190080" ver="5"/>
 			<designed target="TextAlignment" value="132" ver="5"/>
 			<do-trace access-modifier="private" target="Text" ver="5">
@@ -781,7 +782,7 @@ unit.Global.isFGUOpened=true;]]>
 			<designed target="Width" value="35" ver="5"/>
 			<designed target="Height" value="20" ver="5"/>
 			<designed target="Text" value="???" ver="5"/>
-			<designed target="Font" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="Font" value="Arial,10,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
 			<designed target="FontColor" value="4278190080" ver="5"/>
 			<designed target="TextAlignment" value="132" ver="5"/>
 			<do-trace access-modifier="private" target="Text" ver="5">
@@ -843,7 +844,7 @@ unit.Global.isFGUOpened=true;]]>
 		<init target="Source" ver="5" ref="unit.Connections.AppSource"/>
 	</object>
 	<object access-modifier="private" name="btnSkipVent" display-name="btnSkipVent" uuid="d37d8d40-bd54-496b-b012-ce16283d22ce" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
-		<designed target="X" value="245" ver="5"/>
+		<designed target="X" value="242.5" ver="5"/>
 		<designed target="Y" value="70" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
@@ -852,12 +853,12 @@ unit.Global.isFGUOpened=true;]]>
 		<designed target="Opacity" value="1" ver="5"/>
 		<designed target="Enabled" value="true" ver="5"/>
 		<designed target="Tooltip" value="" ver="5"/>
-		<designed target="Width" value="45" ver="5"/>
+		<designed target="Width" value="54" ver="5"/>
 		<designed target="Height" value="20" ver="5"/>
 		<designed target="Checkable" value="false" ver="5"/>
 		<designed target="Text" value="Пропуск" ver="5"/>
 		<designed target="TextAlignment" value="132" ver="5"/>
-		<designed target="Font" value="Arial,7,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
+		<designed target="Font" value="Arial,9,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
 		<designed target="FontColor" value="4278190080" ver="5"/>
 		<designed target="OnClickFontColor" value="4278190080" ver="5"/>
 		<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
@@ -911,7 +912,7 @@ unit.Global.isFGUOpened=true;]]>
 		</do-trace>
 		<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="43f57c33-ed50-47b7-bc50-1474e9d995b8" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
 			<designed target="Rotation" value="90" ver="5"/>
-			<designed target="Visible" value="false" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
 			<designed target="Opacity" value="1" ver="5"/>
 			<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="86df83b2-407d-433e-bdd3-c1544abe798f" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
 				<designed target="Position" value="0" ver="5"/>
@@ -942,7 +943,7 @@ unit.Global.isFGUOpened=true;]]>
 		</do-on>
 		<do-on access-modifier="private" name="Handler_13" display-name="Handler_13" ver="5" event="MouseLeave">
 			<body kind="om">
-				<![CDATA[LinearGradient_1.Visible=true;]]>
+				<![CDATA[LinearGradient_1.Visible=!OutbSkipVent;]]>
 			</body>
 		</do-on>
 	</object>
@@ -1023,7 +1024,7 @@ unit.Global.isFGUOpened=true;]]>
 			<designed target="Width" value="230" ver="5"/>
 			<designed target="Height" value="20" ver="5"/>
 			<designed target="Text" value="???" ver="5"/>
-			<designed target="Font" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="Font" value="Arial,10,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
 			<designed target="FontColor" value="4278190080" ver="5"/>
 			<designed target="TextAlignment" value="132" ver="5"/>
 			<do-trace access-modifier="private" target="Text" ver="5">
@@ -1046,7 +1047,7 @@ unit.Global.isFGUOpened=true;]]>
 			<designed target="Width" value="35" ver="5"/>
 			<designed target="Height" value="20" ver="5"/>
 			<designed target="Text" value="???" ver="5"/>
-			<designed target="Font" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="Font" value="Arial,10,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
 			<designed target="FontColor" value="4278190080" ver="5"/>
 			<designed target="TextAlignment" value="132" ver="5"/>
 			<do-trace access-modifier="private" target="Text" ver="5">
@@ -1141,14 +1142,9 @@ unit.Global.isFGUOpened=true;]]>
 			</body>
 		</do-trace>
 		<designed target="Flip" value="0" ver="5"/>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
-			<body kind="om">
-				<![CDATA[PressStart.Invoke();]]>
-			</body>
-		</do-on>
 		<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="590c0772-729c-4ec9-8334-5bfaabfd9822" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
 			<designed target="Rotation" value="90" ver="5"/>
-			<designed target="Visible" value="false" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
 			<designed target="Opacity" value="1" ver="5"/>
 			<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="89b2dcc7-f350-4a55-9b67-9162a9b8f48b" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
 				<designed target="Position" value="0" ver="5"/>
@@ -1166,6 +1162,11 @@ unit.Global.isFGUOpened=true;]]>
 				<designed target="Position" value="1" ver="5"/>
 				<designed target="Color" value="0xff999999" ver="5"/>
 			</object>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[unit.Global.bVentOk && unit.Global.bBlowOk && !unit.Global.bBurnersStarted]]>
+				</body>
+			</do-trace>
 		</object>
 		<do-on access-modifier="private" name="Handler_11" display-name="Handler_11" ver="5" event="MouseEnter">
 			<body kind="om">
@@ -1177,10 +1178,16 @@ unit.Global.isFGUOpened=true;]]>
 				<![CDATA[LinearGradient_1.Visible=true;]]>
 			</body>
 		</do-on>
+		<do-on access-modifier="private" name="Handler_13" display-name="Handler_13" ver="5" event="ButtonPressed" form-action="open-dialog" form-by-id="false">
+			<object access-modifier="private" uuid="bd774cfe-db68-44b5-941f-e4ff3edd4059" base-type="Диалог подтверждения" base-type-id="20f34c44-a409-4bb4-919f-c857fa34e757" ver="5">
+				<init target="refCommand" ver="5" ref="PressStart"/>
+				<init target="txtTitle" ver="5" value="Запустить опрессовку всех горелок?"/>
+			</object>
+		</do-on>
 	</object>
 	<object access-modifier="private" name="btnSkipBlow" display-name="btnSkipBlow" uuid="71dc33bd-06e4-4754-9792-f492712498aa" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
-		<designed target="X" value="245" ver="5"/>
-		<designed target="Y" value="100" ver="5"/>
+		<designed target="X" value="242.5" ver="5"/>
+		<designed target="Y" value="100.25" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
@@ -1188,12 +1195,12 @@ unit.Global.isFGUOpened=true;]]>
 		<designed target="Opacity" value="1" ver="5"/>
 		<designed target="Enabled" value="true" ver="5"/>
 		<designed target="Tooltip" value="" ver="5"/>
-		<designed target="Width" value="45" ver="5"/>
+		<designed target="Width" value="54" ver="5"/>
 		<designed target="Height" value="20" ver="5"/>
 		<designed target="Checkable" value="false" ver="5"/>
 		<designed target="Text" value="Пропуск" ver="5"/>
 		<designed target="TextAlignment" value="132" ver="5"/>
-		<designed target="Font" value="Arial,7,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
+		<designed target="Font" value="Arial,9,-1,5,75,0,0,0,0,0,Полужирный" ver="5"/>
 		<designed target="FontColor" value="4278190080" ver="5"/>
 		<designed target="OnClickFontColor" value="4278190080" ver="5"/>
 		<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
@@ -1231,7 +1238,7 @@ else
 		<do-trace access-modifier="private" target="BrushColor" ver="5">
 			<conditional-expr>
 				<condition>
-					<![CDATA[OutbSkipVent]]>
+					<![CDATA[OutbSkipBlow]]>
 				</condition>
 				<expr>
 					<![CDATA[0xffff0000]]>
@@ -1277,7 +1284,7 @@ else
 		</do-trace>
 		<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="fced9f32-99fc-45dd-87e7-d09454293742" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
 			<designed target="Rotation" value="90" ver="5"/>
-			<designed target="Visible" value="false" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
 			<designed target="Opacity" value="1" ver="5"/>
 			<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="a31dd2c3-ac54-4063-8c7d-b02f5587a898" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
 				<designed target="Position" value="0" ver="5"/>
@@ -1297,7 +1304,7 @@ else
 			</object>
 			<do-trace access-modifier="private" target="Visible" ver="5">
 				<body>
-					<![CDATA[!unit.Global.bBlowOk && !OutbSkipVent]]>
+					<![CDATA[!unit.Global.bBlowOk && !OutbSkipBlow]]>
 				</body>
 			</do-trace>
 		</object>
@@ -1308,7 +1315,7 @@ else
 		</do-on>
 		<do-on access-modifier="private" name="Handler_13" display-name="Handler_13" ver="5" event="MouseLeave">
 			<body kind="om">
-				<![CDATA[LinearGradient_1.Visible=true;]]>
+				<![CDATA[LinearGradient_1.Visible=!OutbSkipBlow;]]>
 			</body>
 		</do-on>
 	</object>
@@ -1368,7 +1375,8 @@ else
 		<designed target="InvokeTrigger" value="false" ver="5"/>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
 			<body kind="om">
-				<![CDATA[InbStartPress = true;]]>
+				<![CDATA[InbStartPress = true;
+OpenPress.Invoke();]]>
 			</body>
 		</do-on>
 	</object>
@@ -1392,14 +1400,10 @@ else
 		<designed target="Active" value="true" ver="5"/>
 		<designed target="CurrentFrameNumber" value="0" ver="5"/>
 		<designed target="Speed" value="1" ver="5"/>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick" form-by-id="false" form-action="open-new-independent">
-			<object access-modifier="private" uuid="af3b4ed7-cd14-4961-962e-0f8db4b80300" base-type="Опрессовка общая" base-type-id="23a83cc0-f372-4e53-b32f-298e64ac4ea7" ver="5">
-				<designed target="WindowPosition" value="1" ver="5"/>
-				<designed target="WindowScalingMode" value="0" ver="5"/>
-				<designed target="WindowBorderStyle" value="2" ver="5"/>
-				<designed target="ShowWindowMinimize" value="false" ver="5"/>
-				<designed target="ShowWindowMaximize" value="false" ver="5"/>
-			</object>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[OpenPress.Invoke();]]>
+			</body>
 		</do-on>
 	</object>
 	<object access-modifier="private" name="txtIgnSequence_1" display-name="txtIgnSequence_1" uuid="5c3cd31a-e2ff-4984-b62d-339b1daaa3ab" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
@@ -1480,14 +1484,9 @@ else
 			</body>
 		</do-trace>
 		<designed target="Flip" value="0" ver="5"/>
-		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
-			<body kind="om">
-				<![CDATA[PressStop.Invoke();]]>
-			</body>
-		</do-on>
 		<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="339a38c0-3d6d-4140-9f01-709902fd599e" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
 			<designed target="Rotation" value="90" ver="5"/>
-			<designed target="Visible" value="false" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
 			<designed target="Opacity" value="1" ver="5"/>
 			<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="aef88396-7959-437c-ad4c-7c4325d7ad7c" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
 				<designed target="Position" value="0" ver="5"/>
@@ -1505,6 +1504,11 @@ else
 				<designed target="Position" value="1" ver="5"/>
 				<designed target="Color" value="0xff999999" ver="5"/>
 			</object>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[unit.Global.bVentOk && unit.Global.bBlowOk && !unit.Global.bBurnersStarted]]>
+				</body>
+			</do-trace>
 		</object>
 		<do-on access-modifier="private" name="Handler_11" display-name="Handler_11" ver="5" event="MouseEnter">
 			<body kind="om">
@@ -1516,6 +1520,30 @@ else
 				<![CDATA[LinearGradient_1.Visible=true;]]>
 			</body>
 		</do-on>
+		<do-on access-modifier="private" name="Handler_14" display-name="Handler_14" ver="5" event="ButtonPressed" form-action="open-dialog" form-by-id="false">
+			<object access-modifier="private" uuid="788e2eb3-4da5-426f-b00f-38d3a1271079" base-type="Диалог подтверждения" base-type-id="20f34c44-a409-4bb4-919f-c857fa34e757" ver="5">
+				<init target="txtTitle" ver="5" value="Запустить опрессовку всех горелок?"/>
+				<init target="refCommand" ver="5" ref="PressStop"/>
+			</object>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="OpenPress" display-name="OpenPress" uuid="fc3d86ff-07fa-46bd-a759-0f00f7423531" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Invoked" form-by-id="false" form-action="open-new-independent">
+			<object access-modifier="private" uuid="4b596129-773f-47d4-aed9-04860edaafb0" base-type="Опрессовка общая" base-type-id="23a83cc0-f372-4e53-b32f-298e64ac4ea7" ver="5">
+				<designed target="WindowPosition" value="1" ver="5"/>
+				<designed target="WindowScalingMode" value="0" ver="5"/>
+				<designed target="WindowBorderStyle" value="2" ver="5"/>
+				<designed target="ShowWindowMinimize" value="false" ver="5"/>
+				<designed target="ShowWindowMaximize" value="false" ver="5"/>
+			</object>
+		</do-on>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[!Global.isPressOpened]]>
+			</body>
+		</do-trace>
 	</object>
 </type>
 

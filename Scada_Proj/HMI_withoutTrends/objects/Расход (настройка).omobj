@@ -1,4 +1,4 @@
-<type access-modifier="private" name="Расход (настройка)" display-name="Расход (настройка)" uuid="a09d5ee1-42b3-4be6-9bf3-3b90340f0e37" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+<type access-modifier="private" name="Расход (настройка)" display-name="Расход (настройка)" uuid="a09d5ee1-42b3-4be6-9bf3-3b90340f0e37" base-type="ParentPopup" base-type-id="05fbbd36-bc45-4ff3-b67c-707c9d718186" ver="5">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="ZValue" value="0" ver="5"/>
@@ -9,7 +9,7 @@
 	<designed target="Enabled" value="true" ver="5"/>
 	<designed target="Tooltip" value="" ver="5"/>
 	<designed target="Width" value="350" ver="5"/>
-	<designed target="Height" value="361" ver="5"/>
+	<designed target="Height" value="381" ver="5"/>
 	<designed target="PenColor" value="4278190080" ver="5"/>
 	<designed target="PenStyle" value="0" ver="5"/>
 	<designed target="PenWidth" value="1" ver="5"/>
@@ -18,7 +18,7 @@
 	<designed target="WindowX" value="0" ver="5"/>
 	<designed target="WindowY" value="0" ver="5"/>
 	<designed target="WindowWidth" value="350" ver="5"/>
-	<designed target="WindowHeight" value="361" ver="5"/>
+	<designed target="WindowHeight" value="381" ver="5"/>
 	<designed target="WindowCaption" value="Расход (настройка)" ver="5"/>
 	<designed target="ShowWindowCaption" value="true" ver="5"/>
 	<designed target="ShowWindowMinimize" value="false" ver="5"/>
@@ -288,7 +288,7 @@
 				</do-trace>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!unit.Security.AllowSettingsChange.Value]]>
+						<![CDATA[!unit.Security.AllowAll.Value]]>
 					</body>
 				</do-trace>
 				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="EditFinished">
@@ -351,7 +351,7 @@ refDataFlow.DIGITS = String.ToUint1(me.Text, refDataFlow.DIGITS);]]>
 				<designed target="Flip" value="0" ver="5"/>
 				<designed target="Visible" value="true" ver="5"/>
 				<designed target="Opacity" value="1" ver="5"/>
-				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Enabled" value="false" ver="5"/>
 				<designed target="Tooltip" value="" ver="5"/>
 				<designed target="Width" value="80" ver="5"/>
 				<designed target="Height" value="20" ver="5"/>
@@ -382,9 +382,9 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 						<![CDATA[refDataFlow.OutConfig.iSel]]>
 					</body>
 				</do-trace>
-				<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="Activated">
+				<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="SelectedChanged">
 					<body kind="om">
-						<![CDATA[refDataFlow.InConfig.iSel = TypeConvert.ToInt2(SelectedIndex+1);]]>
+						<![CDATA[refDataFlow.InConfig.iSel = TypeConvert.ToInt2(SelectedIndex);]]>
 					</body>
 				</do-on>
 			</object>
@@ -461,16 +461,21 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				<designed target="SelectedIndex" value="-1" ver="5"/>
 				<designed target="MaxVisibleItems" value="10" ver="5"/>
 				<designed target="InsertPolicy" value="3" ver="5"/>
-				<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="Activated">
-					<body kind="om">
-						<![CDATA[refDataFlow.InConfig.iSelDiaf = TypeConvert.ToInt2(SelectedIndex+1);]]>
-					</body>
-				</do-on>
 				<do-trace access-modifier="private" target="SelectedIndex" ver="5">
 					<body>
 						<![CDATA[refDataFlow.OutConfig.iSelDiaf]]>
 					</body>
 				</do-trace>
+				<do-trace access-modifier="private" target="Enabled" ver="5">
+					<body>
+						<![CDATA[Security.AllowAll.Value]]>
+					</body>
+				</do-trace>
+				<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="SelectedChanged">
+					<body kind="om">
+						<![CDATA[refDataFlow.InConfig.iSelDiaf = TypeConvert.ToInt2(SelectedIndex);]]>
+					</body>
+				</do-on>
 			</object>
 		</object>
 		<object access-modifier="private" name="Dt20" display-name="Dt20" uuid="fbb56f3e-adaf-4c7d-80dc-c21045ccd7f5" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
@@ -503,7 +508,7 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				<designed target="Tooltip" value="" ver="5"/>
 				<designed target="Width" value="202" ver="5"/>
 				<designed target="Height" value="20" ver="5"/>
-				<designed target="Text" value="2-04. Диаметр трубопровода" ver="5"/>
+				<designed target="Text" value="2-04. Диаметр трубопровода, мм" ver="5"/>
 				<designed target="Font" value="Arial,8,-1,5,50,0,0,0,0,0,Narrow" ver="5"/>
 				<designed target="FontColor" value="4278190080" ver="5"/>
 				<designed target="TextAlignment" value="129" ver="5"/>
@@ -537,7 +542,7 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				</do-trace>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!unit.Security.AllowSettingsChange.Value]]>
+						<![CDATA[!unit.Security.AllowAll.Value]]>
 					</body>
 				</do-trace>
 				<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="EditFinished">
@@ -584,7 +589,7 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				<designed target="Tooltip" value="" ver="5"/>
 				<designed target="Width" value="202" ver="5"/>
 				<designed target="Height" value="20" ver="5"/>
-				<designed target="Text" value="2-05. Диаметр диафрагмы" ver="5"/>
+				<designed target="Text" value="2-05. Диаметр диафрагмы, мм" ver="5"/>
 				<designed target="Font" value="Arial,8,-1,5,50,0,0,0,0,0,Narrow" ver="5"/>
 				<designed target="FontColor" value="4278190080" ver="5"/>
 				<designed target="TextAlignment" value="129" ver="5"/>
@@ -618,7 +623,7 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				</do-trace>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!unit.Security.AllowSettingsChange.Value]]>
+						<![CDATA[!unit.Security.AllowAll.Value]]>
 					</body>
 				</do-trace>
 				<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="EditFinished">
@@ -665,7 +670,7 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				<designed target="Tooltip" value="" ver="5"/>
 				<designed target="Width" value="202" ver="5"/>
 				<designed target="Height" value="20" ver="5"/>
-				<designed target="Text" value="2-06. Межповерочный интервал" ver="5"/>
+				<designed target="Text" value="2-06. Межповерочный интервал, лет" ver="5"/>
 				<designed target="Font" value="Arial,8,-1,5,50,0,0,0,0,0,Narrow" ver="5"/>
 				<designed target="FontColor" value="4278190080" ver="5"/>
 				<designed target="TextAlignment" value="129" ver="5"/>
@@ -699,7 +704,7 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				</do-trace>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!unit.Security.AllowSettingsChange.Value]]>
+						<![CDATA[!unit.Security.AllowAll.Value]]>
 					</body>
 				</do-trace>
 				<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="EditFinished">
@@ -780,7 +785,7 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				</do-trace>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!unit.Security.AllowSettingsChange.Value]]>
+						<![CDATA[!unit.Security.AllowAll.Value]]>
 					</body>
 				</do-trace>
 				<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="EditFinished">
@@ -799,7 +804,7 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 		</object>
 		<object access-modifier="private" name="Ros" display-name="Ros" uuid="343e2ee4-b98b-4fc5-9898-5f1db2bcbfd6" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 			<designed target="X" value="0" ver="5"/>
-			<designed target="Y" value="160" ver="5"/>
+			<designed target="Y" value="180" ver="5"/>
 			<designed target="ZValue" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Scale" value="1" ver="5"/>
@@ -827,7 +832,7 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				<designed target="Tooltip" value="" ver="5"/>
 				<designed target="Width" value="202" ver="5"/>
 				<designed target="Height" value="20" ver="5"/>
-				<designed target="Text" value="2-08. Плотность газа" ver="5"/>
+				<designed target="Text" value="2-09. Плотность газа, кг/м³" ver="5"/>
 				<designed target="Font" value="Arial,8,-1,5,50,0,0,0,0,0,Narrow" ver="5"/>
 				<designed target="FontColor" value="4278190080" ver="5"/>
 				<designed target="TextAlignment" value="129" ver="5"/>
@@ -861,7 +866,7 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				</do-trace>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!unit.Security.AllowSettingsChange.Value]]>
+						<![CDATA[!unit.Security.AllowAll.Value]]>
 					</body>
 				</do-trace>
 				<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="EditFinished">
@@ -877,10 +882,15 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 					</body>
 				</do-on>
 			</object>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[!isWater]]>
+				</body>
+			</do-trace>
 		</object>
 		<object access-modifier="private" name="XCO" display-name="XCO" uuid="0275ba91-6e73-478b-83d1-a3eb96b12bd5" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 			<designed target="X" value="0" ver="5"/>
-			<designed target="Y" value="180" ver="5"/>
+			<designed target="Y" value="200" ver="5"/>
 			<designed target="ZValue" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Scale" value="1" ver="5"/>
@@ -908,7 +918,7 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				<designed target="Tooltip" value="" ver="5"/>
 				<designed target="Width" value="202" ver="5"/>
 				<designed target="Height" value="20" ver="5"/>
-				<designed target="Text" value="2-09. Содержание СО" ver="5"/>
+				<designed target="Text" value="2-10. Содержание СО, %" ver="5"/>
 				<designed target="Font" value="Arial,8,-1,5,50,0,0,0,0,0,Narrow" ver="5"/>
 				<designed target="FontColor" value="4278190080" ver="5"/>
 				<designed target="TextAlignment" value="129" ver="5"/>
@@ -942,7 +952,7 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				</do-trace>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!unit.Security.AllowSettingsChange.Value]]>
+						<![CDATA[!unit.Security.AllowAll.Value]]>
 					</body>
 				</do-trace>
 				<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="EditFinished">
@@ -958,10 +968,15 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 					</body>
 				</do-on>
 			</object>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[!isWater]]>
+				</body>
+			</do-trace>
 		</object>
 		<object access-modifier="private" name="XN" display-name="XN" uuid="ee8b12f9-afac-4172-8f56-f20a14147ef8" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 			<designed target="X" value="0" ver="5"/>
-			<designed target="Y" value="200" ver="5"/>
+			<designed target="Y" value="220" ver="5"/>
 			<designed target="ZValue" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Scale" value="1" ver="5"/>
@@ -989,7 +1004,7 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				<designed target="Tooltip" value="" ver="5"/>
 				<designed target="Width" value="202" ver="5"/>
 				<designed target="Height" value="20" ver="5"/>
-				<designed target="Text" value="2-10. Содержание N" ver="5"/>
+				<designed target="Text" value="2-11. Содержание N, %" ver="5"/>
 				<designed target="Font" value="Arial,8,-1,5,50,0,0,0,0,0,Narrow" ver="5"/>
 				<designed target="FontColor" value="4278190080" ver="5"/>
 				<designed target="TextAlignment" value="129" ver="5"/>
@@ -1023,7 +1038,7 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				</do-trace>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!unit.Security.AllowSettingsChange.Value]]>
+						<![CDATA[!unit.Security.AllowAll.Value]]>
 					</body>
 				</do-trace>
 				<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="EditFinished">
@@ -1039,10 +1054,15 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 					</body>
 				</do-on>
 			</object>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[!isWater]]>
+				</body>
+			</do-trace>
 		</object>
 		<object access-modifier="private" name="Caloric" display-name="Caloric" uuid="e048deca-2df9-4cb7-8019-f522c5661005" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 			<designed target="X" value="0" ver="5"/>
-			<designed target="Y" value="220" ver="5"/>
+			<designed target="Y" value="240" ver="5"/>
 			<designed target="ZValue" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Scale" value="1" ver="5"/>
@@ -1070,7 +1090,7 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				<designed target="Tooltip" value="" ver="5"/>
 				<designed target="Width" value="202" ver="5"/>
 				<designed target="Height" value="20" ver="5"/>
-				<designed target="Text" value="2-11. Калорийность" ver="5"/>
+				<designed target="Text" value="2-12. Калорийность, ккал/м³" ver="5"/>
 				<designed target="Font" value="Arial,8,-1,5,50,0,0,0,0,0,Narrow" ver="5"/>
 				<designed target="FontColor" value="4278190080" ver="5"/>
 				<designed target="TextAlignment" value="129" ver="5"/>
@@ -1104,7 +1124,7 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				</do-trace>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!unit.Security.AllowSettingsChange.Value]]>
+						<![CDATA[!unit.Security.AllowAll.Value]]>
 					</body>
 				</do-trace>
 				<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="EditFinished">
@@ -1120,11 +1140,97 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 					</body>
 				</do-on>
 			</object>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[!isWater]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="PAtm" display-name="PAtm" uuid="cc684c1e-891f-4242-887a-7c21e1388c81" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="160" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="260" ver="5"/>
+			<designed target="Height" value="20" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="0xfff0f0f0" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="0xffdadada" ver="5"/>
+			<designed target="BrushStyle" value="1" ver="5"/>
+			<object access-modifier="private" name="Title" display-name="Title" uuid="1542fcc6-41e9-461a-b830-1c80b550d29d" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+				<designed target="X" value="6" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="202" ver="5"/>
+				<designed target="Height" value="20" ver="5"/>
+				<designed target="Text" value="2-08. Атмосферное давление, МПа" ver="5"/>
+				<designed target="Font" value="Arial,8,-1,5,50,0,0,0,0,0,Narrow" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+			</object>
+			<designed target="Flip" value="0" ver="5"/>
+			<object access-modifier="private" name="ValueEdit" display-name="ValueEdit" uuid="796aa42d-f937-48f1-96ac-fb91fe0a5b9b" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5" description="" cardinal="1">
+				<designed target="X" value="265" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="80" ver="5"/>
+				<designed target="Height" value="20" ver="5"/>
+				<designed target="Text" value="0.0" ver="5"/>
+				<designed target="Font" value="Arial,8,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="132" ver="5"/>
+				<designed target="HideInput" value="false" ver="5"/>
+				<designed target="PlaceholderText" value="" ver="5"/>
+				<designed target="ReadOnly" value="true" ver="5"/>
+				<do-trace access-modifier="private" target="Text" ver="5">
+					<body>
+						<![CDATA[refDataFlow.OutConfig.fPAtm.ValueAsString]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="ReadOnly" ver="5">
+					<body>
+						<![CDATA[!unit.Security.AllowAll.Value]]>
+					</body>
+				</do-trace>
+				<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="EditFinished">
+					<body kind="om">
+						<![CDATA[me.Text=Str.Replace(me.Text,",",".");
+refDataFlow.InConfig.fPAtm = TypeConvert.ToFloat(Str.ToDouble(me.Text,refDataFlow.OutConfig.fPAtm));]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="EditFinished">
+					<body kind="om">
+						<![CDATA[Str.Replace(me.Text,",",".");
+unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на " + me.Text + ".",2);]]>
+					</body>
+				</do-on>
+			</object>
 		</object>
 	</object>
 	<object access-modifier="private" name="Value" display-name="Value" uuid="8da8706d-3d39-408b-9e33-2c6131ae551b" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 		<designed target="X" value="0" ver="5"/>
-		<designed target="Y" value="300" ver="5"/>
+		<designed target="Y" value="320" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>
@@ -1262,38 +1368,55 @@ unit.Global.ShowMSG(refDataFlow.NAME + " (" + Title + ") изменено на "
 				<designed target="Flip" value="0" ver="5"/>
 				<do-trace access-modifier="private" target="Text" ver="5">
 					<body>
-						<![CDATA["4-02. Перепад давления, " + refDataPD.EU]]>
+						<![CDATA["4-02. Перепад давления, " + Sens_1.EU]]>
 					</body>
 				</do-trace>
 			</object>
 			<designed target="Flip" value="0" ver="5"/>
-			<object access-modifier="private" name="Value1" display-name="Value1" uuid="038f44ee-0adc-46bd-944e-830068c0ed9a" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
-				<designed target="X" value="265" ver="5"/>
-				<designed target="Y" value="0" ver="5"/>
-				<designed target="ZValue" value="0" ver="5"/>
+			<object access-modifier="private" name="Sens_1" display-name="Sens_1" uuid="0bdbc4ab-bd1f-41c9-931e-713accb4fd8f" base-type="Sens" base-type-id="bda7de48-3eeb-48b5-8968-c64cf04eb418" ver="5" description="" cardinal="1">
+				<designed target="X" value="276" ver="5"/>
+				<designed target="Y" value="3.5" ver="5"/>
 				<designed target="Rotation" value="0" ver="5"/>
-				<designed target="Scale" value="1" ver="5"/>
-				<designed target="Visible" value="true" ver="5"/>
-				<designed target="Opacity" value="1" ver="5"/>
-				<designed target="Enabled" value="true" ver="5"/>
-				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="80" ver="5"/>
-				<designed target="Height" value="20" ver="5"/>
-				<designed target="Text" value="Значение" ver="5"/>
-				<designed target="Font" value="Arial,8,-1,5,50,0,0,0,0,0,Narrow" ver="5"/>
-				<designed target="FontColor" value="4278190080" ver="5"/>
-				<designed target="TextAlignment" value="132" ver="5"/>
-				<do-trace access-modifier="private" target="Text" ver="5">
-					<body>
-						<![CDATA[refDataPD.private.Val]]>
-					</body>
-				</do-trace>
-				<designed target="Flip" value="0" ver="5"/>
+				<init target="Color" ver="5" ref="color"/>
+				<init target="initApSource" ver="5" ref="sensApSourcePD"/>
 			</object>
 		</object>
+		<do-trace access-modifier="private" target="Y" ver="5">
+			<body>
+				<![CDATA[isWater ? 240 : 320]]>
+			</body>
+		</do-trace>
 	</object>
 	<object access-modifier="private" name="refDataFlow" display-name="refDataFlow" uuid="8c23cc62-c947-4c05-b04c-fd7eb2929e7e" base-type="SensFlow" base-type-id="36b5fe82-dca7-4d19-b14e-46d688268c65" base-const="true" base-ref="true" ver="5"/>
-	<do-on access-modifier="private" name="Handler" display-name="Handler_1" ver="5" event="Opened">
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Closed">
+		<body kind="om">
+			<![CDATA[refDataFlow.private.isOpenedSettings = false;]]>
+		</body>
+	</do-on>
+	<designed target="Flip" value="0" ver="5"/>
+	<designed target="WindowIconPath" value="" ver="5"/>
+	<do-trace access-modifier="private" target="WindowCaption" ver="5">
+		<body>
+			<![CDATA[refDataFlow.NAME]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="sensApSourcePD" display-name="sensApSourcePD" uuid="fe3d012a-ae63-456d-bde6-ace01cccd42c" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
+		<designed target="Active" value="false" ver="5"/>
+		<designed target="ReAdvise" value="0" ver="5"/>
+		<designed target="Location" value="" ver="5"/>
+		<designed target="Port" value="4388" ver="5"/>
+		<designed target="HistoryPort" value="4950" ver="5"/>
+		<designed target="Path" value="" ver="5"/>
+		<designed target="ClientDisplayName" value="HMI" ver="5"/>
+		<designed target="ClientId" value="HMI" ver="5"/>
+		<init target="ParentSource" ver="5" ref="initApSourcePD"/>
+		<init target="Path" ver="5" ref="initPathPD"/>
+	</object>
+	<param access-modifier="private" name="initApSourcePD" display-name="initApSourcePD" uuid="47100cc6-25ae-4934-8c11-ed57e1aa6d7c" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" base-const="true" base-ref="true" ver="5"/>
+	<param access-modifier="private" name="initPathPD" display-name="initPathPD" uuid="3c24a81b-3de5-47fb-b96e-6cc0f1969dd8" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	<param access-modifier="private" name="color" display-name="color" uuid="af914db7-1c3e-408f-b6a9-ff501fe7d008" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5" description=""/>
+	<object access-modifier="private" name="isWater" display-name="isWater" uuid="36383bdf-3db7-4f51-b1df-b6929fc39aee" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="AboutToOpen">
 		<body kind="om">
 			<![CDATA[refDataFlow.private.isOpenedSettings = true;
 
@@ -1302,25 +1425,44 @@ Sets.SelectionEnvoirment.ValueEdit.AddItem("Вода");
 Sets.SelectionEnvoirment.ValueEdit.AddItem("Пар нас.");
 Sets.SelectionEnvoirment.ValueEdit.AddItem("Пар перег.");
 Sets.SelectionEnvoirment.ValueEdit.AddItem("Пр. газ");
+Sets.SelectionEnvoirment.ValueEdit.SelectedIndex = refDataFlow.OutConfig.iSel;
 
 Sets.SelectionMethod.ValueEdit.Clear();
 Sets.SelectionMethod.ValueEdit.AddItem("Угловой");
 Sets.SelectionMethod.ValueEdit.AddItem("Фланцевый");
-Sets.SelectionMethod.ValueEdit.AddItem("Трехрад.");]]>
+Sets.SelectionMethod.ValueEdit.AddItem("Трехрад.");
+Sets.SelectionMethod.ValueEdit.SelectedIndex = refDataFlow.OutConfig.iSelDiaf;]]>
 		</body>
 	</do-on>
-	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Closed">
-		<body kind="om">
-			<![CDATA[refDataFlow.private.isOpenedSettings = false;]]>
-		</body>
-	</do-on>
-	<designed target="Flip" value="0" ver="5"/>
-	<designed target="WindowIconPath" value="" ver="5"/>
-	<object access-modifier="private" name="refDataPD" display-name="refDataPD" uuid="e119f192-5536-4bdb-937d-34ead423b97a" base-type="Sens" base-type-id="bda7de48-3eeb-48b5-8968-c64cf04eb418" base-const="true" base-ref="true" ver="5"/>
-	<do-trace access-modifier="private" target="WindowCaption" ver="5">
-		<body>
-			<![CDATA[refDataFlow.NAME]]>
-		</body>
+	<do-trace access-modifier="private" target="Height" ver="5">
+		<conditional-expr>
+			<condition>
+				<![CDATA[isWater]]>
+			</condition>
+			<expr>
+				<![CDATA[301]]>
+			</expr>
+		</conditional-expr>
+		<default-expr>
+			<expr>
+				<![CDATA[381]]>
+			</expr>
+		</default-expr>
+	</do-trace>
+	<do-trace access-modifier="private" target="WindowHeight" ver="5">
+		<conditional-expr>
+			<condition>
+				<![CDATA[isWater]]>
+			</condition>
+			<expr>
+				<![CDATA[301]]>
+			</expr>
+		</conditional-expr>
+		<default-expr>
+			<expr>
+				<![CDATA[381]]>
+			</expr>
+		</default-expr>
 	</do-trace>
 </type>
 

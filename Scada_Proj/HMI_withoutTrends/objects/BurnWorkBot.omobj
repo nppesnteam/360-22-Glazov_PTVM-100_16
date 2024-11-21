@@ -518,6 +518,12 @@
 				<![CDATA[NAME]]>
 			</body>
 		</do-trace>
+		<init target="PGasBetween" ver="5" ref="here.PGasBetween"/>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[OpenGroup.Invoke();]]>
+			</body>
+		</do-on>
 	</object>
 	<object access-modifier="private" name="Valve2" display-name="Valve2" uuid="563ec39b-8f22-4901-9a2d-d0d88d989f11" base-type="Valve" base-type-id="98113973-9854-4dd1-9221-2cfccad5aaa0" ver="5">
 		<designed target="X" value="2" ver="5"/>
@@ -597,6 +603,7 @@
 				<![CDATA[unit.Global.Colors.AirPen]]>
 			</body>
 		</do-trace>
+		<init target="HavePositSens" ver="5" value="false"/>
 	</object>
 	<object access-modifier="private" name="DamperGas" display-name="DamperGas" uuid="a4ed2ad5-a42e-4da1-b6fe-4e4f89527ce7" base-type="Damper" base-type-id="a3e73327-f733-446d-ac01-918439e55f3f" ver="5">
 		<designed target="X" value="2" ver="5"/>
@@ -768,5 +775,77 @@
 		</do-trace>
 	</object>
 	<param access-modifier="private" name="InitPath" display-name="InitPath" uuid="c0ff3727-1d19-4070-a7e8-a7b28b373b1d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	<object access-modifier="private" name="refMainForm" display-name="refMainForm" uuid="4129a33d-87b0-4c24-956e-29d023d4a196" base-type="MainForm" base-type-id="c9cad641-8960-46db-9523-43c92084d4a1" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="OpenGroup" display-name="OpenGroup" uuid="2d1bddf5-8d77-46cf-8c4d-b45283388a86" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" frame-link="refMainForm.MainFrame" form-action="open-in-frame" form-by-id="false">
+			<object access-modifier="private" uuid="3e9f42cc-8489-407b-9ddd-9ea93322bdd8" base-type="Растопочная группа" base-type-id="d3f1f963-b301-412f-98d0-b5913d770cf5" ver="5">
+				<init target="MainForm" ver="5" ref="refMainForm"/>
+				<init target="sSelectedBurn" ver="5">
+					<expr>
+						<![CDATA[BurnPath]]>
+					</expr>
+				</init>
+			</object>
+		</do-on>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[Security.AllowControl.Value]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[unit.Global.OpenedGroup=GroupNumber;
+unit.Global.ActiveMainFrame = "Растопочная группа №"+String.ToString(GroupNumber);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="GroupNumber" display-name="GroupNumber" uuid="57b3eee8-065b-4c3e-92a4-27163f7d3dc0" base-type="notifying_int1" base-type-id="cc2bf8ea-3898-4228-bc8f-71a7738f0c62" ver="5"/>
+	<do-trace access-modifier="private" target="GroupNumber" ver="5">
+		<conditional-expr>
+			<condition>
+				<![CDATA[burner.BurnNumber == 1 || burner.BurnNumber == 3 || burner.BurnNumber == 5 || burner.BurnNumber == 7]]>
+			</condition>
+			<expr>
+				<![CDATA[1]]>
+			</expr>
+		</conditional-expr>
+		<conditional-expr>
+			<condition>
+				<![CDATA[burner.BurnNumber == 2 || burner.BurnNumber == 4 || burner.BurnNumber == 6 || burner.BurnNumber == 8]]>
+			</condition>
+			<expr>
+				<![CDATA[2]]>
+			</expr>
+		</conditional-expr>
+		<conditional-expr>
+			<condition>
+				<![CDATA[burner.BurnNumber == 9 || burner.BurnNumber == 11 || burner.BurnNumber == 13 || burner.BurnNumber == 15]]>
+			</condition>
+			<expr>
+				<![CDATA[3]]>
+			</expr>
+		</conditional-expr>
+		<conditional-expr>
+			<condition>
+				<![CDATA[burner.BurnNumber == 10 || burner.BurnNumber == 12 || burner.BurnNumber == 14 || burner.BurnNumber == 16]]>
+			</condition>
+			<expr>
+				<![CDATA[4]]>
+			</expr>
+		</conditional-expr>
+		<default-expr>
+			<expr>
+				<![CDATA[1]]>
+			</expr>
+		</default-expr>
+	</do-trace>
+	<object access-modifier="private" name="BurnPath" display-name="BurnPath" uuid="16861782-0852-439c-a842-e1c469e97feb" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+	<init target="BurnPath" ver="5">
+		<expr>
+			<![CDATA[InitPath]]>
+		</expr>
+	</init>
 </type>
 

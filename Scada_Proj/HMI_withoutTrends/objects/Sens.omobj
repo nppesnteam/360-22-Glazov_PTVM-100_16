@@ -476,7 +476,7 @@
 			<designed target="InvokeTrigger" value="false" ver="5"/>
 			<do-trace access-modifier="private" target="Enabled" ver="5">
 				<body>
-					<![CDATA[!private.isOpened]]>
+					<![CDATA[!private.isOpened && Security.AllowControl.Value]]>
 				</body>
 			</do-trace>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
@@ -493,7 +493,7 @@
 			<designed target="InvokeTrigger" value="false" ver="5"/>
 			<do-trace access-modifier="private" target="Enabled" ver="5">
 				<body>
-					<![CDATA[!private.isOpenedSettings]]>
+					<![CDATA[!private.isOpenedSettings && Security.AllowControl.Value]]>
 				</body>
 			</do-trace>
 			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
@@ -515,6 +515,31 @@
 		</object>
 		<object access-modifier="private" name="refSettings" display-name="refSettings" uuid="41e60707-8b16-4195-8358-f4772be1fa10" base-type="Датчик аналоговый (настройка)" base-type-id="517e7a40-0ece-428a-88c3-0c52a68a25ec" base-const="true" base-ref="true" ver="5" description=""/>
 		<object access-modifier="private" name="ValElectro" display-name="ValElectro" uuid="17d5c777-c98b-485e-9c0b-fa2ff373c5db" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="OpenTrends" display-name="OpenTrends" uuid="95d81681-7bf4-4b30-8f96-6173c8c65b7d" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" ver="5" description="">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-new">
+				<object access-modifier="private" uuid="2c088d19-136c-4949-878f-373431132707" base-type="График аналога" base-type-id="84c81543-df97-40b2-8286-cce2b21e5433" ver="5">
+					<init target="WindowY" ver="5">
+						<expr>
+							<![CDATA[posY]]>
+						</expr>
+					</init>
+					<init target="refCmd" ver="5" ref="parent"/>
+					<init target="Sens_1" ver="5" ref="here"/>
+					<init target="WindowX" ver="5">
+						<expr>
+							<![CDATA[posX]]>
+						</expr>
+					</init>
+				</object>
+			</do-on>
+			<do-trace access-modifier="private" target="Enabled" ver="5">
+				<body>
+					<![CDATA[!isOpenedTrends]]>
+				</body>
+			</do-trace>
+		</object>
 	</object>
 	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
 		<body kind="om">
@@ -574,6 +599,12 @@ private.OpenSettingsWindow.Invoke();]]>
 	<do-trace access-modifier="private" target="bWarn" ver="5">
 		<body>
 			<![CDATA[refWarnH.bTriggered || refWarnL.bTriggered]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="formatDigits" display-name="formatDigits" uuid="7591cf90-9266-4ac4-b23f-dcc3dc49119b" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+	<do-trace access-modifier="private" target="formatDigits" ver="5">
+		<body>
+			<![CDATA["%." + DIGITS.ValueAsString + "f"]]>
 		</body>
 	</do-trace>
 </type>

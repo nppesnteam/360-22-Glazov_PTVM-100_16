@@ -1,0 +1,792 @@
+<type access-modifier="private" name="AiChannel" display-name="AiChannel" uuid="a7e5bdc8-6d2e-45cc-a71a-c49c3897ff83" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="5" description="">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Flip" value="0" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<object access-modifier="private" name="NAME" display-name="NAME" uuid="01a76541-dd63-4f7d-9be4-e68f1b4b0d38" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+		<do-trace access-modifier="private" target="Path" ver="5">
+			<body>
+				<![CDATA["Names.CH"+String.ToString(ChannelNumber)]]>
+			</body>
+		</do-trace>
+		<init target="Source" ver="5" ref="ChannelApSource"/>
+	</object>
+	<object access-modifier="private" name="InParams" display-name="InParams" uuid="d4e647e1-4203-4683-831d-7c8d4a986681" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+		<designed target="Location" value="" ver="5"/>
+		<designed target="Port" value="4388" ver="5"/>
+		<designed target="HistoryPort" value="4950" ver="5"/>
+		<designed target="Path" value="" ver="5"/>
+		<designed target="Active" value="false" ver="5"/>
+		<designed target="ReAdvise" value="0" ver="5"/>
+		<designed target="ClientDisplayName" value="HMI" ver="5"/>
+		<designed target="ClientId" value="HMI" ver="5"/>
+		<object access-modifier="private" name="fConversion" display-name="fConversion" uuid="cce3c08b-5143-4006-814a-666472038abb" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5" description="" cardinal="1">
+			<init target="Path" ver="5" value="fConversion"/>
+			<init target="Source" ver="5" ref="parent"/>
+		</object>
+		<object access-modifier="private" name="fElectricalH" display-name="fElectricalH" uuid="043d0293-a299-4a68-acc5-100d8d6f8e31" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5" description="" cardinal="1">
+			<init target="Path" ver="5" value="fElectricalH"/>
+			<init target="Source" ver="5" ref="parent"/>
+		</object>
+		<object access-modifier="private" name="fElectricalL" display-name="fElectricalL" uuid="e2731f8d-925d-4b66-95ab-f99be86f39cc" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5" description="" cardinal="1">
+			<init target="Path" ver="5" value="fElectricalL"/>
+			<init target="Source" ver="5" ref="parent"/>
+		</object>
+		<object access-modifier="private" name="fError" display-name="fError" uuid="240207fc-e39f-4df4-9428-fd215743726a" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5" description="" cardinal="1">
+			<init target="Path" ver="5" value="fError"/>
+			<init target="Source" ver="5" ref="parent"/>
+		</object>
+		<object access-modifier="private" name="fNormH" display-name="fNormH" uuid="3e8e9275-d703-48b2-aa10-0af064fa2f09" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5" description="" cardinal="1">
+			<init target="Path" ver="5" value="fNormH"/>
+			<init target="Source" ver="5" ref="parent"/>
+		</object>
+		<object access-modifier="private" name="fNormL" display-name="fNormL" uuid="6cfb6178-435f-43bf-8ecf-bcc73b23de3a" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5" description="" cardinal="1">
+			<init target="Path" ver="5" value="fNormL"/>
+			<init target="Source" ver="5" ref="parent"/>
+		</object>
+		<object access-modifier="private" name="fTFilter" display-name="fTFilter" uuid="2292d483-af13-4992-a34d-00b2d0ef55d7" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5" description="" cardinal="1">
+			<init target="Path" ver="5" value="fTFilter"/>
+			<init target="Source" ver="5" ref="parent"/>
+		</object>
+		<do-trace access-modifier="private" target="Path" ver="5">
+			<body>
+				<![CDATA["InCH" + String.ToString(ChannelNumber) + ".Config"]]>
+			</body>
+		</do-trace>
+		<init target="ParentSource" ver="5" ref="initApSource"/>
+	</object>
+	<object access-modifier="private" name="OutParams" display-name="OutParams" uuid="5f3b731a-e3d9-4c68-9c7f-03de883f6ad4" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+		<designed target="Location" value="" ver="5"/>
+		<designed target="Port" value="4388" ver="5"/>
+		<designed target="HistoryPort" value="4950" ver="5"/>
+		<designed target="Path" value="" ver="5"/>
+		<designed target="Active" value="false" ver="5"/>
+		<designed target="ReAdvise" value="0" ver="5"/>
+		<designed target="ClientDisplayName" value="HMI" ver="5"/>
+		<designed target="ClientId" value="HMI" ver="5"/>
+		<object access-modifier="private" name="fConversion" display-name="fConversion" uuid="052bb300-182a-47dd-b4a2-17c16d2869c0" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5" description="" cardinal="1">
+			<init target="Path" ver="5" value="fConversion"/>
+			<init target="Source" ver="5" ref="parent"/>
+		</object>
+		<object access-modifier="private" name="fElectricalH" display-name="fElectricalH" uuid="77d7f7f8-8c4f-481f-ab1c-f35b1245c85c" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5" description="" cardinal="1">
+			<init target="Path" ver="5" value="fElectricalH"/>
+			<init target="Source" ver="5" ref="parent"/>
+		</object>
+		<object access-modifier="private" name="fElectricalL" display-name="fElectricalL" uuid="7651745c-742d-4525-b80c-a282aafd3868" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5" description="" cardinal="1">
+			<init target="Path" ver="5" value="fElectricalL"/>
+			<init target="Source" ver="5" ref="parent"/>
+		</object>
+		<object access-modifier="private" name="fError" display-name="fError" uuid="edcdd4df-3281-482e-a2f4-4959fc35cd56" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5" description="" cardinal="1">
+			<init target="Path" ver="5" value="fError"/>
+			<init target="Source" ver="5" ref="parent"/>
+		</object>
+		<object access-modifier="private" name="fNormH" display-name="fNormH" uuid="babe24f2-622f-4872-b609-f39863a152f8" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5" description="" cardinal="1">
+			<init target="Path" ver="5" value="fNormH"/>
+			<init target="Source" ver="5" ref="parent"/>
+		</object>
+		<object access-modifier="private" name="fNormL" display-name="fNormL" uuid="488c2679-7368-431d-8316-c303903afce5" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5" description="" cardinal="1">
+			<init target="Path" ver="5" value="fNormL"/>
+			<init target="Source" ver="5" ref="parent"/>
+		</object>
+		<object access-modifier="private" name="fTFilter" display-name="fTFilter" uuid="780e89b0-0775-48f5-bdf5-8650e17621b0" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5" description="" cardinal="1">
+			<init target="Path" ver="5" value="fTFilter"/>
+			<init target="Source" ver="5" ref="parent"/>
+		</object>
+		<do-trace access-modifier="private" target="Path" ver="5">
+			<body>
+				<![CDATA["OutCH" + String.ToString(ChannelNumber) + ".Config"]]>
+			</body>
+		</do-trace>
+		<init target="ParentSource" ver="5" ref="initApSource"/>
+	</object>
+	<object access-modifier="private" name="fNormValue" display-name="fNormValue" uuid="9fff88c1-7516-4b68-b127-4f4f16bc645e" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5" description="" cardinal="1">
+		<do-trace access-modifier="private" target="Path" ver="5">
+			<body>
+				<![CDATA["OutCH"+String.ToString(ChannelNumber)+".VALUE"]]>
+			</body>
+		</do-trace>
+		<init target="Source" ver="5" ref="ChannelApSource"/>
+	</object>
+	<object access-modifier="private" name="fElectroValue" display-name="fElectroValue" uuid="fd46f482-fd44-49c3-a705-54a8c193eab1" base-type="ApItemFloat" base-type-id="7acf87ec-1784-4671-926e-9a41ea8d8692" ver="5" description="" cardinal="1">
+		<do-trace access-modifier="private" target="Path" ver="5">
+			<body>
+				<![CDATA["OutCH"+String.ToString(ChannelNumber)+".VALUE_ELECTRO"]]>
+			</body>
+		</do-trace>
+		<init target="Source" ver="5" ref="ChannelApSource"/>
+	</object>
+	<object access-modifier="private" name="STATUS" display-name="STATUS" uuid="e8c40782-3859-48cd-864d-9cfbb3e593a6" base-type="ApItemUInt1" base-type-id="ed85e2d2-e5ed-42df-91a6-9455307a85c9" ver="5" description="" cardinal="1">
+		<do-trace access-modifier="private" target="Path" ver="5">
+			<body>
+				<![CDATA["OutCH"+String.ToString(ChannelNumber)+".STATUS"]]>
+			</body>
+		</do-trace>
+		<init target="Source" ver="5" ref="ChannelApSource"/>
+	</object>
+	<object access-modifier="private" name="Channel" display-name="Channel" uuid="f0013a64-b338-4cf2-8d42-86035189822a" base-type="Frame" base-type-id="71f78e19-ef99-4133-a029-2968b14f02b6" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="1140" ver="5"/>
+		<designed target="Height" value="30" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="0xffb5adad" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<designed target="OverrideScaling" value="false" ver="5"/>
+		<designed target="ShowScrollBars" value="true" ver="5"/>
+		<designed target="MoveByMouse" value="false" ver="5"/>
+		<object access-modifier="private" name="Number" display-name="Number" uuid="031cc685-1159-4539-92cd-1664d859343f" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="30" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="txt" display-name="txt" uuid="d907b557-ae7d-43c4-9b9c-706951d78de4" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="30" ver="5"/>
+				<designed target="Height" value="30" ver="5"/>
+				<designed target="Text" value="1" ver="5"/>
+				<designed target="Font" value="Arial,16,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="132" ver="5"/>
+				<do-trace access-modifier="private" target="Text" ver="5">
+					<body>
+						<![CDATA[ChannelNumber]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="TreeMapLayout_1" display-name="TreeMapLayout_1" uuid="119c6aad-f97d-47ca-ae26-9b1b36b16c2e" base-type="TreeMapLayout" base-type-id="abf2598f-0779-4d54-94e9-597b15cdb8e9" ver="5" description="" cardinal="1"/>
+		</object>
+		<object access-modifier="private" name="Name" display-name="Name" uuid="a3827745-15cc-4ccb-ae8f-abac0da19cfb" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+			<designed target="X" value="30" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="280" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="txt" display-name="txt" uuid="36f64651-5834-44b9-b57f-23d20067cf21" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="286" ver="5"/>
+				<designed target="Height" value="30" ver="5"/>
+				<designed target="Text" value="Описание" ver="5"/>
+				<designed target="Font" value="Arial,16,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="129" ver="5"/>
+				<do-trace access-modifier="private" target="Text" ver="5">
+					<body>
+						<![CDATA[NAME]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="TreeMapLayout_1" display-name="TreeMapLayout_1" uuid="b37d5639-2792-4588-b0b1-d8cd503f8de8" base-type="TreeMapLayout" base-type-id="abf2598f-0779-4d54-94e9-597b15cdb8e9" ver="5" description="" cardinal="1"/>
+		</object>
+		<object access-modifier="private" name="ElectroValue" display-name="ElectroValue" uuid="e1530926-8271-4720-a4e3-3909322ef3ee" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+			<designed target="X" value="310" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="90" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="txt" display-name="txt" uuid="fc137b0b-9acc-4d1d-a73c-854a6e6251ea" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="60" ver="5"/>
+				<designed target="Height" value="30" ver="5"/>
+				<designed target="Text" value="00.00" ver="5"/>
+				<designed target="Font" value="Arial,16,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="132" ver="5"/>
+				<do-trace access-modifier="private" target="Text" ver="5">
+					<body>
+						<![CDATA[String.ToString("%.2f", fElectroValue)]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="TreeMapLayout_1" display-name="TreeMapLayout_1" uuid="f56d85c2-a02a-480d-815a-4a6038c5a338" base-type="TreeMapLayout" base-type-id="abf2598f-0779-4d54-94e9-597b15cdb8e9" ver="5" description="" cardinal="1"/>
+		</object>
+		<object access-modifier="private" name="NormValue" display-name="NormValue" uuid="eb9bbae3-7ad6-4325-96c4-15445e9ab2a5" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+			<designed target="X" value="400" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="100" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="txt" display-name="txt" uuid="052ef7e3-b78d-4f2b-a6d9-65cdc98d1240" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="100" ver="5"/>
+				<designed target="Height" value="30" ver="5"/>
+				<designed target="Text" value="0000.000" ver="5"/>
+				<designed target="Font" value="Arial,16,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="132" ver="5"/>
+				<do-trace access-modifier="private" target="Text" ver="5">
+					<body>
+						<![CDATA[String.ToString("%.3f", fNormValue)]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="TreeMapLayout_1" display-name="TreeMapLayout_1" uuid="7fe3d7b1-a419-4cc2-a975-aa53ebda7f78" base-type="TreeMapLayout" base-type-id="abf2598f-0779-4d54-94e9-597b15cdb8e9" ver="5" description="" cardinal="1"/>
+		</object>
+		<object access-modifier="private" name="ElectroL" display-name="ElectroL" uuid="83a2bd52-79d5-4a39-9485-39dc6dadd24e" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+			<designed target="X" value="500" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="90" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="TreeMapLayout_1" display-name="TreeMapLayout_1" uuid="33f4e003-24d4-4c11-9b3f-75bf1cbb11a4" base-type="TreeMapLayout" base-type-id="abf2598f-0779-4d54-94e9-597b15cdb8e9" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="LineEdit_1" display-name="LineEdit_1" uuid="aa7c6f60-15f4-4191-bf9d-579b18a006b4" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="90" ver="5"/>
+				<designed target="Height" value="30" ver="5"/>
+				<designed target="Text" value="4.00" ver="5"/>
+				<designed target="Font" value="Arial,16,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="132" ver="5"/>
+				<designed target="HideInput" value="false" ver="5"/>
+				<designed target="PlaceholderText" value="" ver="5"/>
+				<designed target="ReadOnly" value="true" ver="5"/>
+				<do-trace access-modifier="private" target="ReadOnly" ver="5">
+					<body>
+						<![CDATA[!unit.Security.AllowAll.Value]]>
+					</body>
+				</do-trace>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="EditFinished">
+					<body kind="om">
+						<![CDATA[me.Text=Str.Replace(Str.Replace(me.Text,",",".")," ","");
+InParams.fElectricalL = TypeConvert.ToFloat(Str.ToDouble(me.Text,OutParams.fElectricalL));]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="EditFinished">
+					<body kind="om">
+						<![CDATA[Str.Replace(me.Text,",",".");
+unit.Global.ShowMSG(NAME+" (нижний токовый диапазон)"+"\" изменён на "+me.Text+".",2);]]>
+					</body>
+				</do-on>
+				<do-trace access-modifier="private" target="Text" ver="5">
+					<body>
+						<![CDATA[String.ToString( "%.2f", OutParams.fElectricalL)]]>
+					</body>
+				</do-trace>
+			</object>
+		</object>
+		<object access-modifier="private" name="ElectroH" display-name="ElectroH" uuid="a85a69dc-9815-493a-bec6-74056e51fbba" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+			<designed target="X" value="590" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="90" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="TreeMapLayout_1" display-name="TreeMapLayout_1" uuid="2b90899f-5c93-43c8-b91b-4e3dce82cb1c" base-type="TreeMapLayout" base-type-id="abf2598f-0779-4d54-94e9-597b15cdb8e9" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="LineEdit_1" display-name="LineEdit_1" uuid="c5411a52-da12-4214-8d0c-003d6f4aeb11" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="90" ver="5"/>
+				<designed target="Height" value="30" ver="5"/>
+				<designed target="Text" value="20.00" ver="5"/>
+				<designed target="Font" value="Arial,16,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="132" ver="5"/>
+				<designed target="HideInput" value="false" ver="5"/>
+				<designed target="PlaceholderText" value="" ver="5"/>
+				<designed target="ReadOnly" value="true" ver="5"/>
+				<do-trace access-modifier="private" target="ReadOnly" ver="5">
+					<body>
+						<![CDATA[!unit.Security.AllowAll.Value]]>
+					</body>
+				</do-trace>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="EditFinished">
+					<body kind="om">
+						<![CDATA[me.Text=Str.Replace(Str.Replace(me.Text,",",".")," ","");
+InParams.fElectricalH = TypeConvert.ToFloat(Str.ToDouble(me.Text,OutParams.fElectricalH));]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="EditFinished">
+					<body kind="om">
+						<![CDATA[Str.Replace(me.Text,",",".");
+unit.Global.ShowMSG(NAME+" (верхний токовый диапазон)"+"\" изменён на "+me.Text+".",2);]]>
+					</body>
+				</do-on>
+				<do-trace access-modifier="private" target="Text" ver="5">
+					<body>
+						<![CDATA[String.ToString( "%.2f", OutParams.fElectricalH)]]>
+					</body>
+				</do-trace>
+			</object>
+		</object>
+		<object access-modifier="private" name="NormL" display-name="NormL" uuid="38150c47-ecb7-4287-b66c-c44f0258e80c" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+			<designed target="X" value="680" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="100" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="TreeMapLayout_1" display-name="TreeMapLayout_1" uuid="e384da28-d658-464f-b76b-dd966ec275ed" base-type="TreeMapLayout" base-type-id="abf2598f-0779-4d54-94e9-597b15cdb8e9" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="LineEdit_1" display-name="LineEdit_1" uuid="98947c73-cdc6-4f24-ae5c-3b7c9796284f" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="100" ver="5"/>
+				<designed target="Height" value="30" ver="5"/>
+				<designed target="Text" value="0000.000" ver="5"/>
+				<designed target="Font" value="Arial,16,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="132" ver="5"/>
+				<designed target="HideInput" value="false" ver="5"/>
+				<designed target="PlaceholderText" value="" ver="5"/>
+				<designed target="ReadOnly" value="true" ver="5"/>
+				<do-trace access-modifier="private" target="ReadOnly" ver="5">
+					<body>
+						<![CDATA[!unit.Security.AllowAll.Value]]>
+					</body>
+				</do-trace>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="EditFinished">
+					<body kind="om">
+						<![CDATA[me.Text=Str.Replace(Str.Replace(me.Text,",",".")," ","");
+InParams.fNormL = TypeConvert.ToFloat(Str.ToDouble(me.Text,OutParams.fNormL));]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="EditFinished">
+					<body kind="om">
+						<![CDATA[Str.Replace(me.Text,",",".");
+unit.Global.ShowMSG(NAME+" (нижний диапазон датчика)"+"\" изменён на "+me.Text+".",2);]]>
+					</body>
+				</do-on>
+				<do-trace access-modifier="private" target="Text" ver="5">
+					<body>
+						<![CDATA[String.ToString( "%.3f", OutParams.fNormL)]]>
+					</body>
+				</do-trace>
+			</object>
+		</object>
+		<object access-modifier="private" name="NormH" display-name="NormH" uuid="1339fbbb-a335-4441-b6ce-9a7bf6422427" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+			<designed target="X" value="780" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="100" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="TreeMapLayout_1" display-name="TreeMapLayout_1" uuid="619332a5-0354-4f55-969d-3a5b690cd4f0" base-type="TreeMapLayout" base-type-id="abf2598f-0779-4d54-94e9-597b15cdb8e9" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="LineEdit_1" display-name="LineEdit_1" uuid="effd9de6-8123-45ba-a9a8-5b7cadb47fca" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="100" ver="5"/>
+				<designed target="Height" value="30" ver="5"/>
+				<designed target="Text" value="0100.000" ver="5"/>
+				<designed target="Font" value="Arial,16,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="132" ver="5"/>
+				<designed target="HideInput" value="false" ver="5"/>
+				<designed target="PlaceholderText" value="" ver="5"/>
+				<designed target="ReadOnly" value="true" ver="5"/>
+				<do-trace access-modifier="private" target="ReadOnly" ver="5">
+					<body>
+						<![CDATA[!unit.Security.AllowAll.Value]]>
+					</body>
+				</do-trace>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="EditFinished">
+					<body kind="om">
+						<![CDATA[me.Text=Str.Replace(Str.Replace(me.Text,",",".")," ","");
+InParams.fNormH = TypeConvert.ToFloat(Str.ToDouble(me.Text,OutParams.fNormH));]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="EditFinished">
+					<body kind="om">
+						<![CDATA[Str.Replace(me.Text,",",".");
+unit.Global.ShowMSG(NAME+" (верхний диапазон датчика)"+"\" изменён на "+me.Text+".",2);]]>
+					</body>
+				</do-on>
+				<do-trace access-modifier="private" target="Text" ver="5">
+					<body>
+						<![CDATA[String.ToString( "%.3f", OutParams.fNormH)]]>
+					</body>
+				</do-trace>
+			</object>
+		</object>
+		<object access-modifier="private" name="Conversion" display-name="Conversion" uuid="eb63bf7f-d5ee-43a6-9b6b-d4875bc3dfee" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+			<designed target="X" value="880" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="100" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="TreeMapLayout_1" display-name="TreeMapLayout_1" uuid="31c2971e-2b91-40c6-b568-d48fd70a05de" base-type="TreeMapLayout" base-type-id="abf2598f-0779-4d54-94e9-597b15cdb8e9" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="LineEdit_1" display-name="LineEdit_1" uuid="306c7ade-424e-4ee6-b11d-e1cf37df762a" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="100" ver="5"/>
+				<designed target="Height" value="30" ver="5"/>
+				<designed target="Text" value="0001.000" ver="5"/>
+				<designed target="Font" value="Arial,16,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="132" ver="5"/>
+				<designed target="HideInput" value="false" ver="5"/>
+				<designed target="PlaceholderText" value="" ver="5"/>
+				<designed target="ReadOnly" value="true" ver="5"/>
+				<do-trace access-modifier="private" target="ReadOnly" ver="5">
+					<body>
+						<![CDATA[!unit.Security.AllowAll.Value]]>
+					</body>
+				</do-trace>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="EditFinished">
+					<body kind="om">
+						<![CDATA[me.Text=Str.Replace(Str.Replace(me.Text,",",".")," ","");
+InParams.fConversion = TypeConvert.ToFloat(Str.ToDouble(me.Text,OutParams.fConversion));]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="EditFinished">
+					<body kind="om">
+						<![CDATA[Str.Replace(me.Text,",",".");
+unit.Global.ShowMSG(NAME+" (преобразование значения)"+"\" изменено на "+me.Text+".",2);]]>
+					</body>
+				</do-on>
+				<do-trace access-modifier="private" target="Text" ver="5">
+					<body>
+						<![CDATA[String.ToString( "%.3f", OutParams.fConversion)]]>
+					</body>
+				</do-trace>
+			</object>
+		</object>
+		<object access-modifier="private" name="TFilter" display-name="TFilter" uuid="f4341c0b-68b4-4a07-b693-e7209249e58c" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+			<designed target="X" value="980" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="70" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="TreeMapLayout_1" display-name="TreeMapLayout_1" uuid="e1919e3d-575d-4d7f-b58c-fb3dbda8ba67" base-type="TreeMapLayout" base-type-id="abf2598f-0779-4d54-94e9-597b15cdb8e9" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="LineEdit_1" display-name="LineEdit_1" uuid="34166b48-2795-4575-af28-22f87cab7498" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="60" ver="5"/>
+				<designed target="Height" value="30" ver="5"/>
+				<designed target="Text" value="01.0" ver="5"/>
+				<designed target="Font" value="Arial,16,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="132" ver="5"/>
+				<designed target="HideInput" value="false" ver="5"/>
+				<designed target="PlaceholderText" value="" ver="5"/>
+				<designed target="ReadOnly" value="true" ver="5"/>
+				<do-trace access-modifier="private" target="ReadOnly" ver="5">
+					<body>
+						<![CDATA[!unit.Security.AllowAll.Value]]>
+					</body>
+				</do-trace>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="EditFinished">
+					<body kind="om">
+						<![CDATA[me.Text=Str.Replace(Str.Replace(me.Text,",",".")," ","");
+InParams.fTFilter = TypeConvert.ToFloat(Str.ToDouble(me.Text,OutParams.fTFilter));]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="EditFinished">
+					<body kind="om">
+						<![CDATA[Str.Replace(me.Text,",",".");
+unit.Global.ShowMSG(NAME+" (время фильтра)"+"\" изменено на "+me.Text+".",2);]]>
+					</body>
+				</do-on>
+				<do-trace access-modifier="private" target="Text" ver="5">
+					<body>
+						<![CDATA[String.ToString( "%.1f", OutParams.fTFilter)]]>
+					</body>
+				</do-trace>
+			</object>
+		</object>
+		<object access-modifier="private" name="Dead" display-name="Dead" uuid="eb97cb0b-d795-4a97-a2db-6579b1c52f78" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+			<designed target="X" value="1050" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="90" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="TreeMapLayout_1" display-name="TreeMapLayout_1" uuid="9c183f6d-7418-4f53-a226-a8e1227c3a3e" base-type="TreeMapLayout" base-type-id="abf2598f-0779-4d54-94e9-597b15cdb8e9" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="LineEdit_1" display-name="LineEdit_1" uuid="f5b4a6fd-e0ae-42b1-9506-385cb17cd6b0" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Flip" value="0" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="90" ver="5"/>
+				<designed target="Height" value="30" ver="5"/>
+				<designed target="Text" value="0.0010" ver="5"/>
+				<designed target="Font" value="Arial,16,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="TextAlignment" value="132" ver="5"/>
+				<designed target="HideInput" value="false" ver="5"/>
+				<designed target="PlaceholderText" value="" ver="5"/>
+				<designed target="ReadOnly" value="true" ver="5"/>
+				<do-trace access-modifier="private" target="ReadOnly" ver="5">
+					<body>
+						<![CDATA[!unit.Security.AllowAll.Value]]>
+					</body>
+				</do-trace>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="EditFinished">
+					<body kind="om">
+						<![CDATA[me.Text=Str.Replace(Str.Replace(me.Text,",",".")," ","");
+InParams.fError = TypeConvert.ToFloat(Str.ToDouble(me.Text,OutParams.fError));]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="EditFinished">
+					<body kind="om">
+						<![CDATA[Str.Replace(me.Text,",",".");
+unit.Global.ShowMSG(NAME+" (мертвая зона)"+"\" изменена на "+me.Text+".",2);]]>
+					</body>
+				</do-on>
+				<do-trace access-modifier="private" target="Text" ver="5">
+					<body>
+						<![CDATA[String.ToString( "%.4f", OutParams.fError)]]>
+					</body>
+				</do-trace>
+			</object>
+		</object>
+	</object>
+	<object access-modifier="private" name="ChannelNumber" display-name="ChannelNumber" uuid="ea5e0e92-54dc-4564-9cc9-9c9756530aba" base-type="notifying_int8" base-type-id="c594ba4b-148e-403d-a019-22af8f44ab42" ver="5" description=""/>
+	<param access-modifier="private" name="initApSource" display-name="initApSource" uuid="d9ecb1d0-573d-4d5a-bdbb-01f5ae577d2c" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="ChannelApSource" display-name="ChannelApSource" uuid="fc1d8777-e16b-450f-bd0c-1b2c281d68e9" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+		<designed target="Location" value="" ver="5"/>
+		<designed target="Port" value="4388" ver="5"/>
+		<designed target="HistoryPort" value="4950" ver="5"/>
+		<designed target="Path" value="" ver="5"/>
+		<designed target="Active" value="false" ver="5"/>
+		<designed target="ReAdvise" value="0" ver="5"/>
+		<designed target="ClientDisplayName" value="HMI" ver="5"/>
+		<designed target="ClientId" value="HMI" ver="5"/>
+		<init target="ParentSource" ver="5" ref="initApSource"/>
+	</object>
+</type>
+

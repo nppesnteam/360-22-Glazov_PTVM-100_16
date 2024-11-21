@@ -1,4 +1,4 @@
-<type access-modifier="private" name="Датчик аналоговый (настройка)" display-name="Датчик аналоговый (настройка)" uuid="517e7a40-0ece-428a-88c3-0c52a68a25ec" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+<type access-modifier="private" name="Датчик аналоговый (настройка)" display-name="Датчик аналоговый (настройка)" uuid="517e7a40-0ece-428a-88c3-0c52a68a25ec" base-type="ParentPopup" base-type-id="05fbbd36-bc45-4ff3-b67c-707c9d718186" ver="5">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="ZValue" value="0" ver="5"/>
@@ -9,7 +9,7 @@
 	<designed target="Enabled" value="true" ver="5"/>
 	<designed target="Tooltip" value="" ver="5"/>
 	<designed target="Width" value="350" ver="5"/>
-	<designed target="Height" value="501" ver="5"/>
+	<designed target="Height" value="461" ver="5"/>
 	<designed target="PenColor" value="4278190080" ver="5"/>
 	<designed target="PenStyle" value="0" ver="5"/>
 	<designed target="PenWidth" value="1" ver="5"/>
@@ -18,7 +18,7 @@
 	<designed target="WindowX" value="0" ver="5"/>
 	<designed target="WindowY" value="0" ver="5"/>
 	<designed target="WindowWidth" value="350" ver="5"/>
-	<designed target="WindowHeight" value="501" ver="5"/>
+	<designed target="WindowHeight" value="461" ver="5"/>
 	<designed target="WindowCaption" value="2 датчика (настройка)" ver="5"/>
 	<designed target="ShowWindowCaption" value="true" ver="5"/>
 	<designed target="ShowWindowMinimize" value="false" ver="5"/>
@@ -349,7 +349,7 @@
 				</do-trace>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!unit.Security.AllowSettingsChange.Value]]>
+						<![CDATA[!unit.Security.AllowAll.Value]]>
 					</body>
 				</do-trace>
 				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="EditFinished">
@@ -430,7 +430,7 @@ refData.DIGITS = String.ToUint1(me.Text, refData.DIGITS);]]>
 				</do-trace>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!unit.Security.AllowSettingsChange.Value]]>
+						<![CDATA[!unit.Security.AllowAll.Value]]>
 					</body>
 				</do-trace>
 				<do-on access-modifier="private" name="Handler" display-name="Handler_1" ver="5" event="EditFinished">
@@ -475,9 +475,9 @@ unit.Global.ShowMSG(refData.NAME + " (" + Title + ") изменено на " + m
 				<designed target="Opacity" value="1" ver="5"/>
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="161" ver="5"/>
+				<designed target="Width" value="193" ver="5"/>
 				<designed target="Height" value="20" ver="5"/>
-				<designed target="Text" value="2-03. Нижняя граница токовая" ver="5"/>
+				<designed target="Text" value="2-03. Нижняя граница токовая, мА" ver="5"/>
 				<designed target="Font" value="Arial,8,-1,5,50,0,0,0,0,0,Narrow" ver="5"/>
 				<designed target="FontColor" value="4278190080" ver="5"/>
 				<designed target="TextAlignment" value="129" ver="5"/>
@@ -511,7 +511,7 @@ unit.Global.ShowMSG(refData.NAME + " (" + Title + ") изменено на " + m
 				</do-trace>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!unit.Security.AllowSettingsChange.Value]]>
+						<![CDATA[!unit.Security.AllowAll.Value]]>
 					</body>
 				</do-trace>
 				<do-on access-modifier="private" name="Handler" display-name="Handler_1" ver="5" event="EditFinished">
@@ -556,9 +556,9 @@ unit.Global.ShowMSG(refData.NAME + " (" + Title + ") изменено на " + m
 				<designed target="Opacity" value="1" ver="5"/>
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="164" ver="5"/>
+				<designed target="Width" value="186" ver="5"/>
 				<designed target="Height" value="20" ver="5"/>
-				<designed target="Text" value="2-04. Верхняя граница токовая" ver="5"/>
+				<designed target="Text" value="2-04. Верхняя граница токовая, мА" ver="5"/>
 				<designed target="Font" value="Arial,8,-1,5,50,0,0,0,0,0,Narrow" ver="5"/>
 				<designed target="FontColor" value="4278190080" ver="5"/>
 				<designed target="TextAlignment" value="129" ver="5"/>
@@ -592,7 +592,7 @@ unit.Global.ShowMSG(refData.NAME + " (" + Title + ") изменено на " + m
 				</do-trace>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!unit.Security.AllowSettingsChange.Value]]>
+						<![CDATA[!unit.Security.AllowAll.Value]]>
 					</body>
 				</do-trace>
 				<do-on access-modifier="private" name="Handler" display-name="Handler_1" ver="5" event="EditFinished">
@@ -637,13 +637,18 @@ unit.Global.ShowMSG(refData.NAME + " (" + Title + ") изменено на " + m
 				<designed target="Opacity" value="1" ver="5"/>
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="174" ver="5"/>
+				<designed target="Width" value="214" ver="5"/>
 				<designed target="Height" value="20" ver="5"/>
 				<designed target="Text" value="2-05. Нижняя граница параметра" ver="5"/>
 				<designed target="Font" value="Arial,8,-1,5,50,0,0,0,0,0,Narrow" ver="5"/>
 				<designed target="FontColor" value="4278190080" ver="5"/>
 				<designed target="TextAlignment" value="129" ver="5"/>
 				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="Text" ver="5">
+					<body>
+						<![CDATA["2-05. Нижняя граница параметра, " + refData.EU]]>
+					</body>
+				</do-trace>
 			</object>
 			<designed target="Flip" value="0" ver="5"/>
 			<object access-modifier="private" name="ValueEdit" display-name="ValueEdit" uuid="47edf607-d056-4ed6-b9c6-46bc3a464d16" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5" description="" cardinal="1">
@@ -673,7 +678,7 @@ unit.Global.ShowMSG(refData.NAME + " (" + Title + ") изменено на " + m
 				</do-trace>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!unit.Security.AllowSettingsChange.Value]]>
+						<![CDATA[!unit.Security.AllowAll.Value]]>
 					</body>
 				</do-trace>
 				<do-on access-modifier="private" name="Handler" display-name="Handler_1" ver="5" event="EditFinished">
@@ -718,13 +723,18 @@ unit.Global.ShowMSG(refData.NAME + " (" + Title + ") изменено на " + m
 				<designed target="Opacity" value="1" ver="5"/>
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="177" ver="5"/>
+				<designed target="Width" value="219" ver="5"/>
 				<designed target="Height" value="20" ver="5"/>
 				<designed target="Text" value="2-06. Верхняя граница параметра" ver="5"/>
 				<designed target="Font" value="Arial,8,-1,5,50,0,0,0,0,0,Narrow" ver="5"/>
 				<designed target="FontColor" value="4278190080" ver="5"/>
 				<designed target="TextAlignment" value="129" ver="5"/>
 				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="Text" ver="5">
+					<body>
+						<![CDATA["2-06. Верхняя граница параметра, " + refData.EU]]>
+					</body>
+				</do-trace>
 			</object>
 			<designed target="Flip" value="0" ver="5"/>
 			<object access-modifier="private" name="ValueEdit" display-name="ValueEdit" uuid="a3d4f6ca-aa99-4182-9ae1-1627d4ed1771" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5" description="" cardinal="1">
@@ -754,7 +764,7 @@ unit.Global.ShowMSG(refData.NAME + " (" + Title + ") изменено на " + m
 				</do-trace>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!unit.Security.AllowSettingsChange.Value]]>
+						<![CDATA[!unit.Security.AllowAll.Value]]>
 					</body>
 				</do-trace>
 				<do-on access-modifier="private" name="Handler" display-name="Handler_1" ver="5" event="EditFinished">
@@ -799,9 +809,9 @@ unit.Global.ShowMSG(refData.NAME + " (" + Title + ") изменено на " + m
 				<designed target="Opacity" value="1" ver="5"/>
 				<designed target="Enabled" value="true" ver="5"/>
 				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="111" ver="5"/>
+				<designed target="Width" value="143" ver="5"/>
 				<designed target="Height" value="20" ver="5"/>
-				<designed target="Text" value="2-07. Время фильтра" ver="5"/>
+				<designed target="Text" value="2-07. Время фильтра, с" ver="5"/>
 				<designed target="Font" value="Arial,8,-1,5,50,0,0,0,0,0,Narrow" ver="5"/>
 				<designed target="FontColor" value="4278190080" ver="5"/>
 				<designed target="TextAlignment" value="129" ver="5"/>
@@ -835,7 +845,7 @@ unit.Global.ShowMSG(refData.NAME + " (" + Title + ") изменено на " + m
 				</do-trace>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!unit.Security.AllowSettingsChange.Value]]>
+						<![CDATA[!unit.Security.AllowAll.Value]]>
 					</body>
 				</do-trace>
 				<do-on access-modifier="private" name="Handler" display-name="Handler_1" ver="5" event="EditFinished">
@@ -916,7 +926,7 @@ unit.Global.ShowMSG(refData.NAME + " (" + Title + ") изменено на " + m
 				</do-trace>
 				<do-trace access-modifier="private" target="ReadOnly" ver="5">
 					<body>
-						<![CDATA[!unit.Security.AllowSettingsChange.Value]]>
+						<![CDATA[!unit.Security.AllowAll.Value]]>
 					</body>
 				</do-trace>
 				<do-on access-modifier="private" name="Handler" display-name="Handler_1" ver="5" event="EditFinished">
@@ -1336,155 +1346,9 @@ unit.Global.ShowMSG(refData.NAME + " (" + Title + ") изменена на " + m
 				</do-trace>
 			</object>
 		</object>
-		<object access-modifier="private" name="ADCLimH" display-name="ADCLimH" uuid="2d30cdf9-8bce-40ab-8904-f4856f4f00d2" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
-			<designed target="X" value="0" ver="5"/>
-			<designed target="Y" value="120" ver="5"/>
-			<designed target="ZValue" value="0" ver="5"/>
-			<designed target="Rotation" value="0" ver="5"/>
-			<designed target="Scale" value="1" ver="5"/>
-			<designed target="Visible" value="true" ver="5"/>
-			<designed target="Opacity" value="1" ver="5"/>
-			<designed target="Enabled" value="true" ver="5"/>
-			<designed target="Tooltip" value="" ver="5"/>
-			<designed target="Width" value="260" ver="5"/>
-			<designed target="Height" value="20" ver="5"/>
-			<designed target="RoundingRadius" value="0" ver="5"/>
-			<designed target="PenColor" value="0xfff0f0f0" ver="5"/>
-			<designed target="PenStyle" value="1" ver="5"/>
-			<designed target="PenWidth" value="1" ver="5"/>
-			<designed target="BrushColor" value="0xffdadada" ver="5"/>
-			<designed target="BrushStyle" value="1" ver="5"/>
-			<designed target="Flip" value="0" ver="5"/>
-			<object access-modifier="private" name="Title" display-name="Title" uuid="4e0678b8-0a37-420d-ad40-17db015a2f5b" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
-				<designed target="X" value="6" ver="5"/>
-				<designed target="Y" value="0" ver="5"/>
-				<designed target="ZValue" value="0" ver="5"/>
-				<designed target="Rotation" value="0" ver="5"/>
-				<designed target="Scale" value="1" ver="5"/>
-				<designed target="Visible" value="true" ver="5"/>
-				<designed target="Opacity" value="1" ver="5"/>
-				<designed target="Enabled" value="true" ver="5"/>
-				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="199" ver="5"/>
-				<designed target="Height" value="20" ver="5"/>
-				<designed target="Text" value="3-06. Выход за верхнюю границу АЦП" ver="5"/>
-				<designed target="Font" value="Arial,8,-1,5,50,0,0,0,0,0,Narrow" ver="5"/>
-				<designed target="FontColor" value="4278190080" ver="5"/>
-				<designed target="TextAlignment" value="129" ver="5"/>
-				<designed target="Flip" value="0" ver="5"/>
-			</object>
-			<object access-modifier="private" name="Value" display-name="Value" uuid="165bca40-09ac-4141-8c55-2a1d6e8901b5" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
-				<designed target="X" value="295" ver="5"/>
-				<designed target="Y" value="0" ver="5"/>
-				<designed target="ZValue" value="0" ver="5"/>
-				<designed target="Rotation" value="0" ver="5"/>
-				<designed target="Scale" value="1" ver="5"/>
-				<designed target="Flip" value="0" ver="5"/>
-				<designed target="Visible" value="true" ver="5"/>
-				<designed target="Opacity" value="1" ver="5"/>
-				<designed target="Enabled" value="true" ver="5"/>
-				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="20" ver="5"/>
-				<designed target="Height" value="20" ver="5"/>
-				<designed target="RoundingRadius" value="0" ver="5"/>
-				<designed target="PenColor" value="4278190080" ver="5"/>
-				<designed target="PenStyle" value="1" ver="5"/>
-				<designed target="PenWidth" value="1" ver="5"/>
-				<designed target="BrushColor" value="0xffffffff" ver="5"/>
-				<designed target="BrushStyle" value="1" ver="5"/>
-				<do-trace access-modifier="private" target="BrushColor" ver="5">
-					<conditional-expr>
-						<condition>
-							<![CDATA[refData.Status.xADCLimH]]>
-						</condition>
-						<expr>
-							<![CDATA[0xffff0000]]>
-						</expr>
-					</conditional-expr>
-					<default-expr>
-						<expr>
-							<![CDATA[0xffffffff]]>
-						</expr>
-					</default-expr>
-				</do-trace>
-			</object>
-		</object>
-		<object access-modifier="private" name="ADCLimL" display-name="ADCLimL" uuid="22449b17-c261-4031-9fa1-e5058b12a505" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
-			<designed target="X" value="0" ver="5"/>
-			<designed target="Y" value="140" ver="5"/>
-			<designed target="ZValue" value="0" ver="5"/>
-			<designed target="Rotation" value="0" ver="5"/>
-			<designed target="Scale" value="1" ver="5"/>
-			<designed target="Visible" value="true" ver="5"/>
-			<designed target="Opacity" value="1" ver="5"/>
-			<designed target="Enabled" value="true" ver="5"/>
-			<designed target="Tooltip" value="" ver="5"/>
-			<designed target="Width" value="260" ver="5"/>
-			<designed target="Height" value="20" ver="5"/>
-			<designed target="RoundingRadius" value="0" ver="5"/>
-			<designed target="PenColor" value="0xfff0f0f0" ver="5"/>
-			<designed target="PenStyle" value="1" ver="5"/>
-			<designed target="PenWidth" value="1" ver="5"/>
-			<designed target="BrushColor" value="0xffdadada" ver="5"/>
-			<designed target="BrushStyle" value="1" ver="5"/>
-			<designed target="Flip" value="0" ver="5"/>
-			<object access-modifier="private" name="Title" display-name="Title" uuid="749630c4-6050-4d6b-a5ea-cb9927492746" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
-				<designed target="X" value="6" ver="5"/>
-				<designed target="Y" value="0" ver="5"/>
-				<designed target="ZValue" value="0" ver="5"/>
-				<designed target="Rotation" value="0" ver="5"/>
-				<designed target="Scale" value="1" ver="5"/>
-				<designed target="Visible" value="true" ver="5"/>
-				<designed target="Opacity" value="1" ver="5"/>
-				<designed target="Enabled" value="true" ver="5"/>
-				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="198" ver="5"/>
-				<designed target="Height" value="20" ver="5"/>
-				<designed target="Text" value="3-07. Выход за нижнюю границу АЦП" ver="5"/>
-				<designed target="Font" value="Arial,8,-1,5,50,0,0,0,0,0,Narrow" ver="5"/>
-				<designed target="FontColor" value="4278190080" ver="5"/>
-				<designed target="TextAlignment" value="129" ver="5"/>
-				<designed target="Flip" value="0" ver="5"/>
-			</object>
-			<object access-modifier="private" name="Value" display-name="Value" uuid="845c3bdc-7b94-4c97-94e9-d4e948bd20e7" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
-				<designed target="X" value="295" ver="5"/>
-				<designed target="Y" value="0" ver="5"/>
-				<designed target="ZValue" value="0" ver="5"/>
-				<designed target="Rotation" value="0" ver="5"/>
-				<designed target="Scale" value="1" ver="5"/>
-				<designed target="Flip" value="0" ver="5"/>
-				<designed target="Visible" value="true" ver="5"/>
-				<designed target="Opacity" value="1" ver="5"/>
-				<designed target="Enabled" value="true" ver="5"/>
-				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="20" ver="5"/>
-				<designed target="Height" value="20" ver="5"/>
-				<designed target="RoundingRadius" value="0" ver="5"/>
-				<designed target="PenColor" value="4278190080" ver="5"/>
-				<designed target="PenStyle" value="1" ver="5"/>
-				<designed target="PenWidth" value="1" ver="5"/>
-				<designed target="BrushColor" value="0xffffffff" ver="5"/>
-				<designed target="BrushStyle" value="1" ver="5"/>
-				<do-trace access-modifier="private" target="BrushColor" ver="5">
-					<conditional-expr>
-						<condition>
-							<![CDATA[refData.Status.xADCLimL]]>
-						</condition>
-						<expr>
-							<![CDATA[0xffff0000]]>
-						</expr>
-					</conditional-expr>
-					<default-expr>
-						<expr>
-							<![CDATA[0xffffffff]]>
-						</expr>
-					</default-expr>
-				</do-trace>
-			</object>
-		</object>
 		<object access-modifier="private" name="Failure" display-name="Failure" uuid="7a7ab976-6213-4734-bbb4-3beb9da794c4" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 			<designed target="X" value="0" ver="5"/>
-			<designed target="Y" value="160" ver="5"/>
+			<designed target="Y" value="120" ver="5"/>
 			<designed target="ZValue" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Scale" value="1" ver="5"/>
@@ -1513,7 +1377,7 @@ unit.Global.ShowMSG(refData.NAME + " (" + Title + ") изменена на " + m
 				<designed target="Tooltip" value="" ver="5"/>
 				<designed target="Width" value="219" ver="5"/>
 				<designed target="Height" value="20" ver="5"/>
-				<designed target="Text" value="3-08. Аппаратная неисправность канала" ver="5"/>
+				<designed target="Text" value="3-06. Аппаратная неисправность канала" ver="5"/>
 				<designed target="Font" value="Arial,8,-1,5,50,0,0,0,0,0,Narrow" ver="5"/>
 				<designed target="FontColor" value="4278190080" ver="5"/>
 				<designed target="TextAlignment" value="129" ver="5"/>
@@ -1558,7 +1422,7 @@ unit.Global.ShowMSG(refData.NAME + " (" + Title + ") изменена на " + m
 	</object>
 	<object access-modifier="private" name="Value" display-name="Value" uuid="a796edbf-9741-4491-9da1-68030243777d" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 		<designed target="X" value="0" ver="5"/>
-		<designed target="Y" value="440" ver="5"/>
+		<designed target="Y" value="400" ver="5"/>
 		<designed target="ZValue" value="0" ver="5"/>
 		<designed target="Rotation" value="0" ver="5"/>
 		<designed target="Scale" value="1" ver="5"/>

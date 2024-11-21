@@ -1,4 +1,4 @@
-<type access-modifier="private" name="Диагностика ПТК" display-name="Диагностика ПТК" uuid="369800d6-99a4-4dd7-83f3-3a25a146fda7" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+<type access-modifier="private" name="Диагностика ПТК" display-name="Диагностика ПТК" uuid="369800d6-99a4-4dd7-83f3-3a25a146fda7" base-type="Form_1" base-type-id="c59a2246-41af-48f9-8499-1f2a48c0182b" ver="5">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="ZValue" value="0" ver="5"/>
@@ -37,7 +37,8 @@
 			<![CDATA[unit.Global.ActiveMainFrame = "Диагностика";
 here.btnMain_1.Visible = false;
 here.btnMain_2.Visible = false;
-ChoosedRack = 0;]]>
+ChoosedRack = 0;
+refCmd.Enabled = false;]]>
 		</body>
 	</do-on>
 	<object access-modifier="private" name="btnMain" display-name="btnMain" uuid="0b03708b-9d5e-4b8a-b69b-0ab5c9f29f33" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
@@ -95,7 +96,7 @@ here.btnMain_2.Visible = !here.btnMain_2.Visible;]]>
 		</do-on>
 		<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="59609f00-49f6-4777-8e4a-f8395305bf05" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
 			<designed target="Rotation" value="90" ver="5"/>
-			<designed target="Visible" value="false" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
 			<designed target="Opacity" value="1" ver="5"/>
 			<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="32737940-9bd3-4b5e-8bf1-100ccbdf3c4f" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
 				<designed target="Position" value="0" ver="5"/>
@@ -169,7 +170,7 @@ here.btnMain_2.Visible = !here.btnMain_2.Visible;]]>
 		</do-on>
 		<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="7b65c046-f871-4050-be86-648eeb26c8ae" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
 			<designed target="Rotation" value="90" ver="5"/>
-			<designed target="Visible" value="false" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
 			<designed target="Opacity" value="1" ver="5"/>
 			<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="61c58da2-06a2-44de-a669-4b7166a3c73b" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
 				<designed target="Position" value="0" ver="5"/>
@@ -258,7 +259,7 @@ here.btnMain_2.Visible = !here.btnMain_2.Visible;]]>
 		</do-on>
 		<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="e9f5e662-f93f-48ad-b8ec-5627e0a1699e" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
 			<designed target="Rotation" value="90" ver="5"/>
-			<designed target="Visible" value="false" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
 			<designed target="Opacity" value="1" ver="5"/>
 			<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="12ea445a-fcaf-4085-90db-ba46dcea57bf" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
 				<designed target="Position" value="0" ver="5"/>
@@ -347,7 +348,7 @@ here.btnMain_2.Visible = !here.btnMain_2.Visible;]]>
 		</do-on>
 		<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="5517bddd-685b-4e0d-ba79-8010a3c26375" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
 			<designed target="Rotation" value="90" ver="5"/>
-			<designed target="Visible" value="false" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
 			<designed target="Opacity" value="1" ver="5"/>
 			<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="42a30731-7abe-4517-ad07-816560f9b78f" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
 				<designed target="Position" value="0" ver="5"/>
@@ -436,7 +437,7 @@ here.btnMain_2.Visible = !here.btnMain_2.Visible;]]>
 		</do-on>
 		<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="1e477c15-55b9-4f6a-8c7b-0d7d515028d4" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
 			<designed target="Rotation" value="90" ver="5"/>
-			<designed target="Visible" value="false" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
 			<designed target="Opacity" value="1" ver="5"/>
 			<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="18a4f345-a2ec-43d1-a3c4-044cdb5c1b8e" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
 				<designed target="Position" value="0" ver="5"/>
@@ -529,7 +530,7 @@ ChoosedRack = 0;]]>
 		</do-on>
 		<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="c1092292-6787-4923-b5a0-f671a86dfc65" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
 			<designed target="Rotation" value="90" ver="5"/>
-			<designed target="Visible" value="false" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
 			<designed target="Opacity" value="1" ver="5"/>
 			<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="e251565a-7d7c-4900-a04e-657568c7675e" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
 				<designed target="Position" value="0" ver="5"/>
@@ -620,7 +621,7 @@ ChoosedRack = 5;]]>
 		</do-on>
 		<object access-modifier="private" name="LinearGradient_1" display-name="LinearGradient_1" uuid="f787ae27-654e-4bde-8352-787f2c40428b" base-type="LinearGradient" base-type-id="3fca3251-ff83-4d88-b94d-b3ac37a76ba0" ver="5" description="" cardinal="1">
 			<designed target="Rotation" value="90" ver="5"/>
-			<designed target="Visible" value="false" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
 			<designed target="Opacity" value="1" ver="5"/>
 			<object access-modifier="private" name="GradientPoint_1" display-name="GradientPoint_1" uuid="37da8b20-75c7-4a9e-b3b9-b06cf4ddf53d" base-type="GradientPoint" base-type-id="0d4fa414-e154-4e66-8c6e-63211b3c6891" ver="5">
 				<designed target="Position" value="0" ver="5"/>
@@ -740,6 +741,46 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.R500_.AI_16_012_1"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.R500_.AI_16_012_1"/>
+			<object access-modifier="private" name="OpenAI" display-name="OpenAI" uuid="673988cf-971f-4731-a8a1-ddae89ca36b4" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="b8f85f52-ff32-4698-b41d-cb3a8380345f" base-type="ModuleAI" base-type-id="bf0f237c-a450-4e8c-9ecd-05609c4f95de" ver="5">
+						<init target="Cursor" ver="5">
+							<object access-modifier="private" uuid="d99e9a45-099c-490e-900a-1118a9001986" base-type="Cursor" base-type-id="b189248c-a70a-4c08-94d2-139295e6c40f" ver="5"/>
+						</init>
+						<designed target="WindowPosition" value="2" ver="5"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+						<init target="initPath" ver="5" value=""/>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+					</object>
+				</do-on>
+			</object>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenAI.Invoke();]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="0777804c-e2f1-4d07-a1da-ab0155c949b3" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.R500.AI1" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="0512f9fa-beda-4ca0-aa5f-505a1bf6426c" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
 		</object>
 		<object access-modifier="private" name="R500_AI_16_012_2" display-name="R500_AI_16_012_2" uuid="80daa85e-9628-4897-a67f-296564468348" base-type="R500_AI_16_012" base-type-id="35c8b257-ebca-45f7-b0ad-cc7e7b218f82" ver="5" description="" cardinal="1">
 			<designed target="X" value="455" ver="5"/>
@@ -749,6 +790,46 @@ ChoosedRack = 5;]]>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.R500_.AI_16_012_2"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.R500_.AI_16_012_2"/>
 			<init target="SAFETY" ver="5" value="true"/>
+			<object access-modifier="private" name="OpenAI" display-name="OpenAI" uuid="7be5ef63-3bd9-4dc5-8683-1d81f35f46fc" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="f76e7243-f404-474d-b21b-6802e99cee29" base-type="ModuleAI" base-type-id="bf0f237c-a450-4e8c-9ecd-05609c4f95de" ver="5">
+						<init target="Cursor" ver="5">
+							<object access-modifier="private" uuid="bf4b440e-fa6b-4dea-bb4d-48ee7f425cb1" base-type="Cursor" base-type-id="b189248c-a70a-4c08-94d2-139295e6c40f" ver="5"/>
+						</init>
+						<designed target="WindowPosition" value="2" ver="5"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+						<init target="initPath" ver="5" value=""/>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="c5996666-18e3-477b-ae99-aa72820208d2" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.R500.AI2" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="9469243e-7b66-45f1-9f12-f3eafece1919" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenAI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_PP_00_011_2" display-name="R500_PP_00_011_2" uuid="01088ecb-c4b4-442d-a2c0-68a2684c04fd" base-type="R500_PP_00_XXX" base-type-id="6f040ed8-e128-4e0c-b238-a2b139ffb594" ver="5" description="" cardinal="1">
 			<designed target="X" value="535" ver="5"/>
@@ -774,6 +855,8 @@ ChoosedRack = 5;]]>
 				<![CDATA[ChoosedRack == 0]]>
 			</body>
 		</do-trace>
+		<object access-modifier="private" name="RackName" display-name="RackName" uuid="663118ab-c6a8-40a2-869d-977502022954" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		<init target="RackName" ver="5" value="ШУК "/>
 	</object>
 	<object access-modifier="private" name="Crate" display-name="Crate" uuid="072e8087-3bc3-492a-ba7f-3c09734b3f4e" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
 		<designed target="X" value="695" ver="5"/>
@@ -822,6 +905,41 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate.DI_32_011_1"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate.DI_32_011_1"/>
+			<object access-modifier="private" name="OpenDI" display-name="OpenDI" uuid="dda12cea-9890-47ec-8036-4b2dcbe06fa3" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="b662b5c4-4aa7-47bc-839a-31664488b039" base-type="Модуль ДИ" base-type-id="50b3b08c-7ae3-43dc-978d-5c933fe85c47" ver="5">
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="4eae52ad-a9ec-4914-92af-b04eee6ca489" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate.DI1" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="e5e3472b-fac4-4c57-8a08-2c99e618bf67" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenDI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_DI_32_011_2" display-name="R500_DI_32_011_2" uuid="884af4d6-b783-4cd1-81b4-336fed5c9c45" base-type="R500_DI_32_011" base-type-id="9493d980-0778-4a7e-99d6-9fa1f68f60f4" ver="5" description="" cardinal="1">
 			<designed target="X" value="145" ver="5"/>
@@ -831,6 +949,41 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate.DI_32_011_2"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate.DI_32_011_2"/>
+			<object access-modifier="private" name="OpenDI" display-name="OpenDI" uuid="f7405380-5b63-4849-8c79-99b2e5a065c6" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="70e1821d-e706-4ba8-8773-0dd222e524ea" base-type="Модуль ДИ" base-type-id="50b3b08c-7ae3-43dc-978d-5c933fe85c47" ver="5">
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="734daea5-0d8e-4b1b-b5ec-eef8b71381a4" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate.DI2" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="55eb91df-6442-47d3-a0e5-1654dbb04652" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenDI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_DI_32_011_3" display-name="R500_DI_32_011_3" uuid="eb3cd9e2-f693-47a3-8fb1-c90901392c18" base-type="R500_DI_32_011" base-type-id="9493d980-0778-4a7e-99d6-9fa1f68f60f4" ver="5" description="" cardinal="1">
 			<designed target="X" value="225" ver="5"/>
@@ -840,6 +993,41 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate.DI_32_011_3"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate.DI_32_011_3"/>
+			<object access-modifier="private" name="OpenDI" display-name="OpenDI" uuid="a500fa52-b4dc-4281-a83e-046cd7a67b5d" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="c8c14d85-81b7-48e0-8a97-ffb59569dd83" base-type="Модуль ДИ" base-type-id="50b3b08c-7ae3-43dc-978d-5c933fe85c47" ver="5">
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="503f5692-f908-4103-b0a4-fc798bbe1861" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate.DI3" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="6a1ffb0c-e5d1-49c8-b8c3-78d2e59c94d3" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenDI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_DO_32_012_1" display-name="R500_DO_32_012_1" uuid="3757c2ea-a0ad-48af-b869-bfe150ffcb20" base-type="R500_DO_32_012" base-type-id="f95ebf48-c8a1-4156-82b8-c6de6c5938fd" ver="5" description="" cardinal="1">
 			<designed target="X" value="305.00000000000011" ver="5"/>
@@ -849,6 +1037,41 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate.DO_32_012_1"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate.DO_32_012_1"/>
+			<object access-modifier="private" name="OpenDI" display-name="OpenDI" uuid="63d8dee7-7193-4c71-bf13-0df31af3d0d1" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="f8309b14-4e44-43d7-85a5-3b33b7f7ae1a" base-type="Модуль ДО" base-type-id="f7000aa4-1d79-444b-99de-1678d92c4593" ver="5">
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="eed5e1bb-a3bd-44ea-82b8-ea24eb0d9bd9" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate.DO1" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="63a17f3c-c6af-4f28-a807-27b43b7b041e" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenDI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_DO_32_012_2" display-name="R500_DO_32_012_2" uuid="c039435b-a3a4-4e8b-9dcf-9f4b6a91b0f3" base-type="R500_DO_32_012" base-type-id="f95ebf48-c8a1-4156-82b8-c6de6c5938fd" ver="5" description="" cardinal="1">
 			<designed target="X" value="384.99999999999994" ver="5"/>
@@ -858,6 +1081,41 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate.DO_32_012_2"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate.DO_32_012_2"/>
+			<object access-modifier="private" name="OpenDI" display-name="OpenDI" uuid="efbbb985-88fd-4089-8ea0-55d4e7fd9273" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="9c19a148-d9b5-49dc-ac32-f864bcf8ed5b" base-type="Модуль ДО" base-type-id="f7000aa4-1d79-444b-99de-1678d92c4593" ver="5">
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="07d238db-61ff-4f8f-bc62-c22cdc127356" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate.DO2" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="90527f01-907b-4628-bd57-0ac87ceeca0c" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenDI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_PP_00_011_2" display-name="R500_PP_00_011_2" uuid="2335f769-03d2-4abe-8317-5be0f76beb11" base-type="R500_PP_00_XXX" base-type-id="6f040ed8-e128-4e0c-b238-a2b139ffb594" ver="5" description="" cardinal="1">
 			<designed target="X" value="464.99999999999977" ver="5"/>
@@ -883,6 +1141,8 @@ ChoosedRack = 5;]]>
 				<![CDATA[ChoosedRack == 5]]>
 			</body>
 		</do-trace>
+		<object access-modifier="private" name="RackName" display-name="RackName" uuid="f736539c-ff0c-4159-86d2-12dc6c423545" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		<init target="RackName" ver="5" value="ШУК "/>
 	</object>
 	<object access-modifier="private" name="Crate_1" display-name="Crate_1" uuid="32328191-c201-4db8-a7e0-ed28bd5f9ff4" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
 		<designed target="X" value="715" ver="5"/>
@@ -931,6 +1191,46 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_1.AI_16_012_1"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_1.AI_16_012_1"/>
+			<object access-modifier="private" name="OpenAI" display-name="OpenAI" uuid="211d5ce3-deb8-4888-9e91-77b8d242c4ef" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="3430e06f-af6f-4bcf-8d0e-bb7c1c8d91ae" base-type="ModuleAI" base-type-id="bf0f237c-a450-4e8c-9ecd-05609c4f95de" ver="5">
+						<init target="Cursor" ver="5">
+							<object access-modifier="private" uuid="9b6caf7a-05dc-4882-8401-3df047d66c14" base-type="Cursor" base-type-id="b189248c-a70a-4c08-94d2-139295e6c40f" ver="5"/>
+						</init>
+						<designed target="WindowPosition" value="2" ver="5"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+						<init target="initPath" ver="5" value=""/>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="aacea6fb-3b7d-457b-831b-83be80534802" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate1.AI1" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="bdb40d09-8d03-44a2-9e51-45ae6aa549d7" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenAI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_AI_16_012_2" display-name="R500_AI_16_012_2" uuid="3ec3d928-0995-4650-90d1-3fc014203420" base-type="R500_AI_16_012" base-type-id="35c8b257-ebca-45f7-b0ad-cc7e7b218f82" ver="5" description="" cardinal="1">
 			<designed target="X" value="145" ver="5"/>
@@ -940,6 +1240,46 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_1.AI_16_012_2"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_1.AI_16_012_2"/>
+			<object access-modifier="private" name="OpenAI" display-name="OpenAI" uuid="9a1543bd-1b2a-4f65-88db-6fdbeb41890f" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="322ce930-efc4-4a7d-99eb-95fffdf37e55" base-type="ModuleAI" base-type-id="bf0f237c-a450-4e8c-9ecd-05609c4f95de" ver="5">
+						<init target="Cursor" ver="5">
+							<object access-modifier="private" uuid="cdbc4a84-ffd5-49dc-8546-eddb943dfd2a" base-type="Cursor" base-type-id="b189248c-a70a-4c08-94d2-139295e6c40f" ver="5"/>
+						</init>
+						<designed target="WindowPosition" value="2" ver="5"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+						<init target="initPath" ver="5" value=""/>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="2f52d136-7f0c-4c1d-9939-659f3f111e08" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate1.AI2" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="f5c55eeb-014d-46d3-bccd-afe62e4d1394" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenAI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_DI_32_011_1" display-name="R500_DI_32_011_1" uuid="36099fd4-2e82-4814-9cde-953187ced5f8" base-type="R500_DI_32_011" base-type-id="9493d980-0778-4a7e-99d6-9fa1f68f60f4" ver="5" description="" cardinal="1">
 			<designed target="X" value="225.00000000000003" ver="5"/>
@@ -949,6 +1289,41 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_1.DI_32_011_1"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_1.DI_32_011_1"/>
+			<object access-modifier="private" name="OpenDI" display-name="OpenDI" uuid="d8691a0f-7d2a-40b6-b301-a0066412d91c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="5525341b-9358-4fb9-b4a2-f6c4a6bcfdba" base-type="Модуль ДИ" base-type-id="50b3b08c-7ae3-43dc-978d-5c933fe85c47" ver="5">
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="58234659-7715-4db6-883b-0cd122e06b4a" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate1.DI1" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="f8f4d4dd-3b3c-40b1-887f-0619be171e6f" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenDI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_DI_32_011_2" display-name="R500_DI_32_011_2" uuid="29011cb0-a836-46fd-a36f-8734510ef03c" base-type="R500_DI_32_011" base-type-id="9493d980-0778-4a7e-99d6-9fa1f68f60f4" ver="5" description="" cardinal="1">
 			<designed target="X" value="305" ver="5"/>
@@ -958,6 +1333,41 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_1.DI_32_011_2"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_1.DI_32_011_2"/>
+			<object access-modifier="private" name="OpenDI" display-name="OpenDI" uuid="308b8d08-f5a1-43df-bb76-9f9d641994fe" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="e78c1c1a-7604-4494-aba1-334058a5d578" base-type="Модуль ДИ" base-type-id="50b3b08c-7ae3-43dc-978d-5c933fe85c47" ver="5">
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="627acb53-77fe-4308-bfc2-a732f439a051" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate1.DI2" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="8887cb2a-9e67-47e5-8d64-2c2d701731e4" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenDI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_DO_32_012_1" display-name="R500_DO_32_012_1" uuid="4c16ae16-89a4-4e05-8f24-62857c1561f5" base-type="R500_DO_32_012" base-type-id="f95ebf48-c8a1-4156-82b8-c6de6c5938fd" ver="5" description="" cardinal="1">
 			<designed target="X" value="385.00000000000011" ver="5"/>
@@ -967,6 +1377,41 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_1.DO_32_012_1"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_1.DO_32_012_1"/>
+			<object access-modifier="private" name="OpenDI" display-name="OpenDI" uuid="dd91870f-c6d6-4d63-a239-728d29c4e2f6" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="f0dd83a4-2008-4b6a-8da4-5d4862ea685b" base-type="Модуль ДО" base-type-id="f7000aa4-1d79-444b-99de-1678d92c4593" ver="5">
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="b2ba9616-27a8-4ed7-bb1c-8c755fbbcb0a" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate1.DO1" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="fb19c430-a93f-4ea3-ac42-fcc6fddddd34" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenDI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_DO_32_012_2" display-name="R500_DO_32_012_2" uuid="c19d7efb-cbeb-4207-8d49-63971b7c658f" base-type="R500_DO_32_012" base-type-id="f95ebf48-c8a1-4156-82b8-c6de6c5938fd" ver="5" description="" cardinal="1">
 			<designed target="X" value="465" ver="5"/>
@@ -976,6 +1421,41 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_1.DO_32_012_2"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_1.DO_32_012_2"/>
+			<object access-modifier="private" name="OpenDI" display-name="OpenDI" uuid="5194de9e-89d8-49f0-bc1b-84efd14526a6" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="c36eba20-2fc1-427f-9e29-b2d3ba37221c" base-type="Модуль ДО" base-type-id="f7000aa4-1d79-444b-99de-1678d92c4593" ver="5">
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="592fe99a-5436-4efd-958a-15bd068048bb" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate1.DO2" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="548b8d1e-6b1b-4776-8a6a-6e0310d98810" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenDI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_PP_00_011_2" display-name="R500_PP_00_011_2" uuid="7f7d40ea-b0f2-476e-9c7e-7e3dffbabc34" base-type="R500_PP_00_XXX" base-type-id="6f040ed8-e128-4e0c-b238-a2b139ffb594" ver="5" description="" cardinal="1">
 			<designed target="X" value="545" ver="5"/>
@@ -1001,6 +1481,8 @@ ChoosedRack = 5;]]>
 				<![CDATA[ChoosedRack == 1]]>
 			</body>
 		</do-trace>
+		<object access-modifier="private" name="RackName" display-name="RackName" uuid="2750088f-aa90-4cf0-89bd-155c6375df60" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		<init target="RackName" ver="5" value="ШУГ1 "/>
 	</object>
 	<object access-modifier="private" name="Crate_2" display-name="Crate_2" uuid="a630f6f0-ed6c-4789-bd22-1a1635562626" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
 		<designed target="X" value="715" ver="5"/>
@@ -1049,6 +1531,46 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_2.AI_16_012_1"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_2.AI_16_012_1"/>
+			<object access-modifier="private" name="OpenAI" display-name="OpenAI" uuid="32eef026-c404-43ac-96cc-e931bdf65541" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="8f67473f-3aa4-433c-80c7-da5e1c3e7589" base-type="ModuleAI" base-type-id="bf0f237c-a450-4e8c-9ecd-05609c4f95de" ver="5">
+						<init target="Cursor" ver="5">
+							<object access-modifier="private" uuid="dcea94f6-86bc-4c0f-af7f-84ee653d04c2" base-type="Cursor" base-type-id="b189248c-a70a-4c08-94d2-139295e6c40f" ver="5"/>
+						</init>
+						<designed target="WindowPosition" value="2" ver="5"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+						<init target="initPath" ver="5" value=""/>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="aa33c281-0983-49f3-b5b7-4fb3626c3ee0" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate2.AI1" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="399b6aa7-52f0-4586-ba04-f2d5bb672e7c" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenAI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_AI_16_012_2" display-name="R500_AI_16_012_2" uuid="b9dd6b58-b0a3-4a4c-87a1-2349beb2be3b" base-type="R500_AI_16_012" base-type-id="35c8b257-ebca-45f7-b0ad-cc7e7b218f82" ver="5" description="" cardinal="1">
 			<designed target="X" value="145" ver="5"/>
@@ -1058,6 +1580,46 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_2.AI_16_012_2"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_2.AI_16_012_2"/>
+			<object access-modifier="private" name="OpenAI" display-name="OpenAI" uuid="79c4c91d-d000-49b1-aa26-5f41154b8829" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="20300c02-31f7-4977-b391-db524ddd7eea" base-type="ModuleAI" base-type-id="bf0f237c-a450-4e8c-9ecd-05609c4f95de" ver="5">
+						<init target="Cursor" ver="5">
+							<object access-modifier="private" uuid="d0b4fa2c-0e28-49ba-8738-29b799bfb236" base-type="Cursor" base-type-id="b189248c-a70a-4c08-94d2-139295e6c40f" ver="5"/>
+						</init>
+						<designed target="WindowPosition" value="2" ver="5"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+						<init target="initPath" ver="5" value=""/>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="37ccbcc0-0ff6-4a62-b62b-febf624a9a3e" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate2.AI2" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="c754a23c-d072-4942-879a-9d57dab78046" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenAI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_DI_32_011_1" display-name="R500_DI_32_011_1" uuid="83e4719b-6e29-4ae9-b204-53a384930ec7" base-type="R500_DI_32_011" base-type-id="9493d980-0778-4a7e-99d6-9fa1f68f60f4" ver="5" description="" cardinal="1">
 			<designed target="X" value="225.00000000000003" ver="5"/>
@@ -1067,6 +1629,41 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_2.DI_32_011_1"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_2.DI_32_011_1"/>
+			<object access-modifier="private" name="OpenDI" display-name="OpenDI" uuid="1b4f9b8a-b360-45f3-81a4-5fbce2117e15" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="93737bab-0014-4b77-9989-c9f9939cc8c0" base-type="Модуль ДИ" base-type-id="50b3b08c-7ae3-43dc-978d-5c933fe85c47" ver="5">
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="ca55fa85-61bb-478b-9fb3-a7e98fc0f6e1" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate2.DI1" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="3ddaf0b4-0c8d-4a13-8684-4eb4abba09ca" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenDI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_DI_32_011_2" display-name="R500_DI_32_011_2" uuid="31199469-4f57-44d0-a765-08deb0a422a7" base-type="R500_DI_32_011" base-type-id="9493d980-0778-4a7e-99d6-9fa1f68f60f4" ver="5" description="" cardinal="1">
 			<designed target="X" value="305" ver="5"/>
@@ -1076,6 +1673,41 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_2.DI_32_011_2"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_2.DI_32_011_2"/>
+			<object access-modifier="private" name="OpenDI" display-name="OpenDI" uuid="ecefaf64-e42e-4720-bfd9-3f32aa5b39e8" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="b3026a88-b039-48cf-8e25-59da4c7411fd" base-type="Модуль ДИ" base-type-id="50b3b08c-7ae3-43dc-978d-5c933fe85c47" ver="5">
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="bd3e6838-27d7-4b10-b747-c7b763f7afd7" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate2.DI2" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="ad02a128-5efd-4430-acb0-383e6f5dde07" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenDI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_DO_32_012_1" display-name="R500_DO_32_012_1" uuid="42d1a319-432d-4892-9775-a24c201cc237" base-type="R500_DO_32_012" base-type-id="f95ebf48-c8a1-4156-82b8-c6de6c5938fd" ver="5" description="" cardinal="1">
 			<designed target="X" value="385.00000000000011" ver="5"/>
@@ -1085,6 +1717,41 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_2.DO_32_012_1"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_2.DO_32_012_1"/>
+			<object access-modifier="private" name="OpenDI" display-name="OpenDI" uuid="fcd86438-0c8b-4864-87d8-ff185a6a2719" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="cac0b532-2e84-4749-833c-1edfaa6f60d4" base-type="Модуль ДО" base-type-id="f7000aa4-1d79-444b-99de-1678d92c4593" ver="5">
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="79b7d999-f1d3-40f2-aab9-9e5646d7a840" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate2.DO1" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="bec33ca9-e4be-44c2-876e-9c754222511e" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenDI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_DO_32_012_2" display-name="R500_DO_32_012_2" uuid="93d40654-c7a2-46fd-8be8-d4be5bf2dd29" base-type="R500_DO_32_012" base-type-id="f95ebf48-c8a1-4156-82b8-c6de6c5938fd" ver="5" description="" cardinal="1">
 			<designed target="X" value="465" ver="5"/>
@@ -1094,6 +1761,41 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_2.DO_32_012_2"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_2.DO_32_012_2"/>
+			<object access-modifier="private" name="OpenDI" display-name="OpenDI" uuid="f32b8315-5281-4141-8c23-feb03c7fd9a5" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="cbe5d203-9b8b-4ba8-b3e0-8fa47af94c8b" base-type="Модуль ДО" base-type-id="f7000aa4-1d79-444b-99de-1678d92c4593" ver="5">
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="6119edc8-41af-430a-a469-85c3d192f49c" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate2.DO2" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="b85bcad0-1ceb-4372-b20c-9967ec4f313d" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenDI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_PP_00_011_2" display-name="R500_PP_00_011_2" uuid="74fb9679-b0d8-4038-b52b-9899f50dcf16" base-type="R500_PP_00_XXX" base-type-id="6f040ed8-e128-4e0c-b238-a2b139ffb594" ver="5" description="" cardinal="1">
 			<designed target="X" value="545" ver="5"/>
@@ -1119,6 +1821,8 @@ ChoosedRack = 5;]]>
 				<![CDATA[ChoosedRack == 2]]>
 			</body>
 		</do-trace>
+		<object access-modifier="private" name="RackName" display-name="RackName" uuid="60c4accd-d7a3-4763-9ef9-bf9cbf88eaec" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		<init target="RackName" ver="5" value="ШУГ2 "/>
 	</object>
 	<object access-modifier="private" name="Crate_3" display-name="Crate_3" uuid="484eba4e-869f-4bc8-9336-c39179f9c593" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
 		<designed target="X" value="715" ver="5"/>
@@ -1167,6 +1871,46 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_3.AI_16_012_1"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_3.AI_16_012_1"/>
+			<object access-modifier="private" name="OpenAI" display-name="OpenAI" uuid="73362c5f-3bf3-4caa-91b1-22a25afa9891" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="00a8e9a8-a621-425e-b36b-28dd21b988eb" base-type="ModuleAI" base-type-id="bf0f237c-a450-4e8c-9ecd-05609c4f95de" ver="5">
+						<init target="Cursor" ver="5">
+							<object access-modifier="private" uuid="1b6067e7-5b17-4aed-8f4f-d2e05da7783d" base-type="Cursor" base-type-id="b189248c-a70a-4c08-94d2-139295e6c40f" ver="5"/>
+						</init>
+						<designed target="WindowPosition" value="2" ver="5"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+						<init target="initPath" ver="5" value=""/>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="0db9deb8-cfa4-409b-a699-968da1d7efdc" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate3.AI1" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="7adc15f5-1104-43ee-86cc-7eb248de3974" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenAI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_AI_16_012_2" display-name="R500_AI_16_012_2" uuid="cba99ba1-db58-41da-8b03-1c5e45a0d977" base-type="R500_AI_16_012" base-type-id="35c8b257-ebca-45f7-b0ad-cc7e7b218f82" ver="5" description="" cardinal="1">
 			<designed target="X" value="145" ver="5"/>
@@ -1176,6 +1920,46 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_3.AI_16_012_2"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_3.AI_16_012_2"/>
+			<object access-modifier="private" name="OpenAI" display-name="OpenAI" uuid="e2c1da4c-450b-487f-988b-b93f8862c764" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="4e6b1b99-3256-4445-b71a-b59843297f52" base-type="ModuleAI" base-type-id="bf0f237c-a450-4e8c-9ecd-05609c4f95de" ver="5">
+						<init target="Cursor" ver="5">
+							<object access-modifier="private" uuid="9d6f52a6-36de-4683-ab78-1516ba7d85c3" base-type="Cursor" base-type-id="b189248c-a70a-4c08-94d2-139295e6c40f" ver="5"/>
+						</init>
+						<designed target="WindowPosition" value="2" ver="5"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+						<init target="initPath" ver="5" value=""/>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="94b76a1b-ae58-447d-8739-070aa84601e2" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate3.AI2" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="33a692e5-5d62-48ac-b79d-be9070494cf7" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenAI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_DI_32_011_1" display-name="R500_DI_32_011_1" uuid="83e68aaa-02b8-49de-b593-7954b3fa5d93" base-type="R500_DI_32_011" base-type-id="9493d980-0778-4a7e-99d6-9fa1f68f60f4" ver="5" description="" cardinal="1">
 			<designed target="X" value="225.00000000000003" ver="5"/>
@@ -1185,6 +1969,41 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_3.DI_32_011_1"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_3.DI_32_011_1"/>
+			<object access-modifier="private" name="OpenDI" display-name="OpenDI" uuid="d07986da-41d4-4950-a0a7-d9fa5b6996de" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="d1af1025-7029-4e29-9b6e-34423be9dfcb" base-type="Модуль ДИ" base-type-id="50b3b08c-7ae3-43dc-978d-5c933fe85c47" ver="5">
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="c21aee14-5ceb-4661-b0a8-9b57b9f44b16" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate3.DI1" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="baa5b6ff-f788-44de-9ab8-0aa2853d0d65" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenDI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_DI_32_011_2" display-name="R500_DI_32_011_2" uuid="3671aab5-f3e6-4545-bda6-523fb73c855b" base-type="R500_DI_32_011" base-type-id="9493d980-0778-4a7e-99d6-9fa1f68f60f4" ver="5" description="" cardinal="1">
 			<designed target="X" value="305" ver="5"/>
@@ -1194,6 +2013,41 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_3.DI_32_011_2"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_3.DI_32_011_2"/>
+			<object access-modifier="private" name="OpenDI" display-name="OpenDI" uuid="6007d768-e6c1-4c22-80bb-e8297133672c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="8c6d07b2-4d5f-4c74-9d43-c6ceebd63ced" base-type="Модуль ДИ" base-type-id="50b3b08c-7ae3-43dc-978d-5c933fe85c47" ver="5">
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="c5e592f7-c6b6-4245-9ea6-420a9fa36c49" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate3.DI2" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="72822607-6207-444b-a959-741150713b5f" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenDI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_DO_32_012_1" display-name="R500_DO_32_012_1" uuid="2dcd3db0-d73b-4ab4-afe8-9fe918624868" base-type="R500_DO_32_012" base-type-id="f95ebf48-c8a1-4156-82b8-c6de6c5938fd" ver="5" description="" cardinal="1">
 			<designed target="X" value="385.00000000000011" ver="5"/>
@@ -1203,6 +2057,41 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_3.DO_32_012_1"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_3.DO_32_012_1"/>
+			<object access-modifier="private" name="OpenDI" display-name="OpenDI" uuid="1396f990-f3af-438e-b850-0e30658598cb" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="01a58039-eda2-4ed0-a005-4519c3a47f0b" base-type="Модуль ДО" base-type-id="f7000aa4-1d79-444b-99de-1678d92c4593" ver="5">
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="b2342f2d-87e2-454f-abe8-f4d92631c743" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate3.DO1" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="5fe91654-4c0d-4b8c-bfff-5197571d9f2a" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenDI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_DO_32_012_2" display-name="R500_DO_32_012_2" uuid="183f862b-ccda-48fe-b302-bd3f592fef1a" base-type="R500_DO_32_012" base-type-id="f95ebf48-c8a1-4156-82b8-c6de6c5938fd" ver="5" description="" cardinal="1">
 			<designed target="X" value="465" ver="5"/>
@@ -1212,6 +2101,41 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_3.DO_32_012_2"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_3.DO_32_012_2"/>
+			<object access-modifier="private" name="OpenDI" display-name="OpenDI" uuid="bfd03c56-1fc5-4698-9906-130db0dcf727" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="b8f1c247-faa1-4ade-981f-143f94defa9a" base-type="Модуль ДО" base-type-id="f7000aa4-1d79-444b-99de-1678d92c4593" ver="5">
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="ccdad936-12a2-4112-a1cd-d3ef7e70436d" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate3.DO2" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="cb389ae1-7446-4312-b609-285a40d13988" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenDI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_PP_00_011_2" display-name="R500_PP_00_011_2" uuid="c89dbebc-1a9b-4a0a-ba3c-d2303d648d0c" base-type="R500_PP_00_XXX" base-type-id="6f040ed8-e128-4e0c-b238-a2b139ffb594" ver="5" description="" cardinal="1">
 			<designed target="X" value="545" ver="5"/>
@@ -1237,6 +2161,8 @@ ChoosedRack = 5;]]>
 				<![CDATA[ChoosedRack == 3]]>
 			</body>
 		</do-trace>
+		<object access-modifier="private" name="RackName" display-name="RackName" uuid="b4b7fc50-2784-49a2-9fb8-15e373436ac3" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		<init target="RackName" ver="5" value="ШУГ3 "/>
 	</object>
 	<object access-modifier="private" name="Crate_4" display-name="Crate_4" uuid="f634904d-aa44-4384-bf9f-f9059fedfb9e" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
 		<designed target="X" value="715" ver="5"/>
@@ -1285,6 +2211,46 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_4.AI_16_012_1"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_4.AI_16_012_1"/>
+			<object access-modifier="private" name="OpenAI" display-name="OpenAI" uuid="38cfa749-82fe-4d17-9e94-5f1c47fa985a" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="a8d82bd2-9c93-45a2-84ab-05acd324f927" base-type="ModuleAI" base-type-id="bf0f237c-a450-4e8c-9ecd-05609c4f95de" ver="5">
+						<init target="Cursor" ver="5">
+							<object access-modifier="private" uuid="34a68181-093b-434c-80c7-a840ef4ab590" base-type="Cursor" base-type-id="b189248c-a70a-4c08-94d2-139295e6c40f" ver="5"/>
+						</init>
+						<designed target="WindowPosition" value="2" ver="5"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+						<init target="initPath" ver="5" value=""/>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="e913d143-e16a-4c8e-be58-6872b798a1c4" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate4.AI1" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="86db8522-2bf0-41b8-aaa2-7bd8c74603f8" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenAI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_AI_16_012_2" display-name="R500_AI_16_012_2" uuid="06388367-5aad-4de3-838c-40ae744ae103" base-type="R500_AI_16_012" base-type-id="35c8b257-ebca-45f7-b0ad-cc7e7b218f82" ver="5" description="" cardinal="1">
 			<designed target="X" value="145" ver="5"/>
@@ -1294,6 +2260,46 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_4.AI_16_012_2"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_4.AI_16_012_2"/>
+			<object access-modifier="private" name="OpenAI" display-name="OpenAI" uuid="936109b6-7db7-4106-8de1-438c8f46eae9" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="2baf4b05-53d3-4b29-a280-f6e7fece3a36" base-type="ModuleAI" base-type-id="bf0f237c-a450-4e8c-9ecd-05609c4f95de" ver="5">
+						<init target="Cursor" ver="5">
+							<object access-modifier="private" uuid="a27b9666-5fc8-4930-96ef-e5ce912adde8" base-type="Cursor" base-type-id="b189248c-a70a-4c08-94d2-139295e6c40f" ver="5"/>
+						</init>
+						<designed target="WindowPosition" value="2" ver="5"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+						<init target="initPath" ver="5" value=""/>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="635ead48-684b-4ee8-9d1e-fa8eba482458" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate4.AI2" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="8206aa74-630e-401e-aeda-64235ac6044d" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenAI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_DI_32_011_1" display-name="R500_DI_32_011_1" uuid="630307c2-03c0-44f1-85a3-15b9bae110f4" base-type="R500_DI_32_011" base-type-id="9493d980-0778-4a7e-99d6-9fa1f68f60f4" ver="5" description="" cardinal="1">
 			<designed target="X" value="225.00000000000003" ver="5"/>
@@ -1303,6 +2309,41 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_4.DI_32_011_1"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_4.DI_32_011_1"/>
+			<object access-modifier="private" name="OpenDI" display-name="OpenDI" uuid="4332bad7-e116-4c0c-8e83-1d880b84dd47" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="b40d9212-2ed1-4ce3-b1a5-3f5c94dae640" base-type="Модуль ДИ" base-type-id="50b3b08c-7ae3-43dc-978d-5c933fe85c47" ver="5">
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="06602e22-46f8-4cb9-aa96-b63ff34a2c5a" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate4.DI1" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="5140b6f5-f931-4965-970e-501ab2be56f9" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenDI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_DI_32_011_2" display-name="R500_DI_32_011_2" uuid="10f50f3d-bbc6-4467-b648-dbf2ca0e1b31" base-type="R500_DI_32_011" base-type-id="9493d980-0778-4a7e-99d6-9fa1f68f60f4" ver="5" description="" cardinal="1">
 			<designed target="X" value="305" ver="5"/>
@@ -1312,6 +2353,41 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_4.DI_32_011_2"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_4.DI_32_011_2"/>
+			<object access-modifier="private" name="OpenDI" display-name="OpenDI" uuid="846f137e-99c8-451e-974c-82ece735f491" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="f2f16d73-8381-434c-a459-787c76303bb6" base-type="Модуль ДИ" base-type-id="50b3b08c-7ae3-43dc-978d-5c933fe85c47" ver="5">
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="aeb5a110-683c-4d73-846c-6f143b8b5080" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate4.DI2" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="ffcca473-0a88-43bf-886f-fae93e3fa048" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenDI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_DO_32_012_1" display-name="R500_DO_32_012_1" uuid="4b4d1796-6b19-48ce-9620-7ad52b284d67" base-type="R500_DO_32_012" base-type-id="f95ebf48-c8a1-4156-82b8-c6de6c5938fd" ver="5" description="" cardinal="1">
 			<designed target="X" value="385.00000000000011" ver="5"/>
@@ -1321,6 +2397,41 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_4.DO_32_012_1"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_4.DO_32_012_1"/>
+			<object access-modifier="private" name="OpenDI" display-name="OpenDI" uuid="5f9d9c52-7dbb-49cb-9e92-d3cdfd31d714" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="d3ef26a9-cd66-4287-90a0-d3bc580813fe" base-type="Модуль ДО" base-type-id="f7000aa4-1d79-444b-99de-1678d92c4593" ver="5">
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="f531fbe9-1428-4dfe-a94a-364291a24442" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate4.DO1" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="96732d08-8e88-4b48-8542-973e09451518" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenDI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_DO_32_012_2" display-name="R500_DO_32_012_2" uuid="3408cc6d-74f3-4b8f-83d1-610c95563cb1" base-type="R500_DO_32_012" base-type-id="f95ebf48-c8a1-4156-82b8-c6de6c5938fd" ver="5" description="" cardinal="1">
 			<designed target="X" value="465" ver="5"/>
@@ -1330,6 +2441,41 @@ ChoosedRack = 5;]]>
 			<init target="SAFETY" ver="5" value="true"/>
 			<init target="init_Path_MB1" ver="5" value="REGUL_R500_A.Crate_4.DO_32_012_2"/>
 			<init target="init_Path_MB2" ver="5" value="REGUL_R500_B.Crate_4.DO_32_012_2"/>
+			<object access-modifier="private" name="OpenDI" display-name="OpenDI" uuid="2b905b6e-69ce-48cd-b247-141037bbd057" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+					<object access-modifier="private" uuid="96e381da-2e30-40e0-95bd-f9c2c4095cc8" base-type="Модуль ДО" base-type-id="f7000aa4-1d79-444b-99de-1678d92c4593" ver="5">
+						<init target="WindowCaption" ver="5">
+							<expr>
+								<![CDATA[RackName + ModuleKKS]]>
+							</expr>
+						</init>
+						<init target="InitApSource" ver="5" ref="ApSource_1"/>
+						<init target="Action_1" ver="5" ref="parent"/>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="8dbe75ef-e936-4abd-80d7-4804937be58e" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Modules.Crate4.DO2" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+				<init target="ParentSource" ver="5" ref="Connections.MainSource"/>
+			</object>
+			<object access-modifier="private" name="ModuleKKS" display-name="ModuleKKS" uuid="9a642df1-c55b-468c-a750-5fc80f314d7a" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="5" description="" cardinal="1">
+				<init target="Source" ver="5" ref="ApSource_1"/>
+				<init target="Path" ver="5" value="KKS"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[OpenDI.Invoke();]]>
+				</body>
+			</do-on>
 		</object>
 		<object access-modifier="private" name="R500_PP_00_011_2" display-name="R500_PP_00_011_2" uuid="295950ea-ef7b-45c6-b3a9-87b7001260ce" base-type="R500_PP_00_XXX" base-type-id="6f040ed8-e128-4e0c-b238-a2b139ffb594" ver="5" description="" cardinal="1">
 			<designed target="X" value="545" ver="5"/>
@@ -1355,6 +2501,13 @@ ChoosedRack = 5;]]>
 				<![CDATA[ChoosedRack == 4]]>
 			</body>
 		</do-trace>
+		<object access-modifier="private" name="RackName" display-name="RackName" uuid="f18deddf-6943-4f44-be25-26273f9b5e0d" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		<init target="RackName" ver="5" value="ШУГ4 "/>
 	</object>
+	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="Closed">
+		<body kind="om">
+			<![CDATA[refCmd.Enabled = true;]]>
+		</body>
+	</do-on>
 </type>
 

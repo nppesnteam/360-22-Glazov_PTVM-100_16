@@ -1,4 +1,4 @@
-<type access-modifier="private" name="Общая мнемосхема" display-name="Общая мнемосхема" uuid="f51061bd-0db8-43c4-a53c-77c2e4c09e04" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+<type access-modifier="private" name="Общая мнемосхема" display-name="Общая мнемосхема" uuid="f51061bd-0db8-43c4-a53c-77c2e4c09e04" base-type="ParentForm" base-type-id="c59a2246-41af-48f9-8499-1f2a48c0182b" ver="5">
 	<designed target="X" value="0" ver="5"/>
 	<designed target="Y" value="0" ver="5"/>
 	<designed target="Rotation" value="0" ver="5"/>
@@ -46,7 +46,8 @@
 	</object>
 	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Opened">
 		<body kind="om">
-			<![CDATA[unit.Global.ActiveMainFrame = "Общая мнемосхема";]]>
+			<![CDATA[unit.Global.ActiveMainFrame = "Общая мнемосхема";
+unit.Global.isGroupOpened=false;]]>
 		</body>
 	</do-on>
 	<object access-modifier="private" name="hereAPSource" display-name="hereAPSource" uuid="b57ec5f7-1d90-47c6-a270-55fcb0b9e1f8" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
@@ -61,7 +62,6 @@
 		<designed target="ClientId" value="HMI" ver="5"/>
 		<init target="ParentSource" ver="5" ref="unit.Connections.AppSource"/>
 	</object>
-	<object access-modifier="private" name="linkMain" display-name="linkMain" uuid="159c9f8c-8d55-4ff7-bdf9-0cd3186a1cb5" base-type="MainForm" base-type-id="c9cad641-8960-46db-9523-43c92084d4a1" base-const="true" base-ref="true" ver="5"/>
 	<designed target="Flip" value="0" ver="5"/>
 	<designed target="WindowIconPath" value="" ver="5"/>
 	<object access-modifier="private" name="Mnemo" display-name="Mnemo" uuid="18910ce5-7275-42f0-80a2-730fdeb82960" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
@@ -84,6 +84,383 @@
 		<designed target="OverrideScaling" value="false" ver="5"/>
 		<designed target="ShowScrollBars" value="true" ver="5"/>
 		<designed target="MoveByMouse" value="false" ver="5"/>
+		<object access-modifier="private" name="Smoke" display-name="Smoke" uuid="eddbad95-5ddd-4458-bff6-e46090e8233f" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+			<designed target="X" value="1460" ver="5"/>
+			<designed target="Y" value="70" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="255" ver="5"/>
+			<designed target="Height" value="550" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<designed target="OverrideScaling" value="false" ver="5"/>
+			<designed target="ShowScrollBars" value="true" ver="5"/>
+			<designed target="MoveByMouse" value="false" ver="5"/>
+			<object access-modifier="private" name="TubeSmokeBeforeFlap" display-name="TubeSmokeBeforeFlap" uuid="91d95f8a-bd0a-4697-b4e3-db1a5f52643c" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
+				<designed target="X" value="5" ver="5"/>
+				<designed target="Y" value="530" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="236" ver="5"/>
+				<designed target="Height" value="83" ver="5"/>
+				<designed target="PenColor" value="0xff888888" ver="5"/>
+				<designed target="PenStyle" value="1" ver="5"/>
+				<designed target="PenWidth" value="2" ver="5"/>
+				<designed target="BrushColor" value="0xff000000" ver="5"/>
+				<designed target="BrushStyle" value="1" ver="5"/>
+				<object access-modifier="private" name="Point_1" display-name="Point_1" uuid="c5c90f82-bc63-432b-a007-160d8751bd2d" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="-33" ver="5"/>
+					<designed target="Y" value="3" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_2" display-name="Point_2" uuid="61be5e52-2911-47f9-8f56-5f62b2cd02d1" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="158" ver="5"/>
+					<designed target="Y" value="3" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_3" display-name="Point_3" uuid="c5b335af-7e57-44b7-885e-d2bfc084b261" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="158" ver="5"/>
+					<designed target="Y" value="-54" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_4" display-name="Point_4" uuid="8d6352c3-d4e1-431c-800a-06649cc6b4da" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="203" ver="5"/>
+					<designed target="Y" value="-54" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_5" display-name="Point_5" uuid="d12b8d42-6784-434a-bbcb-507cdf3efd66" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="203" ver="5"/>
+					<designed target="Y" value="-80" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_6" display-name="Point_6" uuid="0cfea4e7-9f9e-4d2e-90b2-7b1609d3fa58" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="193" ver="5"/>
+					<designed target="Y" value="-80" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_7" display-name="Point_7" uuid="54dc400f-e4d0-4aae-8a2d-129b30b3b352" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="193" ver="5"/>
+					<designed target="Y" value="-64" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_8" display-name="Point_8" uuid="fc8a63f7-4d01-4644-aeea-307cdf47c725" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="93" ver="5"/>
+					<designed target="Y" value="-64" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_9" display-name="Point_9" uuid="d62c1fa1-2667-4601-bc33-78cdea32b78e" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="93" ver="5"/>
+					<designed target="Y" value="-80" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_10" display-name="Point_10" uuid="8ef533c0-e460-40b1-91f3-e7fd945dd31e" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="83" ver="5"/>
+					<designed target="Y" value="-80" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_11" display-name="Point_11" uuid="b3c63eee-c771-453b-996d-929ef3c57551" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="83" ver="5"/>
+					<designed target="Y" value="-54" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_12" display-name="Point_12" uuid="3a89583d-588a-45f9-92be-08e9d562eb29" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="148" ver="5"/>
+					<designed target="Y" value="-54" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_13" display-name="Point_13" uuid="6735455f-d375-4766-ac35-c11a104d7292" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="148" ver="5"/>
+					<designed target="Y" value="-7" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_14" display-name="Point_14" uuid="d09159a9-948a-4df1-9882-bba7af9c3f18" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="-33" ver="5"/>
+					<designed target="Y" value="-7" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_15" display-name="Point_15" uuid="d7405487-3328-475d-a39d-7cb9224fb4fe" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="-33" ver="5"/>
+					<designed target="Y" value="3" ver="5"/>
+				</object>
+				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="BrushColor" ver="5">
+					<conditional-expr>
+						<condition>
+							<![CDATA[bSmokeIn]]>
+						</condition>
+						<expr>
+							<![CDATA[Global.Colors.Smoke]]>
+						</expr>
+					</conditional-expr>
+					<default-expr>
+						<expr>
+							<![CDATA[0xff000000]]>
+						</expr>
+					</default-expr>
+				</do-trace>
+				<do-trace access-modifier="private" target="PenColor" ver="5">
+					<body>
+						<![CDATA[Global.Colors.SmokePen]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="TubeSmokeAfterFlap" display-name="TubeSmokeAfterFlap" uuid="b68d2498-37b1-4270-8bfd-0af4a8edb422" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
+				<designed target="X" value="91" ver="5"/>
+				<designed target="Y" value="420" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="120" ver="5"/>
+				<designed target="Height" value="123" ver="5"/>
+				<designed target="PenColor" value="0xff888888" ver="5"/>
+				<designed target="PenStyle" value="1" ver="5"/>
+				<designed target="PenWidth" value="2" ver="5"/>
+				<designed target="BrushColor" value="0xff000000" ver="5"/>
+				<designed target="BrushStyle" value="1" ver="5"/>
+				<object access-modifier="private" name="Point_1" display-name="Point_1" uuid="a3daca8d-ff06-49e4-b444-e4ae9797cae1" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="-3" ver="5"/>
+					<designed target="Y" value="-10" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_2" display-name="Point_2" uuid="3d040f2c-63da-4526-b0a8-b1e12d7e7224" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="-3" ver="5"/>
+					<designed target="Y" value="-30" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_3" display-name="Point_3" uuid="64f347ed-988c-4cef-8538-e40c1473bc34" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="62" ver="5"/>
+					<designed target="Y" value="-30" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_4" display-name="Point_4" uuid="0bcf09d2-f499-4462-aa3c-b0abe1781094" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="62" ver="5"/>
+					<designed target="Y" value="-123" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_5" display-name="Point_5" uuid="25aee2ec-b72b-4424-b0d2-2db6ca2135c0" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="80" ver="5"/>
+					<designed target="Y" value="-123" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_6" display-name="Point_6" uuid="b424fb3c-0568-4595-aa59-e9f4de6606a2" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="80" ver="5"/>
+					<designed target="Y" value="-113" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_7" display-name="Point_7" uuid="01de8c46-9c6d-4687-80fd-90528d4ee034" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="72" ver="5"/>
+					<designed target="Y" value="-113" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_8" display-name="Point_8" uuid="28ad8584-e4bc-4c48-9467-2848649addf5" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="72" ver="5"/>
+					<designed target="Y" value="-30" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_9" display-name="Point_9" uuid="86f78543-fa14-429f-a4a1-4d128fd99f5f" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="117" ver="5"/>
+					<designed target="Y" value="-30" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_10" display-name="Point_10" uuid="e428529d-457b-4581-b606-818736ba2aff" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="117" ver="5"/>
+					<designed target="Y" value="-10" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_11" display-name="Point_11" uuid="78339ca9-0a78-40be-834b-3998007668ef" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="107" ver="5"/>
+					<designed target="Y" value="-10" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_12" display-name="Point_12" uuid="759e42a2-6e81-4ae5-be20-de4c159dbf00" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="107" ver="5"/>
+					<designed target="Y" value="-20" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_13" display-name="Point_13" uuid="12a647a9-5157-4065-8fd6-865d03e2a88f" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="7" ver="5"/>
+					<designed target="Y" value="-20" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_14" display-name="Point_14" uuid="e7f3f17d-f00e-45e1-9da5-46235bb87e2d" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="7" ver="5"/>
+					<designed target="Y" value="-10" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_15" display-name="Point_15" uuid="1edc488e-c89f-4cc1-a185-050d3b008ccb" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="-3" ver="5"/>
+					<designed target="Y" value="0" ver="5"/>
+				</object>
+				<designed target="Flip" value="0" ver="5"/>
+				<do-trace access-modifier="private" target="BrushColor" ver="5">
+					<conditional-expr>
+						<condition>
+							<![CDATA[bSmokeOut]]>
+						</condition>
+						<expr>
+							<![CDATA[Global.Colors.Smoke]]>
+						</expr>
+					</conditional-expr>
+					<default-expr>
+						<expr>
+							<![CDATA[0xff000000]]>
+						</expr>
+					</default-expr>
+				</do-trace>
+				<do-trace access-modifier="private" target="PenColor" ver="5">
+					<body>
+						<![CDATA[Global.Colors.SmokePen]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="DamperA" display-name="DamperA" uuid="e3e8983d-6842-40c1-9890-180b4c08304e" base-type="DamperWithSettings" base-type-id="4cc80454-f0cf-4879-8e38-2c16930c7fae" ver="5">
+				<designed target="X" value="90" ver="5"/>
+				<designed target="Y" value="420" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<init target="step" ver="5" value="1"/>
+				<init target="initPath" ver="5" value="DamperA"/>
+				<init target="initApSource" ver="5" ref="ApSource"/>
+				<do-trace access-modifier="private" target="Color" ver="5">
+					<body>
+						<![CDATA[Global.Colors.Smoke]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="ColorPen" ver="5">
+					<body>
+						<![CDATA[Global.Colors.SmokePen]]>
+					</body>
+				</do-trace>
+				<init target="PARAM" ver="5" ref="PVacSmoke_1"/>
+			</object>
+			<object access-modifier="private" name="DamperB" display-name="DamperB" uuid="7e785070-6cf6-4956-bfc6-929028efbf41" base-type="DamperWithSettings" base-type-id="4cc80454-f0cf-4879-8e38-2c16930c7fae" ver="5">
+				<designed target="X" value="200" ver="5"/>
+				<designed target="Y" value="420" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<init target="step" ver="5" value="1"/>
+				<init target="initApSource" ver="5" ref="ApSource"/>
+				<init target="initPath" ver="5" value="DamperB"/>
+				<do-trace access-modifier="private" target="Color" ver="5">
+					<body>
+						<![CDATA[Global.Colors.Smoke]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="ColorPen" ver="5">
+					<body>
+						<![CDATA[Global.Colors.SmokePen]]>
+					</body>
+				</do-trace>
+				<init target="PARAM" ver="5" ref="PVacSmoke_2"/>
+			</object>
+			<object access-modifier="private" name="PVacSmoke_1" display-name="PVacSmoke_1" uuid="5dbca9f3-c583-45c5-9ba6-6b59fc273a89" base-type="SensFromSensDouble" base-type-id="6ab9fadb-a7ab-4dd8-b771-29b146fbb3b6" ver="5">
+				<designed target="X" value="47" ver="5"/>
+				<designed target="Y" value="493" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<init target="initApSource" ver="5" ref="ApSource"/>
+				<init target="initPath" ver="5" value="PVac"/>
+				<designed target="Scale" value="2" ver="5"/>
+				<do-trace access-modifier="private" target="Color" ver="5">
+					<body>
+						<![CDATA[Global.Colors.Smoke]]>
+					</body>
+				</do-trace>
+				<init target="refProtH" ver="5" ref="unit.Alarm.Prots.PVacH"/>
+				<init target="refWarnH" ver="5" ref="unit.Alarm.Warnings.PVacH"/>
+			</object>
+			<object access-modifier="private" name="O2Smoke" display-name="O2Smoke" uuid="3b029eaf-6cde-46e8-9eb0-0eec4cb8f615" base-type="Sens" base-type-id="bda7de48-3eeb-48b5-8968-c64cf04eb418" ver="5">
+				<designed target="X" value="47" ver="5"/>
+				<designed target="Y" value="360" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<init target="initApSource" ver="5" ref="ApSource"/>
+				<init target="initPath" ver="5" value="O2"/>
+				<designed target="Scale" value="2" ver="5"/>
+				<do-trace access-modifier="private" target="Color" ver="5">
+					<body>
+						<![CDATA[Global.Colors.Smoke]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="TSmoke" display-name="TSmoke" uuid="501accb6-5eff-4035-bc27-30182ac844ab" base-type="Sens" base-type-id="bda7de48-3eeb-48b5-8968-c64cf04eb418" ver="5">
+				<designed target="X" value="47" ver="5"/>
+				<designed target="Y" value="320" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<init target="initApSource" ver="5" ref="ApSource"/>
+				<init target="initPath" ver="5" value="T"/>
+				<designed target="Scale" value="2" ver="5"/>
+				<do-trace access-modifier="private" target="Color" ver="5">
+					<body>
+						<![CDATA[Global.Colors.Smoke]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="Pipe" display-name="Pipe" uuid="fc3fb3a4-e68d-410f-8327-674f65da4428" base-type="Pipe" base-type-id="ba0d9c85-7751-4117-ab7b-4b140f9c8af8" ver="5">
+				<designed target="X" value="177" ver="5"/>
+				<designed target="Y" value="200" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+			</object>
+			<object access-modifier="private" name="ImgSmoke" display-name="ImgSmoke" uuid="0db7fc49-5f9c-494a-9673-c5f3a34ea56e" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="5">
+				<designed target="X" value="114" ver="5"/>
+				<designed target="Y" value="-96" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="false" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="146" ver="5"/>
+				<designed target="Height" value="306" ver="5"/>
+				<designed target="PenColor" value="4278190080" ver="5"/>
+				<designed target="PenStyle" value="0" ver="5"/>
+				<designed target="PenWidth" value="1" ver="5"/>
+				<designed target="ImageFile" value="smoke2.gif" ver="5"/>
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="CurrentFrameNumber" value="0" ver="5"/>
+				<designed target="Speed" value="1" ver="5"/>
+				<do-trace access-modifier="private" target="Visible" ver="5">
+					<body>
+						<![CDATA[Global.bAnyFinal]]>
+					</body>
+				</do-trace>
+				<designed target="Flip" value="0" ver="5"/>
+			</object>
+			<object access-modifier="private" name="ApSource" display-name="ApSource" uuid="a892fe1e-5b98-4e49-82ff-5f10a6fba3a9" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
+				<designed target="Active" value="false" ver="5"/>
+				<designed target="ReAdvise" value="0" ver="5"/>
+				<init target="ParentSource" ver="5" ref="unit.Connections.AppSource"/>
+				<designed target="Location" value="" ver="5"/>
+				<designed target="Port" value="4388" ver="5"/>
+				<designed target="HistoryPort" value="4950" ver="5"/>
+				<designed target="Path" value="Smoke" ver="5"/>
+				<designed target="ClientDisplayName" value="HMI" ver="5"/>
+				<designed target="ClientId" value="HMI" ver="5"/>
+			</object>
+			<designed target="Flip" value="0" ver="5"/>
+			<object access-modifier="private" name="bSmokeIn" display-name="bSmokeIn" uuid="b6277062-8bf3-480f-a856-af2c68cc6901" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+				<init target="Path" ver="5" value="TubeFilling.bSmokeIn"/>
+				<init target="Source" ver="5" ref="ApSource"/>
+			</object>
+			<object access-modifier="private" name="bSmokeOut" display-name="bSmokeOut" uuid="7b3217a9-5a59-4bae-b6bc-fcfa59334716" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+				<init target="Path" ver="5" value="TubeFilling.bSmokeOut"/>
+				<init target="Source" ver="5" ref="ApSource"/>
+			</object>
+			<object access-modifier="private" name="bSmokeOutA" display-name="bSmokeOutA" uuid="b593364b-a262-4b40-ab2b-e353c06fc810" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+				<init target="Path" ver="5" value="TubeFilling.bSmokeOutA"/>
+				<init target="Source" ver="5" ref="ApSource"/>
+			</object>
+			<object access-modifier="private" name="bSmokeOutB" display-name="bSmokeOutB" uuid="86f9f842-db47-4334-bb64-144550f76913" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
+				<init target="Path" ver="5" value="TubeFilling.bSmokeOutB"/>
+				<init target="Source" ver="5" ref="ApSource"/>
+			</object>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<object access-modifier="private" name="ColorPen" display-name="ColorPen" uuid="f2a258f0-e912-4ce8-abc7-0dc1f771002d" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5" description="" cardinal="1"/>
+			<object access-modifier="private" name="ColorMain" display-name="ColorMain" uuid="360462e9-72ef-4f77-b866-5c80bb1ac72f" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5" description="" cardinal="1"/>
+			<init target="ColorPen" ver="5" ref="unit.Global.Colors.SmokePen"/>
+			<init target="ColorMain" ver="5" ref="unit.Global.Colors.Smoke"/>
+			<object access-modifier="private" name="PVacSmoke_2" display-name="PVacSmoke_2" uuid="86d27a5e-ccb1-4e3c-a11f-ce576f7db0c5" base-type="SensFromSensDouble" base-type-id="6ab9fadb-a7ab-4dd8-b771-29b146fbb3b6" ver="5">
+				<designed target="X" value="47" ver="5"/>
+				<designed target="Y" value="551" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<init target="initApSource" ver="5" ref="ApSource"/>
+				<init target="initPath" ver="5" value="PVac"/>
+				<designed target="Scale" value="2" ver="5"/>
+				<do-trace access-modifier="private" target="Color" ver="5">
+					<body>
+						<![CDATA[Global.Colors.Smoke]]>
+					</body>
+				</do-trace>
+				<init target="refProtH" ver="5" ref="unit.Alarm.Prots.PVacH"/>
+				<init target="refWarnH" ver="5" ref="unit.Alarm.Warnings.PVacH"/>
+			</object>
+		</object>
 		<object access-modifier="private" name="rectBoiler" display-name="rectBoiler" uuid="507cba03-87a5-43ef-a14c-915caf904f2e" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
 			<designed target="X" value="220" ver="5"/>
 			<designed target="Y" value="460" ver="5"/>
@@ -786,6 +1163,7 @@
 				<init target="initApSourcePD" ver="5" ref="ApSource"/>
 				<init target="initPathPD" ver="5" value="PD"/>
 				<init target="initPath" ver="5" value="F"/>
+				<init target="isWater" ver="5" value="true"/>
 			</object>
 			<object access-modifier="private" name="PWaterIn" display-name="PWaterIn" uuid="163b7255-2b25-4866-bfc2-abee0298b5f0" base-type="Sens" base-type-id="bda7de48-3eeb-48b5-8968-c64cf04eb418" ver="5">
 				<designed target="X" value="245" ver="5"/>
@@ -812,383 +1190,6 @@
 						<![CDATA[Global.Colors.Water]]>
 					</body>
 				</do-trace>
-			</object>
-		</object>
-		<object access-modifier="private" name="Smoke" display-name="Smoke" uuid="eddbad95-5ddd-4458-bff6-e46090e8233f" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
-			<designed target="X" value="1460" ver="5"/>
-			<designed target="Y" value="70" ver="5"/>
-			<designed target="ZValue" value="0" ver="5"/>
-			<designed target="Rotation" value="0" ver="5"/>
-			<designed target="Scale" value="1" ver="5"/>
-			<designed target="Visible" value="true" ver="5"/>
-			<designed target="Opacity" value="1" ver="5"/>
-			<designed target="Enabled" value="true" ver="5"/>
-			<designed target="Tooltip" value="" ver="5"/>
-			<designed target="Width" value="255" ver="5"/>
-			<designed target="Height" value="550" ver="5"/>
-			<designed target="PenColor" value="4278190080" ver="5"/>
-			<designed target="PenStyle" value="0" ver="5"/>
-			<designed target="PenWidth" value="1" ver="5"/>
-			<designed target="BrushColor" value="4278190080" ver="5"/>
-			<designed target="BrushStyle" value="0" ver="5"/>
-			<designed target="OverrideScaling" value="false" ver="5"/>
-			<designed target="ShowScrollBars" value="true" ver="5"/>
-			<designed target="MoveByMouse" value="false" ver="5"/>
-			<object access-modifier="private" name="TubeSmokeBeforeFlap" display-name="TubeSmokeBeforeFlap" uuid="91d95f8a-bd0a-4697-b4e3-db1a5f52643c" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
-				<designed target="X" value="28" ver="5"/>
-				<designed target="Y" value="530" ver="5"/>
-				<designed target="ZValue" value="0" ver="5"/>
-				<designed target="Rotation" value="0" ver="5"/>
-				<designed target="Scale" value="1" ver="5"/>
-				<designed target="Visible" value="true" ver="5"/>
-				<designed target="Opacity" value="1" ver="5"/>
-				<designed target="Enabled" value="true" ver="5"/>
-				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="260" ver="5"/>
-				<designed target="Height" value="93" ver="5"/>
-				<designed target="PenColor" value="0xff888888" ver="5"/>
-				<designed target="PenStyle" value="1" ver="5"/>
-				<designed target="PenWidth" value="2" ver="5"/>
-				<designed target="BrushColor" value="0xff000000" ver="5"/>
-				<designed target="BrushStyle" value="1" ver="5"/>
-				<object access-modifier="private" name="Point_1" display-name="Point_1" uuid="c5c90f82-bc63-432b-a007-160d8751bd2d" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="-57" ver="5"/>
-					<designed target="Y" value="3" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_2" display-name="Point_2" uuid="61be5e52-2911-47f9-8f56-5f62b2cd02d1" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="158" ver="5"/>
-					<designed target="Y" value="3" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_3" display-name="Point_3" uuid="c5b335af-7e57-44b7-885e-d2bfc084b261" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="158" ver="5"/>
-					<designed target="Y" value="-54" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_4" display-name="Point_4" uuid="8d6352c3-d4e1-431c-800a-06649cc6b4da" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="203" ver="5"/>
-					<designed target="Y" value="-54" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_5" display-name="Point_5" uuid="d12b8d42-6784-434a-bbcb-507cdf3efd66" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="203" ver="5"/>
-					<designed target="Y" value="-90" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_6" display-name="Point_6" uuid="0cfea4e7-9f9e-4d2e-90b2-7b1609d3fa58" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="193" ver="5"/>
-					<designed target="Y" value="-90" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_7" display-name="Point_7" uuid="54dc400f-e4d0-4aae-8a2d-129b30b3b352" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="193" ver="5"/>
-					<designed target="Y" value="-64" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_8" display-name="Point_8" uuid="fc8a63f7-4d01-4644-aeea-307cdf47c725" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="93" ver="5"/>
-					<designed target="Y" value="-64" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_9" display-name="Point_9" uuid="d62c1fa1-2667-4601-bc33-78cdea32b78e" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="93" ver="5"/>
-					<designed target="Y" value="-90" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_10" display-name="Point_10" uuid="8ef533c0-e460-40b1-91f3-e7fd945dd31e" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="83" ver="5"/>
-					<designed target="Y" value="-90" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_11" display-name="Point_11" uuid="b3c63eee-c771-453b-996d-929ef3c57551" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="83" ver="5"/>
-					<designed target="Y" value="-54" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_12" display-name="Point_12" uuid="3a89583d-588a-45f9-92be-08e9d562eb29" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="148" ver="5"/>
-					<designed target="Y" value="-54" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_13" display-name="Point_13" uuid="6735455f-d375-4766-ac35-c11a104d7292" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="148" ver="5"/>
-					<designed target="Y" value="-7" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_14" display-name="Point_14" uuid="d09159a9-948a-4df1-9882-bba7af9c3f18" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="-57" ver="5"/>
-					<designed target="Y" value="-7" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_15" display-name="Point_15" uuid="d7405487-3328-475d-a39d-7cb9224fb4fe" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="-57" ver="5"/>
-					<designed target="Y" value="3" ver="5"/>
-				</object>
-				<designed target="Flip" value="0" ver="5"/>
-				<do-trace access-modifier="private" target="BrushColor" ver="5">
-					<conditional-expr>
-						<condition>
-							<![CDATA[bSmokeIn]]>
-						</condition>
-						<expr>
-							<![CDATA[Global.Colors.Smoke]]>
-						</expr>
-					</conditional-expr>
-					<default-expr>
-						<expr>
-							<![CDATA[0xff000000]]>
-						</expr>
-					</default-expr>
-				</do-trace>
-				<do-trace access-modifier="private" target="PenColor" ver="5">
-					<body>
-						<![CDATA[Global.Colors.SmokePen]]>
-					</body>
-				</do-trace>
-			</object>
-			<object access-modifier="private" name="TubeSmokeAfterFlap" display-name="TubeSmokeAfterFlap" uuid="b68d2498-37b1-4270-8bfd-0af4a8edb422" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
-				<designed target="X" value="114" ver="5"/>
-				<designed target="Y" value="420" ver="5"/>
-				<designed target="ZValue" value="0" ver="5"/>
-				<designed target="Rotation" value="0" ver="5"/>
-				<designed target="Scale" value="1" ver="5"/>
-				<designed target="Visible" value="true" ver="5"/>
-				<designed target="Opacity" value="1" ver="5"/>
-				<designed target="Enabled" value="true" ver="5"/>
-				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="120" ver="5"/>
-				<designed target="Height" value="123" ver="5"/>
-				<designed target="PenColor" value="0xff888888" ver="5"/>
-				<designed target="PenStyle" value="1" ver="5"/>
-				<designed target="PenWidth" value="2" ver="5"/>
-				<designed target="BrushColor" value="0xff000000" ver="5"/>
-				<designed target="BrushStyle" value="1" ver="5"/>
-				<object access-modifier="private" name="Point_1" display-name="Point_1" uuid="a3daca8d-ff06-49e4-b444-e4ae9797cae1" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="-3" ver="5"/>
-					<designed target="Y" value="0" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_2" display-name="Point_2" uuid="3d040f2c-63da-4526-b0a8-b1e12d7e7224" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="-3" ver="5"/>
-					<designed target="Y" value="-30" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_3" display-name="Point_3" uuid="64f347ed-988c-4cef-8538-e40c1473bc34" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="62" ver="5"/>
-					<designed target="Y" value="-30" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_4" display-name="Point_4" uuid="0bcf09d2-f499-4462-aa3c-b0abe1781094" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="62" ver="5"/>
-					<designed target="Y" value="-123" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_5" display-name="Point_5" uuid="25aee2ec-b72b-4424-b0d2-2db6ca2135c0" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="80" ver="5"/>
-					<designed target="Y" value="-123" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_6" display-name="Point_6" uuid="b424fb3c-0568-4595-aa59-e9f4de6606a2" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="80" ver="5"/>
-					<designed target="Y" value="-113" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_7" display-name="Point_7" uuid="01de8c46-9c6d-4687-80fd-90528d4ee034" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="72" ver="5"/>
-					<designed target="Y" value="-113" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_8" display-name="Point_8" uuid="28ad8584-e4bc-4c48-9467-2848649addf5" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="72" ver="5"/>
-					<designed target="Y" value="-30" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_9" display-name="Point_9" uuid="86f78543-fa14-429f-a4a1-4d128fd99f5f" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="117" ver="5"/>
-					<designed target="Y" value="-30" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_10" display-name="Point_10" uuid="e428529d-457b-4581-b606-818736ba2aff" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="117" ver="5"/>
-					<designed target="Y" value="0" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_11" display-name="Point_11" uuid="78339ca9-0a78-40be-834b-3998007668ef" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="107" ver="5"/>
-					<designed target="Y" value="0" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_12" display-name="Point_12" uuid="759e42a2-6e81-4ae5-be20-de4c159dbf00" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="107" ver="5"/>
-					<designed target="Y" value="-20" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_13" display-name="Point_13" uuid="12a647a9-5157-4065-8fd6-865d03e2a88f" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="7" ver="5"/>
-					<designed target="Y" value="-20" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_14" display-name="Point_14" uuid="e7f3f17d-f00e-45e1-9da5-46235bb87e2d" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="7" ver="5"/>
-					<designed target="Y" value="0" ver="5"/>
-				</object>
-				<object access-modifier="private" name="Point_15" display-name="Point_15" uuid="1edc488e-c89f-4cc1-a185-050d3b008ccb" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
-					<designed target="X" value="-3" ver="5"/>
-					<designed target="Y" value="0" ver="5"/>
-				</object>
-				<designed target="Flip" value="0" ver="5"/>
-				<do-trace access-modifier="private" target="BrushColor" ver="5">
-					<conditional-expr>
-						<condition>
-							<![CDATA[bSmokeOut]]>
-						</condition>
-						<expr>
-							<![CDATA[Global.Colors.Smoke]]>
-						</expr>
-					</conditional-expr>
-					<default-expr>
-						<expr>
-							<![CDATA[0xff000000]]>
-						</expr>
-					</default-expr>
-				</do-trace>
-				<do-trace access-modifier="private" target="PenColor" ver="5">
-					<body>
-						<![CDATA[Global.Colors.SmokePen]]>
-					</body>
-				</do-trace>
-			</object>
-			<object access-modifier="private" name="DamperA" display-name="DamperA" uuid="e3e8983d-6842-40c1-9890-180b4c08304e" base-type="DamperWithSettings" base-type-id="4cc80454-f0cf-4879-8e38-2c16930c7fae" ver="5">
-				<designed target="X" value="113" ver="5"/>
-				<designed target="Y" value="420" ver="5"/>
-				<designed target="Rotation" value="0" ver="5"/>
-				<init target="step" ver="5" value="1"/>
-				<init target="initPathForGraph" ver="5" value=""/>
-				<init target="initPath" ver="5" value="DamperA"/>
-				<init target="initApSource" ver="5" ref="ApSource"/>
-				<do-trace access-modifier="private" target="Color" ver="5">
-					<body>
-						<![CDATA[Global.Colors.Smoke]]>
-					</body>
-				</do-trace>
-				<do-trace access-modifier="private" target="ColorPen" ver="5">
-					<body>
-						<![CDATA[Global.Colors.SmokePen]]>
-					</body>
-				</do-trace>
-			</object>
-			<object access-modifier="private" name="DamperB" display-name="DamperB" uuid="7e785070-6cf6-4956-bfc6-929028efbf41" base-type="DamperWithSettings" base-type-id="4cc80454-f0cf-4879-8e38-2c16930c7fae" ver="5">
-				<designed target="X" value="223" ver="5"/>
-				<designed target="Y" value="420" ver="5"/>
-				<designed target="Rotation" value="0" ver="5"/>
-				<init target="step" ver="5" value="1"/>
-				<init target="initPathForGraph" ver="5" value=""/>
-				<init target="initApSource" ver="5" ref="ApSource"/>
-				<init target="initPath" ver="5" value="DamperB"/>
-				<do-trace access-modifier="private" target="Color" ver="5">
-					<body>
-						<![CDATA[Global.Colors.Smoke]]>
-					</body>
-				</do-trace>
-				<do-trace access-modifier="private" target="ColorPen" ver="5">
-					<body>
-						<![CDATA[Global.Colors.SmokePen]]>
-					</body>
-				</do-trace>
-			</object>
-			<object access-modifier="private" name="PVacSmoke_1" display-name="PVacSmoke_1" uuid="5dbca9f3-c583-45c5-9ba6-6b59fc273a89" base-type="SensFromSensDouble" base-type-id="6ab9fadb-a7ab-4dd8-b771-29b146fbb3b6" ver="5">
-				<designed target="X" value="70" ver="5"/>
-				<designed target="Y" value="493" ver="5"/>
-				<designed target="Rotation" value="0" ver="5"/>
-				<init target="initApSource" ver="5" ref="ApSource"/>
-				<init target="initPath" ver="5" value="PVac"/>
-				<designed target="Scale" value="2" ver="5"/>
-				<do-trace access-modifier="private" target="Color" ver="5">
-					<body>
-						<![CDATA[Global.Colors.Smoke]]>
-					</body>
-				</do-trace>
-				<init target="refProtH" ver="5" ref="unit.Alarm.Prots.PVacH"/>
-				<init target="refWarnH" ver="5" ref="unit.Alarm.Warnings.PVacH"/>
-			</object>
-			<object access-modifier="private" name="O2Smoke" display-name="O2Smoke" uuid="3b029eaf-6cde-46e8-9eb0-0eec4cb8f615" base-type="Sens" base-type-id="bda7de48-3eeb-48b5-8968-c64cf04eb418" ver="5">
-				<designed target="X" value="70" ver="5"/>
-				<designed target="Y" value="360" ver="5"/>
-				<designed target="Rotation" value="0" ver="5"/>
-				<init target="initApSource" ver="5" ref="ApSource"/>
-				<init target="initPath" ver="5" value="O2"/>
-				<designed target="Scale" value="2" ver="5"/>
-				<do-trace access-modifier="private" target="Color" ver="5">
-					<body>
-						<![CDATA[Global.Colors.Smoke]]>
-					</body>
-				</do-trace>
-			</object>
-			<object access-modifier="private" name="TSmoke" display-name="TSmoke" uuid="501accb6-5eff-4035-bc27-30182ac844ab" base-type="Sens" base-type-id="bda7de48-3eeb-48b5-8968-c64cf04eb418" ver="5">
-				<designed target="X" value="70" ver="5"/>
-				<designed target="Y" value="320" ver="5"/>
-				<designed target="Rotation" value="0" ver="5"/>
-				<init target="initApSource" ver="5" ref="ApSource"/>
-				<init target="initPath" ver="5" value="T"/>
-				<designed target="Scale" value="2" ver="5"/>
-				<do-trace access-modifier="private" target="Color" ver="5">
-					<body>
-						<![CDATA[Global.Colors.Smoke]]>
-					</body>
-				</do-trace>
-			</object>
-			<object access-modifier="private" name="Pipe" display-name="Pipe" uuid="fc3fb3a4-e68d-410f-8327-674f65da4428" base-type="Pipe" base-type-id="ba0d9c85-7751-4117-ab7b-4b140f9c8af8" ver="5">
-				<designed target="X" value="200" ver="5"/>
-				<designed target="Y" value="200" ver="5"/>
-				<designed target="Rotation" value="0" ver="5"/>
-			</object>
-			<object access-modifier="private" name="ImgSmoke" display-name="ImgSmoke" uuid="0db7fc49-5f9c-494a-9673-c5f3a34ea56e" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="5">
-				<designed target="X" value="110" ver="5"/>
-				<designed target="Y" value="0" ver="5"/>
-				<designed target="ZValue" value="0" ver="5"/>
-				<designed target="Rotation" value="0" ver="5"/>
-				<designed target="Scale" value="1" ver="5"/>
-				<designed target="Visible" value="false" ver="5"/>
-				<designed target="Opacity" value="1" ver="5"/>
-				<designed target="Enabled" value="true" ver="5"/>
-				<designed target="Tooltip" value="" ver="5"/>
-				<designed target="Width" value="200" ver="5"/>
-				<designed target="Height" value="200" ver="5"/>
-				<designed target="PenColor" value="4278190080" ver="5"/>
-				<designed target="PenStyle" value="0" ver="5"/>
-				<designed target="PenWidth" value="1" ver="5"/>
-				<designed target="ImageFile" value="smoke.gif" ver="5"/>
-				<designed target="Active" value="true" ver="5"/>
-				<designed target="CurrentFrameNumber" value="0" ver="5"/>
-				<designed target="Speed" value="1" ver="5"/>
-				<do-trace access-modifier="private" target="Visible" ver="5">
-					<body>
-						<![CDATA[Global.bAnyFinal]]>
-					</body>
-				</do-trace>
-				<designed target="Flip" value="0" ver="5"/>
-			</object>
-			<object access-modifier="private" name="ApSource" display-name="ApSource" uuid="a892fe1e-5b98-4e49-82ff-5f10a6fba3a9" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
-				<designed target="Active" value="false" ver="5"/>
-				<designed target="ReAdvise" value="0" ver="5"/>
-				<init target="ParentSource" ver="5" ref="unit.Connections.AppSource"/>
-				<designed target="Location" value="" ver="5"/>
-				<designed target="Port" value="4388" ver="5"/>
-				<designed target="HistoryPort" value="4950" ver="5"/>
-				<designed target="Path" value="Smoke" ver="5"/>
-				<designed target="ClientDisplayName" value="HMI" ver="5"/>
-				<designed target="ClientId" value="HMI" ver="5"/>
-			</object>
-			<designed target="Flip" value="0" ver="5"/>
-			<object access-modifier="private" name="bSmokeIn" display-name="bSmokeIn" uuid="b6277062-8bf3-480f-a856-af2c68cc6901" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
-				<init target="Path" ver="5" value="TubeFilling.bSmokeIn"/>
-				<init target="Source" ver="5" ref="ApSource"/>
-			</object>
-			<object access-modifier="private" name="bSmokeOut" display-name="bSmokeOut" uuid="7b3217a9-5a59-4bae-b6bc-fcfa59334716" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
-				<init target="Path" ver="5" value="TubeFilling.bSmokeOut"/>
-				<init target="Source" ver="5" ref="ApSource"/>
-			</object>
-			<object access-modifier="private" name="bSmokeOutA" display-name="bSmokeOutA" uuid="b593364b-a262-4b40-ab2b-e353c06fc810" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
-				<init target="Path" ver="5" value="TubeFilling.bSmokeOutA"/>
-				<init target="Source" ver="5" ref="ApSource"/>
-			</object>
-			<object access-modifier="private" name="bSmokeOutB" display-name="bSmokeOutB" uuid="86f9f842-db47-4334-bb64-144550f76913" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="5">
-				<init target="Path" ver="5" value="TubeFilling.bSmokeOutB"/>
-				<init target="Source" ver="5" ref="ApSource"/>
-			</object>
-			<designed target="RoundingRadius" value="0" ver="5"/>
-			<object access-modifier="private" name="ColorPen" display-name="ColorPen" uuid="f2a258f0-e912-4ce8-abc7-0dc1f771002d" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5" description="" cardinal="1"/>
-			<object access-modifier="private" name="ColorMain" display-name="ColorMain" uuid="360462e9-72ef-4f77-b866-5c80bb1ac72f" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5" description="" cardinal="1"/>
-			<init target="ColorPen" ver="5" ref="unit.Global.Colors.SmokePen"/>
-			<init target="ColorMain" ver="5" ref="unit.Global.Colors.Smoke"/>
-			<object access-modifier="private" name="PVacSmoke_2" display-name="PVacSmoke_2" uuid="86d27a5e-ccb1-4e3c-a11f-ce576f7db0c5" base-type="SensFromSensDouble" base-type-id="6ab9fadb-a7ab-4dd8-b771-29b146fbb3b6" ver="5">
-				<designed target="X" value="70" ver="5"/>
-				<designed target="Y" value="551" ver="5"/>
-				<designed target="Rotation" value="0" ver="5"/>
-				<init target="initApSource" ver="5" ref="ApSource"/>
-				<init target="initPath" ver="5" value="PVac"/>
-				<designed target="Scale" value="2" ver="5"/>
-				<do-trace access-modifier="private" target="Color" ver="5">
-					<body>
-						<![CDATA[Global.Colors.Smoke]]>
-					</body>
-				</do-trace>
-				<init target="refProtH" ver="5" ref="unit.Alarm.Prots.PVacH"/>
-				<init target="refWarnH" ver="5" ref="unit.Alarm.Warnings.PVacH"/>
 			</object>
 		</object>
 		<object access-modifier="private" name="Gas" display-name="Gas" uuid="54b7cfca-2b19-4a09-9133-f243b33c5e8a" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
@@ -1893,6 +1894,7 @@
 				<designed target="Rotation" value="0" ver="5"/>
 				<init target="InitPath" ver="5" value="BurnWork1"/>
 				<init target="InitApSource" ver="5" ref="parent.ApSource"/>
+				<init target="refMainForm" ver="5" ref="linkMain"/>
 			</object>
 			<object access-modifier="private" name="burn2" display-name="burn2" uuid="df7e1f94-541b-45bd-a274-bbd064798643" base-type="BurnWorkBot" base-type-id="786ccf73-d011-47bb-b5ef-884fac70c28a" ver="5">
 				<designed target="X" value="400" ver="5"/>
@@ -1900,6 +1902,7 @@
 				<designed target="Rotation" value="0" ver="5"/>
 				<init target="InitPath" ver="5" value="BurnWork2"/>
 				<init target="InitApSource" ver="5" ref="parent.ApSource"/>
+				<init target="refMainForm" ver="5" ref="linkMain"/>
 			</object>
 			<object access-modifier="private" name="burn3" display-name="burn3" uuid="810369f5-a14c-4ece-b33f-93e4c16a811e" base-type="BurnMainTop" base-type-id="2d753cdc-6d74-4706-b2f6-a17194a83004" ver="5">
 				<designed target="X" value="250" ver="5"/>
@@ -1907,6 +1910,7 @@
 				<designed target="Rotation" value="0" ver="5"/>
 				<init target="InitPath" ver="5" value="BurnMain"/>
 				<init target="InitApSource" ver="5" ref="parent.ApSource"/>
+				<init target="refMainForm" ver="5" ref="linkMain"/>
 			</object>
 			<object access-modifier="private" name="burn4" display-name="burn4" uuid="e5ef1884-08e3-4a2c-a583-32e1119c9d73" base-type="BurnWorkBot" base-type-id="786ccf73-d011-47bb-b5ef-884fac70c28a" ver="5">
 				<designed target="X" value="100" ver="5"/>
@@ -1914,6 +1918,7 @@
 				<designed target="Rotation" value="0" ver="5"/>
 				<init target="InitPath" ver="5" value="BurnWork3"/>
 				<init target="InitApSource" ver="5" ref="parent.ApSource"/>
+				<init target="refMainForm" ver="5" ref="linkMain"/>
 			</object>
 			<object access-modifier="private" name="ApSource" display-name="ApSource" uuid="e3ad9369-36ad-4511-9680-196b481efc7e" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
 				<designed target="Active" value="false" ver="5"/>
@@ -1962,6 +1967,7 @@
 				<designed target="Rotation" value="0" ver="5"/>
 				<init target="InitApSource" ver="5" ref="ApSource"/>
 				<init target="InitPath" ver="5" value="BurnWork1"/>
+				<init target="refMainForm" ver="5" ref="linkMain"/>
 			</object>
 			<object access-modifier="private" name="burn2" display-name="burn2" uuid="4bef125c-902b-41b9-bfe2-0fcbdaabf783" base-type="BurnMainTop" base-type-id="2d753cdc-6d74-4706-b2f6-a17194a83004" ver="5">
 				<designed target="X" value="400" ver="5"/>
@@ -1969,6 +1975,7 @@
 				<designed target="Rotation" value="0" ver="5"/>
 				<init target="InitApSource" ver="5" ref="ApSource"/>
 				<init target="InitPath" ver="5" value="BurnMain"/>
+				<init target="refMainForm" ver="5" ref="linkMain"/>
 			</object>
 			<object access-modifier="private" name="burn3" display-name="burn3" uuid="1465a421-2fd7-494e-8689-9aa3244c5a37" base-type="BurnWorkBot" base-type-id="786ccf73-d011-47bb-b5ef-884fac70c28a" ver="5">
 				<designed target="X" value="250" ver="5"/>
@@ -1976,6 +1983,7 @@
 				<designed target="Rotation" value="0" ver="5"/>
 				<init target="InitApSource" ver="5" ref="ApSource"/>
 				<init target="InitPath" ver="5" value="BurnWork2"/>
+				<init target="refMainForm" ver="5" ref="linkMain"/>
 			</object>
 			<object access-modifier="private" name="burn4" display-name="burn4" uuid="093074c9-9034-42d8-a7e5-c45620c6e057" base-type="BurnWorkBot" base-type-id="786ccf73-d011-47bb-b5ef-884fac70c28a" ver="5">
 				<designed target="X" value="100" ver="5"/>
@@ -1983,6 +1991,7 @@
 				<designed target="Rotation" value="0" ver="5"/>
 				<init target="InitApSource" ver="5" ref="ApSource"/>
 				<init target="InitPath" ver="5" value="BurnWork3"/>
+				<init target="refMainForm" ver="5" ref="linkMain"/>
 			</object>
 			<object access-modifier="private" name="ApSource" display-name="ApSource" uuid="85a0bb47-367e-436c-911a-6f143280c068" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
 				<designed target="Active" value="false" ver="5"/>
@@ -2031,6 +2040,7 @@
 				<designed target="Rotation" value="0" ver="5"/>
 				<init target="InitApSource" ver="5" ref="ApSource"/>
 				<init target="InitPath" ver="5" value="BurnWork1"/>
+				<init target="refMainForm" ver="5" ref="linkMain"/>
 			</object>
 			<object access-modifier="private" name="burn2" display-name="burn2" uuid="389b3acb-188f-45e7-b494-236ace677446" base-type="BurnWorkTop" base-type-id="db217da3-5b19-4c08-9357-c27589892127" ver="5">
 				<designed target="X" value="400" ver="5"/>
@@ -2038,6 +2048,7 @@
 				<designed target="Rotation" value="0" ver="5"/>
 				<init target="InitApSource" ver="5" ref="ApSource"/>
 				<init target="InitPath" ver="5" value="BurnWork2"/>
+				<init target="refMainForm" ver="5" ref="linkMain"/>
 			</object>
 			<object access-modifier="private" name="burn3" display-name="burn3" uuid="ef55a776-60ed-4105-8fbc-07da3c8afe6c" base-type="BurnMainTop" base-type-id="69e88e0e-b526-467d-8b2d-07664dfd9b97" ver="5">
 				<designed target="X" value="250" ver="5"/>
@@ -2045,6 +2056,7 @@
 				<designed target="Rotation" value="0" ver="5"/>
 				<init target="InitApSource" ver="5" ref="ApSource"/>
 				<init target="InitPath" ver="5" value="BurnMain"/>
+				<init target="refMainForm" ver="5" ref="linkMain"/>
 			</object>
 			<object access-modifier="private" name="burn4" display-name="burn4" uuid="5622dff0-9489-4d7c-9219-0b9628bb3071" base-type="BurnWorkTop" base-type-id="db217da3-5b19-4c08-9357-c27589892127" ver="5">
 				<designed target="X" value="100" ver="5"/>
@@ -2052,6 +2064,7 @@
 				<designed target="Rotation" value="0" ver="5"/>
 				<init target="InitApSource" ver="5" ref="ApSource"/>
 				<init target="InitPath" ver="5" value="BurnWork3"/>
+				<init target="refMainForm" ver="5" ref="linkMain"/>
 			</object>
 			<object access-modifier="private" name="ApSource" display-name="ApSource" uuid="29d2f84a-7916-4cae-ae01-8e42f40e5e49" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
 				<designed target="Active" value="true" ver="5"/>
@@ -2100,6 +2113,7 @@
 				<designed target="Rotation" value="0" ver="5"/>
 				<init target="InitApSource" ver="5" ref="ApSource"/>
 				<init target="InitPath" ver="5" value="BurnWork1"/>
+				<init target="refMainForm" ver="5" ref="linkMain"/>
 			</object>
 			<object access-modifier="private" name="burn2" display-name="burn2" uuid="1931437f-9988-441e-99c9-bb727842f3ce" base-type="BurnMainTop" base-type-id="69e88e0e-b526-467d-8b2d-07664dfd9b97" ver="5">
 				<designed target="X" value="400" ver="5"/>
@@ -2107,6 +2121,7 @@
 				<designed target="Rotation" value="0" ver="5"/>
 				<init target="InitApSource" ver="5" ref="ApSource"/>
 				<init target="InitPath" ver="5" value="BurnMain"/>
+				<init target="refMainForm" ver="5" ref="linkMain"/>
 			</object>
 			<object access-modifier="private" name="burn3" display-name="burn3" uuid="297eb33b-3af0-4247-bf1a-49937bd827fc" base-type="BurnWorkTop" base-type-id="db217da3-5b19-4c08-9357-c27589892127" ver="5">
 				<designed target="X" value="250" ver="5"/>
@@ -2114,6 +2129,7 @@
 				<designed target="Rotation" value="0" ver="5"/>
 				<init target="InitApSource" ver="5" ref="ApSource"/>
 				<init target="InitPath" ver="5" value="BurnWork2"/>
+				<init target="refMainForm" ver="5" ref="linkMain"/>
 			</object>
 			<object access-modifier="private" name="burn4" display-name="burn4" uuid="dae5a0e6-b872-4c52-96a6-2f039510a01e" base-type="BurnWorkTop" base-type-id="db217da3-5b19-4c08-9357-c27589892127" ver="5">
 				<designed target="X" value="100" ver="5"/>
@@ -2121,6 +2137,7 @@
 				<designed target="Rotation" value="0" ver="5"/>
 				<init target="InitApSource" ver="5" ref="ApSource"/>
 				<init target="InitPath" ver="5" value="BurnWork3"/>
+				<init target="refMainForm" ver="5" ref="linkMain"/>
 			</object>
 			<object access-modifier="private" name="ApSource" display-name="ApSource" uuid="9d4dd6ae-00f9-4605-91a4-df6c51e37bf2" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5">
 				<designed target="Active" value="false" ver="5"/>
@@ -2144,7 +2161,7 @@
 		<designed target="Flip" value="0" ver="5"/>
 		<object access-modifier="private" name="BurnSequence" display-name="BurnSequence" uuid="523743ce-0196-4ae6-9c98-84a05a0d770a" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
 			<designed target="X" value="0" ver="5"/>
-			<designed target="Y" value="0" ver="5"/>
+			<designed target="Y" value="30" ver="5"/>
 			<designed target="ZValue" value="0" ver="5"/>
 			<designed target="Rotation" value="0" ver="5"/>
 			<designed target="Scale" value="1" ver="5"/>
@@ -2154,7 +2171,7 @@
 			<designed target="Enabled" value="true" ver="5"/>
 			<designed target="Tooltip" value="" ver="5"/>
 			<designed target="Width" value="85" ver="5"/>
-			<designed target="Height" value="600" ver="5"/>
+			<designed target="Height" value="575" ver="5"/>
 			<designed target="PenColor" value="4278190080" ver="5"/>
 			<designed target="PenStyle" value="0" ver="5"/>
 			<designed target="PenWidth" value="1" ver="5"/>
@@ -2295,8 +2312,8 @@ rectQueueNumber[me.Index].txtFinalNumber = me.ValueAsString;]]>
 					<body kind="om">
 						<![CDATA[for (i : int1 = 0; i<16; i+=1)
 {
-	rectQueueNumber[i].Y =i*rectQueueNumber.Height;
-	rectFinalNumber[i].Y =i*rectFinalNumber.Height;
+	rectQueueNumber[i].Y =i*rectQueueNumber.Height + (i/4*5);
+	rectFinalNumber[i].Y =i*rectFinalNumber.Height + (i/4*5);
 }]]>
 					</body>
 				</do-on>
@@ -2430,7 +2447,7 @@ OpenSteps.Invoke();]]>
 				</object>
 				<do-trace access-modifier="private" target="Visible" ver="5">
 					<body>
-						<![CDATA[!Global.isFGUOpened]]>
+						<![CDATA[!Global.isFGUOpened && Security.AllowControl.Value]]>
 					</body>
 				</do-trace>
 			</object>
@@ -2446,7 +2463,7 @@ OpenSteps.Invoke();]]>
 			</do-on>
 			<do-trace access-modifier="private" target="Enabled" ver="5">
 				<body>
-					<![CDATA[!Global.isFGUOpened]]>
+					<![CDATA[!Global.isFGUOpened && Security.AllowControl.Value]]>
 				</body>
 			</do-trace>
 		</object>
@@ -2476,5 +2493,11 @@ OpenSteps.Invoke();]]>
 		</object>
 		<designed target="Flip" value="0" ver="5"/>
 	</object>
+	<param access-modifier="private" name="linkMain" display-name="linkMain" uuid="159c9f8c-8d55-4ff7-bdf9-0cd3186a1cb5" base-type="MainForm" base-type-id="c9cad641-8960-46db-9523-43c92084d4a1" base-const="true" base-ref="true" ver="5"/>
+	<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="Closed">
+		<body kind="om">
+			<![CDATA[refCmd.Enabled = true;]]>
+		</body>
+	</do-on>
 </type>
 

@@ -230,6 +230,7 @@
 		<init target="Цвет заполнения" ver="5" value="0xff00ff00"/>
 		<init target="Цвет фона" ver="5" value="0xffb5adad"/>
 		<init target="fCurrent" ver="5" value="50"/>
+		<init target="Visible" ver="5" ref="HavePositSens"/>
 	</object>
 	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
 		<body kind="om">
@@ -259,7 +260,7 @@ OpenModuleWindow.Invoke();]]>
 		<designed target="InvokeTrigger" value="false" ver="5"/>
 		<do-trace access-modifier="private" target="Enabled" ver="5">
 			<body>
-				<![CDATA[!isOpenedModule]]>
+				<![CDATA[!isOpenedModule && Security.AllowControl.Value && !isReg]]>
 			</body>
 		</do-trace>
 		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
@@ -286,5 +287,8 @@ OpenModuleWindow.Invoke();]]>
 			</expr>
 		</default-expr>
 	</do-trace>
+	<object access-modifier="private" name="isReg" display-name="isReg" uuid="2e021472-ef79-45a7-a63c-cf41c240a1f7" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description=""/>
+	<init target="isReg" ver="5" value="false"/>
+	<init target="HavePositSens" ver="5" value="true"/>
 </type>
 
