@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Astra.Domain.Agent Name="NDA">
+  <EntryPointNetAgent Name="AstraRegul" Address="127.0.0.1" Port="1010" />
+  <InstalledComponents>
+    <Astra.Server Name="InstalledServer" ServiceName="Astra.Server" DefaultActivation="1" />
+    <Astra.Server Name="InstalledAccessPoint" ServiceName="Astra.AccessPoint" DefaultActivation="1" />
+  </InstalledComponents>
+  <Domain>
+    <WorkstationRoles>
+      <WorkstationRole Name="THIN_CLIENT">
+        <KnownWorkstations />
+      </WorkstationRole>
+    </WorkstationRoles>
+    <ConfigurationCache Path="c:\DomainStorage\cache" />
+  </Domain>
+  <Server>
+    <Components StoragePath="c:\DomainStorage\cache\server">
+      <Component InstalledName="InstalledServer" Name="AstraServer" StorageLimitSize="0" StorageLimitNum="0" />
+      <Component InstalledName="InstalledAccessPoint" Name="AccessPoint" StorageLimitSize="0" StorageLimitNum="0" />
+    </Components>
+  </Server>
+  <Options LoggerLevel="2" />
+</Astra.Domain.Agent>

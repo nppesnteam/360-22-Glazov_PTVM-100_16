@@ -2,7 +2,7 @@
 <omx xmlns="system" migration="29" xmlns:dp="automation.deployment" xmlns:ct="automation.control" xmlns:r="automation.reference" xmlns:a="automation" xmlns:opc="automation.opc" xmlns:eth="automation.ethernet" xmlns:srv="server" xmlns:snmp="automation.snmp">
   <link-unit name="System" uuid="b10bc0ab-5f52-4136-8429-339a5a11f156" target="Om.System" />
   <link-unit name="Server" uuid="1f7f6b33-22c3-4acc-ac5a-b1af6e38b944" target="Om.Server" />
-  <dp:domain name="AstraRegul" uuid="8b7f931d-0c52-490c-91b2-3b74e8d3d377" address="AstraRegul">
+  <dp:domain name="AstraRegul" uuid="8b7f931d-0c52-490c-91b2-3b74e8d3d377" address="Darknesss">
     <eth:ethernet-net name="MOXA-1" uuid="4d997147-f9c5-4333-b26f-9bf62f5547bb" />
     <dp:computer name="PLC" uuid="8a9720b5-cc7b-4275-8be1-5cff550a35f2">
       <eth:ethernet-adapter name="EthernetAdapter1" address="192.168.1.211" uuid="45256400-eb18-4ee3-b611-8e62720bd162" network="MOXA-1" />
@@ -4882,7 +4882,7 @@
                 <attribute type="unit.System.Attributes.InitialValue" value="ПЗК-2 гор.7 закрыт" />
               </ct:parameter>
               <ct:parameter name="CH14" type="string" uuid="0eabfa92-7670-4a6a-ae85-7332ea0ac844">
-                <attribute type="unit.System.Attributes.InitialValue" value="Резерв" />
+                <attribute type="unit.System.Attributes.InitialValue" value="Фак гор. гор. 5(ФД)" />
               </ct:parameter>
               <ct:parameter name="CH15" type="string" uuid="19578d3c-52da-4166-ba18-96b279a02286">
                 <attribute type="unit.System.Attributes.InitialValue" value="Резерв" />
@@ -4947,7 +4947,7 @@
                 <attribute type="unit.System.Attributes.InitialValue" value="Фак. зап. гор. 5" />
               </ct:parameter>
               <ct:parameter name="CH2" type="string" uuid="b4a8384d-9550-4a02-990a-9d545f58c3dc">
-                <attribute type="unit.System.Attributes.InitialValue" value="Фак. гор. гор. 5" />
+                <attribute type="unit.System.Attributes.InitialValue" value="Фак. гор. гор. 5(КЭ)" />
               </ct:parameter>
               <ct:parameter name="CH3" type="string" uuid="03c81140-3f36-4077-9a8c-b6323c2f3c75">
                 <attribute type="unit.System.Attributes.InitialValue" value="Вент. работа гор. 1" />
@@ -5394,7 +5394,7 @@
                 <attribute type="unit.System.Attributes.InitialValue" value="ПЗК-2 гор.8 закрыт" />
               </ct:parameter>
               <ct:parameter name="CH14" type="string" uuid="19d0fb7c-e90f-4924-ba74-25dcc8b3c4c4">
-                <attribute type="unit.System.Attributes.InitialValue" value="Резерв" />
+                <attribute type="unit.System.Attributes.InitialValue" value="Фак гор. гор. 6(ФД)" />
               </ct:parameter>
               <ct:parameter name="CH15" type="string" uuid="0a8bd70f-44b0-44a9-81c5-b318d2db7822">
                 <attribute type="unit.System.Attributes.InitialValue" value="Резерв" />
@@ -5459,7 +5459,7 @@
                 <attribute type="unit.System.Attributes.InitialValue" value="Фак. зап. гор.6" />
               </ct:parameter>
               <ct:parameter name="CH2" type="string" uuid="6b08c3bc-d709-44af-a7d8-95eeff46e280">
-                <attribute type="unit.System.Attributes.InitialValue" value="Фак. гор. гор.6" />
+                <attribute type="unit.System.Attributes.InitialValue" value="Фак. гор. гор.6(КЭ)" />
               </ct:parameter>
               <ct:parameter name="CH3" type="string" uuid="c077939d-0710-40ca-84be-1df7245026eb">
                 <attribute type="unit.System.Attributes.InitialValue" value="Вент. работа гор.2" />
@@ -5906,7 +5906,7 @@
                 <attribute type="unit.System.Attributes.InitialValue" value="ПЗК-2 гор.15 закрыт" />
               </ct:parameter>
               <ct:parameter name="CH14" type="string" uuid="81bc5409-5094-4466-8b98-b4c5cb7941b4">
-                <attribute type="unit.System.Attributes.InitialValue" value="Резерв" />
+                <attribute type="unit.System.Attributes.InitialValue" value="Фак гор. гор. 11(ФД)" />
               </ct:parameter>
               <ct:parameter name="CH15" type="string" uuid="30f1e1b0-d8c0-4d79-88a2-65951871584e">
                 <attribute type="unit.System.Attributes.InitialValue" value="Резерв" />
@@ -5971,7 +5971,7 @@
                 <attribute type="unit.System.Attributes.InitialValue" value="Фак. зап. гор.11" />
               </ct:parameter>
               <ct:parameter name="CH2" type="string" uuid="d3e0f492-eded-47c8-8e26-d5306d13cb91">
-                <attribute type="unit.System.Attributes.InitialValue" value="Фак. гор. гор.11" />
+                <attribute type="unit.System.Attributes.InitialValue" value="Фак. гор. гор.11(КЭ)" />
               </ct:parameter>
               <ct:parameter name="CH3" type="string" uuid="90350802-7d41-4cad-be8e-ea7f72769662">
                 <attribute type="unit.System.Attributes.InitialValue" value="Вент. работа гор.9" />
@@ -6418,7 +6418,7 @@
                 <attribute type="unit.System.Attributes.InitialValue" value="ПЗК-2 гор.16 закрыт" />
               </ct:parameter>
               <ct:parameter name="CH14" type="string" uuid="3db187eb-286c-42f2-bbab-1ccffdda2a73">
-                <attribute type="unit.System.Attributes.InitialValue" value="Резерв" />
+                <attribute type="unit.System.Attributes.InitialValue" value="Фак гор. гор.12(ФД)" />
               </ct:parameter>
               <ct:parameter name="CH15" type="string" uuid="62e7aa5d-50f0-48ae-9cc9-73233bd870f8">
                 <attribute type="unit.System.Attributes.InitialValue" value="Резерв" />
@@ -6483,7 +6483,7 @@
                 <attribute type="unit.System.Attributes.InitialValue" value="Фак. зап. гор.12" />
               </ct:parameter>
               <ct:parameter name="CH2" type="string" uuid="d4682320-ad03-4666-b16c-14c372883389">
-                <attribute type="unit.System.Attributes.InitialValue" value="Фак. гор. гор.12" />
+                <attribute type="unit.System.Attributes.InitialValue" value="Фак. гор. гор.12(КЭ)" />
               </ct:parameter>
               <ct:parameter name="CH3" type="string" uuid="29826a32-2af0-438b-98fb-9f5b1ee53a76">
                 <attribute type="unit.System.Attributes.InitialValue" value="Вент. работа гор.10" />
@@ -7145,8 +7145,7 @@
       </dp:external-runtime>
     </dp:computer>
     <eth:ethernet-net name="MOXA-2" uuid="6945cc8d-6a1a-4470-bc7a-38ece276f274" />
-    <eth:ethernet-net name="Virtual" uuid="63db8e2c-f8a6-44e3-83cd-044c276aa92d" />
-    <dp:domain-node name="STATION" uuid="95c811e0-c4e1-44d4-80aa-f899c726c364">
+    <dp:domain-node name="Darknesss" uuid="95c811e0-c4e1-44d4-80aa-f899c726c364">
       <eth:ethernet-adapter name="EthernetAdapter" uuid="c8260c9a-fcda-48b8-aeb6-fc1bbc62214b" address="192.168.1.138" network="MOXA-1" />
       <srv:io-server name="AstraServer" uuid="4932547b-78f9-493f-989a-ef82b02448f7">
         <srv:opcda-server name="DaServer" uuid="7588c24e-775f-40aa-92f4-281563095f07" />
@@ -7171,12 +7170,12 @@
           <srv:agent-config agent="ARM-1.SNMP.SnmpAgent" />
         </srv:snmp-manager>
         <srv:history-module name="HistoryModule" uuid="a0b838f5-bd33-48db-ae74-72b6af03b7d3">
-          <srv:historian-database-link database="AstraRegul.STATION.Historian.DB_EVENTS" queue-path="C:\AstraRegul\Astra.Historian\Queues" />
-          <srv:historian-database-link database="AstraRegul.STATION.Historian.DB_HISTORY" queue-path="C:\AstraRegul\Astra.Historian\Queues" />
-          <srv:historian-database-link database="AstraRegul.STATION.Historian.DB_IMIT" queue-path="C:\AstraRegul\Astra.Historian\Queues" />
+          <srv:historian-database-link database="AstraRegul.Darknesss.Historian.DB_EVENTS" queue-path="C:\AstraRegul\Astra.Historian\Queues" />
+          <srv:historian-database-link database="AstraRegul.Darknesss.Historian.DB_HISTORY" queue-path="C:\AstraRegul\Astra.Historian\Queues" />
+          <srv:historian-database-link database="AstraRegul.Darknesss.Historian.DB_IMIT" queue-path="C:\AstraRegul\Astra.Historian\Queues" />
         </srv:history-module>
         <srv:netdiag-module name="NetDiagModule" uuid="aefea554-e3b0-4fcf-8679-43f630c46c96">
-          <srv:network-node-binding node="STATION" />
+          <srv:network-node-binding node="Darknesss" />
           <srv:network-node-binding node="PLC_R" />
           <srv:network-node-binding node="PLC" />
           <srv:network-node-binding node="ARM-2" />
@@ -7191,7 +7190,7 @@
       </srv:historian>
       <eth:ethernet-adapter name="EthernetAdapter2" address="192.168.2.138" network="MOXA-2" uuid="fb68a3fb-9b5e-46ae-b4cf-fab8fab4409a" />
     </dp:domain-node>
-    <dp:domain-node name="ARM-1" address="Server1" uuid="4cf2bf48-717d-4dd9-80da-367638684fc7">
+    <dp:domain-node name="ARM-1" address="ARM-1" uuid="4cf2bf48-717d-4dd9-80da-367638684fc7">
       <attribute type="unit.System.Attributes.Comment" value="Основной сервер" />
       <srv:io-server name="AstraServer" uuid="ffd30a71-413f-4205-82e4-614d73881504">
         <srv:tcp-server name="TcpServer" history-port="4950" uuid="ddd47f5b-0bac-4cdb-b9b1-40f49e12534d" />
@@ -7211,7 +7210,7 @@
           <srv:agent-config agent="ARM-2.SNMP.SnmpAgent" />
         </srv:snmp-manager>
         <srv:opcua-client name="OpcUaClient" application-mame="REGLABOpcUaClient" uuid="4c9f0fa0-070d-4ba4-a900-dcc495780f70">
-          <srv:opcua-server-link server="PLC.Runtime.OpcUaServer" update-rate="500" security-mode="sign-and-encript" authorization-mode="LoginPassword" login="AstraRegul" control-signal-namespace="urn:ProsoftSystems:regul_ua_server:iec_data" control-signal-id="Application.GVL_RED.bCanControl" control-signal-value="1" sampling-interval="500" can-suspended-server-be-active="true" max-nodes-per-read="0" max-nodes-per-write="0" max-nodes-per-browse="0" max-monitored-items-per-call="0" write-only-to-active-server="true">
+          <srv:opcua-server-link server="PLC.Runtime.OpcUaServer" update-rate="500" security-mode="sign-and-encript" authorization-mode="LoginPassword" login="AstraRegul" control-signal-namespace="urn:ProsoftSystems:regul_ua_server:iec_data" control-signal-id="Application.GVL_RED.bCanControl" control-signal-value="1" sampling-interval="500" can-suspended-server-be-active="false" write-only-to-active-server="true" standby-mode="close-connections">
             <property name="password">KXnmBRJIF18C+o3t1fBBCirSIfqy5oqVvhKaaZpU8L+IbZmdbkkxG28S00e+kZr0LlmsloQLq8b0+G+lzdIyuRMHLRkn/+3C7R4022Q/abL01oitpbOhIEKIRrEbWVqJw9bkcS6E6wYlrJXs6vZw35LbgENGHQBF4J6/HHgHFyM</property>
           </srv:opcua-server-link>
           <srv:opcua-server-link server="PLC.Diagnostics.OpcUaServer" security-mode="sign-and-encript" authorization-mode="LoginPassword" login="AstraRegul" control-signal-id="Application.GVL_DIAGN.IS_CPU_A" control-signal-namespace="urn:ProsoftSystems:regul_ua_server:iec_data" control-signal-value="1" sampling-interval="1000" can-suspended-server-be-active="true">
@@ -7221,14 +7220,12 @@
             <property name="password">oyEVCHd3ZQViyLlXbfL6m6NVKkiCW9ikcMx3XJy0I9LyOpcGQdQzXVfbP82Ikb2n8Um5u3LpGH483/hhSkPP5Ci5D8jOC5bJPiJXzuTAhKKQQed5zyyh/PeEEHBKQrgv03ZRYgOet1gtk8oWD8+pZ2Fe8LOeMO+tU6AtfkSs3Gg</property>
           </srv:opcua-server-link>
         </srv:opcua-client>
-        <srv:netdiag-module name="NetDiagModule" uuid="7bdf91cc-55c7-4ba1-a56d-ba9199a93e29" />
       </srv:io-server>
       <srv:historian name="Historian" instance="tcp:4949" uuid="e4a07b90-3127-41dd-8bb4-3e5325b3b7f4">
         <srv:historian-database name="DB_HISTORY" usage="values" alias="DB_HISTORY" uuid="35dafbc1-93eb-4d8c-9b3e-a9b6b83f5021" />
         <srv:historian-database name="DB_EVENTS" usage="events" alias="DB_EVENTS" uuid="75405de1-6d7d-4c16-97b7-11a4d9456f31" />
         <srv:historian-database name="DB_IMIT" usage="imitation" alias="DB_IMIT" uuid="fd817cfd-7cc8-4d5f-bcec-7f592ab842cc" />
       </srv:historian>
-      <eth:ethernet-adapter name="Localhost" network="Virtual" address="127.0.0.1" uuid="8a9b0978-6043-41f6-a0a1-a5c156546480" />
       <eth:ethernet-adapter name="EthernetAdapter1" network="MOXA-1" address="192.168.1.201" uuid="7e7b3392-0370-4c14-975f-105e2e325657" />
       <eth:ethernet-adapter name="EthernetAdapter2" network="MOXA-2" address="192.168.1.202" uuid="9e7423c9-f188-45b9-8ae2-8b20753182d5" />
       <dp:external-runtime name="SNMP" uuid="97d72eae-3214-4722-a9f6-4753a6d79005">
@@ -7243,16 +7240,16 @@
           <property name="trap-privkey" />
         </snmp:snmp-agent>
       </dp:external-runtime>
+      <eth:ethernet-adapter name="Local" address="127.0.0.1" uuid="14a02a67-5172-417e-9713-92a1dc0e24cb" network="LocalNetwork" />
     </dp:domain-node>
-    <dp:domain-node name="ARM-2" address="Server2" uuid="846ca1ab-cd47-4008-a6d2-87d803ae61b4">
+    <dp:domain-node name="ARM-2" address="ARM-2" uuid="846ca1ab-cd47-4008-a6d2-87d803ae61b4">
       <attribute type="unit.System.Attributes.Comment" value="Резервный сервер" />
-      <srv:redundant-server name="AstraServer" server="ARM-1.AstraServer" primary-adapter="EthernetAdapter1" reserve-adapter="EthernetAdapter2" server-primary-adapter="ARM-1.EthernetAdapter1" server-reserve-adapter="ARM-1.EthernetAdapter2" uuid="5ad29b0c-b513-4696-8e75-13a834208372" />
+      <srv:duplicate-server name="AstraServer" server="ARM-1.AstraServer" primary-adapter="EthernetAdapter1" reserve-adapter="EthernetAdapter2" server-primary-adapter="ARM-1.EthernetAdapter1" server-reserve-adapter="ARM-1.EthernetAdapter2" uuid="5ad29b0c-b513-4696-8e75-13a834208372" />
       <srv:historian name="Historian" instance="tcp:4949" uuid="c616c213-4e2f-430f-af7a-b36e7cecd6c1">
         <srv:historian-database name="DB_HISTORY" usage="values" alias="DB_HISTORY" uuid="14d061c0-9aba-4f9a-bc62-4145a49bf77e" />
         <srv:historian-database name="DB_EVENTS" usage="events" alias="DB_EVENTS" uuid="e9043d77-af73-4ec7-9b08-05bf8f057b82" />
         <srv:historian-database name="DB_IMIT" usage="imitation" alias="DB_IMIT" uuid="7d2e2d3b-e041-49eb-9afd-cac89323fce1" />
       </srv:historian>
-      <eth:ethernet-adapter name="Localhost" network="Virtual" address="127.0.0.1" uuid="f5ec1f63-3283-47ff-a4ea-6c94677f8a22" />
       <eth:ethernet-adapter name="EthernetAdapter1" network="MOXA-1" address="192.168.1.202" uuid="5563f63e-d0e0-4e25-aed9-7f0bb95dde71" />
       <eth:ethernet-adapter name="EthernetAdapter2" network="MOXA-2" address="192.168.2.202" uuid="ddf80be0-c46f-49b5-84b3-99c3ccbd2d6f" />
       <dp:external-runtime name="SNMP" uuid="27ace104-a4c1-4f6a-8f2b-60daf1d1c309">
@@ -7267,6 +7264,7 @@
           <property name="trap-privkey" />
         </snmp:snmp-agent>
       </dp:external-runtime>
+      <eth:ethernet-adapter name="Local" address="127.0.0.1" uuid="95a6b619-ef9d-4e65-9e65-486585dd4745" network="LocalNetwork" />
     </dp:domain-node>
     <dp:computer name="PLC_Virtual" uuid="d159a31e-da57-4a61-aff9-9fee6c3c6f19">
       <eth:ethernet-adapter name="EthernetAdapter1" address="192.168.1.240" network="MOXA-1" uuid="8a1bc02d-a778-4f99-a7d4-bed792e4a683" />
@@ -7525,16 +7523,7 @@
       </dp:external-runtime>
     </dp:computer>
     <eth:ethernet-net name="VirtualBox" uuid="a3d7018e-a8ff-4d81-8f71-f92ec302082c" />
-    <dp:application-object name="Ping" uuid="84556a3f-f2f1-4797-9d86-c4e752bc2525">
-      <ct:object name="Ping" uuid="7c19ace9-8750-4009-8721-19ed814b19f8">
-        <ct:object name="PLC1" base-type="Types.Ping.PLC_View" aspect="Aspects.PLC_Aspect" uuid="78256f52-f52a-4eeb-9ab0-8401fee01ffe" />
-        <ct:object name="PLC2" base-type="Types.Ping.PLC_View" aspect="Aspects.PLC_Aspect" uuid="cbc546b9-1b05-4aab-ae4b-260f56deded4" />
-        <ct:object name="ARM1" base-type="Types.Ping.PLC_View" aspect="Aspects.PLC_Aspect" uuid="eeefc028-fe90-4ed9-a26c-e0991b3be54b" />
-        <ct:object name="ARM2" base-type="Types.Ping.PLC_View" aspect="Aspects.PLC_Aspect" uuid="42c29d28-0a5b-4a4a-881a-9addeaa55af7" />
-        <ct:object name="Station" base-type="Types.Ping.PLC_View" aspect="Aspects.PLC_Aspect" uuid="67b7f026-db65-416a-b5d3-a62c8b6524fb" />
-      </ct:object>
-      <srv:netdiag-address-map name="NetDiagAddressMap" file="NetDiag.xml" uuid="7252befc-353a-46d4-8d52-12cf76f996b3" />
-    </dp:application-object>
+    <eth:ethernet-net name="LocalNetwork" uuid="c0d492eb-6fb2-4dda-b92e-d55ccc58bbff" />
   </dp:domain>
   <link-unit name="PLC" uuid="6021b6d8-5c9a-4a46-aef5-70a539193387" target="Om.PLC" />
   <namespace name="Aspects" uuid="cf848c6a-b437-4af5-8011-0895f044ac26">

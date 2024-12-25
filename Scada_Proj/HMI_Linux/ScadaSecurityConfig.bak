@@ -1,0 +1,946 @@
+{
+    "Applications": [
+        {
+            "cn": "HMI",
+            "Rights": [
+                {
+                    "type": "Boolean",
+                    "cn": "AllowAll",
+                    "description": "Разрешить всё",
+                    "units": [
+                        {
+                            "cn": "89ffa5d2-3009-489c-8491-fe1aa73813b5",
+                            "AQBoolTokenAllow": "FALSE",
+                            "AQBoolTokenDeny": "TRUE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d"
+                                },
+                                {
+                                    "AQRef": "alpha:d53379c4-af70-4fc2-9de0-c42b8175a773"
+                                }
+                            ]
+                        },
+                        {
+                            "cn": "e36b004a-586f-4084-8185-97383558139d",
+                            "AQBoolTokenAllow": "TRUE",
+                            "AQBoolTokenDeny": "FALSE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Boolean",
+                    "cn": "AllowControl",
+                    "description": "Разрешение на управление",
+                    "units": [
+                        {
+                            "cn": "0e12dbdb-1fdc-4408-a518-9cbcfe7a982f",
+                            "AQBoolTokenAllow": "TRUE",
+                            "AQBoolTokenDeny": "FALSE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097"
+                                },
+                                {
+                                    "AQRef": "alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d"
+                                },
+                                {
+                                    "AQRef": "alpha:d53379c4-af70-4fc2-9de0-c42b8175a773"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Boolean",
+                    "cn": "AllowSettingsChange",
+                    "description": "Разрешение на изменение настроек",
+                    "units": [
+                        {
+                            "cn": "bc991395-edc2-47c1-8c82-aac76f583477",
+                            "AQBoolTokenAllow": "TRUE",
+                            "AQBoolTokenDeny": "FALSE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097"
+                                },
+                                {
+                                    "AQRef": "alpha:d53379c4-af70-4fc2-9de0-c42b8175a773"
+                                }
+                            ]
+                        },
+                        {
+                            "cn": "fab1f3d2-224b-4bd9-bff2-d51a52afc552",
+                            "AQBoolTokenAllow": "FALSE",
+                            "AQBoolTokenDeny": "TRUE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "Roles": "",
+            "isSystem": "FALSE"
+        },
+        {
+            "cn": "Alarms",
+            "Rights": [
+                {
+                    "type": "Boolean",
+                    "cn": "Printing",
+                    "description": "Вывод на принтер",
+                    "units": [
+                        {
+                            "cn": "3bb9309e-8f5e-4554-abe9-59be42de7645",
+                            "AQBoolTokenAllow": "TRUE",
+                            "AQBoolTokenDeny": "FALSE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097"
+                                }
+                            ]
+                        },
+                        {
+                            "cn": "61b5cf16-3ae1-4a31-9fb6-eefcdf9e37b3",
+                            "AQBoolTokenAllow": "FALSE",
+                            "AQBoolTokenDeny": "TRUE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d"
+                                },
+                                {
+                                    "AQRef": "alpha:d53379c4-af70-4fc2-9de0-c42b8175a773"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Boolean",
+                    "cn": "Filtering",
+                    "description": "Фильтрация",
+                    "units": [
+                        {
+                            "cn": "be5c917b-9a61-4a92-a7e5-57e3d5b438ff",
+                            "AQBoolTokenAllow": "FALSE",
+                            "AQBoolTokenDeny": "TRUE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d"
+                                }
+                            ]
+                        },
+                        {
+                            "cn": "e26bc83c-5525-4c95-a9f4-b056019247fc",
+                            "AQBoolTokenAllow": "TRUE",
+                            "AQBoolTokenDeny": "FALSE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097"
+                                },
+                                {
+                                    "AQRef": "alpha:d53379c4-af70-4fc2-9de0-c42b8175a773"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Boolean",
+                    "cn": "Suppression",
+                    "description": "Подавление и блокирование",
+                    "units": [
+                        {
+                            "cn": "070abd70-0050-4ec8-a310-24c3d9817548",
+                            "AQBoolTokenAllow": "FALSE",
+                            "AQBoolTokenDeny": "TRUE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d"
+                                },
+                                {
+                                    "AQRef": "alpha:d53379c4-af70-4fc2-9de0-c42b8175a773"
+                                }
+                            ]
+                        },
+                        {
+                            "cn": "5e0e8a9c-fe84-42ec-9323-3be89291c5dd",
+                            "AQBoolTokenAllow": "TRUE",
+                            "AQBoolTokenDeny": "FALSE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Boolean",
+                    "cn": "EditSettings",
+                    "description": "Редактирование настроек",
+                    "units": [
+                        {
+                            "cn": "85a50b25-bff8-4396-b312-b389d0501b78",
+                            "AQBoolTokenAllow": "FALSE",
+                            "AQBoolTokenDeny": "TRUE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d"
+                                },
+                                {
+                                    "AQRef": "alpha:d53379c4-af70-4fc2-9de0-c42b8175a773"
+                                }
+                            ]
+                        },
+                        {
+                            "cn": "96d61409-3009-4672-9725-55fcfae0e47e",
+                            "AQBoolTokenAllow": "TRUE",
+                            "AQBoolTokenDeny": "FALSE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Boolean",
+                    "cn": "Acknowledgment",
+                    "description": "Квитирование",
+                    "units": [
+                        {
+                            "cn": "3716e6ef-0d01-44b5-994c-0878d97638a3",
+                            "AQBoolTokenAllow": "TRUE",
+                            "AQBoolTokenDeny": "FALSE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097"
+                                },
+                                {
+                                    "AQRef": "alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d"
+                                },
+                                {
+                                    "AQRef": "alpha:d53379c4-af70-4fc2-9de0-c42b8175a773"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Boolean",
+                    "cn": "FileSystemAccess",
+                    "description": "Доступ к файловой системе",
+                    "units": [
+                        {
+                            "cn": "1e19f47a-11fe-4215-8ae2-9dcd180f6ec0",
+                            "AQBoolTokenAllow": "FALSE",
+                            "AQBoolTokenDeny": "TRUE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d"
+                                },
+                                {
+                                    "AQRef": "alpha:d53379c4-af70-4fc2-9de0-c42b8175a773"
+                                }
+                            ]
+                        },
+                        {
+                            "cn": "81adcfdc-fabd-468d-91cc-c8d02955b208",
+                            "AQBoolTokenAllow": "TRUE",
+                            "AQBoolTokenDeny": "FALSE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Boolean",
+                    "cn": "ViewEventHistory",
+                    "description": "Просмотр исторических сообщений",
+                    "units": [
+                        {
+                            "cn": "e82ad3c6-14c4-4aa4-a0f3-9bf5bb4b706b",
+                            "AQBoolTokenAllow": "TRUE",
+                            "AQBoolTokenDeny": "FALSE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097"
+                                },
+                                {
+                                    "AQRef": "alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d"
+                                },
+                                {
+                                    "AQRef": "alpha:d53379c4-af70-4fc2-9de0-c42b8175a773"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Boolean",
+                    "cn": "ViewCurrentEvents",
+                    "description": "Просмотр оперативных сообщений",
+                    "units": [
+                        {
+                            "cn": "dc573e31-2d42-4fcb-a575-e44ff5f4768f",
+                            "AQBoolTokenAllow": "TRUE",
+                            "AQBoolTokenDeny": "FALSE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097"
+                                },
+                                {
+                                    "AQRef": "alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d"
+                                },
+                                {
+                                    "AQRef": "alpha:d53379c4-af70-4fc2-9de0-c42b8175a773"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Boolean",
+                    "cn": "ClearCurrentEvents",
+                    "description": "Очистка списка оперативных сообщений",
+                    "units": [
+                        {
+                            "cn": "4d1b0daf-be25-4293-a073-88c297769e11",
+                            "AQBoolTokenAllow": "TRUE",
+                            "AQBoolTokenDeny": "FALSE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097"
+                                },
+                                {
+                                    "AQRef": "alpha:d53379c4-af70-4fc2-9de0-c42b8175a773"
+                                }
+                            ]
+                        },
+                        {
+                            "cn": "bed146ce-286a-47fd-ad9e-7f85a4478ab2",
+                            "AQBoolTokenAllow": "FALSE",
+                            "AQBoolTokenDeny": "TRUE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Boolean",
+                    "cn": "ExportDataAvailability",
+                    "description": "Экспорт в Excel",
+                    "units": [
+                        {
+                            "cn": "54b8a553-2c55-486b-b2c1-362879e50360",
+                            "AQBoolTokenAllow": "FALSE",
+                            "AQBoolTokenDeny": "TRUE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d"
+                                },
+                                {
+                                    "AQRef": "alpha:d53379c4-af70-4fc2-9de0-c42b8175a773"
+                                }
+                            ]
+                        },
+                        {
+                            "cn": "bf126c96-2a8a-42fe-8072-1bc80a9ed2cf",
+                            "AQBoolTokenAllow": "TRUE",
+                            "AQBoolTokenDeny": "FALSE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Boolean",
+                    "cn": "SoundPlaybackManagment",
+                    "description": "Управление звуками",
+                    "units": [
+                        {
+                            "cn": "5d7bfd05-ac98-407a-86f1-eb6fb88a4ae5",
+                            "AQBoolTokenAllow": "TRUE",
+                            "AQBoolTokenDeny": "FALSE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097"
+                                },
+                                {
+                                    "AQRef": "alpha:d53379c4-af70-4fc2-9de0-c42b8175a773"
+                                }
+                            ]
+                        },
+                        {
+                            "cn": "d37e16f2-0960-41ab-a515-d0f3eaa1e2fe",
+                            "AQBoolTokenAllow": "FALSE",
+                            "AQBoolTokenDeny": "TRUE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Boolean",
+                    "cn": "TakeCurrentEventsSnapshot",
+                    "description": "Снимок оперативных сообщений",
+                    "units": [
+                        {
+                            "cn": "28eb7511-6381-411c-a83c-deaab62d209a",
+                            "AQBoolTokenAllow": "FALSE",
+                            "AQBoolTokenDeny": "TRUE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d"
+                                }
+                            ]
+                        },
+                        {
+                            "cn": "489560ff-468c-4dd6-8cd0-ca371ca60528",
+                            "AQBoolTokenAllow": "TRUE",
+                            "AQBoolTokenDeny": "FALSE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097"
+                                },
+                                {
+                                    "AQRef": "alpha:d53379c4-af70-4fc2-9de0-c42b8175a773"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Boolean",
+                    "cn": "EventTableSortAvailability",
+                    "description": "Сортировка в таблице сообщений",
+                    "units": [
+                        {
+                            "cn": "3ad74486-99f4-4f31-92c2-412fa6f6885b",
+                            "AQBoolTokenAllow": "FALSE",
+                            "AQBoolTokenDeny": "TRUE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d"
+                                }
+                            ]
+                        },
+                        {
+                            "cn": "eb798ae1-5ff2-4b30-b06b-bf6d8390041d",
+                            "AQBoolTokenAllow": "TRUE",
+                            "AQBoolTokenDeny": "FALSE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097"
+                                },
+                                {
+                                    "AQRef": "alpha:d53379c4-af70-4fc2-9de0-c42b8175a773"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "Roles": "",
+            "isSystem": "FALSE"
+        },
+        {
+            "cn": "Trends",
+            "Rights": [
+                {
+                    "type": "Boolean",
+                    "cn": "EditSettings",
+                    "description": "Редактирование настроек",
+                    "units": [
+                        {
+                            "cn": "b029f380-761c-489c-8a93-f0fa4248c933",
+                            "AQBoolTokenAllow": "TRUE",
+                            "AQBoolTokenDeny": "FALSE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097"
+                                }
+                            ]
+                        },
+                        {
+                            "cn": "b6ce0d4c-41d0-4b44-8c09-91b653e6a6e5",
+                            "AQBoolTokenAllow": "FALSE",
+                            "AQBoolTokenDeny": "TRUE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d"
+                                },
+                                {
+                                    "AQRef": "alpha:d53379c4-af70-4fc2-9de0-c42b8175a773"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Boolean",
+                    "cn": "FileSystemAccess",
+                    "description": "Доступность файловой системы",
+                    "units": [
+                        {
+                            "cn": "2000dffc-842e-4b87-9f4f-d95972857121",
+                            "AQBoolTokenAllow": "TRUE",
+                            "AQBoolTokenDeny": "FALSE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097"
+                                }
+                            ]
+                        },
+                        {
+                            "cn": "65ee0530-b449-49e4-b6e7-98ebaa44f10b",
+                            "AQBoolTokenAllow": "FALSE",
+                            "AQBoolTokenDeny": "TRUE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d"
+                                },
+                                {
+                                    "AQRef": "alpha:d53379c4-af70-4fc2-9de0-c42b8175a773"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Boolean",
+                    "cn": "PrinterSelecting",
+                    "description": "Выбор принтера",
+                    "units": [
+                        {
+                            "cn": "f3ffe43a-26d1-413f-932d-b9133814e332",
+                            "AQBoolTokenAllow": "FALSE",
+                            "AQBoolTokenDeny": "TRUE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d"
+                                },
+                                {
+                                    "AQRef": "alpha:d53379c4-af70-4fc2-9de0-c42b8175a773"
+                                }
+                            ]
+                        },
+                        {
+                            "cn": "f52acdc9-3edb-420c-b2e8-2908e1832586",
+                            "AQBoolTokenAllow": "TRUE",
+                            "AQBoolTokenDeny": "FALSE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "Roles": "",
+            "isSystem": "FALSE"
+        },
+        {
+            "cn": "Astra.Security",
+            "Rights": [
+                {
+                    "type": "Boolean",
+                    "cn": "EditSettings",
+                    "description": "Изменение настроек",
+                    "units": [
+                        {
+                            "cn": "982dd1fe-bfa1-4439-b50f-aa93c3cc14b7",
+                            "AQBoolTokenAllow": "TRUE",
+                            "AQBoolTokenDeny": "FALSE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:b4c00226-1790-4cb1-8c34-e6b2eb2cb1bd"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Boolean",
+                    "cn": "InteractiveLogon",
+                    "description": "Интерактивный вход",
+                    "units": ""
+                },
+                {
+                    "type": "Boolean",
+                    "cn": "ViewConfiguration",
+                    "description": "Просмотр конфигурации",
+                    "units": [
+                        {
+                            "cn": "d6022e80-fe41-43a6-ae5f-227476ab750a",
+                            "AQBoolTokenAllow": "TRUE",
+                            "AQBoolTokenDeny": "FALSE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:b4c00226-1790-4cb1-8c34-e6b2eb2cb1bd"
+                                },
+                                {
+                                    "AQRef": "alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Boolean",
+                    "cn": "ConfigurationAccess",
+                    "description": "Редактирование конфигурации",
+                    "units": [
+                        {
+                            "cn": "3569fd32-ce07-4ca3-bea5-a55598e2d244",
+                            "AQBoolTokenAllow": "TRUE",
+                            "AQBoolTokenDeny": "FALSE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:b4c00226-1790-4cb1-8c34-e6b2eb2cb1bd"
+                                },
+                                {
+                                    "AQRef": "alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Boolean",
+                    "cn": "WinKeysShortcutAccess",
+                    "description": "Доступ к сочетаниям клавиш windows",
+                    "units": [
+                        {
+                            "cn": "2fee970e-7746-4d5e-9269-597932e3ee08",
+                            "AQBoolTokenAllow": "TRUE",
+                            "AQBoolTokenDeny": "FALSE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097"
+                                }
+                            ]
+                        },
+                        {
+                            "cn": "5c7914c9-4c15-4525-b5ea-f211a09f31bb",
+                            "AQBoolTokenAllow": "TRUE",
+                            "AQBoolTokenDeny": "FALSE",
+                            "refs": ""
+                        },
+                        {
+                            "cn": "e2234f7f-0650-489b-b66d-f1492a30c6f4",
+                            "AQBoolTokenAllow": "FALSE",
+                            "AQBoolTokenDeny": "TRUE",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d"
+                                },
+                                {
+                                    "AQRef": "alpha:d53379c4-af70-4fc2-9de0-c42b8175a773"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "String",
+                    "cn": "LowerCount",
+                    "description": "Количество в пароле символов в нижнем регистре",
+                    "units": ""
+                },
+                {
+                    "type": "String",
+                    "cn": "UpperCount",
+                    "description": "Количество в пароле символов в верхнем регистре",
+                    "units": ""
+                },
+                {
+                    "type": "String",
+                    "cn": "MaxIdleTime",
+                    "description": "Максимальное время бездействия, мин",
+                    "units": [
+                        {
+                            "cn": "0987611c-185c-4d82-a4bd-2d2ab6444156",
+                            "AQStringTokenAllow": "1440",
+                            "AQStringTokenDeny": "",
+                            "refs": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "String",
+                    "cn": "PasswordAge",
+                    "description": "Срок действия пароля, дней",
+                    "units": [
+                        {
+                            "cn": "68ab6a20-d3e2-47d4-a2d1-f7b53e4843d8",
+                            "AQStringTokenAllow": "172800;7776000",
+                            "AQStringTokenDeny": "",
+                            "refs": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "String",
+                    "cn": "NumbersCount",
+                    "description": "Количество цифровых символов в пароле",
+                    "units": ""
+                },
+                {
+                    "type": "String",
+                    "cn": "SpecialCount",
+                    "description": "Количество специальных символов в пароле",
+                    "units": ""
+                },
+                {
+                    "type": "String",
+                    "cn": "AttempsTimeOut",
+                    "description": "Таймаут блокировки при превышении количества неуспешных попыток входа, мин",
+                    "units": ""
+                },
+                {
+                    "type": "String",
+                    "cn": "MaxAttempsCount",
+                    "description": "Количество неуспешных попыток входа до временной блокировки, шт",
+                    "units": [
+                        {
+                            "cn": "90cd7736-31ff-4b3c-8a20-5b48a85403b1",
+                            "AQStringTokenAllow": "5",
+                            "AQStringTokenDeny": "",
+                            "refs": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "String",
+                    "cn": "PasswordMinLength",
+                    "description": "Минимальная длина пароля",
+                    "units": [
+                        {
+                            "cn": "501ef266-87ea-4a24-9f94-4e509da450af",
+                            "AQStringTokenAllow": "7",
+                            "AQStringTokenDeny": "",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:b4c00226-1790-4cb1-8c34-e6b2eb2cb1bd"
+                                }
+                            ]
+                        },
+                        {
+                            "cn": "d116f321-fc72-469d-aa91-e29ca27819da",
+                            "AQStringTokenAllow": "7",
+                            "AQStringTokenDeny": "",
+                            "refs": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "String",
+                    "cn": "PasswordComplexity",
+                    "description": "Сложность пароля",
+                    "units": [
+                        {
+                            "cn": "d64d42ba-5084-4552-bdd7-a58584297c43",
+                            "AQStringTokenAllow": "1",
+                            "AQStringTokenDeny": "",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:b4c00226-1790-4cb1-8c34-e6b2eb2cb1bd"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "String",
+                    "cn": "PasswordsInHistory",
+                    "description": "Количество паролей в истории",
+                    "units": [
+                        {
+                            "cn": "cb2a4175-f555-45b4-ac66-80226bdce587",
+                            "AQStringTokenAllow": "4",
+                            "AQStringTokenDeny": "",
+                            "refs": [
+                                {
+                                    "AQRef": "alpha:b4c00226-1790-4cb1-8c34-e6b2eb2cb1bd"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "String",
+                    "cn": "SessionDurationLimit",
+                    "description": "Максимальное время сессии, мин",
+                    "units": [
+                        {
+                            "cn": "d2289eda-8338-42b2-9e5b-869f048777e1",
+                            "AQStringTokenAllow": "1440",
+                            "AQStringTokenDeny": "",
+                            "refs": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "String",
+                    "cn": "PasswordNotifyForChange",
+                    "description": "Уведомление о смене пароля, дней",
+                    "units": ""
+                }
+            ],
+            "Roles": "",
+            "isSystem": "TRUE"
+        },
+        {
+            "cn": "Astra.WorkStations",
+            "Rights": "",
+            "Roles": "",
+            "isSystem": "TRUE"
+        },
+        {
+            "cn": "Astra.ClusterWorkPlaces",
+            "Rights": "",
+            "Roles": "",
+            "isSystem": "TRUE"
+        }
+    ],
+    "Users": [
+        {
+            "gidNumber": "0",
+            "uidNumber": "0",
+            "homeDirectory": " ",
+            "uid": "alpha:82b1cb6b-023d-4a4e-8631-eb5c9e629c5e",
+            "AQForcePasswordChange": "FALSE",
+            "userPassword": "{SSHA}FVJSka8yxmZzGOaPzhONyeAsjJCgOlLFfbtCDA==",
+            "AQLastPasswordSet": "1728564800",
+            "employeeType": "",
+            "departmentNumber": "",
+            "mail": "",
+            "telephoneNumber": "",
+            "description": "",
+            "givenName": "",
+            "initials": "",
+            "cn": "Оператор",
+            "sn": "Оператор",
+            "displayName": "Оператор",
+            "AQDisabled": "FALSE",
+            "PasswordsHistory": [
+                {
+                    "AQPasswordHistory": "00{SSHA}FVJSka8yxmZzGOaPzhONyeAsjJCgOlLFfbtCDA=="
+                }
+            ]
+        },
+        {
+            "gidNumber": "0",
+            "uidNumber": "0",
+            "homeDirectory": " ",
+            "uid": "alpha:b3703af4-cf22-4df1-ac92-7802ffc1bab1",
+            "AQForcePasswordChange": "FALSE",
+            "userPassword": "{SSHA}47+SNz4RbgKg6gk\/gzpEsfzybz9MHEuoCzBPOw==",
+            "AQLastPasswordSet": "1728564617",
+            "employeeType": "",
+            "departmentNumber": "",
+            "mail": "",
+            "telephoneNumber": "",
+            "description": "",
+            "givenName": "",
+            "initials": "",
+            "cn": "Старший оператор",
+            "sn": "Старший оператор",
+            "displayName": "Старший оператор",
+            "AQDisabled": "FALSE",
+            "PasswordsHistory": [
+                {
+                    "AQPasswordHistory": "00{SSHA}47+SNz4RbgKg6gk\/gzpEsfzybz9MHEuoCzBPOw=="
+                }
+            ]
+        },
+        {
+            "gidNumber": "0",
+            "uidNumber": "0",
+            "homeDirectory": " ",
+            "uid": "alpha:b4c00226-1790-4cb1-8c34-e6b2eb2cb1bd",
+            "AQForcePasswordChange": "FALSE",
+            "userPassword": "{SSHA}CcIy1OsvkkWteFLwYUHLH5+yupentOcXDWBD3g==",
+            "AQLastPasswordSet": "1688965213",
+            "employeeType": "",
+            "departmentNumber": "",
+            "mail": "",
+            "telephoneNumber": "",
+            "description": "",
+            "givenName": "",
+            "initials": "",
+            "cn": "Администратор",
+            "sn": "Администратор",
+            "displayName": "Администратор",
+            "AQDisabled": "FALSE",
+            "PasswordsHistory": ""
+        }
+    ],
+    "Groups": [
+        {
+            "AQGroupID": "alpha:24b605ca-8ed9-4247-9aac-4c3c4c5b8097",
+            "cn": "Администраторы",
+            "displayName": "Администраторы",
+            "description": "",
+            "members": [
+                {
+                    "AQMemberID": "alpha:b4c00226-1790-4cb1-8c34-e6b2eb2cb1bd"
+                }
+            ],
+            "AQDisabled": "FALSE"
+        },
+        {
+            "AQGroupID": "alpha:6b1b10c0-532a-4055-ad6a-f8867518fc7d",
+            "cn": "Операторы",
+            "displayName": "Операторы",
+            "description": "",
+            "members": [
+                {
+                    "AQMemberID": "alpha:82b1cb6b-023d-4a4e-8631-eb5c9e629c5e"
+                }
+            ],
+            "AQDisabled": "FALSE"
+        },
+        {
+            "AQGroupID": "alpha:d53379c4-af70-4fc2-9de0-c42b8175a773",
+            "cn": "Старшие операторы",
+            "displayName": "Старшие операторы",
+            "description": "",
+            "members": [
+                {
+                    "AQMemberID": "alpha:b3703af4-cf22-4df1-ac92-7802ffc1bab1"
+                }
+            ],
+            "AQDisabled": "FALSE"
+        }
+    ],
+    "WorkPlaces": "",
+    "WorkStations": "",
+    "CheckSumm": {
+        "value": "fb5d139e346643032fb7561d839d3556"
+    }
+}

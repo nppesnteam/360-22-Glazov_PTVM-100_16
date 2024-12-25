@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Astra.Historian.Server StatPort="3388" DefaultPrimaryDir="C:\AstraRegul\Astra.Historian\Databases" MaxPoolMemorySize="512" EnableDCOM="0">
+  <tcp-server default-port="4949" idle-sessions-count="1" idle-sessions-timeout="15">
+    <server-endpoint host="0.0.0.0" />
+  </tcp-server>
+  <Bases>
+    <Base Alias="DB_EVENTS" PreferredCommonCacheLimit="128" ActiveStorageDepth="3" StorageDepth="365" VolumeLimit="2000" ArchiveCompression="none" BlocksPerCompressedPack="10" Recompress="none" />
+    <Base Alias="DB_HISTORY" PreferredCommonCacheLimit="128" ActiveStorageDepth="3" StorageDepth="365" VolumeLimit="2000" ArchiveCompression="none" BlocksPerCompressedPack="10" Recompress="none" />
+    <Base Alias="DB_IMIT" PreferredCommonCacheLimit="128" ActiveStorageDepth="3" StorageDepth="365" VolumeLimit="2000" ArchiveCompression="none" BlocksPerCompressedPack="10" Recompress="none" />
+  </Bases>
+</Astra.Historian.Server>

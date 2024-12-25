@@ -1,0 +1,72 @@
+﻿<type ver="5" uuid="55260a1d-4578-4c18-9935-596bed47ed5f" name="StartForm" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" access-modifier="private" display-name="StartForm">
+  <object ver="5" uuid="aba48c61-8e56-44c4-8a02-573f30ba3ce0" name="OpenForm1" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" access-modifier="private" display-name="OpenForm1" description="" cardinal="1">
+    <designed ver="5" target="Enabled" value="true" />
+    <designed ver="5" target="InvokeTrigger" value="false" />
+    <do-on ver="5" access-modifier="private" name="HandlerOpenMonitor1_1" display-name="HandlerOpenMonitor1_1" event="Invoked" form-action="open" form-by-id="false">
+      <object ver="5" base-type="MainForm" base-type-id="82ad3062-9192-4240-904d-e0bc23411d5d" access-modifier="private" uuid="dffa79fa-148d-4b9f-bd05-4eb936891dc8">
+        <designed ver="5" target="MonitorNumber" value="1" />
+        <designed ver="5" target="WindowPosition" value="4" />
+      </object>
+    </do-on>
+  </object>
+  <object ver="5" uuid="fa2733e3-2d2d-4ba2-b491-3ca12b8614c7" name="OpenForm2" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" access-modifier="private" display-name="OpenForm2" description="" cardinal="1">
+    <designed ver="5" target="Enabled" value="true" />
+    <designed ver="5" target="InvokeTrigger" value="false" />
+    <do-on ver="5" access-modifier="private" name="HandlerOpenMonitor2_1" display-name="HandlerOpenMonitor2_1" event="Invoked" form-action="open-new" form-by-id="false">
+      <object ver="5" base-type="MainForm" base-type-id="82ad3062-9192-4240-904d-e0bc23411d5d" access-modifier="private" uuid="31d3bbdb-854e-4da6-b72f-f53ce64d080e">
+        <designed ver="5" target="MonitorNumber" value="2" />
+      </object>
+    </do-on>
+  </object>
+  <object ver="5" uuid="05122664-59e8-4dae-87cc-8ebad9aad821" name="OpenForm3" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" access-modifier="private" display-name="OpenForm3" description="" cardinal="1">
+    <designed ver="5" target="Enabled" value="true" />
+    <designed ver="5" target="InvokeTrigger" value="false" />
+    <do-on ver="5" access-modifier="private" name="HandlerOpenMonitor3_1" display-name="HandlerOpenMonitor3_1" event="Invoked" form-action="open-new" form-by-id="false">
+      <object ver="5" base-type="MainForm" base-type-id="82ad3062-9192-4240-904d-e0bc23411d5d" access-modifier="private" uuid="0d63b1d5-2ebc-44b8-b961-0826e0be38aa">
+        <designed ver="5" target="MonitorNumber" value="3" />
+      </object>
+    </do-on>
+  </object>
+  <object ver="5" uuid="035e6c34-d9b8-4d7d-b4a7-7a2d42ecbe39" name="OpenForm4" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" access-modifier="private" display-name="OpenForm4" description="" cardinal="1">
+    <designed ver="5" target="Enabled" value="true" />
+    <designed ver="5" target="InvokeTrigger" value="false" />
+    <do-on ver="5" access-modifier="private" name="HandlerOpenMonitor4_1" display-name="HandlerOpenMonitor4_1" event="Invoked" form-action="open-new" form-by-id="false">
+      <object ver="5" base-type="MainForm" base-type-id="82ad3062-9192-4240-904d-e0bc23411d5d" access-modifier="private" uuid="981aaac5-41ee-4b01-8ff3-15a23e235feb">
+        <designed ver="5" target="MonitorNumber" value="4" />
+      </object>
+    </do-on>
+  </object>
+  <designed ver="5" target="Scale" value="1" />
+  <designed ver="5" target="Visible" value="true" />
+  <designed ver="5" target="Opacity" value="1" />
+  <designed ver="5" target="Enabled" value="true" />
+  <designed ver="5" target="Width" value="1920" />
+  <designed ver="5" target="Height" value="1080" />
+  <designed ver="5" target="PenColor" value="4278190080" />
+  <designed ver="5" target="PenWidth" value="1" />
+  <designed ver="5" target="BrushStyle" value="1" />
+  <designed ver="5" target="WindowWidth" value="1920" />
+  <designed ver="5" target="WindowHeight" value="1080" />
+  <designed ver="5" target="AlwaysOnTop" value="false" />
+  <designed ver="5" target="WindowSizeMode" value="2" />
+  <designed ver="5" target="BrushColor" value="4293980400" />
+  <designed ver="5" target="WindowCaption" value="Стартовое окно" />
+  <designed ver="5" target="ShowWindowCaption" value="true" />
+  <designed ver="5" target="ShowWindowMinimize" value="true" />
+  <designed ver="5" target="ShowWindowMaximize" value="true" />
+  <designed ver="5" target="ShowWindowClose" value="true" />
+  <designed ver="5" target="WindowState" value="2" />
+  <designed ver="5" target="WindowBorderStyle" value="1" />
+  <do-on ver="5" access-modifier="private" name="Handler_3" display-name="Handler_3" event="Opened">
+    <body Kind="om"><![CDATA[OpenForm1.Invoke();]]></body>
+  </do-on>
+  <do-on ver="5" access-modifier="private" name="Handler_4" display-name="Handler_4" event="Opened">
+    <body Kind="om"><![CDATA[OpenForm2.Invoke();]]></body>
+  </do-on>
+  <do-on ver="5" access-modifier="private" name="Handler_5" display-name="Handler_5" event="Opened">
+    <body Kind="om"><![CDATA[OpenForm3.Invoke();]]></body>
+  </do-on>
+  <do-on ver="5" access-modifier="private" name="Handler_6" display-name="Handler_6" event="Opened">
+    <body Kind="om"><![CDATA[OpenForm4.Invoke();]]></body>
+  </do-on>
+</type>
